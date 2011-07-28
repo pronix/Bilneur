@@ -1,0 +1,25 @@
+<p>
+  <%= f.label :email, t("email") %><br />
+  <%= f.text_field :email, :class => 'title'  %>
+</p>
+<div id="password-credentials">
+  <p>
+    <%= f.label :password, t("password") %><br />
+    <%= f.password_field :password, :class => 'title'  %>
+  </p>
+
+  <p>
+    <%= f.label :password_confirmation, t(:confirm_password) %><br />
+    <%= f.password_field :password_confirmation, :class => 'title' %>
+  </p>
+</div>
+
+<p>
+  <label>
+    <%= f.check_box :registration_as_seller %>
+    <%= f.label :registration_as_seller, t('as_seller') %>
+  </label>
+</p>
+
+
+<%= hook :signup_below_password_fields %>

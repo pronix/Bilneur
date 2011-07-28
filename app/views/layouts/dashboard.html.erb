@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<%= hook :inside_head do %>
+  <%= render :partial => 'shared/head'%>
+<% end %>
+<%= javascript_include_tag "user_dashboard.js" %>
+</head>
+
+<body class="two-col">
+  <div id="header" class="container_bg">
+    <div class="container">
+    <div id="login-bar">
+      <ul id="nav-bar">
+        <%= render 'dashboard/shared/nav_bar' %>
+      </ul>
+    </div>
+    <%= logo %>
+    </div>
+  </div>
+
+  <div id="wrapper" class="container">
+    <div id="sidebar">
+      <%= render "dashboard/shared/menu" %>
+    </div>
+
+    <div id="content">
+      <% if flash.notice %>
+      <div class="flash notice"><%= flash.notice %></div>
+      <% end %>
+      <% if flash[:error] %>
+      <div class="flash errors"><%= flash[:error] %></div>
+      <% end %>
+
+      <%= yield %>
+    </div>
+
+    <%= render :partial => 'shared/footer'%>
+  </div>
+
+</body>
+</html>

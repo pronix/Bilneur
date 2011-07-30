@@ -1,9 +1,4 @@
 Bilneur::Application.routes.draw do
-  get "products/index"
-
-  get "products/new"
-
-  get "products/edit"
-
+  root :to => "home#index"
   # routes moved to ./shop/config/routes.rb
 end

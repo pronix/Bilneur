@@ -1,0 +1,11 @@
+/* Authors: zainansari@live.com, aminusman@hotmail.com : Creation Date:29-July-2011 Updation Date:N-A*/
+/* General */
+body {font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small; /* for IE6/7 */ *font:x-small; /* for IE Quirks Mode */}
+h1{font-size:138.5%;}
+h2{font-size:123.1%;}
+h3{font-size:108%;}
+h1,h2,h3,h4,h5,h6,strong,dt{font-weight:bold;}
+em{font-style:italic;}
+select,input,button,textarea,button {font:99% arial,helvetica,clean,sans-serif;}
+table {font-size:inherit;font:100%;}
+pre,code,kbd,samp,tt{font-family:monospace;*font-size:108%;line-height:100%;}

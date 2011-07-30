@@ -1,4 +1,6 @@
 Bilneur::Application.routes.draw do
+  root :to => "home#index"
+
   match "/account" => "dashboard/users#show"
 
   # User dashboard

@@ -1,0 +1,10 @@
+@charset "utf-8";
+/* CSS Document */
+
+#carousel ul li img { float:left; width:122px; height:100px; margin:2px 32px 0 6px;}
+#carousel ul li a {clear:both; float:left; color:#4d4d4d; font-weight:bold; font-size:12px; margin:4px 0 0 15px;}
+#carousel ul li .lHd { float:left;width:200px; top:13px; left:160;}
+#carousel ul li .lHdI { float:left; width:200px; font-size:11px; color:#4d4d4d; font-style:normal; top:40px;}
+#carousel ul li .byTh { float:left; width:200px; clear:left; margin-left:45px; font-size:12px; color:#89be50;}
+.byPrc {font-size:12px; color:#df5050;}
+

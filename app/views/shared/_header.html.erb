@@ -1,13 +1,13 @@
 <!-- START HEADER -->
     <div id="mHdr">
       <div class="hd1A">
-          <a href="/"><img src="/images/logos/logo.png" alt="" /></a>
+          <%= link_to image_tag("/images/logos/logo.png"), root_path %>
         </div>
         <div class="hd1B">
           <div class="loginBar">
               <i><%= link_to "Sign Up", new_user_registration_path %></i>
                 <%= link_to "Log In", new_user_session_path %>
-                <a class="crt" href="#"><img src="/images/icons/cart.png" alt="" /></a>
+                <%= link_to image_tag("/images/icons/cart.png"), cart_path, :class=>"crt" %>
             </div>
             <ul class="tpMnu">
               <li><a href="#">How It Work</a></li>

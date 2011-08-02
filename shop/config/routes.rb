@@ -12,7 +12,13 @@ Rails.application.routes.draw do
         match "/search" => "quotes#search", :as => :search, :via => [:get, :post]
       end
     end
-    resources :products
+
+    resources :properties
+
+    resources :products do
+      resources :images
+    end
+
     resource :account, :controller => "users"
   end
 

@@ -1,0 +1,13 @@
+<%= render :partial => 'dashboard/shared/product_sub_menu' %>
+
+<h1><%= t("editing_property") %></h1>
+
+<%= render 'shared/error_messages', :target => @property %>
+
+<%= form_for(:property, :url => dashboard_property_path(@property), :html => { :method => :put }) do |f| %>
+  <%= render :partial => "form", :locals => { :f => f } %>
+<p class="form-buttons">
+  <button> <span><%= t("update") %></span></button>
+  <%= t("or") %> <%= link_to t("cancel"), dashboard_properties_path %>
+</p>
+<% end %>

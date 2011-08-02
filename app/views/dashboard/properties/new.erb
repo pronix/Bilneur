@@ -1,0 +1,14 @@
+<%= render :partial => 'dashboard/shared/product_sub_menu' %>
+
+<%= render 'shared/error_messages', :target => @property %>
+
+<%= form_for(:property, :url => dashboard_properties_path) do |f| %>
+<fieldset>
+  <legend><%= t("new_property")%></legend>
+  <%= render :partial => "form", :locals => { :f => f } %>
+  <p class="form-buttons">
+    <button><span><%= t("actions.create") %></span></button>
+   <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_properties_path %>
+ </p>
+</fieldset>
+<% end %>

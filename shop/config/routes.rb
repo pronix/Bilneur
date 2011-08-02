@@ -16,7 +16,6 @@ Rails.application.routes.draw do
     resources :properties
 
     resources :products do
-
       resources :images do
         collection do
           post :update_positions

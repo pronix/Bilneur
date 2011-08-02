@@ -1,0 +1,9 @@
+<% unless @product.product_properties.empty? %>
+<h2><%= t('properties') %></h2>
+<dl id="product-properties" class="table-display">
+<% @product.product_properties.each do |product_property| %>
+  <dt><%= product_property.property.presentation %></dt>
+  <dd><%= product_property.value %></dd>
+<% end %>
+</dl>
+<% end %>

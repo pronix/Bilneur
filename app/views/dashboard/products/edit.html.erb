@@ -1,7 +1,5 @@
 <%= render :partial => 'dashboard/shared/product_sub_menu' %>
 
-<%#= render :partial => 'admin/shared/product_tabs', :locals => {:current => "Product Details"} %>
-
 <%= render :partial => 'dashboard/shared/product_tabs', :locals => {:current => "Product Details"} %>
 
 <%= form_for(@product, :url => dashboard_product_path(@product), :html => { :method => :put, :multipart => true }) do |f| %>

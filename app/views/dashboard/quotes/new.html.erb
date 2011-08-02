@@ -1,1 +1,42 @@
-<h1>New Quote</h1>
+<h1><%= t("new_quote") %></h1>
+<h2> <u>Product:</u> <b><%= @product.name %></b></h2>
+<%= render "shared/error_messages", :target => @quote %>
+
+<%= form_for(:variant, :url => dashboard_quotes_path, :method => :post,  :html => { :multipart => true } ) do |f| %>
+<%= hidden_field_tag "product_ean", @product.ean %>
+<fieldset>
+  <p>
+    <%= f.label :name, t("name") %> <span class="required">*</span><br />
+    <%= f.text_field :name, :class => 'title fullwidth', :value => @product.name  %>
+  </p>
+
+  <p>
+    <%= f.label :price, t("price") %> <span class="required">*</span><br />
+    <%= f.text_field :price, :class => 'title'  %>
+  </p>
+  <p>
+    <%= f.label :count_on_hand, t("on_hand") %> <span class="required">*</span><br />
+    <%= f.text_field :count_on_hand, :class => 'title'  %>
+  </p>
+  <p>
+    <%= label_tag "variant_condition", t("condition") %> <span class="required">*</span><br />
+    <%= select_tag("variant[condition]",
+            options_for_select(Variant::CONDITION.collect {|ov| [ t("condition_#{ov}"), ov ] })) %>
+
+  </p>
+
+  <p>
+    <%= f.label :description, t("description") %><br />
+    <%= f.text_area :description, {:cols => 60, :rows => 4, :class => 'fullwidth'}  %>
+  </p>
+
+</fieldset>
+
+ <p class="form-buttons">
+   <button><span><%= t("actions.create") %></span></button>
+   <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_quotes_path %>
+ </p>
+
+<% end %>
+<%= render "product_info" %>
+

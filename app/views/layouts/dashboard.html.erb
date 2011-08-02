@@ -2,27 +2,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%= hook :inside_head do %>
-  <%= render :partial => 'shared/head'%>
+  <%= render :partial => "dashboard/shared/dashboard_head" %>
 <% end %>
-<%= javascript_include_tag "user_dashboard.js" %>
 </head>
 
-<body class="two-col">
-  <div id="header" class="container_bg">
-    <div class="container">
-    <div id="login-bar">
-      <ul id="nav-bar">
-        <%= render 'dashboard/shared/nav_bar' %>
-      </ul>
-    </div>
-    <%= logo %>
-    </div>
+<body class='yui-skin-sam admin'>
+  <div>
+    <%= render 'dashboard/shared/nav_bar' %>
+    <div id="progress"><%= image_tag 'progress.gif' %> <%= t('loading') %>...</div>
+  </div>
+  <div id="admin-menu">
+    <ul>
+      <%= render "dashboard/shared/menu" %>
+    </ul>
+    <br class="clear" />
+  </div>
+
+  <div id="sub-menu">
+    <%= yield :sub_menu %>
+    <br class="clear" />
   </div>
 
   <div id="wrapper" class="container">
-    <div id="sidebar">
-      <%= render "dashboard/shared/menu" %>
-    </div>
 
     <div id="content">
       <% if flash.notice %>

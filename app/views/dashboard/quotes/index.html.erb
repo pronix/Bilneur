@@ -1,1 +1,16 @@
-Product & Quotes
+<div>
+  <div>
+    <%= form_tag search_dashboard_quotes_path do %>
+    <label><%= t("ean") %></label>
+    <%= text_field_tag "ean", "", :class => "title", :id => nil %>
+    <button><span>Add quote</span> </button>
+    <% end %>
+  </div>
+</div>
+<table class="index sortable">
+  <tr>
+    <th><%= t("name") %></th>
+    <th><%= t("on_hand") %></th>
+    <th><%= t("action") %></th>
+  </tr>
+</table>

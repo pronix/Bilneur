@@ -1,15 +1,15 @@
-Product.class_eval do
+Variant.class_eval do
 
   # associations
   #
-  belongs_to :owner, :class_name => "User" # seller who added product
+  belongs_to :seller, :class_name => "User"
 
   # scopes
   #
 
   # validates
   #
-  validates :ean, :presence => true, :uniqueness => true
+
 
   # callbacks
   #

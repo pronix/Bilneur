@@ -1,9 +1,57 @@
-class Admin::ImagesController < Admin::ResourceController
+class Dashboard::ImagesController < Dashboard::ApplicationController
+
+  helper Admin::BaseHelper
+  helper Admin::NavigationHelper
+
   before_filter :load_data
 
-  create.before :set_viewable
-  update.before :set_viewable
-  destroy.before :destroy_before
+  def index
+  end
+
+  def new
+    @image = Image.new
+    respond_to do |format|
+      format.js  { render :layout => false }
+    end
+
+  end
+
+  def create
+    if (@image = Image.create(params[:image].merge({ :viewable => @product})))
+      redirect_to dashboard_product_images_path(@product), :notice => "Image saved."
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @image = @product.images.find(params[:id])
+  end
+
+  def update
+    @image = @product.images.find(params[:id])
+
+    if @image && (@image.update_attributes(params[:image].merge({ :viewable => @product})))
+      redirect_to dashboard_product_images_path(@product), :notice => "Image updated."
+    else
+      render :edit
+    end
+
+  end
+
+  def destroy
+
+    @image = @product.images.find(params[:id])
+    @viewable = @image.try(:viewable)
+
+    if @image.destroy
+      flash.notice = "Image destroyed."
+    else
+      flash.notice = "Occured when destroying image."
+    end
+    render :text => flash.notice
+    # redirect_to dashboard_product_images_path(@product)
+  end
 
   def update_positions
     params[:positions].each do |id, index|
@@ -16,34 +64,13 @@ class Admin::ImagesController < Admin::ResourceController
   end
 
   private
-  
+
   def location_after_save
     admin_product_images_url(@product)
   end
 
   def load_data
     @product = Product.find_by_permalink(params[:product_id])
-    @variants = @product.variants.collect do |variant|
-      [variant.options_text, variant.id ]
-    end
-    @variants.insert(0, [I18n.t("all"), "All"])
-  end
-
-  def set_viewable
-    if params[:image].has_key? :viewable_id
-      if params[:image][:viewable_id] == "All"
-        @image.viewable = @product
-      else
-        @image.viewable_type = 'Variant'
-        @image.viewable_id = params[:image][:viewable_id]
-      end
-    else
-      @image.viewable = @product
-    end
-  end
-
-  def destroy_before
-    @viewable = @image.viewable
   end
 
 end

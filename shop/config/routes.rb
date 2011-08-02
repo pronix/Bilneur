@@ -16,7 +16,28 @@ Rails.application.routes.draw do
     resources :properties
 
     resources :products do
-      resources :images
+
+      resources :images do
+        collection do
+          post :update_positions
+        end
+      end
+
+      resources :product_properties
+
+
+      resources :taxons do
+        member do
+          get :select
+          delete :remove
+        end
+        collection do
+          post :available
+          post :batch_select
+          get  :selected
+        end
+      end
+
     end
 
     resource :account, :controller => "users"

@@ -7,7 +7,7 @@ User.class_eval do
   # associations
   #
   has_many :products, :foreign_key => :owner_id
-  has_many :quotes,   :class_name => "Varinat", :foreign_key => :seller_id
+  has_many :quotes,   :class_name => "Variant", :foreign_key => :seller_id
 
   # scopes
   #

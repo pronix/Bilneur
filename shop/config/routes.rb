@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :dashboard do
     root :to => "users#show"
 
-    resources :quotes, :path_names => { :new => "/:product_permalink/new" } do
+    resources :quotes, :path_names => { :new => "/:product_ean/new"} do
       collection do
         match "/search" => "quotes#search", :as => :search, :via => [:get, :post]
       end

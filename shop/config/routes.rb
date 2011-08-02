@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   # Add your extension routes here
+
   match "/account" => "dashboard/users#show"
 
   # User dashboard

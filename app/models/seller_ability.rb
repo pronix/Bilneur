@@ -10,5 +10,10 @@ class SellerAbility
       cannot :access, :quote
     end
 
+    can [:edit, :update, :destroy], Property do |resource|
+      puts resource.inspect
+      resource.owner == user
+    end
+
   end
 end

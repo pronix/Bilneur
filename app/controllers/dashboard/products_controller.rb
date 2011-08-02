@@ -1,5 +1,7 @@
 class Dashboard::ProductsController < Dashboard::ApplicationController
   helper Admin::BaseHelper
+  helper_method :current
+
   def index
     @products = current_user.products.paginate(:per_page => 10, :page => params[:page])
   end
@@ -27,6 +29,11 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
     else
       render :edit
     end
+  end
+
+  private
+  def current
+    "Product Details"
   end
 
 end

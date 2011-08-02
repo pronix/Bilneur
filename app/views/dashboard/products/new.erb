@@ -1,3 +1,4 @@
+<%#= render :partial => 'shared/rich_editor_javascript' %>
 <%#= render :partial => 'admin/shared/product_sub_menu' %>
 
 <%= render "shared/error_messages", :target => @product %>
@@ -29,21 +30,15 @@
 
     </div>
 
-    <div class="yui-u">
+  </div>
 
-      <%= f.field_container :price do %>
-        <%= f.label :price, t("price")%> <span class="required">*</span><br />
-        <%= f.text_field :price  %>
-        <%= f.error_message_on :price%>
+  <div class="yui-gc">
+    <div class="yui-u first">
+      <%= f.field_container :description do %>
+      <%= f.label :description, t("description")%><br />
+      <%= f.text_area :description, {:cols => 60, :rows => 4, :class => 'fullwidth'} %>
+      <%= f.error_message_on :description %>
       <% end %>
-
-      <p>
-        <%= f.label :available_on, t("available_on") %><br />
-        <%= f.error_message_on :available_on %>
-        <%= f.spree_date_picker :available_on, :style=>"width:150px" %>
-      </p>
-
-
     </div>
   </div>
  <p class="form-buttons">

@@ -1,3 +1,5 @@
+<%= render :partial => 'dashboard/shared/product_sub_menu' %>
+
 <h1><%= "#{t("actions.listing")} #{t("products")}" %></h1>
 
 <div id="new_product"></div>
@@ -7,7 +9,7 @@
       <th><%= t("sku") %></th>
       <th><%= t("ean") %></th>
       <th><%= t("name") %></th>
-      <th><%= t("price") %></th>
+      <!-- <th><%#= t("price") %></th> -->
     <th>
       <%= hook :admin_products_index_header_actions %>
     </th>
@@ -17,7 +19,7 @@
       <td><%= product.sku %></td>
       <td><%= product.ean %></td>
       <td><%= product.name %></td>
-      <td><%= product.price %></td>
+      <!-- <td><%#= product.price %></td> -->
     <td class="actions">
       <%= link_to t("edit"), edit_dashboard_product_path(product) unless product.deleted? %>
         &nbsp;

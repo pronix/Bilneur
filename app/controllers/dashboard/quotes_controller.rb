@@ -3,7 +3,7 @@ class Dashboard::QuotesController < Dashboard::ApplicationController
   helper Admin::NavigationHelper
 
   before_filter :load_and_authorize_resource
-  before_filter :load_product, :only => [:create, :new]
+  before_filter :load_product, :only => [:create, :new, :destroy]
 
   def index
     @quotes = current_user.quotes
@@ -32,11 +32,16 @@ class Dashboard::QuotesController < Dashboard::ApplicationController
     @quote = current_user.quotes.find(params[:id])
   end
 
+  def options
+    @quote = current_user.quotes.find(params[:id])
+  end
+
   def update
     @quote = current_user.quotes.find(params[:id])
 
     if @quote.update_attributes(params[:variant])
-      redirect_to dashboard_quotes_path, :nitice => "Quote updated."
+      update_quote_options! if params.has_key?(:quote_options)
+      redirect_to edit_dashboard_quote_path(@quote), :notice => "Quote updated."
     else
       render :edit
     end
@@ -74,5 +79,15 @@ class Dashboard::QuotesController < Dashboard::ApplicationController
   def load_product
     @product ||= Product.find_by_ean(params[:product_ean])
   end
-
+  def update_quote_options!
+    quote_options = [ ]
+    product_options = @quote.product.option_types
+    params[:quote_options].each do |option_type_id, option_value_id|
+      option_type = product_options.find(option_type_id)
+      option_value = option_type.option_values.find(option_value_id)
+      quote_options << option_value
+    end
+    @quote.option_values = quote_options
+  end
 end
+

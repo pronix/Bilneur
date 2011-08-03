@@ -8,10 +8,17 @@ Rails.application.routes.draw do
   namespace :dashboard do
     root :to => "users#show"
 
-    resources :quotes, :path_names => { :new => "/:product_ean/new"} do
+    resources :quotes, :path_names => { :new => "(/:product_ean)/new"} do
       collection do
         match "/search" => "quotes#search", :as => :search, :via => [:get, :post]
       end
+
+      resources :quote_images do
+        collection do
+          post :update_positions
+        end
+      end
+
     end
 
     resources :properties

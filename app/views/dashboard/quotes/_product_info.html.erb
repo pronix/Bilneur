@@ -1,0 +1,9 @@
+<hr/>
+<div>
+  <%= render "products/image" %>
+  <hr/>
+  <h2><%= t('description') %></h2>
+  <%= product_description(@product) rescue t("product_has_no_description") %>
+  <%= render 'properties' %>
+</div>
+

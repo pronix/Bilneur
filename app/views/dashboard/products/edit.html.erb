@@ -1,0 +1,11 @@
+<%= render :partial => 'dashboard/shared/product_sub_menu' %>
+
+<%= render :partial => 'dashboard/shared/product_tabs', :locals => {:current => "Product Details"} %>
+
+<%= form_for(@product, :url => dashboard_product_path(@product), :html => { :method => :put, :multipart => true }) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<p class="form-buttons">
+  <button type="submit"><span><%= t("update") %></span></button>
+  <%= t("or") %> <%= link_to t("cancel"), dashboard_products_path %>
+</p>
+<% end %>

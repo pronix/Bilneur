@@ -1,1 +1,35 @@
-Product & Quotes
+<div>
+  <div>
+    <%= form_tag search_dashboard_quotes_path, :method => :get do %>
+    <label><%= t("ean") %></label>
+    <%= text_field_tag "ean", "", :class => "title", :id => nil %>
+    <button><span>Add quote</span> </button>
+    <% end %>
+  </div>
+</div>
+<table class="index sortable">
+  <tr>
+    <th><%= t("ean") %></th>
+    <th><%= t("name") %></th>
+    <th><%= t("on_hand") %></th>
+    <th><%= t("price") %></th>
+    <th><%= t("condition") %></th>
+    <th><%= t("action") %></th>
+  </tr>
+  <% @quotes.each do |item| %>
+  <tr>
+    <td><%= item.ean %></td>
+    <td><%= item.name %></td>
+    <td><%= item.count_on_hand %></td>
+    <td><%= number_to_currency item.price %></td>
+    <td><%= item.condition %></td>
+    <td class="actions">
+      <%= link_to t("edit"), edit_dashboard_quote_path(item) unless item.deleted? %>
+      &nbsp;
+      <%= link_to t("delete"),  dashboard_quote_path(item) unless item.deleted? %>
+
+
+    </td>
+  </tr>
+  <% end %>
+</table>

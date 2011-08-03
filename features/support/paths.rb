@@ -9,6 +9,12 @@ module NavigationHelpers
     case page_name
     when /the sign up page/
       new_user_registration_path
+    when /the sign in page/
+      new_user_session_path
+    when /the Products page/
+      '/products'
+    when /the password reset page "([^\"]*)"$/
+      edit_user_password_path($1)
     when /^the home\s?page$/
       '/'
 

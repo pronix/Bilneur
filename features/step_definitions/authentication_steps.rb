@@ -15,7 +15,7 @@ Then /^I should be logged out$/ do
 end
 
 Given /^I am signed up as "(.+)\/(.+)"$/ do |email, password|
-  Factory(:user, :email => email, :password => password, :password_confirmation => password)
+  @user = Factory(:user, :email => email, :password => password, :password_confirmation => password)
 end
 
 Given /^I have an admin account of "(.+)\/(.+)"$/ do |email, password|
@@ -43,4 +43,23 @@ Given /^I do not have permission to access orders$/ do
   Ability.register_ability(AbilityDecorator)
 end
 
+Then /^a password reset message should be sent to "(.*)"$/ do |email|
+  user = User.find_by_email(email)
+  assert !user.reset_password_token.blank?
+  assert !ActionMailer::Base.deliveries.empty?
+  result = ActionMailer::Base.deliveries.any? do |email|
+    email.to == [user.email] &&
+    email.subject =~ /password/i &&
+    email.body =~ /#{user.reset_password_token}/
+  end
+  assert result
+end
 
+Given /^I requested password reset$/ do
+  @user.send_reset_password_instructions
+end
+
+When /^I follow the password reset link$/ do
+  visit(edit_user_password_path(:reset_password_token => @user.reset_password_token))
+  Then %{I should see "Change my password"}
+end

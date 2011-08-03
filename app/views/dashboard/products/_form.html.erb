@@ -1,0 +1,67 @@
+<div class="yui-gc">
+  <div class="yui-u first">
+    <%- locals = {:f => f} %>
+      <%= f.field_container :name do %>
+        <%= f.label :name, t("name") %> <span class="required">*</span><br />
+        <%= f.text_field :name, :class => 'fullwidth title'  %>
+        <%= f.error_message_on :name %>
+      <% end %>
+
+      <%= f.field_container :permalink do %>
+        <%= f.label :permalink, t("permalink") %> <span class="required">*</span><br />
+        <%= f.text_field :permalink, :class => 'fullwidth title'  %>
+        <%= f.error_message_on :permalink %>
+      <% end %>
+
+      <%= f.field_container :description do %>
+        <%= f.label :description, t("description")%><br />
+        <%= f.text_area :description, {:cols => 60, :rows => 4, :class => 'fullwidth'} %>
+        <%= f.error_message_on :description %>
+    <% end %>
+  </div>
+  <div class="yui-u">
+    <p>
+      <%= f.label :available_on, t("available_on") %><br />
+      <%= f.error_message_on :available_on %>
+      <%= f.spree_date_picker :available_on %>
+    </p>
+
+    <p>
+      <%= f.label :sku, t("sku") %><br />
+      <%= f.text_field :sku, :size => 16 %>
+    </p>
+
+    <p>
+      <%= f.label :ean, t("ean") %><br />
+      <%= f.text_field :ean, :size => 16 %>
+    </p>
+
+
+    <ul id="shipping-specs">
+      <li>
+        <%= f.label :weight, t("weight")%>
+        <%= f.text_field :weight, :size => 4 %>
+      </li>
+      <li>
+        <%= f.label :height, t("height")%>
+        <%= f.text_field :height, :size => 4 %>
+      </li>
+      <br />
+      <li>
+        <%= f.label :width, t("width")%>
+        <%= f.text_field :width, :size => 4 %>
+      </li>
+      <li>
+        <%= f.label :depth, t("depth")%>
+        <%= f.text_field :depth, :size => 4 %>
+      </li>
+    </ul>
+
+  </div>
+</div>
+
+
+  <%# Variant.additional_fields.select{|af| af[:only].nil? || af[:only].include?(:product) }.each do |field| %>
+    <%#= render :partial => "admin/shared/additional_field", :locals => {:field => field, :f => f} %>
+  <%# end %>
+

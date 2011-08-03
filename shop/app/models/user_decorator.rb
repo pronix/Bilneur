@@ -6,6 +6,8 @@ User.class_eval do
 
   # associations
   #
+  has_many :products, :foreign_key => :owner_id
+  has_many :quotes,   :class_name => "Variant", :foreign_key => :seller_id
 
   # scopes
   #
@@ -31,10 +33,8 @@ User.class_eval do
   # TODO
   # can automate the verification process
   #
-  # Verified seller status
-  #
-  def verified?
-    true
+  def verify_process!
+    updated_attribute(:verified, true)
   end
 
 

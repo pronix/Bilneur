@@ -14,3 +14,10 @@ Feature: Sign up
     And I press "Create"
     Then I should see "You have signed up successfully."
     And "email@person.com" should have role "seller"
+
+  Scenario: Seller tries to sign up with invalid data
+    When I go to the sign up page
+    And I fill in "Email" with "bademail"
+    And I press "Create"
+    Then I should see "Email is invalid" within "#errorExplanation"
+    And I should see "Password can't be blank" within "#errorExplanation"

@@ -26,9 +26,7 @@
     <td class="actions">
       <%= link_to t("edit"), edit_dashboard_quote_path(item) unless item.deleted? %>
       &nbsp;
-      <%= link_to t("delete"),  dashboard_quote_path(item) unless item.deleted? %>
-
-
+      <%= link_to t("delete"),  dashboard_quote_path(item), :method => :delete unless item.deleted? %>
     </td>
   </tr>
   <% end %>

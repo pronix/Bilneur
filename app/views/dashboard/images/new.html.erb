@@ -1,5 +1,5 @@
 <h4><%= t("new_image") %></h4>
-<%= form_for(:image, :url => { :controller => 'images', :action => 'create' }, :html => { :multipart => true }) do |form| %>
+<%= form_for(:image, :url => dashboard_product_images_path(@product), :html => { :multipart => true }) do |form| %>
   <table class="basic-table">
     <%= render :partial => "form", :locals => { :f => form } %>
   </table>
@@ -10,13 +10,13 @@
 <% end %>
 
 
-<script type="text/javascript">    
-  jQuery('#cancel_link').click(function (event) { 
+<script type="text/javascript">
+  jQuery('#cancel_link').click(function (event) {
     jQuery('#new_image_link').show();
     jQuery('#images').html('');
-  });  
- 
+  });
+
 </script>
 
- 
- 
+
+

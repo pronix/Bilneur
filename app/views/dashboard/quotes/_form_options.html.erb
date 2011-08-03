@@ -1,0 +1,43 @@
+<div class="yui-gb">
+  <div class="yui-u first">
+
+    <% @quote.product.options.each do |option| %>
+      <p>
+        <%= label :new_variant, option.option_type.presentation %><br />
+
+        <% unless @quote.new_record? %>
+          <% opt = @quote.option_values.detect {|o| o.option_type == option.option_type }.try(:id) %>
+          <%= select(:quote_options, option.option_type.id,
+            option.option_type.option_values.collect {|ov| [ ov.presentation, ov.id ] },
+            {:selected => opt  })
+          %>
+        <% else %>
+          <% opt = @quote.option_values.detect {|o| o.option_type == option.option_type }.try(:presentation) %>
+          <%= text_field(:new_variant,  option.option_type.presentation, :value => opt, :disabled => 'disabled') %>
+        <% end %>
+      </p>
+    <% end %>
+
+  </div>
+  <div class="yui-u">
+
+      <p>
+        <%= f.label :weight, t("weight")%><br />
+        <%= f.text_field :weight, :size => 4 %>
+      </p>
+      <p>
+        <%= f.label :height, t("height")%><br />
+        <%= f.text_field :height, :size => 4 %>
+      </p>
+
+      <p>
+        <%= f.label :width, t("width")%><br />
+        <%= f.text_field :width, :size => 4 %>
+      </p>
+      <p>
+        <%= f.label :depth, t("depth")%><br />
+        <%= f.text_field :depth, :size => 4 %>
+      </p>
+
+  </div>
+</div>

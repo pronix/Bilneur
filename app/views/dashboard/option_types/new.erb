@@ -1,0 +1,15 @@
+<%= render :partial => 'dashboard/shared/product_sub_menu' %>
+
+<%= render 'shared/error_messages', :target => @option_type%>
+
+<%= form_for(:option_type, :url => dashboard_option_types_url) do |f| %>
+  <fieldset>
+    <legend><%= t("new_option_type") %></legend>
+    <%= render :partial => "form", :locals => { :f => f } %>
+     <p class="form-buttons">
+       <%= button t("actions.create") %>
+       <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_option_types_path %>
+     </p>
+
+  </fieldset>
+<% end %>

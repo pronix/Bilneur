@@ -18,54 +18,35 @@
       <h2>
         <u> EAN: <%= @quote.ean %></u>
       </h2>
-      <%= f.field_container :price do %>
-        <%= f.label :price, t("price")%> <span class="required">*</span><br />
-        <%= f.text_field :price, :value => number_with_precision(@quote.price, :precision => 2)  %>
-        <%= f.error_message_on :price %>
-      <% end %>
-
-      <%= f.field_container :condition do %>
-        <%= f.label :condition, t("condition")%> <span class="required">*</span><br />
-        <%= select_tag("variant[condition]",
-            options_for_select(Variant::CONDITION.collect {|ov| [ t("condition_#{ov}"), ov ] })) %>
-
-        <%= f.error_message_on :condition %>
-      <% end %>
-
-
       <%= f.field_container :sku do %>
         <%= f.label :sku, t("sku")%> </span><br />
         <%= f.text_field :sku   %>
         <%= f.error_message_on :sku %>
       <% end %>
 
+      <%= f.field_container :price do %>
+        <%= f.label :price, t("price")%> <span class="required">*</span><br />
+        <%= f.text_field :price, :value => number_with_precision(@quote.price, :precision => 2)  %>
+        <%= f.error_message_on :price %>
+      <% end %>
+
+      <%= f.field_container :count_on_hand do %>
+        <%= f.label :count_on_hand, t("count_on_hand")%> <span class="required">*</span><br />
+        <%= f.text_field :count_on_hand  %>
+        <%= f.error_message_on :count_on_hand %>
+      <% end %>
 
 
-    <ul id="shipping-specs">
-      <li>
-        <%= f.label :weight, t("weight")%>
-        <%= f.text_field :weight, :size => 4 %>
-      </li>
-      <li>
-        <%= f.label :height, t("height")%>
-        <%= f.text_field :height, :size => 4 %>
-      </li>
-      <br />
-      <li>
-        <%= f.label :width, t("width")%>
-        <%= f.text_field :width, :size => 4 %>
-      </li>
-      <li>
-        <%= f.label :depth, t("depth")%>
-        <%= f.text_field :depth, :size => 4 %>
-      </li>
-    </ul>
+      <%= f.field_container :condition do %>
+        <%= f.label :condition, t("condition")%>
+        <%= select_tag("variant[condition]",
+            options_for_select(Variant::CONDITION.collect {|ov| [ t("condition_#{ov}"), ov ] })) %>
+        <span class="required">*</span>
+        <%= f.error_message_on :condition %>
+      <% end %>
+
+
 
   </div>
 </div>
-
-
-  <%# Variant.additional_fields.select{|af| af[:only].nil? || af[:only].include?(:product) }.each do |field| %>
-    <%#= render :partial => "admin/shared/additional_field", :locals => {:field => field, :f => f} %>
-  <%# end %>
 

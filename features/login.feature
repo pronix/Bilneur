@@ -4,7 +4,7 @@ Feature: Login
   In order to use the site
   A registered user
   Should be able to login
-@wip
+
   Scenario: Login with valid credentials
     Given I am signed up as "email@person.com/password"
     And I am on the sign in page
@@ -15,23 +15,20 @@ Feature: Login
     And I should see "Logged in successfully"
     And I should see "My Account"
     And I should see "Logout"
+    And I should see "My Account"
 
-  Scenario: Login with invalid credentials
+@wip
+  Scenario Outline: Login with invalid credentials
     Given I am signed up as "email@person.com/password"
-    And I am on the sign in page
-    And I fill in "Email" with "notmyemail@person.com"
-    And I fill in "Password" with "password"
-    And press "Log In"
-    Then I should see "Invalid email or password"
+    And I try to auth with "<email>" and "<password>"
+    Then I should see "<should_see>"
+    And I should be on the <page>
 
-  Scenario: Login with invalid credentials
-    Given I am signed up as "email@person.com/password"
-    And I am on the sign in page
-    And I fill in "Email" with "notmyemail@person.com"
-    And I fill in "Password" with "password"
-    And press "Log In"
-    Then I should see "Invalid email or password"
-
+    Examples:
+      | email            | password    | should_see                | page          |
+      | bad@person.com   | password    | Invalid email or password | sign in page  |
+      | email@person.com | badpassword | Invalid email or password | sign in page  |
+    
   Scenario: Forgot password
     Given I am signed up as "email@person.com/password"
     And I am on the sign in page

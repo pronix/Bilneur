@@ -63,3 +63,10 @@ When /^I follow the password reset link$/ do
   visit(edit_user_password_path(:reset_password_token => @user.reset_password_token))
   Then %{I should see "Change my password"}
 end
+
+Given /^I try to auth with "(.+)" and "(.+)"$/ do |email, password|
+  And %{I am on the sign in page}
+  And %{I fill in "Email" with "#{email}"}
+  And %{I fill in "Password" with "#{password}"}
+  And %{press "Log In"}
+end

@@ -46,3 +46,4 @@ todo
 app/stylesheets/.sass-cache
 app/stylesheets/src/.sass-cache
 Gemfile.lock
+/.screen_config

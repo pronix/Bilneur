@@ -16,7 +16,7 @@
 
 <p>
   <label>
-    <%= f.check_box :registration_as_seller %>
+    <%= f.check_box :registration_as_seller, :checked => (true if params[:as_seller]) %>
     <%= f.label :registration_as_seller, t('as_seller') %>
   </label>
 </p>

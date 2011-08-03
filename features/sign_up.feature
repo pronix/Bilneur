@@ -4,6 +4,12 @@ Feature: Sign up
   In order to be able to make a sales
   A visitor
   Should be able to sign up as seller
+@wip
+  Scenario: Sign up seller from main page with Start Selling link
+    When I go to the home page
+    Then I follow Start Selling link
+    And I should be on the sign up page
+    And the "as seller" checkbox should be checked
 
   Scenario: Seller signs up with valid data
     When I go to the sign up page

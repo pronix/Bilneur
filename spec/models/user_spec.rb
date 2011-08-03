@@ -17,7 +17,9 @@ describe User do
       user.has_role?("seller").should be_false
     end
   end
+
   context "#verivication seller" do
     pending ": TODO verification seller account"
   end
+
 end

@@ -14,6 +14,7 @@ Variant.class_eval do
   validates :condition, :presence => true, :inclusion => { :in => CONDITION }
   validates :count_on_hand, :numericality => { :greater_than => 0 }
   validates :price, :numericality => { :greater_than => 0 }
+  validates :seller, :presence => true
 
   # callbacks
   #

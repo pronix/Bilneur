@@ -48,6 +48,10 @@ group :test, :cucumber do
   gem "wirble"
   gem "looksee"
 
+  gem 'sqlite3'
+  gem 'spork', '~> 0.9.0.rc', :require => false
+  gem 'watchr', :require => false
+
   if RUBY_VERSION < "1.9"
     gem "ruby-debug"
   else

@@ -1,0 +1,11 @@
+<%= render :partial => 'dashboard/shared/quote_tabs', :locals => {:current => "Quote Options"} %>
+<%= form_for(@quote, :url => dashboard_quote_path(@quote), :html => { :method => :put, :multipart => true }) do |f| %>
+<%= render :partial => 'form_options', :locals => {:f => f} %>
+
+<p class="form-buttons">
+  <button type="submit"><span><%= t("update") %></span></button>
+  <%= t("or") %> <%= link_to t("cancel"), dashboard_quotes_path %>
+</p>
+
+<% end %>
+

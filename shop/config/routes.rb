@@ -13,15 +13,30 @@ Rails.application.routes.draw do
         match "/search" => "quotes#search", :as => :search, :via => [:get, :post]
       end
 
+      member  do
+        get :options
+      end
+
       resources :quote_images do
         collection do
           post :update_positions
         end
       end
 
+      resource :selling_options
+
     end
 
+
+
     resources :properties
+    resources :option_types do
+      collection do
+        post :update_positions
+      end
+    end
+
+
 
     resources :products do
 
@@ -33,6 +48,17 @@ Rails.application.routes.draw do
 
       resources :product_properties
 
+
+      resources :option_types do
+        member do
+          get :select
+          get :remove
+        end
+        collection do
+          get :available
+          get :selected
+        end
+      end
 
       resources :taxons do
         member do

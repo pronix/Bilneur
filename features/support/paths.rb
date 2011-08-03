@@ -13,6 +13,10 @@ module NavigationHelpers
       new_user_session_path
     when /the Products page/
       '/products'
+    when /reset password page/
+       new_user_password_path
+    when /the user password/
+      user_password_path
     when /the password reset page "([^\"]*)"$/
       edit_user_password_path($1)
     when /^the home\s?page$/

@@ -70,3 +70,23 @@ Given /^I try to auth with "(.+)" and "(.+)"$/ do |email, password|
   And %{I fill in "Password" with "#{password}"}
   And %{press "Log In"}
 end
+
+Given /^I already sing as email@person\.com$/ do
+  Given %{I am signed up as "email@person.com/password"}
+  Given %{I try to auth with "email@person.com" and "password"}
+end
+
+Given /^I should see given in page$/ do |table|
+  table.hashes.each do |hash|
+    page.should have_content(hash['element'])
+  end
+end
+
+Given /^I ask a password with valid credentials$/ do
+  Given %{I am signed up as "email@person.com/password"}
+  And %{I am on the sign in page}
+  Then %{I follow "Forgot Password?"}
+  When %{I fill in "user_email" with "email@person.com"}
+  And %{press "Reset my password"}
+  Then %{I should see "You will receive an email with instructions about how to reset your password in a few minutes."}
+end

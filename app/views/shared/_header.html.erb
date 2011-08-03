@@ -12,7 +12,7 @@
             <% else %>
             <i><%= link_to "Sign Up", new_user_registration_path %></i>
             &nbsp;
-            <%= link_to t('log_in'), login_path %>
+            <%= link_to t('log_in'), new_user_session_path %>
             <% end %>
 
             <%= link_to_cart(image_tag("icons/cart.png")) %>

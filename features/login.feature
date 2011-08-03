@@ -18,7 +18,7 @@ Feature: Login
       | email@person.com | password    | Logged in successfully    | Products page |
 
    Scenario: What I see when I log in
-     Given I already sing as email@person.com
+     Given I already sing as "email@person.com/password"
      And I should be on the Products page
      And I should see given in page
      | element    |

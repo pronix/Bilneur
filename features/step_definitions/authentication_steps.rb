@@ -71,10 +71,11 @@ Given /^I try to auth with "(.+)" and "(.+)"$/ do |email, password|
   And %{press "Log In"}
 end
 
-Given /^I already sing as email@person\.com$/ do
-  Given %{I am signed up as "email@person.com/password"}
-  Given %{I try to auth with "email@person.com" and "password"}
+Given /^I already sing as "(.*)\/(.*)"$/ do |email, password|
+  Given %{I am signed up as "#{email}/#{password}"}
+  Given %{I try to auth with "#{email}" and "#{password}"}
 end
+
 
 Given /^I should see given in page$/ do |table|
   table.hashes.each do |hash|

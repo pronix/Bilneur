@@ -1,14 +1,22 @@
 <!-- START HEADER -->
     <div id="mHdr">
       <div class="hd1A">
-          <%= link_to image_tag("/images/logos/logo.png"), root_path %>
-        </div>
+        <%= link_to image_tag("logos/logo.png"), root_path %>
+      </div>
         <div class="hd1B">
           <div class="loginBar">
-              <i><%= link_to "Sign Up", new_user_registration_path %></i>
-                <%= link_to "Log In", new_user_session_path %>
-                <%= link_to image_tag("/images/icons/cart.png"), cart_path, :class=>"crt" %>
-            </div>
+            <% if current_user %>
+            <i><%= link_to t('my_account'), account_path %></i>
+            &nbsp;
+            <%= link_to t('logout'), destroy_user_session_path %>
+            <% else %>
+            <i><%= link_to "Sign Up", new_user_registration_path %></i>
+            &nbsp;
+            <%= link_to t('log_in'), login_path %>
+            <% end %>
+
+            <%= link_to_cart(image_tag("icons/cart.png")) %>
+          </div>
             <ul class="tpMnu">
               <li><a href="#">How It Work</a></li>
               <li><a href="#">What We Do</a></li>
@@ -20,7 +28,10 @@
           <div class="menu">
               <div class="lft"></div>
               <ul class="mMenu cntr">
-                    <li><a href="#">Categories</a></li>
+                    <li>
+                      <a href="/t/categories">Categories</a>
+                    </li>
+
                     <li><a href="#">Groups</a></li>
                     <li><a href="#">Top Products</a></li>
                     <li><a href="#">Top Sellers</a></li>
@@ -33,3 +44,4 @@
         </div>
     </div>
 <!-- END HEADER -->
+

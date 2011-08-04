@@ -9,5 +9,15 @@ class ShopHooks < Spree::ThemeSupport::HookListener
      )
   end
 
+  insert_after :admin_variant_new_form do
+    %(
+       <p>
+         <%= f.label :condition, t("condition") %>:<br />
+         <%= select_tag("variant[condition]", options_for_select([ ['new','new'], ['used','used'] ] )) %>
+      </p>
+
+
+      )
+  end
 
 end

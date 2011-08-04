@@ -21,6 +21,8 @@ module NavigationHelpers
       edit_user_password_path($1)
     when /account page/
       account_path
+    when /the dashboard quotes page/
+      dashboard_quotes_path
     when /logout/
       destroy_user_session_path
     when /^the home\s?page$/

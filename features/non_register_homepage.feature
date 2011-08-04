@@ -2,7 +2,7 @@ Feature: User behavior on home page
 
 Background:
   Given I am non auth user
-@wip
+
   Scenario: What I should see in home page
     When I go to the home page
     Then I should see given link with path

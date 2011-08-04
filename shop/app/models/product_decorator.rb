@@ -40,7 +40,7 @@ Product.class_eval do
   # instance methods
   #
   def set_owner(user_owner = User.current)
-    self.owner = user_owner
+    self.owner ||= user_owner
   end
 
   def set_default_data

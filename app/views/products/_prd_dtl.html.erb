@@ -5,14 +5,14 @@
       <%= link_to "Add to Favorites", "", :class=>"add" %>
       <div class="fbLike"><%= image_tag "icons/fb_like.png" %></div>
       <%= link_to image_tag("icons/bnr_plus.png"), "" %>
-  </div>  
+  </div>
 
   <div class="sldrBnr">
     <div id="gallery" class="ad-gallery">
       <div class="ad-image-wrapper">
-        <img style="display: none;" class="ad-loader" src="/images/slider/loader.gif" />
+        <%= image_tag "slider/loader.gif", :style => "display:none;", :class => "ad-loader" %>
       </div>
-      
+
       <div class="ad-nav">
         <div class="ad-thumbs">
           <ul style="width: 1454px;" class="ad-thumb-list">

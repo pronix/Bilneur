@@ -4,8 +4,27 @@ Product.class_eval do
   #
   belongs_to :owner, :class_name => "User" # seller who added product
 
+  has_one :best_variant,
+          :class_name => 'Variant',
+          :conditions => [
+                          "variants.is_master = #{connection.quoted_false}
+                           AND variants.deleted_at IS NULL
+                           AND variants.count_on_hand > 0 "],
+          :order => "variants.price ASC"
+
+
   # scopes
   #
+  scope :on_hand, where("COALESCE(( SELECT sum(variants.count_on_hand)
+                    FROM variants
+                    WHERE (variants.is_master = #{connection.quoted_false}
+                           AND variants.product_id = products.id
+                           AND variants.deleted_at is null) ),0) > 0")
+
+
+
+
+
 
   # validates
   #

@@ -85,7 +85,7 @@
 	/*padding: 4px 10px;*/
 	margin: 0px 4px 0px 0px;
 	font-weight:bold;
-	background:url('../images/forms/prdct_tab_bg_n.png') no-repeat;
+	background:url('/images/forms/prdct_tab_bg_n.png') no-repeat;
 	list-style: none;
 	/*border-left: solid 1px #CCC;
 	border-bottom: solid 1px #999;
@@ -105,7 +105,7 @@
  */
 .TabbedPanelsTabHover {
 	color:#fff;
-	background:url('../images/forms/prdct_tab_bg_h.png') no-repeat;
+	background:url('/images/forms/prdct_tab_bg_h.png') no-repeat;
 }
 
 /* This selector is an example of how to change the appearance of a tab button
@@ -121,7 +121,7 @@
  */
 .TabbedPanelsTabSelected {
 	color:#fff;
-	background:url('../images/forms/prdct_tab_bg_h.png') no-repeat;
+	background:url('/images/forms/prdct_tab_bg_h.png') no-repeat;
 }
 
 /* This selector is an example of how to make a link inside of a tab button

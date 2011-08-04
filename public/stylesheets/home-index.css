@@ -9,10 +9,9 @@
 			.mBnr .bnrCnt .btn { margin:55px 0 0 27px;}
 			.mBnr .bnrCnt .btn:hover {}
 		.mBnr .bnrImg { width:461px; position:relative;}
-			.TabbedPanelsTab span { width:95%; text-align:center; line-height:19px;}
 			
 		
-.cHome .mBnr, .mBnr .bnrCnt, .mBnr .bnrCnt h1, .mBnr .bnrCnt p, .mBnr .bnrCnt a, .mBnr .bnrCnt .btn, .mBnr .bnrImg,.TabbedPanelsTab span {float:left;}
+.cHome .mBnr, .mBnr .bnrCnt, .mBnr .bnrCnt h1, .mBnr .bnrCnt p, .mBnr .bnrCnt a, .mBnr .bnrCnt .btn, .mBnr .bnrImg {float:left;}
 
 .cHome .c1 { width:100%;}
 	.cHome .c1A {}

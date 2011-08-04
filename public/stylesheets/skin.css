@@ -48,6 +48,10 @@ ul li { list-style:none;}
   ul.mMenu li a,.menu,.menu .lft,.menu .rgt,.tSrch input[type=text],.tSrch form,.allProd,
   .tSrch input[type=submit],.tSrch select {float:left;}
 
+/* TabbedPanelsTab */
+.TabbedPanelsTab span { width:95%; text-align:center; line-height:19px; float:left;}
+
+
 /* Footer */
 #mFtr{}
 	.f1A { width:100%; height:51px; padding-top:11px; background:url('/images/bgs/ftr_bg.png') repeat-x;}

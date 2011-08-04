@@ -26,6 +26,9 @@ User.class_eval do
     roles << Role.find_or_create_by_name("seller") if @registration_as_seller.to_i == 1
   end
 
+  def set_seller_role!
+    roles << Role.find_or_create_by_name("seller")
+  end
 
   # instance methods
   #

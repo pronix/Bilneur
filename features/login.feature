@@ -24,7 +24,7 @@ Feature: Login
      | element    |
      | My Account |
      | Logout     |
-
+@wip
   Scenario Outline: Forgot password with valid and invalid email
     Given I am signed up as "email@person.com/password"
     And I am on the sign in page

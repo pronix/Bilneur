@@ -13,6 +13,7 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
   def create
     @product = current_user.products.new(params[:product])
     if @product.save!
+      flash.notice = "Product is created."
       render :edit
     else
       render :new

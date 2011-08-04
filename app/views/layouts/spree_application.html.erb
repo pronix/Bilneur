@@ -5,6 +5,7 @@
   <%= render :partial => 'shared/head'%>
 <% end %>
 </head>
+<%#= params.inspect %>
 <%
 if @body_class.nil?
   if content_for?(:sidebar)
@@ -19,7 +20,7 @@ end
   <%= render "shared/header" %>
 
   <!-- START CONTENT -->
-  <div id="mCnt" class="cHome">
+  <div id="mCnt" class="<%= content_class %>">
     <% if content_for?(:sidebar) %>
     <div id="sidebar">
       <%= hook :sidebar do %>

@@ -1,0 +1,143 @@
+@charset "UTF-8";
+
+.smlTabs .TabbedPanels {
+	/*position:absolute;
+	top:77px;
+	left:98px;*/
+	/*margin: 0px;
+	padding: 0px;
+	float: left;
+	clear: none;*/
+	width: 100%; /* IE Hack to force proper layout when preceded by a paragraph. (hasLayout Bug)*/
+}
+
+.smlTabs .TabbedPanelsTabGroup {
+	/*position:absolute;
+	top:255px;
+	left:8px;*/
+	float:left;
+	width:100%;
+	margin-top: 0px;
+	padding: 0px;
+	margin-left:4px;
+	padding-bottom:1px;
+}
+.smlTabs .TabbedPanelsTab {
+	position: relative;
+	top: 1px;
+	float: left;
+	width:82px;
+	height:29px;
+	font-size:11px;
+	color:#4d4d4d;
+	margin:0;
+	font-weight:bold;
+	list-style: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	cursor: pointer;
+}
+
+.smlTabs .TabbedPanelsTab span { line-height:26px;}
+
+.smlTabs .TabbedPanelsTabHover {
+	color:#fdfdfd;
+	/*background:url('/images/forms/prdct_tab_bg_h.png') no-repeat;*/
+}
+
+.smlTabs .TabbedPanelsTabSelected {
+	color:#fdfdfd;
+	/*background:url('/images/forms/prdct_tab_bg_h.png') no-repeat;*/
+}
+
+.smlTabs .tab1 {background:url('/images/forms/sml_tab1.png') no-repeat;}
+.smlTabs .tab2 {background:url('/images/forms/sml_tab2.png') no-repeat;}
+.smlTabs .tab3 {background:url('/images/forms/sml_tab3.png') no-repeat;}
+.smlTabs .tab1:hover {background:url('/images/forms/sml_tab1_h.png') no-repeat;}
+.smlTabs .tab2:hover {background:url('/images/forms/sml_tab2_h.png') no-repeat;}
+.smlTabs .tab3:hover {background:url('/images/forms/sml_tab3_h.png') no-repeat;}
+
+
+.smlTabs .TabbedPanelsTab a {
+	color: black;
+	text-decoration: none;
+}
+
+.smlTabs .TabbedPanelsContentGroup {
+	/*position:absolute;
+	border-left: solid 1px #CCC;
+	border-bottom: solid 1px #CCC;
+	border-top: solid 1px #999;
+	border-right: solid 1px #999;
+	background-color: #EEE;*/
+}
+
+.smlTabs .TabbedPanelsContent {
+	padding: 4px;
+}
+
+.smlTabs .TabbedPanelsContentVisible {
+}
+
+/* Vertical Tabbed Panels
+ *
+ * The following rules override some of the default rules above so that the
+ * TabbedPanels widget renders with its tab buttons along the left side of
+ * the currently active content panel.
+ *
+ * With the rules defined below, the only change that will have to be made
+ * to switch a horizontal tabbed panels widget to a vertical tabbed panels
+ * widget, is to use the "VTabbedPanels" class on the top-level widget
+ * container element, instead of "TabbedPanels".
+ */
+
+/* This selector floats the TabGroup so that the tab buttons it contains
+ * render to the left of the active content panel. A border is drawn around
+ * the group container to make it look like a list container.
+ */
+.smlTabs .VTabbedPanels .TabbedPanelsTabGroup {
+	float: left;
+	width: 10em;
+	height: 20em;
+	background-color: #EEE;
+	position: relative;
+	border-top: solid 1px #999;
+	border-right: solid 1px #999;
+	border-left: solid 1px #CCC;
+	border-bottom: solid 1px #CCC;
+}
+
+/* This selector disables the float property that is placed on each tab button
+ * by the default TabbedPanelsTab selector rule above. It also draws a bottom
+ * border for the tab. The tab button will get its left and right border from
+ * the TabGroup, and its top border from the TabGroup or tab button above it.
+ */
+.smlTabs .VTabbedPanels .TabbedPanelsTab {
+	float: none;
+	margin: 0px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+
+/* This selector disables the float property that is placed on each tab button
+ * by the default TabbedPanelsTab selector rule above. It also draws a bottom
+ * border for the tab. The tab button will get its left and right border from
+ * the TabGroup, and its top border from the TabGroup or tab button above it.
+ */
+.smlTabs .VTabbedPanels .TabbedPanelsTabSelected {
+	background-color: #EEE;
+	border-bottom: solid 1px #999;
+}
+
+/* This selector floats the content panels for the widget so that they
+ * render to the right of the tabbed buttons.
+ */
+.smlTabs .VTabbedPanels .TabbedPanelsContentGroup {
+	clear: none;
+	float: left;
+	padding: 0px;
+	width: 30em;
+	height: 20em;
+}
+

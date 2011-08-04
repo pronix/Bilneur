@@ -1,0 +1,105 @@
+<div class="cntCntr">
+  <div class="favCmnt">
+    <span><%= product.name %></span>
+      <%= link_to "Sell A Product Like this", "", :class=>"seAll" %>
+      <%= link_to "Add to Favorites", "", :class=>"add" %>
+      <div class="fbLike"><%= image_tag "icons/fb_like.png" %></div>
+      <%= link_to image_tag("icons/bnr_plus.png"), "" %>
+  </div>  
+
+  <div class="sldrBnr">
+    <div id="gallery" class="ad-gallery">
+      <div class="ad-image-wrapper">
+        <img style="display: none;" class="ad-loader" src="/images/slider/loader.gif" />
+      </div>
+      
+      <div class="ad-nav">
+        <div class="ad-thumbs">
+          <ul style="width: 1454px;" class="ad-thumb-list">
+            <li>
+              <a class="ad-thumb0" href="/images/img/bnr_img1.jpg">
+                <img style="opacity: 0.7;" src="/images/img/thumb1.png" alt="" class="image0">
+              </a>
+            </li>
+            <li>
+              <a class="ad-thumb1" href="/images/img/bnr_img2.jpg">
+                <img style="opacity: 0.7;" src="/images/img/thumb1.png" class="image1">
+              </a>
+            </li>
+            <li>
+              <a class="ad-thumb2" href="/images/img/bnr_img1.jpg">
+                <img style="opacity: 0.7;" src="/images/img/thumb1.png" class="image2">
+              </a>
+            </li>
+            <li>
+              <a class="ad-thumb3" href="/images/img/bnr_img2.jpg">
+                <img style="opacity: 0.7;" src="/images/img/thumb1.png" class="image3">
+              </a>
+            </li>
+            <li>
+              <a class="ad-thumb4" href="/images/img/bnr_img1.jpg">
+                <img style="opacity: 0.7;" src="/images/img/thumb1.png" alt="" class="image4">
+              </a>
+            </li>
+            <li>
+              <a class="ad-thumb5" href="/images/img/bnr_img2.jpg">
+                <img style="opacity: 0.7;" src="/images/img/thumb1.png" class="image5">
+              </a>
+            </li>
+            <li>
+              <a class="ad-thumb6" href="/images/img/bnr_img1.jpg">
+                <img style="opacity: 0.7;" src="/images/img/thumb1.png" class="image6">
+              </a>
+            </li>
+            <li>
+              <a class="ad-thumb7" href="/images/img/bnr_img2.jpg">
+                <img style="opacity: 0.7;" src="/images/img/thumb1.png" class="image7">
+              </a>
+            </li>
+            <li>
+              <a class="ad-thumb8 ad-active" href="/images/img/bnr_img1.jpg">
+                <img style="opacity: 1;" src="/images/img/thumb1.png" class="image8">
+              </a>
+            </li>
+            <li>
+              <a class="ad-thumb9" href="/images/img/bnr_img2.jpg">
+                <img style="opacity: 0.7;" src="/images/img/thumb1.png" class="image9">
+              </a>
+            </li>
+            <li>
+              <a class="ad-thumb10" href="/images/img/bnr_img1.jpg">
+                <img style="opacity: 0.7;" src="/images/img/thumb1.png" class="image10">
+              </a>
+            </li>
+            <li>
+              <a class="ad-thumb11" href="/images/img/bnr_img2.jpg">
+                <img style="opacity: 0.7;" src="/images/img/thumb1.png" class="image11">
+              </a>
+            </li>
+            <li>
+              <a class="ad-thumb12" href="/images/img/bnr_img1.jpg">
+                <img style="opacity: 0.7;" src="/images/img/thumb1.png" class="image12">
+              </a>
+            </li>
+            <li>
+              <a class="ad-thumb13" href="/images/img/bnr_img2.jpg">
+                <img style="opacity: 0.7;" src="/images/img/thumb1.png" class="image13">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="bnrFolw">
+      <ul>
+          <li><a href="#"><img src="/images/icons/bnr_ico_twtr.png" alt="" /></a></li>
+          <li><a href="#"><img src="/images/icons/bnr_ico_ggl.png" alt="" /></a></li>
+          <li><a href="#"><img src="/images/icons/bnr_ico_fb.png" alt="" /></a></li>
+          <li><a href="#"><img src="/images/icons/bnr_ico_eml.png" alt="" /></a></li>
+          <li><a href="#"><img src="/images/icons/bnr_ico_lnk.png" alt="" /></a></li>
+        </ul>
+    </div>
+  </div>
+  <%= render "prd_tabs", :product => product %>
+  <%= render "prd_rating", :product => product %>
+</div>

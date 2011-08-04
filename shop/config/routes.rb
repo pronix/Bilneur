@@ -74,7 +74,8 @@ Rails.application.routes.draw do
 
     end
 
-    resource :account, :controller => "users"
+    resource :account, :controller => "users", :only => [:show, :edit, :update]
+    resources :shipping_methods
   end
 
 end

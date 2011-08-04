@@ -19,6 +19,10 @@ module NavigationHelpers
       user_password_path
     when /the password reset page "([^\"]*)"$/
       edit_user_password_path($1)
+    when /account page/
+      account_path
+    when /logout/
+      destroy_user_session_path
     when /^the home\s?page$/
       '/'
 

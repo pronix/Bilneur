@@ -12,4 +12,9 @@ Spree::BaseHelper.class_eval do
     link_to raw(text), cart_path, :class => css_class
   end
 
+  def check_ass_seller_checkbox
+    return true if params[:as_seller]
+    true if params[:user][:registration_as_seller] == '1' rescue return false
+  end
+
 end

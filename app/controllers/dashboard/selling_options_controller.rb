@@ -12,7 +12,7 @@ class Dashboard::SellingOptionsController < Dashboard::ApplicationController
     if @quote.update_attributes(params[:variant])
       redirect_to dashboard_quote_selling_options_path(@quote), :notice => "Options updated."
     else
-      render :showe
+      render :show
     end
 
   end

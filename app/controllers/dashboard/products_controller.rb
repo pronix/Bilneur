@@ -11,7 +11,8 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
   end
 
   def create
-    if @product = current_user.products.create(params[:product])
+    @product = current_user.products.new(params[:product])
+    if @product.save!
       render :edit
     else
       render :new

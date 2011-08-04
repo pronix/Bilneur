@@ -15,11 +15,11 @@ Product.class_eval do
 
   # scopes
   #
-  scope :on_hand, where("COALESCE(( SELECT sum(variants.count_on_hand)
-                    FROM variants
-                    WHERE (variants.is_master = #{connection.quoted_false}
-                           AND variants.product_id = products.id
-                           AND variants.deleted_at is null) ),0) > 0")
+  # scope :on_hand, where("COALESCE(( SELECT sum(variants.count_on_hand)
+  #                   FROM variants
+  #                   WHERE (variants.is_master = #{connection.quoted_false}
+  #                          AND variants.product_id = products.id
+  #                          AND variants.deleted_at is null) ),0) > 0")
 
 
 
@@ -33,14 +33,24 @@ Product.class_eval do
 
   # callbacks
   #
+  before_validation :set_default_data, :on => :create
+  before_validation :set_owner, :on => :create
   after_validation  :hack_after_validate
 
   # instance methods
   #
+  def set_owner(user_owner = User.current)
+    self.owner = user_owner
+  end
+
+  def set_default_data
+    self.price ||= 1
+    self.available_on ||= Time.now
+  end
 
   def hack_after_validate #:nodoc:
-    errors[:owner].uniq!
-    errors[:ean].uniq!
+    errors[:owner].uniq! if errors.has_key?(:owner)
+    errors[:ean].uniq! if errors.has_key?(:ean)
   end
 
 

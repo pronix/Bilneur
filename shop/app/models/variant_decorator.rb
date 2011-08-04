@@ -9,16 +9,18 @@ Variant.class_eval do
   # scopes
   #
 
+
   # validates
   #
-  validates :condition, :presence => true, :inclusion => { :in => CONDITION }
-  validates :count_on_hand, :numericality => { :greater_than => 0 }
-  validates :price, :numericality => { :greater_than => 0 }
-  validates :seller, :presence => true
+  validates :condition, :presence => true, :inclusion => { :in => CONDITION },   :unless => lambda{|t| t.is_master? }
+  validates :count_on_hand, :numericality => { :greater_than_or_equal_to => 0 }, :unless => lambda{|t| t.is_master? }
+  validates :price, :numericality => { :greater_than => 0 },                     :unless => lambda{|t| t.is_master? }
+  validates :seller, :presence => true,                                          :unless => lambda{|t| t.is_master? }
 
   # callbacks
   #
   before_validation :set_seller, :on => :create
+  after_save :recalculate_count_on_hand, :unless => lambda{|t| t.is_master? }
 
   # Set current user as owner quote
   #
@@ -48,6 +50,10 @@ Variant.class_eval do
 
   end
 
+  def recalculate_count_on_hand
+    product.send(:recalculate_count_on_hand)
+    product.save
+  end
 
   # class methods
   #

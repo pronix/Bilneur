@@ -24,7 +24,6 @@ Rails.application.routes.draw do
       end
 
       resource :selling_options
-
     end
 
 

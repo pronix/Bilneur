@@ -1,4 +1,4 @@
-class Dashboard::SellingOptionsController <  Dashboard::ApplicationController
+class Dashboard::SellingOptionsController < Dashboard::ApplicationController
 
   helper Admin::BaseHelper
   helper Admin::NavigationHelper
@@ -10,9 +10,11 @@ class Dashboard::SellingOptionsController <  Dashboard::ApplicationController
 
   def update
     if @quote.update_attributes(params[:variant])
-      flash.notice = "Options updated."
+      redirect_to dashboard_quote_selling_options_path(@quote), :notice => "Options updated."
+    else
+      render :showe
     end
-    redirect_to dashboard_quote_selling_options_path(@quote)
+
   end
 
   private

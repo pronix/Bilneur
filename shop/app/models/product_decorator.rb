@@ -24,14 +24,6 @@ Product.class_eval do
     errors[:ean].uniq!
   end
 
-  # Return a brief description of product
-  # Default max size of description is 120 characters
-  # TODO: is bad. Need return first 120 characters with whole word. It's better
-  def brief_description
-    return description if description.size <= 120
-    description.first(120) + ' ...'
-  end
-
   # class methods
   #
   class << self

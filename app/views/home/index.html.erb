@@ -57,7 +57,7 @@
                     <div class="crsl">
                       <%= image_tag product.images.last.attachment.url(:smaill)%>
                       <b class="lHd"><%= product.name %></b>
-                      <i class="lHdI"><%= product.brief_description %></i>
+                      <i class="lHdI"><%= truncate product.description, :length => 130 %></i>
                       <a href="#">View This Product</a><b class="byTh">Buy 20 at <b class="byPrc">40% Off</b></b>
                     </div>
                   </li>

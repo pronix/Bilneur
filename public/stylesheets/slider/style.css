@@ -1,0 +1,54 @@
+/** {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, Arial, sans-serif;
+  color: #333;
+  line-height: 140%;
+}
+
+body {
+  padding: 30px;
+  font-size: 70%;
+  width: 800px;
+}
+select, input, textarea {
+  font-size: 1em;
+}
+h2 {
+  margin-top: 1.2em;
+  margin-bottom: 0;
+  padding: 0;
+  border-bottom: 1px dotted #dedede;
+}
+h3, h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0;
+  padding: 0;
+}*/
+.field label {
+  display: block;
+}
+.textfield, .commentbox {
+	border: 1px solid #CCC;
+	border-top: 1px solid #868686;
+	border-left: 1px solid #868686;
+	width: 50%;
+}
+.example {
+  border: 1px solid #CCC;
+  background: #f2f2f2;
+  padding: 10px;
+}
+/*ul {
+  list-style-image:url(list-style.gif);
+}
+pre {
+  font-family: "Lucida Console", "Courier New", Verdana;
+  border: 1px solid #CCC;
+  background: #f2f2f2;
+  padding: 10px;
+}
+code {
+  font-family: "Lucida Console", "Courier New", Verdana;
+  margin: 0;
+  padding: 0;
+}
+*/

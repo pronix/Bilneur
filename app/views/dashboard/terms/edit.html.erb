@@ -1,4 +1,26 @@
 <%= render :partial => 'dashboard/shared/profile_tabs', :locals => {:current => "Terms"} %>
 
-Edit Terms & Conditions
+<h1> Edit Terms & Conditions </h1>
+
+
+<%= form_for(current_user, :url => dashboard_terms_path, :html => { :method => :put, :multipart => true }) do |f| %>
+
+<div class="yui-gc">
+  <div class="yui-u first">
+
+    <%= f.field_container :terms do %>
+    <%= f.label :terms, t("terms_and_conditions") %><br />
+    <%= f.text_area :terms, {:cols => 60, :rows => 4, :class => 'fullwidth'}  %>
+    <%= f.error_message_on :terms %>
+    <% end %>
+  </div>
+
+</div>
+
+
+<p class="form-buttons">
+  <button type="submit"><span><%= t("update") %></span></button>
+  <%= t("or") %> <%= link_to t("cancel"), edit_dashboard_terms_path %>
+</p>
+<% end %>
 

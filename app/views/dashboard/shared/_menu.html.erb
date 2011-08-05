@@ -2,10 +2,13 @@
   <ul class="navigation-list">
     <li><%= link_to( t('user_menu.my_account'), dashboard_account_path) %></li>
     <% if can?(:access, :quote) %>
+
     <li><%= link_to( t('user_menu.quotes'), dashboard_quotes_path) %></li>
+
     <li class="<%= 'selected' if controller_name =~ /products/ %>">
       <%= link_to( t('user_menu.products'), dashboard_products_path) %>
     </li>
+
     <% end %>
   </ul>
 </div>

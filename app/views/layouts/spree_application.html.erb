@@ -19,7 +19,7 @@ end
   <%= render "shared/header" %>
 
   <!-- START CONTENT -->
-  <div id="mCnt" class="cHome">
+  <div id="mCnt" class="<%= content_class %>">
     <% if content_for?(:sidebar) %>
     <div id="sidebar">
       <%= hook :sidebar do %>

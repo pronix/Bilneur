@@ -1,0 +1,2 @@
+module Dashboard::ReturnPoliciesHelper
+end

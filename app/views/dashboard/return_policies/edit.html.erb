@@ -1,0 +1,42 @@
+<%= render :partial => 'dashboard/shared/quote_tabs', :locals => {:current => "Return Policy"} %>
+
+<h1><%= t("return_policy") %></h1>
+
+<%= form_for(@quote, :url => dashboard_quote_return_policies_path(@quote), :html => { :method => :put, :multipart => true }) do |f| %>
+
+
+
+
+<div class="yui-gc">
+  <div class="yui-u first">
+
+    <%= f.field_container :return_policy do %>
+
+    <%= f.label :return_policy_1, t("accepted") %>
+    <%= f.radio_button :return_policy, "1", :checked => @quote.return_policy? %> |
+
+    <%= f.label :return_policy_0, t("not_accepted") %>
+    <%= f.radio_button :return_policy, "0", :checked => !@quote.return_policy? %>
+
+    <%= f.error_message_on :return_policy %>
+    <% end %>
+
+
+    <%= f.field_container :return_policy_description do %>
+    <%= f.label :return_policy_description, t("description") %><br />
+    <%= f.text_area :return_policy_description, {:cols => 60, :rows => 4, :class => 'fullwidth'}  %>
+    <%= f.error_message_on :return_policy_description %>
+    <% end %>
+  </div>
+
+</div>
+
+
+
+
+
+<p class="form-buttons">
+  <button type="submit"><span><%= t("update") %></span></button>
+  <%= t("or") %> <%= link_to t("cancel"), dashboard_quote_return_policies_path(@quote) %>
+</p>
+<% end %>

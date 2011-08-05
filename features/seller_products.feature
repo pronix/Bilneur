@@ -23,11 +23,9 @@ Feature: Manage products
     And I press "Create"
     Then I should see "Product is created."
 
-  @wip
   Scenario: Editing the product
     Given the custom taxons and custom products exist
 
-  @wip
   Scenario: Deleting the product
 
 

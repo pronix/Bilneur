@@ -30,6 +30,11 @@ User.class_eval do
     roles << Role.find_or_create_by_name("seller")
   end
 
+  def has_role?(role)
+    # If user has one or more this role, return true
+    true if roles.map { |x| x.name }.include?(role)
+  end
+
   # instance methods
   #
 

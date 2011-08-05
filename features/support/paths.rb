@@ -23,6 +23,10 @@ module NavigationHelpers
       account_path
     when /the dashboard quotes page/
       dashboard_quotes_path
+    when /the admin static page/
+      admin_pages_path
+    when /the new admin static page/
+      new_admin_page_path
     when /logout/
       destroy_user_session_path
     when /^the home\s?page$/

@@ -6,19 +6,19 @@ Spork.prefork do
   # newer version of cucumber-rails. Consider adding your own code to a new file
   # instead of editing this one. Cucumber will automatically load all features/**/*.rb
   # files.
-
+  
   require 'cucumber/rails'
   require 'spree_core/testing_support/factories'
-
+  
   # require File.expand_path('vendor/spree-exts/spree-0.60.1/spree_core/../features/support/env', __FILE__)
   # require 'spree_core/testing_support/factories'
-
+  
   Spree::Auth::Config.set(:registration_step => true)
   Spree::Auth::Config.set(:signout_after_password_change => false)
   # sometimes tests fail randomly because cache is not refreshed, fixed that
   Spree::Config.set(:foo => "bar")
-
-
+  
+  
   # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
   # order to ease the transition to Capybara we set the default here. If you'd
   # prefer to use XPath just remove this line and adjust any selectors in your
@@ -32,7 +32,7 @@ Spork.prefork do
   #
   # Sometimes we want to override this default behaviour and allow Rails to rescue
   # exceptions and display an error page (just like when the app is running in production).
-# Typical scenarios where you want to do this is when you test your error pages.
+  # Typical scenarios where you want to do this is when you test your error pages.
   # There are two ways to allow Rails to rescue exceptions:
   #
   # 1) Tag your scenario (or feature) with @allow-rescue
@@ -41,7 +41,7 @@ Spork.prefork do
   # recommended as it will mask a lot of errors for you!
   #
   ActionController::Base.allow_rescue = false
-
+  
   Capybara.save_and_open_page_path = File.join(Rails.root, "tmp")
   # Remove/comment out the lines below if your app doesn't have a database.
   # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.
@@ -61,9 +61,6 @@ Spork.prefork do
   #   Before('~@no-txn', '~@selenium', '~@culerity', '~@celerity', '~@javascript') do
   #     DatabaseCleaner.strategy = :transaction
   #   end
-#
-  
+  #
   require 'factory_girl/step_definitions'
-  
 end
-

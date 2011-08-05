@@ -53,7 +53,6 @@ Product.class_eval do
     errors[:ean].uniq! if errors.has_key?(:ean)
   end
 
-
   # class methods
   #
   class << self

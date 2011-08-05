@@ -48,6 +48,10 @@ ul li { list-style:none;}
   ul.mMenu li a,.menu,.menu .lft,.menu .rgt,.tSrch input[type=text],.tSrch form,.allProd,
   .tSrch input[type=submit],.tSrch select {float:left;}
 
+/* TabbedPanelsTab */
+.TabbedPanelsTab span { width:95%; text-align:center; line-height:19px; float:left;}
+
+
 /* Footer */
 #mFtr{}
 	.f1A { width:100%; height:51px; padding-top:11px; background:url('/images/bgs/ftr_bg.png') repeat-x;}
@@ -64,6 +68,17 @@ ul li { list-style:none;}
 	.f2 img {}
 
 .f1A, .f1A b, .f1A em, ul.f1B li, ul.f1B li a, .f2, .f2 ul, .f2 ul li, .f2 ul li a, .f2 img {float:left;}
+
+/* Pagination */
+.pagination{float:right; padding:2px;}
+  .pagination ul{ margin:0;padding:0;text-align:left;/*Set to "right" to right align pagination interface*/font-size:12px;}
+  .pagination li{ list-style-type:none;display:inline;padding-bottom:1px;}
+  .pagination a, .pagination a:visited{ padding:0 5px;margin-right:5px;background:url('../../images/layout/bg_page.jpg') 0 0 repeat-x;text-decoration:none;color:#777;width:19px;height:19px;}
+  .pagination a:hover, .pagination a:active{color:#fff;background:url('../../images/layout/bg_page_h.jpg') 0 0 repeat-x;}
+  .pagination a.currentpage{ color:#fff !important;background:url('/images/layout/bg_page_h.jpg') 0 0 repeat-x;font-weight:bold;cursor:default;}
+  .pagination a.disablelink{ background:url('/images/layout/prevnext_d.jpg') 0 0 repeat-x!important;cursor:pointer;color:#777!important;}
+  .pagination a.disablelink:hover{background:url('/images/layout/prevnext_a.jpg') 0 0 repeat-x!important;color:#fff!important;}
+  .pagination a.prevnext{ font-weight:bold;background:url('/images/layout/prevnext_a.jpg') 0 0 repeat-x;color:#fff;}
 
 /* old spree style */
 #sidebar {

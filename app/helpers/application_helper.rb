@@ -14,4 +14,15 @@ module ApplicationHelper
     content_for(:head) { javascript_include_tag(*args) }
   end
 
+  def content_class
+    case params[:controller].to_s
+    when "home"
+      "cHome"
+    when "products"
+      "prdctDPg"
+    else
+      ""
+    end
+  end
+
 end

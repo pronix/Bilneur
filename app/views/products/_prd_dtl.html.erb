@@ -1,0 +1,42 @@
+<div class="cntTop"></div>
+<div class="cntCntr">
+  <div class="favCmnt">
+    <span><%= product.name %></span>
+      <%= link_to "Sell A Product Like this", "", :class=>"seAll" %>
+      <%= link_to "Add to Favorites", "", :class=>"add" %>
+      <div class="fbLike"><%= image_tag "icons/fb_like.png" %></div>
+      <%= link_to image_tag("icons/bnr_plus.png"), "" %>
+  </div>
+
+  <div class="sldrBnr">
+    <div id="gallery" class="ad-gallery">
+      <div class="ad-image-wrapper">
+        <%= image_tag "slider/loader.gif", :style => "display:none;", :class => "ad-loader" %>
+      </div>
+
+      <div class="ad-nav">
+        <div class="ad-thumbs">
+          <ul style="width: 1454px;" class="ad-thumb-list">
+          <% for image in product.images do %>
+            <li>
+              <%= link_to image_tag(image.attachment.url(:mini), :alt=>""), image.attachment.url(:product) %>
+            </li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="bnrFolw">
+      <ul>
+          <li><%= link_to image_tag("icons/bnr_ico_twtr.png"), "" %></li>
+          <li><%= link_to image_tag("icons/bnr_ico_ggl.png"), "" %></li>
+          <li><%= link_to image_tag("icons/bnr_ico_fb.png"), "" %></li>
+          <li><%= link_to image_tag("icons/bnr_ico_eml.png"), "" %></li>
+          <li><%= link_to image_tag("icons/bnr_ico_lnk.png"), "" %></li>
+        </ul>
+    </div>
+  </div>
+
+  <%= render "prd_tabs", :product => product %>
+  <%= render "prd_rating", :product => product %>
+</div>

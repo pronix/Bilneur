@@ -8,9 +8,10 @@ Feature: Manage products
     And I am signed up as a seller with "seller@person.com/password"
     When I sign in as "seller@person.com/password"
     Given the following taxonomies exist:
-      | name        |
-      | Brand       |
-      | Categories  |
+      | name       |
+      | Books      |
+      | Movie      |
+      | Categories |
 
   Scenario: Adding new a product
     When I go to the dashboard quotes page
@@ -23,9 +24,10 @@ Feature: Manage products
     And I press "Create"
     Then I should see "Product is created."
 
-  @wip
   Scenario: Editing the product
-    Given the custom taxons and custom products exist
+    Given I have the follow products:
+    | name          | taxons |
+    | The Godfather | Movie  |
 
   @wip
   Scenario: Deleting the product

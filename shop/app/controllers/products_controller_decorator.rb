@@ -1,4 +1,6 @@
 ProductsController.class_eval do
+  # helper ReviewsHelper
+  # :ezo REMEMBER maybe it's no need
   def show
     @product = Product.find_by_permalink!(params[:id])
     raise ActiveRecord::RecordNotFound unless @product

@@ -5,6 +5,7 @@ breakfast_tiffany:
   permalink: breakfast-tiffany
   count_on_hand: 0
   ean: 5055055903603
+  owner_id: <%= User.find_by_email('seller1@bilneur.com').id %>
 
 godfather:
   name: "The Godfather - The Coppola Restoration (1972)"
@@ -13,6 +14,7 @@ godfather:
   permalink: godfather
   count_on_hand: 0
   ean: 9780099528128
+  owner_id: <%= User.find_by_email('seller2@bilneur.com').id %>
 
 death_of_a_hero:
   name: "Death of a Hero [Paperback]"
@@ -21,6 +23,7 @@ death_of_a_hero:
   permalink: death-of-a-hero
   count_on_hand: 0
   ean: 978-0919614789
+  owner_id: <%= User.find_by_email('seller3@bilneur.com').id %>
 
 lenovo_thinkpad_t410s:
   name: Lenovo Thinkpad T410s mit Intel Core i5 560M 2.66GHz (Win 7/UMTS) - Notebook/Laptop
@@ -29,6 +32,7 @@ lenovo_thinkpad_t410s:
   permalink: lenovo-thinkpad-t410s
   count_on_hand: 0
   ean: 0885976811962
+  owner_id: <%= User.find_by_email('seller4@bilneur.com').id %>
 
 compaq_nc6000:
   name: compaq nc6000 P-M 1.6 GHz 512M/40G 14.1
@@ -37,6 +41,7 @@ compaq_nc6000:
   permalink: compaq-nc6000
   count_on_hand: 0
   ean: 000B0001YXWK0
+  owner_id: <%= User.find_by_email('seller1@bilneur.com').id %>
 
 sony_vgn_cs21s_t:
   name: VGN-CS21S/T - Notebook/Laptop
@@ -45,3 +50,4 @@ sony_vgn_cs21s_t:
   permalink: sony-vgn-cs21s-t
   count_on_hand: 0
   ean: 000B0054QJ2BS
+  owner_id: <%= User.find_by_email('seller2@bilneur.com').id %>

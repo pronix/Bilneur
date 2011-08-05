@@ -1,7 +1,7 @@
 <div>
   <div>
     <%= form_tag search_dashboard_quotes_path, :method => :get do %>
-    <label><%= t("ean") %></label>
+    <label for="ean"><%= t("ean") %></label>
     <%= text_field_tag "ean", "", :class => "title", :id => nil %>
     <button><span>Add quote</span> </button>
     <% end %>
@@ -26,9 +26,7 @@
     <td class="actions">
       <%= link_to t("edit"), edit_dashboard_quote_path(item) unless item.deleted? %>
       &nbsp;
-      <%= link_to t("delete"),  dashboard_quote_path(item) unless item.deleted? %>
-
-
+      <%= link_to t("delete"),  dashboard_quote_path(item), :method => :delete unless item.deleted? %>
     </td>
   </tr>
   <% end %>

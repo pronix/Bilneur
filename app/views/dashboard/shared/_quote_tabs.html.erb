@@ -11,9 +11,19 @@
         <%= link_to t("quote_details"), edit_dashboard_quote_url(@quote) %>
       </li>
 
+      <li<%== ' class="active"' if current == "Quote Options" %>>
+        <%= link_to t("quote_options"), options_dashboard_quote_path(@quote) %>
+      </li>
+
+
       <li<%== ' class="active"' if current == "Images" %>>
         <%= link_to t("images"), dashboard_quote_quote_images_path(@quote) %>
       </li>
+
+      <li<%== ' class="active"' if current == "Selling and Shipping" %>>
+        <%= link_to t("selling_shipping"), dashboard_quote_selling_options_path(@quote) %>
+      </li>
+
 
   </ul>
   <br class="clear" />

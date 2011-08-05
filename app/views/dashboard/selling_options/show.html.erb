@@ -1,0 +1,48 @@
+<%= form_for  dashboard_quote_selling_options_path(@quote), :html => {:method => :put} do %>
+
+<%= fields_for @quote do |f| %>
+<fieldset>
+  <legend>Selling Options</legend>
+  <div>
+    <%= f.field_container :price do %>
+    <%= f.label :price, t("fixed_price")%> <span class="required">*</span>
+    <%= f.text_field :price, :value => number_with_precision(@quote.price, :precision => 2)  %>
+    <%= f.error_message_on :price %>
+    <% end %>
+
+  </div>
+  <div>
+    <h3><%= t("volume_prices") %></h3>
+    <table class="index">
+      <thead>
+        <tr>
+          <th><%= t("display") %></th>
+          <th><%= t("range") %></th>
+          <th><%= t("amount") %></th>
+          <th><%= t("position") %></th>
+          <th><%= t("action") %></th>
+        </tr>
+      </thead>
+      <tbody id="volume_prices">
+        <%= f.fields_for :volume_prices do |vp_form| %>
+        <%= render 'volume_price_fields', :f => vp_form %>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%= link_to_add_fields icon('add') + ' ' + t("add_volume_price"), "tbody#volume_prices", f, :volume_prices %>
+    <br/><br/>
+
+
+
+
+  </div>
+</fieldset>
+<% end %>
+
+
+<p class="form-buttons">
+  <button type="submit"><span><%= t("update") %></span></button>
+</p>
+
+<% end %>

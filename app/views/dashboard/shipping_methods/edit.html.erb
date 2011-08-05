@@ -1,0 +1,19 @@
+<%= render :partial => 'dashboard/shared/profile_tabs', :locals => {:current => "Shipping Methods"} %>
+
+<h1><%= t("editing_shipping_method") %></h1>
+
+<%= render "shared/error_messages", :target => @shipping_method %>
+
+
+<%= form_for(@shipping_method, :url => dashboard_shipping_method_path(@shipping_method), :html => { :method => :put }) do |f| %>
+
+<%= render :partial => "form", :locals => { :f => f } %>
+
+<p class="form-buttons">
+  <%= button t("actions.update") %>
+  <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_shipping_methods_path %>
+</p>
+
+
+<% end %>
+

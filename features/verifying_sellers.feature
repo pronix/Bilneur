@@ -1,5 +1,5 @@
 # language: en
-
+@wip
 Feature: Verifying sellers
 
   Background:

@@ -11,9 +11,13 @@ class SellerAbility
     end
 
     can [:edit, :update, :destroy], Property do |resource|
-      puts resource.inspect
       resource.owner == user
     end
+
+    can [:edit, :update, :destroy], Product do |resource|
+      resource.owner == user
+    end
+
 
   end
 end

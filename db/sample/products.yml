@@ -1,62 +1,53 @@
-ror_tote:
-  name: Ruby on Rails Tote
-  description: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla nonummy aliquet mi. Proin lacus. Ut placerat. Proin consequat, justo sit amet tempus consequat, elit est adipiscing odio, ut egestas pede eros in diam. Proin varius, lacus vitae suscipit varius, ipsum eros convallis nisi, sit amet sodales lectus pede non est. Duis augue. Suspendisse hendrerit pharetra metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur nec pede. Quisque volutpat, neque ac porttitor sodales, sem lacus rutrum nulla, ullamcorper placerat ante tortor ac odio. Suspendisse vel libero. Nullam volutpat magna vel ligula. Suspendisse sit amet metus. Nunc quis massa. Nulla facilisi. In enim. In venenatis nisi id eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nunc sit amet felis sed lectus tincidunt egestas. Mauris nibh.
+breakfast_tiffany:
+  name: "Breakfast At Tiffany's - Paramount Centennial Collection (Mastered in High Definition) (1961)"
+  description: "No film better utilizes Audrey Hepburn's flighty charm and svelte beautythan this romantic adaptation of Truman Capote's novella. Hepburn's urban sophisticate Holly Golightly, an enchanting neurotic living off the gifts of gentlemen, is a bewitching figure in designer dresses and costume jewelry. George Peppard is her upstairs neighbor, a struggling writer and \"kept\" man financed by a steely older woman (Patricia Neal). His growing friendship with the lonely Holly soon turns to love and threatens the delicate balance of both of their compromised lives. Taking liberties with Capote's bittersweet story, director Blake Edwards and screenwriter George Axelrod turn New York into a city of lovers and create a poignant portrait of Holly, a frustrated romantic with a secret past and a hidden vulnerability. Composer Henry Mancini earned Oscars for the hit song \"Moon River\" and his tastefully romantic score. The only sour note in the whole film is Mickey Rooney's demeaning performance as the apartment's Japanese manager, an offensively overdone stereotype even in 1961. The rest of the film has weathered the decades well. Edwards's elegant yet light touch, Axelrod's generous screenplay, and Hepburn's mix of knowing experience and naiveté combine to create one of the great screen romances and a refined slice of high society bohemian chic. --Sean Axmaker"
   available_on: <%= Time.zone.now.to_s(:db) %>
-  permalink: ruby-on-rails-tote
-  count_on_hand: 45
-  ean: 123
-ror_bag:
-  name: Ruby on Rails Bag
-  description: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla nonummy aliquet mi. Proin lacus. Ut placerat. Proin consequat, justo sit amet tempus consequat, elit est adipiscing odio, ut egestas pede eros in diam. Proin varius, lacus vitae suscipit varius, ipsum eros convallis nisi, sit amet sodales lectus pede non est. Duis augue. Suspendisse hendrerit pharetra metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur nec pede. Quisque volutpat, neque ac porttitor sodales, sem lacus rutrum nulla, ullamcorper placerat ante tortor ac odio. Suspendisse vel libero. Nullam volutpat magna vel ligula. Suspendisse sit amet metus. Nunc quis massa. Nulla facilisi. In enim. In venenatis nisi id eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nunc sit amet felis sed lectus tincidunt egestas. Mauris nibh.
-  available_on: <%= Time.zone.now.to_s(:db) %>
-  permalink: ruby-on-rails-bag
-  count_on_hand: 45
-  ean: 234
-ror_baseball_jersey:
-  name: Ruby on Rails Baseball Jersey
-  description: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla nonummy aliquet mi. Proin lacus. Ut placerat. Proin consequat, justo sit amet tempus consequat, elit est adipiscing odio, ut egestas pede eros in diam. Proin varius, lacus vitae suscipit varius, ipsum eros convallis nisi, sit amet sodales lectus pede non est. Duis augue. Suspendisse hendrerit pharetra metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur nec pede. Quisque volutpat, neque ac porttitor sodales, sem lacus rutrum nulla, ullamcorper placerat ante tortor ac odio. Suspendisse vel libero. Nullam volutpat magna vel ligula. Suspendisse sit amet metus. Nunc quis massa. Nulla facilisi. In enim. In venenatis nisi id eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nunc sit amet felis sed lectus tincidunt egestas. Mauris nibh.
-  available_on: <%= Time.zone.now.to_s(:db) %>
-  permalink: ruby-on-rails-baseball-jersey
-  ean: 345
-ror_jr_spaghetti:
-  name: Ruby on Rails Jr. Spaghetti
-  description: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla nonummy aliquet mi. Proin lacus. Ut placerat. Proin consequat, justo sit amet tempus consequat, elit est adipiscing odio, ut egestas pede eros in diam. Proin varius, lacus vitae suscipit varius, ipsum eros convallis nisi, sit amet sodales lectus pede non est. Duis augue. Suspendisse hendrerit pharetra metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur nec pede. Quisque volutpat, neque ac porttitor sodales, sem lacus rutrum nulla, ullamcorper placerat ante tortor ac odio. Suspendisse vel libero. Nullam volutpat magna vel ligula. Suspendisse sit amet metus. Nunc quis massa. Nulla facilisi. In enim. In venenatis nisi id eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nunc sit amet felis sed lectus tincidunt egestas. Mauris nibh.
-  available_on: <%= Time.zone.now.to_s(:db) %>
-  permalink: ruby-on-rails-jr-spaghetti
-  count_on_hand: 75
-  ean: 456
-ror_mug:
-  name: Ruby on Rails Mug
-  description: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla nonummy aliquet mi. Proin lacus. Ut placerat. Proin consequat, justo sit amet tempus consequat, elit est adipiscing odio, ut egestas pede eros in diam. Proin varius, lacus vitae suscipit varius, ipsum eros convallis nisi, sit amet sodales lectus pede non est. Duis augue. Suspendisse hendrerit pharetra metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur nec pede. Quisque volutpat, neque ac porttitor sodales, sem lacus rutrum nulla, ullamcorper placerat ante tortor ac odio. Suspendisse vel libero. Nullam volutpat magna vel ligula. Suspendisse sit amet metus. Nunc quis massa. Nulla facilisi. In enim. In venenatis nisi id eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nunc sit amet felis sed lectus tincidunt egestas. Mauris nibh.
-  available_on: <%= Time.zone.now.to_s(:db) %>
-  permalink: ruby-on-rails-mug
-  count_on_hand: 75
-  ean: 567
-ror_ringer:
-  name: Ruby on Rails Ringer T-Shirt
-  description: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla nonummy aliquet mi. Proin lacus. Ut placerat. Proin consequat, justo sit amet tempus consequat, elit est adipiscing odio, ut egestas pede eros in diam. Proin varius, lacus vitae suscipit varius, ipsum eros convallis nisi, sit amet sodales lectus pede non est. Duis augue. Suspendisse hendrerit pharetra metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur nec pede. Quisque volutpat, neque ac porttitor sodales, sem lacus rutrum nulla, ullamcorper placerat ante tortor ac odio. Suspendisse vel libero. Nullam volutpat magna vel ligula. Suspendisse sit amet metus. Nunc quis massa. Nulla facilisi. In enim. In venenatis nisi id eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nunc sit amet felis sed lectus tincidunt egestas. Mauris nibh.
-  available_on: <%= Time.zone.now.to_s(:db) %>
-  permalink: ruby-on-rails-ringer-t-shirt
-  count_on_hand: 75
-  ean: 678
-ror_stein:
-  name: Ruby on Rails Stein
-  description: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla nonummy aliquet mi. Proin lacus. Ut placerat. Proin consequat, justo sit amet tempus consequat, elit est adipiscing odio, ut egestas pede eros in diam. Proin varius, lacus vitae suscipit varius, ipsum eros convallis nisi, sit amet sodales lectus pede non est. Duis augue. Suspendisse hendrerit pharetra metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur nec pede. Quisque volutpat, neque ac porttitor sodales, sem lacus rutrum nulla, ullamcorper placerat ante tortor ac odio. Suspendisse vel libero. Nullam volutpat magna vel ligula. Suspendisse sit amet metus. Nunc quis massa. Nulla facilisi. In enim. In venenatis nisi id eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nunc sit amet felis sed lectus tincidunt egestas. Mauris nibh.
-  available_on: <%= Time.zone.now.to_s(:db) %>  
-  permalink: ruby-on-rails-stein
-  count_on_hand: 75
-  ean: 789
-ruby_baseball_jersey:
-  name: Ruby Baseball Jersey
-  description: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla nonummy aliquet mi. Proin lacus. Ut placerat. Proin consequat, justo sit amet tempus consequat, elit est adipiscing odio, ut egestas pede eros in diam. Proin varius, lacus vitae suscipit varius, ipsum eros convallis nisi, sit amet sodales lectus pede non est. Duis augue. Suspendisse hendrerit pharetra metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur nec pede. Quisque volutpat, neque ac porttitor sodales, sem lacus rutrum nulla, ullamcorper placerat ante tortor ac odio. Suspendisse vel libero. Nullam volutpat magna vel ligula. Suspendisse sit amet metus. Nunc quis massa. Nulla facilisi. In enim. In venenatis nisi id eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nunc sit amet felis sed lectus tincidunt egestas. Mauris nibh.
-  available_on: <%= Time.zone.now.to_s(:db) %>
-  permalink: ruby-baseball-jersey
-  count_on_hand: 75
-  ean: 890
-apache_baseball_jersey:
-  name: Apache Baseball Jersey
-  description: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla nonummy aliquet mi. Proin lacus. Ut placerat. Proin consequat, justo sit amet tempus consequat, elit est adipiscing odio, ut egestas pede eros in diam. Proin varius, lacus vitae suscipit varius, ipsum eros convallis nisi, sit amet sodales lectus pede non est. Duis augue. Suspendisse hendrerit pharetra metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur nec pede. Quisque volutpat, neque ac porttitor sodales, sem lacus rutrum nulla, ullamcorper placerat ante tortor ac odio. Suspendisse vel libero. Nullam volutpat magna vel ligula. Suspendisse sit amet metus. Nunc quis massa. Nulla facilisi. In enim. In venenatis nisi id eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nunc sit amet felis sed lectus tincidunt egestas. Mauris nibh.
-  available_on: <%= Time.zone.now.to_s(:db) %>
-  permalink: apache-baseball-jersey
+  permalink: breakfast-tiffany
   count_on_hand: 0
-  ean: 901
+  ean: 5055055903603
+  owner_id: 101
+
+godfather:
+  name: "The Godfather - The Coppola Restoration (1972)"
+  description: "Francis Ford Coppola's epic masterpiece features Marlon Brando in his Oscar©-winning role as the patriarch of the Corleone family. Director Coppola paints a chilling portrait of the Sicilian clan's rise and near fall from power in America, masterfully balancing the story between the Corleone's family life and the ugly crime business in which they are engaged. Based on Mario Puxo's best-selling novel and featuring career-making performances by Al Pacino, James Cann and Robert Duvall, this searing and brilliant film garnered ten Academy Award® nominations, and won three including Best Picture of 1972."
+  available_on: <%= Time.zone.now.to_s(:db) %>
+  permalink: godfather
+  count_on_hand: 0
+  ean: 9780099528128
+  owner_id: 102
+
+death_of_a_hero:
+  name: "Death of a Hero [Paperback]"
+  description: "\"Death of a Hero\", published in 1929 was the author\'s literary response to the war. He went on to publish several works of fiction. In 1942, having moved to the United States, he began to write biographies. This last work was very controversial, as it was highly critical of the man still regarded as a war hero."
+  available_on: <%= Time.zone.now.to_s(:db) %>
+  permalink: death-of-a-hero
+  count_on_hand: 0
+  ean: 978-0919614789
+  owner_id: 103
+
+lenovo_thinkpad_t410s:
+  name: Lenovo Thinkpad T410s mit Intel Core i5 560M 2.66GHz (Win 7/UMTS) - Notebook/Laptop
+  description:  "Beschreibung 1\n 38,5cm (14.1\") WXGA+ | 4096 MB DDR3-RAM | 160 GB SSD | Intel HD Graphics | DVD DL Multi Writer | Windows 7 Professional 64\nBeschreibung 2 ThinkPad Notebooks der T Serie kombinieren modernste Technik mit dem legendären ThinkPad Design. Was immer Sie wollen, die T Serie bietet es Überlegene Leistung, handliches Format, maximale Mobilität, lange Akkulaufzeit und hohe Energieeffizienz."
+  available_on: <%= Time.zone.now.to_s(:db) %>
+  permalink: lenovo-thinkpad-t410s
+  count_on_hand: 0
+  ean: 0885976811962
+  owner_id: 104
+
+compaq_nc6000:
+  name: compaq nc6000 P-M 1.6 GHz 512M/40G 14.1
+  description: Stylishly designed for the mobile professional, this notebook combines performance and mobility. Features include a bright 14-inch display, versatile MultiBay, and up to 5 hours of battery life with the standard 6-cell battery.
+  available_on: <%= Time.zone.now.to_s(:db) %>
+  permalink: compaq-nc6000
+  count_on_hand: 0
+  ean: 000B0001YXWK0
+  owner_id: 101
+
+sony_vgn_cs21s_t:
+  name: VGN-CS21S/T - Notebook/Laptop
+  description: "A design that in a choice of five attractive and vibrant colors with a piano lacquer-like surface attracts everyone's attention. The choices are \"Cotton White\", \"coral pink\", \"Liquorice Black,\" \"Blazing Red\" and \"Caramel Cream.\""
+  available_on: <%= Time.zone.now.to_s(:db) %>
+  permalink: sony-vgn-cs21s-t
+  count_on_hand: 0
+  ean: 000B0054QJ2BS
+  owner_id: 102

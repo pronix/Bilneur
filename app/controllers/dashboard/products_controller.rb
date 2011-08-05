@@ -1,8 +1,9 @@
 class Dashboard::ProductsController < Dashboard::ApplicationController
   helper Admin::BaseHelper
   helper Admin::NavigationHelper
+
   def index
-    @products = current_user.products.paginate(:per_page => 10, :page => params[:page])
+    @products = Product.active.paginate(:per_page => 10, :page => params[:page])
   end
 
   def new
@@ -10,7 +11,9 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
   end
 
   def create
-    if @product = current_user.products.create(params[:product])
+    @product = current_user.products.new(params[:product])
+    if @product.save!
+      flash.notice = "Product is created."
       render :edit
     else
       render :new
@@ -29,5 +32,6 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
       render :edit
     end
   end
+
 
 end

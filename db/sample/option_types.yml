@@ -1,8 +1,5 @@
-size:
-  name: tshirt-size
-  presentation: Size
-  position: 1
 color:
-  name: tshirt-color
+  name: color
   presentation: Color
-  position: 2
+  position: 1
+

@@ -2,7 +2,11 @@ sellers-paradise:
   id: 1
   title: Sellers Paradise
   slug: /sellers-paradise
-  foreign_link: ''
+  position: 1
+  foreign_link: ""
+  meta_keywords: ""
+  meta_description: ""
+  layout: ""
   body: |
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu tellus tempor sapien consequat tincidunt. Fusce sollicitudin sollicitudin ipsum, vitae molestie massa posuere malesuada. Phasellus ultrices mi at magna accumsan congue. Nulla mauris elit, condimentum ac vestibulum vel, auctor eu felis. Donec ac commodo felis. Ut id justo eu nunc aliquet consequat non id lorem. Nunc a ante neque, et malesuada libero. Donec a orci sed dui posuere pretium. Praesent tincidunt, velit a interdum ullamcorper, sapien nibh fringilla mauris, id bibendum mauris turpis sed mi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris et erat felis, sed aliquet ante. Praesent at quam non nisl tincidunt imperdiet id at felis. Nam rutrum sagittis ipsum, ut rutrum ipsum accumsan et. Vivamus sit amet lectus neque. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
     Donec eu tellus non ligula molestie lobortis ac quis libero. Morbi sit amet mauris sed risus tincidunt semper in ac sapien. In ultricies est ac nisi aliquam et pulvinar sem bibendum. Aenean justo diam, hendrerit nec cursus et, dictum nec erat. Ut molestie, nulla sed sollicitudin vestibulum, purus enim porta nisl, id eleifend risus urna non odio. Sed sed ante nibh. Maecenas dapibus scelerisque orci sed accumsan. Nunc eget neque sed ipsum vestibulum ultrices. Phasellus commodo quam dignissim lacus cursus auctor vitae vel metus. Pellentesque pharetra, metus at laoreet congue, lacus orci suscipit risus, in posuere tellus justo vel massa. Aliquam hendrerit, arcu non sollicitudin cursus, velit odio tincidunt lorem, sed dignissim leo ligula eu odio. Vestibulum et volutpat dui. Integer vehicula mauris turpis. Sed augue mi, blandit eget lobortis at, commodo commodo lorem. Pellentesque lacinia augue in dui congue faucibus. Nullam pretium, nibh vitae suscipit gravida, risus justo convallis neque, ac sodales nisl lectus egestas nisi. Maecenas auctor, lorem vel sodales rhoncus, libero arcu interdum erat, at fringilla augue elit vel elit. Fusce dignissim diam a neque sollicitudin in pulvinar turpis commodo.
@@ -11,7 +15,11 @@ buy_anything_sell_it_instantly:
   id: 2
   title: Buy Anything, Sell It Instantly
   slug: /buy-anything-sell-it-instantly
-  foreign_link: ''
+  position: 2
+  foreign_link: ""
+  meta_keywords: ""
+  meta_description: ""
+  layout: ""
   body: |
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus felis erat, consectetur a fermentum luctus, fringilla at libero. Curabitur eu sem nec nisi tristique consequat eu vel elit. Curabitur purus est, euismod eget bibendum in, imperdiet ut erat. Maecenas dui magna, tincidunt sit amet imperdiet sit amet, tempus ut massa. Praesent nisi turpis, auctor vitae egestas eget, ullamcorper non magna. Vestibulum felis est, facilisis eu luctus id, hendrerit fringilla nisi. Aenean sit amet augue id ipsum ultrices egestas sit amet id dui. Maecenas vitae dui ac quam venenatis sodales. Maecenas sem enim, tristique elementum auctor vel, vehicula eget augue. Cras imperdiet, est id sollicitudin posuere, arcu quam adipiscing enim, at luctus lectus augue quis mi. Sed quis urna porta nunc lacinia aliquam. Aenean lorem turpis, malesuada eu posuere at, vulputate id lacus. Curabitur gravida ante non velit feugiat non dictum tortor sodales. Vivamus rutrum condimentum ante, non ultricies nisi bibendum ultricies. Etiam eget quam in nulla porta porttitor. Sed aliquam ligula ut dolor tempor tincidunt. Duis enim erat, ultrices non viverra ut, euismod ut mauris. Vivamus eget sapien eros. Pellentesque pulvinar porta tempor. Vivamus interdum dui et dui posuere viverra.
 
@@ -19,7 +27,11 @@ a_buyers_universe:
   id: 3
   title: A Buyers Universe
   slug: /a-buyers-universe
-  foreign_link: ''
+  position: 3
+  foreign_link: ""
+  meta_keywords: ""
+  meta_description: ""
+  layout: ""  
   body: |
    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eu quam ut ante pellentesque vestibulum quis iaculis diam. Aliquam rhoncus imperdiet tincidunt. Fusce molestie porta diam, nec facilisis mi semper eu. Donec dictum dignissim egestas. Quisque accumsan, nisi eget eleifend adipiscing, diam nibh lobortis tellus, ut suscipit nibh nisi nec sapien. Duis fringilla nisi ut felis congue molestie. Ut tortor justo, varius vel dignissim eu, luctus eleifend arcu. Praesent quis dictum urna. Maecenas adipiscing condimentum consequat. Quisque ac eros id neque laoreet dapibus in non erat. Integer tristique tempor turpis, eget interdum ligula lacinia nec. Aenean a turpis sit amet massa auctor laoreet fermentum et est.
    Nulla facilisi. Donec ipsum risus, bibendum ut ullamcorper non, fermentum ac odio. Aliquam rutrum euismod venenatis. Nulla et pretium massa. Proin eget justo arcu, eu vulputate est. Donec eu augue lacus. Praesent malesuada volutpat fringilla. Sed tempor semper magna in euismod. Sed at leo in orci scelerisque tincidunt sed eget magna. Nulla facilisi. Nunc lectus diam, adipiscing quis rutrum vel, dapibus nec felis. Pellentesque dignissim scelerisque diam at placerat. In ut orci ac libero accumsan hendrerit. Morbi fermentum venenatis nisl sed tristique. Sed at aliquet mauris. Nunc sollicitudin, velit sed vehicula sagittis, nibh justo pellentesque tortor, in commodo elit sem vitae dolor. Suspendisse aliquam vehicula risus at tempor.
@@ -29,7 +41,11 @@ how_it_work:
   id: 4
   title: How It Work
   slug: /how_it_work
-  foreign_link: ''
+  position: 4
+  foreign_link: ""
+  meta_keywords: ""
+  meta_description: ""
+  layout: ""  
   body: |
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum magna in arcu rhoncus ullamcorper sed in velit. Nullam non enim vitae felis pretium tincidunt at non odio. Nulla euismod scelerisque nisi. Praesent tempor purus ac dolor condimentum scelerisque. Vivamus pulvinar interdum nisi, eget iaculis dui cursus ac. Sed varius lacus ac quam eleifend dignissim. Sed ac nulla ipsum, eu malesuada metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque accumsan nulla eget tortor sollicitudin gravida. Cras eu malesuada justo. Quisque sed lorem et tellus laoreet hendrerit in id est. Nulla in nisi tortor.
     Donec augue nibh, blandit et tincidunt quis, adipiscing eget magna. Sed vestibulum justo sit amet dui volutpat bibendum. In non blandit nibh. Nam facilisis ullamcorper vehicula. Donec justo massa, tincidunt in sollicitudin id, elementum id sapien. Aenean varius ante non tortor egestas non vestibulum mauris pellentesque. Vivamus sed risus eu augue tincidunt ultrices in ac magna. In massa enim, bibendum non pharetra id, lobortis sed magna. Proin sollicitudin sagittis dignissim. Praesent pretium interdum sapien ut bibendum. Integer egestas tristique neque, ut laoreet neque cursus ut. Nulla sapien purus, sodales non cursus a, molestie fermentum est. Vivamus nec nunc et nibh lobortis rhoncus. In eleifend orci dui. Sed ut consequat ipsum. In pellentesque nibh sit amet urna mattis tristique. Phasellus rhoncus cursus tellus, at congue risus mattis in. Aenean ipsum massa, aliquet sit amet ultricies at, pharetra faucibus odio. Donec vitae dolor at nulla vehicula luctus. Sed placerat, nibh pretium consequat aliquam, lectus eros interdum dolor, in dictum erat diam a tortor.
@@ -41,7 +57,11 @@ what_we_do:
   id: 5
   title: What We do
   slug: /what_we_do
-  foreign_link: ''
+  position: 5
+  foreign_link: ""
+  meta_keywords: ""
+  meta_description: ""
+  layout: ""  
   body: |
     Augue integer porta cum non ultrices. Scelerisque parturient cursus pulvinar, integer tincidunt odio platea. Elit proin, enim, enim, mattis cursus turpis montes magna tempor massa a et in nascetur, aenean! A, tristique est lundium, urna est odio nec! Porttitor mauris quis porttitor urna lundium turpis, urna dignissim enim a urna integer parturient habitasse, lectus scelerisque aenean, et integer pid augue in ut sociis enim magna purus, ut, purus porta risus et nascetur, lundium nec, vut, mattis lectus auctor. Natoque enim. Tortor pellentesque turpis a facilisis penatibus vut scelerisque, est pulvinar, porttitor. Proin penatibus mauris egestas sed tortor duis. Amet ac dapibus, in non tristique quis vel. Parturient et? Odio placerat in? Urna. Mattis enim amet urna porta. Nisi augue pulvinar.
     
@@ -51,7 +71,11 @@ buying_selling_made_easy:
   id: 6
   title: Buying & Selling Made Easy
   slug: /buying-selling-made-easy
-  foreign_link: ''
+  position: 6
+  foreign_link: ""
+  meta_keywords: ""
+  meta_description: ""
+  layout: ""  
   body: |
     Tempor adipiscing duis nec enim nisi odio turpis in, lacus, a enim odio, duis! Tincidunt tortor nisi in, rhoncus montes, phasellus, integer, et augue sed, nascetur velit? Rhoncus auctor nunc, tincidunt lundium porttitor nunc turpis placerat duis magna ac pulvinar tincidunt, scelerisque lorem amet aenean, lundium magna est? Enim eu aenean in dapibus augue placerat amet rhoncus placerat, urna enim ac egestas auctor platea duis turpis, tincidunt elementum nascetur urna? Aliquam est tristique natoque sit non purus lacus! Sociis sit! Et? Et! Augue ultrices? Ridiculus diam ultricies platea, turpis massa? Nisi amet turpis diam? Cum, in non ac, sed augue mattis tortor, cursus est nisi et hac risus pellentesque auctor tincidunt! Turpis. Adipiscing vut nunc dolor velit, lectus habitasse phasellus.
 

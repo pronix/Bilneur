@@ -1,17 +1,19 @@
+<% product_conditions = ["Brand New", "Used", "Refurbished"] %>
 <div class="smlTabs">                
   <div id="TabbedPanels2" class="TabbedPanels">
     <ul class="TabbedPanelsTabGroup">
-      <li class="TabbedPanelsTab tab1" tabindex="0"><span>Brand New</span></li>
-      <li class="TabbedPanelsTab tab2" tabindex="0"><span>Used</span></li>
-      <li class="TabbedPanelsTab tab3" tabindex="0"><span>Refurbished</span></li>
+      <% for cdt in product_conditions do %>
+      <li class="TabbedPanelsTab tab1" tabindex="0"><span><%= cdt %></span></li>
+      <% end %>
     </ul>
     <div class="TabbedPanelsContentGroup">
+      <% for cdt in product_conditions do %>
       <div class="TabbedPanelsContent">
           <div class="tabCnt1">
             <a href="#">View All</a>
-              <b>$238 - $39.99</b>
+              <b><%= number_to_currency(product.price) %></b>
               <span>Available with 15 Sellers</span>
-              
+              <h3><%= cdt %></h3>
           </div>
           <div class="tabCnt2">
             <a href="#">View All</a>
@@ -25,8 +27,7 @@
           </div>
           <div class="btm"></div>
         </div>
-      <div class="TabbedPanelsContent">Content 2</div>
-        <div class="TabbedPanelsContent">Content 3</div>
+     <% end %>
     </div>
   </div>
 </div>

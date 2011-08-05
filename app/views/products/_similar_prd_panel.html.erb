@@ -1,20 +1,12 @@
 <div class="vwer smlr">
   <div class="top"><b>Similar Products</b></div>
+    <% for i in 1..3 do %>
     <div class="cntr">
-        <a href="#"><i><img src="/images/img/sml_iph.png" alt="" /></i>
+        <a href="#"><i><%= image_tag "img/sml_iph.png" %></i>
         <b>Iphone</b>
         <em>this iphone is one of a kind bsla asdf asd asdf ...<br /><label>$25.99</label></em></a>
     </div>
-    <div class="cntr">
-        <a href="#"><i><img src="/images/img/sml_iph.png" alt="" /></i>
-        <b>Iphone</b>
-        <em>this iphone is one of a kind bsla asdf asd asdf ...<br /><label>$25.99</label></em></a>
-    </div>
-    <div class="cntr lst">
-        <a href="#"><i><img src="/images/img/sml_iph.png" alt="" /></i>
-        <b>Iphone</b>
-        <em>this iphone is one of a kind bsla asdf asd asdf ...<br /><label>$25.99</label></em></a>
-    </div>
+    <% end %>
     <div class="btm"></div>
 </div>
 

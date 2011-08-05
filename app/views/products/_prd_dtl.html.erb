@@ -1,3 +1,4 @@
+<div class="cntTop"></div>
 <div class="cntCntr">
   <div class="favCmnt">
     <span><%= product.name %></span>
@@ -18,9 +19,7 @@
           <ul style="width: 1454px;" class="ad-thumb-list">
           <% for image in product.images do %>
             <li>
-              <a class="ad-thumb0" href="<%= image.attachment.url(:product)%>">
-                <img style="opacity: 0.7;" src="<%= image.attachment.url(:mini) %>" alt="" class="image0">
-              </a>
+              <%= link_to image_tag(image.attachment.url(:mini), :alt=>""), image.attachment.url(:product) %>
             </li>
           <% end %>
           </ul>
@@ -29,14 +28,15 @@
     </div>
     <div class="bnrFolw">
       <ul>
-          <li><a href="#"><img src="/images/icons/bnr_ico_twtr.png" alt="" /></a></li>
-          <li><a href="#"><img src="/images/icons/bnr_ico_ggl.png" alt="" /></a></li>
-          <li><a href="#"><img src="/images/icons/bnr_ico_fb.png" alt="" /></a></li>
-          <li><a href="#"><img src="/images/icons/bnr_ico_eml.png" alt="" /></a></li>
-          <li><a href="#"><img src="/images/icons/bnr_ico_lnk.png" alt="" /></a></li>
+          <li><%= link_to image_tag("icons/bnr_ico_twtr.png"), "" %></li>
+          <li><%= link_to image_tag("icons/bnr_ico_ggl.png"), "" %></li>
+          <li><%= link_to image_tag("icons/bnr_ico_fb.png"), "" %></li>
+          <li><%= link_to image_tag("icons/bnr_ico_eml.png"), "" %></li>
+          <li><%= link_to image_tag("icons/bnr_ico_lnk.png"), "" %></li>
         </ul>
     </div>
   </div>
+
   <%= render "prd_tabs", :product => product %>
   <%= render "prd_rating", :product => product %>
 </div>

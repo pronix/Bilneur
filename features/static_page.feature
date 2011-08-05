@@ -19,3 +19,10 @@ Feature: Work with static pages
     Then I should be on the admin static page
     And I should see "Page has been successfully created!"
     And I should see "Test Page Number One"
+
+  Scenario: Test new static page
+    Given I have static page "Bugaga/this-is-url/This is body for static page"
+    Then I visit "/this-is-url"
+    And I should be on the static page "this-is-url"
+    And I should see "Bugaga"
+    And I should see "This is body for static page"

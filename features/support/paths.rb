@@ -27,6 +27,8 @@ module NavigationHelpers
       admin_pages_path
     when /the new admin static page/
       new_admin_page_path
+    when /the static page "(.+)"/
+      "/#{($1)}"
     when /logout/
       destroy_user_session_path
     when /^the home\s?page$/

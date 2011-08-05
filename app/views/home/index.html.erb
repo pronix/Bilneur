@@ -52,54 +52,16 @@
         <div class="latest"><img src="/images/bgs/ltst_prdct_bg.png" alt="" /></div>
           <div id="carousel">
               <ul>
+                <%- for product in Product.order(:created_at).last(20) do %>
                   <li>
                     <div class="crsl">
-                        <img src="/images/img/iphone.jpg" alt="" />
-                          <b class="lHd">iPhone</b>
-                          <i class="lHdI">iPhone 3GS on sale with 40% off the market price, don't wait these products don't last long. </i>
-                           <a href="#">View This Product</a><b class="byTh">Buy 20 at <b class="byPrc">40% Off</b></b>
-                       </div>
+                      <%= image_tag product.images.last.attachment.url(:smaill)%>
+                      <b class="lHd"><%= product.name %></b>
+                      <i class="lHdI"><%= product.brief_description %></i>
+                      <a href="#">View This Product</a><b class="byTh">Buy 20 at <b class="byPrc">40% Off</b></b>
+                    </div>
                   </li>
-                  <li>
-                    <div class="crsl">
-                        <img src="/images/img/shoe.jpg" alt="" />
-                          <b class="lHd">Womens Pumps</b>
-                          <i class="lHdI">Todays special deal, Buy womens branded footwear for 20% off the wholesale price. </i>
-                           <a href="#">View This Product</a><b class="byTh">Buy 50 at <b class="byPrc">20% Off</b></b>
-                       </div>
-                  </li>
-                  <li>
-                    <div class="crsl">
-                        <img src="/images/img/iphone.jpg" alt="" />
-                          <b class="lHd">iPhone</b>
-                          <i class="lHdI">iPhone 3GS on sale with 40% off the market price, don't wait these products don't last long. </i>
-                           <a href="#">View This Product</a><b class="byTh">Buy 20 at <b class="byPrc">40% Off</b></b>
-                       </div>
-                  </li>
-                  <li>
-                    <div class="crsl">
-                        <img src="images/img/shoe.jpg" alt="" />
-                          <b class="lHd">Womens Pumps</b>
-                          <i class="lHdI">Todays special deal, Buy womens branded footwear for 20% off the wholesale price. </i>
-                           <a href="#">View This Product</a><b class="byTh">Buy 50 at <b class="byPrc">20% Off</b></b>
-                       </div>
-                  </li>
-                  <li>
-                    <div class="crsl">
-                        <img src="/images/img/iphone.jpg" alt="" />
-                          <b class="lHd">iPhone</b>
-                          <i class="lHdI">iPhone 3GS on sale with 40% off the market price, don't wait these products don't last long. </i>
-                           <a href="#">View This Product</a><b class="byTh">Buy 20 at <b class="byPrc">40% Off</b></b>
-                       </div>
-                  </li>
-                  <li>
-                    <div class="crsl">
-                        <img src="/images/img/shoe.jpg" alt="" />
-                          <b class="lHd">Womens Pumps</b>
-                          <i class="lHdI">Todays special deal, Buy womens branded footwear for 20% off the wholesale price. </i>
-                           <a href="#">View This Product</a><b class="byTh">Buy 50 at <b class="byPrc">20% Off</b></b>
-                       </div>
-                  </li>
+                <%- end %>
               </ul>
           </div>
       </div>

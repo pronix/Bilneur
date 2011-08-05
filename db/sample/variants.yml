@@ -1,133 +1,255 @@
-small-red-baseball:
-  product: ror_baseball_jersey
-  option_values: s, red
-  sku: ROR-00001
-  price: 19.99
-  cost_price: 17.00
+m_breakfast_tiffany:
+  product: breakfast_tiffany
+  sku: BT-00001
+  price: 1
+  cost_price: 1
+  count_on_hand: 0
+  is_master: true
+
+q_breakfast_tiffany_1:
+  product: breakfast_tiffany
+  condition: new
+  price: 10.99
+  cost_price: 8
   count_on_hand: 10
-small-blue-baseball:
-  product: ror_baseball_jersey
-  option_values: s, blue
-  sku: ROR-00002
-  price: 19.99
-  cost_price: 17.00
+  seller_id: <%= User.find_by_email('seller1@bilneur.com').id %>
+
+q_breakfast_tiffany_2:
+  product: breakfast_tiffany
+  condition: used
+  price: 8.99
+  cost_price: 6
   count_on_hand: 10
-small-green-baseball:
-  product: ror_baseball_jersey
-  option_values: s, green
-  sku: ROR-00003
-  price: 19.99
-  cost_price: 17.00
-  count_on_hand: 10
-med-red-baseball:
-  product: ror_baseball_jersey
-  option_values: m, red
-  sku: ROR-00004
-  price: 19.99
-  cost_price: 17.00
+  seller_id: <%= User.find_by_email('seller2@bilneur.com').id %>
+
+
+q_breakfast_tiffany_3:
+  product: breakfast_tiffany
+  condition: used
+  price: 7.99
+  cost_price: 5
   count_on_hand: 3
-med-blue-baseball:
-  product: ror_baseball_jersey
-  option_values: m, blue
-  sku: ROR-00005
+  seller_id: <%= User.find_by_email('seller3@bilneur.com').id %>
+
+q_breakfast_tiffany_4:
+  product: breakfast_tiffany
+  condition: new
+  price: 9.99
+  cost_price: 8
+  count_on_hand: 2
+  seller_id: <%= User.find_by_email('seller4@bilneur.com').id %>
+
+m_godfather:
+  product: godfather
+  sku: GDF-00001
+  price: 1
+  cost_price: 1
+  count_on_hand: 0
+  is_master: true
+
+q_godfather_1:
+  product: godfather
+  condition: new
   price: 19.99
-  cost_price: 17.00
-  count_on_hand: 10
-med-green-baseball:
-  product: ror_baseball_jersey
-  option_values: m, green
-  sku: ROR-00006
-  price: 19.99
-  cost_price: 17.00
-  count_on_hand: 14
-large-red-baseball:
-  product: ror_baseball_jersey
-  option_values: l, red
-  sku: ROR-00007
-  price: 19.99
-  cost_price: 17.00
+  cost_price: 18
+  count_on_hand: 2
+  seller_id: <%= User.find_by_email('seller1@bilneur.com').id %>
+
+
+q_godfather_2:
+  product: godfather
+  condition: used
+  price: 10.99
+  cost_price: 8
+  count_on_hand: 12
+  seller_id: <%= User.find_by_email('seller2@bilneur.com').id %>
+
+
+q_godfather_3:
+  product: godfather
+  condition: new
+  price: 18.99
+  cost_price: 16
+  count_on_hand: 3
+  seller_id: <%= User.find_by_email('seller3@bilneur.com').id %>
+
+q_godfather_4:
+  product: godfather
+  condition: used
+  price: 10.99
+  cost_price: 6
   count_on_hand: 1
-large-blue-baseball:
-  product: ror_baseball_jersey
-  option_values: l, blue
-  sku: ROR-00008
-  price: 19.99
-  cost_price: 17.00
-  count_on_hand: 10
-large-green-baseball:
-  product: ror_baseball_jersey
-  option_values: l, green
-  sku: ROR-00009
-  price: 19.99
-  cost_price: 17.00
-  count_on_hand: 10
-xlarge-green-baseball:
-  product: ror_baseball_jersey
-  option_values: xl, red
-  sku: ROR-00010
+  seller_id: <%= User.find_by_email('seller4@bilneur.com').id %>
+
+m_death_of_a_hero:
+  product: death_of_a_hero
+  sku: DOAH-00001
+  price: 1
+  cost_price: 1
+  count_on_hand: 0
+  is_master: true
+
+q_death_of_a_hero_1:
+  product: death_of_a_hero
+  condition: new
   price: 21.99
-  cost_price: 20.00
+  cost_price: 20
   count_on_hand: 10
-ror_baseball_jersey:
-  product: ror_baseball_jersey
-  sku: ROR-001
-  price: 19.99
-  cost_price: 17.00
+  seller_id: <%= User.find_by_email('seller1@bilneur.com').id %>
+
+q_death_of_a_hero_2:
+  product: death_of_a_hero
+  condition: used
+  price: 2.99
+  cost_price: 2
+  count_on_hand: 10
+  seller_id: <%= User.find_by_email('seller2@bilneur.com').id %>
+
+q_death_of_a_hero_3:
+  product: death_of_a_hero
+  condition: new
+  price: 20.99
+  cost_price: 18
+  count_on_hand: 10
+  seller_id: <%= User.find_by_email('seller3@bilneur.com').id %>
+
+q_death_of_a_hero_4:
+  product: death_of_a_hero
+  condition: used
+  price: 14.99
+  cost_price: 10
+  count_on_hand: 3
+  seller_id: <%= User.find_by_email('seller4@bilneur.com').id %>
+
+m_lenovo_thinkpad_t410s:
+  product: lenovo_thinkpad_t410s
+  sku: LT-00001
+  price: 1
+  cost_price: 1
+  count_on_hand: 0
   is_master: true
+
+q_lenovo_thinkpad_t410s_1:
+  product: lenovo_thinkpad_t410s
+  condition: new
+  option_values: black_color
+  price: 2100.99
+  cost_price: 2000
   count_on_hand: 10
-ror_tote_v:
-  product: ror_tote
-  sku: ROR-00011
-  price: 15.99
-  cost_price: 13.00
+  seller_id: <%= User.find_by_email('seller1@bilneur.com').id %>
+
+q_lenovo_thinkpad_t410s_2:
+  product: lenovo_thinkpad_t410s
+  condition: used
+  option_values: black_color
+  price: 2000.99
+  cost_price: 2000
+  count_on_hand: 10
+  seller_id: <%= User.find_by_email('seller2@bilneur.com').id %>
+
+q_lenovo_thinkpad_t410s_3:
+  product: lenovo_thinkpad_t410s
+  condition: new
+  option_values: red_color
+  price: 1900.99
+  cost_price: 1800
+  count_on_hand: 10
+  seller_id: <%= User.find_by_email('seller3@bilneur.com').id %>
+
+q_lenovo_thinkpad_t410s_4:
+  product: lenovo_thinkpad_t410s
+  condition: used
+  option_values: black_color
+  price: 1400.99
+  cost_price: 1000
+  count_on_hand: 3
+  seller_id: <%= User.find_by_email('seller4@bilneur.com').id %>
+
+
+m_compaq_nc6000:
+  product: compaq_nc6000
+  sku: CNC-00001
+  price: 1
+  cost_price: 1
+  count_on_hand: 0
   is_master: true
+
+q_compaq_nc6000_1:
+  product: compaq_nc6000
+  condition: new
+  option_values: black_color
+  price: 2100.99
+  cost_price: 2000
   count_on_hand: 10
-ror_bag_v:
-  product: ror_bag
-  sku: ROR-00012
-  price: 22.99
-  cost_price: 21.00
+  seller_id: <%= User.find_by_email('seller1@bilneur.com').id %>
+
+q_compaq_nc6000_2:
+  product: compaq_nc6000
+  condition: used
+  option_values: black_color
+  price: 2000.99
+  cost_price: 2000
+  count_on_hand: 10
+  seller_id: <%= User.find_by_email('seller2@bilneur.com').id %>
+
+q_compaq_nc6000_3:
+  product: compaq_nc6000
+  condition: new
+  option_values: black_color
+  price: 1900.99
+  cost_price: 1800
+  count_on_hand: 10
+  seller_id: <%= User.find_by_email('seller3@bilneur.com').id %>
+
+q_compaq_nc6000_4:
+  product: compaq_nc6000
+  condition: used
+  option_values: black_color
+  price: 1400.99
+  cost_price: 1000
+  count_on_hand: 3
+  seller_id: <%= User.find_by_email('seller4@bilneur.com').id %>
+
+m_sony_vgn_cs21s_t:
+  product: sony_vgn_cs21s_t
+  sku: SVCS-00001
+  price: 1
+  cost_price: 1
+  count_on_hand: 0
   is_master: true
+
+q_sony_vgn_cs21s_t_1:
+  product: sony_vgn_cs21s_t
+  condition: new
+  option_values: black_color
+  price: 2100.99
+  cost_price: 2000
   count_on_hand: 10
-ror_jr_spaghetti_v:
-  product: ror_jr_spaghetti
-  sku: ROR-00013
-  price: 19.99
-  cost_price: 17.00
-  is_master: true
+  seller_id: <%= User.find_by_email('seller1@bilneur.com').id %>
+
+q_sony_vgn_cs21s_t_2:
+  product: sony_vgn_cs21s_t
+  condition: used
+  option_values: black_color
+  price: 2000.99
+  cost_price: 2000
   count_on_hand: 10
-ror_mug_v:
-  product: ror_mug
-  sku: ROR-00014
-  price: 13.99
-  cost_price: 11.00
-  is_master: true
+  seller_id: <%= User.find_by_email('seller2@bilneur.com').id %>
+
+q_sony_vgn_cs21s_t_3:
+  product: sony_vgn_cs21s_t
+  condition: used
+  option_values: black_color
+  price: 1900.99
+  cost_price: 1800
   count_on_hand: 10
-ror_ringer_v:
-  product: ror_ringer
-  sku: ROR-00015
-  price: 17.99
-  cost_price: 17.00
-  is_master: true
-  count_on_hand: 10
-ror_stein_v:
-  product: ror_stein
-  sku: ROR-00016
-  price: 16.99
-  cost_price: 15.00
-  is_master: true
-  count_on_hand: 10
-apache_baseball_v:
-  product: apache_baseball_jersey
-  sku: APC-00001
-  price: 19.99
-  cost_price: 17.00
-  is_master: true
-  count_on_hand: 10
-ruby_baseball_v:
-  product: ruby_baseball_jersey
-  sku: RUB-00001
-  price: 19.99
-  cost_price: 17.00
-  is_master: true
-  count_on_hand: 10
+  seller_id: <%= User.find_by_email('seller3@bilneur.com').id %>
+
+q_sony_vgn_cs21s_t_4:
+  product: sony_vgn_cs21s_t
+  condition: used
+  option_values: black_color
+  price: 1400.99
+  cost_price: 1000
+  count_on_hand: 3
+  seller_id: <%= User.find_by_email('seller4@bilneur.com').id %>

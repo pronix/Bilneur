@@ -3,6 +3,15 @@
 %>
 user_<%= i %>:
   email: <%= Faker::Internet.email %>
-  ship_address: ship_address_<%= i %>
-  bill_address: bill_address_<%= i %>
+  firstname: <%= Faker::Name.first_name %>
+  lastname: <%= Faker::Name.last_name %>
+<% end %>
+
+<%
+1.upto(5) do |i|
+%>
+seller_<%= i %>:
+  email: <%= "seller#{i}@bilneur.com" %>
+  firstname: <%= Faker::Name.first_name %>
+  lastname: <%= Faker::Name.last_name %>
 <% end %>

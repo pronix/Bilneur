@@ -32,6 +32,10 @@ User.class_eval do
   # instance methods
   #
 
+  def full_name
+    "#{self.firstname} #{self.lastname}"
+  end
+
   # TODO
   # can automate the verification process
   #

@@ -2,11 +2,11 @@ ProductsController.class_eval do
   def show
     @product = Product.find_by_permalink!(params[:id])
     raise ActiveRecord::RecordNotFound unless @product
-    raise ActiveRecord::RecordNotFound unless @product.best_varinat
+    raise ActiveRecord::RecordNotFound unless @product.best_variant
 
     @best_variant = @product.best_variant
 
-    @variants = Variant.on_active.includes([:option_values, :images]).where(:product_id => @product.id)
+    @variants = Variant.active.includes([:option_values, :images]).where(:product_id => @product.id)
     @product_properties = ProductProperty.includes(:property).where(:product_id => @product.id)
     @selected_variant = @variants.detect { |v| v.available? }
 

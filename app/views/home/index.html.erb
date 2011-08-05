@@ -55,9 +55,9 @@
                 <%- for product in Product.order(:created_at).last(20) do %>
                   <li>
                     <div class="crsl">
-                      <%= image_tag product.images.last.attachment.url(:small)%>
-                      <b class="lHd"><%= product.name %></b>
-                      <i class="lHdI"><%= truncate product.description, :length => 130 %></i>
+                      <%= image_tag product.images.last.attachment.url(:small) %>
+                      <b class="lHd"><%= truncate product.name, :length => 40 %></b>
+                      <i class="lHdI"><%= truncate product.description, :length => 100 %></i>
                       <a href="#">View This Product</a><b class="byTh">Buy 20 at <b class="byPrc">40% Off</b></b>
                     </div>
                   </li>

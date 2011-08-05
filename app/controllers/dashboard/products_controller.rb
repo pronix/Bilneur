@@ -3,7 +3,7 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
   helper Admin::NavigationHelper
 
   def index
-    @products = current_user.products.paginate(:per_page => 10, :page => params[:page])
+    @products = Product.active.paginate(:per_page => 10, :page => params[:page])
   end
 
   def new

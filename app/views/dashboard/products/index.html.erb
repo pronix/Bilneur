@@ -21,10 +21,13 @@
       <td><%= product.name %></td>
       <!-- <td><%#= product.price %></td> -->
     <td class="actions">
+      <% if can? :edit, product %>
       <%= link_to t("edit"), edit_dashboard_product_path(product) unless product.deleted? %>
+      <% end %>
+      <% if can? :delete, product %>
         &nbsp;
        <%= link_to t("delete"),  dashboard_product_path(product) unless product.deleted? %>
-
+       <% end %>
     </td>
   </tr>
 <% end %>

@@ -1,6 +1,6 @@
 <ul id="login-nav">
   <li>Logged in as: <%= current_user.email%></li>
   <li><%= link_to( t('user_menu.my_account'), dashboard_account_path) %></li>
-  <li><a href="/logout">Logout</a></li>
+  <li><%= link_to t('logout'), destroy_user_session_path %></li>
   <li><a href="/">Store</a></li>
 </ul>

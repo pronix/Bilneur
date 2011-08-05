@@ -7,7 +7,9 @@ User.class_eval do
   # associations
   #
   has_many :products, :foreign_key => :owner_id
-  has_many :quotes,   :class_name => "Variant", :foreign_key => :seller_id
+  has_many :quotes,   :class_name => "Variant", :foreign_key => :seller_id,
+           :conditions => [ "variants.is_master = #{connection.quoted_false}" ]
+  has_many :shipping_methods, :foreign_key => :seller_id
 
   # scopes
   #
@@ -37,6 +39,10 @@ User.class_eval do
 
   # instance methods
   #
+
+  def full_name
+    "#{self.firstname} #{self.lastname}"
+  end
 
   # TODO
   # can automate the verification process

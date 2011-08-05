@@ -1,7 +1,10 @@
 require 'spec_helper'
 
 describe Product do
-  # before(:all){ Product.destroy_all}
+  before(:all){
+    Product.destroy_all
+    User.destroy_all
+  }
 
   describe "validation" do
     describe "of associated owner" do
@@ -13,8 +16,9 @@ describe Product do
       end
 
       it "pass if owner is not null" do
+
         @product = Factory.build(:product, { :ean => "B004GVYJJC",
-                                   :owner =>  Factory.create(:user, :registration_as_seller => 1)})
+                                   :owner =>  Factory.create(:user, :registration_as_seller => 1) })
         @product.should be_valid
       end
 
@@ -43,4 +47,27 @@ describe Product do
 
     end
   end
+
+  describe "instance methods" do
+
+    it "get best variant" do
+      @seller = Factory.create(:user, :registration_as_seller => 1)
+      @product = Factory.create(:product, { :ean => "B004GVYJJC", :owner =>  @seller })
+      common_options = { :product => @product, :condition => "new", :seller => @seller }
+      @variant1 = Factory.create(:variant, common_options.merge({:price => 7.00, :count_on_hand => 1}))
+      @variant2 = Factory.create(:variant, common_options.merge({:price => 7.23, :count_on_hand => 1}))
+      @variant3 = Factory.create(:variant, common_options.merge({:price => 6.23, :count_on_hand => 0}))
+      @variant4 = Factory.create(:variant, common_options.merge({:price => 6.43, :count_on_hand => 1}))
+      @product.best_variant.should eq(@variant4)
+    end
+
+    it "fill default data for create" do
+      @seller = Factory.create(:user, :registration_as_seller => 1)
+      @product = Factory.create(:product, { :ean => "B004GVYJJC", :owner =>  @seller })
+      @product.price.should_not be_nil
+      @product.available_on.should_not be_nil
+    end
+
+  end
+
 end

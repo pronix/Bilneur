@@ -18,6 +18,10 @@ Given /^I am signed up as "(.+)\/(.+)"$/ do |email, password|
   @user = Factory(:user, :email => email, :password => password, :password_confirmation => password)
 end
 
+Given /^I am signed up as a seller with "(.+)\/(.+)"$/ do |email, password|
+  @user = Factory(:user, :email => email, :password => password, :password_confirmation => password, :registration_as_seller => 1)
+end
+
 Given /^I have an admin account of "(.+)\/(.+)"$/ do |email, password|
   Factory(:admin_user,  :email => email, :password => password, :password_confirmation => password)
 end

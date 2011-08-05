@@ -1,1 +1,23 @@
-User account
+<%= render :partial => 'dashboard/shared/profile_tabs', :locals => {:current => "Account Details"} %>
+
+<h1><%= t("my_account") %></h1>
+
+
+<table>
+  <tr>
+    <td><%= t("email") %>:</td>
+    <td>
+      <%= current_user.email %>
+    </td>
+  </tr>
+  <tr>
+    <td><%= t("name") %>:</td>
+    <td>
+      <%= current_user.full_name %>
+    </td>
+  </tr>
+
+</table>
+
+<p><%= link_to t('edit'), edit_dashboard_account_path %></p>
+

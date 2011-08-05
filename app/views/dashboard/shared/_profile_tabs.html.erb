@@ -1,0 +1,26 @@
+
+<% content_for :sidebar do %>
+
+  <h3><%= current_user.email %></span></h3>
+  <br class="clear" />
+
+  <ul class="sidebar product-menu">
+
+      <li<%== ' class="active"' if current == "Account Details" %>>
+        <%= link_to t("account_details"), dashboard_account_path %>
+      </li>
+
+      <li<%== ' class="active"' if current == "Shipping Methods" %>>
+        <%= link_to t("shipping_methods"), dashboard_shipping_methods_path %>
+      </li>
+
+      <li<%== ' class="active"' if current == "Terms" %>>
+        <%= link_to t("terms_and_conditions"), dashboard_terms_path %>
+      </li>
+
+
+  </ul>
+  <br class="clear" />
+
+<% end %>
+

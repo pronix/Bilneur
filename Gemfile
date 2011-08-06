@@ -13,7 +13,7 @@ gem 'spree',                    '= 0.60.1'
 
 # Spree extensons
 # In rubygems only 0.60.1 version with bug.
- gem "spree_static_content",     "= 0.60.2", :git => 'git://github.com/spree/spree_static_content.git', :tag => "v0.60.2"
+ gem "spree_static_content",     :git => 'git://github.com/spree/spree_static_content.git', :tag => "v0.60.2"
  gem 'spree_editor',             '~> 0.50.1'
  gem 'spree_volume_pricing',     :path => 'vendor/spree_exts/spree_volume_pricing'
  gem 'shop',                     :require => "shop", :path => "shop"

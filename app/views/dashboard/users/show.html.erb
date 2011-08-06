@@ -16,6 +16,12 @@
       <%= current_user.full_name %>
     </td>
   </tr>
+  <tr>
+    <td><%= t("photo") %>:</td>
+    <td>
+      <%= image_tag current_user.photo.url %>
+    </td>
+  </tr>
 
 </table>
 

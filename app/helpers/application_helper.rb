@@ -11,8 +11,10 @@ module ApplicationHelper
     c_class = ""
     if params[:controller] == "home" 
       c_class = "cHome" 
-    elsif params[:controller] == "products"
+    elsif params[:controller] == "products" && params[:action] == "show"
       c_class = "prdctDPg" 
+    elsif params[:controller] == "products" && params[:action] == "index"
+      c_class = "prdctDPg slrPrdctPg prdctPg" 
     end
     c_class
   end

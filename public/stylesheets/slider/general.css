@@ -1,0 +1,20 @@
+/******* MENU *******/
+#container {
+	margin-top:17px;width:100%;}
+#container ul{
+	list-style: none;list-style-position: outside;font-size:16px;font-weight:bold;}
+#container ul.menu li{
+	float: left;}
+#container ul.menu li{
+	padding: 0 25px;background: #efefef;position: relative;color: #898989;cursor: pointer;background:url('/images/slide/bg_blogmenu.jpg') 0 0 repeat-x;float:left;height:41px;line-height:41px;border-right:2px solid #a6a6a6;color:#fff;}
+#container ul.menu li:hover, #container ul.menu li.active{
+	color: #5f95ef;background:url('/images/slide/bg_blogmenu_h.jpg') 0 0 repeat-x;color:#555;}
+
+#container, #container ul, #container ul.menu li {float:left;}
+	
+	
+/******* /MENU *******/
+/******* CONTENT *******/
+.content {
+	clear:both;float:left;width:935px;margin: 0pt auto;border: 1px solid #b3b3b3;text-align: left;padding-bottom: 20px;font-size: 11px;}
+/******* /CONTENT *******/

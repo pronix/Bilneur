@@ -22,6 +22,8 @@
     <%= label_tag "variant_condition", t("condition") %> <span class="required">*</span><br />
     <%= select_tag("variant[condition]",
             options_for_select(Variant::CONDITION.collect {|ov| [ t("condition_#{ov}"), ov ] })) %>
+    ( <%= f.label :another_condition, t("other_condition") %>
+    <%= f.text_field :another_condition, :class => 'title'  %> )
 
   </p>
 

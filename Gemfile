@@ -19,7 +19,7 @@ gem 'spree',                    '= 0.60.1'
  gem 'shop',                    :require => "shop", :path => "shop"
  # gem 'spree_additional_calculators', :git => "git://github.com/jurgis/spree-additional-calculators.git", :tag => "v0.1.1"
  gem 'shop',                    :require => "shop", :path => "shop"
- gem 'spree_reviews',           :git => 'git://github.com/citrus/spree_reviews.git'
+ gem 'spree_reviews',           :git => 'git://github.com/romul/spree-reviews.git'
 
 # Deploy with Capistrano
   gem 'capistrano'

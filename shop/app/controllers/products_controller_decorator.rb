@@ -3,6 +3,28 @@ ProductsController.class_eval do
   # Show the product page
   #
   def show
+    load_data_for_product
+
+    respond_with(@product)
+  end
+
+  # Show a sellers quote
+  #  Parameters: {"product_id"=>"death-of-a-hero", "condition"=>"new"}
+  #
+  def quotes
+    load_data_for_product
+
+    respond_with(@product)
+  end
+
+  #  Parameters: {"product_id"=>"death-of-a-hero", "id"=>"8732"}
+  #
+  def quote
+  end
+
+  private
+
+  def load_data_for_product
     @product = Product.find_by_permalink!(params[:id])
     raise ActiveRecord::RecordNotFound unless @product
     raise ActiveRecord::RecordNotFound unless @product.best_variant
@@ -19,18 +41,5 @@ ProductsController.class_eval do
       @taxon = Taxon.find_by_permalink($1)
     end
 
-    respond_with(@product)
-  end
-
-  # Show a sellers quote
-  #  Parameters: {"product_id"=>"death-of-a-hero", "condition"=>"new"}
-  #
-  def quotes
-
-  end
-
-  #  Parameters: {"product_id"=>"death-of-a-hero", "id"=>"8732"}
-  #
-  def quote
   end
 end

@@ -1,4 +1,4 @@
-<div class="prdctTabs">                    
+<div class="prdctTabs">
   <div id="TabbedPanels1" class="TabbedPanels">
     <ul class="TabbedPanelsTabGroup">
       <li class="TabbedPanelsTab" tabindex="0"><span>Description</span></li>
@@ -20,11 +20,14 @@
         <div class="btm"></div>
       </div>
       <div class="TabbedPanelsContent">
+
         <div class="cmntTab">
-          <span>22</span><i>Recomend This Product</i>                            </div>
+          <span>22</span><i>Recomend This Product</i>
+        </div>
         <div class="top"></div>
         <div class="cntr">
           <b><%= product.name %></b>
+
             <ul>
               <!--<li>Convenient and portable</li>
                 <li>Super mini NANO receiver, barely larger than a coin. It is so small that once you plug it into your notebook, simply forget about it. Your mouse is always ready to use, perfect for notebook user.</li>
@@ -55,6 +58,7 @@
           <span>22</span><i>Recomend This Product</i>                            </div>
         <div class="top"></div>
         <div class="cntr">
+
           <b><%= product.name %></b>
             <ul>
             <% for product_property in @product_properties %>
@@ -70,28 +74,15 @@
         <div class="top"></div>
         <div class="cntr">
           <b><%= product.name %></b>
-            <ul>
-              <!--<li>Convenient and portable</li>
-                <li>Super mini NANO receiver, barely larger than a coin. It is so small that once you plug it into your notebook, simply forget about it. Your mouse is always ready to use, perfect for notebook user.</li>
-                <li>Nano Receiver can also be stored inside the battery compartment.</li>
-                <li>High quality protective paint finishing with soft silicon grip on left and right sides of the mouse.</li>
-                <li>Reliable connectivity and performance</li>
-                <li>Advanced 2.4GHz wireless transmission with anti-interference technology ensures stable and seamless connection.</li>
-                <li>Virtually no delays or dropouts.</li>
-                <li>High resolution optical sensor of 1000 DPI.</li>-->
-                <li>Integrated with top-grade Nordic 24L01 wireless chipset to ensure stable operation.</li>
-                <li>Power saving batteries life for over 3 months. Automatically goes into sleep mode after unused for 10 minutes.</li>
-                <li>Compatible with 2000, XP, VISTA, Win7, Mac and Linux operating system.</li>
-                <li>Low battery indicator to warn user when battery is low and need for a replacement.</li>
-                <li>Operating distance of up to 15 meters.Controls Connectivity</li>
-                <li>Powerful radio-frequency transmission at 2.4 GHz (Up to 15 meters)</li>
-                <li>Simply Plug &amp; Play - no driver required.</li>
-                <li>Mouse and receiver are Pre-Bind from factory.</li>
-                <li>Software available from web site for users to re-Bind mouse and receiver themselves. Power Requirement</li>
-                <li>Standard 2 x AAA batteries needed</li>
-                <li>Power saving standby mode for efficient batteries life of over 3 months(When mouse is left idle for ten minutes, it will automatically get into sleep mode from standby mode.</li>
-                <li>Press any buttons to activate mouse into operation mode from sleep mode.</li>
-            </ul>
+
+          <ul>
+            <li>
+              <p>
+                <%= raw_without_js(product.additional_description)%>
+              </p>
+            </li>
+          </ul>
+
         </div>
         <div class="btm"></div>
       </div>

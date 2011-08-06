@@ -48,6 +48,9 @@ User.class_eval do
 
   # instance methods
   #
+  def is_admin?
+    has_role?("admin")
+  end
 
   def full_name
     "#{self.firstname} #{self.lastname}"

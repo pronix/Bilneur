@@ -6,8 +6,8 @@ Rails.application.routes.draw do
 
 
   match "/account" => "dashboard/users#show"
-  match "/products/deals/:product_id(/:condition)" => "products#quotes", :as => :product_quotes
-  match "/products/deals/:product_id/id" => "products#quote", :as => :product_quote
+  match "/products/deals/:id(/:condition)" => "products#quotes", :as => :product_quotes
+  match "/products/deals/:id/:quote_id" => "products#quote", :as => :product_quote
   # User dashboard
   #
   namespace :dashboard do

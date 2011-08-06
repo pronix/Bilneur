@@ -18,6 +18,12 @@
         <%= f.text_area :description, {:cols => 60, :rows => 4, :class => 'fullwidth'} %>
         <%= f.error_message_on :description %>
     <% end %>
+    <%= f.field_container :additional_description do %>
+        <%= f.label :additional_description, t("additional_description")%><br />
+        <%= f.text_area :additional_description, {:cols => 60, :rows => 4, :class => 'fullwidth'} %>
+        <%= f.error_message_on :additional_description %>
+    <% end %>
+
   </div>
   <div class="yui-u">
     <p>

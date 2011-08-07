@@ -1,3 +1,4 @@
+<%= render :partial => 'dashboard/shared/quote_tabs', :locals => {:current => "Selling Options"} %>
 <%= form_for  dashboard_quote_selling_options_path(@quote), :html => {:method => :put} do %>
 
 <%= fields_for @quote do |f| %>

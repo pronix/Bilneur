@@ -12,3 +12,7 @@ end
 Then /^I should see the following sign_ups:$/ do |expected_sign_ups_table|
   expected_sign_ups_table.diff!(tableish('table tr', 'td,th'))
 end
+
+Then /^I follow Start Selling link$/ do
+  find(:xpath, "//a[@href=\"#{new_user_registration_path(:as_seller => true)}\"]").click
+end

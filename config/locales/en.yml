@@ -2,6 +2,11 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  all_products: All products
+  quote_details: Quote Details
+  quote_options: Quote Options
+  conditions: Conditions
+  return_policy: Return policy
   terms_and_conditions: Terms & Conditions
   terms: Terms
   selling_shipping: Selling
@@ -10,6 +15,8 @@ en:
   quote_not_deleted: Quote not deleted
   condition_new: New
   condition_used: Used
+  condition_another: Other
+  other_condition: Other condition
   product_not_found: Product not found
   ean_or_isbn: EAN or ISBN
   ean: EAN

@@ -27,7 +27,7 @@ Given /^I have an admin account of "(.+)\/(.+)"$/ do |email, password|
 end
 
 When /^I sign in as "(.*)\/(.*)"$/ do |email, password|
-  When %{I go to the sign in page"}
+  When %{I go to the sign in page}
   And %{I fill in "Email" with "#{email}"}
   And %{I fill in "Password" with "#{password}"}
   And %{I press "Log In"}
@@ -66,4 +66,32 @@ end
 When /^I follow the password reset link$/ do
   visit(edit_user_password_path(:reset_password_token => @user.reset_password_token))
   Then %{I should see "Change my password"}
+end
+
+Given /^I try to auth with "(.+)" and "(.+)"$/ do |email, password|
+  And %{I am on the sign in page}
+  And %{I fill in "Email" with "#{email}"}
+  And %{I fill in "Password" with "#{password}"}
+  And %{press "Log In"}
+end
+
+Given /^I already sing as "(.*)\/(.*)"$/ do |email, password|
+  Given %{I am signed up as "#{email}/#{password}"}
+  Given %{I try to auth with "#{email}" and "#{password}"}
+end
+
+
+Given /^I should see given in page$/ do |table|
+  table.hashes.each do |hash|
+    page.should have_content(hash['element'])
+  end
+end
+
+Given /^I ask a password with valid credentials$/ do
+  Given %{I am signed up as "email@person.com/password"}
+  And %{I am on the sign in page}
+  Then %{I follow "Forgot Password?"}
+  When %{I fill in "user_email" with "email@person.com"}
+  And %{press "Reset my password"}
+  Then %{I should see "You will receive an email with instructions about how to reset your password in a few minutes."}
 end

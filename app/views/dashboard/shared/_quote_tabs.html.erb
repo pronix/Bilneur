@@ -20,8 +20,12 @@
         <%= link_to t("images"), dashboard_quote_quote_images_path(@quote) %>
       </li>
 
-      <li<%== ' class="active"' if current == "Selling and Shipping" %>>
+      <li<%== ' class="active"' if current == "Selling Options" %>>
         <%= link_to t("selling_shipping"), dashboard_quote_selling_options_path(@quote) %>
+      </li>
+
+      <li<%== ' class="active"' if current == "Return Policy" %>>
+        <%= link_to t("return_policy"), dashboard_quote_return_policies_path(@quote) %>
       </li>
 
 

@@ -40,11 +40,13 @@
       <%= f.field_container :condition do %>
         <%= f.label :condition, t("condition")%>
         <%= select_tag("variant[condition]",
-            options_for_select(Variant::CONDITION.collect {|ov| [ t("condition_#{ov}"), ov ] })) %>
+          options_for_select(Variant::CONDITION.collect {|ov| [ t("condition_#{ov}"), ov ] }, @quote.condition)) %>
         <span class="required">*</span>
         <%= f.error_message_on :condition %>
       <% end %>
-
+    ( <%= f.label :another_condition, t("other_condition") %>
+    <%= f.text_field :another_condition, :class => 'title'  %> )
+    <%= f.error_message_on :another_condition %>
 
 
   </div>

@@ -1,10 +1,12 @@
+
 <div class="bCrmp">
-  <span>Continue Browsing</span>
-    <ul>
-      <li>Filters:</li>
-        <li><%= link_to "All Products", "#" %></li>
-        <li><%= link_to "Electronics", "#" %></li>
-        <li><%= link_to "Smart Phones", "#" %></li>
-        <li><%= link_to "Apple iPhone", "#" %></li>
-    </ul>
+  <span><%= link_to "Continue Browsing", products_path %></span>
+  <%= filter_breadcrumbs(@product.taxons.last, separator="&nbsp;&raquo;&nbsp;") %>
+    <!-- <ul> -->
+    <!--   <li>Filters:</li> -->
+    <!--     <li><%= link_to "All Products", "#" %></li> -->
+    <!--     <li><%= link_to "Electronics", "#" %></li> -->
+    <!--     <li><%= link_to "Smart Phones", "#" %></li> -->
+    <!--     <li><%= link_to "Apple iPhone", "#" %></li> -->
+    <!-- </ul> -->
 </div>

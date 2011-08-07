@@ -1,0 +1,21 @@
+<%= render :partial => 'dashboard/shared/quote_tabs', :locals => {:current => "Return Policy"} %>
+
+<h1><%= t("return_policy") %></h1>
+
+<table>
+  <tr>
+    <td><%= t("status") %>:</td>
+    <td>
+      <%= @quote.return_policy? ? "Accepted" : "Not Accepted" %>
+    </td>
+  </tr>
+  <tr>
+    <td><%= t("conditions") %>:</td>
+    <td>
+      <%= raw_without_js(@quote.return_policy_description) %>
+    </td>
+  </tr>
+
+</table>
+
+<p><%= link_to t('edit'), edit_dashboard_quote_return_policies_path(@quote) %></p>

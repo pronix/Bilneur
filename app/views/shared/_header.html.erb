@@ -12,15 +12,15 @@
             <% else %>
             <i><%= link_to "Sign Up", new_user_registration_path %></i>
             &nbsp;
-            <%= link_to t('log_in'), login_path %>
+            <%= link_to t('log_in'), new_user_session_path %>
             <% end %>
 
             <%= link_to_cart(image_tag("icons/cart.png")) %>
           </div>
             <ul class="tpMnu">
-              <li><a href="#">How It Work</a></li>
-              <li><a href="#">What We Do</a></li>
-              <li class="last"><a href="#">Start Selling</a></li>
+              <li><a href="/how_it_work">How It Work</a></li>
+              <li><a href="/what_we_do">What We Do</a></li>
+              <li class="last"><a href="<%= start_selling_link %>">Start Selling</a></li>
             </ul>
         </div>
 
@@ -33,9 +33,17 @@
                     </li>
 
                     <li><a href="#">Groups</a></li>
-                    <li><a href="#">Top Products</a></li>
-                    <li><a href="#">Top Sellers</a></li>
-                    <li><a href="#">Top Deals</a></li>
+                    <li>
+                      <%= link_to "Top Products", top_path(:products) %>
+                    </li>
+                    <li>
+                        <%= link_to "Top Sellers", top_path(:sellers) %>
+                    </li>
+
+                    <li>
+                      <%= link_to "Top Deals", top_path(:deals) %>
+                    </li>
+
                     <li class="last"><a href="#">Blog</a></li>
                 </ul>
                 <div class="rgt"></div>

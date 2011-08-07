@@ -2,3 +2,39 @@
 
 <h1><%= t("my_account") %></h1>
 
+<%= form_for(current_user, :url => dashboard_account_path, :html => { :method => :put, :multipart => true }) do |f| %>
+
+<div class="yui-gc">
+  <div class="yui-u first">
+
+    <%= f.field_container :firstname do %>
+    <%= f.label :firstname, t("first_name") %><br />
+    <%= f.text_field :firstname, :class => 'fullwidth title'  %>
+    <%= f.error_message_on :firstname %>
+    <% end %>
+
+    <%= f.field_container :lastname do %>
+    <%= f.label :lastname, t("last_name") %><br />
+    <%= f.text_field :lastname, :class => 'fullwidth title'  %>
+    <%= f.error_message_on :lastname %>
+    <% end %>
+
+    <%= f.field_container :photo do %>
+    <%= f.label :photo, t("photo") %><br />
+    <%= image_tag current_user.photo.url %>
+    <%= f.file_field :photo  %>
+    <%= f.error_message_on :photo %>
+    <% end %>
+
+  </div>
+
+</div>
+
+
+<p class="form-buttons">
+  <button type="submit"><span><%= t("update") %></span></button>
+  <%= t("or") %> <%= link_to t("cancel"), dashboard_account_path %>
+</p>
+<% end %>
+
+

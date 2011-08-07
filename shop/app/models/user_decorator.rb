@@ -1,7 +1,16 @@
 User.class_eval do
 
   attr_accessor   :registration_as_seller
-  attr_accessible :registration_as_seller
+  attr_accessible :registration_as_seller, :firstname, :lastname, :photo
+
+
+  has_attached_file :photo,
+  :styles => { :medium => ["300x300", :png], :thumb => ["150x150>", :png], :mini => ["25x25#", :png]  },
+  :default_style => :thumb,
+  :default_url => "/images/missing/photo/missing_:style.png",
+  :url => "/assets/photo/:id/:style/:basename.:extension",
+  :path => ":rails_root/public/assets/photo/:id/:style/:basename.:extension"
+
 
 
   # associations
@@ -28,6 +37,14 @@ User.class_eval do
     roles << Role.find_or_create_by_name("seller") if @registration_as_seller.to_i == 1
   end
 
+  def set_seller_role!
+    roles << Role.find_or_create_by_name("seller")
+  end
+
+  def has_role?(role)
+    # If user has one or more this role, return true
+    true if roles.map { |x| x.name }.include?(role)
+  end
 
   # instance methods
   #

@@ -1,4 +1,7 @@
 ProductsController.class_eval do
+
+  # Show the product page
+  #
   def show
     @product = Product.find_by_permalink!(params[:id])
     raise ActiveRecord::RecordNotFound unless @product
@@ -19,5 +22,15 @@ ProductsController.class_eval do
     respond_with(@product)
   end
 
+  # Show a sellers quote
+  #  Parameters: {"product_id"=>"death-of-a-hero", "condition"=>"new"}
+  #
+  def quotes
 
+  end
+
+  #  Parameters: {"product_id"=>"death-of-a-hero", "id"=>"8732"}
+  #
+  def quote
+  end
 end

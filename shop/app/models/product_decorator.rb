@@ -12,6 +12,14 @@ Product.class_eval do
                            AND variants.count_on_hand > 0 "],
           :order => "variants.price ASC"
 
+  has_one :worst_varinat,
+          :class_name => 'Variant',
+          :conditions => [
+                          "variants.is_master = #{connection.quoted_false}
+                           AND variants.deleted_at IS NULL
+                           AND variants.count_on_hand > 0 "],
+          :order => "variants.price DESC"
+
 
   # scopes
   #
@@ -21,6 +29,9 @@ Product.class_eval do
   #                          AND variants.product_id = products.id
   #                          AND variants.deleted_at is null) ),0) > 0")
 
+  scope :latest, lambda{ |*args|
+    active.on_hand.includes(:variants).limit(args.first || 20).order("products.created_at DESC")
+  }
 
 
 
@@ -39,6 +50,11 @@ Product.class_eval do
 
   # instance methods
   #
+
+  def best_price
+    best_variant.try(:price)
+  end
+
   def set_owner(user_owner = User.current)
     self.owner ||= user_owner
   end
@@ -52,7 +68,6 @@ Product.class_eval do
     errors[:owner].uniq! if errors.has_key?(:owner)
     errors[:ean].uniq! if errors.has_key?(:ean)
   end
-
 
   # class methods
   #

@@ -1,0 +1,78 @@
+<% stylesheet "slider/SpryTabbedPanels2", "slider/SpryTabbedPanels3" %>
+<% javascript "slider/SpryTabbedPanels", "sign_in_up" %>
+
+<div class="loginTabs" signup="<%= signup %>">
+  <div class="smlTabs">
+    <div id="TabbedPanels2" class="TabbedPanels">
+      <ul class="TabbedPanelsTabGroup">
+        <li class="TabbedPanelsTab tab1" tabindex="0"><span>Login</span></li>
+        <li class="TabbedPanelsTab tab3" tabindex="0"><span>Sign Up</span></li>
+      </ul>
+      <div class="TabbedPanelsContentGroup">
+        <div class="TabbedPanelsContent">
+          <div class="lgnTop"></div>
+          <div class="lgnCntr tp">
+            <%= form_for(:user, :url => user_session_path) do |f| %>
+              <span class="lgn">
+                <%= f.text_field('email', :class => 'lgnTxt', :value => "Your Email",
+                  :onfocus=>"if(this.value=='Your Email') this.value=''",
+                  :onblur=>"if(this.value=='') this.value='Your Email'") %>
+              </span>
+              <span class="pwd">
+                  <%= f.password_field 'password', :class => 'lgnPwd', :value => "password",
+                    :onfocus=>"if(this.value=='password') this.value=''",
+                    :onblur=>"if(this.value=='') this.value='password'" %>
+              </span>
+              <%= submit_tag "", :class => 'lgnSbmt', :name=>"" %>
+              <a class="ysNo" href="#"><%= image_tag "forms/yes_no.png" %><br /><span>Remember me !</span></a>
+              <%= link_to t("forgot_password"), new_user_password_path, :class => "lostpwd" %>
+            <% end %>
+          </div>
+          <div class="lgnBtm"></div>
+          <%= render 'shared/fbook_connect', :signup => signup %>
+        </div>
+
+          <div class="TabbedPanelsContent">
+          <div class="lgnTop"></div>
+          <div class="lgnCntr tp">
+          <%= form_for(:user, :url => registration_path(@user)) do |f| %>
+            <span class="usr">
+              <%= f.text_field :firstname, :class => 'lgnTxt', :value=>"First Name",
+                :onfocus=>"if(this.value=='First Name') this.value=''",
+                :onblur=>"if(this.value=='') this.value='First Name'"  %>
+            </span>
+            <span class="usr">
+              <%= f.text_field :lastname, :class => 'lgnTxt', :value=>"Last Name",
+                :onfocus=>"if(this.value=='Last Name') this.value=''",
+                :onblur=>"if(this.value=='') this.value='Last Name'"  %>
+            </span>
+            <span class="lgn">
+              <%= f.text_field :email, :class => 'lgnTxt', :value=>"Your Email",
+                :onfocus=>"if(this.value=='Your Email') this.value=''",
+                :onblur=>"if(this.value=='') this.value='Your Email'" %>
+            </span>
+            <span class="pwd">
+              <%= f.password_field :password, :class => 'lgnPwd', :value=>"password",
+                :onfocus=>"if(this.value=='password') this.value=''",
+                :onblur=>"if(this.value=='') this.value='password'"  %>
+            </span>
+            <span class="usr">
+              <%= f.password_field :password_confirmation, :class => 'lgnPwd', :value=>"password",
+                :onfocus=>"if(this.value=='password') this.value=''",
+                :onblur=>"if(this.value=='') this.value='password'"  %>
+            </span>
+            <span>
+            <%= f.check_box :registration_as_seller %>
+            <%= f.label :registration_as_seller, t('as_seller') %>
+            </span>
+            <%= submit_tag "", :class => 'sgnUp', :name => "" %>
+            <p>By clicking on "Sign up"  you confirm that you accept the Terms of Service. </p>
+          <% end %>
+          </div>
+          <div class="lgnBtm"></div>
+          <%= render 'shared/fbook_connect', :signup => signup %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

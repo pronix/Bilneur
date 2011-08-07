@@ -8,5 +8,13 @@
       e.preventDefault();
     });
 
+    // for search select category dropdown list
+    try {
+    $("#search_select_category").msDropDown({mainCSS:'dd2'});
+    $("#ver").html($.msDropDown.version);
+    } catch(e) {
+      alert("Error: "+e.message);
+    }
+
   });
 })(jQuery);

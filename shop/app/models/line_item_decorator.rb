@@ -6,10 +6,9 @@ LineItem.class_eval do
     :message => I18n.t("validation.must_be_int")
   }
 
-  validate :quantity_product
+  validate :quantity_product, :if => lambda{ |t| t.variant.present? }
 
   def quantity_product
-
     if quantity.to_i <= 0
       errors[": \"#{variant.name}\""] ||= []
       errors[": \"#{variant.name}\""] << " quantity must be greater than 0"

@@ -43,7 +43,7 @@ OrdersController.class_eval do
         flash[:error] << [ "\"#{variant.name}\": in stock only #{variant.count_on_hand} " ]
       end
       quantity = quantity.to_i
-      @order.add_variant(variant, quantity) if quantity > 0
+      @order.add_variant(variant, quantity) if quantity > 0 && variant
     end if params[:variants]
 
     if flash[:error].present?

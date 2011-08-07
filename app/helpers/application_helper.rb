@@ -1,4 +1,11 @@
 module ApplicationHelper
+
+  # html without js
+  #
+  def raw_without_js(text = nil)
+    raw(text.to_s.gsub(/<script>|<\/script>/, 'script').gsub('javascript', '_javascript_'))
+  end
+
   def stylesheet(*args)
     content_for(:head) { stylesheet_link_tag(*args) }
   end
@@ -8,14 +15,45 @@ module ApplicationHelper
   end
 
   def content_class
-    c_class = ""
-    if params[:controller] == "home" 
-      c_class = "cHome" 
-    elsif params[:controller] == "products" && params[:action] == "show"
-      c_class = "prdctDPg" 
-    elsif params[:controller] == "products" && params[:action] == "index"
-      c_class = "prdctDPg slrPrdctPg prdctPg" 
+    case params[:controller].to_s
+    when "home"
+      "cHome"
+    when "products"
+      "prdctDPg"
+    else
+      ""
     end
-    c_class
   end
+
+
+  def t122_image(product, *options)
+    options = options.first || {}
+    if product.images.empty?
+      image_tag "noimage/t122.jpg", options
+    else
+      image = product.images.first
+      options.reverse_merge! :alt => image.alt.blank? ? product.name : image.alt
+      image_tag image.attachment.url(:t122), options
+    end
+  end
+
+  def filter_breadcrumbs(taxon, separator="&nbsp;&raquo;&nbsp;")
+    return "" if current_page?("/")
+    separator = raw(separator)
+    # crumbs = [content_tag(:li, link_to(t(:home) , root_path) + separator)]
+    crumbs = [content_tag(:li, "Filters")]
+    if taxon
+      crumbs << content_tag(:li, link_to(t('all_products') , products_path) + separator)
+      crumbs << taxon.ancestors.collect { |ancestor| content_tag(:li, link_to(ancestor.name , seo_url(ancestor)) + separator) } unless taxon.ancestors.empty?
+      crumbs << content_tag(:li,
+                            content_tag(:li, link_to(taxon.name , seo_url(taxon))))
+    else
+      crumbs << content_tag(:li, content_tag(:b, t('all_products')))
+    end
+    content_tag(:ul, raw(crumbs.flatten.map{|li| li.mb_chars}.join))
+  end
+
+
+
 end
+

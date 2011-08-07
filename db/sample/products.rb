@@ -13,3 +13,5 @@ Asset.all.each do |asset|
     puts "--- Could not find image at: #{path}"
   end
 end
+# Create avg_rating and reviews_count
+Product.all.each { |product| product.recalculate_rating }

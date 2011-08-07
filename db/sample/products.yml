@@ -6,8 +6,6 @@ breakfast_tiffany:
   count_on_hand: 0
   ean: 5055055903603
   owner_id: 101
-  avg_rating:  3.4
-  reviews_count: 32
     
 godfather:
   name: "The Godfather - The Coppola Restoration (1972)"
@@ -17,8 +15,6 @@ godfather:
   count_on_hand: 0
   ean: 9780099528128
   owner_id: 102
-  avg_rating: 4.1
-  reviews_count: 22
 
 death_of_a_hero:
   name: "Death of a Hero [Paperback]"
@@ -28,8 +24,6 @@ death_of_a_hero:
   count_on_hand: 0
   ean: 978-0919614789
   owner_id: 103
-  avg_rating: 4.5
-  reviews_count: 12
 
 lenovo_thinkpad_t410s:
   name: Lenovo Thinkpad T410s mit Intel Core i5 560M 2.66GHz (Win 7/UMTS) - Notebook/Laptop
@@ -39,8 +33,6 @@ lenovo_thinkpad_t410s:
   count_on_hand: 0
   ean: 0885976811962
   owner_id: 104
-  avg_rating: 1.2
-  reviews_count: 43
 
 compaq_nc6000:
   name: compaq nc6000 P-M 1.6 GHz 512M/40G 14.1
@@ -50,8 +42,6 @@ compaq_nc6000:
   count_on_hand: 0
   ean: 000B0001YXWK0
   owner_id: 101
-  avg_rating: 5
-  reviews_count: 10
 
 sony_vgn_cs21s_t:
   name: VGN-CS21S/T - Notebook/Laptop
@@ -61,5 +51,3 @@ sony_vgn_cs21s_t:
   count_on_hand: 0
   ean: 000B0054QJ2BS
   owner_id: 102
-  avg_rating: 0.4
-  reviews_count: 50

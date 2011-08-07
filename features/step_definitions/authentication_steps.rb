@@ -15,7 +15,8 @@ Then /^I should be logged out$/ do
 end
 
 Given /^I am signed up as "(.+)\/(.+)"$/ do |email, password|
-  @user = Factory(:user, :email => email, :password => password, :password_confirmation => password)
+  @user = Factory(:user, :email => email, :password => password, :password_confirmation => password,
+                  :firstname => 'Test Firstname', :lastname => 'Test Lastname')
 end
 
 Given /^I am signed up as a seller with "(.+)\/(.+)"$/ do |email, password|
@@ -74,9 +75,9 @@ end
 
 Given /^I try to auth with "(.+)" and "(.+)"$/ do |email, password|
   And %{I am on the sign in page}
-  And %{I fill in "user_email" with "#{email}"}
-  And %{I fill in "user_password" with "#{password}"}
-  And %{I press button}
+  And %{I fill in "Email" with "#{email}"}
+  And %{I fill in "Password" with "#{password}"}
+  And %{I press "Log In"}
 end
 
 Given /^I already sing as "(.*)\/(.*)"$/ do |email, password|

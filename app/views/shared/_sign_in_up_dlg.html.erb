@@ -62,7 +62,7 @@
                 :onblur=>"if(this.value=='') this.value='password'"  %>
             </span>
             <span>
-            <%= f.check_box :registration_as_seller %>
+            <%= f.check_box :registration_as_seller, :checked => check_ass_seller_checkbox %>
             <%= f.label :registration_as_seller, t('as_seller') %>
             </span>
             <%= submit_tag "", :class => 'sgnUp', :name => "" %>

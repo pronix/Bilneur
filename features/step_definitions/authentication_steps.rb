@@ -68,11 +68,15 @@ When /^I follow the password reset link$/ do
   Then %{I should see "Change my password"}
 end
 
+And /^I press button$/ do
+  find(:xpath, "//input[@type='submit']").click
+end
+
 Given /^I try to auth with "(.+)" and "(.+)"$/ do |email, password|
   And %{I am on the sign in page}
-  And %{I fill in "Email" with "#{email}"}
-  And %{I fill in "Password" with "#{password}"}
-  And %{press "Log In"}
+  And %{I fill in "user_email" with "#{email}"}
+  And %{I fill in "user_password" with "#{password}"}
+  And %{I press button}
 end
 
 Given /^I already sing as "(.*)\/(.*)"$/ do |email, password|

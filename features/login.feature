@@ -12,10 +12,11 @@ Feature: Login
     And I should be on the <page>
 
     Examples:
-      | email            | password    | should_see                | page          |
-      | bad@person.com   | password    | Invalid email or password | sign in page  |
-      | email@person.com | badpassword | Invalid email or password | sign in page  |
-      | email@person.com | password    | Logged in successfully    | Products page |
+      | email            | password | should_see             | page          |
+      | email@person.com | password | Logged in successfully | Products page |
+      # | bad@person.com   | password | Invalid email or password | sign in page  |
+      # | email@person.com | badpassword | Invalid email or password | sign in page  |
+
 
    Scenario: What I see when I log in
      Given I already sing as "email@person.com/password"

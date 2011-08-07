@@ -4,14 +4,6 @@ Product.class_eval do
   #
   belongs_to :owner, :class_name => "User" # seller who added product
 
-  has_one :best_variant,
-          :class_name => 'Variant',
-          :conditions => [
-                          "variants.is_master = #{connection.quoted_false}
-                           AND variants.deleted_at IS NULL
-                           AND variants.count_on_hand > 0 "],
-          :order => "variants.price ASC"
-
   has_one :worst_varinat,
           :class_name => 'Variant',
           :conditions => [
@@ -50,9 +42,17 @@ Product.class_eval do
 
   # instance methods
   #
+  def best_variant(condition = nil)
+    if condition
+      variants.condition(condition).best_variant.first
+    else
+      variants.best_variant.first
+    end
 
-  def best_price
-    best_variant.try(:price)
+  end
+
+  def best_price(condition = nil)
+    variants.best_price(condition).try(:price)
   end
 
   def set_owner(user_owner = User.current)

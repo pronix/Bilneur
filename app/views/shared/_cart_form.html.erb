@@ -1,0 +1,23 @@
+<%= form_for :order, :url => populate_orders_url do |f| %>
+
+
+  <% if cart_form.has_stock? || Spree::Config[:allow_backorders] %>
+   <p class="qtav">
+    <em>QTY</em>
+    <b>
+     <%= text_field_tag (cart_form.has_variants? ? :quantity : "variants[#{cart_form.master.id}]"),
+      1, :class => "pQty", :onfocus => "if(this.value=='1') this.value=''", :onblur => "if(this.value=='') this.value='1'" %>
+    &nbsp;
+    </b>
+    <button class="skBlu button_to_link" name="to_add" value="cart"> <%= t('add_to_cart') %>  </button>
+    <button class="bLu button_to_link" name="to_add" value="virtual_store"> <%= t('add_to_virtual_store') %>  </button>
+ </p>
+  <% else %>
+    <%= content_tag('strong', t('out_of_stock')) %>
+  <% end %>
+
+<% end %>
+
+<% content_for :head do %>
+  <%= javascript_include_tag 'product' %>
+<% end %>

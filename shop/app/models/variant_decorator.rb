@@ -20,6 +20,8 @@ Variant.class_eval do
        args.first ? condition(*args).by_price.limit(1) : by_price.limit(1)
     }
 
+  scope :best_variant, order("variants.price ASC").limit(1)
+
   # validates
   #
   validates :condition, :inclusion => { :in => CONDITION },   :unless => lambda{|t| t.is_master? }
@@ -77,6 +79,16 @@ Variant.class_eval do
     product.send(:recalculate_count_on_hand)
     product.save
   end
+
+  def has_variants? # :nodoc
+    false
+  end
+  def master
+    self
+  end
+  alias :has_stock? :in_stock?
+
+
 
   # class methods
   #

@@ -11,6 +11,7 @@
 <% if products.any? %>
   <% products.each do |product| %>
   <% next unless product.best_variant  %>
+  <% best_deal = product.best_variant %>
     <% if Spree::Config[:show_zero_stock_products] || product.has_stock? %>
     <div class="smPrdcts">
       <div class="smPd">
@@ -18,9 +19,10 @@
             <div class="pdDtl">
               <h4><%= product.name %></h4>
                 <p><%= product.description %></p>
+
                 <b class="revw">
                   <em>5</em>
-                    <span>reviews</span>
+                  <span>reviews</span>
                 </b>
                 <b>
                   <label><img src="/images/icons/yel_str_big.png" alt="" /></label>
@@ -29,26 +31,24 @@
                   <label><img src="/images/icons/yel_str_big.png" alt="" /></label>
                   <label><img src="/images/icons/grey_str_big.png" alt="" /></label>
                 </b>
+
             </div>
             <div class="rTe">
-              <b class="rT"><%= number_to_currency(product.price) %></b>
+              <b class="rT">
+                <%= number_to_currency(best_deal.price) %>
+              </b>
                 <em class="oRt">retail <%= number_to_currency(product.price) %></em>
-                <span class="avB">Available with 2 sellers</span>
+                <span class="avB">Available with <%= product.variants.count %> sellers</span>
                 <ul>
                   <li><%= link_to image_tag("icons/ch_twtr.png"), "#" %></li>
                   <li><%= link_to image_tag("icons/ch_fb.png"), "#" %></li>
                   <li><%= link_to image_tag("icons/ch_dl.png"), "#" %></li>
                 </ul>
                 <p>
-                  <em class="qt">QTY Available</em><i class="avl">65</i>
+                  <em class="qt">QTY Available</em><i class="avl"><%= best_deal.count_on_hand %></i>
                 </p>
                 <div class="cntcts">
-                    <p class="qtav">
-                        <em>QTY</em>
-                        <b><input class="pQty" type="text" name="" value="01" onfocus="if(this.value=='01') this.value=''" onblur="if(this.value=='') this.value='01'" /></b>
-                        <a class="skBlu" href="#">Add To Cart</a>
-                        <a class="bLu" href="#">Add To V. Store</a>
-                    </p>
+                  <%= render :partial => 'shared/cart_form', :object => best_deal %>
                 </div>
             </div>
         </div>
@@ -60,7 +60,8 @@
 <% if paginated_products.respond_to?(:total_pages)
       params.delete(:search)
       params.delete(:taxon)
-%><%= will_paginate(paginated_products,
+%>
+<%= will_paginate(paginated_products,
                     :previous_label => "&#171; #{t('previous')}",
                     :next_label => "#{t('next')} &#187;") %>
 <% end %>

@@ -21,14 +21,14 @@
       <div id="CollapsiblePanel2" class="CollapsiblePanel">
         <div class="CollapsiblePanelTab" tabindex="0"><span>Brand</span></div>
         <div class="CollapsiblePanelContent">
-         <% for brand in ["Electronics", "Home & Garden", "Aprarel", "Office Supplies"] do %>
-         <div>
-             <div class="checkbox" id="brand">
-                <input type="checkbox" id="brand" name="brands[]" value="<%= brand %>">
-             </div>
-             <label class="techi" for="brand"><%= brand %></label>
-         </div>
-         <% end %>
+        <% for brand in ["Electronics", "Home & Garden", "Aprarel", "Office Supplies"] do %>
+        <div>
+            <div class="checkbox" id="brand">
+               <input type="checkbox" id="brand" name="brands[]" value="<%= brand %>">
+            </div>
+            <label class="techi" for="brand"><%= brand %></label>
+        </div>
+        <% end %>
         </div>
       </div>
       <div id="CollapsiblePanel3" class="CollapsiblePanel">
@@ -47,186 +47,190 @@
       <div id="CollapsiblePanel4" class="CollapsiblePanel">
         <div class="CollapsiblePanelTab" tabindex="0"><span>Condition</span></div>
         <div class="CollapsiblePanelContent">
-         <% for brand in ["Electronics", "Home & Garden", "Aprarel", "Office Supplies"] do %>
-         <div>
-             <div class="checkbox" id="brand">
-                <input type="checkbox" id="brand" name="brands[]" value="<%= brand %>">
-             </div>
-             <label class="techi" for="brand"><%= brand %></label>
-         </div>
-         <% end %>
+        <% for brand in ["New", "Used", "Refurbished"] do %>
+        <div>
+            <div class="checkbox" id="brand">
+               <input type="checkbox" id="brand" name="brands[]" value="<%= brand %>">
+            </div>
+            <label class="techi" for="brand"><%= brand %></label>
+        </div>
+        <% end %>
         </div>
       </div>
-          <div id="CollapsiblePanel5" class="CollapsiblePanel">
-            <div class="CollapsiblePanelTab" tabindex="0"><span>Price</span></div>
-            <div class="CollapsiblePanelContent">
-                    <div class="checkbox" id="Astronomy">
-                      <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                    </div>
-                  <label class="techi" for="Astronomy">Price low to high</label>
+
+      <div id="CollapsiblePanel5" class="CollapsiblePanel">
+        <div class="CollapsiblePanelTab" tabindex="0"><span>Price</span></div>
+        <div class="CollapsiblePanelContent">
+            <div>
+                <div class="checkbox" id="Astronomy">
+                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
                 </div>
-  <div>
-                    <div class="checkbox" id="Astronomy">
-                      <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                    </div>
-                  <label class="techi" for="Astronomy">Price high to low</label>
-                </div>
-  <div>
-                    <div class="checkbox" id="Astronomy">
-                      <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                    </div>
-                  <label class="techi" for="Astronomy">Price Range</label>
-                </div>
-                <img src="/images/img/line_measure.png" alt="" />
+              <label class="techi" for="Astronomy">Price low to high</label>
             </div>
-          </div>
-          <div id="CollapsiblePanel6" class="CollapsiblePanel">
-            <div class="CollapsiblePanelTab" tabindex="0"><span>Sort by Quantity</span></div>
-            <div class="CollapsiblePanelContent">
-  <div class="minMax">
-                  <b>Min</b>
-                    <input class="txt" type="text" name="" value="" />
-                </div>                          
-  <div class="minMax">
-                  <b>Max</b>
-                    <input class="txt" type="text" name="" value="" />
-                </div>                          
+            <div>
+                <div class="checkbox" id="Astronomy">
+                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
+                </div>
+              <label class="techi" for="Astronomy">Price high to low</label>
             </div>
-          </div>
-          <div id="CollapsiblePanel7" class="CollapsiblePanel">
-            <div class="CollapsiblePanelTab" tabindex="0"><span>Group Deals</span></div>
-            <div class="CollapsiblePanelContent">
-  <div>
-                    <div class="checkbox" id="Astronomy">
-                      <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                    </div>
-                  <label class="techi" for="Astronomy">Electronics</label>
+            <div>
+                <div class="checkbox" id="Astronomy">
+                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
                 </div>
-  <div>
-                    <div class="checkbox" id="Astronomy">
-                      <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                    </div>
-                  <label class="techi" for="Astronomy">Home &amp; Garden</label>
-                </div>
-  <div>
-                    <div class="checkbox" id="Astronomy">
-                      <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                    </div>
-                  <label class="techi" for="Astronomy">Apparel</label>
-                </div>
-  <div>
-                    <div class="checkbox" id="Astronomy">
-                      <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                    </div>
-                  <label class="techi" for="Astronomy">Office Supplies</label>
-                </div>
+              <label class="techi" for="Astronomy">Price Range</label>
             </div>
+            <img src="/images/img/line_measure.png" alt="" />
+        </div>
+      </div>
+
+      <div id="CollapsiblePanel6" class="CollapsiblePanel">
+        <div class="CollapsiblePanelTab" tabindex="0"><span>Sort by Quantity</span></div>
+        <div class="CollapsiblePanelContent">
+          <div class="minMax">
+              <b>Min</b>
+                <input class="txt" type="text" name="" value="" />
           </div>
-          <div id="CollapsiblePanel8" class="CollapsiblePanel">
-            <div class="CollapsiblePanelTab" tabindex="0"><span>Discount</span></div>
-            <div class="CollapsiblePanelContent">
-  <img src="/images/img/line_measure.png" alt="" />                          
+          <div class="minMax">
+              <b>Max</b>
+                <input class="txt" type="text" name="" value="" />
+          </div>
+        </div>
+      </div>
+
+      <div id="CollapsiblePanel7" class="CollapsiblePanel">
+        <div class="CollapsiblePanelTab" tabindex="0"><span>Group Deals</span></div>
+        <div class="CollapsiblePanelContent">
+        <div>
+                <div class="checkbox" id="Astronomy">
+                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
+                </div>
+              <label class="techi" for="Astronomy">Electronics</label>
+        </div>
+        <div>
+                <div class="checkbox" id="Astronomy">
+                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
+                </div>
+              <label class="techi" for="Astronomy">Home &amp; Garden</label>
+        </div>
+        <div>
+                <div class="checkbox" id="Astronomy">
+                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
+                </div>
+              <label class="techi" for="Astronomy">Apparel</label>
+        </div>
+        <div>
+                <div class="checkbox" id="Astronomy">
+                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
+                </div>
+              <label class="techi" for="Astronomy">Office Supplies</label>
             </div>
-          </div>
-          <div id="CollapsiblePanel9" class="CollapsiblePanel">
-            <div class="CollapsiblePanelTab" tabindex="0"><span>Top Sellers</span></div>
-            <div class="CollapsiblePanelContent">
-  <div>
-                    <div class="checkbox" id="Astronomy">
-                      <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                    </div>
-                  <label class="techi" for="Astronomy">Electronics</label>
+        </div>
+      </div>
+      <div id="CollapsiblePanel8" class="CollapsiblePanel">
+        <div class="CollapsiblePanelTab" tabindex="0"><span>Discount</span></div>
+        <div class="CollapsiblePanelContent">
+          <img src="/images/img/line_measure.png" alt="" />                          
+        </div>
+      </div>
+      <div id="CollapsiblePanel9" class="CollapsiblePanel">
+        <div class="CollapsiblePanelTab" tabindex="0"><span>Top Sellers</span></div>
+        <div class="CollapsiblePanelContent">
+        <div>
+                <div class="checkbox" id="Astronomy">
+                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
                 </div>
-  <div>
-                    <div class="checkbox" id="Astronomy">
-                      <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                    </div>
-                  <label class="techi" for="Astronomy">Home &amp; Garden</label>
+              <label class="techi" for="Astronomy">Electronics</label>
+        </div>
+        <div>
+                <div class="checkbox" id="Astronomy">
+                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
                 </div>
-  <div>
-                    <div class="checkbox" id="Astronomy">
-                      <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                    </div>
-                  <label class="techi" for="Astronomy">Apparel</label>
+              <label class="techi" for="Astronomy">Home &amp; Garden</label>
+        </div>
+        <div>
+                <div class="checkbox" id="Astronomy">
+                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
                 </div>
-  <div>
-                    <div class="checkbox" id="Astronomy">
-                      <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                    </div>
-                  <label class="techi" for="Astronomy">Office Supplies</label>
+              <label class="techi" for="Astronomy">Apparel</label>
+        </div>
+        <div>
+                <div class="checkbox" id="Astronomy">
+                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
                 </div>
+              <label class="techi" for="Astronomy">Office Supplies</label>
             </div>
-          </div>
-          <div id="CollapsiblePanel10" class="CollapsiblePanel">
-            <div class="CollapsiblePanelTab" tabindex="0"><span>Country</span></div>
-            <div class="CollapsiblePanelContent">
-  <div>
-                    <div class="checkbox" id="Astronomy">
-                      <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                    </div>
-                  <label class="techi" for="Astronomy">Electronics</label>
+        </div>
+      </div>
+      <div id="CollapsiblePanel10" class="CollapsiblePanel">
+        <div class="CollapsiblePanelTab" tabindex="0"><span>Country</span></div>
+        <div class="CollapsiblePanelContent">
+        <div>
+                <div class="checkbox" id="Astronomy">
+                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
                 </div>
-  <div>
-                    <div class="checkbox" id="Astronomy">
-                      <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                    </div>
-                  <label class="techi" for="Astronomy">Home &amp; Garden</label>
+              <label class="techi" for="Astronomy">Electronics</label>
+        </div>
+        <div>
+                <div class="checkbox" id="Astronomy">
+                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
                 </div>
-  <div>
-                    <div class="checkbox" id="Astronomy">
-                      <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                    </div>
-                  <label class="techi" for="Astronomy">Apparel</label>
+              <label class="techi" for="Astronomy">Home &amp; Garden</label>
+        </div>
+        <div>
+                <div class="checkbox" id="Astronomy">
+                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
                 </div>
-  <div>
-                    <div class="checkbox" id="Astronomy">
-                      <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                    </div>
-                  <label class="techi" for="Astronomy">Office Supplies</label>
+              <label class="techi" for="Astronomy">Apparel</label>
+        </div>
+        <div>
+                <div class="checkbox" id="Astronomy">
+                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
                 </div>
+              <label class="techi" for="Astronomy">Office Supplies</label>
             </div>
-          </div>
-          <div id="CollapsiblePanel11" class="CollapsiblePanel">
-            <div class="CollapsiblePanelTab" tabindex="0"><span>Storing Options</span></div>
-            <div class="CollapsiblePanelContent">
-  <div>
-                    <div class="checkbox" id="Astronomy">
-                      <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                    </div>
-                  <label class="techi" for="Astronomy">Electronics</label>
+        </div>
+      </div>
+      <div id="CollapsiblePanel11" class="CollapsiblePanel">
+        <div class="CollapsiblePanelTab" tabindex="0"><span>Storing Options</span></div>
+        <div class="CollapsiblePanelContent">
+        <div>
+                <div class="checkbox" id="Astronomy">
+                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
                 </div>
-  <div>
-                    <div class="checkbox" id="Astronomy">
-                      <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                    </div>
-                  <label class="techi" for="Astronomy">Home &amp; Garden</label>
+              <label class="techi" for="Astronomy">Electronics</label>
+        </div>
+        <div>
+                <div class="checkbox" id="Astronomy">
+                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
                 </div>
-  <div>
-                    <div class="checkbox" id="Astronomy">
-                      <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                    </div>
-                  <label class="techi" for="Astronomy">Apparel</label>
+              <label class="techi" for="Astronomy">Home &amp; Garden</label>
+        </div>
+        <div>
+                <div class="checkbox" id="Astronomy">
+                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
                 </div>
-  <div>
-                    <div class="checkbox" id="Astronomy">
-                      <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                    </div>
-                  <label class="techi" for="Astronomy">Office Supplies</label>
+              <label class="techi" for="Astronomy">Apparel</label>
+        </div>
+        <div>
+                <div class="checkbox" id="Astronomy">
+                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
                 </div>
-            </div>
-          </div>
-          <div id="CollapsiblePanel12" class="CollapsiblePanel">
-            <div class="CollapsiblePanelTab" tabindex="0"><span>Ratings</span></div>
-            <div class="CollapsiblePanelContent">
-                <p class="colapRtng">
-                  <i><img src="/images/icons/yel_str_big.png" alt="" /></i>
-                  <i><img src="/images/icons/yel_str_big.png" alt="" /></i>
-                  <i><img src="/images/icons/yel_str_big.png" alt="" /></i>
-                  <i><img src="/images/icons/grey_str_big.png" alt="" /></i>
-                  <i><img src="/images/icons/grey_str_big.png" alt="" /></i>
-                </p>
-            </div>
-          </div>
+              <label class="techi" for="Astronomy">Office Supplies</label>
+        </div>
+        </div>
+      </div>
+      <div id="CollapsiblePanel12" class="CollapsiblePanel">
+        <div class="CollapsiblePanelTab" tabindex="0"><span>Ratings</span></div>
+        <div class="CollapsiblePanelContent">
+            <p class="colapRtng">
+              <i><img src="/images/icons/yel_str_big.png" alt="" /></i>
+              <i><img src="/images/icons/yel_str_big.png" alt="" /></i>
+              <i><img src="/images/icons/yel_str_big.png" alt="" /></i>
+              <i><img src="/images/icons/grey_str_big.png" alt="" /></i>
+              <i><img src="/images/icons/grey_str_big.png" alt="" /></i>
+            </p>
+        </div>
+      </div>
    </div>
 </div>
 

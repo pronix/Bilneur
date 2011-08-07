@@ -120,12 +120,11 @@ ul li { list-style:none;}
 .cInt1 .menu {width:352px;}
 		.srchBar { background:#e3e3e3;border:1px solid #b9b9b9;border-left:none;border-bottom:none;height:40px;width:584px;}
 			.srchBar form {float:right;text-align:right;}
-			.srchBar select { margin:10px 10px 0 0;}
 			.searchTxt { float:left; width:252px; margin:8px 0 0 8px; *margin:7px 5px 0 6px;}
 				.searchTxt input[type=text] { float:left; width:139px; height:14px; padding:5px 0 5px 20px; background:url('/images/forms/txt_bag.png') left no-repeat; border:none;}
 				.searchTxt input[type=submit] { float:left; width:85px; height:24px; background:url('/images/forms/sbmt_bag.png') left no-repeat; border:none; color:#fff; font-size:9px; cursor:pointer;}
 
-		.srchBar, .searchTxt, .srchBar select {float:left;}
+		.srchBar, .searchTxt
 		
 		.tabContent { }
 			.blog {width:676px;}
@@ -392,9 +391,9 @@ ul li { list-style:none;}
 		.slctr b { float:left; font-size:10px; color:#00adef; line-height:25px;}
 		.paging .blogPg { margin-left:5px;}
 		.slctr .dd2 .ddTitle {background: url("/images/forms/min_bg.png") no-repeat!important;}
-		.slctr #websites2_msdd { width:51px!important; margin-left:3px;}
+		.slctr #per_page_select_msdd { width:51px!important; margin-left:3px;}
 		.slctr .dd2 .ddTitle span.ddTitleText { color:#00adef; font-weight:bold; line-height:19px!important;}
-		.slctr #websites2_msdd .ddChild { width:46px!important;}
+		.slctr #per_page_select_msdd .ddChild { width:46px!important;}
 .col2SlPrd #CollapsiblePanel1 .CollapsiblePanelContent,.col2SlPrd #CollapsiblePanel2 .CollapsiblePanelContent,.col2SlPrd #CollapsiblePanel3 .CollapsiblePanelContent,.col2SlPrd #CollapsiblePanel4 .CollapsiblePanelContent,.col2SlPrd #CollapsiblePanel5 .CollapsiblePanelContent,.col2SlPrd #CollapsiblePanel6 .CollapsiblePanelContent,.col2SlPrd #CollapsiblePanel7 .CollapsiblePanelContent,.col2SlPrd #CollapsiblePanel8 .CollapsiblePanelContent,.col2SlPrd #CollapsiblePanel9 .CollapsiblePanelContent,.col2SlPrd #CollapsiblePanel10 .CollapsiblePanelContent,.col2SlPrd #CollapsiblePanel11 .CollapsiblePanelContent,#CollapsiblePanel12 .CollapsiblePanelContent { padding-bottom:10px;}
 
 .slrVwr { margin-top:8px;}

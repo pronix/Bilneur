@@ -1,33 +1,6 @@
 $(document).ready(function(){
   try {
-    $("#websites2").msDropDown({mainCSS:'dd2'});
-    //alert($.msDropDown.version);
-    //$.msDropDown.create("body select");
-    $("#ver").html($.msDropDown.version);
-    } catch(e) {
-      alert("Error: "+e.message);
-    }
-
-  try {
-    $("#websites1").msDropDown({mainCSS:'dd2'});
-    //alert($.msDropDown.version);
-    //$.msDropDown.create("body select");
-    $("#ver").html($.msDropDown.version);
-    } catch(e) {
-      alert("Error: "+e.message);
-    }
-
-  try {
-    $("#websites3").msDropDown({mainCSS:'dd2'});
-    //alert($.msDropDown.version);
-    //$.msDropDown.create("body select");
-    $("#ver").html($.msDropDown.version);
-    } catch(e) {
-      alert("Error: "+e.message);
-    }
-
-  try {
-    $("#websites20").msDropDown({mainCSS:'dd2'});
+    $("#per_page_select").msDropDown({mainCSS:'dd2'});
     //alert($.msDropDown.version);
     //$.msDropDown.create("body select");
     $("#ver").html($.msDropDown.version);

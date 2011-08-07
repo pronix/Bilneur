@@ -30,16 +30,26 @@
             </ul>
           </div>
           <div class="fbPnl">
-            <a class="cros" href="#"><img src="/images/icons/fb_cros.png" alt="" /></a>
-            <p><a href=""><img src="/images/forms/fb_btn.png" alt="" /></a>See what your freinds are buying, selling or trading.<br /> Read their reviews, get advice, or simply buy &amp; sell with them.</p>
+            <a class="cros" href="#">
+              <img src="/images/icons/fb_cros.png" alt="" />
+            </a>
+            <p>
+              <a href="">
+                <img src="/images/forms/fb_btn.png" alt="" />
+              </a>See what your freinds are buying, selling or trading.<br />
+              Read their reviews, get advice, or simply buy &amp; sell with them.
+            </p>
           </div>
           <div class="smPrdcts">
             <%= render "shared/products", :products => @products, :taxon => @taxon %>
           </div>
+
           <div class="paging">
+
             <div class="blogPg">
               <p><b>1 - 15</b> of <b>3,456</b> blog posts</p>
             </div>
+
             <div class="slctr slct">
               <b>items per page</b>
               <form action="">
@@ -51,6 +61,7 @@
                 </select>
               </form>
             </div>
+
             <div class="pagination">
               <ul>
                 <li><a href="#" class="prevnext disablelink prev">previous</a></li>
@@ -65,6 +76,7 @@
                 <li><a href="#" class="prevnext nxt">next</a></li>
               </ul>
             </div>
+
           </div>
         </div>
         <div class="TabbedPanelsContent">

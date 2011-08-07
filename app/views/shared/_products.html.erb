@@ -18,20 +18,8 @@
           <i class="imgP"><%= link_to small_image(product), product %></i>
             <div class="pdDtl">
               <h4><%= product.name %></h4>
-                <p><%= product.description %></p>
-
-                <b class="revw">
-                  <em>5</em>
-                  <span>reviews</span>
-                </b>
-                <b>
-                  <label><img src="/images/icons/yel_str_big.png" alt="" /></label>
-                  <label><img src="/images/icons/yel_str_big.png" alt="" /></label>
-                  <label><img src="/images/icons/yel_str_big.png" alt="" /></label>
-                  <label><img src="/images/icons/yel_str_big.png" alt="" /></label>
-                  <label><img src="/images/icons/grey_str_big.png" alt="" /></label>
-                </b>
-
+              <p><%= product.description %></p>
+              <%= render :partial => "shared/rating_product", :object => product %>
             </div>
             <div class="rTe">
               <b class="rT">

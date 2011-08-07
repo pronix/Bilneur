@@ -19,6 +19,13 @@
     <%= f.error_message_on :lastname %>
     <% end %>
 
+    <%= f.field_container :photo do %>
+    <%= f.label :photo, t("photo") %><br />
+    <%= image_tag current_user.photo.url %>
+    <%= f.file_field :photo  %>
+    <%= f.error_message_on :photo %>
+    <% end %>
+
   </div>
 
 </div>

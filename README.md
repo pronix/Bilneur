@@ -12,6 +12,11 @@ Load sample data
 
     rake db:sample
 
+Social Connect
+--------------
+
+> Setting social account: /admin/authentication_methods
+
 Testing
 -------
 

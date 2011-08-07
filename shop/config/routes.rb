@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   # Add your extension routes here
 
-  match "/account" => "dashboard/users#show"
+  match "/top/:kind" => "home#top", :as => :top, :defaults => { :kind => 'products' },
+                     :constraints => { :kind => /products|sellers|deals/ }
 
+
+  match "/account" => "dashboard/users#show"
+  match "/products/deals/:id(/:condition)" => "products#quotes", :as => :product_quotes
+  match "/products/deals/:id/:quote_id" => "products#quote", :as => :product_quote
   # User dashboard
   #
   namespace :dashboard do

@@ -1,27 +1,29 @@
 <% product_conditions = ["Brand New", "Used", "Refurbished"] %>
-<div class="smlTabs">                
+
+<div class="smlTabs">
   <div id="TabbedPanels2" class="TabbedPanels">
+
     <ul class="TabbedPanelsTabGroup">
-      <% for cdt in product_conditions do %>
-      <li class="TabbedPanelsTab tab1" tabindex="0"><span><%= cdt %></span></li>
+      <% Variant::CONDITION.each  do |cdt| %>
+      <li class="TabbedPanelsTab tab1" tabindex="0"><span><%= t("condition_#{cdt}") %></span></li>
       <% end %>
     </ul>
+
     <div class="TabbedPanelsContentGroup">
-      <% for cdt in product_conditions do %>
+      <% Variant::CONDITION.each do |cdt| %>
       <div class="TabbedPanelsContent">
           <div class="tabCnt1">
-            <a href="#">View All</a>
-              <b><%= number_to_currency(product.price) %></b>
-              <span>Available with 15 Sellers</span>
-              <h3><%= cdt %></h3>
+            <%= link_to "View All", product_quotes_path(product, cdt) %>
+            <b><%= number_to_currency(product.variants.best_price(cdt).first.try(:price)) %></b>
+            <span>Available with <%= product.variants.condition(cdt).count %> Sellers</span>
           </div>
           <div class="tabCnt2">
-            <a href="#">View All</a>
-              <span>21 Auctions Starting at</span>
-              <b>$2.99</b>
+            <%= link_to "View All", product_quotes_path(product, cdt, :price => :auction) %>
+            <span>21 Auctions Starting at</span>
+            <b>$2.99</b>
           </div>
           <div class="tabCnt3">
-            <a href="#">View All</a>
+            <%= link_to "View All", product_quotes_path(product, cdt, :price => :discount) %>
               <span>20 more buyers needed</span>
               <b>50% Group Discount</b>
           </div>

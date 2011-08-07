@@ -33,9 +33,17 @@
                     </li>
 
                     <li><a href="#">Groups</a></li>
-                    <li><a href="#">Top Products</a></li>
-                    <li><a href="#">Top Sellers</a></li>
-                    <li><a href="#">Top Deals</a></li>
+                    <li>
+                      <%= link_to "Top Products", top_path(:products) %>
+                    </li>
+                    <li>
+                        <%= link_to "Top Sellers", top_path(:sellers) %>
+                    </li>
+
+                    <li>
+                      <%= link_to "Top Deals", top_path(:deals) %>
+                    </li>
+
                     <li class="last"><a href="#">Blog</a></li>
                 </ul>
                 <div class="rgt"></div>

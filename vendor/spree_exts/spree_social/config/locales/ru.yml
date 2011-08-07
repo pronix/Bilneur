@@ -1,0 +1,21 @@
+ru:
+  linked_accounts: Linked
+  social_servers: Провайдеры соц.сетей
+  social_servers_description: Настроить авторизацию через соц.сети
+  new_social_method_warning: Необходим перезапуск сервера для применения изменений
+  edit_social_method_warning: Необходим перезапуск сервера если Вы изменили ключ или секрет.
+  social_methods: Провайдеры
+  new_social_method: Новый провайдер
+  edit_social_method: Редактировать провайдеров
+  social_provider: Источник аутентификации
+  social_enable_provider: Включить источник аутентификации
+  social_api_key: API Key
+  social_api_secret: Секрет(ключ)
+  social_link: Ваш email для продолжения
+  attach_error: 'Этот %{kind} принадлежит другому пользователю.'
+  one_more_step: 'Еще один шаг, чтобы завершить регистрацию от %{kind}'
+  devise:
+    omniauth_callbacks:
+      success: 'Успешная авторизация от %{kind}.'
+      failure: 'Невозможно авторизироваться от %{kind}. Причина: "%{reason}".'
+      

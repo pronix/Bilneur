@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+.TabbedPanels {width: 100%;}
+.TabbedPanelsTabGroup {float:left;width:100%;margin-top: 0px;padding: 0px;}
+.TabbedPanelsTab {position: relative;float: left;width:114px;height:46px;font-size:16px;color:#fff; border-right:1px solid #a6a6a6;font-weight:bold;background:url('/images/bgs/prdct_tab_n.png') repeat-x;list-style: none;-moz-user-select: none;-khtml-user-select: none;cursor: pointer;}
+.TabbedPanelsTab span { line-height:46px;}
+.TabbedPanelsTabHover {color:#fff;background:url('/images/bgs/prdct_tab_h.png') repeat-x;}
+.TabbedPanelsTabSelected {color:#515151;background:url('/images/bgs/prdct_tab_h.png') repeat-x;}
+.TabbedPanelsTab a {color: black;text-decoration: none;}
+.TabbedPanelsContentGroup {}
+.TabbedPanelsContent {}
+
+/*.TabbedPanelsContentVisible {}
+.VTabbedPanels .TabbedPanelsTabGroup {
+	float: left;
+	width: 10em;
+	height: 20em;
+	background-color: #EEE;
+	position: relative;
+	border-top: solid 1px #999;
+	border-right: solid 1px #999;
+	border-left: solid 1px #CCC;
+	border-bottom: solid 1px #CCC;
+}*/
+
+/* This selector disables the float property that is placed on each tab button
+ * by the default TabbedPanelsTab selector rule above. It also draws a bottom
+ * border for the tab. The tab button will get its left and right border from
+ * the TabGroup, and its top border from the TabGroup or tab button above it.
+ */
+.VTabbedPanels .TabbedPanelsTab {
+	float: none;
+	margin: 0px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+
+/* This selector disables the float property that is placed on each tab button
+ * by the default TabbedPanelsTab selector rule above. It also draws a bottom
+ * border for the tab. The tab button will get its left and right border from
+ * the TabGroup, and its top border from the TabGroup or tab button above it.
+ */
+.VTabbedPanels .TabbedPanelsTabSelected {
+	background-color: #EEE;
+	border-bottom: solid 1px #999;
+}
+
+/* This selector floats the content panels for the widget so that they
+ * render to the right of the tabbed buttons.
+ */
+.VTabbedPanels .TabbedPanelsContentGroup {
+	clear: none;
+	float: left;
+	padding: 0px;
+	width: 30em;
+	height: 20em;
+}
+

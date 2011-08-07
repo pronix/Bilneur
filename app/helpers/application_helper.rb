@@ -19,10 +19,46 @@ module ApplicationHelper
     when "home"
       "cHome"
     when "products"
-      "prdctDPg"
+      case params[:action].to_s
+      when "index"
+        "prdctDPg slrPrdctPg prdctPg"
+      when "show"
+        "prdctDPg"
+      end
     else
       ""
     end
   end
 
+
+  def t122_image(product, *options)
+    options = options.first || {}
+    if product.images.empty?
+      image_tag "noimage/t122.jpg", options
+    else
+      image = product.images.first
+      options.reverse_merge! :alt => image.alt.blank? ? product.name : image.alt
+      image_tag image.attachment.url(:t122), options
+    end
+  end
+
+  def filter_breadcrumbs(taxon, separator="&nbsp;&raquo;&nbsp;")
+    return "" if current_page?("/")
+    separator = raw(separator)
+    # crumbs = [content_tag(:li, link_to(t(:home) , root_path) + separator)]
+    crumbs = [content_tag(:li, "Filters")]
+    if taxon
+      crumbs << content_tag(:li, link_to(t('all_products') , products_path) + separator)
+      crumbs << taxon.ancestors.collect { |ancestor| content_tag(:li, link_to(ancestor.name , seo_url(ancestor)) + separator) } unless taxon.ancestors.empty?
+      crumbs << content_tag(:li,
+                            content_tag(:li, link_to(taxon.name , seo_url(taxon))))
+    else
+      crumbs << content_tag(:li, content_tag(:b, t('all_products')))
+    end
+    content_tag(:ul, raw(crumbs.flatten.map{|li| li.mb_chars}.join))
+  end
+
+
+
 end
+

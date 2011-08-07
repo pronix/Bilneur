@@ -4,6 +4,7 @@
     <span><%= product.name %></span>
       <%= link_to "Sell A Product Like this", "", :class=>"seAll" %>
       <%= link_to "Add to Favorites", "", :class=>"add" %>
+
       <div class="fbLike"><%= image_tag "icons/fb_like.png" %></div>
       <%= link_to image_tag("icons/bnr_plus.png"), "" %>
   </div>
@@ -11,13 +12,13 @@
   <div class="sldrBnr">
     <div id="gallery" class="ad-gallery">
       <div class="ad-image-wrapper">
-        <%= image_tag "slider/loader.gif", :style => "display:none;", :class => "ad-loader" %>
+        <%= image_tag "slide/loader.gif", :style => "display:none;", :class => "ad-loader" %>
       </div>
 
       <div class="ad-nav">
         <div class="ad-thumbs">
           <ul style="width: 1454px;" class="ad-thumb-list">
-          <% for image in product.images do %>
+          <% product.images.each do |image| %>
             <li>
               <%= link_to image_tag(image.attachment.url(:mini), :alt=>""), image.attachment.url(:product) %>
             </li>

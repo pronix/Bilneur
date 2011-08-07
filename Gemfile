@@ -17,9 +17,8 @@ gem 'spree',                    '= 0.60.1'
  gem "spree_static_content",     :git => 'git://github.com/spree/spree_static_content.git', :tag => "v0.60.2"
  gem 'spree_editor',             '~> 0.50.1'
  gem 'spree_volume_pricing',     :path => 'vendor/spree_exts/spree_volume_pricing'
- # gem 'spree_additional_calculators', :git => "git://github.com/jurgis/spree-additional-calculators.git", :tag => "v0.1.1"
  gem 'spree_reviews',           :git => 'git://github.com/romul/spree-reviews.git'
-
+ gem "spree_social",            :path => "vendor/spree_exts/spree_social"
  gem 'shop',                    :require => "shop", :path => "shop"
 
 # Deploy with Capistrano

@@ -19,7 +19,12 @@ module ApplicationHelper
     when "home"
       "cHome"
     when "products"
-      "prdctDPg"
+      case params[:action].to_s
+      when "index"
+        "prdctDPg slrPrdctPg prdctPg"
+      when "show"
+        "prdctDPg"
+      end
     else
       ""
     end

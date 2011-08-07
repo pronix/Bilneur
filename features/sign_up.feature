@@ -1,5 +1,4 @@
 # language: en
-
 Feature: Sign up
   In order to be able to make a sales
   A visitor
@@ -13,9 +12,11 @@ Feature: Sign up
 
   Scenario: Seller signs up with valid data
     When I go to the sign up page
-    And I fill in "Email" with "email@person.com"
-    And I fill in "Password" with "password"
-    And I fill in "Password Confirmation" with "password"
+    And I fill in "Firstname" with "first"
+    And I fill in "Lastname" with "last"
+    And I fill in "EmailSignup" with "email@person.com"
+    And I fill in "PasswordSignup" with "password"
+    And I fill in "PasswordConfirmation" with "password"
     And I check "as seller"
     And I press "Create"
     Then I should see "You have signed up successfully."
@@ -23,7 +24,7 @@ Feature: Sign up
 
   Scenario: Seller tries to sign up with invalid data
     When I go to the sign up page
-    And I fill in "Email" with "bademail"
+    And I fill in "EmailSignup" with "bademail"
     And I check "as seller"
     And I press "Create"
     Then I should see "Email is invalid" within "#errorExplanation"

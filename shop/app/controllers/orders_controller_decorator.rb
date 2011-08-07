@@ -38,11 +38,11 @@ OrdersController.class_eval do
 
 
     params[:variants].each do |variant_id, quantity|
-      quantity = quantity.to_i
       variant = Variant.find(variant_id)
-      if (params[:quantity].to_s !~ /\A[+-]?\d+\Z/) || (quantity > variant.count_on_hand) || (quantity < 0)
+      if (quantity.to_s !~ /\A[+-]?\d+\Z/) || (quantity.to_i > variant.count_on_hand) || (quantity.to_i < 0)
         flash[:error] << [ "\"#{variant.name}\": in stock only #{variant.count_on_hand} " ]
       end
+      quantity = quantity.to_i
       @order.add_variant(variant, quantity) if quantity > 0
     end if params[:variants]
 

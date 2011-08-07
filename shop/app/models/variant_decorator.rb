@@ -66,7 +66,8 @@ Variant.class_eval do
   [:description, :name].each do |m|
 
     define_method "#{m}" do
-      read_attribute(m) || product.send(m)
+      self_value = read_attribute(m)
+      self_value.blank? ? product.send(m) : self_value
     end
 
     define_method "#{m}=" do |value|

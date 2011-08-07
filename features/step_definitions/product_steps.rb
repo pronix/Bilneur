@@ -6,9 +6,7 @@ Then /^I should see the following product lists:$/ do |table|
   table.diff!(tableish('table tr', 'td,th'))
 end
 
-Then /^I follow "([^\"]*)" for the product "([^\"]*)"$/ do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
-end
+
 
 # Given /^(?:|I )have the following products:$/ do |table|
 

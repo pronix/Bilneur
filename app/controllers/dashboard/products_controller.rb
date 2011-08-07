@@ -26,12 +26,21 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
 
   def update
     if @product.update_attributes(params[:product])
-      redirect_to dashboard_products_path
+      redirect_to dashboard_products_path, :notice => "Product updated."
     else
       render :edit
     end
   end
 
+  def destroy
+    find_product
+    if @product.destroy
+      flash.notice = "Product deleted."
+    else
+      flash.notice = "Product is not deleted."
+    end
+    redirect_to dashboard_products_path
+  end
   private
   def find_product
     @product = (current_user.is_admin? ? Product : current_user.products).find_by_permalink(params[:id])

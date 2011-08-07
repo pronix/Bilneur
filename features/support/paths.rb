@@ -29,6 +29,8 @@ module NavigationHelpers
       new_admin_page_path
     when /the static page "(.+)"/
       "/#{($1)}"
+    when /the "(.+)" product page/
+      product_path(Product.find_by_name($1).permalink)
     when /logout/
       destroy_user_session_path
     when /^the home\s?page$/

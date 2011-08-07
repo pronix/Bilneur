@@ -14,16 +14,16 @@
           <div class="lgnCntr tp">
             <%= form_for(:user, :url => user_session_path) do |f| %>
               <span class="lgn">
-                <%= f.text_field('email', :class => 'lgnTxt', :value => "Your Email",
+                <%= f.text_field('email', :id => "Email", :class => 'lgnTxt', :value => "Your Email",
                   :onfocus=>"if(this.value=='Your Email') this.value=''",
                   :onblur=>"if(this.value=='') this.value='Your Email'") %>
               </span>
               <span class="pwd">
-                  <%= f.password_field 'password', :class => 'lgnPwd', :value => "password",
+                  <%= f.password_field 'password', :id => "Password", :class => 'lgnPwd', :value => "password",
                     :onfocus=>"if(this.value=='password') this.value=''",
                     :onblur=>"if(this.value=='') this.value='password'" %>
               </span>
-              <%= submit_tag "", :class => 'lgnSbmt', :name=>"" %>
+              <%= submit_tag "", :class => 'lgnSbmt', :name=>"", :id => "Log In"%>
               <a class="ysNo" href="#"><%= image_tag "forms/yes_no.png" %><br /><span>Remember me !</span></a>
               <%= link_to t("forgot_password"), new_user_password_path, :class => "lostpwd" %>
             <% end %>
@@ -35,37 +35,33 @@
           <div class="TabbedPanelsContent">
           <div class="lgnTop"></div>
           <div class="lgnCntr tp">
-          <%= form_for(:user, :url => registration_path(@user)) do |f| %>
+          <%= form_for(:user, :url => registration_path(@user || User.new)) do |f| %>
             <span class="usr">
-              <%= f.text_field :firstname, :class => 'lgnTxt', :value=>"First Name",
+              <%= f.text_field :firstname, :id => 'Firstname', :class => 'lgnTxt', :value=>"First Name",
                 :onfocus=>"if(this.value=='First Name') this.value=''",
                 :onblur=>"if(this.value=='') this.value='First Name'"  %>
             </span>
             <span class="usr">
-              <%= f.text_field :lastname, :class => 'lgnTxt', :value=>"Last Name",
+              <%= f.text_field :lastname, :id => 'Lastname', :class => 'lgnTxt', :value=>"Last Name",
                 :onfocus=>"if(this.value=='Last Name') this.value=''",
                 :onblur=>"if(this.value=='') this.value='Last Name'"  %>
             </span>
             <span class="lgn">
-              <%= f.text_field :email, :class => 'lgnTxt', :value=>"Your Email",
+              <%= f.text_field :email, :id => 'EmailSignup', :class => 'lgnTxt', :value=>"Your Email",
                 :onfocus=>"if(this.value=='Your Email') this.value=''",
                 :onblur=>"if(this.value=='') this.value='Your Email'" %>
             </span>
             <span class="pwd">
-              <%= f.password_field :password, :class => 'lgnPwd', :value=>"password",
-                :onfocus=>"if(this.value=='password') this.value=''",
-                :onblur=>"if(this.value=='') this.value='password'"  %>
+              <%= f.password_field :password, :id => 'PasswordSignup', :class => 'lgnPwd' %>
             </span>
-            <span class="usr">
-              <%= f.password_field :password_confirmation, :class => 'lgnPwd', :value=>"password",
-                :onfocus=>"if(this.value=='password') this.value=''",
-                :onblur=>"if(this.value=='') this.value='password'"  %>
+            <span class="pwd">
+              <%= f.password_field :password_confirmation, :id => 'PasswordConfirmation', :class => 'lgnPwd' %>
             </span>
             <span>
             <%= f.check_box :registration_as_seller, :checked => check_ass_seller_checkbox %>
             <%= f.label :registration_as_seller, t('as_seller') %>
             </span>
-            <%= submit_tag "", :class => 'sgnUp', :name => "" %>
+            <%= submit_tag "", :id => 'Create', :class => 'sgnUp', :name => "" %>
             <p>By clicking on "Sign up"  you confirm that you accept the Terms of Service. </p>
           <% end %>
           </div>

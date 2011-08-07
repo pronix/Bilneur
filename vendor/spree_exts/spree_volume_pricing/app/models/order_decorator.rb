@@ -9,6 +9,7 @@ Order.class_eval do
       current_item.price = price # Added
       current_item.save
     else
+
       current_item = line_items.create(:quantity => quantity)
       current_item.variant = variant
       current_item.price = price
@@ -17,7 +18,7 @@ Order.class_eval do
 
     # populate line_items attributes for additional_fields entries
     # that have populate => [:line_item]
-    Variant.additional_fields.select{|f| !f[:populate].nil? && f[:populate].include?(:line_item) }.each do |field| 
+    Variant.additional_fields.select{|f| !f[:populate].nil? && f[:populate].include?(:line_item) }.each do |field|
       value = ""
 
       if field[:only].nil? || field[:only].include?(:variant)

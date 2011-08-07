@@ -3,9 +3,15 @@
   <% if signup %>
     <i class="fBook"><%= image_tag "img/signup.png" %></i>
   <% end %>
-  <i class="fBook"><%= link_to image_tag("forms/fbook.png"), "#" %></i>
+
+  <i class="fBook">
+    <%= link_to(image_tag("forms/fbook.png", :alt => "facebook"),
+        user_authentication_omniauth_authorize_path(:facebook),
+       :title => t(:sign_in_with_provider, :provider => :facebook)) %>
+  </i>
+
   <% if signup %>
-    <p class="ptr">By clicking on Connect with Facebook," you confirm that<br /> you accept the Terms of Service. </p>
+    <p class="ptr">By clicking on Connect with Facebook, you confirm that<br /> you accept the Terms of Service. </p>
   <% end %>
 </div>
 <div class="lgnBtm"></div>

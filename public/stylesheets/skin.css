@@ -600,3 +600,62 @@ ul li { list-style:none;}
 border: none;
  }
 
+
+/* old spree css */
+
+.flash {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 1.3em;
+  margin-bottom: 1em;
+  padding: 0.8em;
+}
+.flash.notice {
+  background: #ccddff url(/images/shadow_top.png) 0px -50px repeat-x;
+  color: #556699;
+  border: 1px solid #99aacc;
+}
+.flash.errors {
+  background: #f4b4b4 url(/images/shadow_top.png) 0px -50px repeat-x;
+  color: #000000;
+  border: 1px solid #000000;
+}
+.formError {
+  font-size: 1.3em;
+  margin-bottom: 1em;
+  padding: 0.8em;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background: #f4b4b4 url(/images/shadow_top.png) 0px -50px repeat-x;
+  color: #000000;
+  border: 1px solid #000000;
+}
+.formError p { margin: 0px; }
+.formError ul { margin-bottom: 0px; }
+.formError h2 {
+  font-weight: bold;
+  font-size: 1em;
+  margin: 0px;
+}
+.errorExplanation {
+  font-size: 1.3em;
+  margin-bottom: 1em;
+  padding: 0.8em;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background: #f4b4b4 url(/images/shadow_top.png) 0px -50px repeat-x;
+  color: #000000;
+  border: 1px solid #000000;
+}
+.errorExplanation p { margin: 0px; }
+.errorExplanation ul { margin-bottom: 0px; }
+.errorExplanation h2 {
+  font-weight: bold;
+  font-size: 1em;
+  margin: 0px;
+}
+.fieldWithErrors { clear: none; }
+

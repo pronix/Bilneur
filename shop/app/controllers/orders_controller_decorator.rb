@@ -1,7 +1,18 @@
 OrdersController.class_eval do
 
+  def empty
+    if (@order =
+        ((params.has_key?(:cart_type) && params[:cart_type]== 'virtual') ? current_virtual_order :
+         current_order))
+      @order.line_items.destroy_all
+    end
+
+    respond_with(@order) { |format| format.html { redirect_to cart_path } }
+  end
+
+
   def update
-    @order = current_order
+    @order = (params.has_key?(:cart_type) && params[:cart_type]== 'virtual') ? current_virtual_order : current_order
     if @order.update_attributes(params[:order])
 
       @order.line_items = @order.line_items.select {|li| li.quantity > 0 }
@@ -23,7 +34,8 @@ OrdersController.class_eval do
   # +:products => {product_id => variant_id, product_id => variant_id}, :quantity => quantity +
   # +:products => {product_id => variant_id, product_id => variant_id}}, :quantity => {variant_id => quantity, variant_id => quantity}+
   def populate
-    @order = current_order(true)
+    @order = (params.has_key?(:to_add) && params[:to_add] == 'virtual_store') ? current_virtual_order(true) : current_order(true)
+
     flash[:error] = []
     params[:products].each do |product_id,variant_id|
       quantity = params[:quantity].to_i if !params[:quantity].is_a?(Hash)

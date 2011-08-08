@@ -9,6 +9,15 @@ Rails.application.routes.draw do
   match "/products/deals/:id(/:condition)" => "products#quotes", :as => :product_quotes
   match "/products/deals/:id/:quote_id" => "products#quote", :as => :product_quote
 
+  match '/cart(/:cart_type)', :to => 'orders#update', :via => :put, :as => :update_virtual_cart
+  match '/cart/empty(/:cart_type)', :to => 'orders#empty', :via => :put, :as => :empty_virtual_cart
+
+    # non-restful checkout stuff
+  match '/checkout/(:order_type/)update/:state' => 'checkout#update', :as => :virtual_update_checkout
+  match '/checkout/(:order_type/):state' => 'checkout#edit', :as => :virtual_checkout_state
+  match '/checkout/(:order_type)' => 'checkout#edit', :state => 'address', :as => :virtual_checkout
+
+
   # User dashboard
   #
   namespace :dashboard do

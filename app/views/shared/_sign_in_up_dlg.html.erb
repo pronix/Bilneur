@@ -58,7 +58,7 @@
               <%= f.password_field :password_confirmation, :id => 'PasswordConfirmation', :class => 'lgnPwd' %>
             </span>
             <span>
-            <%= f.check_box :registration_as_seller, :checked => "checked" %>
+            <%= f.check_box :registration_as_seller, :checked => check_ass_seller_checkbox %>
             <%= f.label :registration_as_seller, t('as_seller') %>
             </span>
             <%= submit_tag "", :id => 'Create', :class => 'sgnUp', :name => "" %>

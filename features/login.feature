@@ -5,6 +5,7 @@ Feature: Login
   A registered user
   Should be able to login
 
+
   Scenario Outline: Login with invalid and valid credentials
     Given I am signed up as "email@person.com/password"
     And I try to auth with "<email>" and "<password>"
@@ -13,9 +14,10 @@ Feature: Login
 
     Examples:
       | email            | password    | should_see                | page          |
+      | email@person.com | password    | Logged in successfully    | Products page |
       | bad@person.com   | password    | Invalid email or password | sign in page  |
       | email@person.com | badpassword | Invalid email or password | sign in page  |
-      | email@person.com | password    | Logged in successfully    | Products page |
+
 
    Scenario: What I see when I log in
      Given I already sing as "email@person.com/password"

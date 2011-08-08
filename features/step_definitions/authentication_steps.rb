@@ -15,7 +15,8 @@ Then /^I should be logged out$/ do
 end
 
 Given /^I am signed up as "(.+)\/(.+)"$/ do |email, password|
-  @user = Factory(:user, :email => email, :password => password, :password_confirmation => password)
+  @user = Factory(:user, :email => email, :password => password, :password_confirmation => password,
+                  :firstname => 'Test Firstname', :lastname => 'Test Lastname')
 end
 
 Given /^I am signed up as a seller with "(.+)\/(.+)"$/ do |email, password|
@@ -68,11 +69,15 @@ When /^I follow the password reset link$/ do
   Then %{I should see "Change my password"}
 end
 
+And /^I press button$/ do
+  find(:xpath, "//input[@type='submit']").click
+end
+
 Given /^I try to auth with "(.+)" and "(.+)"$/ do |email, password|
   And %{I am on the sign in page}
   And %{I fill in "Email" with "#{email}"}
   And %{I fill in "Password" with "#{password}"}
-  And %{press "Log In"}
+  And %{I press "Log In"}
 end
 
 Given /^I already sing as "(.*)\/(.*)"$/ do |email, password|

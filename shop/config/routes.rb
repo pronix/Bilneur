@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   match "/account" => "dashboard/users#show"
   match "/products/deals/:id(/:condition)" => "products#quotes", :as => :product_quotes
   match "/products/deals/:id/:quote_id" => "products#quote", :as => :product_quote
+
   # User dashboard
   #
   namespace :dashboard do
@@ -30,11 +31,10 @@ Rails.application.routes.draw do
 
       resource :selling_options
       resource :return_policies, :only => [:show, :edit, :update]
-
     end
 
-
-
+    resources :orders, :only => [:index, :show]
+    resources :sales,  :only => [:index, :show]
     resources :properties
     resources :option_types do
       collection do

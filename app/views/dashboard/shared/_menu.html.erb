@@ -1,10 +1,10 @@
 <div class="sidebar-item" >
   <ul class="navigation-list">
     <li><%= link_to( t('user_menu.my_account'), dashboard_account_path) %></li>
-    <li><%= link_to "Order", "" %></li>
+    <li><%= link_to "Orders", dashboard_orders_path %></li>
 
     <% if can?(:access, :quote) %>
-    <li><%= link_to "Sale", "" %></li>
+    <li><%= link_to "Sales", dashboard_sales_path %></li>
 
     <li><%= link_to( t('user_menu.quotes'), dashboard_quotes_path) %></li>
 

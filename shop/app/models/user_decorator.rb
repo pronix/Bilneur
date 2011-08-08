@@ -19,6 +19,7 @@ User.class_eval do
   has_many :quotes,   :class_name => "Variant", :foreign_key => :seller_id,
            :conditions => [ "variants.is_master = #{connection.quoted_false}" ]
   has_many :shipping_methods, :foreign_key => :seller_id
+  has_many :sales, :class_name => "Order", :foreign_key => :seller_id
 
   # scopes
   #

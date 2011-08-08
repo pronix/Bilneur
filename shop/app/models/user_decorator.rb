@@ -1,7 +1,7 @@
 User.class_eval do
 
   attr_accessor   :registration_as_seller
-  attr_accessible :registration_as_seller, :firstname, :lastname, :photo
+  attr_accessible :registration_as_seller, :firstname, :lastname, :photo, :phone
 
 
   has_attached_file :photo,

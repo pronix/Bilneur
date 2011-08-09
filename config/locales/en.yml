@@ -2,6 +2,7 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  addresses: Addresses
   new_address: New Address
   items_in_cart: Items in cart
   items_for_virtual_store: Items for virtual store

@@ -8,13 +8,13 @@
          <div class="CollapsiblePanelTab" tabindex="0"><span>Category</span></div>
          <div class="CollapsiblePanelContent">
            <% Taxonomy.category.root.children.each do |item| %>
-         <div>
-             <div class="checkbox" id="category">
-                <input type="checkbox" id="category" name="categories[]" value="<%= item.id %>">
+             <div>
+               <div class="checkbox" id="category">
+                 <input type="checkbox" id="category" name="categories[]" value="<%= item.id %>">
+               </div>
+               <label class="techi" for="category"><%= link_to item.name, seo_url(item) %></label>
              </div>
-             <label class="techi" for="category"><%= link_to item.name, seo_url(item) %></label>
-         </div>
-         <% end %>
+           <% end %>
 
          </div>
       </div>

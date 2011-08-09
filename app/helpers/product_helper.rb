@@ -14,8 +14,8 @@ module ProductHelper
   end
 
   def show_user_photo(user)
-    return image_tag '/images/missing/photo/missing_mini.png' if user.nil?
-    image_tag user.photo.url(:small)
+    return image_tag '/images/missing/photo/missing_medium_for_review.png' if user.nil?
+    image_tag user.photo.url(:for_review)
   end
 
 end

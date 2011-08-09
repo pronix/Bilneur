@@ -17,7 +17,7 @@ Feature: Manage reviews
     And I should see overall rating with "4" stars
     And I should see "Based On 2 Ratings"
     And I should see all approved reviews for "The Godfather" product
-
+@wip
   Scenario: Create own rating as Guest
     And I am logged out
     When I go to the "The Godfather" product page
@@ -35,7 +35,7 @@ Feature: Manage reviews
     And I change statuc for this review by approved
     Then I go to the "The Godfather" product page
     And I should see my review on the page
-@wip
+
   Scenario: Create review as register user
     Given I already sing as "new_seller@person.com/password"
     When I go to the "The Godfather" product page
@@ -47,7 +47,6 @@ Feature: Manage reviews
     And I press "Submit your review"
     And I should be on the "The Godfather" product page
     And I should see "Review was successfully submitted"
-    And I should not see my review on the page
     Then I approved my review with title "Simple Title"
     Then I go to the "The Godfather" product page
     And I should see my review with title "Simple Title"

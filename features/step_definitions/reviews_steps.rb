@@ -35,10 +35,8 @@ end
 Then /^I should see all approved reviews for "(.+)" product$/ do |product_name|
   Product.find_by_name(product_name).reviews.each do |review|
     find_by_id("review_id_#{review.id}").should have_content(review.review)
-    # This don't find what I want
-    # FIXIT
     find_by_id("review_id_#{review.id}").find(:xpath, "//img[contains(@src, \"yel_str_sml.png\")]", :count => review.rating)
-    find_by_id("review_id_#{review.id}").should have_content('Guest')
+    find_by_id("review_id_#{review.id}").should have_content(review.simple_username)
   end
 end
 
@@ -66,7 +64,7 @@ Then /^I change statuc for this review by approved$/ do
 end
 
 Then /^I should not see my review on the page$/ do
-  page.should_not have_content(Review.find_by_title('Simple Title').review)
+  page.should_not have_content(Review.find_by_title('Simple title').review)
 end
 
 Then /^I should see my review on the page$/ do

@@ -2,53 +2,23 @@
   <div class="top">
       <b>Overall Rating</b>
         <p>
-          <%= show_stars @product %>
+          <%= show_stars @product.avg_rating %>
         </p>
         <b>Based On <%= @product.reviews_count %> Ratings</b>
         <%= link_to 'Rate This Product', new_product_review_path(@product) %>
     </div>
-    <div class="cntr">
-      <i><img src="/images/img/rater_img1.png" alt="" /></i>
-        <span>Cheryl C</span>
-        <p>e vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia<br /> voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur<br /> magni dolores eos</p>
+    <% for review in @product.reviews.approved do %>
+      <div class="cntr", id="review_id_<%= review.id %>">
+        <i><img src="/images/img/rater_img1.png" alt="" /></i>
+        <span><%= simple_username review.user %></span>
+        <p><%= review.review %></p>
         <b>
-          <em><img src="/images/icons/yel_str_sml.png" alt="" /></em>
-          <em><img src="/images/icons/yel_str_sml.png" alt="" /></em>
-          <em><img src="/images/icons/yel_str_sml.png" alt="" /></em>
-          <em><img src="/images/icons/grey_str_sml.png" alt="" /></em>
-          <em><img src="/images/icons/grey_str_sml.png" alt="" /></em>
+          <%= show_stars(review.rating, 'icons/yel_str_sml.png', 'icons/grey_str_sml.png', '<em>') %>
         </b>
         <a href="#">Would you recomend this product to a friend?<em class="ys">Yes</em></a>
+      </div>
+    <% end %>
 
-    </div>
-    <div class="cntr">
-      <i><img src="/images/img/rater_img1.png" alt="" /></i>
-        <span>Cheryl C</span>
-        <p>e vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia<br /> voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur<br /> magni dolores eos</p>
-        <b>
-          <em><img src="/images/icons/yel_str_sml.png" alt="" /></em>
-          <em><img src="/images/icons/yel_str_sml.png" alt="" /></em>
-          <em><img src="/images/icons/yel_str_sml.png" alt="" /></em>
-          <em><img src="/images/icons/grey_str_sml.png" alt="" /></em>
-          <em><img src="/images/icons/grey_str_sml.png" alt="" /></em>
-        </b>
-        <a href="#">Would you recomend this product to a friend?<em class="no">No</em></a>
-
-    </div>
-    <div class="cntr">
-      <i><img src="/images/img/rater_img1.png" alt="" /></i>
-        <span>Cheryl C</span>
-        <p>e vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia<br /> voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur<br /> magni dolores eos</p>
-        <b>
-          <em><img src="/images/icons/yel_str_sml.png" alt="" /></em>
-          <em><img src="/images/icons/yel_str_sml.png" alt="" /></em>
-          <em><img src="/images/icons/yel_str_sml.png" alt="" /></em>
-          <em><img src="/images/icons/grey_str_sml.png" alt="" /></em>
-          <em><img src="/images/icons/grey_str_sml.png" alt="" /></em>
-        </b>
-        <a href="#">Would you recomend this product to a friend?<em class="ys">Yes</em></a>
-
-    </div>
     <div class="btm">
       <!--<div class="blogPg">
             <p><b>1 - 15</b> of <b>3,456</b> blog posts</p>

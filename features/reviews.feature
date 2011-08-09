@@ -11,13 +11,17 @@ Feature: Manage reviews
       | Name 1 | here      | ha title   | This is review   | true     |  127.0.0.1 |
       | Name 2 | here      | ha title 2 | Thit is review 2 | true     |  127.0.0.1 |
 
+  Scenario: Disable link /product/review
+    When I go to the "The Godfather" review by url
+    And I should be on the "The Godfather" product page
+
   Scenario: Show product rating
     When I go to the "The Godfather" product page
     Then I should see "The Godfather"
     And I should see overall rating with "4" stars
     And I should see "Based On 2 Ratings"
     And I should see all approved reviews for "The Godfather" product
-@wip
+
   Scenario: Create own rating as Guest
     And I am logged out
     When I go to the "The Godfather" product page

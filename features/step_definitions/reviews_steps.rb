@@ -51,6 +51,11 @@ Then /^I fill the form new_review with given value$/ do |table|
   end
 end
 
+Then /^I rate this by "(\d+)"$/ do |rating|
+  find(:xpath, "//input[@type='radio' and @name='review[rating]' and @value=\"#{rating} stars\"]").set(true)
+end
+
+
 Then /^I should see that this review add and has status not approved$/ do
   Review.find_by_title('Simple title').approved.should_not be_true
 end
@@ -61,7 +66,7 @@ Then /^I change statuc for this review by approved$/ do
 end
 
 Then /^I should not see my review on the page$/ do
-  page.should_not have_content(Review.find_by_title('Simple title').review)
+  page.should_not have_content(Review.find_by_title('Simple Title').review)
 end
 
 Then /^I should see my review on the page$/ do
@@ -69,3 +74,21 @@ Then /^I should see my review on the page$/ do
   find_by_id("review_id_#{review.id}").should have_content(review.review)
 end
 
+Then /^I approved my review with title "(.+)"$/ do |title|
+  Review.find_by_title(title).update_attributes(:approved => true)
+end
+
+Then /^I should see my review with title "(.+)"$/ do |title|
+  review = Review.find_by_title(title)
+  find_by_id("review_id_#{review.id}").should have_content(review.review)
+end
+
+Then /^I should see on the review "(.+)" my name "(.+)"$/ do |title, user_name|
+  review = Review.find_by_title(title)
+  find_by_id("review_id_#{review.id}").should have_content(user_name)
+end
+
+Then /^I should see my photo as "(.+)"$/ do |email|
+  user = User.find_by_email(email)
+  page.should have_xpath("//img[contains(@src, \"#{user.photo.url(:small)}\")]")
+end

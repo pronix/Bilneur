@@ -13,9 +13,9 @@ module ProductHelper
     return out.html_safe
   end
 
-  def simple_username(user)
-    return 'Guest' if user.nil?
-    user.firstname + ' ' + user.lastname.first + '.'
+  def show_user_photo(user)
+    return image_tag '/images/missing/photo/missing_mini.png' if user.nil?
+    image_tag user.photo.url(:small)
   end
 
 end

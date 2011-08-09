@@ -9,8 +9,8 @@
     </div>
     <% for review in @product.reviews.approved do %>
       <div class="cntr", id="review_id_<%= review.id %>">
-        <i><img src="/images/img/rater_img1.png" alt="" /></i>
-        <span><%= simple_username review.user %></span>
+        <i><%= show_user_photo(review.user) %></i>
+        <span><%= review.simple_username %></span>
         <p><%= review.review %></p>
         <b>
           <%= show_stars(review.rating, 'icons/yel_str_sml.png', 'icons/grey_str_sml.png', '<em>') %>

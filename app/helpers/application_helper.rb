@@ -22,7 +22,7 @@ module ApplicationHelper
       case params[:action].to_s
       when "index"
         "prdctDPg slrPrdctPg prdctPg"
-      when "show"
+      else
         "prdctDPg"
       end
     else

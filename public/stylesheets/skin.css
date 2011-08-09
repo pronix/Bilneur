@@ -279,7 +279,7 @@ ul li { list-style:none;}
 	.cmboSrt form { float:left;}
 	.dtlPnl { float:left; width:100%;}
 	.dtlPnl .lft { float:left; width:157px; padding-left:10px; margin-top:5px; margin-right:5px; border-right:1px solid #bebebe;}
-		.dtlPnl .lft b { float:left; width:40%; padding-bottom:5px; font-size:24px; color:#89be50;}
+		.dtlPnl .lft b { float:left; width:50%; padding-bottom:5px; font-size:16px; color:#89be50;}
 			.dtlPnl .lft span { float:left; width:100%; font-weight:bold; font-size:12px; color:#6e6f6e;}
 				.dtlPnl .lft span em { margin-left:5px; font-style:normal; color:#e24848;}
 				.dtlPnl .lft p { float:left; width:100%; height:5px; margin:0; padding:0;}

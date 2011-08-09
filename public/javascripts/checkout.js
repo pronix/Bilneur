@@ -7,7 +7,7 @@
       var country        = $('p#' + region + 'country' + ' span#' + region + 'country :only-child').val();
       return state_mapper[country];
     }
-    
+
     var update_state = function(region) {
       var states         = get_states(region);
 
@@ -45,24 +45,23 @@
 
     $('p#bcountry span#bcountry select').change(function() { update_state('b'); });
     $('p#scountry span#scountry select').change(function() { update_state('s'); });
+
     update_state('b');
     update_state('s');
 
     $('input#order_use_billing').click(function() {
       if($(this).is(':checked')) {
-        $('#shipping .inner input, #shipping .inner select, #shipping .inner label, #shipping .inner .req').hide();
-        $('#shipping .inner input, #shipping .inner select').attr('disabled', 'disabled');
+        $("#shipping .inner input").attr('disabled', 'disabled');
+        $("#shipping .inner select").attr('disabled', 'disabled');
+        $("#shipping .inner").fadeOut();
+        $("#shipping .select_address").fadeOut();
       } else {
-        $('#shipping .inner input, #shipping .inner select, #shipping .inner label, #shipping .inner .req').show();
-        $('#shipping .inner input, #shipping .inner select').removeAttr('disabled', 'disabled');
-
-        //only want to enable relevant field
-        if(get_states('s')){
-          $('span#sstate input').hide().attr('disabled', 'disabled');
-        }else{
-          $('span#sstate select').hide().attr('disabled', 'disabled');
+        if ($("input[name='order[ship_address_id]']:checked").val() == '0') {
+          $("#shipping .inner input").removeAttr('disabled');
+          $("#shipping .inner select").removeAttr('disabled');
+          $("#shipping .inner").fadeIn();
         }
-
+        $("#shipping .select_address").fadeIn();
       }
     }).triggerHandler('click');
 

@@ -3,9 +3,10 @@ User.class_eval do
   attr_accessor   :registration_as_seller
   attr_accessible :registration_as_seller, :firstname, :lastname, :photo, :phone
 
-
+  # FIXIT: for_review, becouse for review need this resoluton
   has_attached_file :photo,
-  :styles => { :medium => ["300x300", :png], :thumb => ["150x150>", :png], :mini => ["25x25#", :png]  },
+  :styles => { :medium => ["300x300", :png], :thumb => ["150x150>", :png], :mini => ["25x25#", :png],
+               :for_review => ["82x83", :png]},
   :default_style => :thumb,
   :default_url => "/images/missing/photo/missing_:style.png",
   :url => "/assets/photo/:id/:style/:basename.:extension",

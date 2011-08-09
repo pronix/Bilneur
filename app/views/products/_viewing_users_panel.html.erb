@@ -1,11 +1,11 @@
 <div class="vwer">
   <div class="top"><b>Users Viewing This Product</b></div>
-    <% for i in 1..3 do %>
-    <div class="cntr">
-        <i><%= image_tag "img/rater_img1.png" %></i>
-        <span>Cheryl C</span>
-        <p><a>Cheryl C is Viewing<br /> this produc, right now</a></p>
-    </div>
+    <% for review in Review.last_reviews(3) do %>
+      <div class="cntr">
+        <i><%= show_user_photo review.user %></i>
+        <span><%= review.simple_username %></span>
+        <p><a><%= truncate review.review, :length => 80 %></a></p>
+      </div>
     <% end %>
     <div class="btm"></div>
 </div>

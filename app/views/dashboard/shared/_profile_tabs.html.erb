@@ -14,6 +14,11 @@
         <%= link_to t("shipping_methods"), dashboard_shipping_methods_path %>
       </li>
 
+      <li<%== ' class="active"' if current == "Addresses" %>>
+        <%= link_to t("addresses"),  dashboard_addresses_path %>
+      </li>
+
+
       <li<%== ' class="active"' if current == "Terms" %>>
         <%= link_to t("terms_and_conditions"), edit_dashboard_terms_path %>
       </li>

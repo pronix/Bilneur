@@ -4,11 +4,16 @@ Rails.application.routes.draw do
   match "/top/:kind" => "home#top", :as => :top, :defaults => { :kind => 'products' },
                      :constraints => { :kind => /products|sellers|deals/ }
 
-
   match "/account" => "dashboard/users#show"
   match "/products/deals/:id(/:condition)" => "products#quotes", :as => :product_quotes
   match "/products/deals/:id/:quote_id" => "products#quote", :as => :product_quote
 
+  # Product
+  resources :products do
+    # In spree-review has routes /review But we don't want to use this route
+    # We redirect this request to product page.
+    match "/reviews" => redirect("/products/%{product_id}"), :via => :get
+  end
   match '/cart(/:cart_type)', :to => 'orders#update', :via => :put, :as => :update_virtual_cart
   match '/cart/empty(/:cart_type)', :to => 'orders#empty', :via => :put, :as => :empty_virtual_cart
 
@@ -16,7 +21,6 @@ Rails.application.routes.draw do
   match '/checkout/(:order_type/)update/:state' => 'checkout#update', :as => :virtual_update_checkout
   match '/checkout/(:order_type/):state' => 'checkout#edit', :as => :virtual_checkout_state
   match '/checkout/(:order_type)' => 'checkout#edit', :state => 'address', :as => :virtual_checkout
-
 
   # User dashboard
   #
@@ -93,6 +97,7 @@ Rails.application.routes.draw do
     resource :account, :controller => "users", :only => [:show, :edit, :update]
     resources :shipping_methods
     resource :terms
+    resources :addresses
   end
 
 end

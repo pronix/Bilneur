@@ -44,7 +44,6 @@ Then /^I fill the form new_review with given value$/ do |table|
   table.hashes.each do |hash|
     find(:xpath, "//input[@type='radio' and @name='review[rating]' and @value=\"#{hash['Rating']} stars\"]").set(true)
     And %{I fill in "review_name" with "#{hash['Name']}"}
-    And %{I fill in "review_title" with "#{hash['Title']}"}
     And %{I fill in "review_review" with "#{hash['Review']}"}
   end
 end
@@ -53,40 +52,41 @@ Then /^I rate this by "(\d+)"$/ do |rating|
   find(:xpath, "//input[@type='radio' and @name='review[rating]' and @value=\"#{rating} stars\"]").set(true)
 end
 
-
-Then /^I should see that this review add and has status not approved$/ do
-  Review.find_by_title('Simple title').approved.should_not be_true
+Then /^please define last Review by review "(.+)" as @review$/ do |review|
+  @review = Review.find_by_review(review)
 end
 
-Then /^I change statuc for this review by approved$/ do
-  Review.find_by_title('Simple title').update_attributes(:approved => true)
-  Review.find_by_title('Simple title').approved.should be_true
+
+Then /^I should see that this review add and has status not approved$/ do
+  @review.approved.should_not be_true
+end
+
+Then /^I change status for this review by approved$/ do
+  @review.update_attributes(:approved => true)
 end
 
 Then /^I should not see my review on the page$/ do
-  page.should_not have_content(Review.find_by_title('Simple title').review)
+  page.should_not have_content(@review.review)
 end
 
 Then /^I should see my review on the page$/ do
-  review = Review.find_by_title('Simple title')
-  find_by_id("review_id_#{review.id}").should have_content(review.review)
+  find_by_id("review_id_#{@review.id}").should have_content(@review.review)
 end
 
-Then /^I approved my review with title "(.+)"$/ do |title|
-  Review.find_by_title(title).update_attributes(:approved => true)
+Then /^I approved my review$/ do
+  @review.update_attributes(:approved => true)
 end
 
-Then /^I should see my review with title "(.+)"$/ do |title|
-  review = Review.find_by_title(title)
-  find_by_id("review_id_#{review.id}").should have_content(review.review)
+Then /^I should see my review$/ do
+  find_by_id("review_id_#{@review.id}").should have_content(@review.review)
 end
 
-Then /^I should see on the review "(.+)" my name "(.+)"$/ do |title, user_name|
-  review = Review.find_by_title(title)
-  find_by_id("review_id_#{review.id}").should have_content(user_name)
+Then /^I should see my name "(.+)" with my review$/ do |user_name|
+  find_by_id("review_id_#{@review.id}").should have_content(user_name)
 end
+
 
 Then /^I should see my photo as "(.+)"$/ do |email|
   user = User.find_by_email(email)
-  page.should have_xpath("//img[contains(@src, \"#{user.photo.url(:small)}\")]")
+  page.should have_xpath("//img[contains(@src, \"#{user.photo.url(:for_review)}\")]")
 end

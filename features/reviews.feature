@@ -7,9 +7,9 @@ Feature: Manage reviews
       | name                        | available_on        |            ean |
       | The Godfather               | 2011-01-06 18:21:13 |  9780099528128 |
     Given the following reviews with rating "4" and product "The Godfather" 
-      | name   | location  | title      | review           | approved | ip_address |
-      | Name 1 | here      | ha title   | This is review   | true     |  127.0.0.1 |
-      | Name 2 | here      | ha title 2 | Thit is review 2 | true     |  127.0.0.1 |
+      | name   | location | review           | approved | ip_address |
+      | Name 1 | here     | This is review   | true     |  127.0.0.1 |
+      | Name 2 | here     | Thit is review 2 | true     |  127.0.0.1 |
 
   Scenario: Disable link /product/review
     When I go to the "The Godfather" review by url
@@ -22,21 +22,22 @@ Feature: Manage reviews
     And I should see "Based On 2 Ratings"
     And I should see all approved reviews for "The Godfather" product
 
-  Scenario: Create own rating as Guest
+  Scenario: Create review as Guest
     And I am logged out
     When I go to the "The Godfather" product page
     Then I follow "Rate This Product"
     And I should be on the new review page for product "The Godfather"
     And I should see "The Godfather"
     And I fill the form new_review with given value
-      | Rating | Name      | Title        | Review                |
-      |      4 | Test user | Simple title | This is simple review |
+      | Rating | Name      | Review                |
+      |      4 | Test user | This is simple review |
     And press "Submit your review"
+    And please define last Review by review "This is simple review" as @review
     And I should be on the "The Godfather" product page
     And I should see "Review was successfully submitted"
     And I should not see my review on the page
     And I should see that this review add and has status not approved
-    And I change statuc for this review by approved
+    And I change status for this review by approved
     Then I go to the "The Godfather" product page
     And I should see my review on the page
 
@@ -46,13 +47,13 @@ Feature: Manage reviews
     Then I follow "Rate This Product"
     And I should not see "Your Name"
     And I rate this by "3"
-    And I fill in "review_title" with "Simple Title"
     And I fill in "review_review" with "Simple Review"
     And I press "Submit your review"
+    And please define last Review by review "Simple Review" as @review
     And I should be on the "The Godfather" product page
     And I should see "Review was successfully submitted"
-    Then I approved my review with title "Simple Title"
+    Then I approved my review
     Then I go to the "The Godfather" product page
-    And I should see my review with title "Simple Title"
-    And I should see on the review "Simple Title" my name "Test Firstname T."
+    And I should see my review
+    And I should see my name "Test Firstname T." with my review
     And I should see my photo as "new_seller@person.com"

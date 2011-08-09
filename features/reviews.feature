@@ -28,9 +28,9 @@ Feature: Manage reviews
     Then I follow "Rate This Product"
     And I should be on the new review page for product "The Godfather"
     And I should see "The Godfather"
-    And I fill the form new_review with given value
-      | Rating | Name      | Review                |
-      |      4 | Test user | This is simple review |
+    And I rate this by "3"
+    And I fill in "review_name" with "Maxim"
+    And I fill in "review_review" with "This is simple review"
     And press "Submit your review"
     And please define last Review by review "This is simple review" as @review
     And I should be on the "The Godfather" product page

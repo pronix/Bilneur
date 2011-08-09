@@ -17,6 +17,13 @@
     </td>
   </tr>
   <tr>
+    <td><%= t("phone") %>:</td>
+    <td>
+      <%= current_user.phone %>
+    </td>
+  </tr>
+
+  <tr>
     <td><%= t("photo") %>:</td>
     <td>
       <%= image_tag current_user.photo.url %>

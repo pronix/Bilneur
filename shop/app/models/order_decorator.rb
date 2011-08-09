@@ -2,10 +2,13 @@
 Order.state_machines[:state] = StateMachine::Machine.new(Order, :initial => 'cart', :use_transactions => false) do
 
   event :next do
-    transition :from => 'cart',     :to => 'address'
-    transition :from => 'address',  :to => 'delivery'
+    transition :from => 'cart',     :to => 'address', :unless => :virtual?
+    transition :from => 'cart',     :to => 'delivery', :if => :virtual?
+
+    transition :from => 'address',  :to => 'delivery', :unless => :virtual?
     transition :from => 'delivery', :to => 'payment'
     transition :from => 'confirm',  :to => 'complete'
+
 
     # note: some payment methods will not support a confirm step
     transition :from => 'payment',  :to => 'confirm',
@@ -62,6 +65,7 @@ Order.class_eval do
   belongs_to :parent, :class_name => "Order"
   has_many   :children, :foreign_key => "parent_id", :class_name => "Order"
 
+  # default_scope where(:virtual => false)
 
   def has_available_shipment
     return unless :address == state_name.to_sym

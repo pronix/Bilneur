@@ -1,0 +1,14 @@
+<%= render :partial => 'dashboard/shared/profile_tabs', :locals => {:current => "Addresses"} %>
+
+<h1><%= t("new_address") %></h1>
+
+<%= render 'shared/error_messages', :target => @address %>
+<%= form_for(:address, :url => dashboard_addresses_path) do |f| %>
+<%= render :partial => "form", :locals => { :f => f } %>
+ <p class="form-buttons">
+   <%= button t("actions.create") %>
+   <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_addresses_path %>
+ </p>
+<% end %>
+
+

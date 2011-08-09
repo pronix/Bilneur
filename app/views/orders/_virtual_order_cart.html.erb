@@ -1,0 +1,33 @@
+<% if current_virtual_order && current_virtual_order.line_items.present? %>
+
+  <%= form_for(current_virtual_order.order, :url => update_virtual_cart_path(:virtual), :html=>{:id=>'updatecart'}) do |order_form| %>
+
+      <%= render :partial => 'form', :locals => {:order_form => order_form} %>
+
+      <div id="subtotal">
+        <h3><%= "#{t("subtotal")}: #{order_price(current_virtual_order)}" %></h3>
+        <div class="links">
+          <%= link_to image_tag('/images/update.png') + t("update"), '#',
+                      :class => 'button checkout primary', :onclick => "$('form#updatecart').submit(); return false;" %>
+          <%= link_to image_tag('/images/checkout.png') + t("checkout"), virtual_checkout_path(:virtual), :class => 'button checkout primary' %>
+        </div>
+      </div>
+
+      <p><%=link_to t("continue_shopping"), products_path, :class => 'button continue' %></p>
+
+  <% end %>
+
+  <%= form_tag empty_virtual_cart_path(:virtual), :method => :put do %>
+    <p id="clear_cart_link">
+      <input type="submit" value="<%= t('empty_cart') %>" class="button" />
+    </p>
+  <% end %>
+
+<% else %>
+
+
+    <p><%= t("your_cart_is_empty.") %></p>
+    <p><%=link_to t("continue_shopping"), products_path, :class => 'button continue' %></p>
+
+
+<% end %>

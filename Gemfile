@@ -3,8 +3,15 @@ source 'http://rubygems.org'
 gem 'rails',                    '= 3.0.9'
 gem 'bundler',                  '~> 1.0.15'
 gem 'rack',                     '= 1.2.1'
+gem 'nokogiri',                 '~> 1.5.0'
+gem "thrift_client",            "~> 0.6.3"
+gem "json",                     "~> 1.5.3"
+gem "json_pure",                "~> 1.5.3"
+
 
 gem 'pg',                       '~> 0.11.0'
+gem 'sqlite3'
+
 gem "exception_notification",   '~> 2.4.1'
 
 
@@ -17,8 +24,10 @@ gem 'spree',                    '= 0.60.1'
  gem "spree_static_content",     :git => 'git://github.com/spree/spree_static_content.git', :tag => "v0.60.2"
  gem 'spree_editor',             '~> 0.50.1'
  gem 'spree_volume_pricing',     :path => 'vendor/spree_exts/spree_volume_pricing'
- gem 'spree_reviews',           :git => 'git://github.com/romul/spree-reviews.git'
- gem "spree_social",            :path => "vendor/spree_exts/spree_social"
+ gem 'spree_reviews',            :git => 'git://github.com/romul/spree-reviews.git'
+ gem "spree_social",             :path => "vendor/spree_exts/spree_social"
+ gem "spree_address_book",       :path => "vendor/spree_exts/spree_address_book"
+
  gem 'shop',                    :require => "shop", :path => "shop"
 
 # Deploy with Capistrano

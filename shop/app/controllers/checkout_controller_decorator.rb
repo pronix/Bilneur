@@ -22,5 +22,18 @@ CheckoutController.class_eval do
     end
 
   end
+  def load_order
+    @order = params.has_key?(:order_type) ? current_virtual_order.try(:order) : current_order
+    redirect_to cart_path and return unless @order and @order.checkout_allowed?
+    redirect_to cart_path and return if @order.completed?
+    if @order.virtual?
+      @order.state = "delivery" if params[:state] && params[:state] == 'address'
+      @order.state = params[:state] if params[:state] && params[:state] != 'address'
+    else
+      @order.state = params[:state] if params[:state]
+    end
 
+    state_callback(:before)
+
+  end
 end

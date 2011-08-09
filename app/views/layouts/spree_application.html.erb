@@ -23,13 +23,13 @@ end
     <% if content_for?(:sidebar) %>
     <div id="sidebar">
       <%= hook :sidebar do %>
-        <%= yield :sidebar %>
+        <%#= yield :sidebar %>
       <% end %>
     </div>
     <% end %>
 
     <div id="content">
-      <%= breadcrumbs(@taxon) if @taxon %>
+      <%#= breadcrumbs(@taxon) if @taxon %>
       <% if flash.notice %>
       <div class="flash notice"><%= flash.notice %></div>
       <% end %>

@@ -1,4 +1,7 @@
 Spree::BaseController.class_eval do
+  include Spree::CurrentVirtualOrder
+  helper_method :current_virtual_order
+
   before_filter :prepare_params
 
   rescue_from ActiveRecord::StatementInvalid do |exception|

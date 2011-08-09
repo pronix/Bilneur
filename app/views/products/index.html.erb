@@ -2,88 +2,90 @@
 <% javascript "jquery.custom_radio_checkbox", "slider/SpryCollapsiblePanel", "slider/SpryTabbedPanels", "product_index" %>
 
 <div class="col1" id="pdSm">
-   <div class="pdSrch">
-       <form>
-           <input class="txt" type="text" name="" value="Search within results" onfocus="if(this.value=='Search within results') this.value=''" onblur="if(this.value=='') this.value='Search within results'" />
-             <input class="sbmt" type="submit" name="" value="Update Results" />
-         </form>
-       <%= link_to image_tag("forms/strip_bcome.png"), "#", :class => "strip" %>
-     </div>
-   <div class="mTabs">
-           <div id="TabbedPanels1" class="TabbedPanels">
-             <ul class="TabbedPanelsTabGroup">
-               <li class="TabbedPanelsTab" tabindex="0"><span>All Products</span></li>
-               <li class="TabbedPanelsTab" tabindex="0"><span>Auctions </span></li>
-               <li class="TabbedPanelsTab" tabindex="0"><span>Volume Price </span></li>
-               <li class="TabbedPanelsTab" tabindex="0"><span>Group Sales</span></li>
-               <li class="TabbedPanelsTab" tabindex="0"><span>Fixed Price</span></li>
-             </ul>
-             <div class="TabbedPanelsContentGroup">
-               <div class="TabbedPanelsContent">
-                 <div class="bCrmp">
-                     <ul>
-                         <li>Filters:</li>
-                         <li><a href="#">All Products</a><img src="/images/icons/ico_cros.png" alt="" /></li>
-                         <li><a href="#">Electronics</a><img src="/images/icons/ico_cros.png" alt="" /></li>
-                         <li><a href="#">Smart Phones</a><img src="/images/icons/ico_cros.png" alt="" /></li>
-                         <li><a href="#">Apple iPhone</a><img src="/images/icons/ico_cros.png" alt="" /></li>
-                     </ul>
-                 </div>
-                 <div class="fbPnl">
-                   <a class="cros" href="#"><img src="/images/icons/fb_cros.png" alt="" /></a>
-                     <p><a href=""><img src="/images/forms/fb_btn.png" alt="" /></a>See what your freinds are buying, selling or trading.<br /> Read their reviews, get advice, or simply buy &amp; sell with them.</p>
-                 </div>
-                 <div class="smPrdcts">
-                 <%= render "shared/products", :products => @products, :taxon => @taxon %>
-                 </div>
-                 <div class="paging">
-                     <div class="blogPg">
-                         <p><b>1 - 15</b> of <b>3,456</b> blog posts</p>
-                     </div>
-                     <div class="slctr slct">
-                         <b>items per page</b>
-                         <form action="">
-                             <select id="per_page_select" tabindex="1" name="">
-                                 <option value="" selected="selected" title="">15 </option>
-                                 <option value="" title="">30</option>
-                                 <option value="" title="">50</option>
-                                 <option value="" title="">60</option>
-                             </select>
-                         </form>
-                     </div>
-                     <!--
-                     <div class="pagination">
-                         <ul>
-                             <li><a href="#" class="prevnext disablelink prev">previous</a></li>
-                             <li><a href="#" class="currentpage">1</a></li>
-                             <li><a href="#">2</a></li>
-                             <li><a href="#">3</a></li>
-                             <li><a href="#">4</a></li>
-                             <li><a href="#">5</a></li>
-                             <li><a href="#">6</a></li>
-                             <li>...</li>
-                             <li><a href="#">18</a></li>
-                             <li><a href="#" class="prevnext nxt">next</a></li>
-                         </ul>
-                     </div>
-                     -->
-                 </div>
-                   </div>
-                   <div class="TabbedPanelsContent">
-                     2 tab
-                   </div>
-                   <div class="TabbedPanelsContent">
-                     3 tab
-                   </div>
-                   <div class="TabbedPanelsContent">
-                     4 tab
-                   </div>
-                   <div class="TabbedPanelsContent">
-                     5 tab
-                   </div>
-                 </div>
-               </div>
-           </div>
+  <div class="pdSrch">
+    <form>
+      <input class="txt" type="text" name="" value="Search within results" onfocus="if(this.value=='Search within results') this.value=''" onblur="if(this.value=='') this.value='Search within results'" />
+      <input class="sbmt" type="submit" name="" value="Update Results" />
+    </form>
+    <%= link_to image_tag("forms/strip_bcome.png"), "#", :class => "strip" %>
+  </div>
+  <div class="mTabs">
+    <div id="TabbedPanels1" class="TabbedPanels">
+      <ul class="TabbedPanelsTabGroup">
+        <li class="TabbedPanelsTab" tabindex="0">
+          <%= link_to raw("<span>All Products</span>"), "" %>
+        </li>
+        <li class="TabbedPanelsTab" tabindex="0"><span>Auctions </span></li>
+        <li class="TabbedPanelsTab" tabindex="0"><span>Volume Price </span></li>
+        <li class="TabbedPanelsTab" tabindex="0"><span>Group Sales</span></li>
+        <li class="TabbedPanelsTab" tabindex="0"><span>Fixed Price</span></li>
+      </ul>
+      <div class="TabbedPanelsContentGroup">
+        <div class="TabbedPanelsContent">
+          <div class="bCrmp">
+            <ul>
+              <li>Filters:</li>
+              <li><a href="#">All Products</a><img src="/images/icons/ico_cros.png" alt="" /></li>
+              <li><a href="#">Electronics</a><img src="/images/icons/ico_cros.png" alt="" /></li>
+              <li><a href="#">Smart Phones</a><img src="/images/icons/ico_cros.png" alt="" /></li>
+              <li><a href="#">Apple iPhone</a><img src="/images/icons/ico_cros.png" alt="" /></li>
+            </ul>
+          </div>
+          <div class="fbPnl">
+            <a class="cros" href="#"><img src="/images/icons/fb_cros.png" alt="" /></a>
+            <p><a href=""><img src="/images/forms/fb_btn.png" alt="" /></a>See what your freinds are buying, selling or trading.<br /> Read their reviews, get advice, or simply buy &amp; sell with them.</p>
+          </div>
+          <div class="smPrdcts">
+            <%= render "shared/products", :products => @products, :taxon => @taxon %>
+          </div>
+          <div class="paging">
+            <div class="blogPg">
+              <p><b>1 - 15</b> of <b>3,456</b> blog posts</p>
+            </div>
+            <div class="slctr slct">
+              <b>items per page</b>
+              <form action="">
+                <select id="per_page_select" tabindex="1" name="">
+                  <option value="" selected="selected" title="">15 </option>
+                  <option value="" title="">30</option>
+                  <option value="" title="">50</option>
+                  <option value="" title="">60</option>
+                </select>
+              </form>
+            </div>
+            <!--
+                <div class="pagination">
+                  <ul>
+                    <li><a href="#" class="prevnext disablelink prev">previous</a></li>
+                    <li><a href="#" class="currentpage">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li>...</li>
+                    <li><a href="#">18</a></li>
+                    <li><a href="#" class="prevnext nxt">next</a></li>
+                  </ul>
+                </div>
+                -->
+          </div>
+        </div>
+        <div class="TabbedPanelsContent">
+          2 tab
+        </div>
+        <div class="TabbedPanelsContent">
+          3 tab
+        </div>
+        <div class="TabbedPanelsContent">
+          4 tab
+        </div>
+        <div class="TabbedPanelsContent">
+          5 tab
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <%= render 'filter' %>

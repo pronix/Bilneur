@@ -7,6 +7,12 @@
 <div class="yui-gc">
   <div class="yui-u first">
 
+    <%= f.field_container :email do %>
+    <%= f.label :email, t("email") %><br />
+    <%= f.text_field :email, :class => 'fullwidth title'  %>
+    <%= f.error_message_on :email %>
+    <% end %>
+
     <%= f.field_container :firstname do %>
     <%= f.label :firstname, t("first_name") %><br />
     <%= f.text_field :firstname, :class => 'fullwidth title'  %>
@@ -18,6 +24,13 @@
     <%= f.text_field :lastname, :class => 'fullwidth title'  %>
     <%= f.error_message_on :lastname %>
     <% end %>
+
+    <%= f.field_container :phone do %>
+    <%= f.label :phone, t("phone") %><br />
+    <%= f.text_field :phone, :class => 'fullwidth title'  %>
+    <%= f.error_message_on :phone %>
+    <% end %>
+
 
     <%= f.field_container :photo do %>
     <%= f.label :photo, t("photo") %><br />

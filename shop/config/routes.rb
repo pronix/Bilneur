@@ -14,6 +14,13 @@ Rails.application.routes.draw do
     # We redirect this request to product page.
     match "/reviews" => redirect("/products/%{product_id}"), :via => :get
   end
+  match '/cart(/:cart_type)', :to => 'orders#update', :via => :put, :as => :update_virtual_cart
+  match '/cart/empty(/:cart_type)', :to => 'orders#empty', :via => :put, :as => :empty_virtual_cart
+
+    # non-restful checkout stuff
+  match '/checkout/(:order_type/)update/:state' => 'checkout#update', :as => :virtual_update_checkout
+  match '/checkout/(:order_type/):state' => 'checkout#edit', :as => :virtual_checkout_state
+  match '/checkout/(:order_type)' => 'checkout#edit', :state => 'address', :as => :virtual_checkout
 
   # User dashboard
   #
@@ -37,11 +44,10 @@ Rails.application.routes.draw do
 
       resource :selling_options
       resource :return_policies, :only => [:show, :edit, :update]
-
     end
 
-
-
+    resources :orders, :only => [:index, :show]
+    resources :sales,  :only => [:index, :show]
     resources :properties
     resources :option_types do
       collection do
@@ -91,6 +97,7 @@ Rails.application.routes.draw do
     resource :account, :controller => "users", :only => [:show, :edit, :update]
     resources :shipping_methods
     resource :terms
+    resources :addresses
   end
 
 end

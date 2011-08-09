@@ -17,4 +17,12 @@ Review.class_eval do
     self.name = 'TEST' if self.user
   end
 
+  class << self
+    # Use this in review page, for paginate pages
+    # Try to releas this with scope but something wrong whith arguments
+    def paginate_reviews(page)
+      where(:approved => true).paginate(:page => page, :per_page => 10)
+    end
+  end
+
 end

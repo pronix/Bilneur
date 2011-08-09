@@ -4,7 +4,7 @@ ProductsController.class_eval do
   #
   def show
     load_data_for_product
-
+    load_reviews
     respond_with(@product)
   end
 
@@ -23,6 +23,10 @@ ProductsController.class_eval do
   end
 
   private
+  # Return a reviews with paginate for this product
+  def load_reviews
+    @reviews = @product.reviews.paginate_reviews(params[:page])
+  end
 
   def load_data_for_product
     @product = Product.find_by_permalink!(params[:id])

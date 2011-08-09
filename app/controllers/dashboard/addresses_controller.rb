@@ -12,14 +12,24 @@ class Dashboard::AddressesController < Dashboard::ApplicationController
   end
 
   def new
-    @address = Address.new
+    @address = Address.default
+  end
+  def create
+    if (@address = current_user.addresses.create(params[:address]))
+      redirect_to dashboard_addresses_path, :notice => "Addres saved."
+    else
+      render :new
+    end
+
   end
 
   def edit
+    @address = current_user.addresses.find(params[:id])
     session["user_return_to"] = request.env['HTTP_REFERER']
   end
 
   def update
+    @address = current_user.addresses.find(params[:id])
     if @address.editable?
       if @address.update_attributes(params[:address])
         flash[:notice] = I18n.t(:successfully_updated, :resource => I18n.t(:address))
@@ -36,6 +46,7 @@ class Dashboard::AddressesController < Dashboard::ApplicationController
   end
 
   def destroy
+    @address = current_user.addresses.find(params[:id])
     if @address.can_be_deleted?
       @address.destroy
     else

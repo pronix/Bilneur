@@ -12,8 +12,12 @@ Feature: Manage reviews
       | Name 2 | here     | Thit is review 2 | true     |  127.0.0.1 |
 
   Scenario: Disable link /product/review
-    When I go to the "The Godfather" review by url
+    When I go to the "The Godfather" review by url    
     And I should be on the "The Godfather" product page
+
+  Scenario: Show latest review in last review block
+    When I go to the "The Godfather" product page
+    Then I should see lates review on last review block
 
   Scenario: Show product rating
     When I go to the "The Godfather" product page

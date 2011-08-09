@@ -93,6 +93,7 @@ Rails.application.routes.draw do
     resource :account, :controller => "users", :only => [:show, :edit, :update]
     resources :shipping_methods
     resource :terms
+    resources :addresses
   end
 
 end

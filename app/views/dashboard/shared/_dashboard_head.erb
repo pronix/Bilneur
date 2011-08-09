@@ -31,4 +31,8 @@
 
 <%= javascript_tag "jQuery.alerts.dialogClass = 'spree';" %>
 <%== unobtrusive_datepicker_includes %>
+<%= javascript_include_tag  'jquery.validate.min.js' %>
+<% unless I18n.locale.to_s[0..1] == 'en' %>
+  <%= javascript_include_tag ['localization/messages_', I18n.locale.to_s[0..1], '.js'].join %>
+<% end %>
 <%= yield :head %>

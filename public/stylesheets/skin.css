@@ -380,6 +380,8 @@ ul li { list-style:none;}
 .selected {background-position: 0 -50px!important;}
 .block {width: 50%;float: left;}
 .techi {font-weight:bold; font-style:normal; color:#787878;float:left;text-align:left;}
+.techi a {font-weight:bold; font-style:normal; color:#787878;float:left;text-align:left;}
+
 /* Check boxes code */
 
 .blogFilters .CollapsiblePanelContent { float:left; padding-top:10px!important;}

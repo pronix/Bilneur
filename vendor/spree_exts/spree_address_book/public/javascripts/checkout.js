@@ -7,7 +7,7 @@
       var country        = $('p#' + region + 'country' + ' span#' + region + 'country :only-child').val();
       return state_mapper[country];
     }
-
+    
     var update_state = function(region) {
       var states         = get_states(region);
 
@@ -45,10 +45,6 @@
 
     $('p#bcountry span#bcountry select').change(function() { update_state('b'); });
     $('p#scountry span#scountry select').change(function() { update_state('s'); });
-
-    $('p#bcountry select').change(function() { update_state('b'); });
-    $('p#scountry select').change(function() { update_state('s'); });
-
     update_state('b');
     update_state('s');
 

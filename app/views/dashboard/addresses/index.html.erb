@@ -1,0 +1,31 @@
+<%= render :partial => 'dashboard/shared/profile_tabs', :locals => {:current => "Addresses"} %>
+
+<div class='toolbar'>
+  <ul class='actions'>
+    <li>
+      <%= button_link_to t("new_address"), new_dashboard_address_url,  :icon => 'add',
+                                           :id => 'dashboard_new_address_link' %>
+    </li>
+  </ul>
+  <br class='clear' />
+</div>
+
+
+<h2><%= Address.human_name(:count => 2) %></h2>
+<table class="order-summary" width="545">
+  <thead>
+    <tr>
+      <th><%= Address.human_name %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% current_user.addresses.each do |address| %>
+    <tr class="<%= cycle('even', 'odd') %>">
+      <td><%= address %></td>
+      <td><%= link_to t(:edit), edit_dashboard_address_path(address) %></td>
+      <td><%= link_to t(:remove), dashboard_address_path(address), :method => :delete, :confirm => t(:are_you_sure) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -1,5 +1,5 @@
 # language: en
-
+@wip @focus
 Feature: Seller payment methods
 
   Background:
@@ -11,7 +11,7 @@ Feature: Seller payment methods
     And load default data
     When I sign in as "seller@person.com/password"
 
-  Scenario : My Account Panel and account setting- Payment
+  Scenario: My Account Panel and account setting- Payment
     Given that i am in My Account page
     Given that i am in Account settings panel
     Given that Payment information is not mandatory for “buyers” but for “sellers” its mandatory
@@ -19,13 +19,13 @@ Feature: Seller payment methods
     And i press “Add a Payment Type” Button
     And i should see Add a Payment panel
 
-  Scenario : My Account Panel and Account setting - Payment panel
+  Scenario: My Account Panel and Account setting - Payment panel
     Given that iam in in My Account Page and in Account Setting panel
     Given that i am in “Add A Payment Type” panel
     And i should see option “Credit card”, “Paypal” and  “Bank Account”
     And i select option “Credit Card”
-    And i should see |type|card number|exp            |cvv|  billing address|
-    And i fill with	|visa |1234 1234 1234 1234|12/13|234|xyz street, san jose, ca |
+    And i should see | type | card number | exp            |cvv|  billing address|
+    And i fill with	 | visa | 1234 1234 1234 1234| 12/13 |234 |xyz street, san jose, ca |
     And i press “Save”
     Then the “Credit card” information  |visa |1234 1234 1234 1234|12/13|234|xyz street, san jose, ca | Under “payments” panel
 

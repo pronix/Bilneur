@@ -26,9 +26,6 @@ Product.class_eval do
   }
 
 
-
-
-
   # validates
   #
   validates :ean, :presence => true, :uniqueness => true
@@ -70,7 +67,7 @@ Product.class_eval do
   end
 
   def similar_products(count=3)
-    Taxon.find_by_name(self.taxons.last.name).products.first(3) rescue ""
+    Product.active.on_hand.in_taxons(taxons.last.name).where("product_id != ?", id).first(count) rescue ""
   end
 
   def last_photo(style='product')

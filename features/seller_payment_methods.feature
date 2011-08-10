@@ -1,5 +1,4 @@
 # language: en
-@focus
 Feature: Seller payment methods
 
   Background:

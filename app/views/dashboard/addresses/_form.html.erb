@@ -11,7 +11,7 @@ div.inner input[type=text], div.inner select { width: 80%; }
 <div class="yui-gc">
   <div class="yui-u first">
 
-    <% [["firstname", "first_name"], ["lastname", "last_name"],[ "address1", "street_address"]].each do |item|  %>
+    <% [[ "address1", "street_address" ]].each do |item|  %>
       <%= f.field_container item.first do %>
         <%= f.label item.first, t("#{item.last}") %><span class="required">*</span><br />
         <%= f.text_field item.first, :class => 'fullwidth title'  %>
@@ -62,7 +62,7 @@ div.inner input[type=text], div.inner select { width: 80%; }
 
             <script type="text/javascript" language="javascript" charset="utf-8">
             // <![CDATA[
-            document.write("<%== state_elements %>");
+            document.write("<%= raw(state_elements) %>");
             // ]]>
             </script>
 

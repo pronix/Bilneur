@@ -25,6 +25,8 @@ Product.class_eval do
     active.on_hand.includes(:variants).limit(args.first || 20).order("products.created_at DESC")
   }
 
+  # Return a top products, ordering by ASC, higth ratting is first
+  scope :tops, lambda{ |*args| active.on_hand.order('avg_rating DESC')}
 
   # validates
   #

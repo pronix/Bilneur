@@ -70,11 +70,11 @@ Product.class_eval do
   end
 
   def similar_products(count=3)
-    Taxon.find_by_name(self.taxons.last.name).products.first(3)
+    Taxon.find_by_name(self.taxons.last.name).products.first(3) rescue ""
   end
 
   def last_photo(style='product')
-    images.last.attachment.url(style.to_sym)
+    images.last.attachment.url(style.to_sym) rescue '/images/img/sml_iph.png'
   end
 
   # class methods

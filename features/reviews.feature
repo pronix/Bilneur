@@ -10,7 +10,7 @@ Feature: Manage reviews
       | name   | location | review           | approved | ip_address |
       | Name 1 | here     | This is review   | true     |  127.0.0.1 |
       | Name 2 | here     | Thit is review 2 | true     |  127.0.0.1 |
-
+      
   Scenario: Disable link /product/review
     When I go to the "The Godfather" review by url    
     And I should be on the "The Godfather" product page

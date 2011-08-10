@@ -67,7 +67,8 @@ Product.class_eval do
   end
 
   def similar_products(count=3)
-    Product.active.on_hand.in_taxons(taxons).where("product_id != ?", id).first(count) rescue ""
+    # FIXIT: similar products should be from all category
+    Product.active.on_hand.in_taxons(taxons.last.name).where("product_id != ?", id).first(count) rescue ""
   end
 
   def last_photo(style='product')

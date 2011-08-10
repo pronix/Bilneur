@@ -1,7 +1,7 @@
 <% require 'faker' %>
 
 <% %w{breakfast_tiffany godfather death_of_a_hero lenovo_thinkpad_t410s compaq_nc6000 sony_vgn_cs21s_t}.each do |product| %>
-  <% for i in 1..rand(10) do %>
+  <% for i in 1..40 do %>
     review_<%= rand(100000) %>:
       product: <%= product %>
       name: <%= Faker::Name.first_name %>  <%= Faker::Name.last_name %>

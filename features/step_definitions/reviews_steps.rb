@@ -90,3 +90,14 @@ Then /^I should see my photo as "(.+)"$/ do |email|
   user = User.find_by_email(email)
   page.should have_xpath("//img[contains(@src, \"#{user.photo.url(:for_review)}\")]")
 end
+
+Then /^I should see lates review on last review block$/ do
+  Review.last_reviews(3).each do |review|
+    find('.vwer').should have_content(review.review)
+    find('.vwer').should have_xpath("//img[contains(@src, \"missing_medium_for_review.png\")]")
+  end
+end
+
+Then /^test$/ do
+  puts Product.all.map{ |x| x.permalink}
+end

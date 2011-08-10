@@ -7,7 +7,7 @@
         <b>Based On <%= @product.reviews_count %> Ratings</b>
         <%= link_to 'Rate This Product', new_product_review_path(@product) %>
     </div>
-    <% for review in @product.reviews.approved do %>
+    <% for review in @reviews do %>
       <div class="cntr", id="review_id_<%= review.id %>">
         <i><%= show_user_photo(review.user) %></i>
         <span><%= review.simple_username %></span>
@@ -15,26 +15,10 @@
         <b>
           <%= show_stars(review.rating, 'icons/yel_str_sml.png', 'icons/grey_str_sml.png', '<em>') %>
         </b>
-        <a href="#">Would you recomend this product to a friend?<em class="ys">Yes</em></a>
+        <a id="<%= review.id %>" class="like_review", style="cursor:pointer;">Would you recomend this product to a friend?<em class="ys">Yes</em></a>
       </div>
     <% end %>
-
     <div class="btm">
-      <!--<div class="blogPg">
-            <p><b>1 - 15</b> of <b>3,456</b> blog posts</p>
-        </div>-->
-      <div class="pagination">
-            <ul>
-                <li><a href="#" class="prevnext disablelink">previous</a></li>
-                <li><a href="#" class="currentpage">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">6</a>...</li>
-                <li><a href="#">18</a></li>
-                <li><a href="#" class="prevnext">next</a></li>
-            </ul>
-      </div>
+      <%= will_paginate @reviews %>
     </div>
 </div>

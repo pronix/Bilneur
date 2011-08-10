@@ -4,7 +4,7 @@ ProductsController.class_eval do
   #
   def show
     load_data_for_product
-
+    load_reviews
     respond_with(@product)
   end
 
@@ -22,7 +22,21 @@ ProductsController.class_eval do
   def quote
   end
 
+  def like_review
+    if request.xhr?
+      Review.find(params[:id]).feedback_reviews.create(:rating => 1)
+      respond_to do |format|
+        format.json { render :json => { :status => 'ok' }, :status => :created }
+      end
+    end
+  end
+
   private
+  # Return a reviews with paginate for this product
+  def load_reviews
+    @reviews = @product.reviews.paginate_reviews(params[:page])
+    @recomends_count = @product.recomends_count
+  end
 
   def load_data_for_product
     @product = Product.find_by_permalink!(params[:id])

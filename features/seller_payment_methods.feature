@@ -4,6 +4,7 @@ Feature: Seller payment methods
   Background:
     Given I have an admin account of "admin@person.com/password"
     And I am signed up as a seller with "seller@person.com/password"
+    And user "seller@person.com" has no payment methods
     And user "seller@person.com" has the following attributes:
      | firstname | Bob    |
      | lastname  | Spanch |

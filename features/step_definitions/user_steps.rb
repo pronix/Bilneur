@@ -41,3 +41,8 @@ end
 Then /^page have the following payment methods:$/ do |table|
   table.diff!(tableish('table:first tr', 'td,th'))
 end
+
+Given /^user "([^\"]*)" has no payment methods$/ do |user|
+  @user = User.find_by_email(user)
+  @user.seller_payment_methods.destroy_all
+end

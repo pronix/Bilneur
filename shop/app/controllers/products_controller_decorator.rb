@@ -4,7 +4,6 @@ ProductsController.class_eval do
   #
   def show
     load_data_for_product
-    load_reviews
     respond_with(@product)
   end
 
@@ -13,7 +12,6 @@ ProductsController.class_eval do
   #
   def quotes
     load_data_for_product
-
     respond_with(@product)
   end
 
@@ -32,16 +30,14 @@ ProductsController.class_eval do
   end
 
   private
-  # Return a reviews with paginate for this product
-  def load_reviews
-    @reviews = @product.reviews.paginate_reviews(params[:page])
-    @recomends_count = @product.recomends_count
-  end
+
 
   def load_data_for_product
     @product = Product.find_by_permalink!(params[:id])
     raise ActiveRecord::RecordNotFound unless @product
     raise ActiveRecord::RecordNotFound unless @product.best_variant
+    @reviews = @product.reviews.paginate_reviews(params[:page])
+    @recomends_count = @product.recomends_count
 
     @best_variant = @product.best_variant
 

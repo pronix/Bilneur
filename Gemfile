@@ -38,7 +38,7 @@ gem 'spree',                    '= 0.60.1'
  gem 'unicorn', :group => :development
 
 # Some additional libraries
- gem 'will_paginate', '~> 3.0'
+# gem 'will_paginate', '~> 3.0'
 
 group :test, :cucumber do
 

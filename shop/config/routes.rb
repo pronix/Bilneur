@@ -98,6 +98,7 @@ Rails.application.routes.draw do
     resources :shipping_methods
     resource :terms
     resources :addresses
+    resources :payment_methods
   end
 
 end

@@ -1,0 +1,35 @@
+<%= render :partial => 'dashboard/shared/profile_tabs', :locals => {:current => "Payment Methods"} %>
+
+
+<div class='toolbar'>
+  <ul class='actions'>
+    <li>
+      <%= button_link_to t("new_payment_method"), new_dashboard_payment_method_url,  :icon => 'add',
+                                                  :id => 'dashboard_new_payment_method_link' %>
+    </li>
+  </ul>
+  <br class='clear' />
+</div>
+
+
+<h1><%= t("payment_methods") %></h1>
+
+<table class="index sortable">
+  <thead>
+    <tr>
+      <th><%= t("name") %></th>
+      <th><%= t("payment_type") %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bogus</td>
+      <td>credit card</td>
+      <td>
+        <%= link_to "edit", "" %>
+        <%= link_to "delete", "" %>
+      </td>
+    </tr>
+  </tbody>
+</table>

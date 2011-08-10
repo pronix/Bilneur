@@ -6,17 +6,20 @@
   <%= render "filters" %>
   <%= render "prd_dtl", :product => @product %>
 </div>
+
 <div class="col2">
   <%= render "sellers_panel", :product => @product %>
+
   <div>
     <ul>
       <% @product.variants.condition(params[:condition]).each do |item| %>
-    <li>
-      <b><%= number_to_currency(item.price) %></b>
-      <%= item.seller.full_name%>
-    </li>
+      <li>
+        <b><%= number_to_currency(item.price) %></b>
+        <%= item.seller.full_name%>
+      </li>
     <% end %>
     </ul>
   </div>
+
   <%= render "vtrade_panel", :product => @product %>
 </div>

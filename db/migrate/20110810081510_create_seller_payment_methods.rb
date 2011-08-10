@@ -5,10 +5,10 @@ class CreateSellerPaymentMethods < ActiveRecord::Migration
       t.integer :user_id, :null => false
       t.string  :name
       t.text    :description
-      t.boolean :verified, :default => false
-
+      t.string  :state
       t.timestamps
     end
+
     add_index :seller_payment_methods, :user_id
   end
 

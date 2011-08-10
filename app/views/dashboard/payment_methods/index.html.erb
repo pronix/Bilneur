@@ -19,17 +19,28 @@
     <tr>
       <th><%= t("name") %></th>
       <th><%= t("payment_type") %></th>
+      <th>Verified</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
+    <% @payment_methods.each do |item| %>
     <tr>
-      <td>Bogus</td>
-      <td>credit card</td>
+      <td><%= item.name %></td>
+      <td><%= t("seller_payment_method_type.#{item.method_type}") %></td>
       <td>
-        <%= link_to "edit", "" %>
-        <%= link_to "delete", "" %>
+        <%= item.state %>
+        <% if item.unverified? %>
+        <%= link_to "send to verification", verify_dashboard_payment_method_path(item) %>
+        <% end %>
+      </td>
+      <td>
+        <% if item.unverified? %>
+        <%= link_to "edit", edit_dashboard_payment_method_path(item) %>
+        <%= link_to "delete", dashboard_payment_method_path(item), :method => :delete, :confirm => t(:are_you_sure)  %>
+        <% end %>
       </td>
     </tr>
+    <% end %>
   </tbody>
 </table>

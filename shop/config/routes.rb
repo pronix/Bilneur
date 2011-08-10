@@ -98,7 +98,23 @@ Rails.application.routes.draw do
     resources :shipping_methods
     resource :terms
     resources :addresses
-    resources :payment_methods
+    resources :payment_methods do
+      member do
+        get :verify
+      end
+    end
+  end
+
+  # Admin
+  #
+  namespace :admin do
+    resources :seller_payment_methods, :only => [:index, :show] do
+      member do
+        get :approve
+        get :reject
+      end
+    end
+
   end
 
 end

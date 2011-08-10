@@ -69,6 +69,14 @@ Product.class_eval do
     errors[:ean].uniq! if errors.has_key?(:ean)
   end
 
+  def similar_products(count=3)
+    Taxon.find_by_name(self.taxons.last.name).products.first(3)
+  end
+
+  def last_photo(style='product')
+    images.last.attachment.url(style.to_sym)
+  end
+
   # class methods
   #
   class << self

@@ -26,7 +26,7 @@
   <tbody>
     <% @payment_methods.each do |item| %>
     <tr>
-      <td><%= item.name %></td>
+      <td><%= link_to item.name, dashboard_payment_method_path(item)  %></td>
       <td><%= t("seller_payment_method_type.#{item.method_type}") %></td>
       <td>
         <%= item.state %>

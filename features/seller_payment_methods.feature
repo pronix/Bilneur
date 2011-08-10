@@ -1,5 +1,5 @@
 # language: en
-@wip @focus
+@focus
 Feature: Seller payment methods
 
   Background:
@@ -11,13 +11,46 @@ Feature: Seller payment methods
     And load default data
     When I sign in as "seller@person.com/password"
 
-  Scenario: My Account Panel and account setting- Payment
-    Given that i am in My Account page
-    Given that i am in Account settings panel
-    Given that Payment information is not mandatory for “buyers” but for “sellers” its mandatory
-    And in Payment Information panel i should see “Add a Payment Type” button
-    And i press “Add a Payment Type” Button
-    And i should see Add a Payment panel
+  Scenario: Add Payment Method(Paypal)
+    Given I go to the dashboard payment_methods page
+    And I follow "New Payment Method"
+    And I select "Paypal" from "Type"
+    And I fill in "Name" with "My paypal"
+    And I press "Create"
+    When I fill in "Login" with "test_paypal@tpay.com"
+    And I fill in "Password" with "password"
+    And I press "Update"
+    Then I should see "Payment Method has been successfully updated!"
+    And page have the following payment methods:
+     | Name      | Payment Type | Verified                                 |                      |
+     | My paypal | Paypal       | unverified\n        send to verification | edit\n        delete |
+
+  Scenario: Add Payment Method(Credit Card)
+    Given I go to the dashboard payment_methods page
+    And I follow "New Payment Method"
+    And I select "Credit Card" from "Type"
+    And I fill in "Name" with "My credit card"
+    And I press "Create"
+    When I fill in "Card Type" with "visa"
+    And I fill in "Code" with "1234 1234 1234 1234"
+    And I fill in "CVV" with "234"
+    And I fill in "Billing Address" with "xyz street, san jose, ca"
+    And I fill in "Expiration" with "12/13"
+    And I press "Update"
+    Then I should see "Payment Method has been successfully updated!"
+    And page have the following payment methods:
+     | Name           | Payment Type | Verified                                 |                      |
+     | My credit card | Credit Card  | unverified\n        send to verification | edit\n        delete |
+    When I follow "My credit card"
+    Then I should view credit card info:
+     | name            | My  credit card            |
+     | card type       | Credit Card                |
+     | cvv             | CVV: 234                   |
+     | code            | Code: 234                  |
+     | expiration      | 12/13                      |
+     | billing address | "xyz street, san jose, ca" |
+
+
 
   Scenario: My Account Panel and Account setting - Payment panel
     Given that iam in in My Account Page and in Account Setting panel

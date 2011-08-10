@@ -37,3 +37,7 @@ Given /^user "([^\"]*)" have the following addresses:$/ do |email, table|
             })
   end
 end
+
+Then /^page have the following payment methods:$/ do |table|
+  table.diff!(tableish('table:first tr', 'td,th'))
+end

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   match "/account" => "dashboard/users#show"
   match "/products/deals/:id(/:condition)" => "products#quotes", :as => :product_quotes
   match "/products/deals/:id/:quote_id" => "products#quote", :as => :product_quote
-
+  match "/products/like_review" => 'products#like_review', :via => :post
   # Product
   resources :products do
     # In spree-review has routes /review But we don't want to use this route

@@ -15,7 +15,7 @@
         <b>
           <%= show_stars(review.rating, 'icons/yel_str_sml.png', 'icons/grey_str_sml.png', '<em>') %>
         </b>
-        <a href="#">Would you recomend this product to a friend?<em class="ys">Yes</em></a>
+        <a id="<%= review.id %>" class="like_review", style="cursor:pointer;">Would you recomend this product to a friend?<em class="ys">Yes</em></a>
       </div>
     <% end %>
     <div class="btm">

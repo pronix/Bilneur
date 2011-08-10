@@ -74,6 +74,12 @@ Product.class_eval do
     images.last.attachment.url(style.to_sym) rescue '/images/img/sml_iph.png'
   end
 
+  # Select all FeedbackReview where is reviews from current product
+  def recomends_count
+    FeedbackReview.where('review_id in (:review_ids)',
+                         :review_ids => review_ids).count
+  end
+
   # class methods
   #
   class << self

@@ -1,0 +1,47 @@
+<%= render :partial => 'dashboard/shared/profile_tabs', :locals => {:current => "Payment Methods"} %>
+
+<h1><%= t("edit_address") %></h1>
+
+<%= render 'shared/error_messages', :target => @payment_method %>
+<%= form_for(:payment_method, :url => dashboard_payment_method_path(@payment_method), :html => {:method => :put}) do |f| %>
+<fieldset>
+<div class="yui-gc">
+  <div class="yui-u first">
+    <div>
+      Method type: <%= t("seller_payment_method_type.#{@payment_method.method_type}") %>
+    </div>
+
+
+    <%= f.field_container :name do %>
+       <%= f.label :name, t("name") %><span class="required">*</span><br />
+       <%= f.text_field :name, :class => 'fullwidth title'  %>
+       <%= f.error_message_on :name %>
+    <% end %>
+
+    <fieldset>
+      <legend>Payment method details:</legend>
+     <div id="preference-settings">
+      <%= preference_fields(@payment_method , f) %>
+     </div>
+    </fieldset>
+    <%= f.field_container :description do %>
+       <%= f.label :description, t("description")%><br />
+       <%= f.text_area :description, {:cols => 60, :rows => 4, :class => 'fullwidth'} %>
+       <%= f.error_message_on :description %>
+    <% end %>
+
+
+  </div>
+</div>
+
+
+<p class="form-buttons">
+   <%= button t("actions.update") %>
+   <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_payment_methods_path %>
+ </p>
+
+</fieldset>
+
+<% end %>
+
+

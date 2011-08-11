@@ -25,6 +25,7 @@ User.class_eval do
 
   has_many :virtual_sales, :class_name => "VirtualOrder", :foreign_key => :seller_id
   has_many :virtual_orders, :class_name => "VirtualOrder", :foreign_key => :user_id
+  has_many :seller_payment_methods
 
   # scopes
   #

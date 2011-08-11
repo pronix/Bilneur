@@ -5,7 +5,7 @@ Variant.class_eval do
   # associations
   #
   belongs_to :seller, :class_name => "User"
-
+  belongs_to :owner, :class_name => "User" # seller who added quote, not virtual seller
   # scopes
   #
   CONDITION.each { |v| scope :"condition_#{v}", where(:condition => v)}
@@ -20,7 +20,7 @@ Variant.class_eval do
        args.first ? condition(*args).by_price.limit(1) : by_price.limit(1)
     }
 
-  scope :best_variant, order("variants.price ASC").limit(1)
+  scope :best_variant, active.on_hand.order("variants.price ASC").limit(1)
 
   # validates
   #
@@ -29,7 +29,8 @@ Variant.class_eval do
 
   validates :count_on_hand, :numericality => { :greater_than_or_equal_to => 0 }, :unless => lambda{|t| t.is_master? }
   validates :price, :numericality => { :greater_than => 0 },                     :unless => lambda{|t| t.is_master? }
-  validates :seller, :presence => true,                                          :unless => lambda{|t| t.is_master? }
+  validates :seller, :owner, :presence => true,                                          :unless => lambda{|t| t.is_master? }
+
 
   # callbacks
   #
@@ -37,16 +38,24 @@ Variant.class_eval do
   after_save :recalculate_count_on_hand, :unless => lambda{|t| t.is_master? }
   after_validation  :hack_after_validate
 
-  # Set current user as owner quote
-  #
-  def set_seller(user = User.current)
-    self.seller ||= user
-  end
 
 
   # instance methods
   #
   delegate_belongs_to :product, :ean
+
+  # Set current user as seller and owner quote
+  #
+  def set_seller(user = User.current)
+    self.seller ||= user
+    self.owner  ||= self.seller
+  end
+
+  # Set the quote as virtual
+  #
+  def virtual!
+    update_attribute(:virtual, true)
+  end
 
   def image
     (self.images.blank? ? product.images : images).last

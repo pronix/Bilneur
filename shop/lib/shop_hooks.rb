@@ -1,4 +1,13 @@
 class ShopHooks < Spree::ThemeSupport::HookListener
+
+    insert_after :admin_tabs do
+    %(
+        <%= tab(:seller_payment_methods) %>
+
+     )
+  end
+
+
   # custom hooks go here
   insert_after :admin_product_form_right do
     %(

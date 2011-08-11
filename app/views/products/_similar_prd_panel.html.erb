@@ -1,13 +1,20 @@
 <div class="vwer smlr">
-  <div class="top"><b>Similar Products</b></div>
-    <% for product in @product.similar_products do %>
-      <div class="cntr">
-        <a href="<%= product_path(product) %>"><i><%= image_tag product.last_photo(:mini) %></i>
-          <b><%= truncate product.name, :length => 20 %></b>
-          <em><%= truncate product.description, :length => 90 %><br /><label><%= number_to_currency product.price %></label></em>
-        </a>
-      </div>
+  <div class="top"><b><%= t("similar_products") %></b></div>
+  <% @product.similar_products.each do |product| %>
+  <% @best_similar_variant = product.best_variant %>
+  <% next unless @best_similar_variant %>
+  <div class="cntr">
+    <%= link_to product_path(product) do %>
+
+    <i><%= image_tag @best_similar_variant.image.attachment.try(:url, :mini) %></i>
+    <b><%= truncate product.name, :length => 20 %></b>
+    <em>
+      <%= truncate product.description, :length => 90 %><br />
+      <label><%= number_to_currency @best_similar_variant.price %></label>
+    </em>
     <% end %>
-    <div class="btm"></div>
+  </div>
+  <% end %>
+  <div class="btm"></div>
 </div>
 

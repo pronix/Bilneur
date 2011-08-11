@@ -2,6 +2,21 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  similar_products: Similar Products
+  start_selling: Start Selling
+  routing_number: Routing Number
+  seller_payment_methods: Seller Payment Methods
+  mailer:
+    new_payment_method: New Payment Method from Seller
+  type_card: Type card
+  number: Number
+  exp: Expiried
+  cvv: CVV
+  billing_address_id: Billing Address
+  seller_payment_method_type:
+    paypal: Paypal
+    credit_card: Credit Card
+    bank_account: Bank Account
   addresses: Addresses
   new_address: New Address
   items_in_cart: Items in cart

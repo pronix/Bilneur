@@ -1,0 +1,26 @@
+
+<h1><%= t("seller_payment_method") %></h1>
+
+<fieldset>
+<div class="yui-gc">
+  <div class="yui-u first">
+    <div>Method type: <%= t("seller_payment_method_type.#{@payment_method.method_type}") %></div>
+    <div>Name: <%= @payment_method.name %></div>
+    <div>State: <%= @payment_method.state %></div>
+    <fieldset>
+      <legend>Payment method details:</legend>
+      <% @payment_method.preferences.each do |k,v| %>
+      <div> <%= t(k) %>: <b><%= v %></b>
+      </div>
+      <% end %>
+    </fieldset>
+    <div>Description: <%= @payment_method.description %></div>
+  </div>
+
+
+
+</div>
+<div>
+<%= link_to t(:back), :back %>
+</div>
+</fieldset>

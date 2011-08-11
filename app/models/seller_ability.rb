@@ -6,8 +6,10 @@ class SellerAbility
 
     if user.has_role?("seller") || user.has_role?("admin")
       can :access, :quote
+      can :access, :seller
     else
       cannot :access, :quote
+      cannot :access, :seller
     end
 
     can [:edit, :update, :destroy], Property do |resource|

@@ -1,3 +1,9 @@
+Factory.define :seller_payment_method do |t|
+  t.type "SellerPaymentMethod::CreditCard"
+  t.name "My Visa"
+  t.state "unverified"
+end
+
 # Factory.define :user do |u|
 #   u.login { Faker::Internet.user_name + Faker::Internet.user_name }
 #   u.email { Faker::Internet.email }

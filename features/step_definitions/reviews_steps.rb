@@ -5,13 +5,14 @@ end
 Given /^the following products was created by  "(.+)" user:$/ do |user_email, table|
   user = User.find_by_email(user_email)
   table.hashes.each do |product|
-    new_product = user.products.create(product)
-    new_product.variants.create(:sku => "sku_#{rand(100000)}",
-                                :price => 1,
-                                :cost_price => 1,
-                                :count_on_hand => 10,
-                                :is_master => true)
-    new_product.variants.create(:condition => "used", :price => 122, :seller => user)
+    new_product = Factory(:product, product.merge({ :owner => user }))
+    # user.products.create(product)
+    # new_product.variants.create(:sku => "sku_#{rand(100000)}",
+    #                             :price => 1,
+    #                             :cost_price => 1,
+    #                             :count_on_hand => 10,
+    #                             :is_master => true)
+    new_product.variants.create(:condition => "used", :price => 122, :seller => user, :count_on_hand => 10 )
   end
 end
 

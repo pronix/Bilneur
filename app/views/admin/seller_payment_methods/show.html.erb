@@ -1,0 +1,34 @@
+
+<h1><%= t("seller_payment_method") %></h1>
+
+<fieldset>
+<div class="yui-gc">
+  <div class="yui-u first">
+    <div>Method type: <%= t("seller_payment_method_type.#{@payment_method.method_type}") %></div>
+    <div>Name: <%= @payment_method.name %></div>
+    <div>State: <%= @payment_method.state %></div>
+    <div>User: <%= link_to @payment_method.user.full_name, admin_user_path(@payment_method.user) %></div>
+    <fieldset>
+      <legend>Payment method details:</legend>
+      <% @payment_method.preferences.each do |k,v| %>
+      <div> <%= t(k) %>: <b><%= v %></b>
+      </div>
+      <% end %>
+    </fieldset>
+    <div>Description: <%= @payment_method.description %></div>
+  </div>
+
+
+
+</div>
+<div>
+
+    <% if @payment_method.wait? %>
+    <%= link_to "approve", approve_admin_seller_payment_method_path(@payment_method) %>&nbsp;
+    <%= link_to "reject", reject_admin_seller_payment_method_path(@payment_method) %>
+    <% end %>
+
+|
+<%= link_to t(:back), :back %>
+</div>
+</fieldset>

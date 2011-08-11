@@ -14,9 +14,10 @@ class Dashboard::AddressesController < Dashboard::ApplicationController
   def new
     @address = Address.default
   end
+
   def create
     if (@address = current_user.addresses.create(params[:address]))
-      redirect_to dashboard_addresses_path, :notice => "Addres saved."
+      redirect_to dashboard_addresses_path, :notice => I18n.t(:successfully_created, :resource => I18n.t(:address))
     else
       render :new
     end
@@ -49,6 +50,7 @@ class Dashboard::AddressesController < Dashboard::ApplicationController
     @address = current_user.addresses.find(params[:id])
     if @address.can_be_deleted?
       @address.destroy
+      flash.notice = "Address has been successfully destroyed!"
     else
       @address.update_attribute(:deleted_at, Time.now)
     end

@@ -28,6 +28,12 @@ describe Variant do
         Factory.build(:variant, :seller => @seller, :product => @product, :condition => "new").should be_valid
       end
 
+      it "owner should be setting by create" do
+        @variant = Factory.create(:variant, :seller => @seller,
+                                 :product => @product, :condition => "new")
+        @variant.owner.should eq(@seller)
+      end
+
     end
 
     describe "Condition" do

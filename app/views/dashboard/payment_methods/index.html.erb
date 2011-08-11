@@ -1,0 +1,46 @@
+<%= render :partial => 'dashboard/shared/profile_tabs', :locals => {:current => "Payment Methods"} %>
+
+
+<div class='toolbar'>
+  <ul class='actions'>
+    <li>
+      <%= button_link_to t("new_payment_method"), new_dashboard_payment_method_url,  :icon => 'add',
+                                                  :id => 'dashboard_new_payment_method_link' %>
+    </li>
+  </ul>
+  <br class='clear' />
+</div>
+
+
+<h1><%= t("payment_methods") %></h1>
+
+<table class="index sortable">
+  <thead>
+    <tr>
+      <th><%= t("name") %></th>
+      <th><%= t("payment_type") %></th>
+      <th>Verified</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @payment_methods.each do |item| %>
+    <tr>
+      <td><%= link_to item.name, dashboard_payment_method_path(item)  %></td>
+      <td><%= t("seller_payment_method_type.#{item.method_type}") %></td>
+      <td>
+        <%= item.state %>
+        <% if item.unverified? %>
+        <%= link_to "send to verification", verify_dashboard_payment_method_path(item) %>
+        <% end %>
+      </td>
+      <td>
+        <% if item.unverified? %>
+        <%= link_to "edit", edit_dashboard_payment_method_path(item) %>
+        <%= link_to "delete", dashboard_payment_method_path(item), :method => :delete, :confirm => t(:are_you_sure)  %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

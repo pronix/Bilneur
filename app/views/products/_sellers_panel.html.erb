@@ -1,0 +1,86 @@
+<div class="smlTabs">
+  <div id="TabbedPanels2" class="TabbedPanels">
+    <ul class="TabbedPanelsTabGroup">
+      <% Variant::CONDITION.each  do |cdt| %>
+      <li class="TabbedPanelsTab tab1" tabindex="0"><span><%= t("condition_#{cdt}") %></span></li>
+      <% end %>
+    </ul>
+    <div class="TabbedPanelsContentGroup">
+      <div class="TabbedPanelsContent">
+          <div class="cmboSrt">
+            <form action="">
+                  <select id="sort_by_most_recent" tabindex="1" name="">
+                      <option value="" selected="selected" title=""> - Sort by most recent - </option>
+                      <option value="" title="">option 1</option>
+                      <option value="" title="">option 2</option>
+                      <option value="" title="">option 3</option>
+                      <option value="" title="">option 4</option>
+                  </select>
+              </form>
+          </div>
+
+          <% best_deal = product.best_variant %>
+          <% product.variants.condition(params[:condition]).each do |item| %>
+
+          <div id="CollapsiblePanel1" class="CollapsiblePanel">
+          <div class="CollapsiblePanelTab" tabindex="0"></div>
+          <div class="CollapsiblePanelContent dtlPnl ">
+              <div class="lft">
+                  <b><%= number_to_currency(item.price) %></b>
+                  <i><img src="/images/icons/yel_tick.png" alt="" /></i>
+                  <i><img src="/images/icons/qmark.png" alt="" /></i>
+                  <span>Shipping:<em>Free</em></span>
+                  <span>Virtual Trading:<em>Yes<img src="/images/icons/qmark.png" alt="" /></em></span>
+                  <p>&nbsp;</p>
+                  <span>Location:<em>California</em></span>
+                  <span>Quantity Available:<em><%= item.count_on_hand %></em></span>
+              </div>
+              <div class="rgt">
+                  <i class="imag">
+                    <%= image_tag item.seller.photo.url(:for_review) %>
+                  </i>
+                  <span><%= item.seller.firstname %></span>
+                  <em>Reliability Score</em>
+                  <b>100%</b><i class="tg"><img src="/images/icons/qmark.png" alt="" /></i>
+              </div>
+              <div class="shares">
+                <ul>
+                    <li class="lst1"><a href="#">Seller Information</a></li>
+                    <li class="lst2"><a href="#">Retern Policy</a></li>
+                    <li class="lst3"><a href="#">Feedback</a></li>
+                    <li class="lst4"><a href="#">Tweet About This Seller</a></li>
+                    <li class="lst5"><a href="#">Share With Your Friends on Facebook</a></li>
+                    <li class="lst6"><a href="#">Add Seller To Favorites</a></li>
+                  </ul>
+              </div>
+              <div class="cntcts">
+                  <p>
+                      <%= render :partial => "shared/cart_form", :object => item %>
+                  </p>
+                  <span>
+                      <a class="vwSStr" href="#">View Seller's Store</a>
+                      <a class="cntSlr" href="#">Contact Seller</a>
+                  </span>
+
+              </div>
+          </div>
+          <% end %>
+        </div>
+        <div class="tabCnt2">
+          <a href="#">View All</a>
+            <span>21 Auctions Starting at</span>
+            <b>$2.99</b>
+        </div>
+        <div class="tabCnt3">
+          <a href="#">View All</a>
+            <span>20 more buyers needed</span>
+            <b>50% Group Discount</b>
+        </div>
+        <div class="btm"></div>
+      </div>
+      <div class="TabbedPanelsContent">Content 2</div>
+      <div class="TabbedPanelsContent">Content 3</div>
+    </div>
+  </div>
+</div>
+

@@ -65,6 +65,12 @@ Order.class_eval do
   belongs_to :parent, :class_name => "Order"
   has_many   :children, :foreign_key => "parent_id", :class_name => "Order"
 
+  before_validation :set_email
+
+  def set_email
+    self.email ||= user.email if user.present?
+  end
+
   # default_scope where(:virtual => false)
 
   def has_available_shipment

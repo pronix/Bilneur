@@ -3,7 +3,7 @@
     <li><%= link_to( t('user_menu.my_account'), dashboard_account_path) %></li>
     <li><%= link_to "Orders", dashboard_orders_path %></li>
 
-    <% if can?(:access, :quote) %>
+    <% if can?(:access, :saller) %>
     <li><%= link_to "Sales", dashboard_sales_path %></li>
 
     <li><%= link_to( t('user_menu.quotes'), dashboard_quotes_path) %></li>

@@ -14,23 +14,26 @@ class Message < ActiveRecord::Base
   # scopes
   #
   scope :read, where(:recipient_read => true)
+
   scope :unread,lambda{ |*args|
-    user = args.first || User.current
+    if (user = (args.first || User.current))
     where("(recipient_read = :v and recipient_id = :user_id) or (sender_read = :v and sender_id = :user_id) ",
           { :v => false, :user_id => user.id})
-
+    end
   }
 
   scope :deleted, lambda{ |*args|
-    user = args.first || User.current
-    where("(sender_id = :user_id AND sender_deleted_at is not :v) OR
+    if (user = (args.first || User.current))
+      where("(sender_id = :user_id AND sender_deleted_at is not :v) OR
            (recipient_id =:user_id AND recipient_deleted_at is not :v) ",{ :v => nil, :user_id => user.id })
+    end
   }
   scope :trash, deleted
   scope :undeleted, lambda{ |*args|
-    user = args.first || User.current
-    where("(sender_id = :user_id AND sender_deleted_at is :v)
+    if (user = (args.first || User.current))
+      where("(sender_id = :user_id AND sender_deleted_at is :v)
            OR ( recipient_id = :user_id AND recipient_deleted_at is :v ) ",{ :v => nil, :user_id => user.id })
+    end
   }
 
   scope :messages_for_user, lambda{ |user|

@@ -13,7 +13,7 @@ class HomeController < Spree::BaseController
   def top
     case params[:kind].to_s
     when "products"
-      'a'
+      @products = Product.tops
     when "sellers"
       redirect_to root_path and return
     when "deals"

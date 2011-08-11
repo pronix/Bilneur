@@ -73,8 +73,8 @@ describe Product do
     it "should see top products by user rating", :top_products => true do
       # Create a sample user
       @user = Factory.create(:user, :registration_as_seller => 1)
-      # Create a sample 4 product
-      for i in 1..10 do
+      # Create a sample product
+      for i in 1..11 do
         # Factory(:variant, {:product => })
         product = Factory(:product, { :ean => "B004GVYJJ#{i}", :owner => @user})
         variant = Factory(:variant, {:product => product, :seller => @user, :condition => "used", :count_on_hand => 10})
@@ -87,9 +87,14 @@ describe Product do
       end
       # I always forget aboud who's who DESC and ASC
       # REMEMBER: DESC(10..1), ASC(1..1)
-      # FIXIT
-      # Product.tops.first.avg_rating.to_i.should > Product.tops.last.avg_rating.to_i
-      Product.tops(1).count.should == 1
+      Product.tops.each do |product|
+        @new_product = product
+        @last_product = @new_product and next if @last_product.nil?
+        # puts "#{@last_product.avg_rating.to_i} >= #{@new_product.avg_rating.to_i}"
+        (@last_product.avg_rating.to_i >= @new_product.avg_rating.to_i).should be true
+        @last_product = @new_product
+      end
+      Product.tops.count.should == 10
     end
   end
 

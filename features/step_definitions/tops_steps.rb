@@ -2,12 +2,37 @@ Given /^I non register user$/ do
   Given %{I am logged out}
 end
 
+Given /^I have a registered seller "(.+)"$/ do |email|
+  @user = Factory.create(:user, :registration_as_seller => 1)
+end
+
+Given /^I have "(\d+)" products with variant and "(\d+)" reviews$/ do |p_count, r_count|
+  1.upto(p_count.to_i) do
+    product = Factory(:product, { :ean => "B004GVYJJ#{rand(99999)}", :owner => @user})
+    Factory(:variant, {:product => product, :seller => @user, :condition => "used", :count_on_hand => 10})
+    1.upto(r_count.to_i) do
+      product.reviews.create(:name => 'test', :review => 'test', :approved => true, :rating => rand(5))
+    end
+  end
+end
+
+Given /^I recalculate rating for each product$/ do
+  Product.all.each { |x| x.recalculate_rating }
+end
+
+
 Given /^I should see given links in "(.+)"$/ do |div_class, table|
   table.hashes.each do |link|
     find(".#{div_class}").should have_link(link['link'], :href => path_to(link['href']))
   end
 end
 
-Then /^I should see lates "([^"]*)" products with big ratting$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then /^I should see top products with big ratting$/ do
+  Product.tops.each do |product|
+    page.should have_content(product.name)
+    # Some test for product order. Product with higth avg_rating must be firs
+    last_product = product and next if last_product.nil?
+    (last_product.avg_rating.to_i >= product.avg_rating.to_i).should be true
+    last_product = product
+  end
 end

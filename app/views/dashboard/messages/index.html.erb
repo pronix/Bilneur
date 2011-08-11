@@ -1,6 +1,5 @@
 <%= render :partial => 'dashboard/shared/inbox_tabs', :locals => {:current => @state} %>
 
-<%= link_to "Send Message", new_message_path(User.first) %>
 <%= form_tag multi_dashboard_messages_path do %>
 <div class='toolbar'>
   <ul class='actions'>

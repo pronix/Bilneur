@@ -1,7 +1,7 @@
 <% for seller in sellers %>
  <div class="smPrdcts">
    <div class="smPd">
-     <i class="imgP"><%= image_tag seller.photo.url %></i>
+     <i class="imgP"><%= image_tag seller.photo.url(:for_review) %></i>
      <div class="pdDtl">
        <h4><%= seller.firstname %></h4>
        <p><%= seller.created_at %></p>

@@ -1,0 +1,28 @@
+/* Login Page */
+.bag { background:url('/images/bgs/logon_bg.png') left top repeat-x;}
+  .loginTabs { float:left; width:937px; padding-top:50px;}
+    .loginTabs .smlTabs { width:386px; margin:0 auto;}
+  .tpMnuLgn { width:310px!important;}
+    .tpMnuLgn li.last { margin-right:5px;}
+    .loginTabs .smlTabs .TabbedPanelsTabGroup { width:45%!important; float:right!important; position:relative; z-index:1;}
+      .loginTabs .lgnTop { float:left; width:386px; height:15px; background:url('/images/bgs/lgn_top.png') no-repeat;}
+      .loginTabs .TabbedPanelsContentGroup { position:relative; height:509px;}
+        .loginTabs .TabbedPanelsContent { position:absolute; width:386px;top:24px; left:0;}
+        .lgnCntr { float:left; width:100%;background:url('/images/bgs/lgn_cntr.png') repeat-y;}
+        .lgnBtm { float:left; width:100%;height:15px;background:url('/images/bgs/lgn_btm.png') no-repeat;}
+        .lgnCntr form { width:246px; margin:0 auto;}
+          .tp { padding:30px 0 0 0;}
+          .lgnCntr .lgn { float:left; width:244px; padding-bottom:2px; height:40px; background:url('/images/forms/lgn_txt.png') no-repeat;}
+          .lgnCntr .usr { float:left; width:244px; padding-bottom:2px; height:40px; background:url('/images/forms/usr_txt.png') no-repeat;}
+          .lgnTxt { float:left; width:160px; margin:9px 0 0 15px; font-style:italic; border:none; background:none;font-family:Georgia, "Times New Roman", Times, serif; color:#d94a2d; font-size:9px; font-weight:bold;}
+          .lgnCntr .pwd { float:left; width:244px; height:40px; background:url('/images/forms/lgn_pswrd.png') no-repeat;}
+          .lgnPwd { float:left; width:160px; margin:9px 0 0 15px; font-style:italic; border:none; background:none;color:#d94a2d; font-size:9px; font-weight:bold;}
+          .lgnSbmt { float:right; width:100px; height:38px; margin-top:5px; cursor:pointer; border:0px; background:url('/images/forms/lgn_btn.png') no-repeat;}
+          .lgnCntr form .ysNo { float:left; margin:10px; color:#52c4e4; font-size:10px;}
+            .lgnCntr form .ysNo span { float:left; margin-top:5px;}
+            .lostpwd { float:right; width:95px; margin-top:5px; color:#d94a2d; font-family:Georgia, "Times New Roman", Times, serif; font-size:9px; clear:right;}
+            .fBook { float:left; width:100%; text-align:center; padding:10px 0;}
+          .lgnCntr p { float:left; width:100%; font-family:"Times New Roman", Times, serif; font-size:10px; color:#000; text-transform:uppercase;}
+          .ptr { width:86%; margin-left:7%;}
+          .sgnUp { float:right; width:100px; height:38px; margin-top:5px; cursor:pointer; border:0px; background:url('/images/forms/sign_up.png') no-repeat;}
+

@@ -61,6 +61,7 @@ group :test, :cucumber do
   gem 'awesome_print'
   gem 'wirble'
   gem 'looksee'
+  gem "childprocess", "= 0.2.0"
 
   gem 'sqlite3'
   gem 'spork', '~> 0.9.0.rc', :require => false

@@ -122,6 +122,11 @@ Order.class_eval do
     end
   end
 
+  # full order weight
+  def weight
+    self.line_items.map {|x| x.variant.weight*x.quantity }.sum
+  end
+
   # Separating on sub orders for each seller
   #
   def division_on_seller_order!

@@ -2,14 +2,11 @@ Given /^I non register user$/ do
   Given %{I am logged out}
 end
 
-Given /^I have a registered seller "(.+)"$/ do |email|
-  @user = Factory.create(:user, :registration_as_seller => 1)
-end
-
 Given /^I have "(\d+)" products with variant and "(\d+)" reviews$/ do |p_count, r_count|
+  user = Factory.create(:user, :registration_as_seller => 1)
   1.upto(p_count.to_i) do
-    product = Factory(:product, { :ean => "B004GVYJJ#{rand(99999)}", :owner => @user})
-    Factory(:variant, {:product => product, :seller => @user, :condition => "used", :count_on_hand => 10})
+    product = Factory(:product, { :ean => "B004GVYJJ#{rand(99999)}", :owner => user})
+    Factory(:variant, {:product => product, :seller => user, :condition => "used", :count_on_hand => 10})
     1.upto(r_count.to_i) do
       product.reviews.create(:name => 'test', :review => 'test', :approved => true, :rating => rand(5))
     end
@@ -28,7 +25,7 @@ Given /^I should see given links in "(.+)"$/ do |div_class, table|
 end
 
 Then /^I should see top products with big ratting$/ do
-  Product.tops.each do |product|
+  Product.tops.limit(10).each do |product|
     page.should have_content(product.name)
     # Some test for product order. Product with higth avg_rating must be firs
     last_product = product and next if last_product.nil?

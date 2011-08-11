@@ -13,7 +13,8 @@ class HomeController < Spree::BaseController
   def top
     case params[:kind].to_s
     when "products"
-      @products = Product.tops
+      # Return only 10 items
+      @products = Product.tops.limit(10)
     when "sellers"
       redirect_to root_path and return
     when "deals"

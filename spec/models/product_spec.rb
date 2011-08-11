@@ -94,7 +94,6 @@ describe Product do
         (@last_product.avg_rating.to_i >= @new_product.avg_rating.to_i).should be true
         @last_product = @new_product
       end
-      Product.tops.count.should == 10
     end
   end
 

@@ -2,7 +2,6 @@ Feature: Describe how see all tops
 
   Background:
     Given I non register user
-    Given I have a registered seller "test_topproduct@example.com"
     Given I have "12" products with variant and "5" reviews
     Given I recalculate rating for each product
 

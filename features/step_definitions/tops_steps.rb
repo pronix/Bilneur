@@ -45,3 +45,17 @@ Then /^I should see "(\d+)" top sellers on the page$/ do |seller_count|
     page.should have_content(seller.firstname)
   end
 end
+
+Given /^I have "(\d+)" products with variant and random price$/ do |product_count|
+  user = Factory.create(:user, :registration_as_seller => 1)
+  1.upto(product_count.to_i) do
+    product = Factory(:product, { :ean => "B004GVYJJ#{rand(99999)}", :owner => user, :price =>  rand(1000) + rand(100) / 100.0 })
+    Factory(:variant, {:product => product, :seller => user, :condition => "used", :count_on_hand => 10})
+  end
+end
+
+Then /^I should see "(\d+)" top deals on th page$/ do |product_count|
+  Product.top_deals.limit(10).each do |product|
+    page.should have_content(product.name)
+  end
+end

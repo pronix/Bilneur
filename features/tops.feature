@@ -18,9 +18,15 @@ Feature: Describe how see all tops
     Then I go to the top products page
     And I should be on top products page
     And I should see top products with big ratting
-@wip
+
   Scenario: Describe top sellers  
     Given I have "12" sellers user
     Then I go to the top sellers page
     And I should be on the top sellers page
     And I should see "10" top sellers on the page
+
+  Scenario: Describe top deals
+    Given I have "12" products with variant and random price
+    Then I go to the top deals page
+    And I should be on the top deals page
+    And I should see "10" top deals on th page

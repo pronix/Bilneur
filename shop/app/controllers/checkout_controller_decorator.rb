@@ -28,8 +28,8 @@ CheckoutController.class_eval do
   private
 
   def before_address
-    @order.bill_address ||= current_user.addresses.first.try(:clone) || Addredd.default
-    @order.ship_address ||= current_user.addresses.first.try(:clone) || Addredd.default
+    @order.bill_address ||= current_user.addresses.first.try(:clone) || Address.default
+    @order.ship_address ||= current_user.addresses.first.try(:clone) || Address.default
   end
 
   def before_delivery

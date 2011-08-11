@@ -2,18 +2,22 @@ Rails.application.routes.draw do
   # Add your extension routes here
 
   match "/top/:kind" => "home#top", :as => :top, :defaults => { :kind => 'products' },
-                     :constraints => { :kind => /products|sellers|deals/ }
+                                                 :constraints => { :kind => /products|sellers|deals/ }
 
   match "/account" => "dashboard/users#show"
+
   match "/products/deals/:id(/:condition)" => "products#quotes", :as => :product_quotes
   match "/products/deals/:id/:quote_id" => "products#quote", :as => :product_quote
   match "/products/like_review" => 'products#like_review', :via => :post
+  match "/messages/:user_id/new" => "dashboard/messages#new", :as => :new_message
+
   # Product
   resources :products do
     # In spree-review has routes /review But we don't want to use this route
     # We redirect this request to product page.
     match "/reviews" => redirect("/products/%{product_id}"), :via => :get
   end
+
   match '/cart(/:cart_type)', :to => 'orders#update', :via => :put, :as => :update_virtual_cart
   match '/cart/empty(/:cart_type)', :to => 'orders#empty', :via => :put, :as => :empty_virtual_cart
 
@@ -25,9 +29,11 @@ Rails.application.routes.draw do
   # User dashboard
   #
   namespace :dashboard do
+
     root :to => "users#show"
 
     resources :quotes, :path_names => { :new => "(/:product_ean)/new"} do
+
       collection do
         match "/search" => "quotes#search", :as => :search, :via => [:get, :post]
       end
@@ -44,21 +50,20 @@ Rails.application.routes.draw do
 
       resource :selling_options
       resource :return_policies, :only => [:show, :edit, :update]
-    end
+
+    end # end dashboard < quotes
 
     resources :orders, :only => [:index, :show]
     resources :sales,  :only => [:index, :show]
     resources :properties
+
     resources :option_types do
       collection do
         post :update_positions
       end
     end
 
-
-
     resources :products do
-
 
       resources :images do
         collection do
@@ -67,7 +72,6 @@ Rails.application.routes.draw do
       end
 
       resources :product_properties
-
 
       resources :option_types do
         member do
@@ -78,7 +82,7 @@ Rails.application.routes.draw do
           get :available
           get :selected
         end
-      end
+      end # end dashboard < products < option_types
 
       resources :taxons do
         member do
@@ -90,24 +94,40 @@ Rails.application.routes.draw do
           post :batch_select
           get  :selected
         end
-      end
+      end # end dashboard < products < taxons
 
-    end
+    end # end dashboard < products
 
     resource :account, :controller => "users", :only => [:show, :edit, :update]
     resources :shipping_methods
     resource :terms
     resources :addresses
+    resources :messages, :path => "inbox", :except => [:new, :edit, :update] do
+      collection  do
+        match "/:state" => "messages#index", :via => :get, :as => :state_inbox,
+               :constraints => { :state => /received|sent|unread|important|trash/ }
+        post :multi
+      end
+      member do
+        post :reply
+      end
+    end
+
     resources :payment_methods do
       member do
         get :verify
       end
     end
-  end
+
+
+  end # end dashboard
+
+
 
   # Admin
   #
   namespace :admin do
+
     resources :seller_payment_methods, :only => [:index, :show] do
       member do
         get :approve
@@ -115,6 +135,6 @@ Rails.application.routes.draw do
       end
     end
 
-  end
+  end # end admin
 
 end

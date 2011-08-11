@@ -1,5 +1,4 @@
 class  Dashboard::PropertiesController < Dashboard::ApplicationController
-  helper Admin::BaseHelper
 
   def index
     @properties = Property.all

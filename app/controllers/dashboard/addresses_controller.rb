@@ -1,6 +1,4 @@
 class Dashboard::AddressesController < Dashboard::ApplicationController
-  helper Admin::BaseHelper
-  helper Admin::NavigationHelper
   helper CheckoutHelper
 
   rescue_from ActiveRecord::RecordNotFound, :with => :render_404

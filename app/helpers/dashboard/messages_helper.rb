@@ -1,0 +1,2 @@
+module Dashboard::MessagesHelper
+end

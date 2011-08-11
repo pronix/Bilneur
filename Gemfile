@@ -7,7 +7,7 @@ gem 'nokogiri',                 '~> 1.5.0'
 gem 'thrift_client',            '~> 0.6.3'
 gem 'json',                     '~> 1.5.3'
 gem 'json_pure',                '~> 1.5.3'
-
+gem 'ancestry',                 '~> 1.2.3'
 
 gem 'pg',                       '~> 0.11.0'
 gem 'sqlite3'

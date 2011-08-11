@@ -1,6 +1,4 @@
 class Dashboard::OrdersController < Dashboard::ApplicationController
-  helper Admin::BaseHelper
-  helper Admin::NavigationHelper
 
   def index
     @orders = current_user.orders

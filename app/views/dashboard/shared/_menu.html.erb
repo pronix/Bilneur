@@ -1,6 +1,7 @@
 <div class="sidebar-item" >
   <ul class="navigation-list">
     <li><%= link_to( t('user_menu.my_account'), dashboard_account_path) %></li>
+    <li><%= link_to t("inbox"), dashboard_messages_path %></li>
     <li><%= link_to "Orders", dashboard_orders_path %></li>
 
     <% if can?(:access, :saller) %>

@@ -29,7 +29,7 @@ Feature: Virtual Shopping
       | Free to Bilnuer  | 0.00 |
       | Store the seller | 0.00 |
 
-  Scenario: Add quote to V.Cart and checkout order(with shipping method: Free to Bilneur)
+  Scenario: Adding quote to V.Cart and checkout order(with shipping method: Free to Bilneur)
     When I sign in as "email@person.com/password"
     And I go to the "The Godfather" product page
     And I set quatility "3" for "The Godfather"
@@ -43,21 +43,21 @@ Feature: Virtual Shopping
     And I fill in "Security code" with "123"
     And I fill in "Expiration" with "11/2014"
     And I press "Save and Continue"
-    Then I should order info
+    Then I should see order info
     When I press "Place Order"
     Then seller "seller3@person.com" should receive email
     And seller "seller3@person.com" should see new order in sales tab in dashboard with shipping state "pending"
     And user "email@person.com" should see new order in orders tab in dashboard with shipping state "pending"
     When seller "seller3@person.com" set shipping status as "shipped"
     Then user "email@person.com" should see order in orders tab in dashboard with shipping state "shipped"
-    And user "email@person.com" should see following quotes in dashboard:
+    And user "email@person.com" should see the following quotes in dashboard:
       | product_name  | price | condition | count_on_hand |
       | The Godfather |  10.0 | used      |             3 |
-    And seller "seller3@person.com" should see following quotes in dashboard:
+    And seller "seller3@person.com" should see the following quotes in dashboard:
       | product_name  | price | condition | count_on_hand |
       | The Godfather |  10.0 | used      |             7 |
 
-  Scenario: Add quote to V.Cart and checkout order(with shipping method: Store the Seller)
+  Scenario: Adding quote to V.Cart and checkout order(with shipping method: Store the Seller)
     When I sign in as "email@person.com/password"
     And I go to the "The Godfather" product page
     And I set quatility "3" for "The Godfather"
@@ -71,15 +71,15 @@ Feature: Virtual Shopping
     And I fill in "Security code" with "123"
     And I fill in "Expiration" with "11/2014"
     And I press "Save and Continue"
-    Then I should order info
+    Then I should see order info
     When I press "Place Order"
-    Then user "email@person.com" should see following quotes in dashboard:
+    Then user "email@person.com" should see the following quotes in dashboard:
       | product_name  | price | condition | count_on_hand        |
       | The Godfather |  10.0 | used      | 3 (store the seller) |
-    And seller "seller3@person.com" should see following quotes in dashboard:
+    And seller "seller3@person.com" should see the following quotes in dashboard:
       | product_name  | price | condition | count_on_hand |
       | The Godfather |  10.0 | used      |             7 |
-    And seller "seller3@person.com" should see following virtual quotes in dashboard:
+    And seller "seller3@person.com" should see the following virtual quotes in dashboard:
       | product_name  | price | condition | count_on_hand                        |
       | The Godfather |  10.0 | used      | 3 (virtual buyer: email@person.com ) |
 

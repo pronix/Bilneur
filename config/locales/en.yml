@@ -2,6 +2,12 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  actions:
+    send: Send
+  mark_as_important: Mark as important
+  mark_as_read: Mark as read
+  mark_as_unread: Mark as unread
+  inbox: Inbox
   similar_products: Similar Products
   start_selling: Start Selling
   routing_number: Routing Number

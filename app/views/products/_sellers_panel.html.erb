@@ -55,11 +55,11 @@
               </div>
               <div class="cntcts">
                   <p>
-                      <%= render :partial => "shared/cart_form", :object => item %>
+                    <%= render :partial => "shared/cart_form", :object => item %>
                   </p>
                   <span>
-                      <a class="vwSStr" href="#">View Seller's Store</a>
-                      <a class="cntSlr" href="#">Contact Seller</a>
+                    <a class="vwSStr" href="#">View Seller's Store</a>
+                    <%= link_to "Contact Seller", new_message_path(item.seller), :class => "cntSlr" %>
                   </span>
 
               </div>

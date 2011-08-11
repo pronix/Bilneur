@@ -1,6 +1,4 @@
 class  Dashboard::TaxonsController < Dashboard::ApplicationController
-  helper Admin::BaseHelper
-  helper Admin::NavigationHelper
   helper Admin::TaxonsHelper
 
   include Railslove::Plugins::FindByParam::SingletonMethods

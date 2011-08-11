@@ -1,9 +1,6 @@
 class Dashboard::UsersController < Dashboard::ApplicationController
   before_filter :change_user_2_saller, :only => :show
 
-  helper Admin::BaseHelper
-  helper Admin::NavigationHelper
-
   def show
 
   end

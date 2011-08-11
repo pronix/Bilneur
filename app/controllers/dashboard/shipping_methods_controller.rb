@@ -1,8 +1,5 @@
 class Dashboard::ShippingMethodsController < Dashboard::ApplicationController
 
-  helper Admin::BaseHelper
-  helper Admin::NavigationHelper
-
   before_filter :load_data, :except => [:index]
 
   def index

@@ -16,7 +16,8 @@ class HomeController < Spree::BaseController
       # Return only 10 items
       @products = Product.tops.limit(10)
     when "sellers"
-      redirect_to root_path and return
+      # Return only 10 best sellers
+      @sellers = User.sellers_top.limit(10)
     when "deals"
       redirect_to root_path and return
     else

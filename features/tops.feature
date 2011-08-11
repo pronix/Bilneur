@@ -2,10 +2,10 @@ Feature: Describe how see all tops
 
   Background:
     Given I non register user
-    Given I have "12" products with variant and "5" reviews
-    Given I recalculate rating for each product
 
   Scenario: Check links in home page
+    Given I have "12" products with variant and "5" reviews
+    Given I recalculate rating for each product
     Given I non register user
     And I go to the home page
     And I should see given links in "menu"
@@ -18,3 +18,9 @@ Feature: Describe how see all tops
     Then I go to the top products page
     And I should be on top products page
     And I should see top products with big ratting
+@wip
+  Scenario: Describe top sellers  
+    Given I have "12" sellers user
+    Then I go to the top sellers page
+    And I should be on the top sellers page
+    And I should see "10" top sellers on the page

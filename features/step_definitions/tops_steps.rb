@@ -33,3 +33,15 @@ Then /^I should see top products with big ratting$/ do
     last_product = product
   end
 end
+
+Given /^I have "(\d+)" sellers user$/ do |count|
+  1.upto(count.to_i) do |i|
+    Factory.create(:user, :registration_as_seller => 1, :firstname => "First#{i}", :lastname => "Last#{i}")
+  end
+end
+
+Then /^I should see "(\d+)" top sellers on the page$/ do |seller_count|
+  User.sellers_top.limit(seller_count).each do |seller|
+    page.should have_content(seller.firstname)
+  end
+end

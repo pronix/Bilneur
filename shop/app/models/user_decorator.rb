@@ -29,6 +29,11 @@ User.class_eval do
   # scopes
   #
 
+  # Return a all user who has a saller role
+  scope :sellers, Role.find_by_name('seller').users
+  # FIXME need to know logic of how select top sellers.
+  # FIXME why don't use selers.limit(1) for Array
+  scope :sellers_top, Role.find_by_name('seller').users.order('created_at ASC')
   # validates
   #
 

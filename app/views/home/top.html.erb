@@ -3,4 +3,6 @@
 
 <% if @products %>
   <%= render :partial => 'shared/products', :locals => {:products => @products} %>
+<% elsif @sellers %>
+  <%= render :partial => 'sellers', :locals => {:sellers => @sellers} %>
 <% end %>

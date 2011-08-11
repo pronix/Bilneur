@@ -35,6 +35,8 @@ module NavigationHelpers
       new_product_review_path(Product.find_by_name($1).permalink)
     when /the "(.+)" review by url/
       "/products/#{Product.find_by_name($1).permalink}/reviews"
+    when /top (.+) page/
+      top_path($1)
     when /logout/
       destroy_user_session_path
     when /^the home\s?page$/

@@ -49,7 +49,6 @@ describe Product do
   end
 
   describe "instance methods" do
-
     it "get best variant" do
       @seller = Factory.create(:user, :registration_as_seller => 1)
       @product = Factory.create(:product, { :ean => "B004GVYJJC", :owner =>  @seller })
@@ -67,7 +66,34 @@ describe Product do
       @product.price.should_not be_nil
       @product.available_on.should_not be_nil
     end
+  end
 
+  describe "Top products" do
+    it "should see top products by user rating", :top_products => true do
+      # Create a sample user
+      @user = Factory.create(:user, :registration_as_seller => 1)
+      # Create a sample product
+      for i in 1..11 do
+        # Factory(:variant, {:product => })
+        product = Factory(:product, { :ean => "B004GVYJJ#{i}", :owner => @user})
+        variant = Factory(:variant, {:product => product, :seller => @user, :condition => "used", :count_on_hand => 10})
+        # Create a random reviews to product and assigning random rating
+        1.upto(rand(10)) do
+          product.reviews.create(:name => 'test', :review => 'test', :approved => true, :rating => rand(5))
+        end
+        # Recalculate avg_rating and review_count
+        product.recalculate_rating
+      end
+      # I always forget aboud who's who DESC and ASC
+      # REMEMBER: DESC(10..1), ASC(1..1)
+      Product.tops.each do |product|
+        @new_product = product
+        @last_product = @new_product and next if @last_product.nil?
+        # puts "#{@last_product.avg_rating.to_i} >= #{@new_product.avg_rating.to_i}"
+        (@last_product.avg_rating.to_i >= @new_product.avg_rating.to_i).should be true
+        @last_product = @new_product
+      end
+    end
   end
 
 end

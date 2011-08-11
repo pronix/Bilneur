@@ -25,6 +25,16 @@ Product.class_eval do
     active.on_hand.includes(:variants).limit(args.first || 20).order("products.created_at DESC")
   }
 
+  # Return a top products, ordering by ASC, higth ratting is first
+  scope :tops, active.on_hand.order('avg_rating DESC')
+  # scope :top_deals, joins(:variants).active.on_hand.order('price ASC')
+
+   scope :top_deals, lambda{
+    order("( SELECT min(v.price) FROM variants as v
+           WHERE ( (v.is_master = #{connection.quoted_false}) and (v.product_id = products.id) AND (v.deleted_at is null ) AND (v.count_on_hand > 0) )
+          ) ASC")
+   }
+
 
   # validates
   #

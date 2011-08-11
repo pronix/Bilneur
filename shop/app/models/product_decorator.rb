@@ -26,7 +26,7 @@ Product.class_eval do
   }
 
   # Return a top products, ordering by ASC, higth ratting is first
-  scope :tops, lambda{ |*args| active.on_hand.order('avg_rating DESC')}
+  scope :tops, lambda{ |*args| active.on_hand.order('avg_rating DESC').first(args.first || 10) }
 
   # validates
   #

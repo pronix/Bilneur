@@ -1,3 +1,5 @@
+# language: en
+
 Feature: Manage reviews
 
   Background:
@@ -6,13 +8,13 @@ Feature: Manage reviews
     Given the following products was created by  "seller@person.com" user:
       | name                        | available_on        |            ean |
       | The Godfather               | 2011-01-06 18:21:13 |  9780099528128 |
-    Given the following reviews with rating "4" and product "The Godfather" 
+    Given the following reviews with rating "4" and product "The Godfather"
       | name   | location | review           | approved | ip_address |
       | Name 1 | here     | This is review   | true     |  127.0.0.1 |
       | Name 2 | here     | Thit is review 2 | true     |  127.0.0.1 |
-      
+
   Scenario: Disable link /product/review
-    When I go to the "The Godfather" review by url    
+    When I go to the "The Godfather" review by url
     And I should be on the "The Godfather" product page
 
   Scenario: Show latest review in last review block

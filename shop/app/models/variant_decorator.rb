@@ -20,7 +20,7 @@ Variant.class_eval do
        args.first ? condition(*args).by_price.limit(1) : by_price.limit(1)
     }
 
-  scope :best_variant, order("variants.price ASC").limit(1)
+  scope :best_variant, active.on_hand.order("variants.price ASC").limit(1)
 
   # validates
   #

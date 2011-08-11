@@ -2,6 +2,7 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  similar_products: Similar Products
   start_selling: Start Selling
   routing_number: Routing Number
   seller_payment_methods: Seller Payment Methods

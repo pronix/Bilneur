@@ -1,12 +1,8 @@
 class SellerPaymentMethod < ActiveRecord::Base
   METHOD_TYPE = [ :credit_card, :paypal, :bank_account ]
-  validates :name, :type, :presence => true
-  belongs_to :user
 
 
-
-
-    state_machine :state, :initial => :unverified do
+  state_machine :state, :initial => :unverified do
 
     event :to_verify do
       transition :unverified => :wait
@@ -19,15 +15,39 @@ class SellerPaymentMethod < ActiveRecord::Base
     event :reject do
       transition :wait => :rejected
     end
-
-    # state :rejected do
-    #   validates :answer, :presence => true
-    # end
     after_transition :to => :wait, :do => :send_to_verify
 
   end
 
   state_machines[:state].states.map{|v| scope v.name, where(:state => v.value ) }
+
+
+  # associations
+  #
+  belongs_to :user
+
+
+  # scopes
+  #
+
+
+  # validates
+  #
+  validates :name, :type, :presence => true
+
+
+  # callbacks
+  #
+  after_save :set_verify_seller
+
+
+  # instance methods
+  #
+
+
+  def set_verify_seller
+    user.update_attribute(:verified, user.seller_payment_methods.verified.present?)
+  end
 
   def send_to_verify
     UserMailer.payment_method_to_admin(self).deliver
@@ -38,7 +58,10 @@ class SellerPaymentMethod < ActiveRecord::Base
   end
 
 
+  # class methods
+  #
   class << self
+
     def detect(owner, method_id)
       if (obj = owner.seller_payment_methods.find(method_id))
         (case obj.method_type
@@ -63,5 +86,8 @@ class SellerPaymentMethod < ActiveRecord::Base
         create(params)
       end
     end
-  end
+
+
+  end # end class << self
+
 end

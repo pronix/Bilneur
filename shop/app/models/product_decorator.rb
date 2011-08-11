@@ -67,8 +67,7 @@ Product.class_eval do
   end
 
   def similar_products(count=3)
-    # FIXIT: similar products should be from all category
-    Product.active.on_hand.in_taxons(taxons.last.name).where("product_id != ?", id).first(count) rescue ""
+    Product.active.on_hand.where("products.id != ?", id).in_taxons(self.taxons).limit(count)
   end
 
   def last_photo(style='product')
@@ -77,14 +76,14 @@ Product.class_eval do
 
   # Select all FeedbackReview where is reviews from current product
   def recomends_count
-    FeedbackReview.where('review_id in (:review_ids)',
-                         :review_ids => review_ids).count
+    FeedbackReview.count(:conditions => { :review_id => review_ids})
   end
 
   # class methods
   #
   class << self
 
-  end
+
+  end # end class << self
 
 end

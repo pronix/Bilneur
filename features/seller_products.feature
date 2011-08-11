@@ -26,16 +26,16 @@ Feature: Manage products
 
   Scenario: Editing the product
     Given the following products exist:
-      | name                        | available_on        |            ean | sku     |
-      | The Godfather               | 2011-01-06 18:21:13 |  9780099528128 | TE-6000 |
-      | Death of a Hero [Paperback] | 2011-01-06 18:21:13 | 978-0919614789 | TE-7000 |
+      | name                        | available_on        |            ean | sku     | created_at |
+      | The Godfather               | 2011-01-06 18:21:13 |  9780099528128 | TE-6000 | 01/01/2011 |
+      | Death of a Hero [Paperback] | 2011-01-06 20:21:13 | 978-0919614789 | TE-7000 | 01/01/2010 |
     And the product "The Godfather" has the owner "seller@person.com"
     And the product "Death of a Hero [Paperback]" has the owner "admin@person.com"
     When I go to the dashboard products page
     Then I should see the following product lists:
       | SKU     |            EAN | Name                        |                                |
-      | TE-7000 | 978-0919614789 | Death of a Hero [Paperback] |                                |
       | TE-6000 |  9780099528128 | The Godfather               | Edit\n         \n       Delete |
+      | TE-7000 | 978-0919614789 | Death of a Hero [Paperback] |                                |
     When I follow "Edit"
     And I fill in "SKU" with "TFWK"
     And I fill in "Name" with "The Godfather_1"

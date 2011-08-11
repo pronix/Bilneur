@@ -19,10 +19,6 @@ describe User do
   end
 
   context "#verivication seller" do
-    # pending ": TODO verification seller account"
-    # user = Factory.create(:user, :registration_as_seller => 1)
-    # user.has_role?("seller").should be_true
-
     it "should be verify if seller payment method verified" do
       user = Factory.create(:user, :registration_as_seller => 1)
       method = Factory(:seller_payment_method, :user => user)

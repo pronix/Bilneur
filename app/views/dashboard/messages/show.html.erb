@@ -1,6 +1,6 @@
 <%= render :partial => 'dashboard/shared/inbox_tabs', :locals => {:current => "All Messages"} %>
 
-<div class="subject"><%= @message.subject %></div>
+<h3 class="subject">Subject: <%= @message.subject %></h3>
 <%= render @message %>
 
 <%= render @children_messages  %>

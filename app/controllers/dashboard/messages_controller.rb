@@ -26,10 +26,11 @@ class Dashboard::MessagesController < Dashboard::ApplicationController
 
   def create
     @recipient = User.find(params[:user_id])
-    @message = Message.new(params[:message].merge({ :recipient => @recipient, :sender => current_user }))
+    @message = Message.new(params[:message].merge({ :recipient => @recipient,
+                                                    :sender => current_user }))
 
     if @message.save
-      redirect_to dashboard_messages_path, :notice => "Message sent."
+      redirect_to dashboard_messages_path, :notice => "Your message sent."
     else
       render :new
     end
@@ -40,7 +41,7 @@ class Dashboard::MessagesController < Dashboard::ApplicationController
     @message = current_user.messages.roots.find(params[:id])
     @reply_message = Message.build_reply(@message, current_user, params[:message])
     if @reply_message.save
-      redirect_to dashboard_message_path(@message), :notice => "Reply send"
+      redirect_to dashboard_message_path(@message), :notice => "Your reply sent."
     else
       @children_messages = @message.children.order("created_at")
       render :show

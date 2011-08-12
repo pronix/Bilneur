@@ -1,3 +1,10 @@
+Factory.define :message do |t|
+  t.subject "Question-1"
+  t.content "Question-1 content"
+  t.association(:sender, :factory => :user)
+  t.association(:recipient, :factory => :user)
+end
+
 Factory.define :seller_payment_method do |t|
   t.type "SellerPaymentMethod::CreditCard"
   t.name "My Visa"

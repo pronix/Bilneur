@@ -15,8 +15,9 @@ Then /^I should be logged out$/ do
 end
 
 Given /^I am signed up as "(.+)\/(.+)"$/ do |email, password|
+  @role = Role.find_or_create_by_name("name")
   @user = Factory(:user, :email => email, :password => password, :password_confirmation => password,
-                  :firstname => 'Test Firstname', :lastname => 'Test Lastname')
+                  :firstname => 'Test Firstname', :lastname => 'Test Lastname', :roles => [@role])
 end
 
 Given /^I am signed up as a seller with "(.+)\/(.+)"$/ do |email, password|

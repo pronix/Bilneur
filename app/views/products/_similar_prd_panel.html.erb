@@ -6,7 +6,7 @@
   <div class="cntr">
     <%= link_to product_path(product) do %>
 
-    <i><%= image_tag @best_similar_variant.image.attachment.try(:url, :mini) %></i>
+    <i><%= mini_image(@best_similar_variant) %></i>
     <b><%= truncate product.name, :length => 20 %></b>
     <em>
       <%= truncate product.description, :length => 90 %><br />

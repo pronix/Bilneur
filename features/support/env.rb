@@ -8,7 +8,7 @@ Spork.prefork do
   # files.
 
   require 'cucumber/rails'
-  require 'spree_core/testing_support/factories'
+  # require 'spree_core/testing_support/factories'
 
   # require File.expand_path('vendor/spree-exts/spree-0.60.1/spree_core/../features/support/env', __FILE__)
   # require 'spree_core/testing_support/factories'

@@ -112,3 +112,20 @@ end
 Given /^the guest can not create a review$/ do
   Spree::Reviews::Config.set(:require_login => true)
 end
+
+Given /^I have spree preference "(.+)" with "(.+)"$/ do |option, value|
+  Spree::Reviews::Config.set(option.to_sym => value)
+end
+
+Given /^I am signed and create review$/ do
+  Given %{I already sing as "new_seller@person.com/password"}
+  When %{I go to the "The Godfather" product page}
+  Then %{I follow "Rate This Product"}
+  And %{I rate this by "3"}
+  And %{I fill in "review_review" with "Simple Review"}
+  Then %{I press "Submit your review"}
+end
+
+Then /^I should see my review$/ do
+  page.should have_content("Simple Review")
+end

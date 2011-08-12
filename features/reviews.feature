@@ -37,7 +37,6 @@ Feature: Manage reviews
     Given I already sing as "new_seller@person.com/password"
     When I go to the "The Godfather" product page
     Then I follow "Rate This Product"
-    And I should not see "Your Name"
     And I rate this by "3"
     And I fill in "review_review" with "Simple Review"
     And I press "Submit your review"
@@ -62,3 +61,7 @@ Feature: Manage reviews
    And I check "preferences[require_login]"
    Then press "Update"
    And I should be on the admin review setting page
+
+ Scenario: If Review option include_unapproved_reviews true
+   Given I have spree preference "include_unapproved_reviews" with "true"
+   Given I am signed and create review

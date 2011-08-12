@@ -153,3 +153,23 @@ Then /^I should see all "(.+)" reviews$/ do |email|
     page.should have_content(review.ip_address)
   end
 end
+
+Given /^I have a unapproved review for "(.+)" and call it @review$/ do |product_name|
+  @review = Factory(:review, :product => Product.find_by_name(product_name), :approved => false)
+end
+
+Then /^I apprved @review by click "(.+)"$/ do |approved_link|
+  find_by_id("review_#{@review.id}").find_link(approved_link).click
+end
+
+Then /^I should not see @review on the product page$/ do
+  page.should_not have_content(@review.review)
+end
+
+Then /^I should see @review on the reviews dashboard page$/ do
+  page.should have_content(@review.ip_address)
+end
+
+Then /^I should see @review on the product page$/ do
+  page.should have_content(@review.review)
+end

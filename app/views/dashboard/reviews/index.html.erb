@@ -36,7 +36,7 @@
       </td>
       <td>
         <% unless review.approved %>
-          <%= link_to_with_icon 'tick', t('approve'), {:action => 'approve', :id => review.id} %> <br />
+          <%= link_to_with_icon 'tick', 'Approve', {:action => 'approve', :id => review.id} %> <br />
         <% end %>
         <%= link_to 'Delete', dashboard_review_path(review), :method => :delete, :remote => true, 
                                                              :onclick => "$(\"##{dom_id review}\").remove();" %>

@@ -51,6 +51,8 @@ module NavigationHelpers
       admin_review_settings_path
     when /the edit admin review setting page/
       edit_admin_review_settings_path
+    when /the reviews dashboard page/
+      dashboard_reviews_path
     when /^the home\s?page$/
       '/'
 

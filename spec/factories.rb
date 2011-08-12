@@ -16,7 +16,7 @@ Factory.define :review do |t|
   t.name { Factory.next(:product_sequence) }
   t.location "here"
   t.rating "#{rand(5)}"
-  t.review { Faker::Lorem.paragraphs(rand(5)+1).join("\n") }
+  t.review { Faker::Lorem.paragraphs(1) }
   t.approved false
   t.user_id { |p| p.association(:user) }
   t.ip_address "#{rand(255)}.#{rand(255)}.#{rand(255)}.#{rand(255)}"

@@ -23,6 +23,18 @@ Feature: Manage reviews
     Then I follow "Review Management"
     And I should see all "seller@person.com" reviews
 
+  Scenario: Approve some review
+    Given I sign in as "seller@person.com/password"
+    And create sample paypal paymethod
+    Given I have a unapproved review for "The Godfather" and call it @review
+    Then I go to the "The Godfather" product page
+    And I should not see @review on the product page
+    Then I go to the reviews dashboard page
+    And I should see @review on the reviews dashboard page
+    Then I apprved @review by click "Approve"
+    Then I go to the "The Godfather" product page
+    And I should see @review on the product page
+
   Scenario: Disable link /product/review
     When I go to the "The Godfather" review by url
     And I should be on the "The Godfather" product page

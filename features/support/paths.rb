@@ -39,6 +39,8 @@ module NavigationHelpers
       top_path($1)
     when /logout/
       destroy_user_session_path
+    when /the "(.+)" edit password page/
+      edit_user_password_path(User.find_by_email($1))
     when /^the home\s?page$/
       '/'
 

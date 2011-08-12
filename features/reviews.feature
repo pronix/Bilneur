@@ -11,7 +11,7 @@ Feature: Manage reviews
       | Name 1 | here     | This is review   | true     |  127.0.0.1 |
       | Name 2 | here     | Thit is review 2 | true     |  127.0.0.1 |
     Given the guest can not create a review  
-@wip
+
   Scenario: Show reviews in seller panel
     Given I sign in as "seller@person.com/password"
     And create sample paypal paymethod
@@ -56,7 +56,7 @@ Feature: Manage reviews
     And I should see "Review was successfully submitted"
     Then I approved my review
     Then I go to the "The Godfather" product page
-    And I should see my review
+    And I should see my fuck review
     And I should see my name "Test Firstname T." with my review
     And I should see my photo as "new_seller@person.com"
 

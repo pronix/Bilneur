@@ -57,7 +57,6 @@ Then /^please define last Review by review "(.+)" as @review$/ do |review|
   @review = Review.find_by_review(review)
 end
 
-
 Then /^I should see that this review add and has status not approved$/ do
   @review.approved.should_not be_true
 end
@@ -85,7 +84,6 @@ end
 Then /^I should see my name "(.+)" with my review$/ do |user_name|
   find_by_id("review_id_#{@review.id}").should have_content(user_name)
 end
-
 
 Then /^I should see my photo as "(.+)"$/ do |email|
   user = User.find_by_email(email)
@@ -126,7 +124,7 @@ Given /^I am signed and create review$/ do
   Then %{I press "Submit your review"}
 end
 
-Then /^I should see my review$/ do
+Then /^I should see my fuck review$/ do
   page.should have_content("Simple Review")
 end
 

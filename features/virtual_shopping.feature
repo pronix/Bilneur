@@ -37,9 +37,8 @@ Feature: Virtual Shopping
     And I set quatility "3" within block seller "seller2@person.com"
     And I press "Add To V.Store" within block seller "seller2@person.com"
     Then I should be on the cart page
+    When I follow "Checkout" within block virtual cart
     Then show me the page
-
-    # When I follow "Checkout" within block virtual cart
     # When I choose "Free to Bilneur" from shipping methods
     # And I press "Save and Continue"
     # And I choose "Credit Card" from "Payment Methods"

@@ -4,6 +4,7 @@ class VirtualOrder < Order
 
   def set_default_data
     self.virtual = true
+    self.user ||= User.current
   end
 
   def order

@@ -1,0 +1,36 @@
+<h1><%= t("new_message") %></h1>
+
+<%= render 'shared/error_messages', :target => @message %>
+
+<%= form_for(:message, :url => dashboard_messages_path) do |f| %>
+<%= hidden_field_tag "user_id", @recipient.id %>
+
+<fieldset>
+<div class="yui-gc">
+  <div class="yui-u first">
+
+    <%= f.field_container :subject do %>
+    <%= f.label :subject, t("subject") %><span class="required">*</span><br />
+    <%= f.text_field :subject, :class => 'fullwidth title'  %>
+    <%= f.error_message_on :subject %>
+    <% end %>
+
+    <%= f.field_container :content do %>
+    <%= f.label :content, t("content")%><br />
+    <%= f.text_area :content, {:cols => 60, :rows => 4, :class => 'fullwidth'} %>
+    <%= f.error_message_on :content %>
+    <% end %>
+
+
+  </div>
+</div>
+</fieldset>
+
+<p class="form-buttons">
+   <%= button t("actions.send") %>
+   <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_messages_path %>
+ </p>
+<% end %>
+
+
+

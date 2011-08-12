@@ -37,3 +37,8 @@ table.index.order-summary {
     text-align: right;
     border: none; }
 table.index td.actions {text-align:right;}
+
+.unread{
+  font-weight: bold;
+  color:red;
+ }

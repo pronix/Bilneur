@@ -1,5 +1,8 @@
 <div class="add">
-  <%= link_to start_selling_link, :title => t("start_selling") do %>
-    <img src="/images/img/sell_buy_add.png" alt="" />
-  <% end %>
+  <b>Want to Buy &amp; Virtually Resell This Item?</b>
+
+  <a class="slrOvr" href="#">5 sellers overing Virtual Buying &amp; Selling</a>
+  <%= link_to t("start_buying_and_selling"),  start_selling_link,
+                                           :title => t("start_selling"), :class => "strt" %>
+   <a class="mre" href="#"><%= t("learn_more") %></a>
 </div>

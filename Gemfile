@@ -7,7 +7,7 @@ gem 'nokogiri',                 '~> 1.5.0'
 gem 'thrift_client',            '~> 0.6.3'
 gem 'json',                     '~> 1.5.3'
 gem 'json_pure',                '~> 1.5.3'
-
+gem 'ancestry',                 '~> 1.2.3'
 
 gem 'pg',                       '~> 0.11.0'
 gem 'sqlite3'
@@ -61,6 +61,7 @@ group :test, :cucumber do
   gem 'awesome_print'
   gem 'wirble'
   gem 'looksee'
+  gem "childprocess", "= 0.2.0"
 
   gem 'sqlite3'
   gem 'spork', '~> 0.9.0.rc', :require => false

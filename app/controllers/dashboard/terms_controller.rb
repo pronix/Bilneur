@@ -1,8 +1,5 @@
 class Dashboard::TermsController < Dashboard::ApplicationController
 
-  helper Admin::BaseHelper
-  helper Admin::NavigationHelper
-
   def edit
 
   end

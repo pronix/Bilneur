@@ -1,0 +1,21 @@
+
+<div class="message">
+  <div class="message-header">
+    <span class="sender">
+      <b>From:
+        <% if message.sender == current_user %>
+        me to <%= message.recipient.full_name  %>
+        <% else %>
+        <%= message.sender.full_name  %> to me
+        <% end %>
+      </b>
+    </span>
+    <span class="created_at" style="float:right;">
+     Received: <%= l message.created_at, :format => "%B %d, %Y %H:%M" %>
+    </span>
+  </div>
+  <hr />
+  <div class="content">
+    Message: <%= message.content %>
+  </div>
+</div>

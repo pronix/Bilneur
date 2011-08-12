@@ -1,8 +1,5 @@
 class Dashboard::QuoteImagesController < Dashboard::ApplicationController
 
-  helper Admin::BaseHelper
-  helper Admin::NavigationHelper
-
   before_filter :load_data
 
   def index

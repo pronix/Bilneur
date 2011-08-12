@@ -1,4 +1,8 @@
 class Dashboard::ApplicationController < Spree::BaseController
+  helper Admin::BaseHelper
+  helper Admin::NavigationHelper
+
+
   layout "dashboard"
   before_filter :authenticate_user!
   before_filter :verify_seller

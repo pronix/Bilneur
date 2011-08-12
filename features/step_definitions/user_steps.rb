@@ -46,3 +46,10 @@ Given /^user "([^\"]*)" has no payment methods$/ do |user|
   @user = User.find_by_email(user)
   @user.seller_payment_methods.destroy_all
 end
+
+Given /^the following sellers exist:$/ do |table|
+  table.hashes.each do |item|
+    @user = Factory(:user, item.merge({ :registration_as_seller => 1}) )
+    Factory(:seller_payment_method, {:user_id => @user.id})
+  end
+end

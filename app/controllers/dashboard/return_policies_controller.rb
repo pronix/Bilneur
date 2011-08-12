@@ -1,6 +1,4 @@
 class Dashboard::ReturnPoliciesController < Dashboard::ApplicationController
-  helper Admin::BaseHelper
-  helper Admin::NavigationHelper
 
   before_filter :load_data
 

@@ -27,6 +27,10 @@ User.class_eval do
   has_many :virtual_orders, :class_name => "VirtualOrder", :foreign_key => :user_id
   has_many :seller_payment_methods
 
+  has_many :sent,  :order => "created_at", :class_name => "Message", :foreign_key => "sender_id"
+  has_many :inbox, :order => "created_at", :class_name => "Message", :foreign_key => "recipient_id"
+
+
   # scopes
   #
 
@@ -44,6 +48,7 @@ User.class_eval do
   # callbacks
   #
   after_create :set_roles
+
 
   # Setting the roles on default
   #
@@ -63,6 +68,11 @@ User.class_eval do
 
   # instance methods
   #
+
+  def messages
+    Message.messages_for_user(self)
+  end
+
   def is_admin?
     has_role?("admin")
   end

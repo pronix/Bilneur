@@ -41,6 +41,10 @@ module NavigationHelpers
       destroy_user_session_path
     when /the "(.+)" edit password page/
       edit_user_password_path(User.find_by_email($1))
+    when /^the new message page for seller "(.+)"/
+      new_message_path(User.find_by_email($1))
+    when /the show dashboard message page for "(.+)"/
+      dashboard_message_path(Message.roots.find_by_subject($1))
     when /^the home\s?page$/
       '/'
 

@@ -1,8 +1,5 @@
 class Dashboard::OptionTypesController < Dashboard::ApplicationController
 
-  helper Admin::BaseHelper
-  helper Admin::NavigationHelper
-
   before_filter :load_product, :only => [:selected, :available, :remove]
 
   def index

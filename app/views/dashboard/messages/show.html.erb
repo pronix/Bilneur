@@ -1,0 +1,34 @@
+<%= render :partial => 'dashboard/shared/inbox_tabs', :locals => {:current => "All Messages"} %>
+
+<h3 class="subject">Subject: <%= @message.subject %></h3>
+<%= render @message %>
+
+<%= render @children_messages  %>
+
+<%= render 'shared/error_messages', :target => @reply_message %>
+
+<%= form_for((@reply_message||Message.new), :url => reply_dashboard_message_path(@message)) do |f| %>
+
+
+
+<fieldset>
+<div class="yui-gc">
+  <div class="yui-u first">
+
+    <%= f.field_container :content do %>
+    <%= f.label :content, t("content")%><br />
+    <%= f.text_area :content, {:cols => 60, :rows => 2, :class => 'fullwidth'} %>
+    <%= f.error_message_on :content %>
+    <% end %>
+
+
+  </div>
+</div>
+</fieldset>
+
+<p class="form-buttons">
+   <%= button t("actions.send") %>
+</p>
+
+
+<% end %>

@@ -1,8 +1,5 @@
 class Dashboard::PaymentMethodsController < Dashboard::ApplicationController
 
-  helper Admin::BaseHelper
-  helper Admin::NavigationHelper
-
 
   def index
     @payment_methods = current_user.seller_payment_methods

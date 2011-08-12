@@ -1,0 +1,38 @@
+
+<% content_for :sidebar do %>
+
+  <h3><span>Inbox</span></h3>
+  <br class="clear" />
+
+  <ul class="sidebar product-menu">
+
+      <li<%== ' class="active"' if current == "All Messages" %>>
+        <%= link_to t("all_messages"), dashboard_messages_path %>
+      </li>
+
+      <li<%== ' class="active"' if current == "Received" %>>
+        <%= link_to t("received"), state_inbox_dashboard_messages_path(:received) %>
+      </li>
+
+      <li<%== ' class="active"' if current == "Sent" %>>
+        <%= link_to t("sent"), state_inbox_dashboard_messages_path(:sent) %>
+      </li>
+
+      <li<%== ' class="active"' if current == "Unread" %>>
+        <%= link_to t("unread"), state_inbox_dashboard_messages_path(:unread) %>
+      </li>
+
+      <li<%== ' class="active"' if current == "Important" %>>
+        <%= link_to t("important"), state_inbox_dashboard_messages_path(:important) %>
+      </li>
+
+      <li<%== ' class="active"' if current == "Trash" %>>
+        <%= link_to t("trash"), state_inbox_dashboard_messages_path(:trash) %>
+      </li>
+
+
+  </ul>
+  <br class="clear" />
+
+<% end %>
+

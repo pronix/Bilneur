@@ -45,6 +45,12 @@ module NavigationHelpers
       new_message_path(User.find_by_email($1))
     when /the show dashboard message page for "(.+)"/
       dashboard_message_path(Message.roots.find_by_subject($1))
+    when /the admin main page/
+      admin_path
+    when /the admin review setting page/
+      admin_review_settings_path
+    when /the edit admin review setting page/
+      edit_admin_review_settings_path
     when /^the home\s?page$/
       '/'
 

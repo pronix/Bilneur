@@ -32,6 +32,7 @@ Feature: Manage reviews
     And I am logged out
     When I go to the "The Godfather" product page
     Then I follow "Rate This Product"
+    And I should be on the the sign up page
     And I should be on the new review page for product "The Godfather"
     And I should see "The Godfather"
     And I rate this by "3"
@@ -63,3 +64,16 @@ Feature: Manage reviews
     And I should see my review
     And I should see my name "Test Firstname T." with my review
     And I should see my photo as "new_seller@person.com"
+@wip
+ Scenario: Review admin configuration
+   Given I sign in as "admin@person.com/password"
+   Then I go to the admin main page
+   Then I follow "Configuration"
+   Then I follow "Review Settings"
+   And I should be on the admin review setting page
+   And I should see all review setting options
+   Then I follow "Edit"
+   And I should be on the edit admin review setting page
+   And I check "preferences[require_login]"
+   Then press "Update"
+   And I should be on the admin review setting page

@@ -99,6 +99,8 @@ Then /^I should see lates review on last review block$/ do
   end
 end
 
-Then /^test$/ do
-  puts Product.all.map{ |x| x.permalink}
+Then /^I should see all review setting options$/ do
+  ['Include Unapproved', 'Preview Size', 'Show Email', 'Require Login'].each do |setting|
+    find('#content').should have_content(setting)
+  end
 end

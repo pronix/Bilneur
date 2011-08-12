@@ -1,5 +1,6 @@
 Factory.define :message do |t|
-
+  t.association(:sender, :factory => :user)
+  t.association(:recipient, :factory => :user)
 end
 
 Factory.define :seller_payment_method do |t|

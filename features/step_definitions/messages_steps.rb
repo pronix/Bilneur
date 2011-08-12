@@ -7,14 +7,11 @@ When /^user "([^\"]*)" has my message in the Received tab$/ do |email|
   user = User.find_by_email(email)
   user.inbox.count.should eq(1)
 end
-
-Given /^the following messages exist:$/ do |table|
-  table.hashes.each do |item|
-
-    Factory(:message, { :created_at => Time.parse(item["created_at"]),
-            :sender_id => User.find_by_email(item["sender"]).id,
-            :recipient_id => User.find_by_email(item["recipient"]).id,
-            :subject => item["subject"],
-              :content => item["message"]})
-  end
+Then /^the page should have the following messages:$/ do |table|
+  table.diff!(tableish('table:first tr', 'td,th'))
 end
+
+Then /^the page should have text area for reply$/ do
+  page.should have_selector('textarea#message_content')
+end
+

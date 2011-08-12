@@ -35,6 +35,18 @@ Feature: Manage reviews
     Then I go to the "The Godfather" product page
     And I should see @review on the product page
 
+  Scenario: Only one time register user can write review for one product
+    Given I am signed up as a seller with "seller3@person.com/password"
+    Given I sign in as "seller3@person.com/password"
+    Then I go to the "The Godfather" product page
+    And I follow "Rate This Product"
+    And I should be on the new review page for product "The Godfather"
+    And I rate this by "3"
+    And I fill in "review_review" with "Simple Review 33"
+    And I press "Submit your review"
+    And I should be on the "The Godfather" product page
+    And I should not see link "Rate This Product"
+
   Scenario: Disable link /product/review
     When I go to the "The Godfather" review by url
     And I should be on the "The Godfather" product page

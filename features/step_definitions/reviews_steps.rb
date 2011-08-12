@@ -173,3 +173,7 @@ end
 Then /^I should see @review on the product page$/ do
   page.should have_content(@review.review)
 end
+
+Then /^I should not see link "(.+)"$/ do |link_name|
+  page.should_not have_content(link_name)
+end

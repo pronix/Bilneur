@@ -1,5 +1,6 @@
 class Dashboard::ReviewsController < Dashboard::ApplicationController
   helper :reviews
+  before_filter :load_review, :only => [:approve, :destroy]
 
   def index
     @approved_reviews = Review.by_products_owner(@current_user).where(:approved => true)
@@ -7,15 +8,25 @@ class Dashboard::ReviewsController < Dashboard::ApplicationController
   end
 
   def approve
-    r = Review.find(params[:id])
-
-    if r.update_attribute(:approved, true)
-       r.product.recalculate_rating
-       flash[:notice] = t("info_approve_review")
+    if @review.update_attribute(:approved, true)
+       @review.product.recalculate_rating
+       flash.notice = t("info_approve_review")
     else
-       flash[:error] = t("error_approve_review")
+       flash.notice = t("error_approve_review")
     end
-    redirect_to admin_reviews_path
+    redirect_to dashboard_reviews_path
+  end
+
+  def destroy
+    @review.destroy
+    flash.notice = 'Review successfully removed'
+    redirect_to dashboard_reviews_path
+  end
+
+  private
+
+  def load_review
+    @review = Review.find(params[:id])
   end
 
 end

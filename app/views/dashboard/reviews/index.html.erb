@@ -24,8 +24,8 @@
         <p><%= review.name %> / <%= review.user_id ? link_to(review.user.try(:email), [:admin, review.user]) : t(:guest) %></p>
         <p><%= Review.human_attribute_name(:ip_address) %>: <%= review.ip_address ? link_to(review.ip_address, "http://whois.domaintools.com/#{review.ip_address}") : '-' %></p>
       </td>
-      <td>
-        <%= txt_stars(review.rating) %>
+      <td width="80px">
+        <%= show_stars review.rating %>
       </td>
       <td>
         <%= review.title %>
@@ -38,7 +38,9 @@
         <% unless review.approved %>
           <%= link_to_with_icon 'tick', t('approve'), {:action => 'approve', :id => review.id} %> <br />
         <% end %>
-        <%= link_to t('feedback'), admin_review_feedback_reviews_path(review) %>(<%= review.feedback_stars %>/<%= review.feedback_reviews.count %>) <br/>
+        <%= link_to 'Delete', dashboard_review_path(review), :method => :delete, :remote => true, 
+                                                             :onclick => "$(\"##{dom_id review}\").remove();" %>
+        <br/>
       </td>
     </tr>
   <% end %>

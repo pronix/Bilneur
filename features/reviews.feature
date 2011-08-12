@@ -11,6 +11,17 @@ Feature: Manage reviews
       | Name 1 | here     | This is review   | true     |  127.0.0.1 |
       | Name 2 | here     | Thit is review 2 | true     |  127.0.0.1 |
     Given the guest can not create a review  
+@wip
+  Scenario: Show reviews in seller panel
+    Given I sign in as "seller@person.com/password"
+    And create sample paypal paymethod
+    And I have "4" reviews for my product "The Godfather"
+    Then I go to the account page
+    And I should be on the account page
+    And I follow "Products"
+    And I should see "The Godfather"
+    Then I follow "Review Management"
+    And I should see all "seller@person.com" reviews
 
   Scenario: Disable link /product/review
     When I go to the "The Godfather" review by url

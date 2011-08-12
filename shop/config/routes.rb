@@ -32,6 +32,13 @@ Rails.application.routes.draw do
 
     root :to => "users#show"
 
+    resources :reviews do
+      member do
+        get :approve
+      end
+      resources :feedback_reviews
+    end
+
     resources :quotes, :path_names => { :new => "(/:product_ean)/new"} do
 
       collection do

@@ -129,3 +129,29 @@ end
 Then /^I should see my review$/ do
   page.should have_content("Simple Review")
 end
+
+Given /^create sample paypal paymethod$/ do
+  Given %{I go to the dashboard payment_methods page}
+  And %{I follow "New Payment Method"}
+  And %{I select "Paypal" from "Type"}
+  And %{I fill in "Name" with "My paypal"}
+  And %{I press "Create"}
+  When %{I fill in "Login" with "test_paypal@tpay.com"}
+  And %{I fill in "Password" with "password"}
+  And %{I press "Update"}
+  Then %{I should see "Payment Method has been successfully updated!"}
+end
+
+Given /^I have "(\d+)" reviews for my product "(.+)"$/ do |count, product_name|
+  product = Product.find_by_name(product_name)
+  1.upto(count.to_i).each do ||
+      Factory(:review, { :product => product, :approved => false })
+  end
+end
+
+Then /^I should see all "(.+)" reviews$/ do |email|
+  Review.by_products_owner(User.find_by_email(email)).each do |review|
+    # It's simple way to know that this review in page )
+    page.should have_content(review.ip_address)
+  end
+end

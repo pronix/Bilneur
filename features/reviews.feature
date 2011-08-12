@@ -1,5 +1,3 @@
-# language: en
-
 Feature: Manage reviews
 
   Background:
@@ -12,6 +10,7 @@ Feature: Manage reviews
       | name   | location | review           | approved | ip_address |
       | Name 1 | here     | This is review   | true     |  127.0.0.1 |
       | Name 2 | here     | Thit is review 2 | true     |  127.0.0.1 |
+    Given the guest can not create a review  
 
   Scenario: Disable link /product/review
     When I go to the "The Godfather" review by url
@@ -32,21 +31,7 @@ Feature: Manage reviews
     And I am logged out
     When I go to the "The Godfather" product page
     Then I follow "Rate This Product"
-    And I should be on the the sign up page
-    And I should be on the new review page for product "The Godfather"
-    And I should see "The Godfather"
-    And I rate this by "3"
-    And I fill in "review_name" with "Maxim"
-    And I fill in "review_review" with "This is simple review"
-    And press "Submit your review"
-    And please define last Review by review "This is simple review" as @review
-    And I should be on the "The Godfather" product page
-    And I should see "Review was successfully submitted"
-    And I should not see my review on the page
-    And I should see that this review add and has status not approved
-    And I change status for this review by approved
-    Then I go to the "The Godfather" product page
-    And I should see my review on the page
+    And I should be on the login page
 
   Scenario: Create review as register user
     Given I already sing as "new_seller@person.com/password"
@@ -64,7 +49,7 @@ Feature: Manage reviews
     And I should see my review
     And I should see my name "Test Firstname T." with my review
     And I should see my photo as "new_seller@person.com"
-@wip
+
  Scenario: Review admin configuration
    Given I sign in as "admin@person.com/password"
    Then I go to the admin main page

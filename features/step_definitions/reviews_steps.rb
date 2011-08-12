@@ -104,3 +104,11 @@ Then /^I should see all review setting options$/ do
     find('#content').should have_content(setting)
   end
 end
+
+Then /^test$/ do
+  puts Spree::Reviews::Config[:require_login]
+end
+
+Given /^the guest can not create a review$/ do
+  Spree::Reviews::Config.set(:require_login => true)
+end

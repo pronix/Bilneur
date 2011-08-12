@@ -1,7 +1,7 @@
 CheckoutController.class_eval do
 
 
-    # Updates the order and advances to the next state (when possible.)
+  # Updates the order and advances to the next state (when possible.)
   def update
     if @order.update_attributes(object_params)
       if @order.next
@@ -26,6 +26,15 @@ CheckoutController.class_eval do
 
 
   private
+
+  def after_complete
+    if @order.virtual?
+      session[:virtual_order_id] = nil
+    else
+      session[:order_id] = nil
+    end
+  end
+
 
   def before_address
     @order.bill_address ||= current_user.addresses.first.try(:clone) || Address.default
@@ -60,7 +69,6 @@ CheckoutController.class_eval do
     end
 
     state_callback(:before)
-
   end
   def type_order
     @order.virtual? ? :virtual : :normal

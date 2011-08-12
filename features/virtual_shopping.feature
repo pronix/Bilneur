@@ -7,6 +7,8 @@ Feature: Virtual Shopping
   Background:
     Given I have an admin account of "admin@person.com/password"
     And I am signed up as "email@person.com/password"
+    And 1 payment methods exist
+    And 1 bogus payment methods exist
     And the following sellers exist:
       | firstname | email              | password  | password_confirmation |
       | Seller1   | seller1@person.com | password1 | password1             |
@@ -24,12 +26,12 @@ Feature: Virtual Shopping
       | name:Death of a Hero [Paperback] | email:seller1@person.com | 22.89 | new       |             7 |
       | name:Death of a Hero [Paperback] | email:seller2@person.com | 24.50 | new       |             3 |
       | name:Death of a Hero [Paperback] | email:seller3@person.com |  20.0 | used      |            10 |
-    # And seller "seller3@person.com" has the following virtual shipping methods exist:
-    #   | name             | cost |
-    #   | Free to Bilnuer  | 0.00 |
-    #   | Store the seller | 0.00 |
+    And seller "seller2@person.com" has the following virtual shipping methods exist:
+       | name             | virtual |
+       | Free to Bilneur  | true    |
+       | Store the seller | true    |
 
-  @focus @javascript
+  @wip @focus @javascript
   Scenario: Adding quote to V.Cart and checkout order(with shipping method: Free to Bilneur)
     When I sign in as "email@person.com/password"
     And I go to the "The Godfather" product page
@@ -38,14 +40,11 @@ Feature: Virtual Shopping
     And I press "Add To V.Store" within block seller "seller2@person.com"
     Then I should be on the cart page
     When I follow "Checkout" within block virtual cart
+    When I choose "Free to Bilneur" from Shipping Methods
+    And I press "Save and Continue"
+    And I choose "Credit Card"
+    And I enter valid credit card details
     Then show me the page
-    # When I choose "Free to Bilneur" from shipping methods
-    # And I press "Save and Continue"
-    # And I choose "Credit Card" from "Payment Methods"
-    # And I fill in "Credit card number" with "4111111111111111"
-    # And I fill in "Security code" with "123"
-    # And I fill in "Expiration" with "11/2014"
-    # And I press "Save and Continue"
     # Then I should see order info
     # When I press "Place Order"
     # Then seller "seller3@person.com" should receive email

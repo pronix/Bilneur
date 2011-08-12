@@ -53,3 +53,24 @@ Given /^the following sellers exist:$/ do |table|
     Factory(:seller_payment_method, {:user_id => @user.id})
   end
 end
+
+
+Given /^seller "([^\"]*)" has the following virtual shipping methods exist:$/ do |email, table|
+  @seller = User.find_by_email email
+  table.hashes.each_with_index do |item, i|
+
+    q = Factory(:calculator, {
+                  :type => "Calculator::FlatRate",
+                  :calculable_id => (100 + 1),
+                  :calculable_type => "ShippingMethod"})
+    q.set_preference(:amount, 0.0)
+
+    Factory.create(:shipping_method, {
+              :name => item["name"],
+              :seller => @seller,
+              :virtual => (item["virtual"].to_s =~ /true/i ? true : false ),
+              :calculator => q
+            })
+
+  end
+end

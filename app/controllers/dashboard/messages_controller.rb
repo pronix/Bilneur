@@ -26,10 +26,12 @@ class Dashboard::MessagesController < Dashboard::ApplicationController
 
   def create
     @recipient = User.find(params[:user_id])
-    @message = Message.new(params[:message].merge({ :recipient => @recipient, :sender => current_user }))
+    @message = Message.new(params[:message].merge({
+                                                    :recipient => @recipient,
+                                                    :sender => current_user }))
 
     if @message.save
-      redirect_to dashboard_messages_path, :notice => "Message sent."
+      redirect_to dashboard_messages_path, :notice => "Your message sent."
     else
       render :new
     end

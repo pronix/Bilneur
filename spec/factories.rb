@@ -1,3 +1,7 @@
+Factory.define :message do |t|
+
+end
+
 Factory.define :seller_payment_method do |t|
   t.type "SellerPaymentMethod::CreditCard"
   t.name "My Visa"

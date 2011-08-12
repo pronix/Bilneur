@@ -1,28 +1,30 @@
 # language: en
-@wip
+
 Feature: Inbox
   Users can exchange messages
+
   Background:
   Given I have an admin account of "admin@person.com/password"
     And I am signed up as "email@person.com/password"
     And the following sellers exist:
-      | name    | email              | password  |
-      | Seller1 | seller1@person.com | password1 |
+      | firstname | email              | password  | password_confirmation |
+      | Seller1   | seller1@person.com | password1 | password1             |
 
   Scenario: Sending Message access only auth user
     When I go to the new message page for seller "seller1@person.com"
-    Then I should be on the login page
+    Then I should be on the sign in page
 
   Scenario: Sending Message
     When I sign in as "email@person.com/password"
-    And I go to the new message page for user "seller1@person.com"
+    And I go to the new message page for seller "seller1@person.com"
     And I fill in "Subject" with "Question on your product"
-    And I fill in "Message" with "Message content"
+    And I fill in "Content" with "Message content"
     And I press "Send"
     Then I should see "Your message sent."
-    And I have my message in the Sent tab
+    And "email@person.com" has my message in the Sent
     And user "seller1@person.com" has my message in the Received tab
 
+  @focus
   Scenario: Viewing inbox
     Given the following message exist:
      | created_at | sender          | recipient          | subject   | message           |
@@ -40,6 +42,7 @@ Feature: Inbox
     And I should see text area for reply
     And I should see button "Send"
 
+  @wip
   Scenario: Replying to a message
     Given the following message exist:
      | created_at | sender          | recipient          | subject   | message           |
@@ -54,8 +57,9 @@ Feature: Inbox
     And I press "Send"
     Then I should see "Message sent"
 
+  @wip
   Scenario: Marking message as read
-    Given the following message exist:
+    Given the following messages exist:
      | created_at | sender          | recipient          | subject   | message           |
      | 01/01/2011 | user@person.com | seller1@person.com | Question1 | Question1 message |
     When I sign in as "seller1@person.com/password"
@@ -67,6 +71,7 @@ Feature: Inbox
     And I press "Mark as read"
     Then message "Question1" should be mark as 'read'
 
+  @wip
   Scenario: Marking message as unread
     Given the following message exist:
      | created_at | sender          | recipient          | subject   | message           | state |
@@ -80,6 +85,7 @@ Feature: Inbox
     And I press "Mark as unread"
     Then message "Question1" should be mark as 'unread'
 
+  @wip
   Scenario: Marking message as important
     Given the following message exist:
      | created_at | sender          | recipient          | subject   | message           |

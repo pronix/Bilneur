@@ -2,7 +2,7 @@
   <div id="TabbedPanels2" class="TabbedPanels">
     <ul class="TabbedPanelsTabGroup">
       <% Variant::CONDITION.each  do |cdt| %>
-      <li class="TabbedPanelsTab tab1" tabindex="0"><span><%= t("condition_#{cdt}") %></span></li>
+      <li class="TabbedPanelsTab tab" tabindex="0"><span><%= t("condition_#{cdt}") %></span></li>
       <% end %>
     </ul>
     <div class="TabbedPanelsContentGroup">
@@ -64,8 +64,8 @@
 
               </div>
           </div>
-          <% end %>
         </div>
+        <% end %>
         <div class="tabCnt2">
           <a href="#">View All</a>
             <span>21 Auctions Starting at</span>

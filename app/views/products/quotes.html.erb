@@ -1,5 +1,5 @@
 <% @body_id = 'product-details' %>
-<% stylesheet "slider/style", "slider/jquery", "slider/SpryTabbedPanels2", "slider/SpryTabbedPanels3", "slider/SpryCollapsiblePanel2" %>
+<% stylesheet "slider/style", "slider/jquery", "slider/SpryTabbedPanels2", "slider/SpryTabbedPanels3", "slider/SpryCollapsiblePanel2", "product" %>
 <% javascript "slider/jquery_002", "slider/jquery_003", "slider/SpryTabbedPanels", "slider/SpryCollapsiblePanel","product_sellers" %>
 
 <div class="col1">
@@ -9,17 +9,6 @@
 
 <div class="col2">
   <%= render "sellers_panel", :product => @product %>
-
-  <div>
-    <ul>
-      <% @product.variants.condition(params[:condition]).each do |item| %>
-      <li>
-        <b><%= number_to_currency(item.price) %></b>
-        <%= item.seller.full_name%>
-      </li>
-    <% end %>
-    </ul>
-  </div>
 
   <%= render "vtrade_panel", :product => @product %>
 </div>

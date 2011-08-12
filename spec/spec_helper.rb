@@ -12,7 +12,7 @@ Spork.prefork do
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
   require 'spree_core/testing_support/factories'
-  require 'factories'
+  # require 'factories'
 
   RSpec.configure do |config|
     # == Mock Framework

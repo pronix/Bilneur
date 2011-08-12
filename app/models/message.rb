@@ -28,7 +28,9 @@ class Message < ActiveRecord::Base
            (recipient_id =:user_id AND recipient_deleted_at is not :v) ",{ :v => nil, :user_id => user.id })
     end
   }
-  scope :trash, deleted
+
+  scope :trash, lambda{ |*args| deleted(*args) }
+
   scope :undeleted, lambda{ |*args|
     if (user = (args.first || User.current))
       where("(sender_id = :user_id AND sender_deleted_at is :v)
@@ -40,7 +42,13 @@ class Message < ActiveRecord::Base
     where("messages.sender_id = :user_id OR messages.recipient_id = :user_id ", { :user_id => user.id })
   }
 
-  scope :important, where("sender_marker = :v or recipient_marker = :v", :v => 'important')
+  scope :important, lambda{  |*args|
+    if (user = (args.first || User.current))
+      where("(sender_id = :user_id AND sender_marker = :v )
+           OR ( recipient_id = :user_id AND recipient_marker = :v ) ",{ :v => 'important', :user_id => user.id })
+    end
+  }
+
 
   # validates
   #

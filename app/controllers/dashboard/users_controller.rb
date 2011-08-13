@@ -15,6 +15,14 @@ class Dashboard::UsersController < Dashboard::ApplicationController
     redirect_to dashboard_account_path
   end
 
+  def change_password
+    if current_user.update_attributes(params[:user])
+      flash.notice = "Password update"
+    else
+      render :change_password
+    end
+  end
+
   protected
 
   def change_user_2_saller

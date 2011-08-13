@@ -5,7 +5,7 @@ Rails.application.routes.draw do
                                                  :constraints => { :kind => /products|sellers|deals/ }
 
   match "/account" => "dashboard/users#show"
-
+  match "/account/change_password" => "dashboard/users#change_password", :via => [:get, :put]
   match "/products/deals/:id(/:condition)" => "products#quotes", :as => :product_quotes
   match "/products/deals/:id/:quote_id" => "products#quote", :as => :product_quote
   match "/products/like_review" => 'products#like_review', :via => :post
@@ -31,6 +31,13 @@ Rails.application.routes.draw do
   namespace :dashboard do
 
     root :to => "users#show"
+
+    resources :reviews do
+      member do
+        get :approve
+      end
+      resources :feedback_reviews
+    end
 
     resources :quotes, :path_names => { :new => "(/:product_ean)/new"} do
 

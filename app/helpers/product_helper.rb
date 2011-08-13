@@ -18,4 +18,10 @@ module ProductHelper
     image_tag user.photo.url(:for_review)
   end
 
+  # Check if user early create review by this product
+  def can_create_review?(product)
+    return true if @current_user.nil?
+    true if product.reviews.where(:user_id => @current_user.id).blank?
+  end
+
 end

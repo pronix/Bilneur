@@ -1,11 +1,11 @@
 class Dashboard::OrdersController < Dashboard::ApplicationController
 
   def index
-    @orders = current_user.orders
+    @orders = current_user.orders.complete
   end
 
   def show
-    @order = current_user.orders.find_by_number(params[:id])
+    @order = current_user.orders.complete.find_by_number(params[:id])
   end
 
 end

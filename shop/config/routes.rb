@@ -54,7 +54,17 @@ Rails.application.routes.draw do
     end # end dashboard < quotes
 
     resources :orders, :only => [:index, :show]
-    resources :sales,  :only => [:index, :show]
+    resources :virtual_orders, :only => [:index, :show]
+    resources :sales,  :only => [:index, :show] do
+      member do
+        get :ship
+      end
+    end
+    resources :virtual_sales,  :only => [:index, :show] do
+      member do
+        get :ship
+      end
+    end
     resources :properties
 
     resources :option_types do

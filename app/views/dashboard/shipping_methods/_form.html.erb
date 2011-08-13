@@ -12,6 +12,11 @@
     <%= error_message_on :shipping_method, :zone_id %>
   <% end %>
 
+  <p>
+    <%= f.error_message_on :virtual %>
+    <%= f.check_box :virtual %>
+    <%= f.label :virtual, t("virtual") %>
+  </p>
 
   <%= render "dashboard/shared/calculator_fields", :f => f %>
 

@@ -1,5 +1,6 @@
 LineItem.class_eval do
   has_one :user, :through => :order
+
   after_validation  :hack_after_validate
   validates :quantity, :numericality => {
     :only_integer => true,
@@ -7,6 +8,7 @@ LineItem.class_eval do
   }
 
   validate :quantity_product, :if => lambda{ |t| t.variant.present? }
+  after_save :division_order
 
   def quantity_product
     if quantity.to_i <= 0
@@ -26,5 +28,8 @@ LineItem.class_eval do
     errors[:quantity].uniq!
   end
 
+  def division_order
+    order.division_on_seller_order!
+  end
 
 end

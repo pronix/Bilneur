@@ -10,4 +10,17 @@ class Dashboard::SalesController < Dashboard::ApplicationController
     @order = current_user.sales.find_by_number(params[:id])
   end
 
+  def ship
+    @order = current_user.sales.find_by_number(params[:id])
+    @shipment = @order.shipments.first
+    if @shipment.ship
+      flash.notice = t('shipment_updated')
+    else
+      flash[:error] = t('cannot_perform_operation')
+    end
+
+    redirect_to dashboard_virtual_orders_path
+  end
+
+
 end

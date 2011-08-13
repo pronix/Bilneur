@@ -80,9 +80,13 @@ Order.class_eval do
   end
 
   def available_shipping_methods(display_on = nil)
-    return [ ] unless ship_address
+    return [ ] if !virtual? && !ship_address
     return [ ] if seller.shipping_methods.blank?
-    seller.shipping_methods.select { |method| method.available_to_order?(self, display_on)}
+    if virtual?
+      seller.shipping_methods.virtual.select { |method| method.available_to_order?(self, display_on)}
+    else
+      seller.shipping_methods.realy.select { |method| method.available_to_order?(self, display_on)}
+    end
   end
 
 
@@ -149,7 +153,7 @@ Order.class_eval do
       end
     else
       self.seller = line_items.first.variant.seller
-      save
+      save!
     end
 
   end

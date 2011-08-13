@@ -80,9 +80,13 @@ Order.class_eval do
   end
 
   def available_shipping_methods(display_on = nil)
-    return [ ] unless ship_address
+    return [ ] if !virtual? && !ship_address
     return [ ] if seller.shipping_methods.blank?
-    seller.shipping_methods.select { |method| method.available_to_order?(self, display_on)}
+    if virtual?
+      seller.shipping_methods.virtual.select { |method| method.available_to_order?(self, display_on)}
+    else
+      seller.shipping_methods.realy.select { |method| method.available_to_order?(self, display_on)}
+    end
   end
 
 
@@ -91,6 +95,7 @@ Order.class_eval do
   end
 
   def with_children_finalize!
+    set_user_as_virtual_buyer!
     if children.present?
       children.map{ |v|
         v.payments = self.payments
@@ -122,6 +127,12 @@ Order.class_eval do
     end
   end
 
+  # Add virtual_buyer if order is virtual
+  #
+  def set_user_as_virtual_buyer!
+    user.roles << Role.find_or_create("virtual_buyer") if virtual? && user.has_role?("virtual_buyer")
+  end
+
   # Separating on sub orders for each seller
   #
   def division_on_seller_order!
@@ -144,7 +155,7 @@ Order.class_eval do
       end
     else
       self.seller = line_items.first.variant.seller
-      save
+      save!
     end
 
   end

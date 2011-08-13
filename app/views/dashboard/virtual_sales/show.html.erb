@@ -1,0 +1,32 @@
+<h1><%= @order.number %></h1>
+
+<div id="order">
+  <% if params.has_key? :checkout_complete %>
+  	<h3><%= t('thank_you_for_your_order') %></h3>
+  <% end %>
+  <%= render :partial => 'shared/order_details', :locals => {:order => @order} %>
+</div>
+
+
+
+<hr />
+
+<% if @order.bill_address %>
+    <div class='adr'>
+      <h4><%= t("bill_address") %></h4>
+      <%= render :partial => 'admin/shared/address', :locals => {:address => @order.bill_address} %>
+    </div>
+  <hr />
+  <% end %>
+
+  <% if @order.ship_address %>
+  <div class='adr'>
+      <h4><%= t("ship_address") %></h4>
+      <%= render :partial => 'admin/shared/address', :locals => {:address => @order.ship_address} %>
+    </div>
+    <% end %>
+  <hr />
+
+  <%= link_to t("back"), :back %><br />
+
+

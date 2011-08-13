@@ -7,7 +7,10 @@ module HtmlSelectorsHelpers
   #
   def selector_for(locator)
     case locator
-
+    when /block seller "(.+)"/
+      "[data-seller='#{User.find_by_email($1).id}']"
+    when "block virtual cart"
+      "#virtual-cart"
     when "the page"
       "html > body"
 

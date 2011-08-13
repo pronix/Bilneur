@@ -1,5 +1,4 @@
 # language: en
-@wip
 Feature: Virtual Shopping
   Virtiaul buyes can add product to V. Store
   and checkout virtual order

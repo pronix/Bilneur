@@ -20,11 +20,13 @@ User.class_eval do
   has_many :quotes,   :class_name => "Variant", :foreign_key => :seller_id,
            :conditions => [ "variants.is_master = #{connection.quoted_false}" ]
   has_many :shipping_methods, :foreign_key => :seller_id
-  has_many :sales, :class_name => "Order", :foreign_key => :seller_id, :conditions => { :virtual => false}
-  has_many :orders,  :conditions => { :virtual => false}
 
+  has_many :sales, :class_name => "Order", :foreign_key => :seller_id, :conditions => { :virtual => false}
   has_many :virtual_sales, :class_name => "VirtualOrder", :foreign_key => :seller_id
+
+  has_many :orders,  :conditions => { :virtual => false}
   has_many :virtual_orders, :class_name => "VirtualOrder", :foreign_key => :user_id
+
   has_many :seller_payment_methods
 
   has_many :sent,  :order => "created_at", :class_name => "Message", :foreign_key => "sender_id"
@@ -38,7 +40,7 @@ User.class_eval do
   # scope :sellers, Role.find_by_name('seller').users
   # FIXME need to know logic of how select top sellers.
   # FIXME why don't use selers.limit(1) for Array
-  # FIXME Add rescue becouse on the migrate goes to error 
+  # FIXME Add rescue becouse on the migrate goes to error
   scope :sellers_top, Role.find_by_name('seller').users.order('created_at ASC') rescue []
   # scope :sellers_top, find_by_sql([ "SELECT * FROM users WHERE id in(SELECT user_id FROM roles_users WHERE role_id = ?)",
   #                             Role.find_by_name('seller').id])

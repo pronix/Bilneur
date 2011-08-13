@@ -95,6 +95,7 @@ Order.class_eval do
   end
 
   def with_children_finalize!
+    set_user_as_virtual_buyer!
     if children.present?
       children.map{ |v|
         v.payments = self.payments
@@ -124,6 +125,12 @@ Order.class_eval do
     else
       read_attribute(:total)
     end
+  end
+
+  # Add virtual_buyer if order is virtual
+  #
+  def set_user_as_virtual_buyer!
+    user.roles << Role.find_or_create("virtual_buyer") if virtual? && user.has_role?("virtual_buyer")
   end
 
   # Separating on sub orders for each seller

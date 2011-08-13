@@ -16,11 +16,11 @@ class Dashboard::UsersController < Dashboard::ApplicationController
   end
 
   def change_password
-    if current_user.update_attributes(params[:user])
-      flash.notice = "Password update"
-    else
-      render :change_password
-    end
+    # if current_user.update_attributes(params[:user])
+    #   flash.notice = "Password update"
+    # else
+    #   render :change_password
+    # end
   end
 
   protected

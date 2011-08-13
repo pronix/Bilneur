@@ -1,4 +1,3 @@
-# language: en
 Feature: Virtual Shopping
   Virtiaul buyes can add product to V. Store
   and checkout virtual order
@@ -57,7 +56,6 @@ Feature: Virtual Shopping
     #   | product_name  | price | condition | count_on_hand |
     #   | The Godfather |  10.0 | used      |             3 |
 
-  @wip
   Scenario: Adding quote to V.Cart and checkout order(with shipping method: Store the Seller)
     When I sign in as "email@person.com/password"
     And I go to the "The Godfather" product page

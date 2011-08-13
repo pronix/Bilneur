@@ -1,5 +1,3 @@
-# language: en
-@wip
 Feature: Shopping
 
   Background:

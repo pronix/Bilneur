@@ -1,3 +1,5 @@
+# language: en
+@javascript
 Feature: Manage reviews
 
   Background:
@@ -10,7 +12,7 @@ Feature: Manage reviews
       | name   | location | review           | approved | ip_address |
       | Name 1 | here     | This is review   | true     |  127.0.0.1 |
       | Name 2 | here     | Thit is review 2 | true     |  127.0.0.1 |
-    Given the guest can not create a review  
+    Given the guest can not create a review
 
   Scenario: Show reviews in seller panel
     Given I sign in as "seller@person.com/password"

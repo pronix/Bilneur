@@ -10,6 +10,7 @@ describe Product do
     describe "of associated owner" do
       it "fails if owner is null" do
         @product = Factory.build(:product, { :ean => "B004GVYJJC"})
+        @product.owner = nil
         @product.should_not be_valid
         @product.errors[:owner].count.should eq(1)
         @product.errors.full_messages.first.should =~ /Owner can't be blank/i

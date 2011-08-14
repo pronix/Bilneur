@@ -19,6 +19,7 @@ describe Variant do
 
       it "fails if seller is null" do
         @variant = Factory.build(:variant, :product => @product, :condition => "new")
+        @variant.seller = nil
         @variant.should_not be_valid
         @variant.errors[:seller].count.should eq(1)
         @variant.errors.full_messages.first.should =~ /Seller can't be blank/i
@@ -29,8 +30,7 @@ describe Variant do
       end
 
       it "owner should be setting by create" do
-        @variant = Factory.create(:variant, :seller => @seller,
-                                 :product => @product, :condition => "new")
+        @variant = Factory.create(:variant, :seller => @seller, :product => @product, :condition => "new")
         @variant.owner.should eq(@seller)
       end
 

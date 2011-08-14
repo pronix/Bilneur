@@ -65,11 +65,6 @@ User.class_eval do
     as_seller!
   end
 
-  def has_role?(role)
-    # If user has one or more this role, return true
-    true if roles.map { |x| x.name }.include?(role)
-  end
-
   # instance methods
   #
 

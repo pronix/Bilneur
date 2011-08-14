@@ -18,7 +18,7 @@ Spork.prefork do
   Spree::Auth::Config.set(:signout_after_password_change => false)
   # sometimes tests fail randomly because cache is not refreshed, fixed that
   Spree::Config.set(:foo => "bar")
-
+  # Spree::Reviews::Config.set(:require_login => false)
 
   # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
   # order to ease the transition to Capybara we set the default here. If you'd

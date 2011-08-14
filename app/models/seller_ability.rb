@@ -12,11 +12,12 @@ class SellerAbility
       cannot :access, :seller
     end
 
-    if !user.has_role?('user') and Spree::Reviews::Config[:require_login]
-      cannot [:new,:create], :review
-    else
-      can [:new,:create], :review
-    end
+    # if !user.has_role?('user') and Spree::Reviews::Config[:require_login]
+    #   cannot [:new,:create], :review
+    # else
+    #   can [:new,:create], :review
+    # end
+
 
     can [:edit, :update, :destroy], Property do |resource|
       resource.owner == user

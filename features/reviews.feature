@@ -1,5 +1,5 @@
 # language: en
-@javascript
+
 Feature: Manage reviews
 
   Background:

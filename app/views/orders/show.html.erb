@@ -8,7 +8,7 @@
   <% if @order.children.present? %>
     <% @order.children.each do |child| %>
      <hr />
-     <h4><b>Suborder:</b> <%= child.number %> <b>Seller:</b> <%= child.seller.fullname %></h4>
+     <h4><b>Suborder:</b> <%= child.number %> <b>Seller:</b> <%= child.seller.full_name %></h4>
      <%= render :partial => 'shared/child_order_details', :locals => {:order => child} %>
     <% end %>
     <hr />

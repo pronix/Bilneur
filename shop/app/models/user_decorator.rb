@@ -21,11 +21,13 @@ User.class_eval do
            :conditions => [ "variants.is_master = #{connection.quoted_false}" ]
   has_many :shipping_methods, :foreign_key => :seller_id
 
-  has_many :sales, :class_name => "Order", :foreign_key => :seller_id, :conditions => { :virtual => false}
-  has_many :virtual_sales, :class_name => "Order", :foreign_key => :seller_id, :conditions => { :virtual => true}
-
+  has_and_belongs_to_many :sales, :join_table => "orders_users", :class_name => "Order", :conditions => { :"orders.virtual" => false}
+  has_and_belongs_to_many :virtual_sales, :join_table => "orders_users", :class_name => "Order", :conditions => { :"orders.virtual" => true}
+  # has_many :sales, :class_name => "Order", :foreign_key => :seller_id, :conditions => { :virtual => false}
   has_many :orders,  :conditions => { :virtual => false}
-  has_many :virtual_orders, :class_name => "Order", :conditions => { :virtual => true}
+
+  # has_many :virtual_sales, :class_name => "VirtualOrder", :foreign_key => :seller_id
+  has_many :virtual_orders, :class_name => "VirtualOrder", :foreign_key => :user_id
 
   has_many :seller_payment_methods
 
@@ -56,11 +58,11 @@ User.class_eval do
   #
   def set_roles
     roles << Role.find_or_create_by_name("user")
-    roles << Role.find_or_create_by_name("seller") if @registration_as_seller.to_i == 1
+    as_seller! if @registration_as_seller.to_i == 1
   end
 
   def set_seller_role!
-    roles << Role.find_or_create_by_name("seller")
+    as_seller!
   end
 
   def has_role?(role)
@@ -70,6 +72,35 @@ User.class_eval do
 
   # instance methods
   #
+
+  def as_seller!
+    roles << Role.find_or_create_by_name("seller") unless has_role?("seller")
+    create_virtual_methods!
+  end
+
+  # Default create virtual shipping
+  #
+  def create_virtual_methods!
+
+    unless shipping_methods.to_bilneur.first
+      shipping_method = ShippingMethod.new(:calculator => Calculator::FlatRate.new,
+                                           :name => "Ship to Bilneur",
+                                           :seller_id => self.id,
+                                           :virtual => true,
+                                           :method_kind => ShippingMethod::METHOD_KIND_TO_BILNEUR)
+      shipping_method.save(:validate => false)
+    end
+
+    unless shipping_methods.with_seller.first
+      shipping_method = ShippingMethod.new(:calculator => Calculator::FlatRate.new,
+                                           :name => "Store the products with seller",
+                                           :seller_id => self.id,
+                                           :virtual => true,
+                                           :method_kind => ShippingMethod::METHOD_KIND_WITH_SELLER)
+      shipping_method.save(:validate => false)
+    end
+
+  end
 
   def messages
     Message.messages_for_user(self)

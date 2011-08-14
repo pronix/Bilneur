@@ -1,4 +1,7 @@
 UserSessionsController.class_eval do
+  include Spree::CurrentVirtualOrder
+  helper_method :current_virtual_order
+
   private
   def associate_user
     return unless current_user and (current_order || current_virtual_order)

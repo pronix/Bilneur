@@ -15,8 +15,8 @@ if @body_class.nil?
 end
  %>
 <body class="<%= @body_class %>" id="<%= @body_id %>">
-  <%= debug session %>
 <div class="mWrp">
+  <%= render "shared/header" %>
 
   <!-- START CONTENT -->
   <div id="mCnt" class="<%= content_class %>">

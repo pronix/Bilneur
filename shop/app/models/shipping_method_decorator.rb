@@ -26,9 +26,11 @@ ShippingMethod.class_eval do
   # By default the adjustment will not be considered mandatory
   def create_adjustment(label, target, calculable, mandatory=false)
     amount = self.calculator.compute(calculable)
-    target.adjustments.create(:amount => amount,  :source => calculable,
+    target.adjustments.create(:amount => amount,
+                              :source => calculable,
+                              :seller => self.seller,
                               :originator => self,
-                              :label => "#{label}(seller: #{seller.try(:full_name)})",
+                              :label => "#{label}(seller: #{self.seller.try(:full_name)})",
                               :mandatory => mandatory)
   end
 

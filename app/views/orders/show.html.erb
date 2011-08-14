@@ -5,17 +5,7 @@
   	<h3><%= t('thank_you_for_your_order') %></h3>
   <% end %>
   <% if @order %>
-  <% if @order.children.present? %>
-    <% @order.children.each do |child| %>
-     <hr />
-     <h4><b>Suborder:</b> <%= child.number %> <b>Seller:</b> <%= child.seller.full_name %></h4>
-     <%= render :partial => 'shared/child_order_details', :locals => {:order => child} %>
-    <% end %>
-    <hr />
-    <div style="font-size: 20px;"><b><%= t("total") %>: <%=  number_to_currency @order.total %></b></div>
-  <% else %>
     <%= render :partial => 'shared/order_details', :locals => {:order => @order} %>
-  <% end %>
   <% end %>
   <p>
     <%= link_to t('back_to_store'), root_path %>

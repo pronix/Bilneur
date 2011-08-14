@@ -110,6 +110,7 @@ Variant.class_eval do
     new_variant.images = self.images.map {|i| image_clone.call i }
     new_variant.deleted_at = nil
     new_variant.save!
+    new_variant
   end
 
 

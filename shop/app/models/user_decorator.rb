@@ -93,7 +93,7 @@ User.class_eval do
 
     unless shipping_methods.with_seller.first
       shipping_method = ShippingMethod.new(:calculator => Calculator::FlatRate.new,
-                                           :name => "Store the products with seller",
+                                           :name => "Store with seller",
                                            :seller_id => self.id,
                                            :virtual => true,
                                            :method_kind => ShippingMethod::METHOD_KIND_WITH_SELLER)

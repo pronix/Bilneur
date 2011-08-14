@@ -61,9 +61,7 @@ end
 Order.class_eval do
   attr_accessible :seller_shipping_method
 
-  # belongs_to :seller, :class_name => "User"
   belongs_to :parent, :class_name => "Order"
-  has_many   :children, :foreign_key => "parent_id", :class_name => "Order"
 
   has_and_belongs_to_many :sellers, :join_table => "orders_users", :class_name => "User"
   has_and_belongs_to_many :shipping_methods, :join_table => "orders_shipping_methods", :class_name => "ShippingMethod"
@@ -114,16 +112,6 @@ Order.class_eval do
   end
 
 
-  # self.shipments.destroy_all
-    # attrs.each do |seller_id, shipment_attrs|
-    #   user_seller = sellers.find(seller_id)
-    #   self.shipments << Shipment.create!(:order => self,
-    #                                     :seller_id => seller_id,
-    #                                     :shipping_method => user_seller.shipping_methods.find(shipment_attrs[:shipping_method_id]),
-    #                                     :address => self.ship_address)
-    # end
-
-
   def create_shipment!
     shipping_methods.reload
 
@@ -151,14 +139,6 @@ Order.class_eval do
       self.shipping_methods << user_seller.shipping_methods.find(shipment_attrs[:shipping_method_id])
     end
 
-    # self.shipments.destroy_all
-    # attrs.each do |seller_id, shipment_attrs|
-    #   user_seller = sellers.find(seller_id)
-    #   self.shipments << Shipment.create!(:order => self,
-    #                                     :seller_id => seller_id,
-    #                                     :shipping_method => user_seller.shipping_methods.find(shipment_attrs[:shipping_method_id]),
-    #                                     :address => self.ship_address)
-    # end
   end
 
   def total(user_seller = nil)

@@ -17,10 +17,19 @@ end
 InventoryUnit.class_eval do
 
   def move_to_virtual_buyer
+    quantity = order.line_items.find_by_variant_id(variant_id).quantity
     if shipment.shipping_method.to_bilneur?
-      quantity = order.line_items.find_by_variant_id(variant_id).quantity
       variant.move_to_virtual_seller(order.user, quantity )
+    elsif shipment.shipping_method.with_seller?
+      SellerStore.create(:seller   => variant.seller,
+                         :dealer   => order.user,
+                         :variant  => variant,
+                         :quote    => variant.move_to_virtual_seller(order.user, quantity ),
+                         :order    => order,
+                         :quantity => quantity
+                         )
     end
+
   end
 
   class << self

@@ -59,7 +59,7 @@ Feature: Virtual Shopping
       | The Godfather               | 14.00 | new       |             3 |
       | Death of a Hero [Paperback] | 24.50 | new       |             3 |
 
-  @focus
+
   Scenario: Adding quote to V.Cart and checkout order(with shipping method: Free to Bilneur and from two seller)
     When I sign in as "email@person.com/password"
     And I go to the "The Godfather" product page
@@ -67,7 +67,6 @@ Feature: Virtual Shopping
     And I set quatility "3" within block seller "seller2@person.com"
     And I press "Add To V.Store" within block seller "seller2@person.com"
     Then I should be on the cart page
-
     When I go to the "Death of a Hero [Paperback]" product page
     And I follow "View All"
     And I set quatility "3" within block seller "seller1@person.com"
@@ -102,31 +101,42 @@ Feature: Virtual Shopping
       | The Godfather               | 14.00 | new       |             3 |
       | Death of a Hero [Paperback] | 22.89 | new       |             3 |
 
-
-  @wip
+  @focus
   Scenario: Adding quote to V.Cart and checkout order(with shipping method: Store the Seller)
     When I sign in as "email@person.com/password"
     And I go to the "The Godfather" product page
-    And I set quatility "3" for "The Godfather"
-    And I follow "Add V.Store" for "seller3@person.com"
+    And I follow "View All"
+    And I set quatility "3" within block seller "seller2@person.com"
+    And I press "Add To V.Store" within block seller "seller2@person.com"
     Then I should be on the cart page
-    When I follow "Checkout" for "virtual card"
-    And I choose "Store the Seller" from shipping methods
+    When I go to the "Death of a Hero [Paperback]" product page
+    And I follow "View All"
+    And I set quatility "3" within block seller "seller1@person.com"
+    And I press "Add To V.Store" within block seller "seller1@person.com"
+    Then I should be on the cart page
+    When I follow "Checkout" within block virtual cart
+    And I choose "Store with seller" from seller "seller2@person.com" Shipping Methods
+    And I choose "Store with seller" from seller "seller1@person.com" Shipping Methods
     And I press "Save and Continue"
-    And I choose "Credit Card" from "Payment Methods"
-    And I fill in "Credit card number" with "4111111111111111"
-    And I fill in "Security code" with "123"
-    And I fill in "Expiration" with "11/2014"
-    And I press "Save and Continue"
-    Then I should see order info
-    When I press "Place Order"
-    Then user "email@person.com" should see the following quotes in dashboard:
-      | product_name  | price | condition | count_on_hand        |
-      | The Godfather |  10.0 | used      | 3 (store the seller) |
-    And seller "seller3@person.com" should see the following quotes in dashboard:
-      | product_name  | price | condition | count_on_hand |
-      | The Godfather |  10.0 | used      |             7 |
-    And seller "seller3@person.com" should see the following virtual quotes in dashboard:
-      | product_name  | price | condition | count_on_hand                        |
-      | The Godfather |  10.0 | used      | 3 (virtual buyer: email@person.com ) |
-
+    And I choose "Credit Card"
+    And I enter valid credit card details
+    Then I should see "Your order has been processed successfully"
+    And "seller2@person.com" should receive 1 emails
+    And "seller1@person.com" should receive 1 emails
+    And seller "seller2@person.com" should have new virtual order in sales with shipment state "pending"
+    And seller "seller1@person.com" should have new virtual order in sales with shipment state "pending"
+    And buyer "email@person.com" should see orders in orders with shipment state "pending"
+    When buyer "email@person.com" paid orders
+    Then buyer "email@person.com" should see orders in orders with shipment state "shipped"
+    And seller "seller2@person.com" should see the following quotes in dashboard:
+      | product_name                | condition | count_on_hand |
+      | The Godfather               | new       |             2 |
+      | Death of a Hero [Paperback] | new       |             4 |
+    And seller "seller1@person.com" should see the following quotes in dashboard:
+      | product_name                | condition | count_on_hand |
+      | The Godfather               | new       |             6 |
+      | Death of a Hero [Paperback] | new       |             4 |
+    And user "email@person.com" should see the following quotes in dashboard:
+      | product_name                | price | condition | count_on_hand |
+      | The Godfather               | 14.00 | new       |             3 |
+      | Death of a Hero [Paperback] | 22.89 | new       |             3 |

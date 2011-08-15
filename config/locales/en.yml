@@ -53,4 +53,14 @@ en:
     quotes: Quotes
     my_account: My account
     products: Products
+  views:
+    will_paginate:
+      page_entries_info:
+        single_page:
+        single_page_html:
+          zero:  "No %{plural} found"
+          one:   "Displaying <b>1</b> %{name}"
+          other: "Displaying <b>all&nbsp;%{count}</b> %{plural}"
+        multi_page: "%{from} - %{to} of %{total} %{plural}"
+        multi_page_html: "<b class='range'>%{from}&nbsp;-&nbsp;%{to}</b> of <b class='total'>%{total}</b> %{plural}"
 

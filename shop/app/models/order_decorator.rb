@@ -152,7 +152,11 @@ Order.class_eval do
   end
 
   def total(user_seller = nil)
-    read_attribute(:total)
+    if user_seller
+      item_total_for_seller(user_seller) + adjustments_total_for_seller(user_seller)
+    else
+      read_attribute(:total)
+    end
   end
 
 
@@ -165,6 +169,14 @@ Order.class_eval do
 
   def allowed_receive?
     complete? && payment_state == 'paid'
+  end
+
+  def item_total_for_seller(seller)
+    line_items.includes(:variant).map{|v| v.variant.seller == seller ? v.amount : 0 }.sum
+  end
+
+  def adjustments_total_for_seller(seller)
+    adjustments.map{|v| v.seller == seller ? v.amount : 0 }.sum
   end
 
   class << self

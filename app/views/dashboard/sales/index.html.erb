@@ -35,7 +35,7 @@
 
 
         </td>
-        <td><%= number_to_currency order.total %></td>
+        <td><%= number_to_currency(order.total(current_user)) %></td>
         <td>
          </td>
       </tr>

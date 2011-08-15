@@ -45,6 +45,7 @@ Feature: Describe how work secret question
     And I fill in "Answer" with "Answer for secret question"
     And I press "Save"
     Then I should be on the dashboard account fuck page
+    And I should see "Secret Question save"
     And I must be sure that "email@person.com" has question "My secret question"
     And I must be sure that "email@person.com" has answer "Answer for secret question"
 
@@ -52,8 +53,15 @@ Feature: Describe how work secret question
     Given I have a own question "My Own Question" with answer "My answer"
     Then I go to the edit secret question page
     And "secret_question_secret_question_variant_id" should be selected for "My Own Question"
-    
 
+  Scenario: Update own question
+    Given I have a own question "My Own Question" with answer "My answer"
+    Then I go to the edit secret question page
+    And I fill in "Own Question" with "My secret question new"
+    And I fill in "Answer" with "Answer for secret question"
+    And I press "Save"
+    Then I should be on the dashboard account fuck page
+    And I should see "Secret Question updated"
     
   
 # @wip    

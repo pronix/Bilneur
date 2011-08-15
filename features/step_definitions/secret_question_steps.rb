@@ -38,3 +38,7 @@ end
 Then /^"(.+)" should be selected for "(.+)"$/ do |field, question|
   find_field(field).value.should == SecretQuestionVariant.find_by_variant(question).id.to_s
 end
+
+Given /^some test question$/ do
+  SecretQuestionVariant.created(:variant => 'TEST VARIANT', :private => true)
+end

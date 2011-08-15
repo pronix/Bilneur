@@ -26,10 +26,11 @@ Feature: Shopping
     And  the following shipping methods exist:
       | seller                   | name        |
       | email:seller2@person.com | UPS Ground1 |
-
+      | email:seller1@person.com | UPS Ground2 |
+      | email:seller3@person.com | UPS Ground3 |
 
   @javascript
-  Scenario: Adding quote to cart and checkout
+  Scenario: Adding quote to cart and checkout(only one seller)
     When I sign in as "email@person.com/password"
     And I go to the "The Godfather" product page
     And I follow "View All"
@@ -50,4 +51,53 @@ Feature: Shopping
     And I choose "Credit Card"
     And I enter valid credit card details
     Then I should see "Your order has been processed successfully"
+    And "seller2@person.com" should receive 1 emails
+    And "email@person.com" should receive 1 emails
+    When buyer "email@person.com" paid orders
+    And seller "seller2@person.com" set shipment status as "ship"
+    Then buyer "email@person.com" should see orders in orders with shipment state "shipped"
+    And seller "seller2@person.com" should see the following quotes in dashboard:
+      | product_name                | condition | count_on_hand |
+      | The Godfather               | new       |             2 |
+      | Death of a Hero [Paperback] | new       |             1 |
+
+
+  @javascript
+  Scenario: Adding quote to cart and checkout(with two seller)
+    When I sign in as "email@person.com/password"
+    And I go to the "The Godfather" product page
+    And I follow "View All"
+    And I set quatility "3" within block seller "seller2@person.com"
+    And I press "Add To Cart" within block seller "seller2@person.com"
+    Then I should be on the cart page
+    When I go to the "Death of a Hero [Paperback]" product page
+    And I follow "View All"
+    And I set quatility "3" within block seller "seller1@person.com"
+    And I press "Add To Cart" within block seller "seller1@person.com"
+    Then I should be on the cart page
+    When I follow "Checkout" within block normal cart
+    And I fill shipping address with correct data
+    And I press "Save and Continue"
+    When I choose "UPS Ground1" from seller "seller2@person.com" Shipping Methods
+    And I choose "UPS Ground2" from seller "seller1@person.com" Shipping Methods
+    And I press "Save and Continue"
+    And I fill billing address with correct data
+    And I choose "Credit Card"
+    And I enter valid credit card details
+    Then I should see "Your order has been processed successfully"
+    And "seller2@person.com" should receive 1 emails
+    And "seller1@person.com" should receive 1 emails
+    And "email@person.com" should receive 1 emails
+    When buyer "email@person.com" paid orders
+    And seller "seller2@person.com" set shipment status as "ship"
+    And seller "seller1@person.com" set shipment status as "ship"
+    Then buyer "email@person.com" should see orders in orders with shipment state "shipped"
+    And seller "seller2@person.com" should see the following quotes in dashboard:
+      | product_name                | condition | count_on_hand |
+      | The Godfather               | new       |             2 |
+      | Death of a Hero [Paperback] | new       |             4 |
+    And seller "seller1@person.com" should see the following quotes in dashboard:
+      | product_name                | condition | count_on_hand |
+      | The Godfather               | new       |             6 |
+      | Death of a Hero [Paperback] | new       |             4 |
 

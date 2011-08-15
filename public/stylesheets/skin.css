@@ -10,6 +10,7 @@ a { text-decoration:none;}
 ul li { list-style:none;}
 .TabbedPanelsTab span { float:left; width:95%;text-align:center;line-height:19px;}
 
+a:hover {opacity: 0.8;}
 
 
 /* Header */
@@ -105,16 +106,23 @@ ul li { list-style:none;}
 /* Pagination */
 .paging { float:left; width:100%; margin-top:10px;}
 .pagination{float:right; padding:2px;}
-  .pagination .prev { float:left; width:65px; height:19px; text-align:center;}
-  .pagination .nxt { float:left; width:65px; height:19px; text-align:center;} 
+  .pagination > * { float: left; text-align: center; line-height: 19px; height: 19px; margin-right: 5px; width: 19px;}
   .pagination ul{ margin:0;padding:0;text-align:left;font-size:12px;}
   .pagination li{ float:left;margin-right:5px; list-style-type:none;display:inline;padding-bottom:1px;}
-  .pagination a, .pagination a:visited{ float:left;background:url('../../images/layout/bg_page.jpg') 0 0 no-repeat;text-decoration:none;color:#777;width:19px;height:19px; text-align:center; line-height:19px;}
+  .pagination a, .pagination a:visited{ background:url('../../images/layout/bg_page.jpg') 0 0 no-repeat;text-decoration:none;color:#777;}
   .pagination a:hover, .pagination a:active{color:#fff;background:url('../../images/layout/bg_page_h.jpg') 0 0 no-repeat;}
-  .pagination a.currentpage{ color:#fff !important;background:url('../../images/layout/bg_page_h.jpg') 0 0 no-repeat;font-weight:bold;cursor:default;}
-  .pagination a.disablelink{ background:url('../../images/layout/prevnext_d.jpg') 0 0 no-repeat!important;cursor:pointer;color:#777!important;}
-  .pagination a.disablelink:hover{background:url('../../images/layout/prevnext_a.jpg') 0 0 no-repeat!important;color:#fff!important;}
-  .pagination a.prevnext{ font-weight:bold; width:65px;background:url('../../images/layout/prevnext_a.jpg') 0 0 no-repeat;color:#fff;}
+  .pagination > em { color:#fff !important;background:url('../../images/layout/bg_page_h.jpg') 0 0 no-repeat;font-weight:bold;cursor:default;}
+
+
+  .pagination .previous_page, .pagination .next_page { font-weight:bold; width:65px;background:url('../../images/layout/prevnext_a.jpg') 0 0 no-repeat;color:#fff !important; height: 19px;}
+
+  .pagination .previous_page.disabled, .pagination .next_page.disabled { font-weight:bold; background:url('../../images/layout/prevnext_d.jpg') 0 0 no-repeat;color:#777 !important;}
+
+  .pagination .previous_page:hover, .pagination .next_page:hover { background:url('../../images/layout/prevnext_a.jpg') 0 0 no-repeat; cursor: pointer; opacity: 0.8;}
+  .pagination .previous_page.disabled:hover, .pagination .next_page.disabled:hover { background: url('../../images/layout/prevnext_a.jpg') 0 0 no-repeat !important; color: #fff !important; }
+
+
+
 
 .blogFilters {  float:left;width:258px;border-left:1px solid #b3b3b3;background:#e5e2e2;}
   .blogFilters .CollapsiblePanelTab { width:100%; height:31px; background:url('../../images/forms/collaps_tab_bg.gif') repeat-x;}

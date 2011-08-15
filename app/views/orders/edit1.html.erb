@@ -1,0 +1,12 @@
+<% @body_id = 'cart' %>
+
+<div id="normal-cart">
+<h1><%= t("items_in_cart")%></h1>
+<%= render "order_cart" %>
+<hr />
+</div>
+
+<div id="virtual-cart">
+  <h1><%= t("items_for_virtual_store")%></h1>
+  <%= render "virtual_order_cart" %>
+</div>

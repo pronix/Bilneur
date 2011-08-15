@@ -183,6 +183,12 @@ Order.class_eval do
     receive_at.present?
   end
 
+  def sellers!
+    sellers = line_items.map {|v| v.variant.seller }.uniq
+    save!
+    return sellers
+  end
+
   class << self
 
   end # end class << self

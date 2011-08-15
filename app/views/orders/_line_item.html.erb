@@ -1,36 +1,37 @@
-
 <%- locals = {:item_form => item_form, :variant => variant, :line_item => line_item} %>
   <div class="<%= cycle("altRow2","altRow1") %>">
     <div class="slrPnl">
       <div class="slr">
         <i>
-        <% if variant.images.length == 0 %>
-          <%= small_image(variant.product) %>
-        <% else %>
-          <%= image_tag variant.images.first.attachment.url(:small) %>
-        <% end %>
+          <%= t122_image(variant.images.present? ? varinat : variant.product) %>
         </i>
-          <b><%= variant.product.name %></b>
-          <span>Condition: <em><%= variant.condition %></em></span>
-          <a href="#">Save for Later</a>
+
+        <b><%= variant.product.name %></b>
+        <span>Condition: <em><%= variant.display_condition %></em></span>
+        <a href="#">Save for Later</a>
       </div>
+
       <div class="slrImg">
-        <i><img src="images/icons/slr_ico.png" alt="" /></i>
-          <span><%= variant.seller.firstname %></span>
+        <i><%= image_tag variant.seller.photo.url(:for_review) %></i>
+        <span><%= variant.seller.full_name %></span>
       </div>
+
       <div class="prc">
         <b><%= product_price(line_item) %></b>
           <i>YOU SAVE 20%</i>
       </div>
       <div class="qtyIn">
         <%= item_form.text_field :quantity, :size => 3, :onfocus=>"if(this.value=='1') this.value=''", :onblur=>"if(this.value=='') this.value='1'", :class => 'txt' %>
-        
+
         <%= hook :cart_item_delete, locals do %>
           <%= link_to "Remove", '#', :class => 'delete' %>
         <% end %>
+
       </div>
       <div class="prc ttl">
-        <b><%= format_price(product_price(line_item, :format_as_currency => false) * line_item.quantity) unless line_item.quantity.nil? %></b>
+        <b>
+          <%= format_price(product_price(line_item, :format_as_currency => false) * line_item.quantity) unless line_item.quantity.nil? %>
+        </b>
       </div>
     </div>
 </div>

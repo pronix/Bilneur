@@ -1,67 +1,80 @@
 <%= render "shared/error_messages", :target => @order %>
 
 <div class="page">
-   <%= link_to t("continue_shopping"), products_path, :class => "bckChk" %>
-   <div class="mCont">
-      <div class="rgtPnl">
-        <div class="prfl">
-              <div class="top"></div>
-              <div class="cntr">
-                  <b>Buyer ABC</b> <!-- FIXME -->
-                  <i><img src="images/icons/slr_ico_fml_grn.png" alt="" /></i>
-                  <span><em><%= @order.line_items.count %></em>In Cart</span>
-                  <span><em class="grnTag">
-                    <%= current_virtual_order.nil? ? 0 : current_virtual_order.line_items.count %>
-                  </em>In Virtual Cart</span>
-              </div>
-              <div class="btm"></div>
-              <span class="shp">Shippable Items Will Be<br /> Shipped To:</span>
-              <a class="edtAd" href="#">1425 Maple Crest Rd.<br />Angola, IN 46839 (edit)<br />&nbsp;</a>
-              <div class="slngrgt tabi">
-                <%= button_to "", checkout_path, :class => 'next right proBtn' %>
-                <b><span>Grand Total</span>
-                <%= grand_order_price(@order,current_virtual_order) %>
-                  </b> 
-              </div>
-          </div>
 
-        <div class="prfl">
-              <div class="top"></div>
-              <div class="cntr tAL">
-                  <b class="bNam">Questions?<br />
-                  We are here to help.</b>
-                  <b class="num">1.650.283.8515</b>
-                  <span>Top FAQ</span>
-                  <p><a href="#">-What is a Virtual Store?</a></p>
-                  <p><a href="#">-Do I need to qualify for something?</a></p>
-                  <p><a href="#">-What does Bilneur do?</a></p>
-                  <p><a href="#">-Is there a limit for buying and selling?</a></p>
-                  <p><a href="#">-Are my purchases protected?</a></p>
-                  <p><a href="#">-What if a seller does not offer virtual selling?</a></p>
-                  <p><a href="#">-What should I do if there is a problem?</a></p>
-                  <p><a href="#">-Where do you store the products?</a></p>
-              </div>
-              <div class="btm"></div>
-            </div>
+  <%= link_to t("continue_shopping"), products_path, :class => "bckChk" %>
 
-      </div>
-
-      <div class="lyOut1">
-        <div class="tL"><div class="tR"></div></div>
-        <%= render 'items_in_cart', :order => @order %>
-        <span class="p2bdr"></span>
-      </div>
-
-      <div class="lyOut1 marg">
-        <%= render :partial => 'items_in_vstore' %>
-        <div class="slng">
-            <div class="slngrgt tabi">
-              <%= button_to "", checkout_path, :class => 'next right proBtn' %>
-              <b><span>TOTAL</span>
-                <%= grand_order_price(@order,current_virtual_order) %>
-              </b>  
-          </div>
+  <div class="mCont">
+    <div class="rgtPnl">
+      <div class="prfl">
+        <div class="top"></div>
+        <div class="cntr">
+          <b><%= current_user ? current_user.full_name : "" %></b> <!-- FIXME -->
+          <i>
+            <% if current_user %>
+              <%= image_tag current_user.photo.url(:for_review)  %>
+            <% else %>
+              <img src="images/icons/slr_ico_fml_grn.png" alt="" />
+            <% end %>
+          </i>
+          <span><em><%= @order.line_items.count %></em>In Cart</span>
+          <span><em class="grnTag">
+              <%= current_virtual_order.nil? ? 0 : current_virtual_order.line_items.count %>
+            </em>In Virtual Cart</span>
+        </div>
+        <div class="btm"></div>
+        <span class="shp">Shippable Items Will Be<br /> Shipped To:</span>
+        <a class="edtAd" href="#">1425 Maple Crest Rd.<br />Angola, IN 46839 (edit)<br />&nbsp;</a>
+        <div class="slngrgt tabi">
+          <b><span>Grand Total</span>
+            <%= grand_order_price(@order,current_virtual_order) %>
+          </b>
         </div>
       </div>
+
+      <div class="prfl">
+        <div class="top"></div>
+        <div class="cntr tAL">
+          <b class="bNam">Questions?<br />
+            We are here to help.</b>
+          <b class="num">1.650.283.8515</b>
+          <span>Top FAQ</span>
+          <p><a href="#">-What is a Virtual Store?</a></p>
+          <p><a href="#">-Do I need to qualify for something?</a></p>
+          <p><a href="#">-What does Bilneur do?</a></p>
+          <p><a href="#">-Is there a limit for buying and selling?</a></p>
+          <p><a href="#">-Are my purchases protected?</a></p>
+          <p><a href="#">-What if a seller does not offer virtual selling?</a></p>
+          <p><a href="#">-What should I do if there is a problem?</a></p>
+          <p><a href="#">-Where do you store the products?</a></p>
+        </div>
+        <div class="btm"></div>
+      </div>
+
+    </div>
+
+    <div class="lyOut1">
+      <div class="tL"><div class="tR"></div></div>
+      <%= render 'items_in_cart', :order => @order %>
+      <span class="p2bdr"></span>
+      <div class="slng">
+        <div class="slngrgt tabi">
+          <%= button_to "", checkout_path, :class => 'next right proBtn' %>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="lyOut1 marg">
+      <%= render :partial => 'items_in_vstore' %>
+
+      <div class="slng">
+        <div class="slngrgt tabi">
+          <%= button_to "", virtual_checkout_path, :class => 'next right proBtn' %>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>

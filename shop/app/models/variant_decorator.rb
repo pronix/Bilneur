@@ -113,7 +113,9 @@ Variant.class_eval do
     new_variant
   end
 
-
+  def display_condition
+    condition.to_s == "another" ? another_condition : condition
+  end
   # class methods
   #
   class << self

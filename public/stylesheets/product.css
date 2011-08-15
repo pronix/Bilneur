@@ -120,6 +120,8 @@
       
       .cntcts p b .pQty { float:left; width:20px; border:none;font-size:10px; background:none; margin:2px 0 0 6px;}
       
+      .skBlu, .bLu { border: none; }
+      .skBlu:hover, .bLu:hover { opacity: 0.8; cursor: pointer; }
       .skBlu { float:left; width:89px; margin-left:10px; height:25px; text-align:center; color:#fff; font-size:11px; line-height:25px; background:url('/images/forms/add_to_cart.png') no-repeat}
       .bLu { float:left; width:106px; margin-left:5px; height:25px; text-align:center; color:#fff; font-size:11px; line-height:25px; background:url('/images/forms/add_to_vstor.png') no-repeat}
       

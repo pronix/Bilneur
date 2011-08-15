@@ -57,7 +57,7 @@
 
     </div>
 
-
+    <% if @order && @order.line_items.present? %>
     <div class="lyOut1" id="normal-cart">
       <div class="tL"><div class="tR"></div></div>
       <%= render 'items_in_cart', :order => @order %>
@@ -69,8 +69,9 @@
         </div>
       </div>
     </div>
+    <% end %>
 
-
+    <% if current_virtual_order && current_virtual_order.line_items.present? %>
     <div class="lyOut1 marg" id="virtual-cart">
       <%= render :partial => 'items_in_vstore' %>
       <div class="slng">
@@ -80,6 +81,7 @@
         </div>
       </div>
     </div>
+    <% end %>
 
   </div>
 </div>

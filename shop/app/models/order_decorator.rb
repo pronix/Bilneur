@@ -185,7 +185,7 @@ Order.class_eval do
 
   def sellers!
     sellers = line_items.map {|v| v.variant.seller }.uniq
-    save!
+    save
     return sellers
   end
 

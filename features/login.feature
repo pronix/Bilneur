@@ -1,5 +1,3 @@
-# language: en
-
 Feature: Login
   In order to use the site
   A registered user

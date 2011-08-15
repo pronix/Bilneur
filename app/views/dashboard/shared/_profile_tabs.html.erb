@@ -14,6 +14,10 @@
         <%= link_to t("change_password"), account_change_password_path %>
       </li>
 
+      <li<%== ' class="active"' if current == "Secret Question" %>>
+        <%= link_to t("secret_question"), edit_dashboard_secrets_path %>
+      </li>
+
       <% if can?(:access, :saller) %>
         <li<%== ' class="active"' if current == "Shipping Methods" %>>
           <%= link_to t("shipping_methods"), dashboard_shipping_methods_path %>

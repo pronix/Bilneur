@@ -106,3 +106,17 @@ Given /^I ask a password with valid credentials$/ do
   And %{press "Reset my password"}
   Then %{I should see "You will receive an email with instructions about how to reset your password in a few minutes."}
 end
+
+Given /^default "(.+)" fixture are load$/ do |fixture_name|
+  Fixtures.reset_cache
+  fixtures_folder = File.join(Rails.root, 'db/default')
+  Fixtures.create_fixtures(fixtures_folder, fixture_name)
+end
+
+Then /^I must be sure that "(.+)" has question "(.+)"$/ do |email, question|
+  User.find_by_email(email).secret_question.secret_question_variant.variant.should == question
+end
+
+Then /^I must be sure that "(.+)" has answer "(.+)"$/ do |email, answer|
+  User.find_by_email(email).secret_question.answer.should == answer
+end

@@ -1,4 +1,5 @@
 <% if current_virtual_order && current_virtual_order.line_items.present? %>
+<div class="tL"><div class="tR"></div></div>
 <div class="cC">
   <%= form_for(current_virtual_order.order, :url => update_virtual_cart_path(:virtual), :html=>{:id=>'updatecart'}) do |order_form| %>
     <%= render 'cart_form', :order_form => order_form %>
@@ -12,7 +13,8 @@
     </div>
     <div class="slngrgt">
       <b><span>TOTAL</span> <%= order_price(current_virtual_order) %></b>
-      <p><%= current_virtual_order.line_items.count %> Items From 2 Sellers</p> <!-- FIXME -->
+      <p><%= current_virtual_order.line_items.count %> Items From <%= current_virtual_order.sellers.count %> Sellers</p> <!-- FIXME -->
     </div>
 </div>
+<span class="p2bdr"></span>
 <% end %>

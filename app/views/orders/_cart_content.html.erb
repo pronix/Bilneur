@@ -19,7 +19,9 @@
               <a class="edtAd" href="#">1425 Maple Crest Rd.<br />Angola, IN 46839 (edit)<br />&nbsp;</a>
               <div class="slngrgt tabi">
                 <%= button_to "", checkout_path, :class => 'next right proBtn' %>
-                <b><span>Grand Total</span> $3072.97</b> <!-- FIXME -->
+                <b><span>Grand Total</span>
+                <%= grand_order_price(@order,current_virtual_order) %>
+                  </b> 
               </div>
           </div>
 
@@ -57,8 +59,10 @@
         <div class="slng">
             <div class="slngrgt tabi">
               <%= button_to "", checkout_path, :class => 'next right proBtn' %>
-              <b><span>TOTAL</span> $1034.97</b> <!-- FIXME -->
-            </div>
+              <b><span>TOTAL</span>
+                <%= grand_order_price(@order,current_virtual_order) %>
+              </b>  
+          </div>
         </div>
       </div>
   </div>

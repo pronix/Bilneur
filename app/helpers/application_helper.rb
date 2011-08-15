@@ -58,7 +58,19 @@ module ApplicationHelper
     content_tag(:ul, raw(crumbs.flatten.map{|li| li.mb_chars}.join))
   end
 
+  def grand_order_price(order, order2, options={})
+   options.assert_valid_keys(:format_as_currency, :show_vat_text, :show_price_inc_vat)
+   options.reverse_merge! :format_as_currency => true, :show_vat_text => true
 
+   # overwrite show_vat_text if show_price_inc_vat is false
+   options[:show_vat_text] = Spree::Config[:show_price_inc_vat]
+
+   amount =  order.item_total + order2.item_total
+   amount += Calculator::Vat.calculate_tax(order) if Spree::Config[:show_price_inc_vat]
+   amount += Calculator::Vat.calculate_tax(order2) if Spree::Config[:show_price_inc_vat]
+
+   options.delete(:format_as_currency) ? number_to_currency(amount) : amount
+  end
 
 end
 

@@ -179,6 +179,10 @@ Order.class_eval do
     adjustments.map{|v| v.seller == seller ? v.amount : 0 }.sum
   end
 
+  def received?
+    receive_at.present?
+  end
+
   class << self
 
   end # end class << self

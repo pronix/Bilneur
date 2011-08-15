@@ -1,7 +1,7 @@
 /* Content */
 .mCont { float:left; width:100%; margin-top:7px;}
   /* Layout-1 */
-  .lyOut1{ float:left; width:700px;}
+  .lyOut1{width:700px; float: left;}
   .lyOut1 .cC{width:698px; padding-bottom:17px;}
     .tL{background:url('/images/layout/spritecrnrbg.jpg') left top;}
     .tR{background:url('/images/layout/spritecrnrbg.jpg') right top;}
@@ -55,8 +55,8 @@
     .next { width:170px; height:49px; margin-top:5px; background:url('/images/forms/chk_big_btn.png') no-repeat;}
     .tabi b {float:right; clear:right; margin:0 8px 0 0;}
     .tabi b,.tabi b span { font-size:15px;}
-    .rgtPnl { float:left; width:165px;}
-    .prfl {width:165px; text-align:center; margin:0 12px 0 44px;}
+    .rgtPnl { float: right; width:195px;}
+    .prfl {width:165px; text-align:center; }
       .prfl .top {background:url('/images/bgs/sp_tab_img_top.png') no-repeat;}
       .prfl .cntr { float:left; padding-bottom:5px;background:url('/images/bgs/sp_tab_img_cntr.png') repeat-y;}
       .prfl .btm {background:url('/images/bgs/sp_tab_img_btm.png') no-repeat;}
@@ -81,4 +81,6 @@
   .slngLftFx { background:none; margin-left:0px;}
      .slngLftFx a { float:left; width:150px; height:19px; margin:5px 0 0 3px; color:#fff; font-size:9px; padding-left:7px; line-height:18px; background:url('/images/forms/chk_qbtn.png') no-repeat;}
 .bckChk,.altRow1 h2,.altRow1 .cartNav,.cartNav b,.cartNav span,.slrPnl .slr,.slrPnl .slr i,.slrPnl .slr i img,.slrPnl .slr b,.slrPnl .slr span,.slrPnl .slr a,.slrPnl .slrImg,.slrImg span,.slrImg i,.prc,.prc b,.prc i,.qtyIn,.qtyIn .txt,.qtyIn a,.slng,.slng p,.slngLft,.slngrgt p,.p2bdr,.prfl .cntr span {float:left;}
+  
+  .slr i > img { width: 71px; height: 71px; } /* FIXME - move to paperclip */
 

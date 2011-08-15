@@ -2,11 +2,13 @@
   <h2>Items in <span>Cart</span></h2>
   <%= link_to t("Update Qty"), '#', :class => "qty", :onclick => "$('form#updatecart').submit(); return false;" %>
   <div class="cartNav">
-    <b>item</b>
-    <span>seller</span>
-    <span>price each</span>
-    <span class="ttl">&nbsp; qty</span>
-    <span class="ttl">total</span>
+    <%= hook :cart_items_headers do %>
+      <b>item</b>
+      <span>seller</span>
+      <span>price each</span>
+      <span class="ttl">&nbsp; qty</span>
+      <span class="ttl">total</span>
+    <% end %>
   </div>
 </div>
 <%= order_form.fields_for :line_items do |item_form| %>

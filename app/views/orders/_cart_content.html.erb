@@ -3,11 +3,6 @@
 <div class="page">
    <%= link_to t("continue_shopping"), products_path, :class => "bckChk" %>
    <div class="mCont">
-      <div class="lyOut1">
-        <div class="tL"><div class="tR"></div></div>
-        <%= render 'items_in_cart', :order => @order %>
-        <span class="p2bdr"></span>
-      </div>
       <div class="rgtPnl">
         <div class="prfl">
               <div class="top"></div>
@@ -27,20 +22,7 @@
                 <b><span>Grand Total</span> $3072.97</b> <!-- FIXME -->
               </div>
           </div>
-      </div>
 
-      <div class="lyOut1 marg">
-        <div class="tL"><div class="tR"></div></div>
-        <%= render :partial => 'items_in_vstore' %>
-        <span class="p2bdr"></span>
-        <div class="slng">
-            <div class="slngrgt tabi">
-              <%= button_to "", checkout_path, :class => 'next right proBtn' %>
-              <b><span>TOTAL</span> $1034.97</b> <!-- FIXME -->
-            </div>
-        </div>
-      </div>
-      <div class="rgtPnl marg">
         <div class="prfl">
               <div class="top"></div>
               <div class="cntr tAL">
@@ -58,7 +40,26 @@
                   <p><a href="#">-Where do you store the products?</a></p>
               </div>
               <div class="btm"></div>
-          </div>
-     </div>
+            </div>
+
+      </div>
+
+      <div class="lyOut1">
+        <div class="tL"><div class="tR"></div></div>
+        <%= render 'items_in_cart', :order => @order %>
+        <span class="p2bdr"></span>
+      </div>
+
+      <div class="lyOut1 marg">
+        <div class="tL"><div class="tR"></div></div>
+        <%= render :partial => 'items_in_vstore' %>
+        <span class="p2bdr"></span>
+        <div class="slng">
+            <div class="slngrgt tabi">
+              <%= button_to "", checkout_path, :class => 'next right proBtn' %>
+              <b><span>TOTAL</span> $1034.97</b> <!-- FIXME -->
+            </div>
+        </div>
+      </div>
   </div>
 </div>

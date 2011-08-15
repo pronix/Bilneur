@@ -73,7 +73,7 @@ Order.class_eval do
   end
 
   def fill_billing_address
-    if ship_address.present? && bill_address.blank?
+    if virtual? && ship_address.present? && bill_address.blank?
       self.bill_address = ship_address.clone
     end
   end

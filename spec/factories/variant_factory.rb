@@ -9,7 +9,7 @@ Factory.define(:variant) do |f|
 
   # associations:
   f.option_values { [Factory(:option_value)] }
-  # f.association(:owner, :factory => :user)
+  f.association(:owner, :factory => :user)
   f.association(:seller, :factory => :user)
   f.association(:product, :factory => :product)
 end

@@ -26,3 +26,27 @@ Feature: Shopping
       | name             | cost |
       | Free to Bilnuer  | 0.00 |
       | Store the seller | 0.00 |
+
+  Scenario: Adding quote to cart and checkout
+    When I sign in as "email@person.com/password"
+    And I go to the "The Godfather" product page
+    And I follow "View All"
+    And I set quatility "3" within block seller "seller2@person.com"
+    And I press "Add To Cart" within block seller "seller2@person.com"
+    Then I should be on the cart page
+    When I go to the "Death of a Hero [Paperback]" product page
+    And I follow "View All"
+    And I set quatility "3" within block seller "seller2@person.com"
+    And I press "Add To Cart" within block seller "seller2@person.com"
+    Then I should be on the cart page
+    When I follow "Checkout" within block normal cart
+    And I fill my address
+    And I press "Save and Continue"
+    When I choose "Ship to UPS" from seller "seller2@person.com" Shipping Methods
+    And I press "Save and Continue"
+    And I fill my billing address
+    And I choose "Credit Card"
+
+    And I enter valid credit card details
+    Then I should see "Your order has been processed successfully"
+

@@ -57,6 +57,10 @@ module NavigationHelpers
       account_change_password_path
     when /the dashboard account fuck page/
       dashboard_account_path
+    when /the edit secret question page/
+      edit_dashboard_secrets_path
+    when /the new secret question page/
+      new_dashboard_secrets_path
     when /^the home\s?page$/
       '/'
 

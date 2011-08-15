@@ -11,7 +11,7 @@ class Dashboard::SecretsController < Dashboard::ApplicationController
 
   def create
     unless params[:own_question].blank?
-      variant = @current_user.secret_question.create_secret_question_variant(:variant => params[:own_question], :private => true)
+      variant = SecretQuestionVariant.create(:variant => params[:own_question], :private => true)
       @current_user.create_secret_question(:answer => params[:secret_question][:answer], :secret_question_variant => variant)
     else
       @current_user.create_secret_question(params[:secret_question])
@@ -27,6 +27,7 @@ class Dashboard::SecretsController < Dashboard::ApplicationController
     else
       @current_user.secret_question.update_attributes(params[:secret_question])
     end
+    flash.notice = 'Secret Question updated'
     redirect_to dashboard_account_path
   end
 

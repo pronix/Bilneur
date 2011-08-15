@@ -18,9 +18,13 @@
             <% end %>
           </i>
           <span><em><%= @order.line_items.count %></em>In Cart</span>
-          <span><em class="grnTag">
+
+          <span>
+            <em class="grnTag">
               <%= current_virtual_order.nil? ? 0 : current_virtual_order.line_items.count %>
-            </em>In Virtual Cart</span>
+            </em>
+            In Virtual Cart
+          </span>
         </div>
         <div class="btm"></div>
         <span class="shp">Shippable Items Will Be<br /> Shipped To:</span>
@@ -53,28 +57,29 @@
 
     </div>
 
-    <div class="lyOut1">
+
+    <div class="lyOut1" id="normal-cart">
       <div class="tL"><div class="tR"></div></div>
       <%= render 'items_in_cart', :order => @order %>
       <span class="p2bdr"></span>
       <div class="slng">
         <div class="slngrgt tabi">
-          <%= button_to "", checkout_path, :class => 'next right proBtn' %>
+          <%= link_to "", checkout_path, :class => 'button checkout primary next',
+                          :style => "display:block;", :title => t("checkout") %>
         </div>
       </div>
-
-
     </div>
 
-    <div class="lyOut1 marg">
-      <%= render :partial => 'items_in_vstore' %>
 
+    <div class="lyOut1 marg" id="virtual-cart">
+      <%= render :partial => 'items_in_vstore' %>
       <div class="slng">
         <div class="slngrgt tabi">
-          <%= button_to "", virtual_checkout_path, :class => 'next right proBtn' %>
+          <%= link_to "", virtual_checkout_path(:virtual), :class => 'button checkout primary next',
+                          :style => "display:block;", :title => t("checkout") %>
         </div>
       </div>
-
     </div>
+
   </div>
 </div>

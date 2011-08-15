@@ -11,7 +11,7 @@ LineItem.class_eval do
   after_save :load_sellers # refresh all sellers on order
 
   def quantity_product
-    if quantity.to_i <= 0
+    if quantity.to_i < 0
       errors[": \"#{variant.name}\""] ||= []
       errors[": \"#{variant.name}\""] << " quantity must be greater than 0"
     end

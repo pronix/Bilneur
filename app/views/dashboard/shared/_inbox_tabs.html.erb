@@ -1,27 +1,27 @@
   <ul class="TabbedPanelsTabGroup">
 
       <li class="TabbedPanelsTab" <%== ' class="TabbedPanelsTabSelected"' if current == "All Messages" %>>
-        <span><%= link_to t("all_messages"), dashboard_messages_path %></span>
+        <span><%= link_to t("all_messages"), dashboard_messages_path, :remote => true %></span>
       </li>
 
       <li class="TabbedPanelsTab" <%== ' class="TabbedPanelsTabSelected"' if current == "Received" %>>
-        <span><%= link_to t("received"), state_inbox_dashboard_messages_path(:received) %></span>
+        <span><%= link_to t("received"), state_inbox_dashboard_messages_path(:received), :remote => true %></span>
       </li>
 
       <li class="TabbedPanelsTab" <%== ' class="TabbedPanelsTabSelected"' if current == "Sent" %>>
-        <span><%= link_to t("sent"), state_inbox_dashboard_messages_path(:sent) %></span>
+        <span><%= link_to t("sent"), state_inbox_dashboard_messages_path(:sent), :remote => true %></span>
       </li>
 
       <li class="TabbedPanelsTab" <%== ' class="TabbedPanelsTabSelected"' if current == "Unread" %>>
-        <span><%= link_to t("unread"), state_inbox_dashboard_messages_path(:unread) %></span>
+        <span><%= link_to t("unread"), state_inbox_dashboard_messages_path(:unread), :remote => true %></span>
       </li>
 
       <li class="TabbedPanelsTab" <%== ' class="TabbedPanelsTabSelected"' if current == "Important" %>>
-        <span><%= link_to t("important"), state_inbox_dashboard_messages_path(:important) %></span>
+        <span><%= link_to t("important"), state_inbox_dashboard_messages_path(:important), :remote => true %></span>
       </li>
 
       <li class="TabbedPanelsTab" <%== ' class="TabbedPanelsTabSelected"' if current == "Trash" %>>
-        <span><%= link_to t("trash"), state_inbox_dashboard_messages_path(:trash) %></span>
+        <span><%= link_to t("trash"), state_inbox_dashboard_messages_path(:trash), :remote => true %></span>
       </li>
  <li class="tabBag"></li>
 </ul>

@@ -188,3 +188,6 @@ ul li { list-style:none;}
 		
 /* Fixs */
 .mrFx { float:left; width:100%; height:7px;}
+
+
+#seller_profile {display: none;}

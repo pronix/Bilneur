@@ -18,7 +18,7 @@
         <%= link_to t("secret_question"), edit_dashboard_secrets_path %>
       </li>
 
-      <% if can?(:access, :saller) %>
+      <% if can?(:access, :seller) %>
         <li<%== ' class="active"' if current == "Shipping Methods" %>>
           <%= link_to t("shipping_methods"), dashboard_shipping_methods_path %>
         </li>

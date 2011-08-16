@@ -74,7 +74,9 @@ Order.class_eval do
 
   def fill_billing_address
     if !virtual? && ship_address.present? && bill_address.blank?
-      self.bill_address = ship_address.clone
+      default_bill_address = ship_address.clone
+      default_bill_address.user = nil
+      self.bill_address = default_bill_address
     end
   end
 
@@ -151,12 +153,8 @@ Order.class_eval do
 
   end
 
-  def total(user_seller = nil)
-    if user_seller
-      item_total_for_seller(user_seller) + adjustments_total_for_seller(user_seller)
-    else
-      read_attribute(:total)
-    end
+  def total_for_seller(user_seller)
+    item_total_for_seller(user_seller) + adjustments_total_for_seller(user_seller)
   end
 
 

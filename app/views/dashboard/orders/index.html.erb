@@ -26,7 +26,16 @@
         <td><%= t(order.state).titleize %></td>
         <td><%= t("payment_states.#{order.payment_state}") if order.payment_state %></td>
         <td>
-          <%= t("shipment_states.#{order.shipment_state}") if order.shipment_state %>
+          <ul>
+            <% order.shipments.each do |ship|  %>
+            <li>
+              <b>seller:</b> <%= ship.seller.full_name %>, <b>state:</b> <%= t("shipment_states.#{ship.state}") %>
+              <% if ship.can_receiving? %>
+              <%= link_to "Receive", "" %>
+              <% end %>
+            </li>
+            <% end %>
+          </ul>
         </td>
         <td><%= number_to_currency order.total %></td>
         <td>

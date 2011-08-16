@@ -1,0 +1,13 @@
+<%= form_for(:user, :url => user_password_new_password_path) do |f| %>
+<p>
+  <%= f.label :password, 'New Password' %>
+  <%= f.password_field :password %>
+</p>
+<p>
+  <%= f.label :password_confirmation, 'Confirm New Password' %>
+  <%= f.password_field :password_confirmation %>
+</p>
+<p>
+  <%= f.submit 'Reset Password' %>
+</p>
+<% end %>

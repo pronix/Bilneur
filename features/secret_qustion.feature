@@ -9,6 +9,35 @@ Feature: Describe how work secret question
     Given I am on the new secret question page
     And I should see in "secret_question_secret_question_variant_id" all public questions
 
+  Scenario Outline: Check with empty field with regular question
+    Given I am on the new secret question dashboard page
+    And I select "<variant>" from "secret_question_secret_question_variant_id"
+    And I fill in "Answer" with "<answer>"
+    And press "Save"
+    And I should be on the <page_name>
+    And I should see "<should_see>"
+
+    Examples:
+      | variant                     | answer      | page_name                           | should_see              |
+      | What is your favorite town? | Kaliningrad | dashboard account fuck page         |                         |
+      |                             | Kaliningrad | edit secret question dashboard page | Please check a question |
+      | What is your favorite town? |             | edit secret question dashboard page | Please write you answer |
+
+  Scenario Outline: Check with empty field with own question    
+    Given I am on the new secret question dashboard page
+    Then I select "Write your question" from "secret_question_secret_question_variant_id"
+    And I fill in "Own Question" with "<question>"
+    And I fill in "Answer" with "<answer>"
+    And I press "Save"
+    Then I should be on the <page_name>
+    And I should see "<should_see>"
+
+    Examples:
+      | question          | answer         | page_name                           | should_see              |
+      | Its good quastion | this is answer | dashboard account fuck page         |                         |
+      |                   | this is answer | edit secret question dashboard page | Please check a question |
+      | Its good quastion |                | edit secret question dashboard page | Please write you answer |
+
   Scenario: Create a secret question with public variant
     And I follow "My Account"
     Then I should be on the "email@person.com" account page
@@ -62,8 +91,87 @@ Feature: Describe how work secret question
     And I press "Save"
     Then I should be on the dashboard account fuck page
     And I should see "Secret Question updated"
-    
-  
+
+  Scenario: Return password by security question, regular question
+    Given I have regular question "What is your favorite sports team?" with answer "I dont know"
+    And I am logged out
+    Then I go to the sign in page
+    Then I follow "Forgot Password?"
+    And I should see "Reset password via secret question"
+    And I fill in "email" with my email
+    And I select "What is your favorite sports team?" from "secret_question_secret_question_variant_id"
+    And I fill in "Answer" with "I dont know"
+    Then I press "Reset password"
+    Then I should be on the reset password by question page
+    And I fill in "New Password" with "moloko"
+    And I fill in "Confirm New Password" with "moloko"
+    Then I press "Reset Password"
+    And I should be on the sign in page
+    And I should see "Password is reset, please log in"
+    Then I try to auth with "email@person.com" and "moloko"
+    And I should be on the products page
+
+  Scenario: Recovery password by security question, own question
+    Given I have a own question "My Own Question" with answer "My answer"
+    And I am logged out
+    Then I go to the sign in page
+    Then I follow "Forgot Password?"
+    And I fill in "email" with my email
+    And I fill in "Own Question" with "My Own Question"
+    And I fill in "Answer" with "My answer"
+    Then I press "Reset password"
+    Then I should be on the reset password by question page
+    And I fill in "New Password" with "moloko"
+    And I fill in "Confirm New Password" with "moloko"
+    Then I press "Reset Password"
+    And I should be on the sign in page
+    And I should see "Password is reset, please log in"
+    Then I try to auth with "email@person.com" and "moloko"
+    And I should be on the products page
+
+  Scenario: Recovery password by wrong email and regular question
+    Given I have regular question "What is your favorite sports team?" with answer "I dont know"
+    And I am logged out
+    Then I go to the sign in page
+    Then I follow "Forgot Password?"
+    And I should see "Reset password via secret question"
+    And I fill in "email" with "bademail@example.com"
+    And I select "What is your favorite sports team?" from "secret_question_secret_question_variant_id"
+    And I fill in "Answer" with "I dont know"
+    Then I press "Reset password"
+    And I should be on the forgot password page
+    And I should see "Sorry but wrong email address"
+
+  Scenario Outline: Check reset password by question page
+    Given I have <question_type> "What is your favorite sports team?" with answer "Test answer"
+    And I am logged out
+    Then I go to the forgot password page
+    And I fill in "email" with "<email>"
+    And I <fill_select> <with_from> "<answer_field>"
+    And I fill in "Answer" with "Test answer"
+    Then I press "Reset password"
+    And I should be on the <page_name>
+
+    # Use one question for reqular and own question but question has diff type
+    # 1. Test with rigth data with regular question
+    # 2. Test with rigth data with own question
+    # 3. Test with wrong email with regular question
+    # 4. Test with wrong email with own question
+    # 5. Test with wrong question with regular question
+    # 6. Test with wrong question with own question
+
+    Examples:
+    | question_type    | email            | fill_select                                 | with_from | answer_field                               | page_name              |
+    | regular question | email@person.com | select "What is your favorite sports team?" | from      | secret_question_secret_question_variant_id | reset by question page |
+    | a own question   | email@person.com | fill in "Own Question"                      | with      | What is your favorite sports team?         | reset by question page |
+    | regular question | bad@person.com   | select "What is your favorite sports team?" | from      | secret_question_secret_question_variant_id | forgot password page   |
+    | a own question   | bad@person.com   | fill in "Own Question"                      | with      | What is your favorite sports team?         | forgot password page   |
+    | regular question | email@person.com | select "What is your favorite town?"        | from      | secret_question_secret_question_variant_id | forgot password page   |
+    | a own question   | email@person.com | fill in "Own Question"                      | with      | BAD QUESTION                               | forgot password page   |
+    | regular question | email@person.com | select "What is your favorite sports team?" | from      | secret_question_secret_question_variant_id | reset by question page |
+
+
+
 # @wip    
 #   Scenario: Create secret question with invalid params
 #     Given I am on the new secret question page

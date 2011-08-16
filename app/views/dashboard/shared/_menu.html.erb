@@ -1,9 +1,17 @@
 <ul class="TabbedPanelsTabGroup">
-    <li class="TabbedPanelsTab" tabindex="0"><span><%= link_to( t('user_menu.my_account'), dashboard_account_path) %></span></li>
-    <li class="TabbedPanelsTab" tabindex="0"><span><%= link_to t("inbox"), dashboard_messages_path %></span></li>
-    <li class="TabbedPanelsTab" tabindex="0"><span>Purchases</span></li>
-    <li class="TabbedPanelsTab" tabindex="0"><span>Selling</span></li>
-    <li class="TabbedPanelsTab" tabindex="0"><span>Orders</span></li>
-    <li class="TabbedPanelsTab" tabindex="0"><span>Inventory</span></li>
-    <li class="TabbedPanelsTab" tabindex="0"><span>Feedback</span></li>
+  <li class="TabbedPanelsTab" >
+    <span class="TabbedPanelsTabSelected">
+      <%= link_to_unless_current( t('user_menu.my_account'), dashboard_account_path, :class => "TabbedPanelsTab") %>
+    </span>
+  </li>
+  <li class="TabbedPanelsTab" >
+    <span class="TabbedPanelsTabSelected">
+      <%= link_to_unless_current t("inbox"), dashboard_messages_path, :class => "TabbedPanelsTab"%>
+    </span>
+  </li>
+  <li class="TabbedPanelsTab" ><span>Purchases</span></li>
+  <li class="TabbedPanelsTab" ><span>Selling</span></li>
+  <li class="TabbedPanelsTab" ><span>Orders</span></li>
+  <li class="TabbedPanelsTab" ><span>Inventory</span></li>
+  <li class="TabbedPanelsTab" ><span>Feedback</span></li>
 </ul>

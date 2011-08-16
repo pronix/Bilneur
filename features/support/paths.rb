@@ -63,6 +63,10 @@ module NavigationHelpers
       new_dashboard_secrets_path
     when /the reset password by question page/
       user_password_reset_by_question_path
+    when /the forgot password page/
+      new_user_password_path
+    when /the reset by question page/
+      user_password_reset_by_question_path
     when /^the home\s?page$/
       '/'
 

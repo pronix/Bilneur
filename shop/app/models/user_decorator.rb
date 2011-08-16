@@ -54,13 +54,24 @@ User.class_eval do
 
   # This is for secret question
   def check_valid_user_with_regular_question(params)
-    # Check if user have secret question
-    return false if !has_secret?
+    return false if !check_question_answer(params)
     # Check if user question is match
     return false if secret_question.secret_question_variant_id != params[:secret_question][:secret_question_variant_id].to_i
+    true
+  end
+
+  def check_valid_user_with_own_question(params)
+    return false if !check_question_answer(params)
+    # Check if user have secret question
+    return false if !SecretQuestionVariant.find_by_variant(params[:own_question])
+    true
+  end
+
+  def check_question_answer(params)
+    # Check if user have secret question
+    return false if !has_secret?
     # Check if user have answer with put anwer
     return false if secret_question.answer != params[:secret_question][:answer]
-    # If all good return true
     true
   end
 

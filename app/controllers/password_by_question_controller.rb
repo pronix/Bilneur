@@ -25,8 +25,11 @@ class PasswordByQuestionController < ApplicationController
   end
 
   def validate_response
+    # FIXME Logica of code bad, we accept all what don't block, letter change it to block all beside accept
     if params[:own_question].blank?
       some_error('Sorry but incorect question or answer') if !@user.check_valid_user_with_regular_question(params)
+    else
+      some_error('Sorry but incorect question or answer') if !@user.check_valid_user_with_own_question(params)
     end
     # Create session for recovery password
     session[:user_id] = @user.id

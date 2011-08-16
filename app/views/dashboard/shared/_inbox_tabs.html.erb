@@ -1,38 +1,27 @@
+  <ul class="TabbedPanelsTabGroup">
 
-<% content_for :sidebar do %>
-
-  <h3><span>Inbox</span></h3>
-  <br class="clear" />
-
-  <ul class="sidebar product-menu">
-
-      <li<%== ' class="active"' if current == "All Messages" %>>
-        <%= link_to t("all_messages"), dashboard_messages_path %>
+      <li class="TabbedPanelsTab" <%== ' class="TabbedPanelsTabSelected"' if current == "All Messages" %>>
+        <span><%= link_to t("all_messages"), dashboard_messages_path %></span>
       </li>
 
-      <li<%== ' class="active"' if current == "Received" %>>
-        <%= link_to t("received"), state_inbox_dashboard_messages_path(:received) %>
+      <li class="TabbedPanelsTab" <%== ' class="TabbedPanelsTabSelected"' if current == "Received" %>>
+        <span><%= link_to t("received"), state_inbox_dashboard_messages_path(:received) %></span>
       </li>
 
-      <li<%== ' class="active"' if current == "Sent" %>>
-        <%= link_to t("sent"), state_inbox_dashboard_messages_path(:sent) %>
+      <li class="TabbedPanelsTab" <%== ' class="TabbedPanelsTabSelected"' if current == "Sent" %>>
+        <span><%= link_to t("sent"), state_inbox_dashboard_messages_path(:sent) %></span>
       </li>
 
-      <li<%== ' class="active"' if current == "Unread" %>>
-        <%= link_to t("unread"), state_inbox_dashboard_messages_path(:unread) %>
+      <li class="TabbedPanelsTab" <%== ' class="TabbedPanelsTabSelected"' if current == "Unread" %>>
+        <span><%= link_to t("unread"), state_inbox_dashboard_messages_path(:unread) %></span>
       </li>
 
-      <li<%== ' class="active"' if current == "Important" %>>
-        <%= link_to t("important"), state_inbox_dashboard_messages_path(:important) %>
+      <li class="TabbedPanelsTab" <%== ' class="TabbedPanelsTabSelected"' if current == "Important" %>>
+        <span><%= link_to t("important"), state_inbox_dashboard_messages_path(:important) %></span>
       </li>
 
-      <li<%== ' class="active"' if current == "Trash" %>>
-        <%= link_to t("trash"), state_inbox_dashboard_messages_path(:trash) %>
+      <li class="TabbedPanelsTab" <%== ' class="TabbedPanelsTabSelected"' if current == "Trash" %>>
+        <span><%= link_to t("trash"), state_inbox_dashboard_messages_path(:trash) %></span>
       </li>
-
-
-  </ul>
-  <br class="clear" />
-
-<% end %>
-
+ <li class="tabBag"></li>
+</ul>

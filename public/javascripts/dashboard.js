@@ -148,4 +148,20 @@ jQuery(document).ready(function(){
               $("#seller_profile").slideUp()
             }
         )
+        $(".radio").dgStyle();	
+        $(".checkbox").dgStyle();
+
+	try {
+	$("#websites21").msDropDown({mainCSS:'dd2'});
+	$("#ver").html($.msDropDown.version);
+	} catch(e) {
+		alert("Error: "+e.message);
+	}
+	try {
+	$("#websites20").msDropDown({mainCSS:'dd2'});
+	$("#ver").html($.msDropDown.version);
+	} catch(e) {
+		alert("Error: "+e.message);
+	}
+
 });

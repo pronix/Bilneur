@@ -48,7 +48,7 @@ ul li { list-style:none;}
 #mCnt{}
 	.slrPrfl {}
         .slrPrfl h1 {font-size:19px; margin-bottom:10px; color:#00adef !important;}
-		.slrPrfl .TabbedPanelsTab span {width:100%;text-align:center;line-height:37px;}
+		.slrPrfl .TabbedPanelsTab > span {width:100%;text-align:center;line-height:37px;}
 		.TabbedPanelsTab a { float:left;width:100%;text-align:center;line-height:37px; color:#fff;}
 		.prfl {width:165px; text-align:center; margin:12px 12px 0 9px;}
 			.prfl .top {background:url('/images/bgs/sp_tab_img_top.png') no-repeat;}
@@ -60,7 +60,7 @@ ul li { list-style:none;}
 				.prfl i img { margin-top:8px;}
 			.vsp { float:left; margin:15px;}
 			.slrPrfl .TabbedPanelsContent { border:1px solid #b3b3b3; border-top:none;float:left; width:920px; padding-bottom:20px;}
-			.slrPrfl .sptCnt { width:725px;}
+			.slrPrfl .sptCnt { width:725px; margin: -10px 10px 0 10px;}
 			.sptCnt .top { margin-top:12px;background:url('/images/bgs/spt_cnt_top.png') no-repeat;}
 			.sptCnt .cntr { padding-bottom:20px;background:url('/images/bgs/spt_cnt_cntr.png') repeat-y;}
 			.sptCnt .btm {background:url('/images/bgs/spt_cnt_btm.png') no-repeat;}

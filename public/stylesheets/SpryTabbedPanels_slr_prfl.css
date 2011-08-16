@@ -13,8 +13,8 @@
 
 .inbxTabs .TabbedPanels { float:left;width:100%; /* IE Hack to force proper layout when preceded by a paragraph. (hasLayout Bug)*/}
 .inbxTabs .TabbedPanelsTabGroup { float:left; margin-top:18px;width:163px;padding: 0px;}
-.inbxTabs .TabbedPanelsTab {clear:left;float:left;width:162px;height:25px;position:relative;font-size:13px;font-weight:bold;color:#fff;background:#dfdfdf;list-style: none;-moz-user-select: none;-khtml-user-select: none;cursor: pointer;}
-.inbxTabs .TabbedPanelsTab span { line-height:25px;}
+.inbxTabs .TabbedPanelsTab {clear:left;float:left;width:163px;height:25px;position:relative;font-size:13px;font-weight:bold;color:#fff;background:#dfdfdf;list-style: none;-moz-user-select: none;-khtml-user-select: none;cursor: pointer;}
+.inbxTabs .TabbedPanelsTab > span, .inbxTabs .TabbedPanelsTab > span a, .inbxTabs .TabbedPanelsTab > span span { line-height:25px;}
 .inbxTabs .TabbedPanelsTabHover {color:#919191;background:#fff;}
 .inbxTabs .TabbedPanelsTabSelected {color:#919191;background:#fff;}
 .inbxTabs .TabbedPanelsTab a {color: black;text-decoration: none;}

@@ -5,10 +5,11 @@
         <i>
           <%= t122_image(variant.images.present? ? varinat : variant.product) %>
         </i>
-
-        <b><%= variant.product.name %></b>
-        <span>Condition: <em><%= variant.display_condition %></em></span>
-        <a href="#">Save for Later</a>
+        <div>
+          <b><%= variant.product.name %></b>
+          <span>Condition: <em><%= variant.display_condition %></em></span>
+          <a href="#">Save for Later</a>
+        </div>
       </div>
 
       <div class="slrImg">

@@ -26,7 +26,8 @@
     .cartNav span,.cartNav b { margin-top:4px;}
     .slrPnl { float:left; width:680px; margin-left:16px; padding-top:10px; padding-bottom:5px;}
       .slrPnl .slr { width:235px;}
-        .slrPnl .slr i { width:82px; height:85px; margin-right:6px; background:url('/images/bgs/chkout_img_bg.png') no-repeat;}
+        .slrPnl .slr i { width:82px; height:85px; margin:0 6px 0 0; background:url('/images/bgs/chkout_img_bg.png') no-repeat;}
+        .slr > div {float: left; width: 133px;}
           .slrPnl .slr i img { margin:3px;}
         .slrPnl .slr b { width:133px; margin-top:4px; font-size:12px; color:#00adef;}
         .slrPnl .slr span { width:100px;margin-top:2px;font-size:12px; font-weight:bold; color:#252525;}

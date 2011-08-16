@@ -34,7 +34,8 @@ User.class_eval do
   has_many :sent,  :order => "created_at", :class_name => "Message", :foreign_key => "sender_id"
   has_many :inbox, :order => "created_at", :class_name => "Message", :foreign_key => "recipient_id"
 
-
+  # Associate with SecretQuestion
+  has_one :secret_question
   # scopes
   #
 
@@ -53,6 +54,10 @@ User.class_eval do
   #
   after_create :set_roles
 
+
+  def has_secret?
+    true unless secret_question.nil?
+  end
 
   # Setting the roles on default
   #

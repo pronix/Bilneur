@@ -1,4 +1,5 @@
 # language: en
+
 Feature: Shopping
 
   Background:
@@ -47,6 +48,7 @@ Feature: Shopping
     And I press "Save and Continue"
     When I choose "UPS Ground1" from seller "seller2@person.com" Shipping Methods
     And I press "Save and Continue"
+    And I choose "Other address"
     And I fill billing address with correct data
     And I choose "Credit Card"
     And I enter valid credit card details
@@ -81,6 +83,7 @@ Feature: Shopping
     When I choose "UPS Ground1" from seller "seller2@person.com" Shipping Methods
     And I choose "UPS Ground2" from seller "seller1@person.com" Shipping Methods
     And I press "Save and Continue"
+    And I choose "Other address"
     And I fill billing address with correct data
     And I choose "Credit Card"
     And I enter valid credit card details

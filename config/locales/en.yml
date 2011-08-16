@@ -7,6 +7,7 @@ en:
   learn_more: Learn More
   actions:
     send: Send
+    receive: Receive
   mark_as_important: Mark as important
   mark_as_read: Mark as read
   mark_as_unread: Mark as unread

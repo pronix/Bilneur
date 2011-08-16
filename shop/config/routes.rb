@@ -21,7 +21,14 @@ Rails.application.routes.draw do
   match '/cart(/:cart_type)', :to => 'orders#update', :via => :put, :as => :update_virtual_cart
   match '/cart/empty(/:cart_type)', :to => 'orders#empty', :via => :put, :as => :empty_virtual_cart
 
-    # non-restful checkout stuff
+  match '/checkout/registration' => 'checkout#registration', :via => :get, :as => :checkout_registration
+  match '/checkout/registration' => 'checkout#update_registration', :via => :put, :as => :update_checkout_registration
+
+    match '/checkout/(:order_type/)registration' => 'checkout#registration', :via => :get, :as => :virtual_checkout_registration
+  match '/checkout/(:order_type/)registration' => 'checkout#update_registration', :via => :put, :as => :virtual_update_checkout_registration
+
+
+  # non-restful checkout stuff
   match '/checkout/(:order_type/)update/:state' => 'checkout#update', :as => :virtual_update_checkout
   match '/checkout/(:order_type/):state' => 'checkout#edit', :as => :virtual_checkout_state
   match '/checkout/(:order_type)' => 'checkout#edit', :state => 'address', :as => :virtual_checkout
@@ -31,6 +38,8 @@ Rails.application.routes.draw do
   namespace :dashboard do
 
     root :to => "users#show"
+
+    resource :secrets
 
     resources :reviews do
       member do
@@ -60,7 +69,12 @@ Rails.application.routes.draw do
 
     end # end dashboard < quotes
 
-    resources :orders, :only => [:index, :show]
+    resources :orders, :only => [:index, :show] do
+
+      member do
+        match "receive/:shipment_id" => "orders#receive" , :as => :receive, :via => [:get, :post]
+      end
+    end
     resources :virtual_orders, :only => [:index, :show]
     resources :sales,  :only => [:index, :show] do
       member do

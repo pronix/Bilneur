@@ -53,6 +53,14 @@ module NavigationHelpers
       edit_admin_review_settings_path
     when /the reviews dashboard page/
       dashboard_reviews_path
+    when /the current user edit password page/
+      account_change_password_path
+    when /the dashboard account fuck page/
+      dashboard_account_path
+    when /the edit secret question page/
+      edit_dashboard_secrets_path
+    when /the new secret question page/
+      new_dashboard_secrets_path
     when /^the home\s?page$/
       '/'
 

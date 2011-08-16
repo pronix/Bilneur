@@ -28,14 +28,12 @@
         <td><%= order.user.try(:full_name) %></td>
         <td><%= t("payment_states.#{order.payment_state}") if order.payment_state %></td>
         <td>
-          <%= t("shipment_states.#{order.shipment_state}") if order.shipment_state %>
-          <% if (@shipment = order.shipments.first) %>
-          <%= link_to "Ship", ship_dashboard_sale_path(order) if @shipment.can_ship? %>
+          <% if (@shipment = order.shipments.find_by_seller_id(current_user.id)) %>
+            <%= t("shipment_states.#{@shipment.state}")  %>
+            <%= link_to "Ship", ship_dashboard_sale_path(order) if @shipment.can_ship? %>
           <% end %>
-
-
         </td>
-        <td><%= number_to_currency(order.total(current_user)) %></td>
+        <td><%= number_to_currency(order.total_for_seller(current_user)) %></td>
         <td>
          </td>
       </tr>

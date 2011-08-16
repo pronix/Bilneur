@@ -4,16 +4,15 @@
     $('#checkout_form_address').validate();
 
     var get_states = function(region){
-      var country        = $('p#' + region + 'country' + ' span#' + region + 'country :only-child').val();
+      var country  = $('#' + (region == 's' ? 'ship_address' : 'bill_address') + '_country' + ' select:only-child').val();
       return state_mapper[country];
     }
 
     var update_state = function(region) {
       var states         = get_states(region);
 
-      var state_select = $('span#' + region + 'state select');
-      var state_input = $('span#' + region + 'state input');
-
+      var state_select = $('#' + (region == 's' ? 'ship_address' : 'bill_address') + 'state select');
+      var state_input = $('#' + (region == 's' ? 'ship_address' : 'bill_address') + 'state input');
       if(states) {
         var selected = state_select.val();
         state_select.html('');
@@ -46,6 +45,7 @@
     $('p#bcountry span#bcountry select').change(function() { update_state('b'); });
     $('p#scountry span#scountry select').change(function() { update_state('s'); });
 
+    $('#ship_address_country select').change(function() { update_state('s'); });
     update_state('b');
     update_state('s');
 

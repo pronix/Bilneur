@@ -24,6 +24,17 @@ Factory.define :seller_payment_method do |t|
   t.state "unverified"
 end
 
+Factory.define :secret_question do |t|
+  t.user { |p| p.accociation(:user) }
+  t.variant { |p| p.association(:secret_question_variant)}
+  t.answer { Faker::Lorem.words.join(' ') }
+end
+
+Factory.define :secret_question_variant do |t|
+  t.variant { Faker::Lorem.sentences(1) }
+  t.private false
+end
+
 Factory.define :review do |t|
   t.product { |p| p.association(:product) }
   t.name { Factory.next(:product_sequence) }

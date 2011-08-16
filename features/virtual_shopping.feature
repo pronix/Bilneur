@@ -1,4 +1,3 @@
-# language: en
 Feature: Virtual Shopping
   Virtiaul buyes can add product to V. Store
   and checkout virtual order
@@ -59,7 +58,6 @@ Feature: Virtual Shopping
       | The Godfather               | 14.00 | new       |             3 |
       | Death of a Hero [Paperback] | 24.50 | new       |             3 |
 
-
   Scenario: Adding quote to V.Cart and checkout order(with shipping method: Free to Bilneur and from two seller)
     When I sign in as "email@person.com/password"
     And I go to the "The Godfather" product page
@@ -101,7 +99,6 @@ Feature: Virtual Shopping
       | The Godfather               | 14.00 | new       |             3 |
       | Death of a Hero [Paperback] | 22.89 | new       |             3 |
 
-  @focus
   Scenario: Adding quote to V.Cart and checkout order(with shipping method: Store the Seller)
     When I sign in as "email@person.com/password"
     And I go to the "The Godfather" product page

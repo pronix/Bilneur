@@ -65,7 +65,7 @@ Order.class_eval do
   has_and_belongs_to_many :sellers, :join_table => "orders_users", :class_name => "User"
   has_and_belongs_to_many :shipping_methods, :join_table => "orders_shipping_methods", :class_name => "ShippingMethod"
 
-  before_validation :set_email
+  # before_validation :set_email
   before_validation :fill_billing_address
   def set_email
     self.email ||= user.email if user.present?
@@ -74,7 +74,9 @@ Order.class_eval do
 
   def fill_billing_address
     if !virtual? && ship_address.present? && bill_address.blank?
-      self.bill_address = ship_address.clone
+      default_bill_address = ship_address.clone
+      default_bill_address.user = nil
+      self.bill_address = default_bill_address
     end
   end
 
@@ -151,12 +153,8 @@ Order.class_eval do
 
   end
 
-  def total(user_seller = nil)
-    if user_seller
-      item_total_for_seller(user_seller) + adjustments_total_for_seller(user_seller)
-    else
-      read_attribute(:total)
-    end
+  def total_for_seller(user_seller)
+    item_total_for_seller(user_seller) + adjustments_total_for_seller(user_seller)
   end
 
 

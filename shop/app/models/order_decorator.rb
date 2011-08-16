@@ -65,7 +65,7 @@ Order.class_eval do
   has_and_belongs_to_many :sellers, :join_table => "orders_users", :class_name => "User"
   has_and_belongs_to_many :shipping_methods, :join_table => "orders_shipping_methods", :class_name => "ShippingMethod"
 
-  before_validation :set_email
+  # before_validation :set_email
   before_validation :fill_billing_address
   def set_email
     self.email ||= user.email if user.present?

@@ -2,7 +2,7 @@
 <div class="tL"><div class="tR"></div></div>
 <div class="cC">
   <%= form_for(current_virtual_order.order, :url => update_virtual_cart_path(:virtual), :html=>{:id=>'virtual-updatecart'}) do |order_form| %>
-  <%= render 'cart_form', :order_form => order_form %>
+    <%= render 'cart_form', :order_form => order_form, :in_virtual => true %>
   <% end %>
 </div>
 

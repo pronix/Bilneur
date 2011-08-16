@@ -109,6 +109,7 @@ Variant.class_eval do
     image_clone = lambda {|i| j = i.clone; j.attachment = i.attachment.clone; j}
     new_variant.images = self.images.map {|i| image_clone.call i }
     new_variant.deleted_at = nil
+    new_variant.taxons = self.taxons
     new_variant.save!
     new_variant
   end

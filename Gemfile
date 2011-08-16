@@ -14,6 +14,8 @@ gem 'sqlite3'
 
 gem 'exception_notification',   '~> 2.4.1'
 
+gem "silent-postgres", "~> 0.0.8"
+
 
 gem 'spree',                    '= 0.60.1'
 

@@ -2,49 +2,80 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%= hook :inside_head do %>
+  <%= render :partial => 'shared/head'%>
   <%= render :partial => "dashboard/shared/dashboard_head" %>
 <% end %>
 </head>
 
-<body class='yui-skin-sam admin'>
-  <div>
-    <%= render 'dashboard/shared/nav_bar' %>
-    <div id="progress"><%= image_tag 'progress.gif' %> <%= t('loading') %>...</div>
-  </div>
-  <div id="admin-menu">
-    <ul>
-      <%= render "dashboard/shared/menu" %>
-    </ul>
-    <br class="clear" />
-  </div>
+<%
+if @body_class.nil?
+  if content_for?(:sidebar)
+    @body_class = 'two-col'
+  else
+    @body_class = 'one-col'
+  end
+end
+ %>
 
-  <div id="sub-menu">
-    <%= yield :sub_menu %>
-    <br class="clear" />
-  </div>
+<body class="<%= @body_class %>" id="<%= @body_id %>">
 
-  <div id="wrapper" class="container">
+<div class="mWrp">
+  <%= render "shared/header" %>
 
-    <div id="content" class="<%= 'with-sidebar ' if content_for?(:sidebar) %> clear tile_bg">
-      <% if flash.notice %>
-      <div class="flash notice"><%= flash.notice %></div>
-      <% end %>
-      <% if flash[:error] %>
-      <div class="flash errors"><%= flash[:error] %></div>
-      <% end %>
-
-      <%= yield %>
-          <% if content_for?(:sidebar) %>
-      <br class='clear' />
-      <div id="sidebar">
-          <%= yield :sidebar %>
+<div id="mCnt" class="<%= content_class %>">
+      <!-- Start dashboard -->
+      <div class="slrPrfl">
+        <h1>My Dashboard</h1>
+        <div id="TabbedPanels1" class="TabbedPanels">      
+          <%= render "dashboard/shared/menu" %>
+          <div class="TabbedPanelsContentGroup">
+            <div class="TabbedPanelsContent">
+              <!-- Content -->
+                <div id="sub-menu">
+                  <%= yield :sub_menu %>
+                  <br class="clear" />
+                </div>
+      
+                <div id="wrapper" class="container">
+                  <div id="content" class="<%= 'with-sidebar ' if content_for?(:sidebar) %> clear tile_bg">
+                    <% if flash.notice %>
+                    <div class="flash notice"><%= flash.notice %></div>
+                    <% end %>
+                    <% if flash[:error] %>
+                    <div class="flash errors"><%= flash[:error] %></div>
+                    <% end %>
+      
+                    <%= yield %>
+                        <% if content_for?(:sidebar) %>
+                    <br class='clear' />
+                    <div id="sidebar">
+                        <%= yield :sidebar %>
+                    </div>
+                  <% end %>
+      
+                  </div>
+                </div>
+                <!-- End Content -->
+            </div>
+            <div class="TabbedPanelsContent"><h2>Inbox</h2></div>
+            <div class="TabbedPanelsContent"><h2>Purchases</h2></div>
+            <div class="TabbedPanelsContent"><h2>Selling</h2></div>
+            <div class="TabbedPanelsContent"><h2>Orders</h2></div>
+            <div class="TabbedPanelsContent"><h2>Inventory</h2></div>
+            <div class="TabbedPanelsContent"><h2>Feedback</h2></div>
+          </div>
+        </div>
       </div>
-    <% end %>
+      <!-- End dashboard -->
+</div>
 
-    </div>
 
-    <%= render :partial => 'shared/footer'%>
-  </div>
+<%= render :partial => 'shared/footer'%>
 
+<script type="text/javascript">
+<!--
+var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
+//-->
+</script>
 </body>
 </html>

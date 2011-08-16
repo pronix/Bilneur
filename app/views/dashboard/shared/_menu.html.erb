@@ -1,19 +1,9 @@
-<div class="sidebar-item" >
-  <ul class="navigation-list">
-    <li><%= link_to( t('user_menu.my_account'), dashboard_account_path) %></li>
-    <li><%= link_to t("inbox"), dashboard_messages_path %></li>
-    <li><%= link_to "Orders", dashboard_orders_path %></li>
-
-    <% if can?(:access, :seller) %>
-    <li><%= link_to "Sales", dashboard_sales_path %></li>
-
-    <li><%= link_to( t('user_menu.quotes'), dashboard_quotes_path) %></li>
-
-    <li class="<%= 'selected' if controller_name =~ /products/ %>">
-      <%= link_to( t('user_menu.products'), dashboard_products_path) %>
-    </li>
-
-    <% end %>
-
-  </ul>
-</div>
+<ul class="TabbedPanelsTabGroup">
+    <li class="TabbedPanelsTab" tabindex="0"><span>My Account</span></li>
+    <li class="TabbedPanelsTab" tabindex="0"><span>Inbox</span></li>
+    <li class="TabbedPanelsTab" tabindex="0"><span>Purchases</span></li>
+    <li class="TabbedPanelsTab" tabindex="0"><span>Selling</span></li>
+    <li class="TabbedPanelsTab" tabindex="0"><span>Orders</span></li>
+    <li class="TabbedPanelsTab" tabindex="0"><span>Inventory</span></li>
+    <li class="TabbedPanelsTab" tabindex="0"><span>Feedback</span></li>
+</ul>

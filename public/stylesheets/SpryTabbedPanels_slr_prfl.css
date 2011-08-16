@@ -1,0 +1,93 @@
+@charset "UTF-8";
+
+.TabbedPanels {top:77px;left:98px;width: 100%; /* IE Hack to force proper layout when preceded by a paragraph. (hasLayout Bug)*/}
+.TabbedPanelsTabGroup {width:100%;margin-top: 0px;padding: 0px;}
+.TabbedPanelsTab {position: relative;float: left;width:132px;height:37px;font-size:14px;font-weight:bold;color:#fff;margin: 0px 1px 0px 0px;background:url('../images/forms/slr_prfl_tab_n.png') repeat-x;list-style: none;-moz-user-select: none;-khtml-user-select: none;cursor: pointer;}
+.TabbedPanelsTabHover {color:#fff;background:url('../images/forms/slr_prfl_tab_h.png') repeat-x;}
+.TabbedPanelsTabSelected {color:#fff;background:url('../images/forms/slr_prfl_tab_h.png') repeat-x;}
+.TabbedPanelsTab a {text-decoration: none;}
+.TabbedPanelsContentGroup { clear:left;}
+.TabbedPanelsContent {padding: 4px;}
+
+/********************************************/
+
+.inbxTabs .TabbedPanels { float:left;width:100%; /* IE Hack to force proper layout when preceded by a paragraph. (hasLayout Bug)*/}
+.inbxTabs .TabbedPanelsTabGroup { float:left; margin-top:18px;width:163px;padding: 0px;}
+.inbxTabs .TabbedPanelsTab {clear:left;float:left;width:163px;height:25px;position:relative;font-size:13px;font-weight:bold;color:#fff;background:#dfdfdf;list-style: none;-moz-user-select: none;-khtml-user-select: none;cursor: pointer;}
+.inbxTabs .TabbedPanelsTab > span, .inbxTabs .TabbedPanelsTab > span a, .inbxTabs .TabbedPanelsTab > span span { line-height:25px;}
+.inbxTabs .TabbedPanelsTabHover {color:#919191;background:#fff;}
+.inbxTabs .TabbedPanelsTabSelected {color:#919191;background:#fff;}
+.inbxTabs .TabbedPanelsTab a {color: black;text-decoration: none;}
+.inbxTabs .TabbedPanelsContentGroup { clear:none; float:left;}
+.inbxTabs .TabbedPanelsContent { width:715px; border:none; padding:0;}
+
+
+
+
+
+
+
+.TabbedPanelsContentVisible {}
+
+/* Vertical Tabbed Panels
+ *
+ * The following rules override some of the default rules above so that the
+ * TabbedPanels widget renders with its tab buttons along the left side of
+ * the currently active content panel.
+ *
+ * With the rules defined below, the only change that will have to be made
+ * to switch a horizontal tabbed panels widget to a vertical tabbed panels
+ * widget, is to use the "VTabbedPanels" class on the top-level widget
+ * container element, instead of "TabbedPanels".
+ */
+
+/* This selector floats the TabGroup so that the tab buttons it contains
+ * render to the left of the active content panel. A border is drawn around
+ * the group container to make it look like a list container.
+ */
+.VTabbedPanels .TabbedPanelsTabGroup {
+	float: left;
+	width: 10em;
+	height: 20em;
+	background-color: #EEE;
+	position: relative;
+	border-top: solid 1px #999;
+	border-right: solid 1px #999;
+	border-left: solid 1px #CCC;
+	border-bottom: solid 1px #CCC;
+}
+
+/* This selector disables the float property that is placed on each tab button
+ * by the default TabbedPanelsTab selector rule above. It also draws a bottom
+ * border for the tab. The tab button will get its left and right border from
+ * the TabGroup, and its top border from the TabGroup or tab button above it.
+ */
+.VTabbedPanels .TabbedPanelsTab {
+	float: none;
+	margin: 0px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+
+/* This selector disables the float property that is placed on each tab button
+ * by the default TabbedPanelsTab selector rule above. It also draws a bottom
+ * border for the tab. The tab button will get its left and right border from
+ * the TabGroup, and its top border from the TabGroup or tab button above it.
+ */
+.VTabbedPanels .TabbedPanelsTabSelected {
+	background-color: #EEE;
+	border-bottom: solid 1px #999;
+}
+
+/* This selector floats the content panels for the widget so that they
+ * render to the right of the tabbed buttons.
+ */
+.VTabbedPanels .TabbedPanelsContentGroup {
+	clear: none;
+	float: left;
+	padding: 0px;
+	width: 30em;
+	height: 20em;
+}
+

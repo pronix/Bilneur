@@ -8,7 +8,7 @@
 body { font-family:helvetica,arial,clean,sans-serif;}
 a { text-decoration:none;}
 ul li { list-style:none;}
-.TabbedPanelsTab span { float:left; width:95%;text-align:center;line-height:19px;}
+.TabbedPanelsTab span { float:left; width:100%;text-align:center;line-height:19px;}
 
 a:hover {opacity: 0.8;}
 

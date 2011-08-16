@@ -1,4 +1,6 @@
-class PasswordByQuestionController < ApplicationController
+class PasswordByQuestionController < Spree::BaseController
+  helper Spree::BaseHelper
+
   before_filter :check_email, :validate_response, :only => :reset_by_question
 
   def reset_by_question

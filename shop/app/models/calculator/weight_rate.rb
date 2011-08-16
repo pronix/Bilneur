@@ -1,4 +1,5 @@
 class Calculator::WeightRate < Calculator
+  require 'json'
 
   # FIXME require define intervals { 10 => 20, 30 => 40 }
   # 10 20 from 0 to 10 cost 20
@@ -25,15 +26,17 @@ class Calculator::WeightRate < Calculator
   def compute(object)
     weight = object.weight
     # find weight range
-    hash = YAML::parse(preference['interval']).transform
-    hash.each do |k,v|
-      if k < weight
-        cost = v
+    arr = JSON.parse(preferred_interval)
+    # sort by inerval from smalles to biggest
+    arr = arr.to_enum.sort_by {|x| x['int']}
+    arr.each do |h|
+      if h['int'] < weight
+        cost = h['cost']
         break
       end
     end
     # if not find range - maximum cost
-    cost = hash.values.max
+    cost = arr.map {|x| x['cost']}.max unless cost
     cost
   end
 end

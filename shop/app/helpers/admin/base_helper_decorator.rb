@@ -26,7 +26,7 @@ Admin::BaseHelper.class_eval do
 
 
 $(document).ready(function() {
-  $('#shipping_method_calculator_attributes_preferred_interval').after('<br/>From 0 to <ul id="inteval_listing"></ul><a href="" id="link_add_interval">Add interval</a>');
+  $('#shipping_method_calculator_attributes_preferred_interval').after('<br/>From 0 to <ul id="inteval_listing"></ul><a href="#footer" id="link_add_interval">Add interval</a>');
   var str = $('#shipping_method_calculator_attributes_preferred_interval').val();
 
 

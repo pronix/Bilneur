@@ -195,7 +195,7 @@
         .invty ul li a { font-size:11px; font-weight:bold; color:#898989;}
           .invty ul li a img { float:left; margin:2px 6px 0 0}
       .chk label {font-weight:bold; font-style:normal; color:#787878; margin:10px; line-height:22px;}
-.blogFilters .CollapsiblePanelContent { float:left; padding-top:10px!important;}
+.blogFilters .CollapsiblePanelContent { float:left; padding:10px 0!important;}
 .minMax { float:left; width:100px; margin-left:15px;}
   .minMax b { float:left; line-height:19px; font-size:12px; color:#787878;}
   .minMax .txt { float:left; margin-left:5px; width:48px; height:19px; font-size:12px; font-weight:bold; color:#787878; background:url('/images/forms/min_bg.png') no-repeat; border:none;}
@@ -272,3 +272,4 @@
         .rTe .bLu { float:left;width:85px;height:21px;line-height:21px;margin-top:3px;background:url('/images/forms/blue_bg.png') no-repeat;}
         .slct .dd2 .ddTitle span.arrow {background:url('/images/icons/sler_srch_ico.png') no-repeat scroll 5px 5px transparent !important;}
 #pdSm .bCrmp,#pdSm .bCrmp ul,#pdSm .bCrmp ul li,#pdSm .bCrmp ul li a,#pdSm .bCrmp ul li img,.pdSrch form,.pdSrch .txt,.pdSrch .sbmt,.fbPnl,.cros,.smPrdcts,.smPd,.smPd i,.smPd i img,.pdDtl { float:left;}
+.pdSrch .sbmt { cursor: pointer; }

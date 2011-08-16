@@ -20,6 +20,7 @@
         } catch(e) {
           alert("Error: "+e.message);
       }
+
     })
   </script>
 <% end %>
@@ -29,8 +30,8 @@
   <div class="pdSrch">
     <%= form_tag products_path, :remote => true, :method => 'get', :id => "products_search" do %>
         <%= hidden_field_tag :per_page, params[:per_page] %>
-        <%= text_field_tag :keywords, params[:keywords], :class => 'txt', :value => 'Search with results' %>
-        <%= submit_tag "Update Results", :name => nil, :class => 'sbmt' %>
+        <%= text_field_tag :keywords, params[:keywords], :class => 'txt', :placeholder => 'Search with results' %>
+        <%= submit_tag "Update Results", :name => nil, :class => 'sbmt', :id => "search_keywords" %>
     <% end %>
     <%= link_to image_tag("forms/strip_bcome.png"), "#", :class => "strip" %>
   </div>

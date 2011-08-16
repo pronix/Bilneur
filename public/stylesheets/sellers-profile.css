@@ -50,7 +50,7 @@ ul li { list-style:none;}
         .slrPrfl h1 {font-size:19px; margin-bottom:10px; color:#00adef !important;}
 		.slrPrfl .TabbedPanelsTab > span {width:100%;text-align:center;line-height:37px;}
 		.TabbedPanelsTab a { float:left;width:100%;text-align:center;line-height:37px; color:#fff;}
-		.prfl {width:165px; text-align:center; margin:12px 12px 0 9px;}
+		.prfl {width:165px; text-align:center; margin: 2px 0 0 9px;}
 			.prfl .top {background:url('/images/bgs/sp_tab_img_top.png') no-repeat;}
 			.prfl .cntr { padding-bottom:5px;text-align:center;background:url('/images/bgs/sp_tab_img_cntr.png') repeat-y;}
 			.prfl .btm {background:url('/images/bgs/sp_tab_img_btm.png') no-repeat;}

@@ -14,6 +14,7 @@
       $(this).parents('form').submit();
       e.preventDefault();
     });
+    
 
 
     // for search select category dropdown list
@@ -23,6 +24,6 @@
     } catch(e) {
       alert("Error: "+e.message);
     }
-
+  
   });
 })(jQuery);

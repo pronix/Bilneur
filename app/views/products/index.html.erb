@@ -1,12 +1,37 @@
 <% stylesheet "slider/general", "slider/SpryCollapsiblePanel", "slider/SpryTabbedPanels4", "product" %>
 <% javascript "jquery.custom_radio_checkbox", "slider/SpryCollapsiblePanel", "slider/SpryTabbedPanels", "product_index" %>
+<% content_for :head do %>
+  <script type="text/javascript" charset="utf-8">
+    $(function() {
+      //Redirect to products index with new per_page param
+      $("#per_page_select").change(function() {
+        var per_page = $(this).val();
+        var product_path = "<%= products_path %>" + "?per_page=" + per_page;
+        window.location = product_path;
+      });
+      
+      //Set per_page_select value depending on existence of per_page param
+      $("#per_page_select option[value=<%= params[:per_page] %>]").attr('selected', true);
+
+      //And only after that try to to style select
+      try {
+        $("#per_page_select").msDropDown({mainCSS:'dd2'});
+        $("#ver").html($.msDropDown.version);
+        } catch(e) {
+          alert("Error: "+e.message);
+      }
+    })
+  </script>
+<% end %>
+
 
 <div class="col1" id="pdSm">
   <div class="pdSrch">
-    <form>
-      <input class="txt" type="text" name="" value="Search within results" onfocus="if(this.value=='Search within results') this.value=''" onblur="if(this.value=='') this.value='Search within results'" />
-      <input class="sbmt" type="submit" name="" value="Update Results" />
-    </form>
+    <%= form_tag products_path, :remote => true, :method => 'get', :id => "products_search" do %>
+        <%= hidden_field_tag :per_page, params[:per_page] %>
+        <%= text_field_tag :keywords, params[:keywords], :class => 'txt', :value => 'Search with results' %>
+        <%= submit_tag "Update Results", :name => nil, :class => 'sbmt' %>
+    <% end %>
     <%= link_to image_tag("forms/strip_bcome.png"), "#", :class => "strip" %>
   </div>
   <div class="mTabs">
@@ -36,39 +61,23 @@
             <p><a href=""><img src="/images/forms/fb_btn.png" alt="" /></a>See what your freinds are buying, selling or trading.<br /> Read their reviews, get advice, or simply buy &amp; sell with them.</p>
           </div>
           <div class="smPrdcts">
-            <%= render "shared/products", :products => @products, :taxon => @taxon %>
-          </div>
-          <div class="paging">
+            <div id="products_list">
+              <%= render "shared/products", :products => @products, :taxon => @taxon %>
+            </div>
             <div class="blogPg">
-              <p><b>1 - 15</b> of <b>3,456</b> blog posts</p>
+              <%= page_entries_info @products %><!-- FIXME add will_paginate 3.0.pre4 support for modifying text of entries info -->
             </div>
             <div class="slctr slct">
               <b>items per page</b>
               <form action="">
                 <select id="per_page_select" tabindex="1" name="">
-                  <option value="" selected="selected" title="">15 </option>
-                  <option value="" title="">30</option>
-                  <option value="" title="">50</option>
-                  <option value="" title="">60</option>
+                  <option value="15" title="">15</option>
+                  <option value="30" title="">30</option>
+                  <option value="50" title="">50</option>
+                  <option value="60" title="">60</option>
                 </select>
               </form>
             </div>
-            <!--
-                <div class="pagination">
-                  <ul>
-                    <li><a href="#" class="prevnext disablelink prev">previous</a></li>
-                    <li><a href="#" class="currentpage">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">6</a></li>
-                    <li>...</li>
-                    <li><a href="#">18</a></li>
-                    <li><a href="#" class="prevnext nxt">next</a></li>
-                  </ul>
-                </div>
-                -->
           </div>
         </div>
         <div class="TabbedPanelsContent">

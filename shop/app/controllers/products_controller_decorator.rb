@@ -1,4 +1,5 @@
 ProductsController.class_eval do
+  respond_to :html, :js
 
   # Show the product page
   #

@@ -1,6 +1,6 @@
 <%= render :partial => 'admin/shared/configuration_menu' %>
 <h1><%= t("spree_reviews.review_settings") %></h1>
-<% form_tag(admin_review_settings_path, :method => :put) do -%>
+<%= form_tag(admin_review_settings_path, :method => :put) do -%>
   <p>
     <label><%= t("spree_reviews.include_unapproved") %>:</label>
     <%= check_box_tag('preferences[include_unapproved_reviews]', "1", Spree::Reviews::Config[:include_unapproved_reviews]) %>

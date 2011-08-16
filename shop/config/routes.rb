@@ -32,6 +32,8 @@ Rails.application.routes.draw do
 
     root :to => "users#show"
 
+    resource :secrets
+
     resources :reviews do
       member do
         get :approve

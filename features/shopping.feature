@@ -1,4 +1,5 @@
 # language: en
+
 Feature: Shopping
 
   Background:

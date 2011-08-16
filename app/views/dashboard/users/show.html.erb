@@ -29,8 +29,8 @@
         <div class="pnl pnl2">
             <b>PRIMARY SHIPPING ADDRESS</b>
             <p>
-            <% if current_user.ship_address.present? %>
-              <% address = current_user.ship_addres %>
+            <% if !current_user.addresses.empty? %>
+              <% address = current_user.addresses.first %>
               <span>
                 <%= address.address1 %><br>
                 <%= address.address2 %><br>

@@ -9,6 +9,35 @@ Feature: Describe how work secret question
     Given I am on the new secret question page
     And I should see in "secret_question_secret_question_variant_id" all public questions
 
+  Scenario Outline: Check with empty field with regular question
+    Given I am on the new secret question dashboard page
+    And I select "<variant>" from "secret_question_secret_question_variant_id"
+    And I fill in "Answer" with "<answer>"
+    And press "Save"
+    And I should be on the <page_name>
+    And I should see "<should_see>"
+
+    Examples:
+      | variant                     | answer      | page_name                           | should_see              |
+      | What is your favorite town? | Kaliningrad | dashboard account fuck page         |                         |
+      |                             | Kaliningrad | edit secret question dashboard page | Please check a question |
+      | What is your favorite town? |             | edit secret question dashboard page | Please write you answer |
+
+  Scenario Outline: Check with empty field with own question    
+    Given I am on the new secret question dashboard page
+    Then I select "Write your question" from "secret_question_secret_question_variant_id"
+    And I fill in "Own Question" with "<question>"
+    And I fill in "Answer" with "<answer>"
+    And I press "Save"
+    Then I should be on the <page_name>
+    And I should see "<should_see>"
+
+    Examples:
+      | question          | answer         | page_name                           | should_see              |
+      | Its good quastion | this is answer | dashboard account fuck page         |                         |
+      |                   | this is answer | edit secret question dashboard page | Please check a question |
+      | Its good quastion |                | edit secret question dashboard page | Please write you answer |
+
   Scenario: Create a secret question with public variant
     And I follow "My Account"
     Then I should be on the "email@person.com" account page

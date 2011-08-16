@@ -8,10 +8,10 @@ LineItem.class_eval do
   }
 
   validate :quantity_product, :if => lambda{ |t| t.variant.present? }
-  after_save :division_order
+  after_save :load_sellers # refresh all sellers on order
 
   def quantity_product
-    if quantity.to_i <= 0
+    if quantity.to_i < 0
       errors[": \"#{variant.name}\""] ||= []
       errors[": \"#{variant.name}\""] << " quantity must be greater than 0"
     end
@@ -28,8 +28,8 @@ LineItem.class_eval do
     errors[:quantity].uniq!
   end
 
-  def division_order
-    order.division_on_seller_order!
+  def load_sellers
+    order.sellers = order.line_items.map {|v| v.variant.seller }.uniq
   end
 
 end

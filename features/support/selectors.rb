@@ -11,6 +11,9 @@ module HtmlSelectorsHelpers
       "[data-seller='#{User.find_by_email($1).id}']"
     when "block virtual cart"
       "#virtual-cart"
+    when "block normal cart"
+      "#normal-cart"
+
     when "the page"
       "html > body"
 

@@ -3,8 +3,7 @@ When /^(?:|I )fill (billing|shipping) address with correct data$/ do |address_ty
   address = if @me
     @me.send(str_addr)
   else
-    state = State.first
-    Factory(:address, :state => state)
+    Factory(:address, :state => Country.default.states.first)
   end
 
   When %{I select "United States" from "Country" within "fieldset##{address_type}"}

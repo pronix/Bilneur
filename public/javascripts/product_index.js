@@ -1,12 +1,4 @@
 $(document).ready(function(){
-  try {
-    $("#per_page_select").msDropDown({mainCSS:'dd2'});
-    //alert($.msDropDown.version);
-    //$.msDropDown.create("body select");
-    $("#ver").html($.msDropDown.version);
-    } catch(e) {
-      alert("Error: "+e.message);
-    }
 
   $(".radio").dgStyle();
   $(".checkbox").dgStyle();

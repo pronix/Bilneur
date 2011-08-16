@@ -5,7 +5,7 @@ CheckoutController.class_eval do
   protected
 
   def set_addresses
-    return unless params[:order] && params[:state] == "address"
+    return unless params[:order] && (params[:state] == "address" || params[:state] == "payment")
 
     if params[:order][:ship_address_id].to_i > 0
       params[:order].delete(:ship_address_attributes)

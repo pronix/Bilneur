@@ -19,6 +19,6 @@
       </div>
     <% end %>
     <div class="btm">
-      <%= will_paginate @reviews %>
+      <%= will_paginate @reviews, :previous_label => "previous", :next_label => "next" %>
     </div>
 </div>

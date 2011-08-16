@@ -37,23 +37,23 @@ CheckoutController.class_eval do
 
 
   def before_address
-    @order.bill_address ||= current_user.addresses.first.try(:clone) || Address.default
-    @order.ship_address ||= current_user.addresses.first.try(:clone) || Address.default
+    @order.bill_address ||= (current_user && current_user.addresses.first.try(:clone)) || Address.default
+    @order.ship_address ||= (current_user && current_user.addresses.first.try(:clone)) || Address.default
   end
 
   def before_delivery
     return if params[:order].present?
 
-    unless @order.children.blank?
-      @children_orders = [ ]
-      @order.children.each do |child|
-        @order.shipping_method ||= (child.rate_hash.first && child.rate_hash.first[:shipping_method])
-        child.shipping_method ||= (child.rate_hash.first && child.rate_hash.first[:shipping_method])
-        @children_orders << child
-      end
-    else
-      @order.shipping_method ||= (@order.rate_hash.first && @order.rate_hash.first[:shipping_method])
-    end
+    # unless @order.children.blank?
+    #   @children_orders = [ ]
+    #   @order.children.each do |child|
+    #     @order.shipping_method ||= (child.rate_hash.first && child.rate_hash.first[:shipping_method])
+    #     child.shipping_method ||= (child.rate_hash.first && child.rate_hash.first[:shipping_method])
+    #     @children_orders << child
+    #   end
+    # else
+    #   @order.shipping_method ||= (@order.rate_hash.first && @order.rate_hash.first[:shipping_method])
+    # end
 
   end
   def load_order

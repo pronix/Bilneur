@@ -22,6 +22,9 @@ Variant.class_eval do
 
   scope :best_variant, active.on_hand.order("variants.price ASC").limit(1)
 
+  scope :virtual, where(:virtual => true)
+  scope :realy,   where(:virtual => false)
+
   # validates
   #
   validates :condition, :inclusion => { :in => CONDITION },   :unless => lambda{|t| t.is_master? }
@@ -98,8 +101,21 @@ Variant.class_eval do
   end
   alias :has_stock? :in_stock?
 
+  def move_to_virtual_seller(new_seller, quantity)
+    new_variant = clone
+    new_variant.seller = new_seller
+    new_variant.count_on_hand = quantity
+    new_variant.virtual = true
+    image_clone = lambda {|i| j = i.clone; j.attachment = i.attachment.clone; j}
+    new_variant.images = self.images.map {|i| image_clone.call i }
+    new_variant.deleted_at = nil
+    new_variant.save!
+    new_variant
+  end
 
-
+  def display_condition
+    condition.to_s == "another" ? another_condition : condition
+  end
   # class methods
   #
   class << self

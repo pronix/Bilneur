@@ -1,5 +1,6 @@
 Calculator::FlexiRate.class_eval do
   def compute(object, *args)
+    @seller = self.calculable && self.calculable.seller
     sum = 0
     max = self.preferred_max_items
     items_count = object.line_items.map(&:quantity).sum

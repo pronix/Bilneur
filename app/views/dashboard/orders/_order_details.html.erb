@@ -11,7 +11,14 @@
 
     <% @order.line_items.group_by{|v| v.variant.seller }.each do |seller, items| %>
     <tr>
-      <td colspan='4'> <b>Seller:</b> <em><%= seller.full_name%></em></td>
+      <td colspan='2'> <b>Seller:</b> <em><%= seller.full_name%></em></td>
+      <td colspan='2'>
+        <% @ship = order.shipments.find_by_seller_id(seller.id) %>
+        <% if @ship %>
+          <b>State:</b> <em><%= t("shipment_states.#{@ship.state}")  %></em>
+          <%= link_to "Receive", receive_dashboard_order_path(@order, @ship) if @ship.can_receiving? %>
+        <% end %>
+      </td>
     </tr>
     <% items.each do |item| %>
     <tr>

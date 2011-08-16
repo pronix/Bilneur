@@ -62,7 +62,12 @@ Rails.application.routes.draw do
 
     end # end dashboard < quotes
 
-    resources :orders, :only => [:index, :show]
+    resources :orders, :only => [:index, :show] do
+
+      member do
+        match "receive/:shipment_id" => "orders#receive" , :as => :receive, :via => [:get, :post]
+      end
+    end
     resources :virtual_orders, :only => [:index, :show]
     resources :sales,  :only => [:index, :show] do
       member do

@@ -30,9 +30,7 @@
             <% order.shipments.each do |ship|  %>
             <li>
               <b>seller:</b> <%= ship.seller.full_name %>, <b>state:</b> <%= t("shipment_states.#{ship.state}") %>
-              <% if ship.can_receiving? %>
-              <%= link_to "Receive", "" %>
-              <% end %>
+              <%= link_to "Receive", receive_dashboard_order_path(order, ship) if ship.can_receiving? %>
             </li>
             <% end %>
           </ul>

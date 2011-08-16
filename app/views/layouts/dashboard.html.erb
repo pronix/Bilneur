@@ -46,5 +46,8 @@
     <%= render :partial => 'shared/footer'%>
   </div>
 
+  <%= javascript_include_tag("jquery.rating.js") %>
+  <%= javascript_tag("$(document).ready(function(){$('.stars').rating({required:true});});") %>
+
 </body>
 </html>

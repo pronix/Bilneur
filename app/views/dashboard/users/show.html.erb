@@ -50,12 +50,14 @@
         	<b>PAYMENT INFORMATION</b>
             <p>
             	<span><b>Credit or Debit Cards</b></span>
-                <span>Visa ending in 3630</span> <!-- FIXME -->                  
+                <% current_user.seller_payment_methods.each do |item| %>
+                  <span><%= item.name %> ending in 3630</span> <!-- FIXME expiration date -->            
+                <% end %>
             </p>
             <span>
-              <%= link_to "Add more addresses",  dashboard_addresses_path, :class => 'adAd' %> <!-- FIXME add right url -->
+              <%= link_to "Add more addresses",  new_dashboard_payment_method_url, :class => 'adAd' %> <!-- FIXME add right url -->
             </span>
-            <a class="iNfo" href="#"><img src="/images/forms/adit_info.png" alt=""></a>                                    
+              <%= link_to image_tag("/images/forms/adit_info.png"),  dashboard_payment_methods_path, :class => 'iNfo' %>
         </div>
     </div>
     <div class="btm"></div>

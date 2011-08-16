@@ -5,7 +5,7 @@ class Calculator::WeightRate < Calculator
   # 30 40 from 10 to 30 cost 40
   # FIXME add ability for to define more or less ranges
   # Save as yaml
-  preference :interval
+  preference :interval, :string
 
   def self.description
     I18n.t("weight_rate")

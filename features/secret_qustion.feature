@@ -62,6 +62,24 @@ Feature: Describe how work secret question
     And I press "Save"
     Then I should be on the dashboard account fuck page
     And I should see "Secret Question updated"
+@wip
+  Scenario: Return password by security question, regular question
+    Given I have regular question "What is your favorite sports team?" with answer "I dont know"
+    And I am logged out
+    Then I go to the sign in page
+    Then I follow "Forgot Password?"
+    And I should see "Reset password via secret question"
+    And I fill in "email" with my email
+    And I select "What is your favorite sports team?" from "secret_question_secret_question_variant_id"
+    And I fill in "Answer" with "I dont know"
+    Then I press "Reset password"
+    Then I should be on the reset password by question page
+    And I fill in "New Password" with "moloko"
+    And I fill in "Confirm New Password" with "moloko"
+    Then I press "Reset Password"
+    And I should be on the sign in page
+    And I should see "Password is reset, please log in"
+
     
   
 # @wip    

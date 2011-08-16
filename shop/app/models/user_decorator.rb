@@ -52,6 +52,17 @@ User.class_eval do
   #
   after_create :set_roles
 
+  # This is for secret question
+  def check_valid_user_with_regular_question(params)
+    # Check if user have secret question
+    return false if !has_secret?
+    # Check if user question is match
+    return false if secret_question.secret_question_variant_id != params[:secret_question][:secret_question_variant_id].to_i
+    # Check if user have answer with put anwer
+    return false if secret_question.answer != params[:secret_question][:answer]
+    # If all good return true
+    true
+  end
 
   def has_secret?
     true unless secret_question.nil?

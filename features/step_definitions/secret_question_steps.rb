@@ -42,3 +42,12 @@ end
 Given /^some test question$/ do
   SecretQuestionVariant.created(:variant => 'TEST VARIANT', :private => true)
 end
+
+Given /^I have regular question "(.+)" with answer "(.+)"$/ do |question, answer|
+  variant = SecretQuestionVariant.find_by_variant(question)
+  @user.create_secret_question(:answer => answer, :secret_question_variant => variant)
+end
+
+Then /^I fill in "(.+)" with my email$/ do |field|
+  fill_in(field, :with => @user.email)
+end

@@ -1,6 +1,6 @@
 <ul class="TabbedPanelsTabGroup">
-    <li class="TabbedPanelsTab" tabindex="0"><span>My Account</span></li>
-    <li class="TabbedPanelsTab" tabindex="0"><span>Inbox</span></li>
+    <li class="TabbedPanelsTab" tabindex="0"><span><%= link_to( t('user_menu.my_account'), dashboard_account_path) %></span></li>
+    <li class="TabbedPanelsTab" tabindex="0"><span><%= link_to t("inbox"), dashboard_messages_path %></span></li>
     <li class="TabbedPanelsTab" tabindex="0"><span>Purchases</span></li>
     <li class="TabbedPanelsTab" tabindex="0"><span>Selling</span></li>
     <li class="TabbedPanelsTab" tabindex="0"><span>Orders</span></li>

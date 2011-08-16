@@ -2,7 +2,7 @@
   $(document).ready(function(){
 
     // Remove an item from the cart by setting its quantity to zero and posting the update form
-    $('form#updatecart a.delete').show().live('click', function(e){
+    $('form#normal-updatecart a.delete').show().live('click', function(e){
       $(this).parent().find('input.txt').val(0);
       $(this).parents('form').submit();
       e.preventDefault();

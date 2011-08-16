@@ -50,7 +50,6 @@ Order.state_machines[:state] = StateMachine::Machine.new(Order, :initial => 'car
   # after_transition :to => 'complete', :do => :finalize!
   after_transition :to => 'complete', :do => :with_children_finalize!
   after_transition :to => 'delivery', :do => :create_tax_charge!
-  after_transition :to => 'delivery', :do => :division_on_seller_order!
   after_transition :to => 'payment',  :do => :create_shipment!
   after_transition :to => 'canceled', :do => :after_cancel
 
@@ -67,9 +66,16 @@ Order.class_eval do
   has_and_belongs_to_many :shipping_methods, :join_table => "orders_shipping_methods", :class_name => "ShippingMethod"
 
   before_validation :set_email
-
+  before_validation :fill_billing_address
   def set_email
     self.email ||= user.email if user.present?
+
+  end
+
+  def fill_billing_address
+    if !virtual? && ship_address.present? && bill_address.blank?
+      self.bill_address = ship_address.clone
+    end
   end
 
   def multi_sellers?
@@ -92,7 +98,11 @@ Order.class_eval do
   def has_available_shipment
     return unless :address == state_name.to_sym
     return unless ship_address && ship_address.valid?
-    errors.add(:base, :no_shipping_methods_available) if seller.present? && available_shipping_methods.empty?
+    sellers.each do |seller|
+      errors[": #{seller.full_name} - no available shipping method"] if available_shipping_methods_for_seller(seller).empty?
+      # errors.add(:base, :no_shipping_methods_available) if sellers.present? && available_shipping_methods.empty?
+    end
+
   end
 
   def available_shipping_methods(display_on = nil)
@@ -133,16 +143,20 @@ Order.class_eval do
   end
 
   def seller_shipping_method=(attrs)
-    self.shipping_methods.destroy_all
-    attrs.each do |seller_id, shipment_attrs|
-      user_seller = sellers.find(seller_id)
+    self.shipping_methods.clear
+    attrs.each do |ship_seller_id, shipment_attrs|
+      user_seller = sellers.find(ship_seller_id)
       self.shipping_methods << user_seller.shipping_methods.find(shipment_attrs[:shipping_method_id])
     end
 
   end
 
   def total(user_seller = nil)
-    read_attribute(:total)
+    if user_seller
+      item_total_for_seller(user_seller) + adjustments_total_for_seller(user_seller)
+    else
+      read_attribute(:total)
+    end
   end
 
 
@@ -155,6 +169,24 @@ Order.class_eval do
 
   def allowed_receive?
     complete? && payment_state == 'paid'
+  end
+
+  def item_total_for_seller(seller)
+    line_items.includes(:variant).map{|v| v.variant.seller == seller ? v.amount : 0 }.sum
+  end
+
+  def adjustments_total_for_seller(seller)
+    adjustments.map{|v| v.seller == seller ? v.amount : 0 }.sum
+  end
+
+  def received?
+    receive_at.present?
+  end
+
+  def sellers!
+    sellers = line_items.map {|v| v.variant.seller }.uniq
+    save
+    return sellers
   end
 
   class << self

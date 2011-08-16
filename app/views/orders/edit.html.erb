@@ -2,18 +2,17 @@
 <% stylesheet "slider/checkout_scrollable_wizard", "checkout" %>
 <%# javascript "slider/jquery_tools", "slider/scrollable" %>
 
-<h1>Checkout</h1>
 <div class="cnt">
   <div class="crtPnl">
     <div class="stpBStp" style="float:left;">
-           <div id="wizard">
-              <%= render 'order_status', :step => "cart" %>
-              <div class="items">
-                 <%= render 'cart_content' %>
-              </div><!--items-->
-            </div>
-          <!--wizard-->
+      <div id="wizard">
+        <%= render 'order_status', :step => "cart" %>
+        <div class="items">
+          <%= render 'cart_content' %>
+        </div><!--items-->
       </div>
+      <!--wizard-->
     </div>
   </div>
 </div>
+

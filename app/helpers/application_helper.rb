@@ -65,7 +65,7 @@ module ApplicationHelper
    # overwrite show_vat_text if show_price_inc_vat is false
    options[:show_vat_text] = Spree::Config[:show_price_inc_vat]
 
-   amount =  order.item_total + order2.item_total
+   amount = (order.try(:item_total)||0) + (order2.try(:item_total)||0)
    amount += Calculator::Vat.calculate_tax(order) if Spree::Config[:show_price_inc_vat]
    amount += Calculator::Vat.calculate_tax(order2) if Spree::Config[:show_price_inc_vat]
 

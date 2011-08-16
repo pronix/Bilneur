@@ -86,6 +86,7 @@ Feature: Manage reviews
     And I should see my name "Test Firstname T." with my review
     And I should see my photo as "new_seller@person.com"
 
+@wip
  Scenario: Review admin configuration
    Given I sign in as "admin@person.com/password"
    Then I go to the admin main page

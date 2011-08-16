@@ -4,46 +4,25 @@
             <a class="pLa" href="#">List View</a>
             <a href="#">List View</a>
       </div>
-      <div id="CollapsiblePanel1" class="CollapsiblePanel">
-         <div class="CollapsiblePanelTab" tabindex="0"><span>Category</span></div>
-         <div class="CollapsiblePanelContent">
-           <% (Taxon.category.try(:children)||[]).each do |item| %>
-             <div>
-               <div class="checkbox" id="category">
-                 <input type="checkbox" id="category" name="categories[]" value="<%= item.id %>">
-               </div>
-               <label class="techi" for="category"><%= item.name %></label>
-             </div>
-           <% end %>
-         </div>
-      </div>
 
-      <div id="CollapsiblePanel2" class="CollapsiblePanel">
-        <div class="CollapsiblePanelTab" tabindex="0"><span>Brand</span></div>
+<%= form_tag products_path, :remote => true, :method => 'get', :id => "products_search" do %>
+
+     <% get_taxonomies.each do |taxonomy| %>
+       <div id="CollapsiblePanel<%= taxonomy.id %>" class="CollapsiblePanel">
+        <div class="CollapsiblePanelTab" tabindex="0"><span><%= taxonomy.name.singularize %></span></div>
         <div class="CollapsiblePanelContent">
-        <% for brand in ["Electronics", "Home & Garden", "Aprarel", "Office Supplies"] do %>
-        <div>
-            <div class="checkbox" id="brand">
-               <input type="checkbox" id="brand" name="brands[]" value="<%= brand %>">
-            </div>
-            <label class="techi" for="brand"><%= brand %></label>
-        </div>
-        <% end %>
-        </div>
-      </div>
-      <div id="CollapsiblePanel3" class="CollapsiblePanel">
-        <div class="CollapsiblePanelTab" tabindex="0"><span>Model</span></div>
-        <div class="CollapsiblePanelContent">
-         <% for brand in ["Electronics", "Home & Garden", "Aprarel", "Office Supplies"] do %>
-         <div>
-             <div class="checkbox" id="brand">
-                <input type="checkbox" id="brand" name="brands[]" value="<%= brand %>">
+          <% taxonomy.root.children.each do |taxon| %>
+             <div>
+               <div class="checkbox" id="<%= taxonomy.name.singularize %>">
+                 <input type="checkbox" id="<%= taxonomy.name.singularize %>" name="categories[]" value="<%= taxon.id %>">
+               </div>
+               <label class="techi" for="<%= taxonomy.name.singularize %>"><%= taxon.name %></label>
              </div>
-             <label class="techi" for="brand"><%= brand %></label>
-         </div>
-         <% end %>
+          <% end %>
         </div>
-      </div>
+       </div>
+      <% end %>
+
       <div id="CollapsiblePanel4" class="CollapsiblePanel">
         <div class="CollapsiblePanelTab" tabindex="0"><span>Condition</span></div>
         <div class="CollapsiblePanelContent">
@@ -231,6 +210,8 @@
             </p>
         </div>
       </div>
+<% end %>
+
    </div>
 </div>
 

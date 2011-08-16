@@ -423,7 +423,7 @@ ul li { list-style:none;}
 	#pdSm .pdSrch { position:absolute; top:-1px;right:-261px; border-top:1px solid #b6b6b6; width:361px; height:47px; background:url('/images/bgs/prdct_srch.png') no-repeat}
 	.pdSrch form {width:100%;}
 		.pdSrch .txt {width:180px; height:20px; margin:12px 0 0 50px; font-weight:bold; color:#787878; border:0px;}
-		.pdSrch .sbmt {width:113px; height:30px; margin:6px 0 0 8px; font-weight:bold; color:#fff; border:0px; background:none;}
+		.pdSrch .sbmt {width:113px; height:30px; margin:6px 0 0 8px; cursor: pointer; font-weight:bold; color:#fff; border:0px; background:none;}
 	.strip { position:absolute; right:-26px; top:54px; z-index:1;}
 	.col2Invty {padding-top:40px;}
 		.col2Invty .pLa { margin:0 5px 0 15px; padding-right:7px; border-right:1px solid #595959;}

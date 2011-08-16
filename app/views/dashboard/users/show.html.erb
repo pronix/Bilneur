@@ -1,36 +1,101 @@
-<%= render :partial => 'dashboard/shared/profile_tabs', :locals => {:current => "Account Details"} %>
-
-<h1><%= t("my_account") %></h1>
-
-
-<table>
-  <tr>
-    <td><%= t("email") %>:</td>
-    <td>
-      <%= current_user.email %>
-    </td>
-  </tr>
-  <tr>
-    <td><%= t("name") %>:</td>
-    <td>
-      <%= current_user.full_name %>
-    </td>
-  </tr>
-  <tr>
-    <td><%= t("phone") %>:</td>
-    <td>
-      <%= current_user.phone %>
-    </td>
-  </tr>
-
-  <tr>
-    <td><%= t("photo") %>:</td>
-    <td>
-      <%= image_tag current_user.photo.url %>
-    </td>
-  </tr>
-
-</table>
-
-<p><%= link_to t('edit'), edit_dashboard_account_path %></p>
+<div class="prfl">
+	<div class="top"></div>
+	<div class="cntr">
+    	  <b>Innovity Store</b>
+          <i>
+            <%= image_tag current_user.photo.url(:for_review) %>
+          </i>
+          <a href="#"><img src="/images/forms/up_btn.png" alt=""></a>                                
+        </div>
+	<div class="btm"></div>
+        <a class="vsp" id="seller_profile_toggle" href="#"><img src="/images/forms/vsp_btn.png" alt=""></a>     <!-- FIXME what if not a seller? -->                       
+      </div>
+<div class="sptCnt">
+	<div class="top"></div>
+	<div class="cntr">
+    	<h2>Account Settings</h2>
+        <div class="pnl pnl1">
+        	<b>NAME, EMAIL &amp; PASSWORD</b>
+            <p>
+            	<span><%= current_user.full_name %></span>
+                <span>Password: ******</span>
+                <span><%= current_user.email %></span>
+                <% if current_user.phone.present? %>
+                  <span>Phone: <%= current_user.phone %></span>               
+                <% end %>
+            </p>
+            <%= link_to image_tag('/images/forms/adit_info.png'), edit_dashboard_account_path, :class => 'iNfo' %>
+          </div>
+        <div class="pnl pnl2">
+            <b>PRIMARY SHIPPING ADDRESS</b>
+            <p>
+            <% if !current_user.addresses.empty? %>
+              <% address = current_user.addresses.first %>
+              <span>
+                <%= address.address1 %><br>
+                <%= address.address2 %><br>
+                <%= address.city %>, <%= address.state.name %><br>
+                Phone: <%= address.phone %><br>
+                Postal code: <%= address.zipcode %><br>
+                <%= address.country.iso3 %>
+              </span>                                        
+            <% end %>
+            </p>
+            <span>
+              <%= link_to "Add more addresses",  new_dashboard_address_url, :class => 'adAd' %>
+            </span>
+              <%= link_to image_tag("/images/forms/adit_info.png"),  dashboard_addresses_path, :class => 'iNfo' %>
+        </div>
+        <div class="pnl pnl3">
+        	<b>PAYMENT INFORMATION</b>
+            <p>
+            	<span><b>Credit or Debit Cards</b></span>
+                <% current_user.seller_payment_methods.each do |item| %>
+                  <span><%= item.name %> ending in 3630</span> <!-- FIXME expiration date -->            
+                <% end %>
+            </p>
+            <span>
+              <%= link_to "Add more addresses",  new_dashboard_payment_method_url, :class => 'adAd' %> <!-- FIXME add right url -->
+            </span>
+              <%= link_to image_tag("/images/forms/adit_info.png"),  dashboard_payment_methods_path, :class => 'iNfo' %>
+        </div>
+    </div>
+    <div class="btm"></div>
+    <div id="seller_profile">
+      <div class="top"></div>
+      <div class="cntr">
+      	<h2>Seller Profile</h2>
+          <div class="pnl pnl1 pnlFix">
+          	<b>BUSINESS INFORMATION</b>
+              <p>
+              	<span><a href="#">LINK Innovity (Seller Name)</a></span><!-- FIXME --> 
+                <span><a href="#">LINK About You/ Your Business</a></span><!-- FIXME --> 
+                <span><a href="#">LINK Contact Info</a></span><!-- FIXME --> 
+                <span><a href="#">LINK Create FAQ's</a></span><!-- FIXME --> 
+              </p>
+          </div>
+          <div class="pnl pnl2 pnlFix">
+          	<b>POLICIES</b>
+              <p>
+              	<span><a href="#">LINK Shipping policy</a></span><!-- FIXME --> 
+                <span><a href="#">LINK Return policy</a></span><!-- FIXME --> 
+                <span>
+                    <%= link_to t("terms_and_conditions"), edit_dashboard_terms_path %>
+                </span>
+              </p>
+          </div>
+          <div class="pnl pnl3 pnlFix">
+          	<b>ADDITIONAL SETTINGS</b>
+              <p>
+                <span>
+                  <%= link_to t("shipping_methods"), dashboard_shipping_methods_path %>
+                </span>
+                <span><a href="#">LINK Manage Shipping rates</a></span><!-- FIXME --> 
+                <span><a href="#">LINK Manage Payout Information</a></span><!-- FIXME --> 
+              </p>
+          </div>
+      </div>
+      <div class="btm"></div>
+    </div>
+</div>
 

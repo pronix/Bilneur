@@ -1,5 +1,6 @@
 class Dashboard::MessagesController < Dashboard::ApplicationController
 
+  respond_to :html, :js
   def index
     @state = params[:state] ? params[:state].to_s.titleize  : "All Messages"
     @messages =

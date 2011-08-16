@@ -14,11 +14,11 @@
   %>
 <% end %>
 
-<%= stylesheet_link_tag 'admin/admin-reset', 'admin/grids', 'admin/admin-typography', 'admin/admin-forms', 'admin/admin-tables', 'admin/admin', 'admin/autocomplete', 'admin/token-input', :cache => 'admin/admin-all' %>
+<%= stylesheet_link_tag 'admin/grids', 'admin/admin-forms', 'admin/admin-tables', 'admin/autocomplete', 'admin/token-input', 'SpryTabbedPanels_slr_prfl','sellers-profile',  :cache => 'admin/admin-all' %>
 
-<%= javascript_include_tag 'jquery-1.4.2.min.js', 'rails', 'jquery-ui', 'jquery.suggest', 'jquery.tokeninput.js', 'jquery.delayedobserver.js', :cache => 'jquery-admin-plugins' %>
+<%= javascript_include_tag 'jquery-1.4.2.min.js', 'rails', 'jquery-ui', 'jquery.suggest', 'jquery.tokeninput.js', 'jquery.delayedobserver.js', 'jquery.dd.js', :cache => 'jquery-admin-plugins' %>
 <%= javascript_include_tag('jquery.template') unless controller.controller_name == "overview" %>
-<%= javascript_include_tag 'admin', 'nested-attribute', 'zone', 'calculator', 'gateway' %>
+<%= javascript_include_tag 'admin', 'slider/SpryTabbedPanels', 'nested-attribute', 'zone', 'calculator', 'gateway', 'jquery.custom_radio_checkbox.js' ,'dashboard' %>
 <%= javascript_tag "$ = jQuery;" %>
 <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 <%= javascript_include_tag 'jquery.alerts/jquery.alerts.js' %>

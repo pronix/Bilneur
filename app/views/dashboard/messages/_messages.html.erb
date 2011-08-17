@@ -1,5 +1,5 @@
 <% messages.each do |item| %>
-                                <div class="msg">
+                                <div class="msg <%= item.read? ? 'read' : 'unread' %>" >
                                     <div class="checkbox" style="background-position: 50% 0px; ">
                                     <%= check_box_tag "message_ids[]", item.id, false, :id => nil, :class => "multi_action" %>
 

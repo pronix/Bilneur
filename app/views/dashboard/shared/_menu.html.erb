@@ -6,7 +6,11 @@
   </li>
   <li class="TabbedPanelsTab" >
     <span class="TabbedPanelsTabSelected">
-      <%= link_to_unless_current t("inbox"), dashboard_messages_path, :class => "TabbedPanelsTab"%>
+      <% if request.request_uri !=~ /inbox/ %>
+        <%= t("inbox") %>
+      <% else %>
+        <%= link_to t("inbox"), dashboard_messages_path, :class => "TabbedPanelsTab" %>
+      <% end %>
     </span>
   </li>
   <li class="TabbedPanelsTab" ><span>Purchases</span></li><!-- FIXME -->

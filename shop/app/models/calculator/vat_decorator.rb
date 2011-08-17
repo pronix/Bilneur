@@ -2,7 +2,8 @@ Calculator::Vat.class_eval do
 
   # computes vat for line_items associated with order, and tax rate
   def compute(order, *args)
-    @seller = self.calculable && self.calculable.seller
+    @seller = self.calculable.seller if self.calculable && self.calculable.respond_to?(:seller)
+
     rate = self.calculable
     line_items =
       if @seller

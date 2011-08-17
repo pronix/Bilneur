@@ -8,9 +8,14 @@
     <%= link_to edit_dashboard_account_path do %>
     <img src="/images/forms/up_btn.png" alt="">
     <% end %>
+
   </div>
 	<div class="btm"></div>
-  <a class="vsp" id="seller_profile_toggle" href="#"><img src="/images/forms/vsp_btn.png" alt=""></a>
+  <%= link_to t("change_password"), account_change_password_path, :class => 'vsp' %>
+
+  <a class="vsp" id="seller_profile_toggle" href="#">
+    <img src="/images/forms/vsp_btn.png" alt="">
+  </a>
   <!-- FIXME what if not a seller? -->
 </div>
 
@@ -28,6 +33,7 @@
         <span>Phone: <%= current_user.phone %></span>
         <% end %>
       </p>
+
       <%= link_to image_tag('/images/forms/adit_info.png'), edit_dashboard_account_path, :class => 'iNfo' %>
     </div>
     <div class="pnl pnl2">

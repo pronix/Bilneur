@@ -1,78 +1,63 @@
-
-<%= content_for :head do %>
-  <%= javascript_include_tag  'checkout', '/states' %>
-<% end %>
-
-<style>
-div.inner input[type=text], div.inner select { width: 80%; }
-.hidden { display: none; }
-</style>
-
-<% address = Address.default %>
-
 <h4>Enter a new shipping address</h4>
-    <b>
-    	<i>Full Name:</i>
-        <input class="inpNam" type="text" name="" value="">
-    </b>
-    <b>
-        <i>Address Line 1:</i>
-        <% [[ "address1", "street_address" ]].each do |item|  %>
-            <%= f.text_field item.first, :class => 'inpNam'  %>
-        <% end %>
-    </b>
-
-    <b>
-        <i class="txtGry">Address Line 2:</i>
-        <%= f.text_field :address2, :class => 'inpNam'  %>
-    </b>
-
-
-    <!-- ------------------------------------- -->
-    <b>
-      <% have_states = (address.country||Country.default).states.present? %>
-
-      <i>City:</i>
-        <%= f.text_field :city, :class => 'fullwidth title txtCty'  %>
-
-      <i class="stat">State:</i>
-      <% state_elements = [
-         f.collection_select(:state_id, (address.country||Country.default).states,
-                            :id, :name,
-                            {:include_blank => true},
-                            {:class => have_states ? "required" : "hidden",
-                             :disabled => !have_states, :id => "websites2"}) +
-         f.text_field(:state_name,
-                            :class => !have_states ? "required" : "hidden",
-                            :disabled => have_states)
-          ].join.gsub('"', "'").gsub("\n", "")
-      %>
-      <div class="cmbo2">
-        <script type="text/javascript" language="javascript" charset="utf-8">
-        // <![CDATA[
-        document.write("<%= raw(state_elements) %>");
-        // ]]>
-        </script>
-      </div>
-    </b>
-
-
-    <!-- ------------------------------------- -->
-
-    <b>
-        <i>Country</i>
-        <div class="cmbo3">
-            <%= f.collection_select :country_id, Country.all, :id, :name, {}, {:id => "websites3"} %>
+<% ADDRESS_FIELDS.each do |field| %>
+    <% if field == "city"  %>
+      <b>
+        <i>City:</i>
+        <%= address_form.text_field(field.to_sym, :class => 'txtCty') %>
+    <% elsif field == "state" %>
+        <i class="stat">State:</i>
+        <div class="cmbo2">
+          <%= address_form.collection_select :state_id, State.order('name').all, :id, :name, {:include_blank => true}, {:class => 'required', :id => "websites2"} %>
         </div>
-    </b>
+      </b>
 
-    <b>
-    	<i>Phone:</i>
-        <%= f.text_field :phone, :class => 'txtPhn'  %>
-    </b>
+    <% elsif field == "country" %>
 
-    <b>
-        <%= submit_tag "", :controller => 'dashboard/addresses', :action => 'create', :class => "MdfSbmt" %>
-    </b>
+      <b>
+          <i><%= address_form.label :country_id, t(field, :scope => [:activerecord, :attributes, :address]) %></i>
+          <div class="cmbo3">
+              <%= address_form.collection_select :country_id, available_countries, :id, :name, {}, {:class => 'required', :id => "websites3"} %>
+          </div>
+      </b>
 
+    <% elsif field == "zipcode" %>
+                   
+    <% elsif field == "address1"%>
+      <b>
+      	<i>Address Line 1:</i>
+          <%= address_form.text_field(field.to_sym, :class => 'inpNam') %>
+      </b>
 
+    <% elsif field == "address2" || field == "" %>
+      <b>
+      	<i class="txtGry">Address Line 2:</i>
+          <%= address_form.text_field(field.to_sym, :class => 'inpNam') %>
+      </b>
+
+    <% elsif field == "lastname"%>
+      <b>
+      	<i>Full Name:</i>
+          <%= address_form.text_field(field.to_sym, :class => 'inpNam') %>
+      </b>
+
+    <% elsif field == "firstname"%>
+
+    <% elsif field == "phone"%>
+      <b>
+      	<i>Phone:</i>
+          <%= address_form.text_field(field.to_sym, :class => 'txtPhn') %>
+      </b>
+                   
+    <% else %>
+      <b>
+        <i><%= t(field) %></i>
+        <%= address_form.text_field(field.to_sym, :class => 'txtCty') %>
+      </b>
+    <% end %>
+<% end %>
+<% if Spree::Config["alternative_#{address_name}_phone"] %>
+  <%= address_field(address_form, :alternative_phone, address_name) %>
+<% end %>
+<b>
+    <input class="MdfSbmt" type="submit" name="" value="">
+</b>

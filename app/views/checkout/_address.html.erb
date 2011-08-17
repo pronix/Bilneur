@@ -1,5 +1,8 @@
 <% javascript "jquery.custom_radio_checkbox" %>
 <%= render '/shared/order_status', :step => "shipping" %>
+<% [ 'shipping'].each do |address_type|
+  next if address_type == 'billing' && Spree::Config[:disable_bill_address]
+  address_name = "#{address_type[0...4]}_address" %>
 <div class="page chkOut3">
 	<div class="shpng1">
     	<h3>Shipping Details</h3>
@@ -23,11 +26,15 @@
           </div>
 
 
+        <%= form.fields_for address_name do |address_form| %>
           <div class="option2">
-              <%= form_for(:address, :url => checkout_path) do |f| %>
-              <%= render :partial => "addresses", :locals => { :f => f } %>
-              <% end %>
+              <%= render :partial => 'addresses', :locals => {
+                :address_name => address_name,
+                :address_form => address_form,
+                :address => Address.default
+              } %>
           </div>
+        <% end %>
 
 
         <h3>Select Shipping options: Item 1 to 3</h3>
@@ -179,3 +186,4 @@
         <div class="cntnu cntnuFix"><a href="#"><img src="images/forms/chk_big_btn.png" alt=""></a></div>
     </div>
 </div>
+<% end %>

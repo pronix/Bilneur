@@ -1,6 +1,5 @@
 
-/* scrollable root element */
-#wizard{float:left;width:100%;height:1200px;margin:5px 0 0 0;font-size:12px;overflow:hidden;position:relative;}  
+#wizard{margin:5px 0 0 0;}  
 
 /* scrollable items */
 #wizard .items {width:20000em; clear:both; position:absolute;}

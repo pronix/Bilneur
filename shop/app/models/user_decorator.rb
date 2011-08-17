@@ -142,6 +142,9 @@ User.class_eval do
     updated_attribute(:verified, true)
   end
 
+  def available_shipping_methods?
+    shipping_methods.to_address.present?
+  end
 
   # class methods
   #

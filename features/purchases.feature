@@ -29,6 +29,7 @@ Feature: Purachases
       | email:seller1@person.com | UPS Ground2 |
       | email:seller3@person.com | UPS Ground3 |
 
+  @wip
   Scenario: Viewing purachases list
     Given the user "email@person.com" has the order with number "RT4578" and date "01/01/2010 00:00":
       | product                     | seller             | quantity | price |
@@ -41,4 +42,10 @@ Feature: Purachases
       | Death of a Hero [Paperback]\n            \nSeller: Seller3 \n            $60.00\n            \nOrder data: December 31, 2009 21:00\n            \nOrder number: RT4578\n            \nFavorite Seller Favorite Product | Qty purchases:3 | View Order Details\n            View Invoice\n            Add to Inventory\n            \n              Write a review\n            \n            Request a return |
 
 
-
+  Scenario: Check weight rate
+    Given the user "email@person.com" has the order with number "RT4578" and date "01/01/2010 00:00":
+      | product                     | seller             | quantity | price |
+      | The Godfather               | seller1@person.com |        2 |  12.0 |
+      | Death of a Hero [Paperback] | seller3@person.com |        3 |  20.0 |
+    When calculator weight_rate '[{"int":"10","cost":"20"},{"int":"20","cost":"40"}]'
+    Then I get shipping adjustment 40 for order "RT4578"

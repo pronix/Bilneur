@@ -133,7 +133,7 @@
 		.shpng1 h6 { width:630px; padding:4px 0 5px 38px; background:#b7b7b7;font-size:14px;}
 		
 		/* Radio */
-		.radio {height: 25px;width: 19px;clear:left;float:left;margin: 0 0 3px;padding: 0 0 0 26px;background:url('../scripts/custom-radio-checkbox/radio_.png') no-repeat;cursor: default;}
+		.radio {height: 25px;width: 19px;clear:left;float:left;margin: 0 0 3px;padding: 0 0 0 26px;background:url('/images/icons/radio_.png') no-repeat;cursor: default;}
 		/* End Radio */
 		
 		.radioPnl {width:636px; padding:5px 0 5px 32px;}
@@ -195,7 +195,7 @@
 		
 		/* Combo Option 1 */
 		.cmbo1 { position:relative; margin-left:-3px; padding-bottom:15px;}
-			.cmbo1 .dd2 {display: inline-block !important;float: left;font-family: Arial,Helvetica,sans-serif;font-size: 11px;height: 23px;margin-top: 10px;text-align: left;width: 168px !important;}
+			.cmbo1 .dd2 {display: inline-block !important;float: left;font-family: Arial,Helvetica,sans-serif;font-size: 11px;height: 23px;margin: 10px 0 0 0;text-align: left;width: 168px !important;}
 				.cmbo1 .dd2 .ddTitle {background: url("/images/forms/checkout_diifrnt_txt_bg.png") no-repeat scroll 0 0 transparent;cursor: default;height: 24px;overflow: hidden;padding-left: 10px;text-indent: 0;}
 					.cmbo1 .dd2 .ddTitle span.arrow {background:url("/images/forms/cmbo_2arw.png") no-repeat 5px 6px!important;cursor: pointer;display: inline-block;float: right;height: 27px;position:relative;right:-5px;top:-5px;width:24px;}
 					.cmbo1 .dd2 .ddTitle span.ddTitleText {color:#626262;font-size:11px;line-height:24px;overflow:hidden;text-indent:1px;}
@@ -221,7 +221,7 @@
 		
 		/* Combo Option 3 */
 		.cmbo3 {width:195px!important;position:relative;}
-			.cmbo3 .dd2 {display: inline-block !important;float: left;font-family: Arial,Helvetica,sans-serif;font-size: 11px;height: 23px;margin-top:0;text-align: left;width:195px !important;}
+			.cmbo3 .dd2 {display: inline-block !important;float: left;font-family: Arial,Helvetica,sans-serif;font-size: 11px;height: 23px;margin:0;text-align: left;width:195px !important;}
 				.cmbo3 .dd2 .ddTitle {background: url("/images/forms/checkout_phn_txt_bg.png") no-repeat scroll 0 0 transparent;cursor: default;height: 24px;overflow: hidden;padding-left: 10px;text-indent: 0;}
 					.cmbo3 .dd2 .ddTitle span.arrow {background:url("/images/forms/cmbo_2arw.png") no-repeat 5px 6px!important;cursor: pointer;display: inline-block;float: right;height: 27px;position:relative;right:-5px;top:-5px;width:24px;}
 					.cmbo3 .dd2 .ddTitle span.ddTitleText {color:#626262;font-size:11px;line-height:24px;overflow:hidden;text-indent:1px;}

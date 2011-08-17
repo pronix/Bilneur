@@ -53,6 +53,7 @@ en:
   ean: EAN
   as_seller: as seller
   user_menu:
+    stores: Stores
     quotes: Quotes
     my_account: My account
     products: Products

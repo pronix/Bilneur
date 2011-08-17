@@ -1,0 +1,21 @@
+<table class="index sortable">
+  <tr>
+    <th><%= t("ean") %></th>
+    <th><%= t("name") %></th>
+    <th><%= t("on_hand") %></th>
+    <th><%= t("price") %></th>
+    <th><%= t("order_number") %></th>
+    <th><%= t("dealer") %></th>
+  </tr>
+  <% @seller_stores.each do |item| %>
+  <tr>
+    <td><%= item.variant.ean %></td>
+    <td><%= item.variant.name %></td>
+    <td><%= item.quote.count_on_hand %></td>
+    <td><%= item.variant.price %></td>
+    <td><%= item.order.number %></td>
+    <td><%= item.dealer.full_name %></td>
+  </tr>
+  <% end %>
+</table>
+

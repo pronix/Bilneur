@@ -91,6 +91,7 @@ Rails.application.routes.draw do
         get :ship
       end
     end
+    resources :seller_inventories, :only => [:index, :show]
     resources :purchases, :only => [:index, :show]
 
     resources :properties

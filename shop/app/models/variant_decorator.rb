@@ -90,8 +90,8 @@ Variant.class_eval do
   end
 
   def recalculate_count_on_hand
-#    product.send(:recalculate_count_on_hand)
-#    product.save
+    product.send(:recalculate_count_on_hand)
+    product.save
   end
 
   def has_variants? # :nodoc

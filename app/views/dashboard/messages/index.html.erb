@@ -94,7 +94,7 @@
           $("#select_all_check_box").data('checked', true);
           $("#select_all_check_box > input").attr('checked', true);
         }
-        if ( $("input[type=checkbox]:checked").length == 1) {
+        if ( $("input[type=checkbox]:checked").length == 1 || !$(this).find('input').attr('checked') && $("#select_all_check_box > input").attr('checked') ) {
           $("#select_all_check_box").css('background-position', '50% 0');
           $("#select_all_check_box").data('checked', false);
           $("#select_all_check_box > input").attr('checked', false);

@@ -1,6 +1,6 @@
 <% messages.each do |item| %>
-                                <div class="msg<%= item.id %>">
-                                    <div class="checkbox" id="Astronomy" style="background-position: 50% 0px; ">
+                                <div class="msg">
+                                    <div class="checkbox" style="background-position: 50% 0px; ">
                                     <%= check_box_tag "message_ids[]", item.id, false, :id => nil, :class => "multi_action" %>
 
                                     </div>

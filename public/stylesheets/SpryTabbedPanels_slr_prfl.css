@@ -2,9 +2,9 @@
 
 .TabbedPanels {top:77px;left:98px;width: 100%; /* IE Hack to force proper layout when preceded by a paragraph. (hasLayout Bug)*/}
 .TabbedPanelsTabGroup {width:100%;margin-top: 0px;padding: 0px;}
-.TabbedPanelsTab {position: relative;float: left;width:132px;height:37px;font-size:14px;font-weight:bold;color:#fff;margin: 0px 1px 0px 0px;background:url('../images/forms/slr_prfl_tab_n.png') repeat-x;list-style: none;-moz-user-select: none;-khtml-user-select: none;cursor: pointer;}
-.TabbedPanelsTabHover {color:#fff;background:url('../images/forms/slr_prfl_tab_h.png') repeat-x;}
-.TabbedPanelsTabSelected {color:#fff;background:url('../images/forms/slr_prfl_tab_h.png') repeat-x;}
+.TabbedPanelsTab {position: relative;float: left;width:132px;height:37px;font-size:14px;font-weight:bold;color:#fff;margin: 0px 1px 0px 0px;background:url('/images/forms/slr_prfl_tab_n.png') repeat-x;list-style: none;-moz-user-select: none;-khtml-user-select: none;cursor: pointer;}
+.TabbedPanelsTabHover {color:#fff;background:url('/images/forms/slr_prfl_tab_h.png') repeat-x;}
+.TabbedPanelsTabSelected {color:#fff;background:url('/images/forms/slr_prfl_tab_h.png') repeat-x;}
 .TabbedPanelsTab a {text-decoration: none;}
 .TabbedPanelsContentGroup { clear:left;}
 .TabbedPanelsContent {padding: 4px;}

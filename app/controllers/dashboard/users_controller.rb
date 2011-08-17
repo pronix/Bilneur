@@ -1,6 +1,6 @@
 class Dashboard::UsersController < Dashboard::ApplicationController
   before_filter :change_user_2_saller, :only => :show
-  
+
   def show
 
   end

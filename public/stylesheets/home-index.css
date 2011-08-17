@@ -20,7 +20,7 @@
 	.cHome .c1A,.cHome .c1B,.cHome .c1C {width:207px; margin-left:70px; position:relative; height:225px;}
 	.cHome .c1 h2 { width:100%; font-size:16px; color:#4d4d4d; padding:20px 0 5px 0;}
 	.cHome .c1 p { width:100%; font-size:11px;line-height:15px; padding-bottom:30px;}
-	.cHome .c1 .btn { position:absolute; left:0; bottom:0; width:82px; height:27px; color:#fff; text-shadow:-1px -1px #63929b; padding:5px 0 0 12px; background:url('../../images/forms/rd_mre.png') no-repeat;}
+	.cHome .c1 .btn { position:absolute; left:0; bottom:0; width:82px; height:27px; color:#fff; text-shadow:-1px -1px #63929b; padding:5px 0 0 12px; background:url('/images/forms/rd_mre.png') no-repeat;}
 	.cHome .c1 .btn:hover { background:url('/images/forms/rd_mre_h.png') no-repeat;}
 
 .cHome .c1, .cHome .c1A, .cHome .c1B, .cHome .c1C, .cHome .c1 h2, .cHome .c1 p, .cHome .c1 .btn {float:left;}

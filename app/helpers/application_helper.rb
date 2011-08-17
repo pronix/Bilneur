@@ -33,10 +33,11 @@ module ApplicationHelper
 
   def t122_image(product, *options)
     options = options.first || {}
-    if product.images.empty?
-      image_tag "noimage/t122.jpg", options
+    product_images = product.is_a?(Variant) ? [ product.images, product.product.images ].flatten : product.images
+    if product_images.empty?
+      image_tag "noimage/small.jpg", options
     else
-      image = product.images.first
+      image = product_images.first
       options.reverse_merge! :alt => image.alt.blank? ? product.name : image.alt
       image_tag image.attachment.url(:t122), options
     end

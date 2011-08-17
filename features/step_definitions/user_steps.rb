@@ -61,7 +61,7 @@ Given /^seller "([^\"]*)" has the following virtual shipping methods exist:$/ do
 
     q = Factory(:calculator, {
                   :type => "Calculator::FlatRate",
-                  :calculable_id => (100 + 1),
+                  :calculable_id => Factory.next(:shipping_calculable_sequence),
                   :calculable_type => "ShippingMethod"})
     q.set_preference(:amount, 0.0)
 
@@ -74,3 +74,8 @@ Given /^seller "([^\"]*)" has the following virtual shipping methods exist:$/ do
 
   end
 end
+
+Then /^the page have the following purchases list:$/ do |table|
+  table.diff!(tableish('table:first tr', 'td,th'))
+end
+

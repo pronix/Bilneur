@@ -1,17 +1,17 @@
 <% order_type = order_form.object.virtual? ? 'virtual' : 'normal' %>
 <div class="altRow1">
-<h2 <%== ' class="str"' if order_form.object.virtual? %>>Items in <span> <%= 'Virtual' if order_form.object.virtual?  %> Cart</span></h2>
+  <h2 <%== ' class="str"' if order_form.object.virtual? %>>Items in <span> <%= 'Virtual' if order_form.object.virtual?  %> Cart</span></h2>
   <%= link_to t("update_qty"), '#', :class => "qty", :onclick => "$('form##{ order_type }-updatecart').submit(); return false;" %>
   <div class="cartNav">
     <%= hook :cart_items_headers do %>
-      <b>item</b>
-      <span>seller</span>
-      <span>price each</span>
-      <span class="ttl">&nbsp; qty</span>
-      <span class="ttl">total</span>
+    <b>item</b>
+    <span>seller</span>
+    <span>price each</span>
+    <span class="ttl">&nbsp; qty</span>
+    <span class="ttl">total</span>
     <% end %>
   </div>
 </div>
 <%= order_form.fields_for :line_items do |item_form| %>
-  <%= render 'line_item', :variant => item_form.object.variant, :line_item => item_form.object, :item_form => item_form %>
+<%= render 'line_item', :variant => item_form.object.variant, :line_item => item_form.object, :item_form => item_form %>
 <% end %>

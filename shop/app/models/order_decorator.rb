@@ -153,6 +153,11 @@ Order.class_eval do
 
   end
 
+  # full order weight
+  def weight
+    self.line_items.map {|x| x.variant.weight*x.quantity }.sum
+  end
+
   def total_for_seller(user_seller)
     item_total_for_seller(user_seller) + adjustments_total_for_seller(user_seller)
   end

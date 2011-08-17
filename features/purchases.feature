@@ -29,7 +29,6 @@ Feature: Purachases
       | email:seller1@person.com | UPS Ground2 |
       | email:seller3@person.com | UPS Ground3 |
 
-  @wip
   Scenario: Viewing purachases list
     Given the user "email@person.com" has the order with number "RT4578" and date "01/01/2010 00:00":
       | product                     | seller             | quantity | price |

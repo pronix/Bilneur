@@ -110,7 +110,7 @@ a:hover {opacity: 0.8;}
   .pagination ul{ margin:0;padding:0;text-align:left;font-size:12px;}
   .pagination li{ float:left;margin-right:5px; list-style-type:none;display:inline;padding-bottom:1px;}
   .pagination a, .pagination a:visited{ background:url('/images/layout/bg_page.jpg') 0 0 no-repeat;text-decoration:none;color:#777;}
-  .pagination a:hover, .pagination a:active{color:#fff;background:url('../../images/layout/bg_page_h.jpg') 0 0 no-repeat;}
+  .pagination a:hover, .pagination a:active{color:#fff;background:url('/images/layout/bg_page_h.jpg') 0 0 no-repeat;}
   .pagination > em { color:#fff !important;background:url('/images/layout/bg_page_h.jpg') 0 0 no-repeat;font-weight:bold;cursor:default;}
 
 

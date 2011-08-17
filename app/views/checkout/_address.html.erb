@@ -10,9 +10,20 @@
         	<h4>Option 1:</h4>
             <p>
             	<i><a href="#"><img src="images/forms/primery_add_btn.png" alt=""></a></i>
-            	<b>Rohit Balaji</b>
-                <span>187 Acalanes Dr<br>Apt # 17<br>Sunnyvale, CA - 94086<br>United States<br>Phone: 650-283-8515</span>
-                <a class="delE" href="#">Edit</a><a class="delE" href="#">Delete</a>
+                <b><%= current_user.full_name %></b>
+                <% if !current_user.addresses.empty? %>
+                  <% address = current_user.addresses.first %>
+                  <span>
+                    <%= address.address1 %><br>
+                    <%= address.address2 %><br>
+                    <%= address.city %>, <%= address.state.name %><br>
+                    Phone: <%= address.phone %><br>
+                  </span>                                        
+                  <%= link_to t(:edit), edit_dashboard_address_path(address), :class => "delE" %>
+                  <%= link_to t(:delete), dashboard_address_path(address), :method => :delete, :confirm => t(:are_you_sure), :class => "delE" %>
+                <% else %>
+                  You have no addresses
+                <% end %>
             </p>
             <div class="cmbo1">
             	<div class="ddOutOfVision" style="height:0px;overflow:hidden;position:absolute;" id="websites1_msddHolder"><select id="websites1" tabindex="1" name="">

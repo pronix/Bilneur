@@ -1,7 +1,7 @@
 <div class="vwer">
   <div class="top"><b>Users Viewing This Product</b></div>
-    <% for review in Review.last_reviews(3) do %>
-      <div class="cntr">
+    <% for review in @product.reviews.last_reviews(3) do %>
+      <div class="cntr <%== ' lst' if review == @product.reviews.last_reviews(3).last %>">
         <i><%= show_user_photo review.user %></i>
         <span><%= review.simple_username %></span>
         <p><a><%= truncate review.review, :length => 80 %></a></p>

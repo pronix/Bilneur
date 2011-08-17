@@ -10,5 +10,7 @@
   <%= render "view_all_panel", :product => @product %>
   <%= render "vtrade_panel", :product => @product %>
   <%= render "viewing_users_panel", :product => @product %>
-  <%= render "similar_prd_panel", :product => @product %>
+  <% if @product.similar_products.any? %>
+    <%= render "similar_prd_panel", :product => @product %>
+  <% end %>
 </div>

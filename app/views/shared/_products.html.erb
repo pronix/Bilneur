@@ -18,7 +18,7 @@
       <div class="smPd">
           <i class="imgP"><%= link_to small_image(product), product %></i>
             <div class="pdDtl">
-              <h4><%= product.name %></h4>
+              <h4><%= link_to product.name, product %></h4>
               <p><%= product.description %></p>
               <%= render :partial => "shared/rating_product", :object => product %>
             </div>

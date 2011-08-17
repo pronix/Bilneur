@@ -23,7 +23,6 @@
                               </select>
                     </div>
                             
-                                                </div>
 
               	  <div class="inbx">
                     	<div class="tp"></div>
@@ -31,8 +30,8 @@
                             <div class="sndrInfo">
                                 <div class="checkbox" id="select_all_check_box">
                                   <%= check_box_tag "", "",  false, :value => "all" %>
+                                  <label class="lbl">From</label>
                                 </div>
-                                <label class="lbl">From</label>
                                 <span>SUBJECT</span>
                                 <span class="lL">RECIEVED</span>
                             </div>
@@ -45,9 +44,10 @@
                   </div>
 
                     <%= will_paginate @messages %>
+                  </div>
+                <div class="btm"></div>
                 </div>
 <% end %>
-                <div class="btm"></div>
             </div>
   </div>
 </div>

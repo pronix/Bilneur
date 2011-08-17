@@ -14,7 +14,6 @@ gem 'sqlite3'
 
 gem 'exception_notification',   '~> 2.4.1'
 
-gem "silent-postgres", "~> 0.0.8"
 
 
 gem 'spree',                    '= 0.60.1'
@@ -38,6 +37,8 @@ gem 'spree',                    '= 0.60.1'
 
 # Use unicorn as the web server
  gem 'unicorn', :group => :development
+
+gem "silent-postgres", "~> 0.0.8", :group => :development
 
 # Some additional libraries
 # gem 'will_paginate', '~> 3.0'

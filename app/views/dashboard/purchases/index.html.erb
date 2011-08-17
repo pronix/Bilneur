@@ -11,7 +11,7 @@
             <li><%= number_to_currency item.amount %></li>
             <li><span>Order data:</span> <%= l order.completed_at, :format => "%B %d, %Y %H:%M" %></li>
             <li><span>Order number:</span> <%= order.number %></li>
-            <li><%= link_to "Favorite Seller", "" %> | <%= link_to "Favorite Product", "" %></li>
+            <li><%= link_to "Favorite Seller", "" %> <%= link_to "Favorite Product", "" %></li>
           </ul>
         </td>
         <td>

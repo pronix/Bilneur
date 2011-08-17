@@ -35,7 +35,7 @@ module ApplicationHelper
     options = options.first || {}
     product_images = product.is_a?(Variant) ? [ product.images, product.product.images ].flatten : product.images
     if product_images.empty?
-      image_tag "noimage/t122.jpg", options
+      image_tag "noimage/small.jpg", options
     else
       image = product_images.first
       options.reverse_merge! :alt => image.alt.blank? ? product.name : image.alt

@@ -74,3 +74,8 @@ Given /^seller "([^\"]*)" has the following virtual shipping methods exist:$/ do
 
   end
 end
+
+Then /^the page have the following purchases list:$/ do |table|
+  table.diff!(tableish('table:first tr', 'td,th'))
+end
+

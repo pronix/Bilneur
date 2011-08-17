@@ -35,6 +35,7 @@ gem 'spree',                    '= 0.60.1'
  gem 'shop',                    :require => 'shop', :path => 'shop'
 
 
+
 group :development do
   gem 'unicorn'
   gem "silent-postgres", "~> 0.0.8"

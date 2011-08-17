@@ -1,7 +1,42 @@
 (function($){
   $(document).ready(function(){
 
+    $(".radio").dgStyle();	
+    $(".checkbox").dgStyle();
     $('#checkout_form_address').validate();
+
+    try {
+    $("#websites1").msDropDown({mainCSS:'dd2'});
+    $("#ver").html($.msDropDown.version);
+    } catch(e) {
+    	alert("Error: "+e.message);
+    }
+    try {
+    $("#websites2").msDropDown({mainCSS:'dd2'});
+    $("#ver").html($.msDropDown.version);
+    } catch(e) {
+    	alert("Error: "+e.message);
+    }
+    try {
+    $("#websites3").msDropDown({mainCSS:'dd2'});
+    $("#ver").html($.msDropDown.version);
+    } catch(e) {
+    	alert("Error: "+e.message);
+    }
+    try {
+    $("#websites4").msDropDown({mainCSS:'dd2'});
+    $("#ver").html($.msDropDown.version);
+    } catch(e) {
+    	alert("Error: "+e.message);
+    }
+    try {
+    $("#websites20").msDropDown({mainCSS:'dd2'});
+    //alert($.msDropDown.version);
+    //$.msDropDown.create("body select");
+    $("#ver").html($.msDropDown.version);
+    } catch(e) {
+    	alert("Error: "+e.message);
+    }
 
     var get_states = function(region){
       var country  = $('#' + (region == 's' ? 'ship_address' : 'bill_address') + '_country' + ' select:only-child').val();

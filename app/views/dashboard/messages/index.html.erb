@@ -2,6 +2,8 @@
 <div id="TabbedPanels2" class="TabbedPanels">
 <%= render :partial => 'dashboard/shared/inbox_tabs', :locals => {:current => @state} %>
     <div class="TabbedPanelsContentGroup">
+
+<%= form_tag multi_dashboard_messages_path do %>
             <div class="sptCnt">
                 <div class="top"></div>
                 <div class="cntr">
@@ -12,49 +14,25 @@
                         <li class="nav4"><a href="#"></a></li>
                     </ul>
                     <div class="hct1">
-                            <div class="ddOutOfVision" style="height:0px;overflow:hidden;position:absolute;" id="websites21_msddHolder"><select id="websites21" tabindex="1" name="">
+                            <select id="websites21" tabindex="1" name="">
                                   <option value="" selected="selected" title="">All Messages</option>
                                   <option value="" title="">option 1</option>
                                   <option value="" title="">option 2</option>
                                   <option value="" title="">option 3</option>
                                   <option value="" title="">option 4</option>
                               </select>
-                            </div>
-                            
-                            <div id="websites21_msdd" class="dd2" style="width: 101px; ">
-                                <div id="websites21_title" class="ddTitle">
-                                  <span id="websites21_arrow" class="arrow"></span>
-                                  <span class="ddTitleText" id="websites21_titletext">
-                                    <span class="ddTitleText">All Messages</span>
-                                  </span>
-                                </div>
-                                <div id="websites21_child" class="ddChild" style="width: 99px; ">
-                                  <a href="javascript:void(0);" class="selected enabled" id="websites21_msa_0">
-                                    <span class="ddTitleText">All Messages</span>
-                                  </a>
-                                  <a href="javascript:void(0);" class="enabled" id="websites21_msa_1">
-                                    <span class="ddTitleText">option 1</span>
-                                  </a>
-                                  <a href="javascript:void(0);" class="enabled" id="websites21_msa_2">
-                                    <span class="ddTitleText">option 2</span>
-                                  </a>
-                                  <a href="javascript:void(0);" class="enabled" id="websites21_msa_3">
-                                    <span class="ddTitleText">option 3</span>
-                                  </a>
-                                  <a href="javascript:void(0);" class="enabled" id="websites21_msa_4">
-                                    <span class="ddTitleText">option 4</span>
-                                  </a>
-                                </div>
-                            </div>
                     </div>
-              		<div class="inbx">
+                            
+                                                </div>
+
+              	  <div class="inbx">
                     	<div class="tp"></div>
                     	<div class="cent">
                             <div class="sndrInfo">
-                                <div class="checkbox" id="Astronomy" style="background-position: 50% 0px; ">
-                                    <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                                    <label class="lbl">From</label>
+                                <div class="checkbox" id="select_all_check_box">
+                                  <%= check_box_tag "", "",  false, :value => "all" %>
                                 </div>
+                                <label class="lbl">From</label>
                                 <span>SUBJECT</span>
                                 <span class="lL">RECIEVED</span>
                             </div>
@@ -64,17 +42,17 @@
                             </div>
                         </div>
                     	<div class="bt"></div>
-                    </div>
+                  </div>
 
                     <%= will_paginate @messages %>
                 </div>
+<% end %>
                 <div class="btm"></div>
             </div>
   </div>
 </div>
 </div>
 
-<%= form_tag multi_dashboard_messages_path do %>
 <div class='toolbar'>
   <ul class='actions'>
     <li>
@@ -97,7 +75,6 @@
 
   <tr>
     <th>
-      <%= check_box_tag "", "",  false, :id => "select_all_check_box" %>
       From
     </th>
     <th>Subject</th>
@@ -106,18 +83,33 @@
   </tr>
 
 </table>
-<% end %>
 <div>
 </div>
 
 <script>
   $(function(){
-    $("#select_all_check_box").change(function(){
-     if ($(this).attr("checked")){
-       $(".multi_action").attr("checked", true)
-     } else {
-       $(".multi_action").attr("checked", false)
-     };
+    $("div.checkbox:not([id=select_all_check_box])").click(function() {
+        if ( $("input[type=checkbox]:not(:checked)").length == 1 ) {
+          $("#select_all_check_box").css('background-position', '50% -50px');
+          $("#select_all_check_box").data('checked', true);
+          $("#select_all_check_box > input").attr('checked', true);
+        }
+        if ( $("input[type=checkbox]:checked").length == 1) {
+          $("#select_all_check_box").css('background-position', '50% 0');
+          $("#select_all_check_box").data('checked', false);
+          $("#select_all_check_box > input").attr('checked', false);
+        }
+    });
+    $("#select_all_check_box").click(function(){
+      if ($(this).find('input').attr("checked")){
+       $('div.checkbox').css('background-position', '50% -50px');
+       $('div.checkbox').data('checked', true);
+       $(".multi_action").attr("checked", true);
+      } else {
+       $('div.checkbox').css('background-position', '50% 0');
+       $('div.checkbox').data('checked', false);
+       $(".multi_action").attr("checked", false);
+      };
     });
   });
 </script>

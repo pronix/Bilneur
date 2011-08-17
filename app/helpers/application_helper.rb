@@ -33,10 +33,11 @@ module ApplicationHelper
 
   def t122_image(product, *options)
     options = options.first || {}
-    if product.images.empty?
-      image_tag "noimage/t122.jpg", options
+    product_images = product.is_a?(Variant) ? [ product.images, product.product.images ].flatten : product.images
+    if product_images.empty?
+      image_tag "noimage/small.jpg", options
     else
-      image = product.images.first
+      image = product_images.first
       options.reverse_merge! :alt => image.alt.blank? ? product.name : image.alt
       image_tag image.attachment.url(:t122), options
     end
@@ -58,7 +59,19 @@ module ApplicationHelper
     content_tag(:ul, raw(crumbs.flatten.map{|li| li.mb_chars}.join))
   end
 
+  def grand_order_price(order, order2, options={})
+   options.assert_valid_keys(:format_as_currency, :show_vat_text, :show_price_inc_vat)
+   options.reverse_merge! :format_as_currency => true, :show_vat_text => true
 
+   # overwrite show_vat_text if show_price_inc_vat is false
+   options[:show_vat_text] = Spree::Config[:show_price_inc_vat]
+
+   amount = (order.try(:item_total)||0) + (order2.try(:item_total)||0)
+   amount += Calculator::Vat.calculate_tax(order) if Spree::Config[:show_price_inc_vat]
+   amount += Calculator::Vat.calculate_tax(order2) if Spree::Config[:show_price_inc_vat]
+
+   options.delete(:format_as_currency) ? number_to_currency(amount) : amount
+  end
 
 end
 

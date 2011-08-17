@@ -6,6 +6,14 @@ user_role:
   id: 2
   name: user
 
-user_role:
+seller_role:
   id: 3
   name: seller
+
+virtual_buyer_role:
+  id: 4
+  name: virtual_bayer
+
+virtual_seller_role:
+  id: 5
+  name: virtual_seller

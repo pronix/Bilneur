@@ -9,7 +9,7 @@
       rating: <%= rand(5) %>
       title: "more uses for this item"
       review: <%= Faker::Lorem.paragraph %>
-      approved: true
-      ip_address: 127.0.0.1
+      approved: <%= [true,false].shuffle.shift %>
+      ip_address: 127.0.<%= "#{rand(255)}.#{rand(255)}" %>
   <% end %>
 <% end %>

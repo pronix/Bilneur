@@ -5,7 +5,7 @@
 %>
 <% if products.empty? %>
   <%= t(:no_products_found) %>
-<% elsif params.key?(:keywords) %>
+<% elsif params.key?(:keywords) && params[:keywords].strip != '' %>
   <h3><%= t(:search_results, :keywords => h(params[:keywords])) %></h3>
 <% end %>
 
@@ -13,6 +13,8 @@
   <% products.each do |product| %>
   <% next unless product.best_variant  %>
   <% best_deal = product.best_variant %>
+  <% next unless best_deal.seller.available_shipping_methods?  %>
+
     <% if Spree::Config[:show_zero_stock_products] || product.has_stock? %>
     <div class="smPrdcts">
       <div class="smPd">
@@ -51,6 +53,6 @@
       params.delete(:taxon)
 %>
 <%= will_paginate(paginated_products,
-                    :previous_label => "&#171; #{t('previous')}",
-                    :next_label => "#{t('next')} &#187;") %>
+                    :previous_label => "#{t('previous')}",
+                    :next_label => "#{t('next')}") %>
 <% end %>

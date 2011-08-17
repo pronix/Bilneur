@@ -29,12 +29,12 @@
         <%- locals = {:shipping_method => shipping_method} %>
         <%= hook :admin_shipping_methods_index_rows, locals do %>
           <td><%= shipping_method.name %></td>
-          <td><%= shipping_method.zone.name %></td>
+          <td><%= shipping_method.zone.try(:name)  %></td>
           <td><%= shipping_method.calculator.description %></td>
         <% end %>
         <td width="140px">
           <%= link_to t("edit"), edit_dashboard_shipping_method_path(shipping_method) %> &nbsp;
-          <%= link_to t("delete"), dashboard_shipping_method_path(shipping_method), :method => :delete %>
+          <%= link_to t("delete"), dashboard_shipping_method_path(shipping_method), :method => :delete unless shipping_method.to_bilneur? || shipping_method.with_seller? %>
         </td>
       </tr>
     <% end %>

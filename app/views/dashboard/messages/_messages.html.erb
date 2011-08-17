@@ -1,0 +1,10 @@
+<% messages.each do |item| %>
+<div class="msg<%= item.id %>">
+  <div class="checkbox" id="Astronomy" style="background-position: 50% 0px; ">
+    <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy"> <!-- FIXME -->
+  </div>
+  <%= link_to item.sender.full_name, item.sender %>
+  <span><%= item.subject %></span>
+  <i><%= l item.created_at, :format => "%B %d, %Y" %></i>
+</div>
+<% end %>

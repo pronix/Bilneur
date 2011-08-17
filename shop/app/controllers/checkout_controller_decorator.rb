@@ -26,6 +26,19 @@ CheckoutController.class_eval do
 
 
   private
+  # Introduces a registration step whenever the +registration_step+ preference is true.
+
+  def check_registration
+    return unless Spree::Auth::Config[:registration_step]
+    return if current_user or current_order.email
+    store_location
+    if @order.virtual?
+      redirect_to virtual_checkout_registration_path(:virtual)
+    else
+      redirect_to checkout_registration_path()
+    end
+  end
+
 
   def after_complete
     if @order.virtual?
@@ -37,25 +50,14 @@ CheckoutController.class_eval do
 
 
   def before_address
-    @order.bill_address ||= current_user.addresses.first.try(:clone) || Address.default
-    @order.ship_address ||= current_user.addresses.first.try(:clone) || Address.default
+    @order.bill_address ||= (current_user && current_user.addresses.first.try(:clone)) || Address.default
+    @order.ship_address ||= (current_user && current_user.addresses.first.try(:clone)) || Address.default
   end
 
   def before_delivery
     return if params[:order].present?
-
-    unless @order.children.blank?
-      @children_orders = [ ]
-      @order.children.each do |child|
-        @order.shipping_method ||= (child.rate_hash.first && child.rate_hash.first[:shipping_method])
-        child.shipping_method ||= (child.rate_hash.first && child.rate_hash.first[:shipping_method])
-        @children_orders << child
-      end
-    else
-      @order.shipping_method ||= (@order.rate_hash.first && @order.rate_hash.first[:shipping_method])
-    end
-
   end
+
   def load_order
     @order = (params.has_key?(:order_type) && params[:order_type] == 'virtual') ? current_virtual_order.try(:order) : current_order
     redirect_to cart_path and return unless @order and @order.checkout_allowed?
@@ -70,7 +72,9 @@ CheckoutController.class_eval do
 
     state_callback(:before)
   end
+
   def type_order
     @order.virtual? ? :virtual : :normal
   end
+
 end

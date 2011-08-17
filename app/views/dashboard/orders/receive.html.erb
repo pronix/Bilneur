@@ -1,0 +1,24 @@
+<h1><%= @order.number %></h1>
+<div>
+  <%= render 'shared/error_messages', :target => @review %>
+<%= form_for :review, :url => receive_dashboard_order_path(@order, @shipment), :method => :post do |f| %>
+
+<p class="review_rating_field">
+    <%= f.label :rating %> <span class="required">*</span><br />
+    <%= render :partial => "reviews/stars", :locals => {:stars => @review.rating, :edit_enabled => true} %>
+</p>
+
+<p class="review_review_field">
+  <%= f.label :review %> <span class="required">*</span><br />
+  <%= f.text_area :review, :wrap => "virtual", :rows => "10", :cols => "50" %>
+</p>
+ <p class="form-buttons">
+   <%= button t("actions.receive") %>
+   <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_orders_path %>
+ </p>
+
+<% end %>
+
+
+
+</div>

@@ -24,18 +24,24 @@ Factory.define :seller_payment_method do |t|
   t.state "unverified"
 end
 
-# Factory.define :user do |u|
-#   u.login { Faker::Internet.user_name + Faker::Internet.user_name }
-#   u.email { Faker::Internet.email }
-#   u.password "123456"
-#   u.password_confirmation { |x| x.password }
-# end
+Factory.define :secret_question do |t|
+  t.user { |p| p.accociation(:user) }
+  t.variant { |p| p.association(:secret_question_variant)}
+  t.answer { Faker::Lorem.words.join(' ') }
+end
 
-# Factory.define :review do |r|
-#   # r.product_id 1
-#   # r.name 'My name is fido'
-#   # r.rating 3
-#   # r.title 'This is title'
-#   # r.review 'This is review'
-#   # r.ip_address '127.0.0.1'
-# end
+Factory.define :secret_question_variant do |t|
+  t.variant { Faker::Lorem.sentences(1) }
+  t.private false
+end
+
+Factory.define :review do |t|
+  t.product { |p| p.association(:product) }
+  t.name { Factory.next(:product_sequence) }
+  t.location "here"
+  t.rating "#{rand(5)}"
+  t.review { Faker::Lorem.paragraphs(1) }
+  t.approved false
+  t.user_id { |p| p.association(:user) }
+  t.ip_address "#{rand(255)}.#{rand(255)}.#{rand(255)}.#{rand(255)}"
+end

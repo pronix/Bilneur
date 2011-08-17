@@ -57,7 +57,6 @@ Then /^please define last Review by review "(.+)" as @review$/ do |review|
   @review = Review.find_by_review(review)
 end
 
-
 Then /^I should see that this review add and has status not approved$/ do
   @review.approved.should_not be_true
 end
@@ -86,7 +85,6 @@ Then /^I should see my name "(.+)" with my review$/ do |user_name|
   find_by_id("review_id_#{@review.id}").should have_content(user_name)
 end
 
-
 Then /^I should see my photo as "(.+)"$/ do |email|
   user = User.find_by_email(email)
   page.should have_xpath("//img[contains(@src, \"#{user.photo.url(:for_review)}\")]")
@@ -99,6 +97,83 @@ Then /^I should see lates review on last review block$/ do
   end
 end
 
+Then /^I should see all review setting options$/ do
+  ['Include Unapproved', 'Preview Size', 'Show Email', 'Require Login'].each do |setting|
+    find('#content').should have_content(setting)
+  end
+end
+
 Then /^test$/ do
-  puts Product.all.map{ |x| x.permalink}
+  puts Spree::Reviews::Config[:require_login]
+end
+
+Given /^the guest can not create a review$/ do
+  Spree::Reviews::Config.set(:require_login => true)
+end
+
+Given /^I have spree preference "(.+)" with "(.+)"$/ do |option, value|
+  Spree::Reviews::Config.set(option.to_sym => value)
+end
+
+Given /^I am signed and create review$/ do
+  Given %{I already sing as "new_seller@person.com/password"}
+  When %{I go to the "The Godfather" product page}
+  Then %{I follow "Rate This Product"}
+  And %{I rate this by "3"}
+  And %{I fill in "review_review" with "Simple Review"}
+  Then %{I press "Submit your review"}
+end
+
+Then /^I should see my fuck review$/ do
+  page.should have_content("Simple Review")
+end
+
+Given /^create sample paypal paymethod$/ do
+  Given %{I go to the dashboard payment_methods page}
+  And %{I follow "New Payment Method"}
+  And %{I select "Paypal" from "Type"}
+  And %{I fill in "Name" with "My paypal"}
+  And %{I press "Create"}
+  When %{I fill in "Login" with "test_paypal@tpay.com"}
+  And %{I fill in "Password" with "password"}
+  And %{I press "Update"}
+  Then %{I should see "Payment Method has been successfully updated!"}
+end
+
+Given /^I have "(\d+)" reviews for my product "(.+)"$/ do |count, product_name|
+  product = Product.find_by_name(product_name)
+  1.upto(count.to_i).each do ||
+      Factory(:review, { :product => product, :approved => false })
+  end
+end
+
+Then /^I should see all "(.+)" reviews$/ do |email|
+  Review.by_products_owner(User.find_by_email(email)).each do |review|
+    # It's simple way to know that this review in page )
+    page.should have_content(review.ip_address)
+  end
+end
+
+Given /^I have a unapproved review for "(.+)" and call it @review$/ do |product_name|
+  @review = Factory(:review, :product => Product.find_by_name(product_name), :approved => false)
+end
+
+Then /^I apprved @review by click "(.+)"$/ do |approved_link|
+  find_by_id("review_#{@review.id}").find_link(approved_link).click
+end
+
+Then /^I should not see @review on the product page$/ do
+  page.should_not have_content(@review.review)
+end
+
+Then /^I should see @review on the reviews dashboard page$/ do
+  page.should have_content(@review.ip_address)
+end
+
+Then /^I should see @review on the product page$/ do
+  page.should have_content(@review.review)
+end
+
+Then /^I should not see link "(.+)"$/ do |link_name|
+  page.should_not have_content(link_name)
 end

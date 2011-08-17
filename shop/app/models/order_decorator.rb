@@ -50,8 +50,7 @@ Order.state_machines[:state] = StateMachine::Machine.new(Order, :initial => 'car
   # after_transition :to => 'complete', :do => :finalize!
   after_transition :to => 'complete', :do => :with_children_finalize!
   after_transition :to => 'delivery', :do => :create_tax_charge!
-  after_transition :to => 'delivery', :do => :division_on_seller_order!
-  after_transition :to => 'payment',  :do => :with_children_create_shipment!
+  after_transition :to => 'payment',  :do => :create_shipment!
   after_transition :to => 'canceled', :do => :after_cancel
 
 
@@ -59,16 +58,41 @@ end
 
 
 Order.class_eval do
-  attr_accessible :children_orders
+  attr_accessible :seller_shipping_method
 
-  belongs_to :seller, :class_name => "User"
   belongs_to :parent, :class_name => "Order"
-  has_many   :children, :foreign_key => "parent_id", :class_name => "Order"
 
-  before_validation :set_email
+  has_and_belongs_to_many :sellers, :join_table => "orders_users", :class_name => "User"
+  has_and_belongs_to_many :shipping_methods, :join_table => "orders_shipping_methods", :class_name => "ShippingMethod"
 
+  # before_validation :set_email
+  before_validation :fill_billing_address
   def set_email
     self.email ||= user.email if user.present?
+
+  end
+
+  def fill_billing_address
+    if !virtual? && ship_address.present? && bill_address.blank?
+      default_bill_address = ship_address.clone
+      default_bill_address.user = nil
+      self.bill_address = default_bill_address
+    end
+  end
+
+  def multi_sellers?
+    sellers.count > 1
+  end
+
+  def rate_hash_for_seller(user_seller)
+    available_shipping_methods_for_seller(user_seller, :front_end).collect do |ship_method|
+      next unless cost = ship_method.calculator.compute(self)
+      { :id => ship_method.id,
+        :shipping_method => ship_method,
+        :name => ship_method.name,
+        :cost => cost
+      }
+    end.compact.sort_by{|r| r[:cost]}
   end
 
   # default_scope where(:virtual => false)
@@ -76,54 +100,57 @@ Order.class_eval do
   def has_available_shipment
     return unless :address == state_name.to_sym
     return unless ship_address && ship_address.valid?
-    errors.add(:base, :no_shipping_methods_available) if seller.present? && available_shipping_methods.empty?
+    sellers.each do |seller|
+      errors[": #{seller.full_name} - no available shipping method"] if available_shipping_methods_for_seller(seller).empty?
+      # errors.add(:base, :no_shipping_methods_available) if sellers.present? && available_shipping_methods.empty?
+    end
+
   end
 
   def available_shipping_methods(display_on = nil)
     return [ ] if !virtual? && !ship_address
-    return [ ] if seller.shipping_methods.blank?
+    ShippingMethod.all_available(self, display_on)
+  end
+
+
+  def available_shipping_methods_for_seller(user_seller, display_on = nil)
+    return [ ] if !virtual? && !ship_address
+    return [ ] if user_seller.shipping_methods.blank?
     if virtual?
-      seller.shipping_methods.virtual.select { |method| method.available_to_order?(self, display_on)}
+      user_seller.shipping_methods.virtual.select { |method| method.available_to_order?(self, display_on)}
     else
-      seller.shipping_methods.realy.select { |method| method.available_to_order?(self, display_on)}
+      user_seller.shipping_methods.realy.select { |method| method.available_to_order?(self, display_on)}
     end
   end
 
 
-  def with_children_create_shipment!
-    children.present? ? children.map( &:create_shipment!) : create_shipment!
+  def create_shipment!
+    shipping_methods.reload
+
+    shipping_methods.each do |item|
+     if (_shipment = shipments.find_by_shipping_method_id(item.id))
+       _shipment.update_attributes(:shipping_method => item, :seller => item.seller)
+     else
+       self.shipments << Shipment.create(:order => self, :seller => item.seller, :shipping_method => item,
+                                         :address => self.ship_address)
+     end
+    end
+
   end
 
   def with_children_finalize!
-    if children.present?
-      children.map{ |v|
-        v.payments = self.payments
-        v.save
-        v.next
-      }
-      children.map &:next
-    else
-      OrderMailer.confirm_email_to_seller(self).deliver
-      finalize!
-    end
+    set_user_as_virtual_buyer!
+    sellers.each { |v| OrderMailer.confirm_email_to_seller(self,v).deliver }
+    finalize!
   end
 
-  def children_orders=(attrs)
-    attrs.each do |k, v|
-      @_order = children.find(k)
-      @_order.update_attributes(v)
-      unless @_order.next
-        self.errors[:shippings] << @_order.errors
-      end
+  def seller_shipping_method=(attrs)
+    self.shipping_methods.clear
+    attrs.each do |ship_seller_id, shipment_attrs|
+      user_seller = sellers.find(ship_seller_id)
+      self.shipping_methods << user_seller.shipping_methods.find(shipment_attrs[:shipping_method_id])
     end
 
-  end
-  def total
-    if children.present?
-      children.sum(:total)
-    else
-      read_attribute(:total)
-    end
   end
 
   # full order weight
@@ -131,35 +158,38 @@ Order.class_eval do
     self.line_items.map {|x| x.variant.weight*x.quantity }.sum
   end
 
-  # Separating on sub orders for each seller
-  #
-  def division_on_seller_order!
-    children.destroy_all
-
-    if (@sellers = line_items.map {|v| v.variant.seller }.uniq ) && @sellers.count > 1
-      @sellers.each do |ss|
-        @clone_order        = self.clone
-        @clone_order.number = nil
-        @clone_order.seller = ss
-        @clone_order.parent = self
-        @clone_order.hidden = true
-
-        if @clone_order.save
-          self.line_items.each do |item|
-            @clone_order.line_items << item.clone if item.variant.seller == ss
-          end
-        end
-
-      end
-    else
-      self.seller = line_items.first.variant.seller
-      save!
-    end
-
+  def total_for_seller(user_seller)
+    item_total_for_seller(user_seller) + adjustments_total_for_seller(user_seller)
   end
+
+
+  # Add virtual_buyer if order is virtual
+  #
+  def set_user_as_virtual_buyer!
+    user.roles << Role.find_or_create("virtual_buyer") if virtual? && user.has_role?("virtual_buyer")
+  end
+
 
   def allowed_receive?
     complete? && payment_state == 'paid'
+  end
+
+  def item_total_for_seller(seller)
+    line_items.includes(:variant).map{|v| v.variant.seller == seller ? v.amount : 0 }.sum
+  end
+
+  def adjustments_total_for_seller(seller)
+    adjustments.map{|v| v.seller == seller ? v.amount : 0 }.sum
+  end
+
+  def received?
+    receive_at.present?
+  end
+
+  def sellers!
+    sellers = line_items.map {|v| v.variant.seller }.uniq
+    save
+    return sellers
   end
 
   class << self

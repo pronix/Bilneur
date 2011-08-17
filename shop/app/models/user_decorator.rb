@@ -17,22 +17,25 @@ User.class_eval do
   # associations
   #
   has_many :products, :foreign_key => :owner_id
+  has_many :seller_stores, :foreign_key => :seller_id
   has_many :quotes,   :class_name => "Variant", :foreign_key => :seller_id,
-           :conditions => [ "variants.is_master = #{connection.quoted_false}" ]
+                      :conditions => [ "variants.is_master = #{connection.quoted_false}" ]
   has_many :shipping_methods, :foreign_key => :seller_id
-
-  has_many :sales, :class_name => "Order", :foreign_key => :seller_id, :conditions => { :virtual => false}
-  has_many :virtual_sales, :class_name => "Order", :foreign_key => :seller_id, :conditions => { :virtual => true}
+  has_and_belongs_to_many :sales,         :join_table => "orders_users", :class_name => "Order",
+                                          :conditions => { :"orders.virtual" => false}
+  has_and_belongs_to_many :virtual_sales, :join_table => "orders_users", :class_name => "Order",
+                                          :conditions => { :"orders.virtual" => true}
 
   has_many :orders,  :conditions => { :virtual => false}
-  has_many :virtual_orders, :class_name => "Order", :conditions => { :virtual => true}
+  has_many :virtual_orders, :class_name => "VirtualOrder", :foreign_key => :user_id
 
   has_many :seller_payment_methods
 
   has_many :sent,  :order => "created_at", :class_name => "Message", :foreign_key => "sender_id"
   has_many :inbox, :order => "created_at", :class_name => "Message", :foreign_key => "recipient_id"
 
-
+  # Associate with SecretQuestion
+  has_one :secret_question
   # scopes
   #
 
@@ -51,25 +54,75 @@ User.class_eval do
   #
   after_create :set_roles
 
+  # This is for secret question
+  def check_valid_user_with_regular_question(params)
+    return false if !check_question_answer(params)
+    # Check if user question is match
+    return false if secret_question.secret_question_variant_id != params[:secret_question][:secret_question_variant_id].to_i
+    true
+  end
+
+  def check_valid_user_with_own_question(params)
+    return false if !check_question_answer(params)
+    # Check if user have secret question
+    return false if !SecretQuestionVariant.find_by_variant(params[:own_question])
+    true
+  end
+
+  def check_question_answer(params)
+    # Check if user have secret question
+    return false if !has_secret?
+    # Check if user have answer with put anwer
+    return false if secret_question.answer != params[:secret_question][:answer]
+    true
+  end
+
+  def has_secret?
+    true unless secret_question.nil?
+  end
 
   # Setting the roles on default
   #
   def set_roles
     roles << Role.find_or_create_by_name("user")
-    roles << Role.find_or_create_by_name("seller") if @registration_as_seller.to_i == 1
+    as_seller! if @registration_as_seller.to_i == 1
   end
 
   def set_seller_role!
-    roles << Role.find_or_create_by_name("seller")
-  end
-
-  def has_role?(role)
-    # If user has one or more this role, return true
-    true if roles.map { |x| x.name }.include?(role)
+    as_seller!
   end
 
   # instance methods
   #
+
+  def as_seller!
+    roles << Role.find_or_create_by_name("seller") unless has_role?("seller")
+    create_virtual_methods!
+  end
+
+  # Default create virtual shipping
+  #
+  def create_virtual_methods!
+
+    unless shipping_methods.to_bilneur.first
+      shipping_method = ShippingMethod.new(:calculator => Calculator::FlatRate.new,
+                                           :name => "Ship to Bilneur",
+                                           :seller_id => self.id,
+                                           :virtual => true,
+                                           :method_kind => ShippingMethod::METHOD_KIND_TO_BILNEUR)
+      shipping_method.save(:validate => false)
+    end
+
+    unless shipping_methods.with_seller.first
+      shipping_method = ShippingMethod.new(:calculator => Calculator::FlatRate.new,
+                                           :name => "Store with seller",
+                                           :seller_id => self.id,
+                                           :virtual => true,
+                                           :method_kind => ShippingMethod::METHOD_KIND_WITH_SELLER)
+      shipping_method.save(:validate => false)
+    end
+
+  end
 
   def messages
     Message.messages_for_user(self)
@@ -90,6 +143,9 @@ User.class_eval do
     updated_attribute(:verified, true)
   end
 
+  def available_shipping_methods?
+    shipping_methods.to_address.present?
+  end
 
   # class methods
   #

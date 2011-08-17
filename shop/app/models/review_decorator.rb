@@ -3,6 +3,8 @@ Review.class_eval do
 
   # Return last 3 review
   scope :last_reviews, lambda{ |count| approved.order("created_at DESC").first(count) }
+  # Return all reviews for seller by all products
+  scope :by_products_owner, lambda{ |user| where(:product_id => user.product_ids).order("created_at DESC") }
 
   # Return user name, if review was create as anonymous ve user name from Review
   # Else using firstname and lastname from User model with some fix

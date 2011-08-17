@@ -1,0 +1,2 @@
+$("#products_list").html("<%= escape_javascript(render "shared/products", :products => @products) %>");
+$(".smPrdcts .blogPg").html("<%= page_entries_info @products %>");

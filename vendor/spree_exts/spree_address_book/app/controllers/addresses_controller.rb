@@ -1,11 +1,12 @@
 class AddressesController < Spree::BaseController
+  helper CheckoutHelper
   rescue_from ActiveRecord::RecordNotFound, :with => :render_404
   load_and_authorize_resource
-  
+
   def edit
     session["user_return_to"] = request.env['HTTP_REFERER']
   end
-  
+
   def update
     if @address.editable?
       if @address.update_attributes(params[:address])

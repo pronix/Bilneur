@@ -18,15 +18,14 @@ User.class_eval do
   #
   has_many :products, :foreign_key => :owner_id
   has_many :quotes,   :class_name => "Variant", :foreign_key => :seller_id,
-           :conditions => [ "variants.is_master = #{connection.quoted_false}" ]
+                      :conditions => [ "variants.is_master = #{connection.quoted_false}" ]
   has_many :shipping_methods, :foreign_key => :seller_id
+  has_and_belongs_to_many :sales,         :join_table => "orders_users", :class_name => "Order",
+                                          :conditions => { :"orders.virtual" => false}
+  has_and_belongs_to_many :virtual_sales, :join_table => "orders_users", :class_name => "Order",
+                                          :conditions => { :"orders.virtual" => true}
 
-  has_and_belongs_to_many :sales, :join_table => "orders_users", :class_name => "Order", :conditions => { :"orders.virtual" => false}
-  has_and_belongs_to_many :virtual_sales, :join_table => "orders_users", :class_name => "Order", :conditions => { :"orders.virtual" => true}
-  # has_many :sales, :class_name => "Order", :foreign_key => :seller_id, :conditions => { :virtual => false}
   has_many :orders,  :conditions => { :virtual => false}
-
-  # has_many :virtual_sales, :class_name => "VirtualOrder", :foreign_key => :seller_id
   has_many :virtual_orders, :class_name => "VirtualOrder", :foreign_key => :user_id
 
   has_many :seller_payment_methods
@@ -143,6 +142,9 @@ User.class_eval do
     updated_attribute(:verified, true)
   end
 
+  def available_shipping_methods?
+    shipping_methods.to_address.present?
+  end
 
   # class methods
   #

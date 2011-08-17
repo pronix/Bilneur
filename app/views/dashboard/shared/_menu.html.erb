@@ -11,32 +11,24 @@
     </span>
   </li>
 
-  <li class="TabbedPanelsTab" ><span>
-      <%= link_to "Purchases", "" %>
-  </span></li><!-- FIXME -->
   <li class="TabbedPanelsTab" >
-    <span>
-      <%= link_to "Selling", dashboard_sales_path %>
-    </span>
-  </li><!-- FIXME -->
+    <span><%= link_to t('user_menu.purchases'), dashboard_purchases_path %></span>
+  </li>
   <li class="TabbedPanelsTab" >
-    <span>
-      <%= link_to "Orders", dashboard_orders_path %>
-    </span>
-  </li><!-- FIXME -->
+    <span><%= link_to t('user_menu.selling'), dashboard_sales_path %></span>
+  </li>
   <li class="TabbedPanelsTab" >
-    <span>
-      <%= link_to "Inventory", dashboard_quotes_path %>
-    </span>
-  </li><!-- FIXME -->
+    <span><%= link_to t('user_menu.orders'), dashboard_orders_path %></span>
+  </li>
+  <li class="TabbedPanelsTab" >
+    <span><%= link_to t('user_menu.inventory'), dashboard_quotes_path %></span>
+  </li>
+  <li class="TabbedPanelsTab" >
+    <span><%= link_to t('user_menu.products'), dashboard_products_path %></span>
+  </li>
 
   <li class="TabbedPanelsTab" >
-    <span>
-      <%= link_to "Products", dashboard_products_path %>
-    </span>
+    <span><%= link_to link_to t('user_menu.feedback'), "" %></span>
   </li><!-- FIXME -->
-
-
-  <li class="TabbedPanelsTab" ><span>Feedback</span></li><!-- FIXME -->
 
 </ul>

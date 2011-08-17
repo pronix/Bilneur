@@ -7,6 +7,7 @@ module SpreeSite
         preference :site_url,                 :string,  :default => "bilneur.adenin.ru"
         preference :allow_guest_checkout,     :boolean, :default => false
         preference :allow_ssl_in_production,  :boolean, :default => false
+        preference :print_invoice_logo_path,  :string,  :default => "public/images/admin/bg/spree_50.png"
 
       end if ::Product.table_exists?
 

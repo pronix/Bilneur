@@ -1,3 +1,4 @@
+@wip
 Feature: Describe how work secret question
 
   Background:
@@ -23,7 +24,7 @@ Feature: Describe how work secret question
       |                             | Kaliningrad | edit secret question dashboard page | Please check a question |
       | What is your favorite town? |             | edit secret question dashboard page | Please write you answer |
 
-  Scenario Outline: Check with empty field with own question    
+  Scenario Outline: Check with empty field with own question
     Given I am on the new secret question dashboard page
     Then I select "Write your question" from "secret_question_secret_question_variant_id"
     And I fill in "Own Question" with "<question>"
@@ -172,11 +173,11 @@ Feature: Describe how work secret question
 
 
 
-# @wip    
+# @wip
 #   Scenario: Create secret question with invalid params
 #     Given I am on the new secret question page
 #     Then I select "What is your favorite town?" from "secret_question_secret_question_variant_id"
 #     And I fill in "Answer" with ""
 #     Then I should see "Field can not be blank"
 #     Then I should be on the new secret question page
-    
+

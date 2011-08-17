@@ -14,10 +14,12 @@ gem 'sqlite3'
 
 gem 'exception_notification',   '~> 2.4.1'
 
-gem "silent-postgres", "~> 0.0.8", :group => :development
-
-
 gem 'spree',                    '= 0.60.1'
+
+# Deploy with Capistrano
+  gem 'capistrano'
+  gem 'capistrano-ext'
+
 
 
 # Spree extensons
@@ -28,19 +30,15 @@ gem 'spree',                    '= 0.60.1'
  gem 'spree_reviews',            :git => 'git://github.com/romul/spree-reviews.git'
  gem 'spree_social',             :path => 'vendor/spree_exts/spree_social'
  gem 'spree_address_book',       :path => 'vendor/spree_exts/spree_address_book'
+ gem 'spree_print_invoice',      :path => 'vendor/spree_exts/spree-print-invoice'
 
  gem 'shop',                    :require => 'shop', :path => 'shop'
 
-# Deploy with Capistrano
-  gem 'capistrano'
-  gem 'capistrano-ext'
 
-
-# Use unicorn as the web server
- gem 'unicorn', :group => :development
-
-# Some additional libraries
-# gem 'will_paginate', '~> 3.0'
+group :development do
+  gem 'unicorn'
+  gem "silent-postgres", "~> 0.0.8"
+end
 
 group :test, :cucumber do
 

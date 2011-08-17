@@ -30,13 +30,13 @@ class Calculator::WeightRate < Calculator
     # sort by inerval from smalles to biggest
     arr = arr.to_enum.sort_by {|x| x['int']}
     arr.each do |h|
-      if h['int'] < weight
-        cost = h['cost']
+      if  weight.to_f < h['int'].to_f
+        cost = h['cost'].to_f
         break
       end
     end
     # if not find range - maximum cost
-    cost = arr.map {|x| x['cost']}.max unless cost
+    cost = arr.map {|x| x['cost']}.max.to_f unless cost
     cost
   end
 end

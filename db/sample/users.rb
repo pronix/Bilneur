@@ -57,4 +57,13 @@ create_admin_user if User.where("roles.name" => 'admin').includes(:roles).empty?
 
 User.where("email like :email", :email => "seller%").each do  |item|
   item.roles << Role.find_or_create_by_name(:seller)
+  item.shipping_methods.create!({
+                                 :calculator => Calculator::FlatRate.new,
+                                 :name => "UPS GROUP",
+                                 :virtual => false,
+                                 :method_kind => ShippingMethod::METHOD_KIND_TO_ADDRESS,
+                                 :zone => Zone.first
+
+                               })
 end
+

@@ -1,3 +1,5 @@
+<!-- Used in checkout/ and orders/, so in shared it's placed -->
+<div id="wizard">
 <ul id="status">
   <li class="fst <%= (step == "cart")?"active" : ""%>"><em></em><a><span>1</span> <i>YOUR CART</i><small>View &amp; edit your cart</small></a></li>
   <li class="<%= (step == "login")?"active" : "" %>"><a><span>2</span> <i>Login</i><small>Login or Sign up</small></a></li>
@@ -5,3 +7,4 @@
   <li class="<%= (step == "billing")?"active" : "" %>"><a><span>4</span> <i>Billing</i><small>Select payment options</small></a></li>
   <li class="last <%= (step == "done")?"active" : "" %>"><a><span>5</span><i>you're done</i><small>View order/ Virtual Store</small></a><em></em></li>
 </ul>
+</div>

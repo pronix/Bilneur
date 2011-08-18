@@ -2,7 +2,7 @@
 	<h2>Feedback &amp; Reviews</h2>
     <div class="pPgCmbo">
     	<div class="cmbo7">
-            <div class="ddOutOfVision" style="height:0px;overflow:hidden;position:absolute;" id="websites1_msddHolder"><select id="websites1" tabindex="1" name="">
+            <div class="ddOutOfVision"><select id="websites1" tabindex="1" name="">
                 <option value="" selected="selected" title="">5</option>
                 <option value="" title="">1</option>
                 <option value="" title="">2</option>
@@ -14,8 +14,11 @@
     <div class="prfl">
         <div class="top"></div>
         <div class="cntr">
-            <b class="gry">Chery! C</b>
-            <i><img src="images/img/spt_img.jpg" alt=""></i>
+          <b class="gry">
+            <%= current_user.full_name %></b>
+            <i>
+              <%= image_tag current_user.photo.url(:for_review) %>            
+            </i>
             <a href="#"><img src="images/forms/upld_ph_lgo.png" alt=""></a>
         </div>
         <div class="btm"></div>
@@ -39,13 +42,6 @@
           </ul>
             <div class="TabbedPanelsContentGroup">
               <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block; ">
-                <div class="fdBack">
-                	<i class="rtr"><img src="images/img/rater_img1.png" alt=""><span>Cheryl C</span></i>
-                    <p>e vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur
-a consequuntur magni dolores eos</p>
-    								<div class="smlRtng"><div id="number1" class="nmbrRate" style="width: 100px; cursor: pointer; "><img id="number1-1" src="assets/scripts/star_rating_small/img/star-off.png" alt="1" title="bad" class="number1">&nbsp;<img id="number1-2" src="assets/scripts/star_rating_small/img/star-off.png" alt="2" title="poor" class="number1">&nbsp;<img id="number1-3" src="assets/scripts/star_rating_small/img/star-off.png" alt="3" title="regular" class="number1">&nbsp;<img id="number1-4" src="assets/scripts/star_rating_small/img/star-off.png" alt="4" title="good" class="number1">&nbsp;<img id="number1-5" src="assets/scripts/star_rating_small/img/star-off.png" alt="5" title="gorgeous" class="number1"><input id="number1-score" type="hidden" name="entity.score"></div></div>
-                    <a class="itmN" href="#"><b>Item</b># 31245678</a>
-                </div>
                 <div class="fdBack">
                 	<i class="rtr"><img src="images/img/rater_img1.png" alt=""><span>Cheryl C</span></i>
                     <p>e vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur

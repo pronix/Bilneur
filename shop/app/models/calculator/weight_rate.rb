@@ -24,7 +24,8 @@ class Calculator::WeightRate < Calculator
   # 2. find interval
   # 3. return shipping cost
   def compute(object)
-    weight = object.weight
+    @seller = self.calculable.seller if self.calculable && self.calculable.respond_to?(:seller)
+    weight = object.weight(@seller)
     # find weight range
     arr = JSON.parse(preferred_interval)
     # sort by inerval from smalles to biggest

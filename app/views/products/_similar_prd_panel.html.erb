@@ -1,9 +1,9 @@
 <div class="vwer smlr">
   <div class="top"><b><%= t("similar_products") %></b></div>
-  <% @product.similar_products.each do |product| %>
+  <% @product.similar_products.each_with_index do |product, index| %>
   <% @best_similar_variant = product.best_variant %>
   <% next unless @best_similar_variant %>
-  <div class="cntr">
+  <div class="cntr <%== ' lst' if @product.similar_products.count == index+1 %>">
     <%= link_to product_path(product) do %>
 
     <i><%= mini_image(@best_similar_variant) %></i>

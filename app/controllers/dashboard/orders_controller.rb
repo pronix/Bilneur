@@ -1,5 +1,7 @@
 class Dashboard::OrdersController < Dashboard::ApplicationController
 
+  include ProductHelper
+
   def index
     @orders = current_user.orders.complete
   end

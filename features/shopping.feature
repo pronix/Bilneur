@@ -1,5 +1,3 @@
-# language: en
-
 Feature: Shopping
 
   Background:
@@ -30,7 +28,7 @@ Feature: Shopping
       | email:seller1@person.com | UPS Ground2 |
       | email:seller3@person.com | UPS Ground3 |
 
-  @javascript
+@javascript
   Scenario: Adding quote to cart and checkout(only one seller)
     When I sign in as "email@person.com/password"
     And I go to the "The Godfather" product page
@@ -63,8 +61,7 @@ Feature: Shopping
       | The Godfather               | new       |             2 |
       | Death of a Hero [Paperback] | new       |             1 |
 
-
-  @javascript
+@javascript
   Scenario: Adding quote to cart and checkout(with two seller)
     When I sign in as "email@person.com/password"
     And I go to the "The Godfather" product page
@@ -103,4 +100,5 @@ Feature: Shopping
       | product_name                | condition | count_on_hand |
       | The Godfather               | new       |             6 |
       | Death of a Hero [Paperback] | new       |             4 |
-
+    Then sleep "3000"
+      

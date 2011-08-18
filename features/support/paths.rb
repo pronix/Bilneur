@@ -73,6 +73,8 @@ module NavigationHelpers
       edit_dashboard_secrets_path
     when /the orders dashboard page/
       dashboard_orders_path
+    when /the dashboard seles page/
+      dashboard_sales_path
     when /^the home\s?page$/
       '/'
 

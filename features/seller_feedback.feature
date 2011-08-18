@@ -43,6 +43,18 @@ Feature: Describe buyer feedback to seller
     And I should see my rating for "seller1@person.com"
     And I should see "seller1@person.com" fullname
 
+  Scenario: Dont show Buyer review if seller dont have review
+    Given I sign in as "seller1@person.com/password1"
+    Then I go to the dashboard seles page
+    And I should not see "Buyer Review"
+
+  Scenario: Show feedback for sellers
+    Given I sign in as "seller1@person.com/password1"
+    Given my products bought "3" users with create some review
+    Then I go to the dashboard seles page
+    And I should see "Buyer Review"
+    And I should see "3" orders with reviews
+
   # Background:
   #   Given I have an admin account of "admin@person.com/password"
   #   And I am signed up as "email@person.com/password"

@@ -3,6 +3,8 @@ unless Factory.factories.keys.include?(:user)
     f.email { Faker::Internet.email }
     f.password "spree123"
     f.password_confirmation "spree123"
+    f.firstname { Faker::Name.first_name }
+    f.lastname { Faker::Name.last_name }
   end
 end
 

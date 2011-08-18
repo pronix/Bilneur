@@ -67,6 +67,25 @@ Then /^I should see my order$/ do
   @user.orders.each { |order| page.should have_content(order.number)}
 end
 
+Given /^my products bought "(\d+)" users with create some review$/ do |count|
+  count.to_i.times do
+    user = Factory(:user)
+    address = Factory(:address)
+    variant = Variant.where(:owner_id => @user.id).last
+    order = Factory(:order, :user => user, :bill_address => address, :ship_address => address)
+    order.line_items << Factory(:line_item, :variant => variant, :order => order)
+    4.times { order.send('next') }
+    SellerReview.create(:seller => @user, :buyer => user, :order => order, :review => Faker::Lorem.sentences(1), :rating => rand(5))
+  end
+end
+
+Then /^I should see "(\d+)" orders with reviews$/ do |order_count|
+  SellerReview.where(:seller_id => @user).each do |review|
+    page.should have_content(review.buyer.full_name)
+  end
+end
+
+
 Given /^I review seller "(.+)" with my order, review "(.+)", rating "(\d+)"$/ do |seller, review, rating|
   SellerReview.create(:seller => User.find_by_email(seller), :buyer => @user, :order => @order, :review => review, :rating => rating )
 end

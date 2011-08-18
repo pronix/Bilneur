@@ -39,6 +39,7 @@ User.class_eval do
 
   # Return all seller reviews by user
   has_many :seller_reviews, :foreign_key => 'buyer_id'
+  has_many :buyer_reviews, :foreign_key => 'seller_id', :class_name => "SellerReview"
 
   # scopes
   #
@@ -60,6 +61,10 @@ User.class_eval do
 
   def has_seller_review?
     true if !seller_reviews.blank?
+  end
+
+  def has_buyer_review?
+    true if !buyer_reviews.blank?
   end
 
   # This is for secret question

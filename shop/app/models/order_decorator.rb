@@ -72,7 +72,6 @@ Order.class_eval do
 
   def set_email
     self.email ||= user.email if user.present?
-
   end
 
   def fill_billing_address

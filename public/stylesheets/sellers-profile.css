@@ -191,3 +191,49 @@ ul li { list-style:none;}
 
 
 #seller_profile {display: none;}
+
+/* FeedBack Page */
+.fdBck {width:915px; border:1px solid #e4e4e4; margin-top:6px; background:#f9f9f9 url('../../images/layout/fdback_top.png') left top repeat-x;-webkit-border-radius: 6px;-moz-border-radius: 6px;}
+    .fdBck h2 { width:98%; margin:8px 0 0 2%; color:#00adef; font-size:20px;}
+    .pPgCmbo { width:99%; margin-top:20px; padding-bottom:10px;}
+        .pPgCmbo b { float:right; margin:3px 8px; font-weight:normal; color:#838383;}
+        .pPgCmbo .cmbo7 { float:right;}
+        
+        /* Combo Option 2 */
+        .cmbo7 { float:right;width:58px!important;position:relative;}
+            .cmbo7 .dd2 {display: inline-block !important;float: left;font-family: Arial,Helvetica,sans-serif;font-size: 11px;height: 23px;margin-top:0; margin-left:0px;text-align: left;width:58px !important;}
+                .cmbo7 .dd2 .ddTitle {background: url("../../images/forms/fdbck_top_cmbo.png") no-repeat;cursor: default;height: 24px;overflow: hidden;padding-left: 10px;text-indent: 0; text-shadow:0 1px #fff; font-weight:bold;}
+                    .cmbo7 .dd2 .ddTitle span.arrow {float: right;width:17px;height: 24px;position:relative;right:0px;top:0px;background:url("../../images/forms/fdbck_top_cmbo_ico.png") no-repeat 0 0!important;cursor: pointer;display: inline-block;}
+                    .cmbo7 #websites1_title:hover span.arrow {background-position: 0 0!important;}
+                    .cmbo7 .dd2 .ddTitle span.ddTitleText {color:#626262;font-size:11px;line-height:24px;overflow:hidden;text-indent:1px;}
+                    .cmbo7 .dd2 .ddChild {position:absolute;top:24px !important;width:56px !important;margin:0;display:none;font-size:11px;overflow-x:hidden!important;overflow-y:auto;z-index:1000;}
+        /* End Combo Option 2 */
+
+.fdBack { width:665px; height:93px; margin:20px 0 0 30px; background:url('../../images/bgs/fdback_bg.png') right top no-repeat;}
+    .rtr { width:82px; height:83px; margin-top:5px; position:relative;}
+        .rtr span { position:absolute; z-index:1; width:82px; height:18px; background:url('../../images/bgs/rtr_btm_bg.png') no-repeat; left:0; bottom:0; text-align:center; font-size:12px; font-style:normal; color:#4d4d4d; font-weight:bold; line-height:18px;}
+    .fdBack p {width:510px; font-size:12px; color:#787878; margin:18px 0 0 45px; padding-bottom:10px; background:url('../../images/forms/fdback_line.png') center bottom no-repeat;}    
+    .fdBack .itmN { float:right; color:#00adef; margin:7px 25px 0 0;}
+    .smlRtng { float:left; width:150px; margin:5px 0 0 45px;}
+    .fdBack1 { width:166px; height:60px;background:url('../../images/bgs/left_fdback_bg.png') no-repeat;}
+        .fdBack1 a { float:left; width:100%; margin-top:10px; text-align:center; font-size:11px; color:#717171;}
+    .blogFtr {width:100%;padding:15px 0;}
+        .blogPg { margin-left:25px;ciolor:#777;}
+            .blogPg p { height:28px;line-height:28px;}
+                .blogPg p b { font-size:16px;padding:0 5px;}
+        .gry { color:#707070; font-size:16px!important;}
+.fdBck,.fdBck h2,.pPgCmbo,.fdBack,.rtr,.fdBack p,.fdBack1,.blogFtr, .blogPg, .blogPg p {float:left;}
+
+
+
+
+.fdBck .TabbedPanels { float:left;width:100%; /* IE Hack to force proper layout when preceded by a paragraph. (hasLayout Bug)*/}
+.slrPrfl .fdBck .sptCnt { width: 720px; }
+.fdBck .TabbedPanelsTabGroup { float:left; margin-top:12px;width:100%;padding: 0px;}
+.fdBck .TabbedPanelsTab {float:left;width:169px;height:38px;position:relative;font-size:14px;font-weight:bold;color:#f9f9f9;list-style: none;background:url('/images/forms/fdback_tab_h.png') no-repeat;-moz-user-select: none;-khtml-user-select: none;cursor: pointer;}
+.fdBck .TabbedPanelsTab span { line-height:37px;}
+.fdBck .TabbedPanelsTabHover {color:#767676;background:url('/images/forms/fdback_tab.png') no-repeat;}
+.fdBck .TabbedPanelsTabSelected {color:#767676;background:url('/images/forms/fdback_tab.png') no-repeat;}
+.fdBck .TabbedPanelsTab a {color: black;text-decoration: none;}
+.fdBck .TabbedPanelsContentGroup { clear:none; float:left;}
+.fdBck .TabbedPanelsContent { width:715px; border:1px solid #e4e4e4; padding:0; background:#f3f3f3;}

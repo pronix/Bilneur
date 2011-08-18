@@ -1,3 +1,5 @@
+<%= render '/shared/order_status', :step => "billing" %>
+
 <fieldset id="payment">
   <legend><%= t("payment_information") %></legend>
   <%= hook :checkout_payment_step, {:form => form} do %>

@@ -21,7 +21,7 @@
       </b>
 
     <% elsif field == "zipcode" %>
-                   
+
     <% elsif field == "address1"%>
       <b>
       	<i>Address Line 1:</i>
@@ -47,7 +47,7 @@
       	<i>Phone:</i>
           <%= address_form.text_field(field.to_sym, :class => 'txtPhn') %>
       </b>
-                   
+
     <% else %>
       <b>
         <i><%= t(field) %></i>
@@ -59,5 +59,5 @@
   <%= address_field(address_form, :alternative_phone, address_name) %>
 <% end %>
 <b>
-    <input class="MdfSbmt" type="submit" name="" value="">
+  <input class="MdfSbmt" type="submit" name="" value="">
 </b>

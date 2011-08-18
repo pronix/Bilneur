@@ -1,200 +1,125 @@
 <% javascript "jquery.custom_radio_checkbox" %>
 <%= render '/shared/order_status', :step => "shipping" %>
 <% [ 'shipping'].each do |address_type|
-  next if address_type == 'billing' && Spree::Config[:disable_bill_address]
-  address_name = "#{address_type[0...4]}_address" %>
+   address_name = "#{address_type[0...4]}_address" %>
+
 <div class="page chkOut3">
 	<div class="shpng1">
-    	<h3>Shipping Details</h3>
-        <div class="option1">
-        	<h4>Option 1:</h4>
-            <p>
-            	<i><a href="#"><img src="images/forms/primery_add_btn.png" alt=""></a></i>
-                <b><%= current_user.full_name %></b>
-                <% if !current_user.addresses.empty? %>
-                  <% address = current_user.addresses.first %>
-                  <span>
-                    <%= address.address1 %><br>
-                    <%= address.address2 %><br>
-                    <%= address.city %>, <%= address.state.name %><br>
-                    Phone: <%= address.phone %><br>
-                  </span>
-                  <%= link_to t(:edit), edit_dashboard_address_path(address), :class => "delE" %>
-                  <%= link_to t(:delete), dashboard_address_path(address), :method => :delete, :confirm => t(:are_you_sure), :class => "delE" %>
-                <% else %>
-                  You have no addresses
-                <% end %>
-            </p>
-            <div class="cmbo1">
-            	<div class="ddOutOfVision" style="height:0px;overflow:hidden;position:absolute;" id="websites1_msddHolder"><select id="websites1" tabindex="1" name="">
-                    <option value="" selected="selected" title="">Select a different address</option>
-                    <option value="" title="">address 1</option>
-                    <option value="" title="">address 2</option>
-                    <option value="" title="">address 3</option>
-                    <option value="" title="">address 4</option>
-                </select></div>
-            </div>
-          </div>
+    <h3>Shipping Details</h3>
+    <div class="option1">
 
+      <h4>Option 1:</h4>
+      <p>
+        <i><a href="#"><img src="images/forms/primery_add_btn.png" alt=""></a></i>
+        <b><%= current_user.full_name %></b>
 
-        <%= form.fields_for address_name do |address_form| %>
-          <div class="option2">
-              <%= render :partial => 'addresses', :locals => {
-                :address_name => address_name,
-                :address_form => address_form,
-                :address => Address.default
-              } %>
-          </div>
+        <% if current_user.addresses.present? %>
+        <% address = current_user.primary_address %>
+        <span>
+          <%= address.address1 %><br />
+          <%= address.address2 %><br />
+          <%= address.city %>, <%= address.state.name %><br />
+          Phone: <%= address.phone %><br />
+        </span>
+        <%= link_to t(:edit), edit_dashboard_address_path(address), :class => "delE" %>
+        <%= link_to t(:delete), dashboard_address_path(address), :method => :delete, :confirm => t(:are_you_sure), :class => "delE" %>
+        <% else %>
+        You have no addresses
         <% end %>
+      </p>
 
-
-        <h3>Select Shipping options: Item 1 to 3</h3>
-        <h6>Shipping To:</h6>
-        <div class="radioPnl">
-        	<div class="mRadio">
-                <div class="radio" id="box-single" style="background-position: 50% 0px; ">
-                    <input type="radio" id="single" name="marital_status" value="single">
-                </div>
-                <span><i>Ship to your address</i></span>
-                <div class="cmbo4">
-                    <div class="ddOutOfVision" style="height:0px;overflow:hidden;position:absolute;" id="websites4_msddHolder"><select id="websites4" tabindex="1" name="">
-                        <option value="" selected="selected" title="">Rohit Balaji, 187 Acalanes Dr, Apt # 17, Sunnyvale, California 94086</option>
-                        <option value="" title="">Address 1</option>
-                        <option value="" title="">Address 2</option>
-                        <option value="" title="">Address 3</option>
-                        <option value="" title="">Address 4</option>
-                  </select></div>
-                </div>
-            </div>
-
-        </div>
-        <h6>Shipping Method:</h6>
-        <div class="radioPnl">
-        	<div class="mRadio">
-                <div class="radio" id="box-single" style="background-position: 50% 0px; ">
-                    <input type="radio" id="single" name="marital_status" value="single">
-                </div>
-                <span><i>Free standard shipping (5-7 business days)</i></span>
-            </div>
-            <div class="mRadio">
-                <div class="radio" id="box-single" style="background-position: 50% 0px; ">
-                    <input type="radio" id="single" name="marital_status" value="single">
-                </div>
-                <span><i>Expedited shipping (3-5 business days)</i></span>
-            </div>
-            <div class="mRadio">
-                <div class="radio" id="box-single" style="background-position: 50% 0px; ">
-                    <input type="radio" id="single" name="marital_status" value="single">
-                </div>
-                <span><i>Express shipping (1-3 business days)</i></span>
-            </div>
-        </div>
-        <h6>Item Details:<a href="#">Edit Items</a></h6>
-        <div class="chkOutPrdct">
-        	<div class="chkPrdct">
-            	<i><img src="images/img/nk_cam.png" alt=""></i>
-                <b>Sony Digital Camera</b>
-                <span class="clrLft">Condition: <em>New</em></span>
-                <span><em>Seller: Cheryll C</em></span>
-                <label>Price $22.99 <span>Quantity: 15.</span></label>
-            </div>
-        	<div class="chkPrdct">
-            	<i><img src="images/img/nk_cell.png" alt=""></i>
-                <b>PDA cell phone</b>
-                <span class="clrLft">Condition: <em>New</em></span>
-                <span><em>Seller: Cheryll C</em></span>
-                <label>Price $22.99 <span>Quantity: 15.</span></label>
-            </div>
-        	<div class="chkPrdct">
-            	<i><img src="images/img/nk_ipad.png" alt=""></i>
-                <b>GPS Unit</b>
-                <span class="clrLft">Condition: <em>New</em></span>
-                <span><em>Seller: Seller ABC</em></span>
-                <label>Price $22.99 <span>Quantity: 15.</span></label>
-            </div>
-        </div>
-        <h3>Select Shipping options: Item 4 to 6</h3>
-        <h6>Shipping Method:</h6>
-        <div class="radioPnl">
-        	<div class="mRadio">
-                <div class="radio" id="box-single" style="background-position: 50% 0px; ">
-                    <input type="radio" id="single" name="marital_status" value="single">
-                </div>
-                <span><i>Express shipping (1-3 business days)</i></span>
-            </div>
-        </div>
-        <h6>Item Details:<a href="#">Edit Items</a></h6>
-        <div class="chkOutPrdct">
-        	<div class="chkPrdct">
-            	<i><img src="images/img/nk_cam.png" alt=""></i>
-                <b>Sony Digital Camera</b>
-                <span class="clrLft">Condition: <em>New</em></span>
-                <span><em>Seller: Cheryll C</em></span>
-                <label>Price $22.99 <span>Quantity: 15.</span></label>
-            </div>
-        	<div class="chkPrdct">
-            	<i><img src="images/img/nk_cell.png" alt=""></i>
-                <b>PDA cell phone</b>
-                <span class="clrLft">Condition: <em>New</em></span>
-                <span><em>Seller: Cheryll C</em></span>
-                <label>Price $22.99 <span>Quantity: 15.</span></label>
-            </div>
-        	<div class="chkPrdct">
-            	<i><img src="images/img/nk_ipad.png" alt=""></i>
-                <b>GPS Unit</b>
-                <span class="clrLft">Condition: <em>New</em></span>
-                <span><em>Seller: Seller ABC</em></span>
-                <label>Price $22.99 <span>Quantity: 15.</span></label>
-            </div>
+      <div class="cmbo1">
+        <div class="ddOutOfVision" style="height:0px;overflow:hidden;position:absolute;" id="websites1_msddHolder">
+          <select id="websites1" tabindex="1" name="">
+            <option value="" selected="selected" title="">Select a different address</option>
+            <option value="" title="">address 1</option>
+            <option value="" title="">address 2</option>
+            <option value="" title="">address 3</option>
+            <option value="" title="">address 4</option>
+          </select>
         </div>
       </div>
-
-
-
-
-
-
-    <div class="shpng2">
-    	<div class="grnTbl">
-          <div class="grnTop <%== ' bluTop' if !@order.virtual? %>">
-            <h6>Items for <%= 'Virtual' if @order.virtual?  %> Store</h6>
-          </div>
-            <div class="grnCntr">
-            	<p class="grnTtl">
-                    <span class="itm1">Item</span>
-                    <span class="itm2">Qty</span>
-                    <span class="itm3">Total</span>
-                </p>
-                <% @order.line_items.each do |line_item| %>
-                    <p class="grnDtl">
-                            <b class="itm1"><%= line_item.variant.name.slice(0, 12) + '.' %></b>
-                            <b class="itm2"><%= line_item.quantity %></b>
-                            <b class="itm3"><%= format_price(line_item.amount) %></b>
-                    </p>
-                <% end %>
-                <i class="p2bdr bdrFix"></i>
-                <p class="sws">
-                	<i>Store with Seller:</i>
-                    <em>FREE</em>
-                </p>
-                <p class="sws">
-                	<i>Tax:</i>
-                    <em>$00.00</em>
-                </p>
-                <i class="p2bdr bdrFix2"></i>
-                <p>&nbsp;</p>
-                <p class="sws">
-                	<i>Total for Store:</i>
-                        <em><%= order_price(@order) %></em>
-                </p>
-                <p class="lstMrg">&nbsp;</p>
-            </div>
-            <div class="grnBtm"></div>
-        </div>
-
-
-
-        <div class="cntnu cntnuFix"><a href="#"><img src="images/forms/chk_big_btn.png" alt=""></a></div>
     </div>
+<%= form_for @order, :url => virtual_update_checkout_path((@order.virtual? ? :virtual : :normal), @order.state), :html => { :id => "checkout_form_#{@order.state}" } do |form| %>
+
+    <%= form.fields_for address_name do |address_form| %>
+    <div class="option2">
+      <%= render :partial => 'addresses', :locals => {
+      :address_name => address_name,
+      :address_form => address_form,
+      :address => Address.default  } %>
+    </div>
+    <% end %>
+  <% end %>
+
+
+    <h3></h3>
+    <%= form_for @order, :url => virtual_update_checkout_path((@order.virtual? ? :virtual : :normal), @order.state), :html => { :id => "checkout_form_#{@order.state}" } do |form| %>
+    <h6>Shipping To: </h6>
+    <div class="radioPnl">
+      <% current_user.addresses.each do |item| %>
+	    <div class="mRadio">
+
+        <div class="radio" id="box-single" style="background-position: 50% 0px; ">
+          <input type="radio" id="single" name="order[ship_address_id]" value="<%= item.id %>">
+        </div>
+        <span><i><%= item.to_s %></i></span>
+      </div>
+      <% end %>
+      <button id="next_after_selected_ship_address">Continue</button>
+    </div>
+    <% end %>
+
+
+    <div id="select-shipping-methods">
+    <div class="radioPnl">
+
+      <div class="mRadio">
+      </div>
+
+      <div class="mRadio">
+      </div>
+    </div>
+
+    <h6>Item Details:<%= link_to "Edit Items", cart_path %></h6>
+
+    <div class="chkOutPrdct">
+      <% @order.line_items.each do |item| %>
+      <div class="chkPrdct">
+        <i>
+          <%= mini_image(item.variant.images.blank? ? item.variant.product : item.variant) %></i>
+        <b><%= item.variant.name %></b>
+        <span class="clrLft">Condition: <em><%= item.variant.display_condition %></em></span>
+        <span><em>Seller: <%= item.variant.seller.full_name%></em></span>
+        <label>Price <%= number_to_currency item.price %> <span>Quantity: <%= item.quantity %>.</span></label>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  </div>
+
+
+
+  <div class="shpng2">
+    <%= render :partial => "summary", :locals => {:order => @order } %>
+  </div>
+
 </div>
 <% end %>
+
+<script>
+  $(function(){
+    $("#next_after_selected_ship_address").click(function(){
+       var content_form = $(this).parents("form:first");
+
+       $.ajax({
+         type: 'POST',
+         url: $(content_form).attr("action")+'.js',
+         data: $(content_form).serialize(),
+         success: function(data){ $("#select-shipping-methods").html(data)}
+
+       })
+       return false;
+    });
+  });
+</script>

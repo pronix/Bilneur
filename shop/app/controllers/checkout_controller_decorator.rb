@@ -1,9 +1,11 @@
 CheckoutController.class_eval do
+  respond_to :html, :js
 
 
   # Updates the order and advances to the next state (when possible.)
   def update
     if @order.update_attributes(object_params)
+
       if @order.next
         state_callback(:after)
       else

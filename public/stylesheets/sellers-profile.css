@@ -237,3 +237,85 @@ ul li { list-style:none;}
 .fdBck .TabbedPanelsTab a {color: black;text-decoration: none;}
 .fdBck .TabbedPanelsContentGroup { clear:none; float:left;}
 .fdBck .TabbedPanelsContent { width:715px; border:1px solid #e4e4e4; padding:0; background:#f3f3f3;}
+
+
+/* Inventory Page */
+.cmbo6 .txt { float:left; width:160px; height:12px; margin-top:2px; padding:5px 5px 5px 24px; border:none; background:url('../../images/forms/inv_txt.png') no-repeat;}
+        /* Combo Option 6 */
+        .cmbo6 { float:right;width:315px!important;position:relative; margin:-25px 10px 0 0;}
+            .cmbo6 .dd2 {display: inline-block !important;float:right;font-family: Arial,Helvetica,sans-serif;font-size: 11px;height: 23px;margin-top:0; margin-left:0px;text-align: left;width:118px !important;}
+                .cmbo6 .dd2 .ddTitle {background: url("../../images/forms/fdbck_astop_cmbo.png") no-repeat;cursor: default;height: 24px;overflow: hidden;padding-left: 10px;text-indent: 0; text-shadow:0 1px #fff; font-weight:bold;}
+                    .cmbo6 .dd2 .ddTitle span.arrow {float: right;width:17px;height: 24px;position:relative;right:0px;top:0px;background:url("../../images/forms/fdbck_top_cmbo_ico.png") no-repeat 0 0!important;cursor: pointer;display: inline-block;}
+                    .cmbo6 #websites1_title:hover span.arrow {background-position: 0 0!important;}
+                    .cmbo6 .dd2 .ddTitle span.ddTitleText {color:#626262;font-size:11px;line-height:24px;overflow:hidden;text-indent:1px;}
+                    .cmbo6 .dd2 .ddChild {position:absolute;top:24px !important;width:116px !important;margin:0;display:none;font-size:11px;overflow-x:hidden!important;overflow-y:auto;z-index:1000;}
+        /* End Combo Option 6 */
+
+.invBar {float:right; width:361px;}
+    .invBar ul {}
+        .invBar ul li {}
+            .invBar ul li a {height:24px;}
+            .invBar ul .inv1 a {width:103px; background:url('/images/forms/btn_all_inv.png') no-repeat;}
+            .invBar ul .inv1 a:hover {background:url('/images/forms/btn_all_inv_h.png') no-repeat;}
+            .invBar ul .inv2 a {width:76px;background:url('/images/forms/btn_merchant.png') no-repeat;}
+            .invBar ul .inv2 a:hover {background:url('/images/forms/btn_merchant_h.png') no-repeat;}
+            .invBar ul .inv3 a {width:70px;background:url('/images/forms/btn_bilneur.png') no-repeat;}
+            .invBar ul .inv3 a:hover {background:url('/images/forms/btn_bilneur_h.png') no-repeat;}
+            .invBar ul .inv4 a {width:112px;background:url('/images/forms/btn_othr_slrs.png') no-repeat;}
+            .invBar ul .inv4 a:hover {background:url('/images/forms/btn_othr_slrs_h.png') no-repeat;}
+    .invAll { margin:0 0 0 15px;}
+    .bdrBtm { float:left; width:100%; border-bottom:1px solid #dadada;}
+.invEdit { margin-top:10px;}
+    .invEdit ul { width:90%;margin-left:15px;}
+        .invEdit ul li { margin-right:5px;}
+        .tbl1 { float:left; width:100%; margin-top:14px;}       
+        .tbl1.thlHd {height:34px; font-weight:bold; color:#fff;background:url('/images/bgs/inv_nav_bg.png') repeat-x;}
+        table { float:left; font-family:Arial, Helvetica, sans-serif;}
+        table tr td { font-size:12px; color:#4d4d4d;height:37px;}
+            table tr td a { color:#21ace1; text-decoration:underline;}
+            table tr td b { color:#13a7df;}
+            .row1 { background:#f9f9f9;}
+            .row2 { background:#e7e7e7;}
+    .slctr { float:left; width:135px; margin-left:18px; position:relative;}
+        .slctr b { float:left; font-size:10px; color:#00adef; line-height:25px;}
+        .paging .blogPg { margin-left:5px;}
+        .slctr .dd2 { width:50px!important;}
+        .slctr .dd2 .ddTitle {background: url("/images/forms/min_bg.png") no-repeat!important;}
+        .slctr #websites2_msdd { width:51px!important; margin-left:3px;}
+        .slctr .dd2 .ddTitle span.ddTitleText { color:#00adef; font-weight:bold; line-height:19px!important;}
+        .slctr #websites2_msdd .ddChild { width:46px!important;}
+        .slct .dd2 .ddTitle span.arrow {background:url('/images/icons/sler_srch_ico.png') no-repeat scroll 5px 5px transparent !important;}
+.invBar ul,.invBar ul li,.invBar ul li a,.invAll,.invEdit,.invEdit ul li,.invEdit ul li a { float:left;}
+.invBar ul,.invEdit,.invEdit ul  { width:100%;}
+
+
+/* Order Page */
+.thlHd2 {height:38px!important; font-weight:bold; color:#fff;background:url('/images/bgs/odrhd_bg.png') repeat-x;}
+.tbl2 { float:left; width:100%; margin-top:14px;}       
+        table tr td { font-size:12px; color:#4d4d4d;height:37px;}
+            .tbl2 tr td a { color:#21ace1; text-decoration:underline;}
+            .tbl2 tr td b { color:#13a7df;}
+            .tbl2 tr td i { float:left; width:100%; font-style:normal; margin-top:5px; font-weight:bold;}
+                .tbl2 tr td span label { color:#609f0a; font-weight:bold;}
+            .tbl2 tr td strong { color:#ed2d0d;}
+            .tbl2 .row1 { background:#ebeef0;}
+            .tbl2 .row2 { background:#f9f9f9;}
+
+/* JQuery Button Effects */
+table tr td big {clear:both;float:right;width:100%;}
+table tr td .btn { float:right;position:relative;left:0;bottom:0;width:127px;height:29px;color:#fff;text-align:right;}
+
+.viwOdr .otherbutton {position: relative;height: 29px;width: 127px;background:url('/images/forms/view_confirm.png') 0 0 no-repeat;background-position:0 0;cursor: pointer;}    
+.viwOdr .otherbutton span.hover {display: block;height: 29px;width: 127px;background:url('/images/forms/view_confirm.png') 0 -29px no-repeat;background-position: bottom;}
+
+.cnclBtn .otherbutton {position: relative;height:29px;width:127px;background:url('/images/forms/cancel_order.png') 0 0 no-repeat;background-position:0 0;cursor: pointer;} 
+.cnclBtn .otherbutton span.hover {display: block;height:29px;width: 127px;background:url('/images/forms/cancel_order.png') 0 -29px no-repeat;background-position: bottom;}
+
+.odrEdtPnl {float:left; width:127px; margin:5px 0 0 5px;}
+    .odrEdtPnl .top {float:left; width:127px; height:7px; background:url('/images/layout/odr_edt_top.png') no-repeat;}
+    .odrEdtPnl .cntr {float:left; width:127px;background:url('/images/layout/odr_edt_cntr.png') repeat-y;}
+        .odrEdtPnl .cntr a img {float:left; margin:0 5px 0 6px;}
+        .odrEdtPnl .cntr a i {float:left; width:80%; margin:0;}
+        .odrEdtPnl .cntr a { float:left; width:100%;font-weight:bold; color:#66798a; border-bottom:1px solid #e1e1e1; padding-bottom:3px; margin:3px 0;}
+    .odrEdtPnl .btm {float:left; width:127px; height:7px; background:url('/images/layout/odr_edt_btm.png') no-repeat;}
+

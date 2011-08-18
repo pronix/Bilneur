@@ -1,0 +1,46 @@
+<tr>
+  <td valign="top" class="row<%= evod %>">
+    <span><%=order.created_at.strftime("%dth %b %Y") %></span>
+  </td>
+  <td valign="top" class="row<%= evod %>">
+    <%= order.user.full_name %>
+  </td>
+  <td valign="top" class="row<%= evod %>">
+                  
+    <i>Order <b>#<%= order.number %></b></i>
+    <i>Quantity: <b><%= order.item_count %></b></i>
+  </td>
+  <td valign="top" class="row">
+    <strong><%= order_price(order) %></strong>
+  </td>
+  <td valign="top" align="center" class="row<%= evod %>">
+    <% if order.shipment %>
+      <span><%= order.shipment.name %><br />
+        <label><%= number_to_currency(order.ship_total) %></label>
+      </span>
+    <% end %>
+  </td>
+  <td valign="top" align="center" class="row<%= evod %>">
+    <span>FIXME</span>
+  </td>
+  <td valign="top" align="center" class="row<%= evod %>">
+    <span><%= order.state %></span>
+  </td>
+  <td valign="top" class="row<%= evod %>">
+    <big class="viwOdr">
+      <%= link_to "", order, :class => "btn otherbutton" %><!-- FIXME -->
+    </big>
+    <big class="cnclBtn">
+      <%= link_to "", order, :class => "btn otherbutton" %><!-- FIXME -->
+    </big>
+    <div class="odrEdtPnl">
+    	<div class="top"></div>
+    	<div class="cntr">
+        	<a href="#"><img src="/images/icons/edit_sml_ico.png" alt="" /><i>Edit</i></a><!-- FIXME -->
+        	<a href="#"><img src="/images/icons/print_sml_ico.png" alt="" /><i>Print Invoice</i></a><!-- FIXME -->
+        	<a href="#"><img src="/images/icons/add_sml_ico.png" alt="" /><i>Add Tracking</i></a><!-- FIXME -->
+        </div>
+    	<div class="btm"></div>
+    </div>
+  </td>
+</tr>

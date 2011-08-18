@@ -53,7 +53,7 @@
         .rtng .btm { height:47px; background:url('/images/bgs/rater_btm.png') no-repeat;}
           .rtng .btm .blogPg { float:left; margin:4px 0 0 8px;}
           .rtng .btm .pagination { margin:6px 20px 0 0;} 
-  .prdctDPg.col2 { width:281px; margin:68px 0 0 15px;} 
+  .prdctDPg.col2, .prdctDPg .col2 { width:281px; margin:68px 0 0 15px;} 
     .col2 .smlTabs {}
       .smlTabs .tabCnt1 { height:65px; background:url('/images/bgs/sml_tab_cnt1.png') no-repeat;}
       .smlTabs .tabCnt2 { height:69px; background:url('/images/bgs/sml_tab_cnt2.png') no-repeat;}

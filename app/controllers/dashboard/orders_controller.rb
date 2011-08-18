@@ -1,6 +1,8 @@
 class Dashboard::OrdersController < Dashboard::ApplicationController
   respond_to :json, :html, :xml, :pdf
 
+  include ProductHelper
+
   def index
     @orders = current_user.orders.complete
   end

@@ -16,7 +16,9 @@
         <th><%= t("payment") %></th>
         <th><%= t("shipment") %></th>
         <th><%= t("total") %></th>
-        <th></th>
+        <% if current_user.has_buyer_review? %>
+          <th><%= t("buyer_review") %></th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -35,6 +37,11 @@
         </td>
         <td><%= number_to_currency(order.total_for_seller(current_user)) %></td>
         <td>
+          <% for review in order.seller_reviews %>
+            <div id="<%= dom_id review %>">
+              <%= show_stars review.rating %>
+            </div>
+          <% end %>
          </td>
       </tr>
     <% end %>

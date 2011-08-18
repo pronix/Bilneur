@@ -65,7 +65,7 @@ Order.class_eval do
   has_and_belongs_to_many :sellers, :join_table => "orders_users", :class_name => "User"
   has_and_belongs_to_many :shipping_methods, :join_table => "orders_shipping_methods", :class_name => "ShippingMethod"
 
-  before_validation :set_email
+  # before_validation :set_email
   before_validation :fill_billing_address
 
   has_many :seller_reviews
@@ -153,6 +153,15 @@ Order.class_eval do
       self.shipping_methods << user_seller.shipping_methods.find(shipment_attrs[:shipping_method_id])
     end
 
+  end
+
+  # full order weight
+  def weight(_seller = nil)
+    if _seller.present?
+      self.line_items.select{ |v| v.variant.seller == _seller }.map {|x| x.variant.weight*x.quantity }.sum
+    else
+      self.line_items.map {|x| x.variant.weight*x.quantity }.sum
+    end
   end
 
   def total_for_seller(user_seller)

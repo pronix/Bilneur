@@ -1,5 +1,5 @@
 table.index th {
-  background: #cdcdcd url(../../images/admin/bg/grid_header_back.png) top left repeat-x;
+  background: #cdcdcd url(/images/admin/bg/grid_header_back.png) top left repeat-x;
   padding: 7px 10px;
   border-left: 1px solid #ddd;
   border-top: 1px solid #ddd;

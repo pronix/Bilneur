@@ -5,16 +5,7 @@ $(document).ready(function(){
 
   var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
 
-  var CollapsiblePanel1 = new Spry.Widget.CollapsiblePanel("CollapsiblePanel1");
-  var CollapsiblePanel2 = new Spry.Widget.CollapsiblePanel("CollapsiblePanel2");
-  var CollapsiblePanel3 = new Spry.Widget.CollapsiblePanel("CollapsiblePanel3");
-  var CollapsiblePanel4 = new Spry.Widget.CollapsiblePanel("CollapsiblePanel4");
-  var CollapsiblePanel5 = new Spry.Widget.CollapsiblePanel("CollapsiblePanel5");
-  var CollapsiblePanel6 = new Spry.Widget.CollapsiblePanel("CollapsiblePanel6");
-  var CollapsiblePanel7 = new Spry.Widget.CollapsiblePanel("CollapsiblePanel7");
-  var CollapsiblePanel8 = new Spry.Widget.CollapsiblePanel("CollapsiblePanel8");
-  var CollapsiblePanel9 = new Spry.Widget.CollapsiblePanel("CollapsiblePanel9");
-  var CollapsiblePanel10 = new Spry.Widget.CollapsiblePanel("CollapsiblePanel10");
-  var CollapsiblePanel11 = new Spry.Widget.CollapsiblePanel("CollapsiblePanel11");
-  var CollapsiblePanel12 = new Spry.Widget.CollapsiblePanel("CollapsiblePanel12");
+  $(".CollapsiblePanel").each(function() {
+    var CollapsiblePanel = new Spry.Widget.CollapsiblePanel($(this).attr('id'));
+  });
 })

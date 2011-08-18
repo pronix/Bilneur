@@ -454,7 +454,7 @@ Spry.Widget.CollapsiblePanel.PanelAnimator.prototype.animate = function()
 		if (!this.doOpen)
 			this.content.style.display = "none";
 		this.content.style.overflow = this.overflow;
-		this.content.style.height = this.toHeight + "px";
+		this.content.style.height = this.toHeight - 20 + "px";
 	}
 	else
 	{

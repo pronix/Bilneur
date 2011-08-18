@@ -1,0 +1,36 @@
+<table class="index sortable">
+  <tbody>
+    <% @orders.each do |order|%>
+      <% order.line_items.each do |item| %>
+      <tr>
+        <td><%= t122_image(item.variant) %></td>
+        <td>
+          <ul>
+            <li><%= item.variant.name %></li>
+            <li><span>Seller:</span> <%= item.variant.seller.full_name %></li>
+            <li><%= number_to_currency item.amount %></li>
+            <li><span>Order data:</span> <%= l order.completed_at, :format => "%B %d, %Y %H:%M" %></li>
+            <li><span>Order number:</span> <%= order.number %></li>
+            <li><%= link_to "Favorite Seller", "" %> <%= link_to "Favorite Product", "" %></li>
+          </ul>
+        </td>
+        <td>
+          <span>Qty purchases:</span><em><%= item.quantity %></em>
+        </td>
+        <td>
+          <ul>
+            <li><%= link_to "View Order Details", dashboard_order_path(order) %></li>
+            <li><%= link_to "View Invoice", dashboard_order_path(order, :pdf) %></li>
+            <li><%= link_to "Add to Inventory", "" %></li>
+            <li>
+              <%= link_to "Write a review", new_product_review_path(item.variant.product) if can_create_review?(item.variant.product) %>
+            </li>
+            <li><%= link_to "Request a return", "" %></li>
+          </ul>
+        </td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @orders %>

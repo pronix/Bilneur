@@ -1,0 +1,37 @@
+<%= render "shared/error_messages", :target => @user %>
+<%= render '/shared/order_status', :step => "login" %>
+<div class="page chkOut2">
+	<div class="lginTop"></div>
+	<div class="lginCntr">
+    	<h4>Buying, selling &amp; reselling on Bilneur is so easy you would have never imagined it would be so simple.  </h4>
+    	<div class="chk2Lgn">
+        <%= form_for(:user, :url => user_session_path) do |f| %>
+            <span class="contInp">
+                <i>Enter your eMail Address:</i>
+                <%= f.text_field 'email', :id => "Email", :class => 'chkTxt', :placeholder => "Your Email" %>
+            </span>
+            <span class="contInp">
+                <i>Password</i>
+                <%= f.password_field 'password', :id => "Password", :class => 'chkTxt', :placeholder => "password" %>
+                <%= link_to "Forgot your password?", new_user_password_path %>
+            </span>
+            <span class="contInp">
+                <%= submit_tag "", :class => 'chkSbmt', :name=>"", :id => "Log In"%>
+                <%= link_to "New User? Click here for a quick Sign Up..", signup_path, :class => "chkNU" %>
+            </span>
+          <% end %>
+        </div>
+    </div>
+	<div class="lginBtm"></div>
+    <div class="pyPl">
+    	<h5>Checkout with paypal</h5>
+    	<div class="pyPlTop"></div>
+    	<div class="pyPlCntr">
+        	<p>By continuing to checkout with paypal, you agree to Bilneur’s Terms &amp; conditions of purchase. <br><a href="#">Click here to view the terms &amp; conditions.</a></p>
+            <a class="pyPlBtn" href="#"><img src="/images/forms/paypal.png" alt=""></a>
+            
+        </div>
+    	<div class="pyPlBtm"></div>
+        <%= link_to t("continue_shopping"), products_path, :class => "bckChk" %>
+    </div>
+</div>

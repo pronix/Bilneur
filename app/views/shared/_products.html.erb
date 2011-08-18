@@ -13,12 +13,14 @@
   <% products.each do |product| %>
   <% next unless product.best_variant  %>
   <% best_deal = product.best_variant %>
+  <% next unless best_deal.seller.available_shipping_methods?  %>
+
     <% if Spree::Config[:show_zero_stock_products] || product.has_stock? %>
     <div class="smPrdcts">
       <div class="smPd">
           <i class="imgP"><%= link_to small_image(product), product %></i>
             <div class="pdDtl">
-              <h4><%= product.name %></h4>
+              <h4><%= link_to product.name, product %></h4>
               <p><%= product.description %></p>
               <%= render :partial => "shared/rating_product", :object => product %>
             </div>

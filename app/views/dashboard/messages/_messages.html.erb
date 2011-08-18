@@ -1,0 +1,12 @@
+<% messages.each do |item| %>
+<div class="msg <%= item.read? ? 'read' : 'unread' %>" >
+  <div class="checkbox" style="background-position: 50% 0px; ">
+    <%= check_box_tag "message_ids[]", item.id, false, :id => nil, :class => "multi_action" %>
+
+  </div>
+  <%= link_to item.sender.full_name, item.sender %>
+  <span><%= item.subject %></span>
+  <i><%= l item.created_at, :format => "%B %d, %Y" %></i>
+</div>
+
+<% end %>

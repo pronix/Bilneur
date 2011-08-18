@@ -1,5 +1,6 @@
 class Dashboard::MessagesController < Dashboard::ApplicationController
 
+  respond_to :html, :js
   def index
     @state = params[:state] ? params[:state].to_s.titleize  : "All Messages"
     @messages =
@@ -53,7 +54,6 @@ class Dashboard::MessagesController < Dashboard::ApplicationController
     if params[:message_ids].present? && %w(delete mark_as_unread mark_as_read mark_as_important).include?(params[:multi].to_s)
      Message.multi_operation(current_user, params[:message_ids], params[:multi])
    end
-    redirect_to dashboard_messages_path
   end
 
   def destroy

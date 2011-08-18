@@ -2,8 +2,8 @@
   <div id="TabbedPanels2" class="TabbedPanels">
 
     <ul class="TabbedPanelsTabGroup">
-      <% Variant::CONDITION.each  do |cdt| %>
-      <li class="TabbedPanelsTab tab" tabindex="0"><span><%= t("condition_#{cdt}") %></span></li>
+      <% Variant::CONDITION.each_with_index  do |cdt, index| %>
+        <li class="TabbedPanelsTab tab<%= index + 1 %>" tabindex="0"><span><%= t("condition_#{cdt}") %></span></li>
       <% end %>
     </ul>
 
@@ -45,17 +45,17 @@
               </i>
               <span><%= item.seller.firstname %></span>
               <em>Reliability Score</em>
-              <b>100%</b><i class="tg"><img src="/images/icons/qmark.png" alt="" /></i>
+              <b>100%</b><i class="tg"><img src="/images/icons/qmark.png" alt="" /></i><!-- FIXME -->
             </div>
 
             <div class="shares">
               <ul>
-                <li class="lst1"><a href="#">Seller Information</a></li>
-                <li class="lst2"><a href="#">Retern Policy</a></li>
-                <li class="lst3"><a href="#">Feedback</a></li>
-                <li class="lst4"><a href="#">Tweet About This Seller</a></li>
-                <li class="lst5"><a href="#">Share With Your Friends on Facebook</a></li>
-                <li class="lst6"><a href="#">Add Seller To Favorites</a></li>
+                <li class="lst1"><a href="#">Seller Information</a></li><!-- FIXME -->
+                <li class="lst2"><a href="#">Retern Policy</a></li><!-- FIXME -->
+                <li class="lst3"><a href="#">Feedback</a></li><!-- FIXME -->
+                <li class="lst4"><a href="#">Tweet About This Seller</a></li><!-- FIXME -->
+                <li class="lst5"><a href="#">Share With Your Friends on Facebook</a></li><!-- FIXME -->
+                <li class="lst6"><a href="#">Add Seller To Favorites</a></li><!-- FIXME -->
               </ul>
             </div>
 

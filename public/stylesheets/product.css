@@ -278,3 +278,24 @@
         .slct .dd2 .ddTitle span.arrow {background:url('/images/icons/sler_srch_ico.png') no-repeat scroll 5px 5px transparent !important;}
 #pdSm .bCrmp,#pdSm .bCrmp ul,#pdSm .bCrmp ul li,#pdSm .bCrmp ul li a,#pdSm .bCrmp ul li img,.pdSrch form,.pdSrch .txt,.pdSrch .sbmt,.fbPnl,.cros,.smPrdcts,.smPd,.smPd i,.smPd i img,.pdDtl { float:left;}
 .pdSrch .sbmt { cursor: pointer; }
+
+.tansBg {
+    float: left;
+    width: 100%;
+    padding: 10px 0;
+    background: url(/images/slider/wht_trans.png);
+}
+.prossr {
+    float: left;
+    width: 220px;
+    margin: 10px 20px;
+}
+.minMaxTxt {
+    width: 48px;
+    height: 19px;
+    font-weight: bold;
+    padding-left: 5px;
+    border: none;
+    color: white;
+    background: url('/images/slider/prssr_txt.png') no-repeat;
+}

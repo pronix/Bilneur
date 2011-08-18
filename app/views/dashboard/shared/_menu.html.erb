@@ -7,7 +7,7 @@
 
   <li class="TabbedPanelsTab" >
     <span class="TabbedPanelsTabSelected">
-      <% if request.request_uri !=~ /inbox/ %>
+      <% if request.request_uri.index("inbox").present? %>
         <%= t("inbox") %>
       <% else %>
         <%= link_to t("inbox"), dashboard_messages_path, :class => "TabbedPanelsTab" %>

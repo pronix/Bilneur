@@ -1,3 +1,10 @@
+<% content_for :head do %> <!-- FIXME -->
+  <meta property="og:tag name" content="tag value"/> 
+  <meta property="og:title" content="<%= product.name %>"/> 
+  <meta property="og:image" content="<%= product.images.first.attachment.url(:mini) %> "/> 
+  <meta property="og:site_name" content="Bilneur"/> 
+  <meta property="og:description" content="<%= product.description %>"/>
+<% end %>
 <div class="cntTop"></div>
 <div class="cntCntr">
   <div class="favCmnt">
@@ -6,7 +13,9 @@
       <div style="float:right; margin-right: 18px;">
           <%= link_to "Add to Favorites", "", :class=>"add" %>
 
-          <div class="fbLike"><%= image_tag "icons/fb_like.png" %></div>
+          <div class="fbLike">
+            <iframe src="http://www.facebook.com/plugins/like.php?app_id=248975315122593&amp;href=<%= request.url %>&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;locale=en_US" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
+          </div>
           <%= link_to image_tag("icons/bnr_plus.png"), "" %>
       </div>
   </div>

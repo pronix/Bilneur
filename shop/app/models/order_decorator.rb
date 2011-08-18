@@ -154,8 +154,12 @@ Order.class_eval do
   end
 
   # full order weight
-  def weight
-    self.line_items.map {|x| x.variant.weight*x.quantity }.sum
+  def weight(_seller = nil)
+    if _seller.present?
+      self.line_items.select{ |v| v.variant.seller == _seller }.map {|x| x.variant.weight*x.quantity }.sum
+    else
+      self.line_items.map {|x| x.variant.weight*x.quantity }.sum
+    end
   end
 
   def total_for_seller(user_seller)

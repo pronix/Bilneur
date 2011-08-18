@@ -12,6 +12,8 @@
   .prdctDPg .cntCntr {background:#ededed;}
   .prdctDPg .cntBtm { height:11px;background:url('/images/bgs/prdctDPg_btm.png') no-repeat;}
     .cntCntr .favCmnt {}
+      .favCmnt .social { float: right !important;}
+      .favCmnt > span+div { float:  right; margin-right: 18px; width: 623px;}
       .favCmnt span { margin:0 0 5px 10px; font-size:14px; font-weight:bold; color:#4d4d4d; margin-right:23px;}
       .favCmnt .seAll { width:145px; height:20px; margin-left:20px; color:#fff;font-size:11px; font-weight:bold; text-align:center; line-height:20px; background:url('/images/bgs/seeall_bg.png') no-repeat;} 
       .favCmnt .add { width:106px; height:19px; text-align:center; color:#4e4e4e; font-size:11px; background:url('/images/bgs/fav_bg.png') no-repeat; line-height:19px; font-weight:bold; margin-right:11px;}

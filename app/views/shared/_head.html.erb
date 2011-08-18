@@ -24,7 +24,7 @@
   'stars/jquery.raty.min.js',
   'stars/jquery.ui.stars.js',
   'stars/stars_own.js',
-  
+  "https://apis.google.com/js/plusone.js",  
   :cache => 'jquery-core' %>
 <% unless I18n.locale.to_s[0..1] == 'en' %>
   <%= javascript_include_tag ['localization/messages_', I18n.locale.to_s[0..1], '.js'].join %>

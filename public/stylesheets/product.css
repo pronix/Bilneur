@@ -182,8 +182,10 @@
         .ptPod .bLu { float:left;width:85px;height:21px;line-height:21px;margin-top:3px;background:url('/images/forms/blue_bg.png') no-repeat;}
       .ptPod .cntcts { margin:0 0 0 5px;}
         .cntcts p { width:101%;} 
-          .cntcts p i { float:left;font-style:normal; width:48%; font-weight:bold; font-size:11px; color:#898989;} 
+          .cntcts p i, .cntcts .str i {float: left;font-style: normal;width: 55%;font-weight: bold;font-size: 11px;color: #898989;}
+          .cntcts p i label, .cntcts .str label { color: #00ADEF; }
             .cntcts p i label { color:#00adef;}
+            .cntcts .nmbrRate {float: right;text-align: right;width: 42%!important;margin-right: 3px;}
             .cntcts .str { margin-top:0;}
         .cntcts .str b { background:none; float:right; margin:0 2px 0 0; height:auto; width:auto;}
   .col2SlPrd { width:258px!important; margin:27px 0 0 0!important; border:1px solid #b3b3b3;}

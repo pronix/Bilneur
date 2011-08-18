@@ -83,7 +83,7 @@ ul li { list-style:none;}
 		.inbxTabs .TabbedPanels {background:url('/images/bgs/inbx_int_tab_top.png') no-repeat;}
 	.inbxNav { margin:10px 0 0 10px;}
 		.inbxNav li {}
-			.inbxNav li a { height:27px;}
+		        .inbxNav li a{border: none; height: 27px; cursor: pointer; background: none; padding: 0;}
 			.inbxNav li.nav1 a { width:71px;background:url('/images/forms/delete.png') no-repeat;}
 			.inbxNav li.nav1 a:hover {background:url('/images/forms/delete_h.png') no-repeat;}
 			.inbxNav li.nav2 a { width:112px;background:url('/images/forms/mark_as_unread.png') no-repeat;}
@@ -104,7 +104,7 @@ ul li { list-style:none;}
 				.lL { width:100px!important; margin:0!important; border:0!important;} 
 				.tabBag { float:left; height:18px; width:163px;background:url('/images/bgs/inbx_int_tab_btm.png') no-repeat!important;}
 /* Check boxes code */
-.checkbox {clear:left;float:left;width:18px;height:18px;margin: 0 0 3px;padding: 0 0 0 26px;background:url('/images/icons/inbx_checkbox.png') no-repeat;cursor: default;}
+.checkbox {clear:left;float:left;width:18px;height:18px;margin: 0 0 3px;padding: 0 0 0 26px;background:url('/images/icons/inbx_checkbox.png') no-repeat;cursor: pointer;}
 .checkbox input,.radio input {display: none;}
 .checkbox input.show,.radio input.show {display: inline;}
 .selected {background-position: 0 -50px!important;}
@@ -112,11 +112,11 @@ ul li { list-style:none;}
 .lbl {float:left; width:163px; height:18px; color:#4d4d4d; line-height:18px; font-size:12px; margin:0 0 0 30px; padding-left:5px; font-weight:bold; border-left:1px solid #d3d3d3;text-align:left;font-style:normal;border-right:1px solid #d3d3d3;}
 /* Check boxes code */
 
-	.msg1,.msg2 { width:705px; height:21px; padding:4px 0 3px 7px; font-size:12px; font-weight:bold;color:#4d4d4d; text-align:left;}
-		.msg1 a,.msg2 a { width:170px; text-align:left; margin-left:16px; color:#4d4d4d; font-weight:bold;}
-	.msg2 { background:url('/images/bgs/alt_msg_bg.png') left top repeat-x;}
-	.msg1 span,.msg2 span { float:left; width:307px;}
-	.msg1 i,.msg2 i { float:left; font-style:normal;}
+	.msg { width:705px; float:left; height:21px; padding:4px 0 3px 7px; font-size:12px; font-weight:bold;color:#4d4d4d; text-align:left;}
+		.msg a,.msg a { width:170px; float: left; text-align:left; margin-left:16px; color:#4d4d4d; font-weight:bold;}
+	.msg span { float:left; width:307px;}
+	.msg i { float:left; font-style:normal;}
+	.msg.unread { background:url('/images/bgs/alt_msg_bg.png') left top repeat-x;}
 	
 /* Pagination */
 .pagination{float:right; padding:2px; margin-top:10px;}

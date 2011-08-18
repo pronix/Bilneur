@@ -4,6 +4,7 @@
       <%= link_to_unless_current( t('user_menu.my_account'), dashboard_account_path, :class => "TabbedPanelsTab") %>
     </span>
   </li>
+
   <li class="TabbedPanelsTab" >
     <span class="TabbedPanelsTabSelected">
       <% if request.request_uri !=~ /inbox/ %>
@@ -13,10 +14,29 @@
       <% end %>
     </span>
   </li>
-  <li class="TabbedPanelsTab" ><span>Purchases</span></li><!-- FIXME -->
-  <li class="TabbedPanelsTab" ><span>Selling</span></li><!-- FIXME -->
-  <li class="TabbedPanelsTab" ><span>Orders</span></li><!-- FIXME -->
-  <li class="TabbedPanelsTab" ><span>Inventory</span></li><!-- FIXME -->
-  <li class="TabbedPanelsTab" ><span>Feedback</span></li><!-- FIXME -->
+
+  <li class="TabbedPanelsTab" >
+    <span><%= link_to t('user_menu.purchases'), dashboard_purchases_path %></span>
+  </li>
+  <li class="TabbedPanelsTab" >
+    <span><%= link_to t('user_menu.selling'), dashboard_sales_path %></span>
+  </li>
+  <li class="TabbedPanelsTab" >
+    <span><%= link_to t('user_menu.orders'), dashboard_orders_path %></span>
+  </li>
+  <li class="TabbedPanelsTab" >
+    <span><%= link_to t('user_menu.inventory'), dashboard_quotes_path %></span>
+  </li>
+
+  <li class="TabbedPanelsTab" >
+    <span><%= link_to t('user_menu.products'), dashboard_products_path %></span>
+  </li>
+ <li class="TabbedPanelsTab" >
+    <span><%= link_to t('user_menu.stores'), dashboard_seller_inventories_path %></span>
+  </li>
+
+  <li class="TabbedPanelsTab" >
+    <span><%= link_to link_to t('user_menu.feedback'), "" %></span>
+  </li><!-- FIXME -->
 
 </ul>

@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   match '/checkout/registration' => 'checkout#registration', :via => :get, :as => :checkout_registration
   match '/checkout/registration' => 'checkout#update_registration', :via => :put, :as => :update_checkout_registration
 
-    match '/checkout/(:order_type/)registration' => 'checkout#registration', :via => :get, :as => :virtual_checkout_registration
+  match '/checkout/(:order_type/)registration' => 'checkout#registration', :via => :get, :as => :virtual_checkout_registration
   match '/checkout/(:order_type/)registration' => 'checkout#update_registration', :via => :put, :as => :virtual_update_checkout_registration
 
 
@@ -33,6 +33,9 @@ Rails.application.routes.draw do
   match '/checkout/(:order_type/):state' => 'checkout#edit', :as => :virtual_checkout_state
   match '/checkout/(:order_type)' => 'checkout#edit', :state => 'address', :as => :virtual_checkout
 
+  # For recovery password by secret question
+  match '/user/password/reset_by_question' => 'password_by_question#reset_by_question', :via => :post
+  match '/user/password/new_password' => 'password_by_question#new_password', :via => :post
   # User dashboard
   #
   namespace :dashboard do
@@ -75,17 +78,22 @@ Rails.application.routes.draw do
         match "receive/:shipment_id" => "orders#receive" , :as => :receive, :via => [:get, :post]
       end
     end
+
     resources :virtual_orders, :only => [:index, :show]
     resources :sales,  :only => [:index, :show] do
       member do
         get :ship
       end
     end
+
     resources :virtual_sales,  :only => [:index, :show] do
       member do
         get :ship
       end
     end
+    resources :seller_inventories, :only => [:index, :show]
+    resources :purchases, :only => [:index, :show]
+
     resources :properties
 
     resources :option_types do

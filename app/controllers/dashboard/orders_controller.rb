@@ -1,4 +1,5 @@
 class Dashboard::OrdersController < Dashboard::ApplicationController
+  respond_to :json, :html, :xml, :pdf
 
   def index
     @orders = current_user.orders.complete
@@ -6,6 +7,13 @@ class Dashboard::OrdersController < Dashboard::ApplicationController
 
   def show
     @order = current_user.orders.complete.find_by_number(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf {
+        render "dashboard/shared/invoice/#{params[:template] || "invoice"}.pdf.prawn", :layout => false
+      }
+    end
+
   end
 
   # Receiving order

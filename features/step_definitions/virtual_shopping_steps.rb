@@ -62,3 +62,19 @@ Then /^user "([^\"]*)" should see the following quotes in dashboard:$/ do |email
   end
 
 end
+
+Given /^the user "([^\"]*)" has the order with number "([^\"]*)" and date "([^\"]*)":$/ do |email, number, date, table|
+  @user  = User.find_by_email email
+  @order = Factory(:order, :number => number, :created_at => Time.parse(date), :user => @user)
+
+  table.hashes.each do |item|
+    @seller  = User.find_by_email(item["seller"])
+    @product = Product.find_by_name(item["product"])
+    @quote  = @product.variants.find_by_seller_id(@seller.id)
+    Factory(:line_item, :order => @order, :variant => @quote, :quantity => item["quantity"], :price => item["price"] )
+  end
+  @order.state = "complete"
+  @order.completed_at = Time.parse(date)
+  @order.save!
+
+end

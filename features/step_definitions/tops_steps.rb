@@ -48,6 +48,11 @@ end
 
 Given /^I have "(\d+)" products with variant and random price$/ do |product_count|
   user = Factory.create(:user, :registration_as_seller => 1)
+  q = Factory(:calculator, { :type => "Calculator::FlatRate",
+                :calculable_id => Factory.next(:shipping_calculable_sequence), :calculable_type => "ShippingMethod"})
+  q.set_preference(:amount, 0.0)
+  Factory.create(:shipping_method, {  :seller => user, :calculator => q  } )
+
   1.upto(product_count.to_i) do
     product = Factory(:product, { :ean => "B004GVYJJ#{rand(99999)}", :owner => user, :price =>  rand(1000) + rand(100) / 100.0 })
     Factory(:variant, {:product => product, :seller => user, :condition => "used", :count_on_hand => 10})

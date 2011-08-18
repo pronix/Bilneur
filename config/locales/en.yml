@@ -2,6 +2,7 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  change_password: Change Password
   update_qty: Update Qty
   start_buying_and_selling: "Start Buying & Selling"
   learn_more: Learn More
@@ -52,9 +53,16 @@ en:
   ean: EAN
   as_seller: as seller
   user_menu:
+    stores: Stores
     quotes: Quotes
     my_account: My account
     products: Products
+    purchases: Purchases
+    selling: Selling
+    orders: Orders
+    inventory: Inventory
+    products: Products
+    feedback: Feedback
   views:
     will_paginate:
       page_entries_info:

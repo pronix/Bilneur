@@ -77,6 +77,13 @@ User.class_eval do
     true
   end
 
+  def primary_address
+    unless ( @address = addresses.primary.first )
+      @address = addresses.first.try(:set_primary!)
+    end
+    @address
+  end
+
   def has_secret?
     true unless secret_question.nil?
   end

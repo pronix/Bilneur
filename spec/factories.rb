@@ -34,14 +34,3 @@ Factory.define :secret_question_variant do |t|
   t.variant { Faker::Lorem.sentences(1) }
   t.private false
 end
-
-Factory.define :review do |t|
-  t.product { |p| p.association(:product) }
-  t.name { Factory.next(:product_sequence) }
-  t.location "here"
-  t.rating "#{rand(5)}"
-  t.review { Faker::Lorem.paragraphs(1) }
-  t.approved false
-  t.user_id { |p| p.association(:user) }
-  t.ip_address "#{rand(255)}.#{rand(255)}.#{rand(255)}.#{rand(255)}"
-end

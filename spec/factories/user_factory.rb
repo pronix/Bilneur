@@ -14,6 +14,10 @@ Factory.define(:admin_user, :parent => :user) do |u|
   u.roles { [Role.find_by_name("admin") || Factory(:role, :name => "admin")]}
 end
 
+Factory.define(:seller_user, :parent => :user) do |u|
+  u.roles { [Role.find_by_name("seller") || Factory(:role, :name => "seller")]}
+end
+
 Factory.sequence :login do |n|
   Faker::Internet.user_name + n.to_s
 end

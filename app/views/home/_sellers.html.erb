@@ -4,7 +4,8 @@
      <i class="imgP"><%= image_tag seller.photo.url(:for_review) %></i>
      <div class="pdDtl">
        <h4><%= seller.firstname %></h4>
-       <p><%= seller.created_at %></p>
+       <p><%= show_stars seller.avg_rating %></p>
+       <p>Reviews count: <%= seller.reviews_count %></p>
      </div>
    </div>
  </div>

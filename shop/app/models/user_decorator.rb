@@ -49,7 +49,7 @@ User.class_eval do
   # FIXME need to know logic of how select top sellers.
   # FIXME why don't use selers.limit(1) for Array
   # FIXME Add rescue becouse on the migrate goes to error
-  scope :sellers_top, Role.find_by_name('seller').users.order('created_at ASC') rescue []
+  scope :sellers_top, Role.find_by_name('seller').users.order('avg_rating DESC') rescue []
   # scope :sellers_top, find_by_sql([ "SELECT * FROM users WHERE id in(SELECT user_id FROM roles_users WHERE role_id = ?)",
   #                             Role.find_by_name('seller').id])
   # validates

@@ -30,15 +30,18 @@
     <big class="viwOdr">
       <%= link_to "", order, :class => "btn otherbutton" %><!-- FIXME -->
     </big>
-    <big class="cnclBtn">
-      <%= link_to "", order, :class => "btn otherbutton" %><!-- FIXME -->
-    </big>
     <div class="odrEdtPnl">
     	<div class="top"></div>
     	<div class="cntr">
-        	<a href="#"><img src="/images/icons/edit_sml_ico.png" alt="" /><i>Edit</i></a><!-- FIXME -->
-        	<a href="#"><img src="/images/icons/print_sml_ico.png" alt="" /><i>Print Invoice</i></a><!-- FIXME -->
-        	<a href="#"><img src="/images/icons/add_sml_ico.png" alt="" /><i>Add Tracking</i></a><!-- FIXME -->
+            <% order.line_items.group_by{|v| v.variant.seller }.each do |seller, items| %>
+                <% @ship = order.shipments.find_by_seller_id(seller.id) %>
+                <% if @ship %>
+                  <b>State:</b> <em><%= t("shipment_states.#{@ship.state}")  %></em>
+                  <%= link_to "Receive", receive_dashboard_order_path(order, @ship) if @ship.can_receiving? %>
+                <% end %>
+            <% end %>
+            <a href="#"><img src="/images/icons/print_sml_ico.png" alt="" /><i>Print Invoice</i></a><!-- FIXME -->
+            <a href="#"><img src="/images/icons/add_sml_ico.png" alt="" /><i>Add Tracking</i></a><!-- FIXME -->
         </div>
     	<div class="btm"></div>
     </div>

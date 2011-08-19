@@ -78,5 +78,8 @@
         <div class="blogPg">
               <%= page_entries_info @orders %>
         </div>
+        <%= will_paginate(@orders,
+                        :previous_label => "#{t('previous')}",
+                        :next_label => "#{t('next')}") %>
     </div>
 </div>

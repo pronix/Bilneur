@@ -20,6 +20,7 @@ Feature: Describe how see all tops
     And I should see top products with big ratting
 
   Scenario: Describe top sellers  
+    # TODO: I think it's not good DESC seller only for rating, we should user avg_raging with reviews_count
     Given I have "12" sellers user with different reviews
     Then I go to the top sellers page
     And I should be on the top sellers page

@@ -39,7 +39,7 @@ Variant.class_eval do
   # callbacks
   #
   before_validation :set_seller, :on => :create
-  after_save :recalculate_count_on_hand, :unless => lambda{|t| t.is_master? }
+  # after_save :recalculate_count_on_hand, :unless => lambda{|t| t.is_master? }
   after_validation  :hack_after_validate
 
 

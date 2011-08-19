@@ -29,7 +29,7 @@
           <div class="CollapsiblePanelContent dtlPnl ">
 
             <div class="lft">
-              <b><%= number_to_currency(item.price) %></b>
+              <b><%= number_to_currency(item.try(:price)) %></b>
               <i><img src="/images/icons/yel_tick.png" alt="" /></i>
               <i><img src="/images/icons/qmark.png" alt="" /></i>
               <span>Shipping:<em>Free</em></span>

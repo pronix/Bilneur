@@ -78,3 +78,8 @@ Given /^the user "([^\"]*)" has the order with number "([^\"]*)" and date "([^\"
   @order.save!
 
 end
+
+When /^I select first shipping address$/ do
+  When %Q(I choose "order[ship_address_id]")
+end
+

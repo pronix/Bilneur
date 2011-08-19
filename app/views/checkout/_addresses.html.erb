@@ -50,11 +50,15 @@
 
   <% elsif field == "lastname"%>
   <b>
-    <i>Full Name:</i>
+    <i>Last Name:</i>
     <%= form.text_field(field.to_sym, :class => 'inpNam') %>
   </b>
 
   <% elsif field == "firstname"%>
+  <b>
+    <i>First Name:</i>
+    <%= form.text_field(field.to_sym, :class => 'inpNam') %>
+  </b>
 
   <% elsif field == "phone"%>
   <b>
@@ -73,7 +77,7 @@
   <%= address_field(form, :alternative_phone, address_name) %>
   <% end %>
   <b>
-    <input class="MdfSbmt" type="submit" name="" value="">
+    <button class="MdfSbmt" value="Save new address" />
   </b>
 </div>
 <% end %>

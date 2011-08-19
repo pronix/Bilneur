@@ -75,9 +75,9 @@
     <%= render :partial => "summary", :locals => {:order => @order } %>
 
     <div class="cntnu cntnuFix" style="display:none;" id="next-step-button">
-      <%= link_to '#', :id => "link-next-step-button" do %>
+      <button id="link-next-step-button" value="Checkout">
         <%= image_tag "forms/chk_big_btn.png" %>
-      <% end %>
+      <button>
     </div>
 
   </div>

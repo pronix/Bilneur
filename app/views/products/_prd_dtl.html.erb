@@ -1,8 +1,10 @@
 <% content_for :head do %> <!-- FIXME -->
-  <meta property="og:tag name" content="tag value"/> 
-  <meta property="og:title" content="<%= product.name %>"/> 
-  <meta property="og:image" content="<%= product.images.first.attachment.url(:mini) %> "/> 
-  <meta property="og:site_name" content="Bilneur"/> 
+  <meta property="og:tag name" content="tag value"/>
+  <meta property="og:title" content="<%= product.name %>"/>
+  <% if product.images.present? %>
+  <meta property="og:image" content="<%= product.images.first.attachment.url(:mini) %> "/>
+  <% end %>
+  <meta property="og:site_name" content="Bilneur"/>
   <meta property="og:description" content="<%= product.description %>"/>
 <% end %>
 <div class="cntTop"></div>

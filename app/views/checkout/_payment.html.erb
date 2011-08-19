@@ -63,14 +63,14 @@
         </div>
 
       </div>
+      <% @order.bill_address ||= current_user.primary_address || Address.default %>
+      <%= form.fields_for :bill_address do |address_form| %>
 
-      <%= form.fields_for (@order.bill_address||current_user.primary_address) do |address_form| %>
-
-      <div class="option2">
+      <div class="option2" id="new_address_checkout" >
         <%= render :partial => 'bill_address', :locals => {
         :address_name => "bill_address",
         :address_form => address_form,
-        :address => (@order.bill_address||current_user.primary_address)
+        :address => @order.bill_address
         } %>
       </div>
       <% end %>
@@ -105,7 +105,7 @@
         <div class="grnBtm"></div>
       </div>
       <div class="cntnu tPBtn">
-        <button>
+        <button value="Checkout">
           <%= image_tag "forms/chk_big_btn.png" %>
         </button>
       </div>

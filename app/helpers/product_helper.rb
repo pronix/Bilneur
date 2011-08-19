@@ -24,4 +24,9 @@ module ProductHelper
     true if product.reviews.where(:user_id => @current_user.id).blank?
   end
 
+  def product_link_image(product, size)
+    return '/images/noimage/small.jpg' if product.images.blank?
+    product.images.first.attachment.url(size)
+  end
+
 end

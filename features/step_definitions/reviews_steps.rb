@@ -2,28 +2,17 @@ Then /^sleep "(\d+)"$/ do |time|
   sleep time.to_i
 end
 
-Given /^the following products was created by  "(.+)" user:$/ do |user_email, table|
-  user = User.find_by_email(user_email)
-  table.hashes.each do |product|
-    new_product = Factory(:product, product.merge({ :owner => user }))
-    # user.products.create(product)
-    # new_product.variants.create(:sku => "sku_#{rand(100000)}",
-    #                             :price => 1,
-    #                             :cost_price => 1,
-    #                             :count_on_hand => 10,
-    #                             :is_master => true)
-    new_product.variants.create(:condition => "used", :price => 122, :seller => user, :count_on_hand => 10 )
-  end
+Given /^I have product with name "(.+)" and owner "(.+)"$/ do |product_name, owner|
+  user = User.find_by_email(owner)
+  product = Factory(:product, :name => product_name, :owner => user)
+  Factory(:variant, :product => product, :owner => user, :seller => user, :is_master => true)
+  Factory(:variant, :product => product, :owner => user, :seller => user)
 end
 
-Given /^the following reviews with rating "(\d+)" and product "(.+)"$/ do |rating, product_name, table|
+Given /^I have "(\d+)" reviews for product "(.+)" with rating "(\d+)" and approved$/ do |reviews_count, product_name, rating|
   product = Product.find_by_name(product_name)
-  table.hashes.each do |review|
-    new_review = product.reviews.build(review)
-    new_review.rating = rating
-    new_review.save
-  end
-  # Recalculate rating for this product
+  Factory(:review, :product => product, :rating => rating, :approved => true)
+  1.upto(reviews_count.to_i) { Factory(:review, :product => product, :rating => rating, :approved => true) }
   product.recalculate_rating
 end
 
@@ -34,9 +23,9 @@ Then /^I should see overall rating with "(\d+)" stars$/ do |rating|
 end
 
 Then /^I should see all approved reviews for "(.+)" product$/ do |product_name|
-  Product.find_by_name(product_name).reviews.each do |review|
-    find_by_id("review_id_#{review.id}").should have_content(review.review)
-    find_by_id("review_id_#{review.id}").find(:xpath, "//img[contains(@src, \"yel_str_sml.png\")]", :count => review.rating)
+  Product.find_by_name(product_name).reviews.approved.each do |review|
+    # find_by_id("review_id_#{review.id}").should have_content(review.review)
+    # find_by_id("review_id_#{review.id}").find(:xpath, "//img[contains(@src, \"yel_str_sml.png\")]", :count => review.rating)
     find_by_id("review_id_#{review.id}").should have_content(review.simple_username)
   end
 end
@@ -90,10 +79,9 @@ Then /^I should see my photo as "(.+)"$/ do |email|
   page.should have_xpath("//img[contains(@src, \"#{user.photo.url(:for_review)}\")]")
 end
 
-Then /^I should see lates review on last review block$/ do
-  Review.last_reviews(3).each do |review|
-    find('.vwer').should have_content(review.review)
-    find('.vwer').should have_xpath("//img[contains(@src, \"missing_medium_for_review.png\")]")
+Then /^I should see lates review for "(.+)" on last review block$/ do |product_name|
+  Product.find_by_name(product_name).reviews.last_reviews(3).each do |review|
+    find('.vwer').should have_content(review.simple_username)
   end
 end
 
@@ -104,7 +92,7 @@ Then /^I should see all review setting options$/ do
 end
 
 Then /^test$/ do
-  puts Spree::Reviews::Config[:require_login]
+  puts Product.find_by_name("The Godfather").variants.count
 end
 
 Given /^the guest can not create a review$/ do
@@ -176,4 +164,8 @@ end
 
 Then /^I should not see link "(.+)"$/ do |link_name|
   page.should_not have_content(link_name)
+end
+
+Then /^I should see Baserd on some Rating$/ do
+  page.should have_content("Based On #{Product.find_by_name('The Godfather').reviews_count} Ratings")
 end

@@ -14,4 +14,5 @@ Factory.define :product do |f|
   f.sku "ABC"
   f.available_on { 1.year.ago }
   f.deleted_at nil
+  f.ean { Factory.next(:product_sequence) }
 end

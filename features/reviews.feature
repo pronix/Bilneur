@@ -1,18 +1,19 @@
-# language: en
-
 Feature: Manage reviews
 
   Background:
     Given I have an admin account of "admin@person.com/password"
     And I am signed up as a seller with "seller@person.com/password"
-    Given the following products was created by  "seller@person.com" user:
-      | name                        | available_on        |            ean |
-      | The Godfather               | 2011-01-06 18:21:13 |  9780099528128 |
-    Given the following reviews with rating "4" and product "The Godfather"
-      | name   | location | review           | approved | ip_address |
-      | Name 1 | here     | This is review   | true     |  127.0.0.1 |
-      | Name 2 | here     | Thit is review 2 | true     |  127.0.0.1 |
+    Given I have product with name "The Godfather" and owner "seller@person.com"
+    Given I have "2" reviews for product "The Godfather" with rating "4" and approved
     Given the guest can not create a review
+
+  Scenario: Show product rating
+    When I go to the "The Godfather" product page
+    Then I should see "The Godfather"
+    And I should see overall rating with "4" stars
+    # And I should see "Based On 2 Ratings"
+    And I should see Baserd on some Rating
+    And I should see all approved reviews for "The Godfather" product
 
   Scenario: Show reviews in seller panel
     Given I sign in as "seller@person.com/password"
@@ -53,16 +54,10 @@ Feature: Manage reviews
     When I go to the "The Godfather" review by url
     And I should be on the "The Godfather" product page
 
-  Scenario: Show latest review in last review block
+  Scenario: Show latest review for "The Godfather" product in last review block
     When I go to the "The Godfather" product page
-    Then I should see lates review on last review block
+    Then I should see lates review for "The Godfather" on last review block
 
-  Scenario: Show product rating
-    When I go to the "The Godfather" product page
-    Then I should see "The Godfather"
-    And I should see overall rating with "4" stars
-    And I should see "Based On 2 Ratings"
-    And I should see all approved reviews for "The Godfather" product
   #FIXME 
   # Scenario: Create review as Guest
   #   And I am logged out

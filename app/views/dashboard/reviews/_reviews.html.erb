@@ -1,0 +1,16 @@
+<div class="TabbedPanelsContentGroup">
+    <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block; ">
+      <% reviews.each do |review| %>
+        <%= render "line_item", :review => review, :user => review.seller %>
+      <% end %>
+    </div>
+</div>
+
+<div class="blogFtr">
+    <div class="blogPg">
+            <%= page_entries_info reviews %><!-- FIXME add will_paginate 3.0.pre4 support for modifying text of entries info -->
+    </div>
+    <%= will_paginate(reviews,
+            :previous_label => "#{t('previous')}",
+            :next_label => "#{t('next')}") %>
+</div>

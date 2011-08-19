@@ -1,13 +1,15 @@
+<%= render 'shared/per_page', :per_page => params[:per_page] %>
 <div class="fdBck">
 	<h2>Feedback &amp; Reviews</h2>
     <div class="pPgCmbo">
     	<div class="cmbo7">
-            <div class="ddOutOfVision"><select id="websites1" tabindex="1" name="">
-                <option value="" selected="selected" title="">5</option>
-                <option value="" title="">1</option>
-                <option value="" title="">2</option>
-                <option value="" title="">3</option>
-                <option value="" title="">4</option>
+          <div class="ddOutOfVision">
+            <select id="per_page_select" tabindex="1" name="">
+                <option value="1" title="">1</option>
+                <option value="2" title="">2</option>
+                <option value="3" title="">3</option>
+                <option value="4" title="">4</option>
+                <option value="5" selected="selected" title="">5</option>
             </select></div>        </div>
         <b>Display per page</b>
     </div>
@@ -35,63 +37,20 @@
     </div>
     <div class="sptCnt">
     	<div id="TabbedPanels2" class="TabbedPanels">
-            <ul class="TabbedPanelsTabGroup">
-              <li class="TabbedPanelsTab tab1 TabbedPanelsTabSelected" tabindex="0"><span>Feedback as a Buyer</span></li>
-              <li class="TabbedPanelsTab tab2" tabindex="0"><span>Feedback as a Seller</span></li>
-              <li class="TabbedPanelsTab tab3" tabindex="0"><span>Feedback Left</span></li>
+            <ul class="TabbedPanelsTabGroup feedback">
+              <li class="TabbedPanelsTab tab1 TabbedPanelsTabSelected" tabindex="0">
+                <span><%= link_to "Feedback as a Buyer", dashboard_reviews_path(:state => "as_buyer", :per_page => params[:per_page]), :remote => true %></span>
+              </li>
+              <li class="TabbedPanelsTab tab2" tabindex="0">
+                <span><%= link_to "Feedback as a Seller", dashboard_reviews_path(:state => "as_seller", :per_page => params[:per_page]), :remote => true %></span>
+              </li>
+              <li class="TabbedPanelsTab tab3" tabindex="0">
+                <span><%= link_to "Feedback Left", dashboard_reviews_path(:state => "left", :per_page => params[:per_page]), :remote => true %></span>
+              </li>
           </ul>
-            <div class="TabbedPanelsContentGroup">
-              <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block; ">
-                <div class="fdBack">
-                	<i class="rtr"><img src="images/img/rater_img1.png" alt=""><span>Cheryl C</span></i>
-                    <p>e vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur
-a consequuntur magni dolores eos</p>
-    								<div class="smlRtng"><div id="number2" class="nmbrRate" style="width: 100px; cursor: pointer; "><img id="number2-1" src="assets/scripts/star_rating_small/img/star-off.png" alt="1" title="bad" class="number2">&nbsp;<img id="number2-2" src="assets/scripts/star_rating_small/img/star-off.png" alt="2" title="poor" class="number2">&nbsp;<img id="number2-3" src="assets/scripts/star_rating_small/img/star-off.png" alt="3" title="regular" class="number2">&nbsp;<img id="number2-4" src="assets/scripts/star_rating_small/img/star-off.png" alt="4" title="good" class="number2">&nbsp;<img id="number2-5" src="assets/scripts/star_rating_small/img/star-off.png" alt="5" title="gorgeous" class="number2"><input id="number2-score" type="hidden" name="entity.score"></div></div>
-                    <a class="itmN" href="#"><b>Item</b># 31245678</a>
-                </div>
-                <div class="fdBack">
-                	<i class="rtr"><img src="images/img/rater_img1.png" alt=""><span>Cheryl C</span></i>
-                    <p>e vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur
-a consequuntur magni dolores eos</p>
-    								<div class="smlRtng"><div id="number3" class="nmbrRate" style="width: 100px; cursor: pointer; "><img id="number3-1" src="assets/scripts/star_rating_small/img/star-off.png" alt="1" title="bad" class="number3">&nbsp;<img id="number3-2" src="assets/scripts/star_rating_small/img/star-off.png" alt="2" title="poor" class="number3">&nbsp;<img id="number3-3" src="assets/scripts/star_rating_small/img/star-off.png" alt="3" title="regular" class="number3">&nbsp;<img id="number3-4" src="assets/scripts/star_rating_small/img/star-off.png" alt="4" title="good" class="number3">&nbsp;<img id="number3-5" src="assets/scripts/star_rating_small/img/star-off.png" alt="5" title="gorgeous" class="number3"><input id="number3-score" type="hidden" name="entity.score"></div></div>
-                    <a class="itmN" href="#"><b>Item</b># 31245678</a>
-                </div>
-                <div class="fdBack">
-                	<i class="rtr"><img src="images/img/rater_img1.png" alt=""><span>Cheryl C</span></i>
-                    <p>e vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur
-a consequuntur magni dolores eos</p>
-    								<div class="smlRtng"><div id="number4" class="nmbrRate" style="width: 100px; cursor: pointer; "><img id="number4-1" src="assets/scripts/star_rating_small/img/star-off.png" alt="1" title="bad" class="number4">&nbsp;<img id="number4-2" src="assets/scripts/star_rating_small/img/star-off.png" alt="2" title="poor" class="number4">&nbsp;<img id="number4-3" src="assets/scripts/star_rating_small/img/star-off.png" alt="3" title="regular" class="number4">&nbsp;<img id="number4-4" src="assets/scripts/star_rating_small/img/star-off.png" alt="4" title="good" class="number4">&nbsp;<img id="number4-5" src="assets/scripts/star_rating_small/img/star-off.png" alt="5" title="gorgeous" class="number4"><input id="number4-score" type="hidden" name="entity.score"></div></div>
-                    <a class="itmN" href="#"><b>Item</b># 31245678</a>
-                </div>
-                <div class="fdBack">
-                	<i class="rtr"><img src="images/img/rater_img1.png" alt=""><span>Cheryl C</span></i>
-                    <p>e vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur
-a consequuntur magni dolores eos</p>
-    								<div class="smlRtng"><div id="number5" class="nmbrRate" style="width: 100px; cursor: pointer; "><img id="number5-1" src="assets/scripts/star_rating_small/img/star-off.png" alt="1" title="bad" class="number5">&nbsp;<img id="number5-2" src="assets/scripts/star_rating_small/img/star-off.png" alt="2" title="poor" class="number5">&nbsp;<img id="number5-3" src="assets/scripts/star_rating_small/img/star-off.png" alt="3" title="regular" class="number5">&nbsp;<img id="number5-4" src="assets/scripts/star_rating_small/img/star-off.png" alt="4" title="good" class="number5">&nbsp;<img id="number5-5" src="assets/scripts/star_rating_small/img/star-off.png" alt="5" title="gorgeous" class="number5"><input id="number5-score" type="hidden" name="entity.score"></div></div>
-                    <a class="itmN" href="#"><b>Item</b># 31245678</a>
-                </div>
-              </div>
-              <div class="TabbedPanelsContent" style="display: none; ">Content 2</div>
-              <div class="TabbedPanelsContent" style="display: none; ">Content 3</div>
+          <div id="reviews_container">
+            <%= render "reviews", :reviews => @reviews %>
           </div>
-        </div>
-        <div class="blogFtr">
-            <div class="blogPg">
-                <p><b>1 - 15</b> of <b>3,456</b> blog posts</p>
-            </div>
-            <div class="pagination">
-                <ul>
-                    <li><a href="#" class="prevnext disablelink">previous</a></li>
-                    <li><a href="#" class="currentpage">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">6</a>...</li>
-                    <li><a href="#">18</a></li>
-                    <li><a href="#" class="prevnext">next</a></li>
-                </ul>
-            </div>
         </div>
     </div>
 </div>

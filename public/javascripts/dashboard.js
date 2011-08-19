@@ -164,6 +164,14 @@ jQuery(document).ready(function(){
 		alert("Error: "+e.message);
 	}
     
+    //Tabs for reviews, changing appearance
+    $("ul.feedback li").click(function() {
+       $('ul.feedback .TabbedPanelsTabSelected').removeClass('TabbedPanelsTabSelected');
+       $(this).addClass('TabbedPanelsTabSelected');
+       $('#reviews_container').html("Loading..");
+    });
+
+
     // Checkbox multiselector, with awesome behaviour for select all checkbox
     $("div.checkbox:not([id=select_all_check_box])").live('click', function() {
         if ( $("input[type=checkbox]:not(:checked)").length == 1 ) {

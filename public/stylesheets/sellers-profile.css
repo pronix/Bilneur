@@ -211,7 +211,7 @@ ul li { list-style:none;}
 
 .fdBack { width:665px; height:93px; margin:20px 0 0 30px; background:url('../../images/bgs/fdback_bg.png') right top no-repeat;}
     .rtr { width:82px; height:83px; margin-top:5px; position:relative;}
-        .rtr span { position:absolute; z-index:1; width:82px; height:18px; background:url('../../images/bgs/rtr_btm_bg.png') no-repeat; left:0; bottom:0; text-align:center; font-size:12px; font-style:normal; color:#4d4d4d; font-weight:bold; line-height:18px;}
+        .rtr span { position:absolute; z-index:1; width:82px; height:18px; whitespace: no-wrap; overflow:hidden; background:url('../../images/bgs/rtr_btm_bg.png') no-repeat; left:0; bottom:0; text-align:center; font-size:12px; font-style:normal; color:#4d4d4d; font-weight:bold; line-height:18px;}
     .fdBack p {width:510px; font-size:12px; color:#787878; margin:18px 0 0 45px; padding-bottom:10px; background:url('../../images/forms/fdback_line.png') center bottom no-repeat;}    
     .fdBack .itmN { float:right; color:#00adef; margin:7px 25px 0 0;}
     .smlRtng { float:left; width:150px; margin:5px 0 0 45px;}
@@ -234,10 +234,13 @@ ul li { list-style:none;}
 .fdBck .TabbedPanelsTab span { line-height:37px;}
 .fdBck .TabbedPanelsTabHover {color:#767676;background:url('/images/forms/fdback_tab.png') no-repeat;}
 .fdBck .TabbedPanelsTabSelected {color:#767676;background:url('/images/forms/fdback_tab.png') no-repeat;}
+.fdBck .TabbedPanelsTabSelected span a {color:#767676 !important;}
 .fdBck .TabbedPanelsTab a {color: black;text-decoration: none;}
+.fdBck .TabbedPanelsTab span a {color: white;text-decoration: none;}
 .fdBck .TabbedPanelsContentGroup { clear:none; float:left;}
-.fdBck .TabbedPanelsContent { width:715px; border:1px solid #e4e4e4; padding:0; background:#f3f3f3;}
-
+.fdBck .TabbedPanelsContent { width:715px; border: none !important; }
+#reviews_container { float: left; width: 715px; border: 1px solid #e4e4e4; padding: 0; background: #f3f3f3; min-height: 300px;}
+#reviews_container .blogFtr { border-top: 1px solid #e4e4e4;}
 
 /* Inventory Page */
 .cmbo6 .txt { float:left; width:160px; height:12px; margin-top:2px; padding:5px 5px 5px 24px; border:none; background:url('../../images/forms/inv_txt.png') no-repeat;}

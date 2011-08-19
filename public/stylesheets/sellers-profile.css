@@ -80,6 +80,7 @@ ul li { list-style:none;}
 					.pnlFix { height:120px!important;}
 					
 	.inbxTabs { margin:10px 0 0 10px; width:99%;}
+                .inbxTabs .message_container { margin-left: 20px;}
 		.inbxTabs .TabbedPanels {background:url('/images/bgs/inbx_int_tab_top.png') no-repeat;}
 	.inbxNav { margin:10px 0 0 10px;}
 		.inbxNav li {}

@@ -291,5 +291,5 @@
 	.tPBtn { margin-top:240px!important;}
 
 
-button.checkout {cursor: pointer; border: none; height: 49px;}
+button.checkout {cursor: pointer; border: none; height: 49px; background: none;}
 button.checkout:hover {opacity: 0.8;}

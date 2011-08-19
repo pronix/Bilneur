@@ -14,7 +14,7 @@
 
   <% @methods.each_with_index do |shipping_method, i| %>
 
-  <div class="radio js-radio" id="box-single" style="background-position: 50% 0px; ">
+  <div class="radio js-radio" style="background-position: 50% 0px; ">
     <%= radio_button("order[seller_shipping_method][#{seller.id}]", :shipping_method_id, shipping_method[:id],
         {:checked => (i == 0), :id => "order_shipping_method_id_#{shipping_method[:id]}"}) %>
   </div>

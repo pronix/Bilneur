@@ -5,6 +5,8 @@ unless Factory.factories.keys.include?(:user)
     f.password_confirmation "spree123"
     f.firstname { Faker::Name.first_name }
     f.lastname { Faker::Name.last_name }
+    f.reviews_count 0
+    f.avg_rating { BigDecimal.new("0.0") }
   end
 end
 

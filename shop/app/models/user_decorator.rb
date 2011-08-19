@@ -1,7 +1,7 @@
 User.class_eval do
 
   attr_accessor   :registration_as_seller
-  attr_accessible :registration_as_seller, :firstname, :lastname, :photo, :phone
+  attr_accessible :registration_as_seller, :firstname, :lastname, :photo, :phone, :reviews_count, :avg_rating
 
   # FIXIT: for_review, becouse for review need this resoluton
   has_attached_file :photo,
@@ -58,6 +58,16 @@ User.class_eval do
   # callbacks
   #
   after_create :set_roles
+
+  # Recalculate rating for seller, from SellerReview
+  def recalculate_rating
+    reviews_count = buyer_reviews.reload.count
+    if reviews_count > 0
+      self.update_attributes(:reviews_count => reviews_count, :avg_rating => buyer_reviews.sum(:rating).to_f / reviews_count )
+    else
+      update_attribute(:avg_rating, 0)
+    end
+  end
 
   def has_seller_review?
     true if !seller_reviews.blank?

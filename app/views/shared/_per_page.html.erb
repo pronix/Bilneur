@@ -1,0 +1,24 @@
+<% content_for :head do %>
+  <script type="text/javascript" charset="utf-8">
+    $(function() {
+      //Redirect to products index with new per_page param
+      $("#per_page_select").change(function() {
+        var per_page = $(this).val();
+        var product_path = "<%= request.path %>" + "?per_page=" + per_page;
+        window.location = product_path;
+      });
+      
+      //Set per_page_select value depending on existence of per_page param
+      $("#per_page_select option[value=<%= per_page %>]").attr('selected', true);
+
+      //And only after that try to to style select
+      try {
+        $("#per_page_select").msDropDown({mainCSS:'dd2'});
+        $("#ver").html($.msDropDown.version);
+        } catch(e) {
+          alert("Error: "+e.message);
+      }
+
+    })
+  </script>
+<% end %>

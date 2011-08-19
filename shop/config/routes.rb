@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   match "/products/like_review" => 'products#like_review', :via => :post
   match "/messages/:user_id/new" => "dashboard/messages#new", :as => :new_message
 
+  resources :seller_products, :only => [:show]
+
   # Product
   resources :products do
     # In spree-review has routes /review But we don't want to use this route

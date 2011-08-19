@@ -1,8 +1,32 @@
-<%= stylesheet_link_tag "skin","slider/checkout_scrollable_wizard", "checkout", "dd2", :media => "screen, projection" %>
+<%= stylesheet_link_tag "skin",
+  "slider/checkout_scrollable_wizard", 
+  "checkout", 
+  "dd2", 
+  'crystal-stars',
+  'payment_slider/slider.css',
+  'payment_slider/tabs.css',
+  
+  :media => "screen, projection" %>
 <!-- [if lt IE 8]><%= stylesheet_link_tag "ie.css", :media => "screen, projection" %><![endif]-->
 <%#== stylesheet_tags %>
 <%= csrf_meta_tag %>
-<%= javascript_include_tag 'jquery-1.4.2.min', 'jquery.validate.min.js', 'jquery.dd', 'rails', 'application', :cache => 'jquery-core' %>
+<%= javascript_include_tag 'payment_slider/jquery-1.3.2.min.js',
+  'payment_slider/ui.core.js',
+  'payment_slider/ui.slider',  
+  'payment_slider/jquery.minMaxSlider', 
+  'payment_slider/slider_demo.js',  
+  'jquery-1.4.2.min', 
+  'jquery.validate.min.js', 
+  'jquery.dd', 
+  'rails', 
+  'application', 
+  'stars/jquery-ui.custom.min',
+  'stars/jquery.raty.min',
+  'stars/jquery.ui.stars',
+  'stars/stars_own',
+  'jquery.iphone-switch',
+  "https://apis.google.com/js/plusone.js",  
+  :cache => 'jquery-core' %>
 <% unless I18n.locale.to_s[0..1] == 'en' %>
   <%= javascript_include_tag ['localization/messages_', I18n.locale.to_s[0..1], '.js'].join %>
 <% end %>

@@ -24,7 +24,21 @@
                     :onblur=>"if(this.value=='') this.value='password'" %>
               </span>
               <%= submit_tag "", :class => 'lgnSbmt', :name=>"", :id => "Log In"%>
-              <a class="ysNo" href="#"><%= image_tag "forms/yes_no.png" %><br /><span>Remember me !</span></a>
+
+              <div class="left" id="memento"></div>
+              <script type="text/javascript">
+                     $('#memento').iphoneSwitch("on", 
+                      function() {
+                        $('#ajax').load('on.html');
+                       },
+                       function() {
+                        $('#ajax').load('off.html');
+                       },
+                       {
+                         switch_on_container_path: '/images/iphone_switch_container_off.png'
+                     });
+              </script>
+              <a class="ysNo" href="#"><span>Remember me !</span></a>
               <%= link_to t("forgot_password"), new_user_password_path, :class => "lostpwd" %>
             <% end %>
           </div>

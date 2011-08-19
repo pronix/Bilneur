@@ -4,7 +4,8 @@ class Dashboard::OrdersController < Dashboard::ApplicationController
   include ProductHelper
 
   def index
-    @orders = current_user.orders.complete
+    @orders = current_user.orders.paginate(:page => params[:page], :per_page => params[:per_page])
+    #@orders = current_user.orders.complete.paginate(:page => params[:page], :per_page => params[:per_page])
   end
 
   def show

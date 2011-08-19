@@ -9,45 +9,23 @@
   <h3><%= t(:search_results, :keywords => h(params[:keywords])) %></h3>
 <% end %>
 
-<% if products.any? %>
-  <% products.each do |product| %>
-  <% next unless product.best_variant  %>
-  <% best_deal = product.best_variant %>
-  <% next unless best_deal.seller.available_shipping_methods?  %>
-
-    <% if Spree::Config[:show_zero_stock_products] || product.has_stock? %>
-    <div class="smPrdcts">
-      <div class="smPd">
-          <i class="imgP"><%= link_to small_image(product), product %></i>
-            <div class="pdDtl">
-              <h4><%= link_to product.name, product %></h4>
-              <p><%= product.description %></p>
-              <%= render :partial => "shared/rating_product", :object => product %>
-            </div>
-            <div class="rTe">
-              <b class="rT">
-                <%= number_to_currency(best_deal.price) %>
-              </b>
-                <em class="oRt">retail <%= number_to_currency(product.price) %></em>
-                <span class="avB">Available with <%= product.variants.count %> sellers</span>
-                <ul>
-                  <li><%= link_to image_tag("icons/ch_twtr.png"), "#" %></li>
-                  <li><%= link_to image_tag("icons/ch_fb.png"), "#" %></li>
-                  <li><%= link_to image_tag("icons/ch_dl.png"), "#" %></li>
-                </ul>
-                <p>
-                  <em class="qt">QTY Available</em><i class="avl"><%= best_deal.count_on_hand %></i>
-                </p>
-                <div class="cntcts">
-                  <%= render :partial => 'shared/cart_form', :object => best_deal %>
-                </div>
-            </div>
-        </div>
-    </div>
+<div id="products_list" class="<%== ' tabPrdcts' if defined? grid %>">
+    <% if products.any? %>
+      <% products.each do |product| %>
+      <% next unless product.best_variant %>
+      <% best_deal = product.best_variant %>
+      <% next unless best_deal.seller.available_shipping_methods?  %>
+    
+      <% if Spree::Config[:show_zero_stock_products] || product.has_stock? %>
+          <% if defined? grid %>
+            <%= render "shared/product_cell", :product => product, :best_deal => best_deal %>
+          <% else %>
+            <%= render "shared/product_line", :product => product, :best_deal => best_deal %>
+          <% end %>
+        <% end %>
+      <% end %>
     <% end %>
-  <% end %>
-<% end %>
-
+</div>
 <% if paginated_products.respond_to?(:total_pages)
       params.delete(:search)
       params.delete(:taxon)

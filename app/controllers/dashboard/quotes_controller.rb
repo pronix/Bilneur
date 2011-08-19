@@ -1,9 +1,10 @@
 class Dashboard::QuotesController < Dashboard::ApplicationController
   before_filter :load_and_authorize_resource
   before_filter :load_product, :only => [:create, :new, :destroy]
+  respond_to :html, :js
 
   def index
-    @quotes = current_user.quotes
+    @quotes = current_user.quotes.paginate(:page => params[:page], :per_page => params[:per_page])
   end
 
   def new

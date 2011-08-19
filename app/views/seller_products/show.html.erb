@@ -1,0 +1,166 @@
+<% stylesheet "slider/general", "slider/SpryCollapsiblePanel", "slider/SpryTabbedPanels2","slider/SpryTabbedPanels3", "product" %>
+<% javascript "jquery.custom_radio_checkbox", "slider/SpryCollapsiblePanel", "slider/SpryTabbedPanels", "product_index" %>
+<%= render 'shared/per_page', :per_page => params[:per_page] %>
+
+<div class="col1 slrPrdctPg prdctDPg">
+<div class="mTabs">                    
+      <div id="TabbedPanels1" class="TabbedPanels TabbedPanelsTabFocused">
+        <ul class="TabbedPanelsTabGroup">
+          <li class="TabbedPanelsTab TabbedPanelsTabSelected" tabindex="0"><span>About Seller</span></li>
+          <li class="TabbedPanelsTab" tabindex="0"><span>Feedback</span></li>
+          <li class="TabbedPanelsTab" tabindex="0"><span>Return Policy </span></li>
+          <li class="TabbedPanelsTab" tabindex="0"><span>Specials</span></li>
+          <li class="TabbedPanelsTab" tabindex="0"><span>Shipping</span></li>
+          <li class="TabbedPanelsTab" tabindex="0"><span>Contact Seller</span></li>
+        </ul>
+        <div class="TabbedPanelsContentGroup">
+          <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block; ">
+
+
+          	<div class="mTbFx">
+            	  <div class="srchBar">
+                    <form action="">
+                        <div class="searchTxt">
+                            <input type="text" value="Search Blog" onfocus="if(this.value=='Search Blog') this.value=''" onblur="if(this.value=='') this.value='Search Blog'">
+                            <input type="submit" value="Update Results">
+                        </div>
+                    </form>
+                  </div>
+                </div>
+
+
+            <div id="TabbedPanels3" class="TabbedPanels">
+                <ul class="TabbedPanelsTabGroup">
+                  <li class="TabbedPanelsTab TabbedPanelsTabSelected" tabindex="0"><span>All Products</span></li>
+                  <li class="TabbedPanelsTab" tabindex="0"><span>Auctions</span></li>
+                  <li class="TabbedPanelsTab" tabindex="0"><span>Volume Price</span></li>
+                  <li class="TabbedPanelsTab" tabindex="0"><span>Group Sales</span></li>
+                  <li class="TabbedPanelsTab" tabindex="0"><span>Fixed Price</span></li>
+                </ul>
+
+
+
+                <div class="TabbedPanelsContentGroup">
+
+
+                  <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="position: relative; display: block; ">
+                   	<div class="bCrmp">
+                          <ul>  <!-- FIXME --> 
+                                <li>Fixmers:</li>
+                                <li><a href="#">All Products</a><img src="/images/icons/ico_cros.png" alt=""></li>
+                                <li><a href="#">Electronics</a><img src="/images/icons/ico_cros.png" alt=""></li>
+                                <li><a href="#">Smart Phones</a><img src="/images/icons/ico_cros.png" alt=""></li>
+                                <li><a href="#">Apple iPhone</a><img src="/images/icons/ico_cros.png" alt=""></li>
+                            </ul>
+                        </div>
+
+
+                    <div class="cmboSrt">
+                        <form action="">
+                          <div class="ddOutOfVision">
+                            <select id="websites1" tabindex="1" name="">
+                                <option value="" selected="selected" title="">Sort by </option>
+                                <option value="" title="">option 1</option>
+                                <option value="" title="">option 2</option>
+                                <option value="" title="">option 3</option>
+                                <option value="" title="">option 4</option>
+                            </select>
+                          </div>                        
+                        </form>
+                      </div>
+
+
+                    <div class="likes">
+                      <a href="#"><img src="/images/icons/fb_like.png" alt=""></a> <!-- FIXME -->
+                      <a href="#"><img src="/images/icons/bnr_plus.png" alt=""></a> <!-- FIXME -->
+                    </div>
+
+
+                    <%= render "shared/variants", :variants => @quotes, :taxon => @taxon, :grid => true %>
+
+                    <div class="blogPg">
+                      <%= page_entries_info @quotes%><!-- FIXME add will_paginate 3.0.pre4 support for modifying text of entries info -->
+                    </div>
+                    <div class="slctr slct">
+                      <b>items per page</b>
+                      <form action="">
+                        <select id="per_page_select" tabindex="1" name="">
+                          <option value="15" title="">15</option>
+                          <option value="30" title="">30</option>
+                          <option value="50" title="">50</option>
+                          <option value="60" title="">60</option>
+                        </select>
+                      </form>
+                    </div>
+
+                  </div>
+                  <div class="TabbedPanelsContent" style="display: none; ">
+                    2 tab
+                  </div>
+
+                  <div class="TabbedPanelsContent" style="display: none; ">
+                    3 tab
+                  </div>
+
+                  <div class="TabbedPanelsContent" style="display: none; ">
+                    4 tab
+                  </div>
+
+                  <div class="TabbedPanelsContent" style="display: none; ">
+                    5 tab
+                  </div>
+
+                  <div class="TabbedPanelsContent" style="display: none; ">
+                    6 tab
+                  </div>
+                
+                
+                </div>
+              </div>
+
+
+
+
+              </div>
+              <div class="TabbedPanelsContent" style="display: none; ">
+                2 tab
+              </div>
+              <div class="TabbedPanelsContent" style="display: none; ">
+                3 tab
+              </div>
+              <div class="TabbedPanelsContent" style="display: none; ">
+                4 tab
+              </div>
+              <div class="TabbedPanelsContent" style="display: none; ">
+                5 tab
+              </div>
+              <div class="TabbedPanelsContent" style="display: none; ">
+                6 tab
+              </div>
+            </div>
+          </div>
+      </div>
+</div>
+
+<div class="col2 col2SlPrd prdctDPg slrPrdctPg slrPrdctPg">
+    <div class="blogFilters">
+        <div class="invty">
+          <div>
+            <h5><%= @seller.full_name %></h5>
+              <%= image_tag(@seller.photo.url(:for_review)) %>
+             <b>Reliability Score</b>
+             <i class="yelTk"><img src="/images/icons/yel_tick.png" alt=""></i>
+             <em class="qmrk"><img src="/images/icons/qmark.png" alt=""></em>
+             <em class="hndrd">FIX</em>
+             <em class="qmrk2"><img src="/images/icons/qmark.png" alt=""></em>
+           </div>
+           <ul>
+             <li><a href="#"><img src="/images/icons/ch_twtr.png" alt="">Tweet About This Seller</a></li><!-- FIXME -->
+           	<li><a href="#"><img src="/images/icons/ch_fb.png" alt="">Share With Your Friends on Facebook</a></li><!-- FIXME -->
+           	<li><a href="#"><img src="/images/icons/ch_dl.png" alt="">Add Seller To Favorites</a></li><!-- FIXME -->
+           </ul>
+        </div>
+
+        <%= render "shared/filter" %>
+    </div>
+</div>

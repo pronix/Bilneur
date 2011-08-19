@@ -1,0 +1,25 @@
+<% stylesheet "product" %>
+
+<% if variants.empty? %>
+  <%= t(:no_products_found) %>
+<% elsif params.key?(:keywords) && params[:keywords].strip != '' %>
+  <h3><%= t(:search_results, :keywords => h(params[:keywords])) %></h3>
+<% end %>
+
+<div id="products_list" class="<%== ' tabPrdcts' if defined? grid %>">
+    <% if variants.any? %>
+      <% variants.each do |variant| %>
+    
+      <% if Spree::Config[:show_zero_stock_products] || variant.has_stock? %>
+          <% if defined? grid %>
+            <%= render "shared/product_cell", :product => variant, :best_deal => variant %>
+          <% else %>
+            <%= render "shared/product_line", :product => variant, :best_deal => variant %>
+          <% end %>
+      <% end %>
+    <% end %>
+</div>
+<%= will_paginate(variants,
+                    :previous_label => "#{t('previous')}",
+                    :next_label => "#{t('next')}") %>
+<% end %>

@@ -1,21 +1,23 @@
 <div class="prfl">
 	<div class="top"></div>
 	<div class="cntr">
-    <b>Innovity Store</b>
+    <b><%= current_user.full_name %></b>
     <i>
       <%= image_tag current_user.photo.url(:for_review) %>
     </i>
     <%= link_to edit_dashboard_account_path do %>
-    <img src="/images/forms/up_btn.png" alt="">
+      <img src="/images/forms/up_btn.png" alt=""> <!-- FIXME -->
     <% end %>
 
   </div>
 	<div class="btm"></div>
   <%= link_to t("change_password"), account_change_password_path, :class => 'vsp' %>
 
-  <a class="vsp" id="seller_profile_toggle" href="#">
-    <img src="/images/forms/vsp_btn.png" alt="">
-  </a>
+  <% if current_user.has_role?("seller") %>
+    <a class="vsp" id="seller_profile_toggle" href="#">
+      <img src="/images/forms/vsp_btn.png" alt="">
+    </a>
+  <% end %>
   <!-- FIXME what if not a seller? -->
 </div>
 
@@ -71,41 +73,10 @@
     </div>
   </div>
   <div class="btm"></div>
-  <div id="seller_profile">
-    <div class="top"></div>
-    <div class="cntr">
-      <h2>Seller Profile</h2>
-      <div class="pnl pnl1 pnlFix">
-        <b>BUSINESS INFORMATION</b>
-        <p>
-          <span><a href="#">LINK Innovity (Seller Name)</a></span><!-- FIXME -->
-          <span><a href="#">LINK About You/ Your Business</a></span><!-- FIXME -->
-          <span><a href="#">LINK Contact Info</a></span><!-- FIXME -->
-          <span><a href="#">LINK Create FAQ's</a></span><!-- FIXME -->
-        </p>
-      </div>
-      <div class="pnl pnl2 pnlFix">
-        <b>POLICIES</b>
-        <p>
-          <span><a href="#">LINK Shipping policy</a></span><!-- FIXME -->
-          <span><a href="#">LINK Return policy</a></span><!-- FIXME -->
-          <span>
-            <%= link_to t("terms_and_conditions"), edit_dashboard_terms_path %>
-          </span>
-        </p>
-      </div>
-      <div class="pnl pnl3 pnlFix">
-        <b>ADDITIONAL SETTINGS</b>
-        <p>
-          <span>
-            <%= link_to t("shipping_methods"), dashboard_shipping_methods_path %>
-          </span>
-          <span><a href="#">LINK Manage Shipping rates</a></span><!-- FIXME -->
-          <span><a href="#">LINK Manage Payout Information</a></span><!-- FIXME -->
-        </p>
-      </div>
-    </div>
-    <div class="btm"></div>
-  </div>
+
+  <%= render 'seller_profile' if current_user.has_role?("seller") %>
+
+
+
 </div>
 

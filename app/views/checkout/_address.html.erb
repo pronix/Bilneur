@@ -18,7 +18,7 @@
                     <%= address.address2 %><br>
                     <%= address.city %>, <%= address.state.name %><br>
                     Phone: <%= address.phone %><br>
-                  </span>                                        
+                  </span>
                   <%= link_to t(:edit), edit_dashboard_address_path(address), :class => "delE" %>
                   <%= link_to t(:delete), dashboard_address_path(address), :method => :delete, :confirm => t(:are_you_sure), :class => "delE" %>
                 <% else %>
@@ -63,10 +63,10 @@
                         <option value="" title="">Address 2</option>
                         <option value="" title="">Address 3</option>
                         <option value="" title="">Address 4</option>
-                  </select></div>                
+                  </select></div>
                 </div>
             </div>
-            
+
         </div>
         <h6>Shipping Method:</h6>
         <div class="radioPnl">

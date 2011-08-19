@@ -1,10 +1,3 @@
-<div class="col2 col2SlPrd col2P">
-  <div class="blogFilters">
-      <div class="invty col2Invty">
-            <a class="pLa" href="#">List View</a>
-            <a href="#">List View</a>
-      </div>
-
 <%= form_tag products_path, :remote => true, :method => 'get', :id => "products_search" do %>
 
      <% get_taxonomies.each do |taxonomy| %>
@@ -58,7 +51,14 @@
                 </div>
               <label class="techi" for="Astronomy">Price Range</label>
             </div>
-            <img src="/images/img/line_measure.png" alt="" />
+            <!-- Slider#1 -->
+            <div class="tansBg">
+                                <div class="prossr">
+                                    <input class="minMaxTxt fL" type="text" name="min_price" id="min_price2" value="100" size="5"><input class="minMaxTxt fR" type="text" name="max_price" id="max_price2" value="500" size="5">     
+    <div id="slider2" style=" float:left;width:100%; margin-top:20px;" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><div class="ui-slider-range ui-widget-header" style="left: 10%; width: 46.599999999999994%; "></div><a href="http://www.flameweb.net/minmaxslider_demo#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 10%; "></a><a href="http://www.flameweb.net/minmaxslider_demo#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 56.599999999999994%; "></a></div>
+                                </div>
+            </div>
+            <!-- /Slider#1 -->
         </div>
       </div>
 
@@ -105,12 +105,22 @@
             </div>
         </div>
       </div>
+
+      <!-- Slider#2 -->
       <div id="CollapsiblePanel8" class="CollapsiblePanel">
         <div class="CollapsiblePanelTab" tabindex="0"><span>Discount</span></div>
         <div class="CollapsiblePanelContent">
-          <img src="/images/img/line_measure.png" alt="" />
+          <div class="tansBg">
+                                <div class="prossr">
+                                    <input class="minMaxTxt fL" type="text" name="min_price" id="min_price" value="100" size="5"><input class="minMaxTxt fR" type="text" name="max_price" id="max_price" value="500" size="5">     
+    <div id="slider" style=" float:left;width:100%; margin-top:20px;" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><div class="ui-slider-range ui-widget-header" style="left: 10%; width: 46.599999999999994%; "></div><a href="http://www.flameweb.net/minmaxslider_demo#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 10%; "></a><a href="http://www.flameweb.net/minmaxslider_demo#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 56.599999999999994%; "></a></div>
+                                </div>
+           </div>
         </div>
       </div>
+      <!-- /Slider#2 -->
+
+
       <div id="CollapsiblePanel9" class="CollapsiblePanel">
         <div class="CollapsiblePanelTab" tabindex="0"><span>Top Sellers</span></div>
         <div class="CollapsiblePanelContent">
@@ -201,17 +211,17 @@
       <div id="CollapsiblePanel12" class="CollapsiblePanel">
         <div class="CollapsiblePanelTab" tabindex="0"><span>Ratings</span></div>
         <div class="CollapsiblePanelContent">
-            <p class="colapRtng">
-              <i><img src="/images/icons/yel_str_big.png" alt="" /></i>
-              <i><img src="/images/icons/yel_str_big.png" alt="" /></i>
-              <i><img src="/images/icons/yel_str_big.png" alt="" /></i>
-              <i><img src="/images/icons/grey_str_big.png" alt="" /></i>
-              <i><img src="/images/icons/grey_str_big.png" alt="" /></i>
-            </p>
+            <div class="ctrlHolder colapRtng">
+                <div class="multiField" id="starify">
+                       <label for="vote1" class="blockLabel"><input type="radio" name="vote" id="vote1" value="1" /> Poor</label>
+                       <label for="vote2" class="blockLabel"><input type="radio" name="vote" id="vote2" value="2" /> Fair</label>
+                       <label for="vote3" class="blockLabel"><input type="radio" name="vote" id="vote3" value="3" checked="checked" /> Average</label>
+                       <label for="vote4" class="blockLabel"><input type="radio" name="vote" id="vote4" value="4" /> Good</label>
+                       <label for="vote5" class="blockLabel"><input type="radio" name="vote" id="vote5" value="5" /> Excellent</label>
+                </div>
+            </div>
         </div>
       </div>
 <% end %>
 
-   </div>
-</div>
 

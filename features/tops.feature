@@ -18,12 +18,14 @@ Feature: Describe how see all tops
     Then I go to the top products page
     And I should be on top products page
     And I should see top products with big ratting
-  # FIXME.
-  # Scenario: Describe top sellers  
-  #   Given I have "12" sellers user
-  #   Then I go to the top sellers page
-  #   And I should be on the top sellers page
-  #   And I should see "10" top sellers on the page
+
+  Scenario: Describe top sellers  
+    # TODO: I think it's not good DESC seller only for rating, we should user avg_raging with reviews_count
+    Given I have "12" sellers user with different reviews
+    Then I go to the top sellers page
+    And I should be on the top sellers page
+    And I should see "10" top sellers on the page
+    Then show me the page
 
   Scenario: Describe top deals
     Given I have "12" products with variant and random price

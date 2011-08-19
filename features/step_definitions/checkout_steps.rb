@@ -1,4 +1,5 @@
-When /^(?:|I )fill (billing|shipping) address with correct data$/ do |address_type|
+When /^(?:|I )fill shipping address with correct data$/ do
+  address_type = 'shipping'
   str_addr = address_type[0...4] + "_address"
   address = if @me
     @me.send(str_addr)
@@ -6,14 +7,35 @@ When /^(?:|I )fill (billing|shipping) address with correct data$/ do |address_ty
     Factory(:address, :state => Country.default.states.first)
   end
 
-  When %{I select "United States" from "Country" within "fieldset##{address_type}"}
+  When %{I select "United States" from "address[country_id]" within "#new_address_checkout"}
+
+  ['firstname', 'lastname', 'address1', 'city', 'zipcode', 'phone'].each do |field|
+    When %{I fill in "address[#{field}]" with "#{address.send(field)}"}
+  end
+
+  When %{I select "#{address.state.name}" from "address[state_id]"}
+end
+
+
+When /^(?:|I )fill billing address with correct data$/ do
+  address_type = 'billing'
+  str_addr = address_type[0...4] + "_address"
+  address = if @me
+    @me.send(str_addr)
+  else
+    Factory(:address, :state => Country.default.states.first)
+  end
+
+  When %{I select "United States" from "order[bill_address_attributes][country_id]" within "#new_address_checkout"}
 
   ['firstname', 'lastname', 'address1', 'city', 'zipcode', 'phone'].each do |field|
     When %{I fill in "order_#{str_addr}_attributes_#{field}" with "#{address.send(field)}"}
   end
 
-  When %{I select "#{address.state.name}" from "order_#{str_addr}_attributes_state_id"}
+  When %{I select "#{address.state.name}" from "order[#{str_addr}_attributes][state_id]"}
 end
+
+
 
 Given /^a product with (.*?)? exists$/ do |captured_fields|
   fields = {'name' => "RoR Mug", 'count_on_hand' => '10', 'price' => "14.99"}
@@ -79,7 +101,7 @@ end
 When /^(?:|I )enter valid credit card details$/ do
   And %{I fill in "card_number" with "4111111111111111"}
   And %{I fill in "card_code" with "123"}
-  And %{press "Save and Continue"}
+  And %{press "Checkout"}
 end
 
 When /^(?:|I )enter invalid credit card details$/ do

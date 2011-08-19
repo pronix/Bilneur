@@ -1,9 +1,19 @@
 CheckoutController.class_eval do
+  respond_to :html, :js
 
+  def address_info
+    if (@address = current_user.addresses.find(params[:id]))
+      render :partial => "address_info",:object => @address,  :layout => false
+    else
+      render :nothing => true
+    end
+
+  end
 
   # Updates the order and advances to the next state (when possible.)
   def update
     if @order.update_attributes(object_params)
+
       if @order.next
         state_callback(:after)
       else

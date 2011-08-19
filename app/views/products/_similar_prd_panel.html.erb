@@ -10,7 +10,7 @@
     <b><%= truncate product.name, :length => 20 %></b>
     <em>
       <%= truncate product.description, :length => 90 %><br />
-      <label><%= number_to_currency @best_similar_variant.price %></label>
+      <label><%= number_to_currency @best_similar_variant.try(:price) %></label>
     </em>
     <% end %>
   </div>

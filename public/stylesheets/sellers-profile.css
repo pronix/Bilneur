@@ -308,13 +308,13 @@ ul li { list-style:none;}
 table tr td big {clear:both;float:right;width:100%;}
 table tr td .btn { float:right;position:relative;left:0;bottom:0;width:127px;height:29px;color:#fff;text-align:right;}
 
-.viwOdr .otherbutton {position: relative;height: 29px;width: 127px;background:url('/images/forms/view_confirm.png') 0 0 no-repeat;background-position:0 0;cursor: pointer;}    
+.viwOdr .otherbutton {position: relative;height: 29px;width: 127px;background:url('/images/forms/view_confirm.png') 0 0 no-repeat;background-position:0 0;cursor: pointer; margin-right: 11px;}    
 .viwOdr .otherbutton span.hover {display: block;height: 29px;width: 127px;background:url('/images/forms/view_confirm.png') 0 -29px no-repeat;background-position: bottom;}
 
 .cnclBtn .otherbutton {position: relative;height:29px;width:127px;background:url('/images/forms/cancel_order.png') 0 0 no-repeat;background-position:0 0;cursor: pointer;} 
 .cnclBtn .otherbutton span.hover {display: block;height:29px;width: 127px;background:url('/images/forms/cancel_order.png') 0 -29px no-repeat;background-position: bottom;}
 
-.odrEdtPnl {float:left; width:127px; margin:5px 0 0 5px;}
+.odrEdtPnl { width:127px; margin:5px 0 0 5px;}
     .odrEdtPnl .top {float:left; width:127px; height:7px; background:url('/images/layout/odr_edt_top.png') no-repeat;}
     .odrEdtPnl .cntr {float:left; width:127px;background:url('/images/layout/odr_edt_cntr.png') repeat-y;}
         .odrEdtPnl .cntr a img {float:left; margin:0 5px 0 6px;}

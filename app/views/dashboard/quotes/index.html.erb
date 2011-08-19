@@ -31,7 +31,14 @@
             	<li class="inv4"><a href="#"></a></li>
             </ul>
         </div>-->
-        <a class="invAll" href="#"><img src="/images/forms/inv_all_prod.png" alt="" /></a>
+        <%= form_tag search_dashboard_quotes_path, :method => :get do %>
+        <label for="ean"><%= t("ean") %></label>
+        <%= text_field_tag "ean", "", :class => "title", :id => nil, :style => "font-size: 1em;" %>
+        <button class="invAll" value="Add quote" style="float: none; border: none; background: none; cursor: pointer; height: 30px;">
+          <%= image_tag "forms/inv_all_prod.png", :style => "margin-bottom: -7px;" %>
+        </button>
+        <% end %>
+
     </div>
     <div class="bdrBtm"></div>
     <div class="invEdit">
@@ -41,6 +48,7 @@
         	<li><a href="#"><img src="/images/forms/inv_del_prodcts.png" alt="" /></a></li>
         </ul>-->
     </div>
+
     <table class="tbl1" width="915px" cellpadding="0" cellspacing="0">
     	<tr id="product_table_head">
             <td width="39px" class="thlHd">
@@ -56,9 +64,10 @@
             <td width="118px" class="thlHd">Virtual Selling</td>
             <td width="86px" class="thlHd">Status</td>
         </tr>
-    
+
         <%= render "rows", :quotes => @quotes %>
       </table>
+
       <div id="pagination">
         <div class="paging">
         <div class="blogPg">

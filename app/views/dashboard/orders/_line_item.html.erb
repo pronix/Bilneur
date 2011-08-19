@@ -2,9 +2,7 @@
   <td valign="top" class="row<%= evod %>">
     <span><%=order.created_at.strftime("%dth %b %Y") %></span>
   </td>
-  <td valign="top" class="row<%= evod %>">
-    <%= order.user.full_name %>
-  </td>
+
   <td valign="top" class="row<%= evod %>">
                   
     <i>Order <b>#<%= order.number %></b></i>
@@ -14,33 +12,24 @@
     <strong><%= order_price(order) %></strong>
   </td>
   <td valign="top" align="center" class="row<%= evod %>">
-    <% if order.shipment %>
-      <span><%= order.shipment.name %><br />
-        <label><%= number_to_currency(order.ship_total) %></label>
-      </span>
+    <% order.shipments.each do |ship|  %>
+    <span>
+      <b>seller:</b> <%= ship.seller.full_name %>, <b>state:</b> <%= t("shipment_states.#{ship.state}") %>
+      <%= link_to "Receive", receive_dashboard_order_path(order, ship) if ship.can_receiving? %>
+    </span>
     <% end %>
-  </td>
-  <td valign="top" align="center" class="row<%= evod %>">
-    <span>FIXME</span>
   </td>
   <td valign="top" align="center" class="row<%= evod %>">
     <span><%= order.state %></span>
   </td>
-  <td valign="top" class="row<%= evod %>">
+  <td valign="top" class="row<%= evod %>" align="center">
     <big class="viwOdr">
-      <%= link_to "", order, :class => "btn otherbutton" %><!-- FIXME -->
+      <%= link_to "", dashboard_order_path(order), :class => "btn otherbutton" %>
     </big>
     <div class="odrEdtPnl">
     	<div class="top"></div>
     	<div class="cntr">
-            <% order.line_items.group_by{|v| v.variant.seller }.each do |seller, items| %>
-                <% @ship = order.shipments.find_by_seller_id(seller.id) %>
-                <% if @ship %>
-                  <b>State:</b> <em><%= t("shipment_states.#{@ship.state}")  %></em>
-                  <%= link_to "Receive", receive_dashboard_order_path(order, @ship) if @ship.can_receiving? %>
-                <% end %>
-            <% end %>
-            <a href="#"><img src="/images/icons/print_sml_ico.png" alt="" /><i>Print Invoice</i></a><!-- FIXME -->
+            <%= link_to raw("Print Invoice" + image_tag("/images/icons/print_sml_ico.png")), dashboard_order_path(order, :pdf) %>
             <a href="#"><img src="/images/icons/add_sml_ico.png" alt="" /><i>Add Tracking</i></a><!-- FIXME -->
         </div>
     	<div class="btm"></div>

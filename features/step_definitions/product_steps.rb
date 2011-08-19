@@ -1,3 +1,10 @@
+Then /puts products/ do
+  puts Product.all.inspect
+end
+Given /^products is not exists$/ do
+  # Product.destroy_all
+end
+
 Given /^the product "([^\"]*)" has the owner "([^\"]*)"$/ do |product_name, email|
   Product.find_by_name(product_name).update_attribute(:owner, User.find_by_email(email))
 end

@@ -1,0 +1,6 @@
+$("#new-address").html("<%= escape_javascript(render :partial => 'checkout/addresses', :locals => { :address_name => params[:state], :address => (@address||Address.default)  }) %>")
+<% if @address.valid? %>
+$("#ship-addresses").html("<%= escape_javascript(render :partial => 'checkout/ship_address', :collection => current_user.addresses)%>")
+ $(".js-radio").dgStyle();
+
+<% end %>

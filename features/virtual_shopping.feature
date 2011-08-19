@@ -39,8 +39,8 @@ Feature: Virtual Shopping
     Then I should be on the cart page
     When I follow "Checkout" within block virtual cart
     When I choose "Ship to Bilneur" from seller "seller2@person.com" Shipping Methods
-    And I press "Save and Continue"
-    And I choose "Credit Card"
+    And I press "Checkout"
+    And I fill billing address with correct data
     And I enter valid credit card details
     Then I should see "Your order has been processed successfully"
     And "seller2@person.com" should receive 1 emails
@@ -73,8 +73,8 @@ Feature: Virtual Shopping
     When I follow "Checkout" within block virtual cart
     And I choose "Ship to Bilneur" from seller "seller2@person.com" Shipping Methods
     And I choose "Ship to Bilneur" from seller "seller1@person.com" Shipping Methods
-    And I press "Save and Continue"
-    And I choose "Credit Card"
+    And I press "Checkout"
+    And I fill billing address with correct data
     And I enter valid credit card details
     Then I should see "Your order has been processed successfully"
     And "seller2@person.com" should receive 1 emails
@@ -114,8 +114,8 @@ Feature: Virtual Shopping
     When I follow "Checkout" within block virtual cart
     And I choose "Store with seller" from seller "seller2@person.com" Shipping Methods
     And I choose "Store with seller" from seller "seller1@person.com" Shipping Methods
-    And I press "Save and Continue"
-    And I choose "Credit Card"
+    And I press "Checkout"
+    And I fill billing address with correct data
     And I enter valid credit card details
     Then I should see "Your order has been processed successfully"
     And "seller2@person.com" should receive 1 emails

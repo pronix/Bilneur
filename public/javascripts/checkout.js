@@ -1,7 +1,8 @@
 (function($){
   $(document).ready(function(){
 
-    $(".radio").dgStyle();	
+    $("#link-next-step-button").live('click', function(){ $('#checkout_form_delivery').submit(); });
+    $(".radio").dgStyle();
     $(".checkbox").dgStyle();
     $('#checkout_form_address').validate();
 

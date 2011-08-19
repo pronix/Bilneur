@@ -5,7 +5,7 @@ Feature: Manage products
 
   Background:
     Given I have an admin account of "admin@person.com/password"
-    And I am signed up as a seller with "seller@person.com/password"
+    Given I am signed up as a seller with "seller@person.com/password"
     When I sign in as "seller@person.com/password"
     Given the following taxonomies exist:
       | name       |

@@ -24,6 +24,7 @@ gem 'spree',                    '= 0.60.1'
 
 # Spree extensons
 # In rubygems only 0.60.1 version with bug.
+ gem "spree_paypal_website_standard", :git => "git://github.com/tomash/spree-pp-website-standard.git"
  gem 'spree_static_content',     :git => 'git://github.com/spree/spree_static_content.git', :tag => 'v0.60.2'
  gem 'spree_editor',             '~> 0.50.1'
  gem 'spree_volume_pricing',     :path => 'vendor/spree_exts/spree_volume_pricing'
@@ -42,7 +43,7 @@ group :development do
 end
 
 group :test, :cucumber do
-
+  gem "silent-postgres", "~> 0.0.8"
   gem 'rspec-rails',          '= 2.6.1'
   gem 'factory_girl_rails',   '= 1.0.1'
   gem 'factory_girl',         '= 1.3.3'

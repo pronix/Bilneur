@@ -1,63 +1,83 @@
-<h4>Enter a new shipping address</h4>
-<% ADDRESS_FIELDS.each do |field| %>
-    <% if field == "city"  %>
-      <b>
-        <i>City:</i>
-        <%= address_form.text_field(field.to_sym, :class => 'txtCty') %>
+<%= form_for address, :url => make_addresses_path(address_name, @order), :remote => true, :html => { :id => "new_address_checkout" } do |form| %>
+ <% unless address.new_record? %>
+ <%= hidden_field_tag "id", address.id %>
+ <% end %>
+<div class="option2">
+
+  <%= render "shared/error_messages", :target => address  %>
+  <% if address_name == 'ship' %>
+  <h4>Enter a new shipping address</h4>
+  <% elsif address_name == 'bill' %>
+  <h4>Enter a new billing address</h4>
+  <% end %>
+  <% ADDRESS_FIELDS.each do |field| %>
+  <% if field == "city"  %>
+  <b>
+    <i>City:</i>
+    <%= form.text_field(field.to_sym, :class => 'txtCty') %>
     <% elsif field == "state" %>
-        <i class="stat">State:</i>
-        <div class="cmbo2">
-          <%= address_form.collection_select :state_id, State.order('name').all, :id, :name, {:include_blank => true}, {:class => 'required', :id => "websites2"} %>
-        </div>
-      </b>
+    <i class="stat">State:</i>
+    <div class="cmbo2">
+      <%= form.collection_select :state_id, State.order('name').all, :id, :name, {:include_blank => true}, {:class => 'required', :id => "websites2"} %>
+    </div>
+  </b>
 
-    <% elsif field == "country" %>
+  <% elsif field == "country" %>
 
-      <b>
-          <i><%= address_form.label :country_id, t(field, :scope => [:activerecord, :attributes, :address]) %></i>
-          <div class="cmbo3">
-              <%= address_form.collection_select :country_id, available_countries, :id, :name, {}, {:class => 'required', :id => "websites3"} %>
-          </div>
-      </b>
+  <b>
+    <i><%= form.label :country_id, t(field, :scope => [:activerecord, :attributes, :address]) %></i>
+    <div class="cmbo3">
+      <%= form.collection_select :country_id, available_countries, :id, :name, {}, {:class => 'required', :id => "websites3"} %>
+    </div>
+  </b>
 
-    <% elsif field == "zipcode" %>
-                   
-    <% elsif field == "address1"%>
-      <b>
-      	<i>Address Line 1:</i>
-          <%= address_form.text_field(field.to_sym, :class => 'inpNam') %>
-      </b>
+  <% elsif field == "zipcode" %>
+   <b>
+     <i>Zip:</i>
+     <%= form.text_field(field.to_sym, :class => 'txtPhn') %>
+   </b>
+  <% elsif field == "address1"%>
+  <b>
+    <i>Address Line 1:</i>
+    <%= form.text_field(field.to_sym, :class => 'inpNam') %>
+  </b>
 
-    <% elsif field == "address2" || field == "" %>
-      <b>
-      	<i class="txtGry">Address Line 2:</i>
-          <%= address_form.text_field(field.to_sym, :class => 'inpNam') %>
-      </b>
+  <% elsif field == "address2" || field == "" %>
+  <b>
+    <i class="txtGry">Address Line 2:</i>
+    <%= form.text_field(field.to_sym, :class => 'inpNam') %>
+  </b>
 
-    <% elsif field == "lastname"%>
-      <b>
-      	<i>Full Name:</i>
-          <%= address_form.text_field(field.to_sym, :class => 'inpNam') %>
-      </b>
+  <% elsif field == "lastname"%>
+  <b>
+    <i>Last Name:</i>
+    <%= form.text_field(field.to_sym, :class => 'inpNam') %>
+  </b>
 
-    <% elsif field == "firstname"%>
+  <% elsif field == "firstname"%>
+  <b>
+    <i>First Name:</i>
+    <%= form.text_field(field.to_sym, :class => 'inpNam') %>
+  </b>
 
-    <% elsif field == "phone"%>
-      <b>
-      	<i>Phone:</i>
-          <%= address_form.text_field(field.to_sym, :class => 'txtPhn') %>
-      </b>
-                   
-    <% else %>
-      <b>
-        <i><%= t(field) %></i>
-        <%= address_form.text_field(field.to_sym, :class => 'txtCty') %>
-      </b>
-    <% end %>
+  <% elsif field == "phone"%>
+  <b>
+    <i>Phone:</i>
+    <%= form.text_field(field.to_sym, :class => 'txtPhn') %>
+  </b>
+
+  <% else %>
+  <b>
+    <i><%= t(field) %></i>
+    <%= form.text_field(field.to_sym, :class => 'txtCty') %>
+  </b>
+  <% end %>
+  <% end %>
+  <% if Spree::Config["alternative_#{address_name}_phone"] %>
+  <%= address_field(form, :alternative_phone, address_name) %>
+  <% end %>
+  <b>
+    <button class="MdfSbmt" value="Save new address" />
+  </b>
+</div>
 <% end %>
-<% if Spree::Config["alternative_#{address_name}_phone"] %>
-  <%= address_field(address_form, :alternative_phone, address_name) %>
-<% end %>
-<b>
-    <input class="MdfSbmt" type="submit" name="" value="">
-</b>

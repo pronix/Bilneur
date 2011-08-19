@@ -4,9 +4,9 @@
     <%= check_box_tag "message_ids[]", item.id, false, :id => nil, :class => "multi_action" %>
 
   </div>
-  <%= link_to item.sender.full_name, item.sender %>
-  <span><%= item.subject %></span>
-  <i><%= l item.created_at, :format => "%B %d, %Y" %></i>
+  <%= link_to item.sender.full_name, dashboard_message_path(item)%>
+  <span><%= link_to item.subject, dashboard_message_path(item) %></span>
+  <i><%= link_to (l item.created_at, :format => "%B %d, %Y"),  dashboard_message_path(item)%></i>
 </div>
 
 <% end %>

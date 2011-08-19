@@ -3,10 +3,9 @@ User.class_eval do
   attr_accessor   :registration_as_seller
   attr_accessible :registration_as_seller, :firstname, :lastname, :photo, :phone, :reviews_count, :avg_rating
 
-  # FIXIT: for_review, becouse for review need this resoluton
   has_attached_file :photo,
   :styles => { :medium => ["300x300", :png], :thumb => ["150x150>", :png], :mini => ["25x25#", :png],
-               :for_review => ["82x83", :png]},
+    :for_review => ["82x83", :png]},
   :default_style => :thumb,
   :default_url => "/images/missing/photo/missing_:style.png",
   :url => "/assets/photo/:id/:style/:basename.:extension",
@@ -19,12 +18,12 @@ User.class_eval do
   has_many :products, :foreign_key => :owner_id
   has_many :seller_stores, :foreign_key => :seller_id
   has_many :quotes,   :class_name => "Variant", :foreign_key => :seller_id,
-                      :conditions => [ "variants.is_master = #{connection.quoted_false}" ]
+  :conditions => [ "variants.is_master = #{connection.quoted_false}" ]
   has_many :shipping_methods, :foreign_key => :seller_id
   has_and_belongs_to_many :sales,         :join_table => "orders_users", :class_name => "Order",
-                                          :conditions => { :"orders.virtual" => false}
+  :conditions => { "orders.virtual" => false}
   has_and_belongs_to_many :virtual_sales, :join_table => "orders_users", :class_name => "Order",
-                                          :conditions => { :"orders.virtual" => true}
+  :conditions => { "orders.virtual" => true}
 
   has_many :orders,  :conditions => { :virtual => false}
   has_many :virtual_orders, :class_name => "VirtualOrder", :foreign_key => :user_id
@@ -44,14 +43,6 @@ User.class_eval do
   # scopes
   #
 
-  # Return a all user who has a saller role
-  # scope :sellers, Role.find_by_name('seller').users
-  # FIXME need to know logic of how select top sellers.
-  # FIXME why don't use selers.limit(1) for Array
-  # FIXME Add rescue becouse on the migrate goes to error
-  scope :sellers_top, Role.find_by_name('seller').users.order('avg_rating DESC') rescue []
-  # scope :sellers_top, find_by_sql([ "SELECT * FROM users WHERE id in(SELECT user_id FROM roles_users WHERE role_id = ?)",
-  #                             Role.find_by_name('seller').id])
   # validates
   #
 
@@ -59,22 +50,27 @@ User.class_eval do
   #
   after_create :set_roles
 
+
+  # instance methods
+  #
+
+
   # Recalculate rating for seller, from SellerReview
   def recalculate_rating
     reviews_count = buyer_reviews.reload.count
     if reviews_count > 0
-      self.update_attributes(:reviews_count => reviews_count, :avg_rating => buyer_reviews.sum(:rating).to_f / reviews_count )
+      self.update_attributes(:reviews_count => reviews_count, :avg_rating => (buyer_reviews.sum(:rating).to_f / reviews_count) )
     else
       update_attribute(:avg_rating, 0)
     end
   end
 
   def has_seller_review?
-    true if !seller_reviews.blank?
+    seller_reviews.present?
   end
 
   def has_buyer_review?
-    true if !buyer_reviews.blank?
+    buyer_reviews.present?
   end
 
   # This is for secret question
@@ -108,13 +104,13 @@ User.class_eval do
   end
 
   def has_secret?
-    true unless secret_question.nil?
+    secret_question.present?
   end
 
   # Setting the roles on default
   #
   def set_roles
-    roles << Role.find_or_create_by_name("user")
+    roles << Role.user unless has_role?("user")
     as_seller! if @registration_as_seller.to_i == 1
   end
 
@@ -122,11 +118,9 @@ User.class_eval do
     as_seller!
   end
 
-  # instance methods
-  #
 
   def as_seller!
-    roles << Role.find_or_create_by_name("seller") unless has_role?("seller")
+    roles << Role.seller unless has_role?("seller")
     create_virtual_methods!
   end
 
@@ -179,8 +173,11 @@ User.class_eval do
 
   # class methods
   #
-  class << self
 
-  end
+  class << self
+    def sellers_top
+      Role.seller.users.order('avg_rating DESC')
+    end
+  end # end class
 
 end

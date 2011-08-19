@@ -43,7 +43,7 @@ group :development do
 end
 
 group :test, :cucumber do
-
+  gem "silent-postgres", "~> 0.0.8"
   gem 'rspec-rails',          '= 2.6.1'
   gem 'factory_girl_rails',   '= 1.0.1'
   gem 'factory_girl',         '= 1.3.3'

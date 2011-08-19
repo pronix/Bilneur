@@ -63,12 +63,13 @@ Feature: Manage reviews
     And I should see overall rating with "4" stars
     And I should see "Based On 2 Ratings"
     And I should see all approved reviews for "The Godfather" product
-
-  Scenario: Create review as Guest
-    And I am logged out
-    When I go to the "The Godfather" product page
-    Then I follow "Rate This Product"
-    And I should be on the login page
+  #FIXME 
+  # Scenario: Create review as Guest
+  #   And I am logged out
+  #   Then test
+  #   When I go to the "The Godfather" product page
+  #   Then I follow "Rate This Product"
+  #   And I should be on the login page
 
   Scenario: Create review as register user
     Given I already sing as "new_seller@person.com/password"

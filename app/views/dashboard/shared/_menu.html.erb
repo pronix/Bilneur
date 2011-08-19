@@ -7,7 +7,7 @@
 
   <li class="TabbedPanelsTab" >
     <span class="TabbedPanelsTabSelected">
-      <% if request.request_uri !=~ /inbox/ %>
+      <% if request.request_uri.index("inbox").present? %>
         <%= t("inbox") %>
       <% else %>
         <%= link_to t("inbox"), dashboard_messages_path, :class => "TabbedPanelsTab" %>
@@ -22,10 +22,14 @@
     <span><%= link_to t('user_menu.selling'), dashboard_sales_path %></span>
   </li>
   <li class="TabbedPanelsTab" >
-    <span><%= link_to t('user_menu.orders'), dashboard_orders_path %></span>
+    <span class="TabbedPanelsTabSelected">
+      <%= link_to_unless_current t('user_menu.orders'), dashboard_orders_path, :class => "TabbedPanelsTab"  %>
+    </span>
   </li>
   <li class="TabbedPanelsTab" >
-    <span><%= link_to t('user_menu.inventory'), dashboard_quotes_path %></span>
+    <span class="TabbedPanelsTabSelected">
+      <%= link_to_unless_current t('user_menu.inventory'), dashboard_quotes_path, :class => "TabbedPanelsTab"  %>
+    </span>
   </li>
 
   <li class="TabbedPanelsTab" >
@@ -36,7 +40,9 @@
   </li>
 
   <li class="TabbedPanelsTab" >
-    <span><%= link_to link_to t('user_menu.feedback'), "" %></span>
-  </li><!-- FIXME -->
+    <span class="TabbedPanelsTabSelected">
+      <%= link_to_unless_current( t('user_menu.feedback'), dashboard_reviews_path, :class => "TabbedPanelsTab") %>
+    </span>
+  </li>
 
 </ul>

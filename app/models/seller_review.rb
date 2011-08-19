@@ -8,6 +8,10 @@ class SellerReview < ActiveRecord::Base
 
   before_validation :prepare_rating
 
+  # Recalculate rating for seller
+  after_save { self.seller.recalculate_rating }
+
+
   def prepare_rating
     self.rating = (rating.to_s.match(/(\d+)/) && $1).to_i
   end

@@ -67,3 +67,7 @@ User.where("email like :email", :email => "seller%").each do  |item|
                                })
 end
 
+# User recalculate rating
+Role.find_by_name('seller').users.each do |saller|
+  saller.recalculate_rating
+end

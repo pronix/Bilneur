@@ -34,6 +34,16 @@ Then /^I should see top products with big ratting$/ do
   end
 end
 
+Given /^I have "(\d+)" sellers user with different reviews$/ do |count|
+  1.upto(count.to_i) do
+    user = Factory(:seller_user)
+    1.upto(rand(10)) do
+      Factory(:seller_review, :seller => user)
+    end
+  end
+end
+
+
 Given /^I have "(\d+)" sellers user$/ do |count|
   1.upto(count.to_i) do |i|
     Factory.create(:user, :registration_as_seller => 1, :firstname => "First#{i}", :lastname => "Last#{i}")

@@ -12,6 +12,8 @@
   .prdctDPg .cntCntr {background:#ededed;}
   .prdctDPg .cntBtm { height:11px;background:url('/images/bgs/prdctDPg_btm.png') no-repeat;}
     .cntCntr .favCmnt {}
+      .favCmnt .social { float: right !important;}
+      .favCmnt > span+div { float:  right; margin-right: 18px; width: 623px;}
       .favCmnt span { margin:0 0 5px 10px; font-size:14px; font-weight:bold; color:#4d4d4d; margin-right:23px;}
       .favCmnt .seAll { width:145px; height:20px; margin-left:20px; color:#fff;font-size:11px; font-weight:bold; text-align:center; line-height:20px; background:url('/images/bgs/seeall_bg.png') no-repeat;} 
       .favCmnt .add { width:106px; height:19px; text-align:center; color:#4e4e4e; font-size:11px; background:url('/images/bgs/fav_bg.png') no-repeat; line-height:19px; font-weight:bold; margin-right:11px;}
@@ -51,7 +53,7 @@
         .rtng .btm { height:47px; background:url('/images/bgs/rater_btm.png') no-repeat;}
           .rtng .btm .blogPg { float:left; margin:4px 0 0 8px;}
           .rtng .btm .pagination { margin:6px 20px 0 0;} 
-  .prdctDPg .col2 { width:281px; margin:68px 0 0 15px;} 
+  .prdctDPg.col2, .prdctDPg .col2 { width:281px; margin:68px 0 0 15px;} 
     .col2 .smlTabs {}
       .smlTabs .tabCnt1 { height:65px; background:url('/images/bgs/sml_tab_cnt1.png') no-repeat;}
       .smlTabs .tabCnt2 { height:69px; background:url('/images/bgs/sml_tab_cnt2.png') no-repeat;}
@@ -88,7 +90,7 @@
           .smlr a b { float:left; width:60%; margin-top:17px; font-size:15px;}
           .smlr a em {float:left; width:60%; font-style:normal; font-size:11px; margin-top:5px;}
             .smlr a em label {float:left; width:60%; font-style:normal; font-size:17px; color:#df5050; font-weight:bold; margin-top:5px;}
-.prdctDPg .col1,.prdctDPg .bCrmp,.prdctDPg .bCrmp span,.prdctDPg .bCrmp ul,.prdctDPg .bCrmp ul li,.cntTop,.cntCntr,.cntBtm,.favCmnt,.favCmnt span,.favCmnt .seAll,.favCmnt .add,.favCmnt .fbLike,.sldrBnr,.bnrFolw ul,.bnrFolw ul li,.bnrFolw ul li a,.prdctTabs,.cmntTab i,.prdctTabs .cntr ul,.prdctTabs .cntr ul li,.prdctTabs .cntr b,.rtng,.rtng .top,.rtng .top b,.rtng .top p,.rtng .cntr,.rtng .cntr i,.rtng .cntr p,.rtng .cntr b,.rtng .btm,.prdctDPg .col2,.col2 .smlTabs,.tabCnt1,.tabCnt2,.tabCnt3,.smlTabs .btm,.col2 .add,.vwer,.vwer .top,.vwer .top b,.vwer .cntr,.vwer .btm { float:left;}
+.prdctDPg.col1,.prdctDPg .col1,.prdctDPg .bCrmp,.prdctDPg .bCrmp span,.prdctDPg .bCrmp ul,.prdctDPg .bCrmp ul li,.cntTop,.cntCntr,.cntBtm,.favCmnt,.favCmnt span,.favCmnt .seAll,.favCmnt .add,.favCmnt .fbLike,.sldrBnr,.bnrFolw ul,.bnrFolw ul li,.bnrFolw ul li a,.prdctTabs,.cmntTab i,.prdctTabs .cntr ul,.prdctTabs .cntr ul li,.prdctTabs .cntr b,.rtng,.rtng .top,.rtng .top b,.rtng .top p,.rtng .cntr,.rtng .cntr i,.rtng .cntr p,.rtng .cntr b,.rtng .btm,.prdctDPg.col2,.prdctDPg .col2,.col2 .smlTabs,.tabCnt1,.tabCnt2,.tabCnt3,.smlTabs .btm,.col2 .add,.vwer,.vwer .top,.vwer .top b,.vwer .cntr,.vwer .btm { float:left;}
 
 
 .prdctDPg .bCrmp,.cntTop,.cntCntr,.cntBtm,.favCmnt,.sldrBnr,.rtng .top,.rtng .cntr,.rtng .btm,.col2 .smlTabs,.col2 .add,.vwer,.vwer .top,.vwer .btm { width:100%}
@@ -146,7 +148,7 @@
 /* Seller Product Page */
 
 .slrPrdctPg {}  
-  .slrPrdctPg .col1 { width:672px; border:1px solid #b3b3b3; margin-top:27px;}
+  .slrPrdctPg .col1, .slrPrdctPg.col1 { width:672px; border:1px solid #b3b3b3; margin-top:27px;}
   .mTabs { float:left; width:100%;}
   .mTbFx { position:relative; width:300px; margin-left:373px;}
     .mTbFx .srchBar { position:absolute; top:44px;*top:0px; height:32px; right:0; width:260px; border-top:none; background:url('/images/bgs/tab_srch_bg.png') repeat-x;}
@@ -167,10 +169,11 @@
       
   .tabPrdcts { float:left; width:100%; padding-bottom:6px; background:#e5e2e2}
     .spcrPdt { float:left; width:6px; height:200px;}
-    .tabPrdcts .ptPod { float:left; width:220px; padding-bottom:10px;background:#fff url('/images/bgs/img_bg.png') left 20px no-repeat;}
+    .ptPod { float:left; width:220px; margin-right: 6px;padding-bottom:10px;background:#fff url('/images/bgs/img_bg.png') left 20px no-repeat;}
+    .ptPod:nth-child(3n-1) { margin-right: 0;}
       .pTpA { float:left; width:96%; padding:0 2%; color:#4e4e4e; font-weight:bold; font-size:10px; line-height:15px; height:16px; background:url('/images/bgs/slr_info_bg.png') repeat-x;}
         .pTpA img { float:right; margin-top:3px;}
-      .pImg { float:left; width:100%; text-align:center; margin-top:18px}
+      .pImg { float:left; width:100%; text-align:center; margin-top:18px; height: 130px;}
       .ptPod .prc { float:left; width:100px; font-size:24px; margin:10px 0 0 10px; color:#89be50;}
         .ptPod .prc span { font-size:12px; color:#a9a9a9;}
         .ptPod ul { float:right; width:65px; margin:20px 0 0 0;}
@@ -179,8 +182,10 @@
         .ptPod .bLu { float:left;width:85px;height:21px;line-height:21px;margin-top:3px;background:url('/images/forms/blue_bg.png') no-repeat;}
       .ptPod .cntcts { margin:0 0 0 5px;}
         .cntcts p { width:101%;} 
-          .cntcts p i { float:left;font-style:normal; width:48%; font-weight:bold; font-size:11px; color:#898989;} 
+          .cntcts p i, .cntcts .str i {float: left;font-style: normal;width: 55%;font-weight: bold;font-size: 11px;color: #898989;}
+          .cntcts p i label, .cntcts .str label { color: #00ADEF; }
             .cntcts p i label { color:#00adef;}
+            .cntcts .nmbrRate {float: right;text-align: right;width: 42%!important;margin-right: 3px;}
             .cntcts .str { margin-top:0;}
         .cntcts .str b { background:none; float:right; margin:0 2px 0 0; height:auto; width:auto;}
   .col2SlPrd { width:258px!important; margin:27px 0 0 0!important; border:1px solid #b3b3b3;}
@@ -278,3 +283,24 @@
         .slct .dd2 .ddTitle span.arrow {background:url('/images/icons/sler_srch_ico.png') no-repeat scroll 5px 5px transparent !important;}
 #pdSm .bCrmp,#pdSm .bCrmp ul,#pdSm .bCrmp ul li,#pdSm .bCrmp ul li a,#pdSm .bCrmp ul li img,.pdSrch form,.pdSrch .txt,.pdSrch .sbmt,.fbPnl,.cros,.smPrdcts,.smPd,.smPd i,.smPd i img,.pdDtl { float:left;}
 .pdSrch .sbmt { cursor: pointer; }
+
+.tansBg {
+    float: left;
+    width: 100%;
+    padding: 10px 0;
+    background: url(/images/slider/wht_trans.png);
+}
+.prossr {
+    float: left;
+    width: 220px;
+    margin: 10px 20px;
+}
+.minMaxTxt {
+    width: 48px;
+    height: 19px;
+    font-weight: bold;
+    padding-left: 5px;
+    border: none;
+    color: white;
+    background: url('/images/slider/prssr_txt.png') no-repeat;
+}

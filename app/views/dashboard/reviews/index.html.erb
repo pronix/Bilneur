@@ -1,5 +1,59 @@
-<%= render :partial => 'dashboard/shared/product_sub_menu' %>
-
+<%= render 'shared/per_page', :per_page => params[:per_page] %>
+<div class="fdBck">
+	<h2>Feedback &amp; Reviews</h2>
+    <div class="pPgCmbo">
+    	<div class="cmbo7">
+          <div class="ddOutOfVision">
+            <select id="per_page_select" tabindex="1" name="">
+                <option value="1" title="">1</option>
+                <option value="2" title="">2</option>
+                <option value="3" title="">3</option>
+                <option value="4" title="">4</option>
+                <option value="5" selected="selected" title="">5</option>
+            </select></div>        </div>
+        <b>Display per page</b>
+    </div>
+    <div class="prfl">
+        <div class="top"></div>
+        <div class="cntr">
+          <b class="gry">
+            <%= current_user.full_name %></b>
+            <i>
+              <%= image_tag current_user.photo.url(:for_review) %>            
+            </i>
+            <a href="#"><img src="images/forms/upld_ph_lgo.png" alt=""></a>
+        </div>
+        <div class="btm"></div>
+        <p>&nbsp;</p>
+        <a href="#"><img src="images/forms/reiablty.png" alt=""></a>
+        <p>&nbsp;</p>
+        <a href="#"><img src="images/forms/feedback_btn.png" alt=""></a>
+        <div class="fdBack1">
+        	<a href="#">Leave Feedback for Buyers</a>
+            <a href="#">Leave Feedback for Sellers</a>
+        </div>
+        <p>&nbsp;</p>
+        <a href="#"><img src="images/forms/review_btn.png" alt=""></a>
+    </div>
+    <div class="sptCnt">
+    	<div id="TabbedPanels2" class="TabbedPanels">
+            <ul class="TabbedPanelsTabGroup feedback">
+              <li class="TabbedPanelsTab tab1 TabbedPanelsTabSelected" tabindex="0">
+                <span><%= link_to "Feedback as a Buyer", dashboard_reviews_path(:state => "as_buyer", :per_page => params[:per_page]), :remote => true %></span>
+              </li>
+              <li class="TabbedPanelsTab tab2" tabindex="0">
+                <span><%= link_to "Feedback as a Seller", dashboard_reviews_path(:state => "as_seller", :per_page => params[:per_page]), :remote => true %></span>
+              </li>
+              <li class="TabbedPanelsTab tab3" tabindex="0">
+                <span><%= link_to "Feedback Left", dashboard_reviews_path(:state => "left", :per_page => params[:per_page]), :remote => true %></span>
+              </li>
+          </ul>
+          <div id="reviews_container">
+            <%= render "reviews", :reviews => @reviews %>
+          </div>
+        </div>
+    </div>
+</div>
 <h1><%= t('review_management_description') %></h1>
 
 <% for reviews in [["Unapproved", @unapproved_reviews], ["Approved", @approved_reviews]] %>

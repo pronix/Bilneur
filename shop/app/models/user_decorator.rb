@@ -1,7 +1,7 @@
 User.class_eval do
 
   attr_accessor   :registration_as_seller
-  attr_accessible :registration_as_seller, :firstname, :lastname, :photo, :phone
+  attr_accessible :registration_as_seller, :firstname, :lastname, :photo, :phone, :reviews_count, :avg_rating
 
   # FIXIT: for_review, becouse for review need this resoluton
   has_attached_file :photo,
@@ -36,6 +36,11 @@ User.class_eval do
 
   # Associate with SecretQuestion
   has_one :secret_question
+
+  # Return all seller reviews by user
+  has_many :seller_reviews, :foreign_key => 'buyer_id'
+  has_many :buyer_reviews, :foreign_key => 'seller_id', :class_name => "SellerReview"
+
   # scopes
   #
 
@@ -44,7 +49,7 @@ User.class_eval do
   # FIXME need to know logic of how select top sellers.
   # FIXME why don't use selers.limit(1) for Array
   # FIXME Add rescue becouse on the migrate goes to error
-  scope :sellers_top, Role.find_by_name('seller').users.order('created_at ASC') rescue []
+  scope :sellers_top, Role.find_by_name('seller').users.order('avg_rating DESC') rescue []
   # scope :sellers_top, find_by_sql([ "SELECT * FROM users WHERE id in(SELECT user_id FROM roles_users WHERE role_id = ?)",
   #                             Role.find_by_name('seller').id])
   # validates
@@ -53,6 +58,24 @@ User.class_eval do
   # callbacks
   #
   after_create :set_roles
+
+  # Recalculate rating for seller, from SellerReview
+  def recalculate_rating
+    reviews_count = buyer_reviews.reload.count
+    if reviews_count > 0
+      self.update_attributes(:reviews_count => reviews_count, :avg_rating => buyer_reviews.sum(:rating).to_f / reviews_count )
+    else
+      update_attribute(:avg_rating, 0)
+    end
+  end
+
+  def has_seller_review?
+    true if !seller_reviews.blank?
+  end
+
+  def has_buyer_review?
+    true if !buyer_reviews.blank?
+  end
 
   # This is for secret question
   def check_valid_user_with_regular_question(params)

@@ -1,0 +1,6 @@
+$(".quote").remove();
+$(".tbl1").append("<%= escape_javascript(render "rows", :quotes => @quotes) %>");
+hello = "<%= escape_javascript(render "rows", :quotes => @quotes) %>";
+//$("#pagination").append($(".paging.replacer").show().removeClass('replacer'));
+$("#pagination").html($(hello.slice(hello.search('<div class="pagin'), hello.length)).show().removeClass('replacer'));
+$(".multi_action").parent().dgStyle();

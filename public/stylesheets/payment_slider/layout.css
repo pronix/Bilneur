@@ -1,0 +1,145 @@
+
+/** Layout
+---------------------------------
+*  Using a negative margin technique, adapted from ZEN. The page is loaded by this order:
+*  
+*  1. Header
+*  2. Content
+*  3. Navigation menus
+*  4. Sidebar Left
+*  5. Sideabr Right
+*	
+*/
+
+#page {
+	width: 874px;
+	margin: 0 auto;
+    background:url(images/content_bg.jpg) repeat-y;
+}
+
+/** Sidebars width
+---------------------------------
+*  Changing the width of the sidebars is dead easy, just change the
+*  values below corresponding to the sidebar you want to modify.
+*  Make sure you keep negative values as negative values.
+*  For example, if I want to increase the width of the left sidebar
+*  to 300px, I would have to change each '190' to '300'.
+*/
+
+.two-sidebars .center,
+.sidebar-left .center {
+  margin-left: 190px;     /* LEFT value */
+  padding-right:70px;
+  padding-top:10px;
+}
+#sidebar-first {
+    width: 175px;           /* LEFT value */
+	margin-right: -180px;    /* negative LEFT value */
+    margin-left:65px;
+	margin-top:10px;
+	padding:1em 0.5em 2em;
+	font-size:0.9em;
+}
+.two-sidebars .center,
+.sidebar-right .center {
+  margin-right: 260px;    /* RIGHT value */
+}
+#sidebar-second {
+  width: 200px;           /* RIGHT value */
+  margin-right:60px;
+}
+
+/** Columns inner
+---------------------------------
+*  You can change the padding inside the columns without changing the
+*  width of them by just usinbg the INNER div of each column
+*/
+
+.inner {                             
+	padding: 0px 70px;                     
+}                                   
+
+
+/** LAYOUT RULES
+---------------------------------
+*  do not change if you're not sure you know what you're doing
+*/
+
+#content {
+    float: left;
+    width: 100%;
+    margin-right: -100%;
+    padding: 0;
+    min-height:500px;
+}
+#content-header {
+}
+
+.sidebar {
+  float: left;
+}                                   
+#sidebar-second {
+  float: right;
+}
+
+/* header */
+
+#header #header-region {
+  overflow: hidden;
+}
+#header {
+    background:url(images/header_bg.jpg) no-repeat;
+    height:117px;
+    padding:45px 60px 0;
+}
+#logo {
+    padding-left:10px;
+    margin-top:45px;
+    position:relative;
+}
+div.header_text {
+    bottom:5px;
+    right:1em;
+    position:absolute;
+}
+
+#menu {
+    background:url(images/menu_bg.jpg) no-repeat;
+    height:18px;
+	padding:8px 70px;
+}
+#search_box {
+    float:right;
+}
+
+.content-column {
+	float:left;
+	margin-top:1em;
+	padding:0 10px;
+	width:346px;
+}
+.top-block {
+	height:300px;
+}
+
+/* footer */
+
+#footer {
+    float: none;
+	margin-top:2em;
+    clear: both;
+    background: url(images/footer_bg.jpg) bottom;
+    padding:10px 70px 55px;
+    text-align:center;
+    overflow:
+}
+
+/* Layout Helpers */
+
+#header,
+#footer,
+#main #content .mission,
+#main #content .breadcrumb,
+#main #content .node {
+  clear: both;
+}

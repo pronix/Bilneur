@@ -34,6 +34,7 @@ Given /^I have an admin account of "(.+)\/(.+)"$/ do |email, password|
 end
 
 When /^I sign in as "(.*)\/(.*)"$/ do |email, password|
+  @user = User.find_by_email(email)
   When %{I go to the sign in page}
   And %{I fill in "Email" with "#{email}"}
   And %{I fill in "Password" with "#{password}"}

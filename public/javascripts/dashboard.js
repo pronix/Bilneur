@@ -163,5 +163,37 @@ jQuery(document).ready(function(){
 	} catch(e) {
 		alert("Error: "+e.message);
 	}
+    
+    //Tabs for reviews, changing appearance
+    $("ul.feedback li").click(function() {
+       $('ul.feedback .TabbedPanelsTabSelected').removeClass('TabbedPanelsTabSelected');
+       $(this).addClass('TabbedPanelsTabSelected');
+       $('#reviews_container').html("Loading..");
+    });
 
+
+    // Checkbox multiselector, with awesome behaviour for select all checkbox
+    $("div.checkbox:not([id=select_all_check_box])").live('click', function() {
+        if ( $("input[type=checkbox]:not(:checked)").length == 1 ) {
+          $("#select_all_check_box").css('background-position', '50% -50px');
+          $("#select_all_check_box").data('checked', true);
+          $("#select_all_check_box > input").attr('checked', true);
+        }
+        if ( $("input[type=checkbox]:checked").length == 1 || !$(this).find('input').attr('checked') && $("#select_all_check_box > input").attr('checked') ) {
+          $("#select_all_check_box").css('background-position', '50% 0');
+          $("#select_all_check_box").data('checked', false);
+          $("#select_all_check_box > input").attr('checked', false);
+        }
+    });
+    $("#select_all_check_box").click(function(){
+      if ($(this).find('input').attr("checked")){
+       $('div.checkbox').css('background-position', '50% -50px');
+       $('div.checkbox').data('checked', true);
+       $(".multi_action").attr("checked", true);
+      } else {
+       $('div.checkbox').css('background-position', '50% 0');
+       $('div.checkbox').data('checked', false);
+       $(".multi_action").attr("checked", false);
+      };
+    });
 });

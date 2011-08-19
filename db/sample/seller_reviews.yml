@@ -1,0 +1,9 @@
+<% 1.upto(5) do |i| %>
+  <% 1.upto(rand(20)) do %>
+    seller_review_<%= rand(9999) %>:
+      seller_id: <%= i + 100 %>
+      buyer_id: <%= rand(99) + 1 %>
+      review: <%= Faker::Lorem.paragraphs(rand(5)+1) %>
+      rating: <%= rand(5) %>
+  <% end %>
+<% end %>

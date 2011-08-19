@@ -37,4 +37,29 @@ describe User do
 
   end
 
+  describe "Rating. After create simple user review without user" do
+    user = Factory(:user)
+    Factory(:seller_review, :rating => 4)
+    user.recalculate_rating
+    user.avg_rating.should == 0.0
+    user.reviews_count.should == 0
+  end
+
+  describe "Rating. Create rating for user with reculculate" do
+    user = Factory(:user)
+    Factory(:seller_review, :rating => 4, :seller => user)
+    user.recalculate_rating
+    user.avg_rating.should == 4.0
+    user.reviews_count.should == 1
+  end
+
+  describe "Rating. Should be avtomaticaly reculculate, when reviews created" do
+    user = Factory(:user)
+    for i in %w{ 3 5 3} do
+      Factory(:seller_review, :rating => i.to_i, :seller => user)
+    end
+    user.reviews_count.should == 3
+    user.avg_rating.to_f.round(1).should == 3.7
+  end
+
 end

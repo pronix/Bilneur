@@ -67,9 +67,11 @@ Order.class_eval do
 
   # before_validation :set_email
   before_validation :fill_billing_address
+
+  has_many :seller_reviews
+
   def set_email
     self.email ||= user.email if user.present?
-
   end
 
   def fill_billing_address

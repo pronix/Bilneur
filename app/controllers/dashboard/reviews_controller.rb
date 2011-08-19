@@ -2,9 +2,17 @@ class Dashboard::ReviewsController < Dashboard::ApplicationController
   helper :reviews
   before_filter :load_review, :only => [:approve, :destroy]
 
-  def index
+  respond_to :html, :js
+  def index #FIXME doubled ajax request :(
     @approved_reviews = Review.by_products_owner(@current_user).where(:approved => true)
     @unapproved_reviews = Review.by_products_owner(@current_user).where(:approved => false)
+
+    @state = params[:state]
+    @reviews = case params[:state]
+               when "left" then current_user.reviews
+               when "as_seller" then current_user.buyer_reviews
+               else current_user.seller_reviews
+    end.paginate(:per_page => (params[:per_page]||15), :page => params[:page])
   end
 
   def approve

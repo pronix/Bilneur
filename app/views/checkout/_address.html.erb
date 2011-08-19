@@ -9,65 +9,36 @@
     <div class="option1">
 
       <h4>Option 1:</h4>
-      <p>
-        <i><a href="#"><img src="images/forms/primery_add_btn.png" alt=""></a></i>
-        <b><%= current_user.full_name %></b>
-
-        <% if current_user.addresses.present? %>
-        <% address = current_user.primary_address %>
-        <span>
-          <%= address.address1 %><br />
-          <%= address.address2 %><br />
-          <%= address.city %>, <%= address.state.name %><br />
-          Phone: <%= address.phone %><br />
-        </span>
-        <%= link_to t(:edit), edit_dashboard_address_path(address), :class => "delE" %>
-        <%= link_to t(:delete), dashboard_address_path(address), :method => :delete, :confirm => t(:are_you_sure), :class => "delE" %>
+      <p id='option-1-address'>
+        <% if current_user.primary_address %>
+          <%= render :partial =>"address_info", :object => current_user.primary_address  %>
         <% else %>
-        You have no addresses
+          You have no addresses
         <% end %>
       </p>
 
       <div class="cmbo1">
-        <div class="ddOutOfVision" style="height:0px;overflow:hidden;position:absolute;" id="websites1_msddHolder">
-          <select id="websites1" tabindex="1" name="">
-            <option value="" selected="selected" title="">Select a different address</option>
-            <option value="" title="">address 1</option>
-            <option value="" title="">address 2</option>
-            <option value="" title="">address 3</option>
-            <option value="" title="">address 4</option>
-          </select>
-        </div>
+         <%= select_tag "", options_for_select(current_user.addresses.collect{ |u| [u.to_s, u.id] }), :id => "websites1" %>
       </div>
     </div>
-<%= form_for @order, :url => virtual_update_checkout_path((@order.virtual? ? :virtual : :normal), @order.state), :html => { :id => "checkout_form_#{@order.state}" } do |form| %>
 
-    <%= form.fields_for address_name do |address_form| %>
-    <div class="option2">
-      <%= render :partial => 'addresses', :locals => {
-      :address_name => address_name,
-      :address_form => address_form,
-      :address => Address.default  } %>
+    <div id="new-address">
+     <%= render :partial => 'addresses', :locals => { :address_name => address_name, :address => (@new_address||Address.default)  } %>
     </div>
-    <% end %>
-  <% end %>
+
 
 
     <h3></h3>
     <%= form_for @order, :url => virtual_update_checkout_path((@order.virtual? ? :virtual : :normal), @order.state), :html => { :id => "checkout_form_#{@order.state}" } do |form| %>
     <h6>Shipping To: </h6>
     <div class="radioPnl">
-      <% current_user.addresses.each do |item| %>
-	    <div class="mRadio">
-
-        <div class="radio" id="box-single" style="background-position: 50% 0px; ">
-          <input type="radio" id="single" name="order[ship_address_id]" value="<%= item.id %>">
-        </div>
-        <span><i><%= item.to_s %></i></span>
+      <div id="ship-addresses">
+      <%= render :partial => "ship_address", :collection => current_user.addresses %>
       </div>
-      <% end %>
       <button id="next_after_selected_ship_address">Continue</button>
+
     </div>
+
     <% end %>
 
 
@@ -102,13 +73,26 @@
 
   <div class="shpng2">
     <%= render :partial => "summary", :locals => {:order => @order } %>
+
+    <div class="cntnu cntnuFix" style="display:none;" id="next-step-button">
+      <%= link_to '#', :id => "link-next-step-button" do %>
+        <%= image_tag "forms/chk_big_btn.png" %>
+      <% end %>
+    </div>
+
   </div>
 
 </div>
 <% end %>
 
 <script>
+
   $(function(){
+    $("#websites1").change(function(){
+      $("#option-1-address").load("<%= info_address_path(:id) %>".replace('id', $(this).val()));
+    });
+
+
     $("#next_after_selected_ship_address").click(function(){
        var content_form = $(this).parents("form:first");
 

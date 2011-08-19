@@ -4,7 +4,7 @@
       //Redirect to products index with new per_page param
       $("#per_page_select").change(function() {
         var per_page = $(this).val();
-        var product_path = "<%= request.request_uri %>" + "?per_page=" + per_page;
+        var product_path = "<%= request.path %>" + "?per_page=" + per_page;
         window.location = product_path;
       });
       

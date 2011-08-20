@@ -1,25 +1,5 @@
 Product.class_eval do
 
-  xapit do
-    text :name, :description
-    field :conditions, :taxon_ids, :best_price, :new_price, :used_price, :another_price
-    sortable :best_price, :new_price, :another_price, :used_price
-  end
-
-  # Xapit method
-  #
-  def conditions
-    variants.map(&:condition).uniq.compact
-  end
-  def new_price
-    best_price("new")
-  end
-  def used_price
-    best_price("used")
-  end
-  def another_price
-    best_price("another")
-  end
 
 
   # associations

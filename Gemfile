@@ -13,7 +13,7 @@ gem 'pg',                       '~> 0.11.0'
 gem 'sqlite3'
 
 gem 'exception_notification',   '~> 2.4.1'
-gem "xapit",                    :path => 'vendor/gems/xapit'
+
 
 
 gem 'spree',                    '= 0.60.1'
@@ -34,7 +34,7 @@ gem 'spree',                    '= 0.60.1'
  gem 'spree_social',             :path => 'vendor/spree_exts/spree_social'
  gem 'spree_address_book',       :path => 'vendor/spree_exts/spree_address_book'
  gem 'spree_print_invoice',      :path => 'vendor/spree_exts/spree-print-invoice'
-
+ gem "spree_sphinx_search",      :path => 'vendor/spree_exts/spree-sphinx-search'
  gem 'shop',                    :require => 'shop', :path => 'shop'
 
 

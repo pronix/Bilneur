@@ -48,3 +48,6 @@ app/stylesheets/src/.sass-cache
 /.screen_config
 /Gemfile.lock
 db/xapit
+config/development.sphinx.conf
+db/sphinx
+log

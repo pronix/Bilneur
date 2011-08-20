@@ -27,3 +27,14 @@ Testing
 > Rspec
 > -----
 > > rspec spec
+
+
+Xapian:
+-------
+    uuid-dev-2.17.2
+    wget http://oligarchy.co.uk/xapian/1.2.0/xapian-core-1.2.0.tar.gz && tar
+    ./configure --prefix=/usr/local && make && sudo make install
+    wget http://oligarchy.co.uk/xapian/1.2.0/xapian-bindings-1.2.0.tar.gz && tar
+    ./configure --prefix=/usr/local XAPIAN_CONFIG=/usr/local/bin/xapian-config
+    make && sudo make install
+    sudo ldconfig

@@ -23,14 +23,22 @@
                     <div class="shpngAd shpngAd2">
                     	<h3>Payment Info</h3>
                         <h5><span>Payment Method :</span> 
-                          <%= link_to image_tag("/images/forms/chk5_chng.png"), checkout_path() %>
+                          <% if @order.virtual? %>
+                            <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:virtual, :payment)%>
+                          <% else %>
+                            <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:normal, :payment)%>
+                          <% end %>
                         </h5>
                         <p>FIXME***-<b><%= @order.payment.source.last_digits %></b> Exp: FIXME</p>
                     </div>
                     <div class="shpngAd">
                     	<h3>Billing Address</h3>
                         <h5><span>Billing Address :</span> 
-                          <%= link_to image_tag("/images/forms/chk5_chng.png"), checkout_path() %>
+                          <% if @order.virtual? %>
+                            <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:virtual, :payment)%>
+                          <% else %>
+                            <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:normal, :payment)%>
+                          <% end %>
                         </h5>
                         <% bill_address = @order.bill_address %>
                         <p><%= bill_address.full_name %><br />

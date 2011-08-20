@@ -15,7 +15,6 @@
       <% next unless product.best_variant %>
       <% best_deal = product.best_variant %>
       <% next unless best_deal.seller.available_shipping_methods?  %>
-    
       <% if Spree::Config[:show_zero_stock_products] || product.has_stock? %>
           <% if defined? grid %>
             <%= render "shared/product_cell", :product => product, :best_deal => best_deal %>

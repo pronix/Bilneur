@@ -3,13 +3,9 @@ Given /^I non register user$/ do
 end
 
 Given /^I have "(\d+)" products with variant and "(\d+)" reviews$/ do |p_count, r_count|
-  user = Factory.create(:user, :registration_as_seller => 1)
   1.upto(p_count.to_i) do
-    product = Factory(:product, { :ean => "B004GVYJJ#{rand(99999)}", :owner => user})
-    Factory(:variant, {:product => product, :seller => user, :condition => "used", :count_on_hand => 10})
-    1.upto(r_count.to_i) do
-      product.reviews.create(:name => 'test', :review => 'test', :approved => true, :rating => rand(5))
-    end
+    product = Factory(:product_with_variant, :owner => Factory(:seller_user_with_shipping) )
+    1.upto(r_count.to_i) { Factory(:review, :approved => true, :product => product)}
   end
 end
 
@@ -57,16 +53,7 @@ Then /^I should see "(\d+)" top sellers on the page$/ do |seller_count|
 end
 
 Given /^I have "(\d+)" products with variant and random price$/ do |product_count|
-  user = Factory.create(:user, :registration_as_seller => 1)
-  q = Factory(:calculator, { :type => "Calculator::FlatRate",
-                :calculable_id => Factory.next(:shipping_calculable_sequence), :calculable_type => "ShippingMethod"})
-  q.set_preference(:amount, 0.0)
-  Factory.create(:shipping_method, {  :seller => user, :calculator => q  } )
-
-  1.upto(product_count.to_i) do
-    product = Factory(:product, { :ean => "B004GVYJJ#{rand(99999)}", :owner => user, :price =>  rand(1000) + rand(100) / 100.0 })
-    Factory(:variant, {:product => product, :seller => user, :condition => "used", :count_on_hand => 10})
-  end
+  1.upto(product_count.to_i) { Factory(:product_with_variant, :owner => Factory(:seller_user_with_shipping), :price => (rand(1000) + rand(100) / 100.0) + 1 ) }
 end
 
 Then /^I should see "(\d+)" top deals on th page$/ do |product_count|

@@ -25,10 +25,10 @@ Feature: Describe how see all tops
     Then I go to the top sellers page
     And I should be on the top sellers page
     And I should see "10" top sellers on the page
-    Then show me the page
-
+@wip
   Scenario: Describe top deals
     Given I have "12" products with variant and random price
     Then I go to the top deals page
     And I should be on the top deals page
+    Then show me the page
     And I should see "10" top deals on th page

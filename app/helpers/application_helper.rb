@@ -81,7 +81,7 @@ module ApplicationHelper
   end
 
   def plus_one
-      raw("<div class='g-plusone' data-size='small' data-count='true'></div>")
+      raw("<div style='padding-top:3px'><div class='g-plusone' data-size='small' data-count='true'></div></div>")
   end
 
 end

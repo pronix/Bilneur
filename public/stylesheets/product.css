@@ -12,7 +12,7 @@
   .prdctDPg .cntCntr {background:#ededed;}
   .prdctDPg .cntBtm { height:11px;background:url('/images/bgs/prdctDPg_btm.png') no-repeat;}
     .cntCntr .favCmnt {}
-      .favCmnt .social { float: right !important;}
+      .social { float: right !important;}
       .favCmnt > span+div { float:  right; margin-right: 18px; width: 623px;}
       .favCmnt span { margin:0 0 5px 10px; font-size:14px; font-weight:bold; color:#4d4d4d; margin-right:23px;}
       .favCmnt .seAll { width:145px; height:20px; margin-left:20px; color:#fff;font-size:11px; font-weight:bold; text-align:center; line-height:20px; background:url('/images/bgs/seeall_bg.png') no-repeat;} 
@@ -165,7 +165,7 @@
       #TabbedPanels3 .dd2 { width:130px!important;}
       #TabbedPanels3 .dd2 .ddTitle span.arrow { background:url('/images/icons/sler_srch_ico.png') 5px 6px no-repeat!important;}
       #TabbedPanels3 .dd2 .ddChild { top:23px!important; width:125px!important;}
-      .likes { float:right; width:80px; margin-top:-34px; position:relative; z-index:1;}
+      .likes { float:right; margin-top:-34px; position:relative; z-index:1;}
       
   .tabPrdcts { float:left; width:100%; padding-bottom:6px; background:#e5e2e2}
     .spcrPdt { float:left; width:6px; height:200px;}

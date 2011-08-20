@@ -1,0 +1,18 @@
+<%
+   facets = @searcher.facets || []
+   price_ranges = YAML::load(Spree::Config[:product_price_ranges])
+   for facet in facets
+   options = facet.options
+   options = options.sort{|x,y| y.count <=> x.count} unless facet.name == :price_range
+   unless options.empty? %>
+
+<li><%= t "#{facet.name}_facet" %>:</li>
+<% for option in options %>
+  <li>
+    <%= link_to_facet(facet.name, option.name, option.count) %>
+    <img src="/images/icons/ico_cros.png" alt="" />
+  </li>
+<% end %>
+<% end
+   end
+        %>

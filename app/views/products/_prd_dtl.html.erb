@@ -14,11 +14,12 @@
       <div>
        <%= link_to "Sell A Product Like this", "", :class=>"seAll" %>
 
-          <div class="social" class="fbLike">
-            <iframe src="http://www.facebook.com/plugins/like.php?app_id=248975315122593&amp;href=<%= request.url %>&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;locale=en_US" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
+       <div class="social" class="fbLike">
+            <%= fb_like %>
+            
           </div>
           <div class="social" style="padding-top: 2px;">
-            <div class="g-plusone" data-size="small" data-count="true"></div>
+            <%= plus_one %>
           </div>
           <%= link_to "Add to Favorites", "", :class=>"add social" %>
       </div>

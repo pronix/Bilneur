@@ -73,5 +73,16 @@ module ApplicationHelper
    options.delete(:format_as_currency) ? number_to_currency(amount) : amount
   end
 
+
+  # SOCIAL BUTTONS
+  
+  def fb_like
+      content_tag :iframe, nil, :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape(request.url)}&layout=standard&show_faces=true&width=100&action=like&font=arial&colorscheme=light&height=21&layout=button_count&locale=en_US", :scrolling => 'no', :frameborder => '0', :allowtransparency => true, :id => :facebook_like, :style => "width: 100px; height: 21px; overflow: hidden;"
+  end
+
+  def plus_one
+      raw("<div class='g-plusone' data-size='small' data-count='true'></div>")
+  end
+
 end
 

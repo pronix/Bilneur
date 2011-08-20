@@ -1,3 +1,57 @@
+<%= render "shared/per_page", :per_page => params[:per_page] %>
+<div class="fdBck">
+	<h2>Purchase History</h2>
+    <div class="cmbo6">
+    	<input class="txt" type="text" name="" value="">
+        <select id="websites21" tabindex="1" name="">
+                <option value="" selected="selected" title="">All Purchase</option>
+                <option value="" title="">1</option>
+                <option value="" title="">2</option>
+                <option value="" title="">3</option>
+                <option value="" title="">4</option>
+        </select>
+    </div>
+    <div class="pPgCmbo">
+    	<div class="cmbo7">
+          <div class="ddOutOfVision" id="websites1_msddHolder">
+          <select id="per_page_select" tabindex="1" name="">
+                <option value="1" title="">1</option>
+                <option value="2" title="">2</option>
+                <option value="3" title="">3</option>
+                <option value="4" title="">4</option>
+                <option value="5" selected="selected" title="">5</option>
+          </select></div> 
+        </div>
+        <b>Display per page</b>
+    </div>
+
+
+
+    <% @orders.each do |order|%>
+      <% order.line_items.each do |item| %>
+        <%= render "line_item", :item => item, :order => order %>
+      <% end %>
+    <% end %>
+
+
+
+
+
+
+    <div class="paging">
+    <div class="blogPg">
+      <%= page_entries_info @orders %><!-- FIXME add will_paginate 3.0.pre4 support for modifying text of entries info -->
+    </div>
+    <%= will_paginate(@orders, 
+                :previous_label => "#{t('previous')}",
+                :next_label => "#{t('next')}") %>
+    </div>
+</div>
+
+
+
+
+<!--
 <table class="index sortable">
   <tbody>
     <% @orders.each do |order|%>
@@ -32,5 +86,4 @@
       <% end %>
     <% end %>
   </tbody>
-</table>
-<%= will_paginate @orders %>
+</table>-->

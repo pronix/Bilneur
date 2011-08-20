@@ -19,7 +19,7 @@
     </p>
     <% end %>
 
-    <i class="p2bdr bdrFix"></i>
+    <% if order.adjustments.any? %><i class="p2bdr bdrFix"></i><% end %>
 
     <% order.adjustments.each do |adjustment| %>
     <p class="sws">

@@ -293,3 +293,38 @@
 
 button.checkout {cursor: pointer; border: none; height: 49px; background: none;}
 button.checkout:hover {opacity: 0.8;}
+
+
+/* Checkout 5 */
+
+.shpngAd { float:left; width:205px; border-right:1px solid #c2c2c2; min-height:220px;}
+    .shpngAd2 {width:255px;}
+    .shpngAd h3 { width:200px;}
+    .shpngAd h5 { float:left; width:184px; padding:7px 5% 7px 11px; font-size:13px; color:#808080; background:#dadada;}
+        .shpngAd2 h5 {width:231px;}
+        .shpngAd2 h3 {width:250px;}
+        .shpngAd h5 span,.shpngAd h5 a { float:left; margin-right:8px;}
+    .shpngAd p { float:left; margin:18px; line-height:18px; font-size:14px;}
+.chkOutPrdct5 {width:397px;}
+    .chkOutPrdct5 .chkPrdct {width:100%;}
+        .chkOutPrdct5 .chkPrdct label {width:50%;}
+    .shpngFix { border:none!important;}
+    .mrgL { background:#b7b7b7!important;}
+    .mrgL a { margin-left:160px;}
+    .hdFix { width:406px!important;}
+    .hdFx { background:#b7b7b7; width:373px!important; height:25px;}
+    .msn { float:left; width:411px;border-right:1px solid #c2c2c2; min-height: 220px;}
+    .othrFix { margin:auto!important;}
+    .conta .btn { float:left; margin:10px 35px;}
+    .othrFix .otherbutton {position: relative;height: 49px;width: 170px;background:url('/images/forms/conf_odr.png') no-repeat;background-position:0 0;cursor: pointer;}   
+.othrFix .otherbutton span.hover {display: block;height: 49px;width: 170px;background:url('/images/forms/conf_odr.png') 0 -49px no-repeat;background-position: bottom;}
+    .eky { width:221px; padding:20px 5px;background:#dfdfdf!important;border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px;-khtml-border-radius:8px; border:1px solid #cacaca;}
+        .eky .prfl { margin:0px; width:100%; }
+            .eky .prfl .cntr { background:none;}
+            .rdy { margin:75px 0 0 0;}
+                .rdy span { font-size:12px;}
+    .tnC { float:left; width:90%; margin:10px 0 0 5%;}
+        .tnC span { width:50%;}
+            .tnC .pr { text-align:right;}
+                .tnC .pr b { color:#db1102;}
+        .p2 { margin-top:15px;}

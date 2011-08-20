@@ -152,7 +152,19 @@ jQuery(document).ready(function(){
         $(".checkbox").dgStyle();
 
 	try {
+	$("#websites1").msDropDown({mainCSS:'dd2'});
+	$("#ver").html($.msDropDown.version);
+	} catch(e) {
+		alert("Error: "+e.message);
+	}
+	try {
 	$("#websites21").msDropDown({mainCSS:'dd2'});
+	$("#ver").html($.msDropDown.version);
+	} catch(e) {
+		alert("Error: "+e.message);
+	}
+	try {
+	$("#websites19").msDropDown({mainCSS:'dd2'});
 	$("#ver").html($.msDropDown.version);
 	} catch(e) {
 		alert("Error: "+e.message);
@@ -161,9 +173,18 @@ jQuery(document).ready(function(){
 	$("#websites20").msDropDown({mainCSS:'dd2'});
 	$("#ver").html($.msDropDown.version);
 	} catch(e) {
-		alert("Error: "+e.message);
+			alert("Error: "+e.message);
 	}
-    
+
+	$('.otherbutton,.homebutton,.downloadbutton,.donatebutton').append('<span class="hover"></span>').each(function () {
+	  		var $span = $('> span.hover', this).css('opacity', 0);
+	  		$(this).hover(function () {
+	    		$span.stop().fadeTo(500, 1);
+	 		}, function () {
+	   	$span.stop().fadeTo(500, 0);
+	  		});
+	});
+
     //Tabs for reviews, changing appearance
     $("ul.feedback li").click(function() {
        $('ul.feedback .TabbedPanelsTabSelected').removeClass('TabbedPanelsTabSelected');

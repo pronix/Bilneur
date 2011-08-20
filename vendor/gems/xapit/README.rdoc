@@ -1,0 +1,148 @@
+= Xapit
+
+Xapit (pronounced "zap it") is a Ruby gem for doing full text searching through {Xapian}[http://xapian.org/]. This project was recently rewritten and is not yet ready for production. Please try it out and let me know if there are any issues.
+
+
+== Install
+
+First, install Xapian with the Ruby bindings. The easiest way is through {Homebrew}[http://mxcl.github.com/homebrew/].
+
+  brew install xapian --ruby
+
+Note: this is tied to the current version of Ruby you have installed. If you use RVM be certain you're in the correct version. See {Installing Xapian}[https://github.com/ryanb/xapit/wiki/Xapian-Installation] for other methods.
+
+Next add Xapit to your Gemfile and run the +bundle+ command.
+
+  gem "xapit", "~> 0.3"
+
+Then if you are in a Rails application, run the installation generator.
+
+  rails g xapit:install
+
+This creates a {configuration file}[https://github.com/ryanb/xapit/wiki/Configuration] and a rackup file for production use.
+
+
+== Index
+
+To make a model searchable you must define an index through the +xapit+ method. Here is an example of the four methods you can call there.
+
+  class Article < ActiveRecord::Base
+    xapit do
+      text :name, :content
+      field :category_id
+      sortable :id, :created_at
+      facet :author_name, "Author"
+    end
+  end
+
+This indexes the model to be searched in a variety of ways (shown below). See the {Indexing}[https://github.com/ryanb/xapit/wiki/Indexing] wiki page for details.
+
+Currently only Active Record is supported, but expect support for other libraries soon.
+
+The index will automatically be updated when records are added or removed. You can regenerate the index manually to fill it with any existing records.
+
+  rake xapit:index
+
+
+== Search
+
+Use the +search+ class method to perform a full text search on the index. This returns a Xapit scope where additional scoping methods can be called similar to Active Record scopes.
+
+  # simple full text search
+  @articles = Article.search("phone")
+
+  # full text search with basic boolean matching
+  @articles = Article.search("phone OR fax NOT email")
+
+  # pagination works with kaminari and will_paginate
+  @articles = Article.search("phone").page(10).per(20)
+
+  # search based on a specific field
+  @articles = Article.search("phone").where(:category_id => params[:category_id])
+
+  # search for multiple negative conditions (doesn't match 3, 5, or 8)
+  @articles = Article.search("phone").not_where(:category_id => [3, 5, 8])
+
+  # search for range of conditions by number
+  @articles = Article.search.where(:released_at => 2.years.ago..Time.now)
+
+  # order based on sortable fields, sorting defaults to most relevant
+  @articles = Article.search("phone").order(:created_at, :desc)
+
+Simply iterate through the returned set to display the results.
+
+  <% for article in @articles %>
+    <%= article.name %>
+  <% end %>
+
+See the {Searching}[https://github.com/ryanb/xapit/wiki/Searching] wiki page for more details.
+
+
+== Spelling
+
+Spelling suggestions are available when there is a simlarly indexed term.
+
+  <% if @articles.spelling_suggestion %>
+    Did you mean <%= link_to @articles.spelling_suggestion, :overwrite_params => { :keywords => @articles.spelling_suggestion } %>?
+  <% end %>
+
+Note: the spelling feature is disabled by default in the test environment because it uses an in-memory database.
+
+
+== Facets
+
+Facets allow you to further filter the result set based on certain attributes.
+
+  <% for facet in @articles.facets %>
+    <%= facet.name %>
+    <% for option in facet.options %>
+      <%= link_to option.name, :overwrite_params => { :facets => option } %>
+      (<%= option.count %>)
+    <% end %>
+  <% end %>
+
+The facet option is passed in through the URL which you can add to the search.
+
+  Article.search("phone").with_facets(params[:facets])
+
+You can also list the applied facets along with a remove link.
+
+  <% for option in @articles.applied_facet_options %>
+    <%= option.name %>
+    <%= link_to "remove", :overwrite_params => { :facets => option } %>
+  <% end %>
+
+
+
+== Testing
+
+To use Xapit in the test environment, you will need to reload the configuration before each test. For example, you can do this in RSpec:
+
+  config.before(:each) do
+    Xapit.reload
+  end
+
+Xapit is also disabled by default in the test environment so you can enable it on a per-test basis. This way it doesn't slow down tests which don't need Xapit search.
+
+  Xapit.enable
+  # create records and test searching functionality
+
+If you have existing records in the database you want to search (maybe loaded by fixtures) you can index those.
+
+  Xapit.index(Article, Comment) # or whatever models you need
+
+By default, the test environment keeps the Xapian database in memory which makes it much faster and easier to reset. The problem is that the spelling suggestion feature does not work with in-memory databases, so it is disabled in the test environment by default. All of this can be customized in the {configuration file}[https://github.com/ryanb/xapit/wiki/Configuration].
+
+
+== Production
+
+The default Xapit setup works well in development because there is only one instance of the Rails app running. However in production you will need to move Xapit to a separate process so all of the instances can communicate to it. To do this, start up the rackup file provided. You will likely want to put this behind a server such as Passenger.
+
+  rackup xapit.ru
+
+Now when you start up your Rails app in production it will use this server. You can configure the server URL in the {configuration file}[https://github.com/ryanb/xapit/wiki/Configuration].
+
+
+== Bug Reports
+
+First check out the {troubleshooting section}[https://github.com/ryanb/xapit/wiki/Troubleshooting] when you have problems. If you have found a bug or have a feature to request, please add it to the {GitHub issue tracker}[https://github.com/ryanb/xapit/issues] if it is not there already. Feel free to treat it as a mailing list and discuss new ideas or bring up any confusion you may have.

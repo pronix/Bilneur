@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails',                    '= 3.0.9'
 gem 'bundler',                  '~> 1.0.15'
-gem 'rack',                     '= 1.2.1'
+gem 'rack',                     '= 1.2.2'
 gem 'nokogiri',                 '~> 1.5.0'
 gem 'thrift_client',            '~> 0.6.3'
 gem 'json',                     '~> 1.5.3'
@@ -13,6 +13,8 @@ gem 'pg',                       '~> 0.11.0'
 gem 'sqlite3'
 
 gem 'exception_notification',   '~> 2.4.1'
+gem "xapit",                    :path => 'vendor/gems/xapit'
+
 
 gem 'spree',                    '= 0.60.1'
 

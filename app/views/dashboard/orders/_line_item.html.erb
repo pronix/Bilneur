@@ -6,7 +6,7 @@
     <%= order.user.full_name %>
   </td>
   <td valign="top" class="row<%= evod %>">
-                  
+
     <i>Order <b>#<%= order.number %></b></i>
     <i>Quantity: <b><%= order.item_count %></b></i>
   </td>
@@ -15,9 +15,9 @@
   </td>
   <td valign="top" align="center" class="row<%= evod %>">
     <% if order.shipment %>
-      <span><%= order.shipment.name %><br />
-        <label><%= number_to_currency(order.ship_total) %></label>
-      </span>
+    <span><%#= order.shipment.name %><br />
+      <label><%#= number_to_currency(order.ship_total) %></label>
+    </span>
     <% end %>
   </td>
   <td valign="top" align="center" class="row<%= evod %>">
@@ -36,10 +36,10 @@
     <div class="odrEdtPnl">
     	<div class="top"></div>
     	<div class="cntr">
-        	<a href="#"><img src="/images/icons/edit_sml_ico.png" alt="" /><i>Edit</i></a><!-- FIXME -->
-        	<a href="#"><img src="/images/icons/print_sml_ico.png" alt="" /><i>Print Invoice</i></a><!-- FIXME -->
-        	<a href="#"><img src="/images/icons/add_sml_ico.png" alt="" /><i>Add Tracking</i></a><!-- FIXME -->
-        </div>
+        <a href="#"><img src="/images/icons/edit_sml_ico.png" alt="" /><i>Edit</i></a><!-- FIXME -->
+        <a href="#"><img src="/images/icons/print_sml_ico.png" alt="" /><i>Print Invoice</i></a><!-- FIXME -->
+        <a href="#"><img src="/images/icons/add_sml_ico.png" alt="" /><i>Add Tracking</i></a><!-- FIXME -->
+      </div>
     	<div class="btm"></div>
     </div>
   </td>

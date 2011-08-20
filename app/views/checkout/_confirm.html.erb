@@ -8,7 +8,7 @@
             	<div class="shpng1">
                       <div class="shpngAd">
                     	<h3>Shipping Adresss</h3>
-                        <h5><span>Shipping To :</span> 
+                        <h5><span>Shipping To :</span>
                           <%= link_to image_tag("/images/forms/chk5_chng.png"), checkout_path(:state => "address") %>
                         </h5>
                         <% ship_address = @order.ship_address %>
@@ -22,14 +22,14 @@
                       </div>
                     <div class="shpngAd shpngAd2">
                     	<h3>Payment Info</h3>
-                        <h5><span>Payment Method :</span> 
+                        <h5><span>Payment Method :</span>
                           <%= link_to image_tag("/images/forms/chk5_chng.png"), checkout_path() %>
                         </h5>
-                        <p>FIXME***-<b><%= @order.payment.source.last_digits %></b> Exp: FIXME</p>
+                        <p><%= @order.payment.source.brand.to_s.upcase %>***-<b><%= @order.payment.source.last_digits %></b> Exp: FIXME</p>
                     </div>
                     <div class="shpngAd">
                     	<h3>Billing Address</h3>
-                        <h5><span>Billing Address :</span> 
+                        <h5><span>Billing Address :</span>
                           <%= link_to image_tag("/images/forms/chk5_chng.png"), checkout_path() %>
                         </h5>
                         <% bill_address = @order.bill_address %>
@@ -78,7 +78,7 @@
 
                 <div class="shpng2">
                     <%= render :partial => "summary", :locals => {:order => @order } %>
-                    
+
                     <div class="cntnu othrFix conta">
                         <button value="<%=t("place_order") %>" class="checkout">
                           <%= image_tag "forms/conf_odr.png" %>

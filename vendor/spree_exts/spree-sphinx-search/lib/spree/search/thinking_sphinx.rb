@@ -48,8 +48,7 @@ module Spree::Search
       @properties[:products] = products
       @properties[:facets] = parse_facets_hash(facets)
       @properties[:suggest] = nil if @properties[:suggest] == query
-
-      Product.where("id IN (?)", products.map(&:id))
+      Product.where("id IN (?)", products.compact.map(&:id))
     end
 
     def prepare(params)

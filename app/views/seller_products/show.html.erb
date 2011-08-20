@@ -6,7 +6,8 @@
 <div class="mTabs">                    
       <div id="TabbedPanels1" class="TabbedPanels TabbedPanelsTabFocused">
         <ul class="TabbedPanelsTabGroup">
-          <li class="TabbedPanelsTab TabbedPanelsTabSelected" tabindex="0"><span>About Seller</span></li>
+          <li class="TabbedPanelsTab TabbedPanelsTabSelected" tabindex="0"><span>Store</span></li>
+          <li class="TabbedPanelsTab" tabindex="0"><span>About Seller</span></li>
           <li class="TabbedPanelsTab" tabindex="0"><span>Feedback</span></li>
           <li class="TabbedPanelsTab" tabindex="0"><span>Return Policy </span></li>
           <li class="TabbedPanelsTab" tabindex="0"><span>Specials</span></li>
@@ -15,7 +16,6 @@
         </ul>
         <div class="TabbedPanelsContentGroup">
           <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block; ">
-
 
           	<div class="mTbFx">
             	  <div class="srchBar">
@@ -69,13 +69,6 @@
                         </form>
                       </div>
 
-
-                    <div class="likes">
-                      <a href="#"><img src="/images/icons/fb_like.png" alt=""></a> <!-- FIXME -->
-                      <a href="#"><img src="/images/icons/bnr_plus.png" alt=""></a> <!-- FIXME -->
-                    </div>
-
-
                     <%= render "shared/variants", :variants => @quotes, :taxon => @taxon, :grid => true %>
 
                     <div class="blogPg">
@@ -121,10 +114,16 @@
 
 
 
-              </div>
+            </div>
+
+              <!-- START ABOUT SELLER -->
               <div class="TabbedPanelsContent" style="display: none; ">
-                2 tab
+                <%= render "about_seller", :seller => @seller %>
               </div>
+              <!-- END ABOUT SELLER -->
+
+
+
               <div class="TabbedPanelsContent" style="display: none; ">
                 3 tab
               </div>

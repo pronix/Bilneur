@@ -9,7 +9,11 @@
                       <div class="shpngAd">
                     	<h3>Shipping Adresss</h3>
                         <h5><span>Shipping To :</span>
-                          <%= link_to image_tag("/images/forms/chk5_chng.png"), checkout_path(:state => "address") %>
+                          <% if @order.virtual? %>
+                            <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:virtual, :address)%>
+                          <% else %>
+                            <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:normal, :address)%>
+                          <% end %>
                         </h5>
                         <% ship_address = @order.ship_address %>
                         <p><%= ship_address.full_name %><br />
@@ -23,14 +27,25 @@
                     <div class="shpngAd shpngAd2">
                     	<h3>Payment Info</h3>
                         <h5><span>Payment Method :</span>
-                          <%= link_to image_tag("/images/forms/chk5_chng.png"), checkout_path() %>
+                          <% if @order.virtual? %>
+                            <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:virtual, :payment)%>
+                          <% else %>
+                            <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:normal, :payment)%>
+                          <% end %>
                         </h5>
-                        <p><%= @order.payment.source.brand.to_s.upcase %>***-<b><%= @order.payment.source.last_digits %></b> Exp: FIXME</p>
+                      <p>
+                        <%= @order.payment.source.brand.to_s.upcase %>***-<b><%= @order.payment.source.last_digits %></b>
+                        Exp: FIXME
+                      </p>
                     </div>
                     <div class="shpngAd">
                     	<h3>Billing Address</h3>
                         <h5><span>Billing Address :</span>
-                          <%= link_to image_tag("/images/forms/chk5_chng.png"), checkout_path() %>
+                          <% if @order.virtual? %>
+                            <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:virtual, :payment)%>
+                          <% else %>
+                            <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:normal, :payment)%>
+                          <% end %>
                         </h5>
                         <% bill_address = @order.bill_address %>
                         <p><%= bill_address.full_name %><br />
@@ -65,7 +80,11 @@
                     <div class="shpngAd shpngAd2 shpngFix">
                     	<h3>Shipping Method:</h3>
                         <h5 class="mrgL">
-                          <%= link_to image_tag("/images/forms/chk5_chng.png"), checkout_path(:state => "address") %>
+                          <% if @order.virtual? %>
+                            <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:virtual, :payment)%>
+                          <% else %>
+                            <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:normal, :payment)%>
+                          <% end %>
                         </h5>
                         <div class="mRadio rdy">
                             <div class="radio" id="box-single">

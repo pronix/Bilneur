@@ -1,7 +1,13 @@
-<ul class="TabbedPanelsTabGroup">
+<ul class="TabbedPanelsTabGroup" id="dashboard_menu">
   <li class="TabbedPanelsTab" >
+
+
     <span class="TabbedPanelsTabSelected">
-      <%= link_to_unless_current( t('user_menu.my_account'), dashboard_account_path, :class => "TabbedPanelsTab") %>
+      <% if controller_name == 'users' %>
+        <%= t("my_account") %>
+      <% else %>
+        <%= link_to( t("my_account"), dashboard_account_path, :class => "TabbedPanelsTab") %>
+      <% end %>
     </span>
   </li>
 

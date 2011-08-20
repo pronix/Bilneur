@@ -22,6 +22,8 @@
 .inbxTabs .TabbedPanelsContent { width:715px; border:none; padding:0;}
 
 
+#dashboard_menu .TabbedPanelsTab, #dashboard_menu .TabbedPanelsTab > span { width: 102px;}
+#dashboard_menu > .TabbedPanelsTab:last-child { width: 106px;}
 
 
 

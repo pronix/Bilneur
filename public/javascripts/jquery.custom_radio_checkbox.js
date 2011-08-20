@@ -25,7 +25,7 @@ dgStyle: function()
 		$(this).dgClear();
 	});
 	$(this).mousedown(function() { $(this).dgEffect(); });
-	$(this).mouseup(function() { $(this).dgHandle(); });	
+	$(this).mouseup(function() { $(this).dgHandle(); });
 },
 dgClear: function()
 {
@@ -36,7 +36,7 @@ dgClear: function()
 	else
 	{
 		$(this).css("backgroundPosition","center 0");
-		}	
+		}
 },
 dgEffect: function()
 {
@@ -52,7 +52,7 @@ dgHandle: function()
 		$(elm).dgUncheck(this);
 	else
 		$(elm).dgCheck(this);
-	
+
 	if($(this).data('type') == 'radio')
 	{
 		$.each($("input[name='"+$(elm).attr("name")+"']"),function()
@@ -65,6 +65,7 @@ dgHandle: function()
 dgCheck: function(div)
 {
 	$(this).attr("checked",true);
+  $(this).trigger("change")
 	$(div).data('checked',true).css({backgroundPosition:"center -"+(elmHeight*2)+"px"});
 },
 dgUncheck: function(div)
@@ -74,5 +75,6 @@ dgUncheck: function(div)
 		$(div).data('checked',false).css({backgroundPosition:"center 0"});
 	else
 		$(this).parent().data("checked",false).css({backgroundPosition:"center 0"});
+  $(this).trigger("change");
 }
 });

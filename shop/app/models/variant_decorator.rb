@@ -1,6 +1,7 @@
 Variant.class_eval do
 
-   CONDITION = %w(new used another)
+  CONDITION = %w(new used another)
+  CONDITION_MAP = { :new => 1, :used => 2, :another => 3}
 
   # associations
   #
@@ -41,7 +42,7 @@ Variant.class_eval do
   before_validation :set_seller, :on => :create
   # after_save :recalculate_count_on_hand, :unless => lambda{|t| t.is_master? }
   after_validation  :hack_after_validate
-
+  after_create :set_int_condition!,   :unless => lambda{|t| t.is_master? }
 
 
   # instance methods
@@ -112,6 +113,10 @@ Variant.class_eval do
     new_variant.deleted_at = nil
     new_variant.save!
     new_variant
+  end
+
+  def set_int_condition!
+    update_attribute(:condition_int, Variant::CONDITION_MAP[self.condition.to_sym]) if self.condition.present?
   end
 
   def display_condition

@@ -1,5 +1,7 @@
 Product.class_eval do
 
+
+
   # associations
   #
   belongs_to :owner, :class_name => "User" # seller who added product
@@ -58,7 +60,7 @@ Product.class_eval do
   end
 
   def best_price(condition = nil)
-    variants.best_price(condition).try(:price)
+    variants.best_price(condition).first.try(:price)
   end
 
   def set_owner(user_owner = User.current)

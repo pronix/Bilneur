@@ -2,6 +2,11 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  all_messages: All Messages
+  sent: Sent
+  unread: Unread
+  important: Important
+  trash: Trash
   change_password: Change Password
   update_qty: Update Qty
   start_buying_and_selling: "Start Buying & Selling"

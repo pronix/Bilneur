@@ -1,4 +1,6 @@
 require 'bundler/capistrano'
+require 'thinking_sphinx/deploy/capistrano'
+
 # require "delayed/recipes"
 
 # set :whenever_command, "bundle exec whenever"

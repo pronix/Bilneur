@@ -11,9 +11,9 @@ Feature: Shopping
       | Seller2   | seller2@person.com | password2 | password2             |
       | Seller3   | seller3@person.com | password3 | password3             |
     And the following products exist:
-      | name                        |            ean | created_at | owner                    |
-      | The Godfather               |  9780099528128 | 01/01/2011 | email:seller1@person.com |
-      | Death of a Hero [Paperback] | 978-0919614789 | 01/01/2010 | email:seller1@person.com |
+      | name                        |            ean | created_at | owner                    | is_master |
+      | The Godfather               |  9780099528128 | 01/01/2011 | email:seller1@person.com | true      |
+      | Death of a Hero [Paperback] | 978-0919614789 | 01/01/2010 | email:seller1@person.com |    true   |
     And the following variants exist:
       | product                          | seller                   | price | condition | count_on_hand | owner                    |
       | name:The Godfather               | email:seller1@person.com |  12.0 | new       |             6 | email:seller1@person.com |
@@ -43,12 +43,11 @@ Feature: Shopping
     Then I should be on the cart page
     When I follow "Checkout" within block normal cart
     And I fill shipping address with correct data
-    And I press "Save and Continue"
-    When I choose "UPS Ground1" from seller "seller2@person.com" Shipping Methods
-    And I press "Save and Continue"
-    And I choose "Other address"
+    And I press "Save new address"
+    And I press "Continue"
+    Then sleep "3"
+    When I press "Checkout"
     And I fill billing address with correct data
-    And I choose "Credit Card"
     And I enter valid credit card details
     Then I should see "Your order has been processed successfully"
     And "seller2@person.com" should receive 1 emails
@@ -76,13 +75,10 @@ Feature: Shopping
     Then I should be on the cart page
     When I follow "Checkout" within block normal cart
     And I fill shipping address with correct data
-    And I press "Save and Continue"
-    When I choose "UPS Ground1" from seller "seller2@person.com" Shipping Methods
-    And I choose "UPS Ground2" from seller "seller1@person.com" Shipping Methods
-    And I press "Save and Continue"
-    And I choose "Other address"
+    And I press "Save new address"
+    And I press "Continue"
+    And I press "Checkout"
     And I fill billing address with correct data
-    And I choose "Credit Card"
     And I enter valid credit card details
     Then I should see "Your order has been processed successfully"
     And "seller2@person.com" should receive 1 emails
@@ -100,5 +96,5 @@ Feature: Shopping
       | product_name                | condition | count_on_hand |
       | The Godfather               | new       |             6 |
       | Death of a Hero [Paperback] | new       |             4 |
-    Then sleep "3000"
-      
+    Then sleep "3"
+

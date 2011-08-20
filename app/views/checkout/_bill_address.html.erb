@@ -1,77 +1,69 @@
-<% @addresses = current_user ? current_user.addresses : [] %>
-<style>
-  div.inner input[type=text], div.inner select { width: 80%; }
-  .hidden { display: none; }
-  div#checkout #checkout_form_address #shipping .select_address label { float:none; }
-  div#checkout #checkout_form_address #shipping input[type=radio] { width: auto; }
-</style>
-
-<% [ 'billing'].each do |address_type|
-  next if address_type == 'billing' && Spree::Config[:disable_bill_address]
-  address_name = "#{address_type[0...4]}_address" %>
-<fieldset id="<%= address_type %>">
-  <legend><%= t(address_type + "_address")%></legend>
-
-
-  <div class="select_address">
-    <p class="field">
-      <% if @addresses.present? %>
-        <% @addresses.each_with_index do |address, idx| %>
-        <span id="<%= [address_type, dom_id(address)].join('_') %>">
-          <label><%= form.radio_button "#{address_name}_id", address.id, :checked => (idx == 0) %> <%= address %></label> <%= link_to t(:edit), edit_address_path(address) %><br />
-        </span>
-        <% end %>
-        <label><%= form.radio_button "#{address_name}_id", 0 %> <%= t('other_address') %></label>
-      <% end %>
-    </p>
-  </div>
-  <%= form.fields_for address_name do |address_form| %>
-    <div class="inner">
-      <p class="field">&nbsp;</p>
-      <%= render :partial => 'addresses/form', :locals => {
-        :address_name => address_name,
-        :address_form => address_form,
-        :address => Address.default
-      } %>
+<div class="option2">
+  <h4>Enter a new billing address</h4>
+  <% ADDRESS_FIELDS.each do |field| %>
+  <% if field == "city"  %>
+  <b>
+    <i>City:</i>
+    <%= address_form.text_field(field.to_sym, :class => 'txtCty') %>
+    <% elsif field == "state" %>
+    <i class="stat">State:</i>
+    <div class="cmbo2">
+      <%= address_form.collection_select :state_id, State.order('name').all, :id, :name, {:include_blank => true}, {:class => 'required', :id => "websites2"} %>
     </div>
+  </b>
+
+  <% elsif field == "country" %>
+
+  <b>
+    <i><%= address_form.label :country_id, t(field, :scope => [:activerecord, :attributes, :address]) %></i>
+    <div class="cmbo3">
+      <%= address_form.collection_select :country_id, available_countries, :id, :name, {}, {:class => 'required', :id => "websites3"} %>
+    </div>
+  </b>
+
+  <% elsif field == "zipcode" %>
+   <b>
+     <i>Zip:</i>
+     <%= address_form.text_field(field.to_sym, :class => 'txtPhn') %>
+   </b>
+  <% elsif field == "address1"%>
+  <b>
+    <i>Address Line 1:</i>
+    <%= address_form.text_field(field.to_sym, :class => 'inpNam') %>
+  </b>
+
+  <% elsif field == "address2" || field == "" %>
+  <b>
+    <i class="txtGry">Address Line 2:</i>
+    <%= address_form.text_field(field.to_sym, :class => 'inpNam') %>
+  </b>
+
+  <% elsif field == "lastname"%>
+  <b>
+    <i>Last Name:</i>
+    <%= address_form.text_field(field.to_sym, :class => 'inpNam') %>
+  </b>
+
+  <% elsif field == "firstname"%>
+  <b>
+    <i>First Name:</i>
+    <%= address_form.text_field(field.to_sym, :class => 'inpNam') %>
+  </b>
+
+  <% elsif field == "phone"%>
+  <b>
+    <i>Phone:</i>
+    <%= address_form.text_field(field.to_sym, :class => 'txtPhn') %>
+  </b>
+
+  <% else %>
+  <b>
+    <i><%= t(field) %></i>
+    <%= address_form.text_field(field.to_sym, :class => 'txtCty') %>
+  </b>
   <% end %>
-</fieldset>
-<% end %>
-
-<hr class="space" />
-
-<% if @addresses.present? %>
-  <%= javascript_tag do %>
-  $(document).ready(function(){
-    $(".inner input").attr('disabled', 'disabled');
-    $(".inner select").attr('disabled', 'disabled');
-    $(".inner").hide();
-
-    $("input[name='order[bill_address_id]']:radio").change(function(){
-      if ($("input[name='order[bill_address_id]']:checked").val() == '0') {
-        $("#billing .inner input").removeAttr('disabled');
-        $("#billing .inner select").removeAttr('disabled');
-        $("#billing .inner").fadeIn();
-      } else {
-        $("#billing .inner input").attr('disabled', 'disabled');
-        $("#billing .inner select").attr('disabled', 'disabled');
-        $("#billing .inner").fadeOut();
-      }
-    });
-
-    $("input[name='order[ship_address_id]']:radio").change(function(){
-      if ($("input[name='order[ship_address_id]']:checked").val() == '0') {
-        $("#shipping .inner input").removeAttr('disabled');
-        $("#shipping .inner select").removeAttr('disabled');
-        $("#shipping .inner").fadeIn();
-      } else {
-        $("#shipping .inner input").attr('disabled', 'disabled');
-        $("#shipping .inner select").attr('disabled', 'disabled');
-        $("#shipping .inner").fadeOut();
-      }
-    });
-
-  });
   <% end %>
-<% end %>
-
+  <% if Spree::Config["alternative_#{address_name}_phone"] %>
+  <%= address_field(address_form, :alternative_phone, address_name) %>
+  <% end %>
+</div>

@@ -1,21 +1,52 @@
-<fieldset id='shipping_method'>
-  <legend><%= t("shipping_method") %></legend>
+<% javascript "jquery.custom_radio_checkbox" %>
+<%= render '/shared/order_status', :step => "shipping" %>
+<%= form_for @order, :url => virtual_update_checkout_path((@order.virtual? ? :virtual : :normal), @order.state), :html => { :id => "checkout_form_#{@order.state}" } do |form| %>
+
+<div class="page chkOut3">
+	<div class="shpng1">
+
+  <h3><%= t("shipping_method") %></h3>
   <div class="inner">
     <div id="methods">
       <p class="field radios">
-
         <% @order.sellers.each do |seller| %>
-        <h3><%= t("shipping_method") %> for seller <%= seller.full_name %></h3>
+        <h6><%= t("shipping_method") %> for seller <%= seller.full_name %></h6>
+        <div class="mRadio">
 
         <% @order.rate_hash_for_seller(seller).each_with_index do |shipping_method, i| %>
-        <label>
+
+        <div class="radio js-radio" id="box-single">
           <%= radio_button("order[seller_shipping_method][#{seller.id}]", :shipping_method_id, shipping_method[:id],
               {:checked => (i == 0), :id => "order_shipping_method_id_#{shipping_method[:id]}"}) %>
-          <%= shipping_method[:name] %> <%= number_to_currency shipping_method[:cost] %>
-        </label>
-        <br />
+        </div>
+        <span>
+          <i>
+            <%= shipping_method[:name] %> <%= number_to_currency shipping_method[:cost] %>
+          </i>
+        </span>
+
         <% end %>
-        <hr />
+
+
+          <h6>Item Details:</h6>
+
+  <div class="chkOutPrdct">
+    <% @order.line_items.each do |item| %>
+    <% next unless item.variant.seller == seller %>
+    <div class="chkPrdct">
+      <i>
+        <%= mini_image(item.variant.images.blank? ? item.variant.product : item.variant) %></i>
+      <b><%= item.variant.name %></b>
+      <span class="clrLft">Condition: <em><%= item.variant.display_condition %></em></span>
+      <span><em>Seller: <%= item.variant.seller.full_name%></em></span>
+      <label>Price <%= number_to_currency item.price %> <span>Quantity: <%= item.quantity %>.</span></label>
+    </div>
+    <% end %>
+
+  </div>
+
+
+        </div>
         <% end %>
 
       </p>
@@ -28,8 +59,18 @@
     </p>
     <% end %>
   </div>
-</fieldset>
 
-<div class="form-buttons">
-  <input type="submit" class="continue button primary" value="<%=t("save_and_continue") %>"/>
+  </div>
+
+
+
+  <div class="shpng2">
+    <%= render :partial => "summary", :locals => {:order => @order } %>
+      <button value="Checkout">
+        <%= image_tag "forms/chk_big_btn.png" %>
+      </button>
+  </div>
+
+
 </div>
+<% end %>

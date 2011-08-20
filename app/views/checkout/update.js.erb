@@ -1,0 +1,62 @@
+<% if @order.delivery? %>
+
+<%= form_for @order, :url => virtual_update_checkout_path((@order.virtual? ? :virtual : :normal), @order.state), :html => { :id => "checkout_form_#{@order.state}" } do |form| %>
+
+
+<h3>Shipping Method:</h3>
+<% @order.sellers.each do |seller| %>
+
+<h6><%= t("shipping_method") %> for seller <%= seller.full_name %></h6>
+<div class="mRadio">
+  <% @methods = @order.rate_hash_for_seller(seller) %>
+
+  <% unless @methods.blank? %>
+
+  <% @methods.each_with_index do |shipping_method, i| %>
+
+  <div class="radio js-radio" style="background-position: 50% 0px; ">
+    <%= radio_button("order[seller_shipping_method][#{seller.id}]", :shipping_method_id, shipping_method[:id],
+        {:checked => (i == 0), :id => "order_shipping_method_id_#{shipping_method[:id]}"}) %>
+  </div>
+
+  <span>
+    <i>
+      <%= shipping_method[:name] %> <%= number_to_currency shipping_method[:cost] %>
+    </i>
+  </span>
+  <% end %>
+
+  <h6>Item Details:</h6>
+
+  <div class="chkOutPrdct">
+    <% @order.line_items.each do |item| %>
+    <% next unless item.variant.seller == seller %>
+    <div class="chkPrdct">
+      <i>
+        <%= mini_image(item.variant.images.blank? ? item.variant.product : item.variant) %></i>
+      <b><%= item.variant.name %></b>
+      <span class="clrLft">Condition: <em><%= item.variant.display_condition %></em></span>
+      <span><em>Seller: <%= item.variant.seller.full_name%></em></span>
+      <label>Price <%= number_to_currency item.price %> <span>Quantity: <%= item.quantity %>.</span></label>
+    </div>
+    <% end %>
+
+  </div>
+
+</div>
+
+<% else %>
+<h1 style="color:red;">This seller does not deliver to your address</h1>
+<% end %>
+<% end %>
+
+<script>
+  $(function(){
+  $(".js-radio").dgStyle();
+  $("#next-step-button").show();
+  });
+</script>
+
+<% end %>
+
+<% end %>

@@ -1,11 +1,17 @@
-<fieldset id="order_details">
-  <div class="clear"></div>
-  <legend><%= t(@order.state, :scope => :order_state).titleize %></legend>
+<%= render '/shared/order_status', :step => "done" %>
+ <%= form_for @order, :url => virtual_update_checkout_path((@order.virtual? ? :virtual : :normal), @order.state), :html => { :id => "checkout_form_#{@order.state}" } do |form| %>
+
+<div class="items">
+
+  <h1 class="chkHd"><%= t(@order.state, :scope => :order_state).titleize %></h1>
   <%= render :partial => 'shared/order_details', :locals => {:order => @order} %>
-</fieldset>
 
 <hr />
 
 <div class="form-buttons">
-  <input type="submit" class="continue button primary" value="<%=t("place_order") %>"/>
+  <button value="<%=t("place_order") %>" class="checkout">
+    <%= image_tag "forms/chk_big_btn.png" %>
+  </button>
 </div>
+</div>
+<% end %>

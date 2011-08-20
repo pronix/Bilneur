@@ -7,10 +7,10 @@ Feature: Purachases
     And 1 payment methods exist
     And 1 bogus payment methods exist
     And the following sellers exist:
-      | firstname | email              | password  | password_confirmation |
-      | Seller1   | seller1@person.com | password1 | password1             |
-      | Seller2   | seller2@person.com | password2 | password2             |
-      | Seller3   | seller3@person.com | password3 | password3             |
+      | firstname | lastname | email              | password  | password_confirmation |
+      | Seller1   | Nil1     | seller1@person.com | password1 | password1             |
+      | Seller2   | Nil2     | seller2@person.com | password2 | password2             |
+      | Seller3   | Nil3     | seller3@person.com | password3 | password3             |
     And the following products exist:
       | name                        |            ean | created_at | owner                    |
       | The Godfather               |  9780099528128 | 01/01/2011 | email:seller1@person.com |
@@ -37,9 +37,8 @@ Feature: Purachases
      When I sign in as "email@person.com/password"
      And I go to the dashboard purchases page
      Then the page have the following purchases list:
-      | The Godfather\n            \nSeller: Seller1 \n            $24.00\n            \nOrder data: December 31, 2009 21:00\n            \nOrder number: RT4578\n            \nFavorite Seller Favorite Product               | Qty purchases:2 | View Order Details\n            View Invoice\n            Add to Inventory\n            \n              Write a review\n            \n            Request a return |
-      | Death of a Hero [Paperback]\n            \nSeller: Seller3 \n            $60.00\n            \nOrder data: December 31, 2009 21:00\n            \nOrder number: RT4578\n            \nFavorite Seller Favorite Product | Qty purchases:3 | View Order Details\n            View Invoice\n            Add to Inventory\n            \n              Write a review\n            \n            Request a return |
-
+      | The Godfather\n            \nSeller: Seller1 Nil1\n            $24.00\n            \nOrder data: December 31, 2009 21:00\n            \nOrder number: RT4578\n            \nFavorite Seller Favorite Product                  | Qty purchases:2 | View Order Details\n            View Invoice\n            Add to Inventory\n            \n              Write a review\n            \n            Request a return |
+      | Death of a Hero [Paperback]\n            \nSeller: Seller3 Nil3\n            $60.00\n            \nOrder data: December 31, 2009 21:00\n            \nOrder number: RT4578\n            \nFavorite Seller Favorite Product    | Qty purchases:3 | View Order Details\n            View Invoice\n            Add to Inventory\n            \n              Write a review\n            \n            Request a return |
 
   Scenario: Check weight rate
     Given the user "email@person.com" has the order with number "RT4578" and date "01/01/2010 00:00":

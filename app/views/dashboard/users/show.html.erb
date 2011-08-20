@@ -14,11 +14,9 @@
   <%= link_to t("change_password"), account_change_password_path, :class => 'vsp' %>
 
   <% if current_user.has_role?("seller") %>
-    <a class="vsp" id="seller_profile_toggle" href="#">
-      <img src="/images/forms/vsp_btn.png" alt="">
+    <%= link_to image_tag('/images/forms/vsp_btn.png'), seller_product_path(current_user), :class => "vsp" %>
     </a>
   <% end %>
-  <!-- FIXME what if not a seller? -->
 </div>
 
 <div class="sptCnt">

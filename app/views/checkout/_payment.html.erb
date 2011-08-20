@@ -1,36 +1,125 @@
-<fieldset id="payment">
-  <legend><%= t("payment_information") %></legend>
-  <%= hook :checkout_payment_step, {:form => form} do %>
-    <% @order.available_payment_methods.each do |method| %>
-    <p>
-      <label>
-        <%= radio_button_tag "order[payments_attributes][][payment_method_id]", method.id, method == @order.payment_method %>
-        <%= t(method.name, :scope => :payment_methods, :default => method.name) %>
-      </label>
-    </p>
-    <% end %>
+<% javascript "jquery.custom_radio_checkbox" %>
+<%= render '/shared/order_status', :step => "billing" %>
+ <%= form_for @order, :url => virtual_update_checkout_path((@order.virtual? ? :virtual : :normal), @order.state), :html => { :id => "checkout_form_#{@order.state}" } do |form| %>
+<div class="items">
+  <!-- page1 -->
+  <h1 class="chkHd">Billing Details</h1>
 
-    <ul id="payment-methods">
-      <% @order.available_payment_methods.each do |method| %>
-        <li id="payment_method_<%= method.id %>"
-            <%=   method == @order.payment_method ? " style='display:block;' " : " style='display:none;' "%>
-            <%= ' class="last"' if method == @order.available_payment_methods.last %>>
-          <fieldset>
-            <%= render "checkout/payment/#{method.method_type}", :payment_method => method %>
-          </fieldset>
-        </li>
+  <% @payment_method = @order.available_payment_methods.detect{|v| v.name == "Credit Card" } %>
+  <%= hidden_field_tag "order[payments_attributes][][payment_method_id]", @payment_method.id  %>
+  <% param_prefix = "payment_source[#{@payment_method.id}]" %>
+  <%= hidden_field param_prefix, 'first_name', :value => @order.billing_firstname %>
+  <%= hidden_field param_prefix, 'last_name',  :value => @order.billing_lastname %>
+
+  <div class="page chkOut3">
+
+    <div class="shpng1">
+      <h3>Your payment information.</h3>
+      <div class="pmntPnl">
+        <p class="pmnt">Your payments will be processed on our secure server.<span>* All required fields.</span></p>
+        <div class="pmntPrcs">
+          <b>
+            <i>*Payment Type:</i>
+            <i><%= image_tag "icons/cards.png" %></i>
+          </b>
+          <b>
+            <i>* Card Number:</i>
+            <% options_hash = Rails.env.production? ? {:autocomplete => "off"} : {} %>
+            <%= text_field_tag "#{param_prefix}[number]", '', options_hash.merge(:id => 'card_number', :class => 'required pmntTxt', :size => 19, :maxlength => 19) %>
+          </b>
+          <b>
+            <i>* Expiration Date:</i>
+            <div class="cmbo6">
+              <%= select_month(Date.today, :prefix => param_prefix, :field_name => 'month', :use_month_numbers => true, :class => 'required') %>
+            </div>
+            <div class="cmbo7">
+              <%= select_year(Date.today, :prefix => param_prefix, :field_name => 'year', :start_year => Date.today.year, :end_year => Date.today.year + 15, :class => 'required') %>
+            </div>
+          </b>
+          <b>
+            <i>* Security code:</i>
+            <%= text_field_tag "#{param_prefix}[verification_value]", '', options_hash.merge(:id => 'card_code', :class => 'scrtyTxt required', :size => 5) %>
+
+          </b>
+        </div>
+      </div>
+
+
+      <h3>Billing Address</h3>
+
+      <div class="option1">
+        <h4>Option 1:</h4>
+
+        <p id='option-1-address' >
+          <% if current_user.primary_address %>
+          <%= render :partial =>"address_info", :object => current_user.primary_address  %>
+          <% else %>
+          You have no addresses
+          <% end %>
+        </p>
+
+        <div class="cmbo1">
+          <%= select_tag "", options_for_select(current_user.addresses.collect{ |u| [u.to_s, u.id] }), :id => "websites1" %>
+        </div>
+
+      </div>
+      <% @order.bill_address ||= current_user.primary_address || Address.default %>
+      <%= form.fields_for :bill_address do |address_form| %>
+
+      <div class="option2" id="new_address_checkout" >
+        <%= render :partial => 'bill_address', :locals => {
+        :address_name => "bill_address",
+        :address_form => address_form,
+        :address => @order.bill_address
+        } %>
+      </div>
       <% end %>
-    </ul>
 
-    <br style='clear:both;' />
-    <%= hook :coupon_code_field, {:form => form} %>
-  <% end %>
-</fieldset>
 
-<hr class="space" />
 
-<%= render :partial => "bill_address", :locals => {:form => form } unless @order.virtual? %>
+      <h3>Pay with Paypal</h3>
+      <div class="payWP">
+        <p>Paypal is the most convinient way to pay without disclosing your credit card. If you dont have a paypal account it takes you less than a minute to sign up for one after you click the paypal button.</p>
+        <%= link_to "" do %>
+        <%= image_tag "forms/paypal.png" %>
+        <% end %>
+      </div>
+    </div>
 
-<div class="form-buttons">
-  <input type="submit" class="continue button primary" value="<%=t("save_and_continue") %>" />
-</div>
+    <div class="shpng2">
+
+      <div class="grnTbl">
+        <div class="grnTop lockTop"><h6>Buyer Protection</h6></div>
+        <div class="grnCntr lockC">
+          <p><b>You can now Shop with confidence. Shopping on Bilneur is safe and secure.                                                      You will not be liable for any fradulent charges made to your card as a result of shopping on Bilneur.</b></p>
+        </div>
+        <div class="grnBtm"></div>
+      </div>
+
+      <div class="grnTbl">
+        <div class="grnTop lock2Top"><h6>Privacy Policy</h6></div>
+        <div class="grnCntr lock2C">
+          <p>We respect your privacy &amp; will not rent or sell your personal information to </p>
+          <p>You can read more about our <br /><a href="#">Privacy Policy Here..</a></p>
+        </div>
+        <div class="grnBtm"></div>
+      </div>
+      <div class="cntnu tPBtn">
+        <button value="Checkout" class="checkout">
+          <%= image_tag "forms/chk_big_btn.png" %>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div><!--items-->
+<% end %>
+<script>
+
+  $(function(){
+  $("#websites1").change(function(){
+  $("#option-1-address").load("<%= info_address_path(:id) %>".replace('id', $(this).val()));
+  });
+  });
+
+</script>

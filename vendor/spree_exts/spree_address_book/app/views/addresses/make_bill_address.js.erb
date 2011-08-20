@@ -1,0 +1,2 @@
+$("#new-address").html("<%= escape_javascript(render :partial => 'checkout/addresses', :locals => { :address_name => params[:state], :address => (@address||Address.default)  }) %>")
+

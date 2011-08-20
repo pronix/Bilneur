@@ -1,5 +1,5 @@
 <%= form_tag products_path, :remote => true, :method => 'get', :id => "products_search" do %>
-
+<button>Search</button>
      <% get_taxonomies.each do |taxonomy| %>
        <div id="CollapsiblePanel<%= taxonomy.id %>" class="CollapsiblePanel">
         <div class="CollapsiblePanelTab" tabindex="0"><span><%= taxonomy.name.singularize %></span></div>
@@ -7,7 +7,7 @@
           <% taxonomy.root.children.each do |taxon| %>
              <div>
                <div class="checkbox" id="<%= taxonomy.name.singularize %>">
-                 <input type="checkbox" id="<%= taxonomy.name.singularize %>" name="categories[]" value="<%= taxon.id %>">
+                 <input type="checkbox" id="<%= taxonomy.name.singularize %>" name="taxon_ids[]" value="<%= taxon.id %>">
                </div>
                <label class="techi" for="<%= taxonomy.name.singularize %>"><%= taxon.name %></label>
              </div>
@@ -33,32 +33,41 @@
       <div id="CollapsiblePanel5" class="CollapsiblePanel">
         <div class="CollapsiblePanelTab" tabindex="0"><span>Price</span></div>
         <div class="CollapsiblePanelContent">
-            <div>
-                <div class="checkbox" id="Astronomy">
-                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
+          <div>
+            <div class="checkbox" >
+              <input type="checkbox" id="price_low_to_high" name="order_by_price" value="asc">
+            </div>
+            <label class="techi" for="price_low_to_high">Price low to high</label>
+          </div>
+
+          <div>
+            <div class="checkbox">
+              <input type="checkbox" id="price_high_to_low" name="order_by_price" value="desc">
+            </div>
+            <label class="techi" for="price_high_to_low">Price high to low</label>
+          </div>
+
+          <div>
+            <div class="checkbox">
+              <input type="checkbox" name="price_range" value="1" id="price_range">
+            </div>
+            <label class="techi" for="price_range">Price Range</label>
+          </div>
+
+          <!-- Slider#1 -->
+          <div class="tansBg">
+            <div class="prossr">
+              <input class="minMaxTxt fL" type="text" name="min_price" id="min_price2" value="100" size="5">
+              <input class="minMaxTxt fR" type="text" name="max_price" id="max_price2" value="500" size="5">
+              <div id="slider2" style=" float:left;width:100%; margin-top:20px;" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+                <div class="ui-slider-range ui-widget-header" style="left: 10%; width: 46.599999999999994%; ">
                 </div>
-              <label class="techi" for="Astronomy">Price low to high</label>
+                <a href="http://www.flameweb.net/minmaxslider_demo#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 10%; "></a>
+                <a href="http://www.flameweb.net/minmaxslider_demo#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 56.599999999999994%; "></a>
+              </div>
             </div>
-            <div>
-                <div class="checkbox" id="Astronomy">
-                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                </div>
-              <label class="techi" for="Astronomy">Price high to low</label>
-            </div>
-            <div>
-                <div class="checkbox" id="Astronomy">
-                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                </div>
-              <label class="techi" for="Astronomy">Price Range</label>
-            </div>
-            <!-- Slider#1 -->
-            <div class="tansBg">
-                                <div class="prossr">
-                                    <input class="minMaxTxt fL" type="text" name="min_price" id="min_price2" value="100" size="5"><input class="minMaxTxt fR" type="text" name="max_price" id="max_price2" value="500" size="5">     
-    <div id="slider2" style=" float:left;width:100%; margin-top:20px;" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><div class="ui-slider-range ui-widget-header" style="left: 10%; width: 46.599999999999994%; "></div><a href="http://www.flameweb.net/minmaxslider_demo#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 10%; "></a><a href="http://www.flameweb.net/minmaxslider_demo#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 56.599999999999994%; "></a></div>
-                                </div>
-            </div>
-            <!-- /Slider#1 -->
+          </div>
+          <!-- /Slider#1 -->
         </div>
       </div>
 
@@ -66,12 +75,12 @@
         <div class="CollapsiblePanelTab" tabindex="0"><span>Sort by Quantity</span></div>
         <div class="CollapsiblePanelContent">
           <div class="minMax">
-              <b>Min</b>
-                <input class="txt" type="text" name="" value="" />
+            <b>Min</b>
+            <input class="txt" type="text" name="" value="desc" />
           </div>
           <div class="minMax">
-              <b>Max</b>
-                <input class="txt" type="text" name="" value="" />
+            <b>Max</b>
+            <input class="txt" type="text" name="" value="asc" />
           </div>
         </div>
       </div>
@@ -112,7 +121,7 @@
         <div class="CollapsiblePanelContent">
           <div class="tansBg">
                                 <div class="prossr">
-                                    <input class="minMaxTxt fL" type="text" name="min_price" id="min_price" value="100" size="5"><input class="minMaxTxt fR" type="text" name="max_price" id="max_price" value="500" size="5">     
+                                    <input class="minMaxTxt fL" type="text" name="min_price" id="min_price" value="100" size="5"><input class="minMaxTxt fR" type="text" name="max_price" id="max_price" value="500" size="5">
     <div id="slider" style=" float:left;width:100%; margin-top:20px;" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><div class="ui-slider-range ui-widget-header" style="left: 10%; width: 46.599999999999994%; "></div><a href="http://www.flameweb.net/minmaxslider_demo#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 10%; "></a><a href="http://www.flameweb.net/minmaxslider_demo#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 56.599999999999994%; "></a></div>
                                 </div>
            </div>

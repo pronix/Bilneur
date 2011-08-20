@@ -34,13 +34,19 @@ set :keep_releases, 3
 
 set :bundle_flags,       "--quiet"
 
-
+set :sphinx_role, :app
 
 after  "deploy:update",  "deploy:migrate"
 after  "deploy:migrate", "deploy:chown_apache"
 before "deploy:migrate", "deploy:symlink_database"
 after  "deploy:symlink", "deploy:symlink_image"
 after  "deploy:update", "deploy:cleanup"
+
+
+after "deploy:restart",          "thinking_sphinx:restart"
+after "thinking_sphinx:start",   "deploy:chown_apache"
+after "thinking_sphinx:restart"," deploy:chown_apache"
+
 
 # before "deploy:restart", "delayed_job:stop"
 # after  "deploy:restart", "delayed_job:start"
@@ -88,5 +94,46 @@ namespace :deploy do
     run "cd #{current_path}; AUTO_ACCEPT=true RAILS_ENV=production bundle exec rake db:sample"
   end
 
+end
+
+
+namespace :thinking_sphinx do
+
+  desc "Starts the thinking sphinx searchd server"
+  task :start, :roles => sphinx_role do
+    puts "Starting thinking sphinx searchd server"
+    run "cd #{current_path}; RAILS_ENV=production bundle exec rake thinking_sphinx:configure"
+    run "cd #{current_path}; RAILS_ENV=production bundle exec rake ts:start"
+  end
+
+  desc "Stops the thinking sphinx searchd server"
+  task :stop, :roles => sphinx_role do
+    puts "Stopping thinking sphinx searchd server"
+    run "cd #{current_path}; RAILS_ENV=production bundle exec rake thinking_sphinx:configure"
+    run "cd #{current_path}; RAILS_ENV=production bundle exec rake ts:stop"
+  end
+
+  desc "Restarts the thinking sphinx searchd server"
+  task :restart, :roles => sphinx_role do
+    thinking_sphinx.stop
+    thinking_sphinx.index
+    thinking_sphinx.start
+  end
+
+  desc "Copies the shared/config/sphinx yaml to release/config/"
+  task :symlink_config, :roles => :app do
+    run "ln -s #{shared_path}/config/sphinx.yml #{release_path}/config/sphinx.yml"
+  end
+
+  desc "Displays the thinking sphinx log from the server"
+    task :tail, :roles => :app do
+      stream "tail -f #{shared_path}/log/searchd.log"
+  end
+
+  desc "Runs Thinking Sphinx indexer"
+  task :index, :roles => sphinx_role do
+    puts "Updating search index"
+    run "cd #{current_path}; RAILS_ENV=production bundle exec rake ts:index"
+  end
 end
 

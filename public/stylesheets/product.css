@@ -73,7 +73,7 @@
     .col2 .add { width:279px; height:141px; padding:12px 0 0 12px; background:url('/images/bgs/sell_buy_add.png') no-repeat; margin:5px 0 0 4px;}
       .col2 .add b { float:left; width:100%; font-size:13px; color:#4d4d4d;}
       .col2 .add .slrOvr { float:left;width:100%; font-size:13px; color:#df5050; text-decoration:underline; font-weight:bold; margin:4px 0;}
-      .col2 .add .strt { float:left; width:231px; height:42px; margin:10px 0 0 11px; font-weight:bold; font-size:19px; color:#fff; text-align:center; line-height:42px; background:url('/images/forms/strt_btn.png') no-repeat;}
+      .col2 .add .strt { float:left; width:236px; height:47px; margin:10px 0 0 11px; font-weight:bold; font-size:19px; color:#fff; text-align:center; line-height:42px; background:url('/images/forms/strt_btn.png') no-repeat;}
       .col2 .add .mre { float:left; width:100px; font-size:13px; color:#29b6de; font-weight:bold; margin-top:10px;}
     .vwer { margin:37px 0 0 4px;}
       .vwer .top { height:30px; background:url('/images/bgs/vwer_top.png') no-repeat; margin-left: -1px;}

@@ -9,6 +9,9 @@ module SpreeSite
         preference :allow_ssl_in_production,  :boolean, :default => false
         preference :print_invoice_logo_path,  :string,  :default => "public/images/admin/bg/spree_50.png"
 
+        preference :facebook_app_id, :string
+        preference :facebook_admins, :string, :default => "1509902962"
+
       end if ::Product.table_exists?
 
       ActionMailer::Base.class_eval do

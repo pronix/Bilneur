@@ -29,6 +29,7 @@ describe Product do
 
       it "requires presence" do
         @product = Factory.build(:product, :owner =>  Factory.create(:user, :registration_as_seller => 1))
+        @product.ean = nil
         @product.should_not be_valid
         @product.errors[:ean].count.should eq(1)
         @product.errors.full_messages.first.should =~ /EAN can't be blank/i

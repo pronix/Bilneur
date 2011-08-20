@@ -1,10 +1,21 @@
-<% content_for :head do %> <!-- FIXME -->
-  <meta property="og:tag name" content="tag value"/>
-  <meta property="og:title" content="<%= product.name %>"/>
-  <meta property="og:image" content="<%= product_link_image(product, :small) %>"/>
-  <meta property="og:site_name" content="Bilneur"/>
+<% content_for :head do %>
+
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="<%= product.name %>"/>
+  <meta property="og:url"         content="<%= product_url(product) %>" />
+  <meta property="og:image"       content="<%= product_link_image(product, :small) %>"/>
+  <meta property="og:site_name"   content="Bilneur"/>
   <meta property="og:description" content="<%= product.description %>"/>
+
+  <% unless Spree::Config.instance.preferences["facebook_app_id"].blank? %>
+  <meta property="fb:app_id" content="<%= Spree::Config.instance.preferences['facebook_app_id'] %>" />
+  <% end %>
+  <% unless Spree::Config.instance.preferences["facebook_admins"].blank? %>
+  <meta property="fb:admins" content="<%= Spree::Config.instance.preferences['facebook_admins'] %>" />
+  <% end %>
+
 <% end %>
+
 <div class="cntTop"></div>
 <div class="cntCntr">
   <div class="favCmnt">

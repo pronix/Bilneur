@@ -11,7 +11,7 @@
     <th scope="row"><%= t("site_url") %>:</th>
     <td><%=  Spree::Config[:site_url] %></td>
   </tr>
-  <% [ :support_email,  :admin_products_per_page  ].each do |item|%>
+  <% [ :support_email,  :admin_products_per_page, :facebook_app_id, :facebook_admins   ].each do |item|%>
     <tr><th scope="row"><%= t(item.to_s) %>:</th><td><%=  Spree::Config[item] %></td></tr>
   <% end %>
 

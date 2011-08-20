@@ -114,7 +114,8 @@ ul li { list-style:none;}
 /* Check boxes code */
 
 	.msg { width:705px; float:left; height:21px; padding:4px 0 3px 7px; font-size:12px; font-weight:bold;color:#4d4d4d; text-align:left;}
-		.msg a,.msg a { width:170px; float: left; text-align:left; margin-left:16px; color:#4d4d4d; font-weight:bold;}
+		.msg a {color:#4d4d4d; font-weight:bold;}
+		.msg > a { width:170px; float: left; text-align:left; margin-left:16px; color:#4d4d4d; font-weight:bold;}
 	.msg span { float:left; width:307px;}
 	.msg i { float:left; font-style:normal;}
 	.msg.unread { background:url('/images/bgs/alt_msg_bg.png') left top repeat-x;}
@@ -277,6 +278,7 @@ ul li { list-style:none;}
             table tr td a { color:#21ace1; text-decoration:underline;}
             table tr td b { color:#13a7df;}
             .row1 { background:#f9f9f9;}
+              .cell_quantity { text-align: center;}
             .row2 { background:#e7e7e7;}
     .slctr { float:left; width:135px; margin-left:18px; position:relative;}
         .slctr b { float:left; font-size:10px; color:#00adef; line-height:25px;}

@@ -8,9 +8,15 @@
 </td>
 <td class="row<%= evod %>"><a href="#"><%= quote.ean %></a></td>
 <td class="row<%= evod %>"><a href="#"><%= quote.name %></a></td>
-<td class="row<%= evod %>"><span><%= quote.count_on_hand %></span></td>
+<td class="row<%= evod %> cell_quantity"><span><%= quote.count_on_hand %></span></td>
 <td class="row<%= evod %>"><span><%= quote.condition %></span></td>
-<td class="row<%= evod %>"><b><%= number_to_currency quote.price %></b></td>
+<td class="row<%= evod %>">
+  <b>Unit price: <br /></b><%= number_to_currency quote.price %> <br />
+  <%= raw('<b>Volume price: </b><br />') if quote.volume_prices.any? %>
+  <% quote.volume_prices.each do |volume_price| %>
+    <%= volume_price.range %> - <%= number_to_currency volume_price.amount %> <br />
+  <% end %>
+</td>
 <td class="row<%= evod %>"><span><%== 'Not' if !quote.virtual? %> Offered</span></td>
 <td class="row<%= evod %>"><a href="#">FIXME</a></td>
 </tr>

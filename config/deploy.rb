@@ -69,7 +69,6 @@ namespace :deploy do
 
   task :symlink_database do
     run "ln -nfs #{shared_path}/config/database.yml #{latest_release}/config/database.yml "
-    run "ln -nfs #{shared_path}/db/production.sqlite3 #{latest_release}/db/production.sqlite3 "
     run "ln -nfs #{shared_path}/db/schema.rb #{latest_release}/db/schema.rb "
   end
 

@@ -27,3 +27,8 @@ Testing
 > Rspec
 > -----
 > > rspec spec
+
+Sphinx
+------
+    su - postgres
+    createlang plpgsql [database]

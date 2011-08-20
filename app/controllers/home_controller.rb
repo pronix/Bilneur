@@ -14,7 +14,7 @@ class HomeController < Spree::BaseController
     case params[:kind].to_s
     when "products"
       # Return only 10 items
-      @products = Product.tops.limit(10)
+      @products = Product.tops.first(10)
     when "sellers"
       # Return only 10 best sellers
       @sellers = User.sellers_top.limit(10)

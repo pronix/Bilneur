@@ -4,7 +4,7 @@ end
 
 Given /^I have "(\d+)" products with variant and "(\d+)" reviews$/ do |p_count, r_count|
   1.upto(p_count.to_i) do
-    product = Factory(:product_with_variant)
+    product = Factory(:product_with_variant, :owner => Factory(:seller_user_with_shipping) )
     1.upto(r_count.to_i) { Factory(:review, :approved => true, :product => product)}
   end
 end
@@ -53,8 +53,7 @@ Then /^I should see "(\d+)" top sellers on the page$/ do |seller_count|
 end
 
 Given /^I have "(\d+)" products with variant and random price$/ do |product_count|
-  1.upto(product_count.to_i) { Factory(:product_with_variant, :price => (rand(1000) + rand(100) / 100.0) + 1 ) }
-  puts Product.top_deals.count
+  1.upto(product_count.to_i) { Factory(:product_with_variant, :owner => Factory(:seller_user_with_shipping), :price => (rand(1000) + rand(100) / 100.0) + 1 ) }
 end
 
 Then /^I should see "(\d+)" top deals on th page$/ do |product_count|

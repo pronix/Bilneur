@@ -19,7 +19,7 @@ end
 
 Factory.define(:product_with_variant, :parent => :product) do |u|
   u.after_create do |product|
-    Factory(:variant, :product => product, :is_master => true)
-    Factory(:variant, :product => product)
+    # Factory(:variant, :product => product, :is_master => true, :seller => product.owner)
+    product.variants << Factory(:variant, :seller => product.owner)
   end
 end

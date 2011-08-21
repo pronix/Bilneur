@@ -15,6 +15,7 @@ class Dashboard::ReviewsController < Dashboard::ApplicationController
                when "product" then current_user.reviews_as_owner
                else current_user.seller_reviews
     end.paginate(:per_page => (params[:per_page]||15), :page => params[:page])
+    @select_products = true if params[:state] == "product"
   end
 
   def approve

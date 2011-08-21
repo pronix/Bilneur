@@ -22,7 +22,5 @@
     <div class="blogPg">
             <%= page_entries_info reviews %><!-- FIXME add will_paginate 3.0.pre4 support for modifying text of entries info -->
     </div>
-    <%= will_paginate(reviews,
-            :previous_label => "#{t('previous')}",
-            :next_label => "#{t('next')}") %>
+    <%= will_paginate(reviews, :previous_label => "#{t('previous')}", :next_label => "#{t('next')}") %>
 </div>

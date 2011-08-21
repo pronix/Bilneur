@@ -1,0 +1,17 @@
+<script type="text/javascript" charset="utf-8">
+  jQuery(document).ready(function(){
+    $(".change_some_option").change(function() {
+      var some_change = $(this).val();
+      var product_path = "<%= request.path %>" + "?" + $(this).attr("id") + "=" + some_change;
+      alert(product_path);
+    });
+  })
+</script>
+
+
+<select id="approved_select" tabindex="1" name="" class="change_some_option">
+  <option value="1" title="">Approved</option>
+  <option value="2" title="">Unapproved</option>
+  <option value="3" selected="selected" title="">All</option>
+</select>
+<%= collection_select :select_product, :id, @current_user.products, :id, :name, {}, { :class => 'change_some_option' } %>

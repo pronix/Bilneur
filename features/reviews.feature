@@ -11,20 +11,24 @@ Feature: Manage reviews
     When I go to the "The Godfather" product page
     Then I should see "The Godfather"
     And I should see overall rating with "4" stars
-    # And I should see "Based On 2 Ratings"
     And I should see Baserd on some Rating
     And I should see all approved reviews for "The Godfather" product
-
+@wip
   Scenario: Show reviews in seller panel
     Given I sign in as "seller@person.com/password"
     And create sample paypal paymethod
-    And I have "4" reviews for my product "The Godfather"
+    # And I have "4" reviews for my product "The Godfather"
+    And I have 4 unapproved and 2 approved reviews for product "The Godfather"
     Then I go to the account page
     And I should be on the account page
-    And I follow "Products"
-    And I should see "The Godfather"
-    Then I follow "Review Management"
-    And I should see all "seller@person.com" reviews
+    And I follow "Feedback"
+    And I follow "My Product reviews"
+    And I should see all 6 reviews for my product "The Godfather"
+
+    # And I should see "The Godfather"
+    # Then I follow "Review Management"
+    # Then show me the page
+    # And I should see all "seller@person.com" reviews
 
   Scenario: Approve some review
     Given I sign in as "seller@person.com/password"

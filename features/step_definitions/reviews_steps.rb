@@ -135,6 +135,19 @@ Given /^I have "(\d+)" reviews for my product "(.+)"$/ do |count, product_name|
   end
 end
 
+Given /^I have "(\d+)" unapproved and "(\d+)" approved reviews for product "(.+)"$/ do |unapproved, approved, product_name|
+  product = Product.find_by_name(product_name)
+  1.upto(unapproved.to_i) { Factory(:review, :product => product, :approved => false) }
+  1.upto(approved.to_i) { Factory(:review, :product => product, :approved => true) }
+  product.reviews.count.should == 6
+end
+
+Then /^I should see all (\d+) reviews for my product "(.+)"$/ do |reviews_count, product_name|
+  product = Product.find_by_name(product_name)
+  
+end
+
+
 Then /^I should see all "(.+)" reviews$/ do |email|
   Review.by_products_owner(User.find_by_email(email)).each do |review|
     # It's simple way to know that this review in page )

@@ -54,6 +54,10 @@ User.class_eval do
   # instance methods
   #
 
+  # Return a array of all reviews by all user products
+  def reviews_as_owner
+    Review.where(:product_id => product_ids)
+  end
 
   # Recalculate rating for seller, from SellerReview
   def recalculate_rating

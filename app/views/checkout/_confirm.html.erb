@@ -3,133 +3,101 @@
 
 <%= form_for @order, :url => virtual_update_checkout_path((@order.virtual? ? :virtual : :normal), @order.state), :html => { :id => "checkout_form_#{@order.state}" } do |form| %>
 <div class="items">
-            <!-- page1 -->
-            <div class="page chkOut3">
-            	<div class="shpng1">
-                      <div class="shpngAd">
-                    	<h3>Shipping Adresss</h3>
-                        <h5><span>Shipping To :</span>
-                          <% if @order.virtual? %>
-                            <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:virtual, :address)%>
-                          <% else %>
-                            <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:normal, :address)%>
-                          <% end %>
-                        </h5>
-                        <% ship_address = @order.ship_address %>
-                        <p><%= ship_address.full_name %><br />
-                          <%= ship_address.address1%><br />
-                          <%= ship_address.address2%><br />
-                          <%= ship_address.city+", "+ship_address.state.abbr+" - "+ship_address.zipcode  %><br />
-                          <%= ship_address.country %><br />
-                          Phone: <%= ship_address.phone %>
-                        </p>
-                      </div>
-                    <div class="shpngAd shpngAd2">
-                    	<h3>Payment Info</h3>
-                        <h5><span>Payment Method :</span>
-                          <% if @order.virtual? %>
-                            <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:virtual, :payment)%>
-                          <% else %>
-                            <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:normal, :payment)%>
-                          <% end %>
-                        </h5>
-                      <p>
-                        <%= @order.payment.source.brand.to_s.upcase %>***-<b><%= @order.payment.source.last_digits %></b>
-                        Exp: FIXME
-                      </p>
-                    </div>
-                    <div class="shpngAd">
-                    	<h3>Billing Address</h3>
-                        <h5><span>Billing Address :</span>
-                          <% if @order.virtual? %>
-                            <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:virtual, :payment)%>
-                          <% else %>
-                            <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:normal, :payment)%>
-                          <% end %>
-                        </h5>
-                        <% bill_address = @order.bill_address %>
-                        <p><%= bill_address.full_name %><br />
-                          <%= bill_address.address1%><br />
-                          <%= bill_address.address2%><br />
-                          <%= bill_address.city+", "+bill_address.state.abbr+" - "+bill_address.zipcode  %><br />
-                          <%= bill_address.country %><br />
-                          Phone: <%= bill_address.phone %>
-                        </p>
-                    </div>
-                    <div class="msn">
-                        <h3 class="hdFix">Item Details:</h3>
-                        <h6 class="hdFx">
-                          <%= link_to "Edit Items", cart_path %>
-                        </h6>
-                        <div class="chkOutPrdct chkOutPrdct5">
+  <!-- page1 -->
+  <div class="page chkOut3">
+    <div class="shpng1">
+      <div class="shpngAd">
+        <h3>Shipping Adresss</h3>
+        <h5><span>Shipping To :</span>
+          <% if @order.virtual? %>
+          <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:virtual, :address)%>
+          <% else %>
+          <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:normal, :address)%>
+          <% end %>
+        </h5>
+        <% ship_address = @order.ship_address %>
+        <p><%= ship_address.full_name %><br />
+          <%= ship_address.address1%><br />
+          <%= ship_address.address2%><br />
+          <%= ship_address.city+", "+ship_address.state.abbr+" - "+ship_address.zipcode  %><br />
+          <%= ship_address.country %><br />
+          Phone: <%= ship_address.phone %>
+        </p>
+      </div>
+      <div class="shpngAd shpngAd2">
+        <h3>Payment Info</h3>
+        <h5><span>Payment Method :</span>
+          <% if @order.virtual? %>
+          <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:virtual, :payment)%>
+          <% else %>
+          <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:normal, :payment)%>
+          <% end %>
+        </h5>
+        <p>
+          <%= @order.payment.source.brand.to_s.upcase %>***-<b><%= @order.payment.source.last_digits %></b>
+          Exp: <%= @order.payment.source.month %>/<%= @order.payment.source.year %>
+        </p>
+      </div>
+      <div class="shpngAd">
+        <h3>Billing Address</h3>
+        <h5><span>Billing Address :</span>
+          <% if @order.virtual? %>
+          <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:virtual, :payment)%>
+          <% else %>
+          <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:normal, :payment)%>
+          <% end %>
+        </h5>
+        <% bill_address = @order.bill_address %>
+        <p><%= bill_address.full_name %><br />
+          <%= bill_address.address1%><br />
+          <%= bill_address.address2%><br />
+          <%= bill_address.city+", "+bill_address.state.abbr+" - "+bill_address.zipcode  %><br />
+          <%= bill_address.country %><br />
+          Phone: <%= bill_address.phone %>
+        </p>
+      </div>
 
-                            <% @order.line_items.each do |item| %>
-                            <div class="chkPrdct">
-                              <i>
-                                <%= mini_image(item.variant.images.blank? ? item.variant.product : item.variant) %></i>
-                              <b><%= item.variant.name %></b>
-                              <span class="clrLft">Condition: <em><%= item.variant.display_condition %></em></span>
-                              <span><em>Seller: <%= item.variant.seller.full_name%></em></span>
-                              <label>Price <%= number_to_currency item.price %> <span>Quantity: <%= item.quantity %>.</span></label>
-                            </div>
-                            <% end %>
+      <%= render "confirm_items" %>
+    </div>
 
+    <div class="shpng2">
+      <%= render :partial => "summary", :locals => {:order => @order } %>
 
-                        </div>
-                    </div>
-                    <div class="shpngAd shpngAd2 shpngFix">
-                    	<h3>Shipping Method:</h3>
-                        <h5 class="mrgL">
-                          <% if @order.virtual? %>
-                            <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:virtual, :payment)%>
-                          <% else %>
-                            <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:normal, :payment)%>
-                          <% end %>
-                        </h5>
-                        <div class="mRadio rdy">
-                            <div class="radio" id="box-single">
-                                <input type="radio" id="single" name="marital_status" value="single">
-                            </div>
-                            <span>Free standard shipping <br />(5-7 business days)</span>
-                        </div>
-                    </div>
-                 </div>
+      <div class="cntnu othrFix conta">
+        <button value="<%=t("place_order") %>" class="checkout">
+          <%= image_tag "forms/conf_odr.png" %>
+        </button>
+      </div>
 
-                <div class="shpng2">
-                    <%= render :partial => "summary", :locals => {:order => @order } %>
+      <div class="rgtPnl marg eky">
+        <div class="prfl">
+          <div class="cntr tAL">
+            <b class="bNam">Questions?<br />
+              We are here to help.</b>
+            <b class="num">1.650.283.8515</b>
+            <span>Top FAQ</span>
+            <p><a href="#">-What is a Virtual Store?</a></p>
+            <p><a href="#">-Do I need to qualify for something?</a></p>
+            <p><a href="#">-What does Bilneur do?</a></p>
+            <p><a href="#">-Is there a limit for buying and selling?</a></p>
+            <p><a href="#">-Are my purchases protected?</a></p>
+            <p><a href="#">-What if a seller does not offer virtual selling?</a></p>
+            <p><a href="#">-What should I do if there is a problem?</a></p>
+            <p><a href="#">-Where do you store the products?</a></p>
+          </div>
+        </div>
+      </div>
 
-                    <div class="cntnu othrFix conta">
-                        <button value="<%=t("place_order") %>" class="checkout">
-                          <%= image_tag "forms/conf_odr.png" %>
-                        </button>
-                    </div>
-                    <div class="rgtPnl marg eky">
-                    	<div class="prfl">
-                            <div class="cntr tAL">
-                                <b class="bNam">Questions?<br />
-We are here to help.</b>
-                        <b class="num">1.650.283.8515</b>
-                        <span>Top FAQ</span>
-                        <p><a href="#">-What is a Virtual Store?</a></p>
-                        <p><a href="#">-Do I need to qualify for something?</a></p>
-                        <p><a href="#">-What does Bilneur do?</a></p>
-                        <p><a href="#">-Is there a limit for buying and selling?</a></p>
-                        <p><a href="#">-Are my purchases protected?</a></p>
-                        <p><a href="#">-What if a seller does not offer virtual selling?</a></p>
-                        <p><a href="#">-What should I do if there is a problem?</a></p>
-                        <p><a href="#">-Where do you store the products?</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="cntnu othrFix conta">
-                 <button value="<%=t("place_order") %>" class="checkout">
-                   <%= image_tag "forms/conf_odr.png" %>
-                 </button>
-            </div>
-       </div>
-
-
+      <div class="cntnu othrFix conta">
+        <button value="<%=t("place_order") %>" class="checkout">
+          <%= image_tag "forms/conf_odr.png" %>
+        </button>
+      </div>
 
     </div>
+
+
+
+  </div>
 </div><!--items-->
 <% end %>

@@ -64,7 +64,7 @@
                 <%= render :partial => "shared/cart_form", :object => item %>
               </p>
               <span>
-                <%= link_to "View Seller's Store", seller_product_path(item.seller), :class => "vwSStr" %>
+                <%= link_to "View Seller's Store", products_seller_path(item.seller), :class => "vwSStr" %>
                 <%= link_to "Contact Seller", new_message_path(item.seller), :class => "cntSlr" %>
               </span>
 
@@ -75,13 +75,13 @@
         <% end %>
         <div class="tabCnt2">
           <a href="#">View All</a>
-          <span>21 Auctions Starting at</span>
-          <b>$2.99</b>
+          <span>FIXME 21 Auctions Starting at</span>
+          <b>FIXME $2.99</b>
         </div>
         <div class="tabCnt3">
           <a href="#">View All</a>
-          <span>20 more buyers needed</span>
-          <b>50% Group Discount</b>
+          <span>FIXME 20 more buyers needed</span>
+          <b>FIXME 50% Group Discount</b>
         </div>
         <div class="btm"></div>
       </div>

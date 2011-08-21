@@ -247,7 +247,7 @@
 
 .slrPrdctPg .mTabs .TabbedPanels {/*position:absolute;top:77px;left:98px;*//*margin: 0px;padding: 0px;float: left;clear: none;*/width: 100%;}
 .slrPrdctPg #TabbedPanels1 .TabbedPanelsTabGroup {/*position:absolute;top:255px;left:8px;*/float:left;width:100%;margin-top: 0px;padding: 0px;margin-left:0;padding-bottom:8px;}
-.slrPrdctPg .mTabs .TabbedPanelsTab {position: relative;top:0;float: left; width:111px;height:36px;font-size:12px;color:#fff;/*padding: 4px 10px;*/margin:0; border-right:1px solid #666;font-weight:bold;background:url('/images/bgs/mtabg_bg.png') ;list-style: none;-moz-user-select: none;-khtml-user-select: none;cursor: pointer;}
+.slrPrdctPg .mTabs .TabbedPanelsTab {position: relative;top:0;float: left; width:95px;height:36px;font-size:12px;color:#fff;/*padding: 4px 10px;*/margin:0; border-right:1px solid #666;font-weight:bold;background:url('/images/bgs/mtabg_bg.png') ;list-style: none;-moz-user-select: none;-khtml-user-select: none;cursor: pointer;}
 .slrPrdctPg #TabbedPanels1 .TabbedPanelsTab span { line-height:36px;}
 .slrPrdctPg #TabbedPanels1 .TabbedPanelsTabHover {color:#fff;background:url('/images/bgs/mtab_bg_h.png');}
 .slrPrdctPg #TabbedPanels1 .TabbedPanelsTabSelected {color:#fff;background:url('/images/bgs/mtab_bg_h.png');}

@@ -1,237 +1,239 @@
 <%= form_tag products_path, :remote => true, :method => 'get', :id => "products_search" do %>
-<button>Search</button>
 
 <% get_taxonomies.each do |taxonomy| %>
-       <div id="CollapsiblePanel<%= taxonomy.id %>" class="CollapsiblePanel">
-        <div class="CollapsiblePanelTab" tabindex="0"><span><%= taxonomy.name.singularize %></span></div>
-        <div class="CollapsiblePanelContent">
-          <% taxonomy.root.children.each do |taxon| %>
-             <div>
-               <div class="checkbox" id="<%= taxonomy.name.singularize %>">
-                 <input type="checkbox" id="<%= taxonomy.name.singularize %>" name="taxon_ids[]" value="<%= taxon.id %>">
-               </div>
-               <label class="techi" for="<%= taxonomy.name.singularize %>"><%= taxon.name %></label>
-             </div>
-          <% end %>
-        </div>
-       </div>
-      <% end %>
-
-      <div id="CollapsiblePanel4" class="CollapsiblePanel">
-        <div class="CollapsiblePanelTab" tabindex="0"><span>Condition</span></div>
-        <div class="CollapsiblePanelContent">
-        <% for brand in ["New", "Used", "Refurbished"] do %>
-        <div>
-            <div class="checkbox" id="brand">
-               <input type="checkbox" id="brand" name="brands[]" value="<%= brand %>">
-            </div>
-            <label class="techi" for="brand"><%= brand %></label>
-        </div>
-        <% end %>
-        </div>
+<div id="CollapsiblePanel<%= taxonomy.id %>" class="CollapsiblePanel">
+  <div class="CollapsiblePanelTab" tabindex="0"><span><%= taxonomy.name.singularize %></span></div>
+  <div class="CollapsiblePanelContent">
+    <% taxonomy.root.children.each do |taxon| %>
+    <div>
+      <div class="checkbox">
+        <input data-run_search='t' type="checkbox" id="<%= taxonomy.name.singularize %>" name="taxon_ids[]" value="<%= taxon.id %>" >
       </div>
+      <label class="techi" for="<%= taxonomy.name.singularize %>"><%= taxon.name %></label>
+    </div>
+    <% end %>
+  </div>
+</div>
+<% end %>
 
-      <div id="CollapsiblePanel5" class="CollapsiblePanel">
-        <div class="CollapsiblePanelTab" tabindex="0"><span>Price</span></div>
-        <div class="CollapsiblePanelContent">
-          <div>
-            <div class="checkbox" >
-              <input type="checkbox" id="price_low_to_high" name="order_by_price" value="asc">
-            </div>
-            <label class="techi" for="price_low_to_high">Price low to high</label>
+<div id="CollapsiblePanel4" class="CollapsiblePanel">
+  <div class="CollapsiblePanelTab" tabindex="0"><span>Condition</span></div>
+  <div class="CollapsiblePanelContent">
+    <% Variant::CONDITION.each do |brand| %>
+    <div>
+      <div class="checkbox">
+        <input type="checkbox" data-run_search='t'  id="<%= brand %>" name="condition[]" value="<%= brand %>">
+      </div>
+      <label class="techi" for="<%= brand %>"><%= t "condition_#{brand}" %></label>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div id="CollapsiblePanel5" class="CollapsiblePanel">
+  <div class="CollapsiblePanelTab" tabindex="0"><span>Price</span></div>
+  <div class="CollapsiblePanelContent">
+
+    <div>
+      <div class="checkbox" >
+        <input type="checkbox" id="price_low_to_high" name="order_by_price" value="asc">
+      </div>
+      <label class="techi" for="price_low_to_high">Price low to high</label>
+    </div>
+
+    <div>
+      <div class="checkbox">
+        <input type="checkbox" id="price_high_to_low" name="order_by_price" value="desc">
+      </div>
+      <label class="techi" for="price_high_to_low">Price high to low</label>
+    </div>
+
+    <div>
+      <div class="checkbox">
+        <input type="checkbox" name="price_range" value="1" id="price_range">
+      </div>
+      <label class="techi" for="price_range">Price Range</label>
+    </div>
+
+    <!-- Slider#1 -->
+    <div class="tansBg">
+      <div class="prossr">
+        <input class="minMaxTxt fL" type="text" name="min_price" id="min_price2" value="100" size="5">
+        <input class="minMaxTxt fR" type="text" name="max_price" id="max_price2" value="500" size="5">
+        <div id="slider2" style=" float:left;width:100%; margin-top:20px;" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+          <div class="ui-slider-range ui-widget-header" style="left: 10%; width: 46.599999999999994%; ">
           </div>
-
-          <div>
-            <div class="checkbox">
-              <input type="checkbox" id="price_high_to_low" name="order_by_price" value="desc">
-            </div>
-            <label class="techi" for="price_high_to_low">Price high to low</label>
-          </div>
-
-          <div>
-            <div class="checkbox">
-              <input type="checkbox" name="price_range" value="1" id="price_range">
-            </div>
-            <label class="techi" for="price_range">Price Range</label>
-          </div>
-
-          <!-- Slider#1 -->
-          <div class="tansBg">
-            <div class="prossr">
-              <input class="minMaxTxt fL" type="text" name="min_price" id="min_price2" value="100" size="5">
-              <input class="minMaxTxt fR" type="text" name="max_price" id="max_price2" value="500" size="5">
-              <div id="slider2" style=" float:left;width:100%; margin-top:20px;" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
-                <div class="ui-slider-range ui-widget-header" style="left: 10%; width: 46.599999999999994%; ">
-                </div>
-                <a href="http://www.flameweb.net/minmaxslider_demo#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 10%; "></a>
-                <a href="http://www.flameweb.net/minmaxslider_demo#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 56.599999999999994%; "></a>
-              </div>
-            </div>
-          </div>
-          <!-- /Slider#1 -->
+          <a href="http://www.flameweb.net/minmaxslider_demo#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 10%; "></a>
+          <a href="http://www.flameweb.net/minmaxslider_demo#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 56.599999999999994%; "></a>
         </div>
       </div>
+    </div>
+    <!-- /Slider#1 -->
+  </div>
+</div>
 
-      <div id="CollapsiblePanel6" class="CollapsiblePanel">
-        <div class="CollapsiblePanelTab" tabindex="0"><span>Sort by Quantity</span></div>
-        <div class="CollapsiblePanelContent">
-          <div class="minMax">
-            <b>Min</b>
-            <input class="txt" type="text" name="" value="desc" />
-          </div>
-          <div class="minMax">
-            <b>Max</b>
-            <input class="txt" type="text" name="" value="asc" />
-          </div>
-        </div>
-      </div>
+<div id="CollapsiblePanel6" class="CollapsiblePanel">
+  <div class="CollapsiblePanelTab" tabindex="0"><span>Sort by Quantity</span></div>
+  <div class="CollapsiblePanelContent">
+    <div class="minMax">
+      <b>Min</b>
+      <input class="txt" type="text" name="" value="desc" />
+    </div>
+    <div class="minMax">
+      <b>Max</b>
+      <input class="txt" type="text" name="" value="asc" />
+    </div>
+  </div>
+</div>
 
-      <div id="CollapsiblePanel7" class="CollapsiblePanel">
-        <div class="CollapsiblePanelTab" tabindex="0"><span>Group Deals</span></div>
-        <div class="CollapsiblePanelContent">
-        <div>
-                <div class="checkbox" id="Astronomy">
-                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                </div>
-              <label class="techi" for="Astronomy">Electronics</label>
-        </div>
-        <div>
-                <div class="checkbox" id="Astronomy">
-                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                </div>
-              <label class="techi" for="Astronomy">Home &amp; Garden</label>
-        </div>
-        <div>
-                <div class="checkbox" id="Astronomy">
-                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                </div>
-              <label class="techi" for="Astronomy">Apparel</label>
-        </div>
-        <div>
-                <div class="checkbox" id="Astronomy">
-                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                </div>
-              <label class="techi" for="Astronomy">Office Supplies</label>
-            </div>
-        </div>
+<div id="CollapsiblePanel7" class="CollapsiblePanel">
+  <div class="CollapsiblePanelTab" tabindex="0"><span>Group Deals</span></div>
+  <div class="CollapsiblePanelContent">
+    <div>
+      <div class="checkbox">
+        <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
       </div>
+      <label class="techi" for="Astronomy">Electronics</label>
+    </div>
+    <div>
+      <div class="checkbox">
+        <input type="checkbox" id="Astronomy1" name="hobbies[]" value="Astronomy">
+      </div>
+      <label class="techi" for="Astronomy1">Home &amp; Garden</label>
+    </div>
+    <div>
+      <div class="checkbox">
+        <input type="checkbox" id="Astronomy2" name="hobbies[]" value="Astronomy">
+      </div>
+      <label class="techi" for="Astronomy2">Apparel</label>
+    </div>
+    <div>
+      <div class="checkbox">
+        <input type="checkbox" id="Astronomy3" name="hobbies[]" value="Astronomy">
+      </div>
+      <label class="techi" for="Astronomy3">Office Supplies</label>
+    </div>
+  </div>
+</div>
 
-      <!-- Slider#2 -->
-      <div id="CollapsiblePanel8" class="CollapsiblePanel">
-        <div class="CollapsiblePanelTab" tabindex="0"><span>Discount</span></div>
-        <div class="CollapsiblePanelContent">
-          <div class="tansBg">
-                                <div class="prossr">
-                                    <input class="minMaxTxt fL" type="text" name="min_price" id="min_price" value="100" size="5"><input class="minMaxTxt fR" type="text" name="max_price" id="max_price" value="500" size="5">
-    <div id="slider" style=" float:left;width:100%; margin-top:20px;" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><div class="ui-slider-range ui-widget-header" style="left: 10%; width: 46.599999999999994%; "></div><a href="http://www.flameweb.net/minmaxslider_demo#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 10%; "></a><a href="http://www.flameweb.net/minmaxslider_demo#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 56.599999999999994%; "></a></div>
-                                </div>
-           </div>
-        </div>
+<!-- Slider#2 -->
+<div id="CollapsiblePanel8" class="CollapsiblePanel">
+  <div class="CollapsiblePanelTab" tabindex="0"><span>Discount</span></div>
+  <div class="CollapsiblePanelContent">
+    <div class="tansBg">
+      <div class="prossr">
+        <input class="minMaxTxt fL" type="text" name="min_price" id="min_price" value="100" size="5"><input class="minMaxTxt fR" type="text" name="max_price" id="max_price" value="500" size="5">
+        <div id="slider" style=" float:left;width:100%; margin-top:20px;" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><div class="ui-slider-range ui-widget-header" style="left: 10%; width: 46.599999999999994%; "></div><a href="http://www.flameweb.net/minmaxslider_demo#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 10%; "></a><a href="http://www.flameweb.net/minmaxslider_demo#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 56.599999999999994%; "></a></div>
       </div>
-      <!-- /Slider#2 -->
+    </div>
+  </div>
+</div>
+<!-- /Slider#2 -->
 
 
-      <div id="CollapsiblePanel9" class="CollapsiblePanel">
-        <div class="CollapsiblePanelTab" tabindex="0"><span>Top Sellers</span></div>
-        <div class="CollapsiblePanelContent">
-        <div>
-                <div class="checkbox" id="Astronomy">
-                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                </div>
-              <label class="techi" for="Astronomy">Electronics</label>
-        </div>
-        <div>
-                <div class="checkbox" id="Astronomy">
-                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                </div>
-              <label class="techi" for="Astronomy">Home &amp; Garden</label>
-        </div>
-        <div>
-                <div class="checkbox" id="Astronomy">
-                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                </div>
-              <label class="techi" for="Astronomy">Apparel</label>
-        </div>
-        <div>
-                <div class="checkbox" id="Astronomy">
-                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                </div>
-              <label class="techi" for="Astronomy">Office Supplies</label>
-            </div>
-        </div>
+<div id="CollapsiblePanel9" class="CollapsiblePanel">
+  <div class="CollapsiblePanelTab" tabindex="0"><span>Top Sellers</span></div>
+  <div class="CollapsiblePanelContent">
+    <div>
+      <div class="checkbox">
+        <input type="checkbox" id="Astronomy4" name="hobbies[]" value="Astronomy">
       </div>
-      <div id="CollapsiblePanel10" class="CollapsiblePanel">
-        <div class="CollapsiblePanelTab" tabindex="0"><span>Country</span></div>
-        <div class="CollapsiblePanelContent">
-        <div>
-                <div class="checkbox" id="Astronomy">
-                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                </div>
-              <label class="techi" for="Astronomy">Electronics</label>
-        </div>
-        <div>
-                <div class="checkbox" id="Astronomy">
-                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                </div>
-              <label class="techi" for="Astronomy">Home &amp; Garden</label>
-        </div>
-        <div>
-                <div class="checkbox" id="Astronomy">
-                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                </div>
-              <label class="techi" for="Astronomy">Apparel</label>
-        </div>
-        <div>
-                <div class="checkbox" id="Astronomy">
-                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                </div>
-              <label class="techi" for="Astronomy">Office Supplies</label>
-            </div>
-        </div>
+      <label class="techi" for="Astronomy4">Electronics</label>
+    </div>
+    <div>
+      <div class="checkbox">
+        <input type="checkbox" id="Astronomy5" name="hobbies[]" value="Astronomy">
       </div>
-      <div id="CollapsiblePanel11" class="CollapsiblePanel">
-        <div class="CollapsiblePanelTab" tabindex="0"><span>Storing Options</span></div>
-        <div class="CollapsiblePanelContent">
-        <div>
-                <div class="checkbox" id="Astronomy">
-                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                </div>
-              <label class="techi" for="Astronomy">Electronics</label>
-        </div>
-        <div>
-                <div class="checkbox" id="Astronomy">
-                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                </div>
-              <label class="techi" for="Astronomy">Home &amp; Garden</label>
-        </div>
-        <div>
-                <div class="checkbox" id="Astronomy">
-                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                </div>
-              <label class="techi" for="Astronomy">Apparel</label>
-        </div>
-        <div>
-                <div class="checkbox" id="Astronomy">
-                  <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                </div>
-              <label class="techi" for="Astronomy">Office Supplies</label>
-        </div>
-        </div>
+      <label class="techi" for="Astronomy5">Home &amp; Garden</label>
+    </div>
+    <div>
+      <div class="checkbox">
+        <input type="checkbox" id="Astronomy6" name="hobbies[]" value="Astronomy">
       </div>
-      <div id="CollapsiblePanel12" class="CollapsiblePanel">
-        <div class="CollapsiblePanelTab" tabindex="0"><span>Ratings</span></div>
-        <div class="CollapsiblePanelContent">
-            <div class="ctrlHolder colapRtng">
-                <div class="multiField" id="starify">
-                       <label for="vote1" class="blockLabel"><input type="radio" name="vote" id="vote1" value="1" /> Poor</label>
-                       <label for="vote2" class="blockLabel"><input type="radio" name="vote" id="vote2" value="2" /> Fair</label>
-                       <label for="vote3" class="blockLabel"><input type="radio" name="vote" id="vote3" value="3" checked="checked" /> Average</label>
-                       <label for="vote4" class="blockLabel"><input type="radio" name="vote" id="vote4" value="4" /> Good</label>
-                       <label for="vote5" class="blockLabel"><input type="radio" name="vote" id="vote5" value="5" /> Excellent</label>
-                </div>
-            </div>
-        </div>
+      <label class="techi" for="Astronomy6">Apparel</label>
+    </div>
+    <div>
+      <div class="checkbox">
+        <input type="checkbox" id="Astronomy7" name="hobbies[]" value="Astronomy">
       </div>
+      <label class="techi" for="Astronomy7">Office Supplies</label>
+    </div>
+  </div>
+</div>
+<div id="CollapsiblePanel10" class="CollapsiblePanel">
+  <div class="CollapsiblePanelTab" tabindex="0"><span>Country</span></div>
+  <div class="CollapsiblePanelContent">
+    <div>
+      <div class="checkbox">
+        <input type="checkbox" id="Astronomy8" name="hobbies[]" value="Astronomy">
+      </div>
+      <label class="techi" for="Astronomy8">Electronics</label>
+    </div>
+    <div>
+      <div class="checkbox">
+        <input type="checkbox" id="Astronomy9" name="hobbies[]" value="Astronomy">
+      </div>
+      <label class="techi" for="Astronomy9">Home &amp; Garden</label>
+    </div>
+    <div>
+      <div class="checkbox">
+        <input type="checkbox" id="Astronomy10" name="hobbies[]" value="Astronomy">
+      </div>
+      <label class="techi" for="Astronomy10">Apparel</label>
+    </div>
+    <div>
+      <div class="checkbox">
+        <input type="checkbox" id="Astronomy11" name="hobbies[]" value="Astronomy">
+      </div>
+      <label class="techi" for="Astronomy11">Office Supplies</label>
+    </div>
+  </div>
+</div>
+<div id="CollapsiblePanel11" class="CollapsiblePanel">
+  <div class="CollapsiblePanelTab" tabindex="0"><span>Storing Options</span></div>
+  <div class="CollapsiblePanelContent">
+    <div>
+      <div class="checkbox">
+        <input type="checkbox" id="Astronomy12" name="hobbies[]" value="Astronomy">
+      </div>
+      <label class="techi" for="Astronomy12">Electronics</label>
+    </div>
+    <div>
+      <div class="checkbox">
+        <input type="checkbox" id="Astronomy13" name="hobbies[]" value="Astronomy">
+      </div>
+      <label class="techi" for="Astronomy13">Home &amp; Garden</label>
+    </div>
+    <div>
+      <div class="checkbox">
+        <input type="checkbox" id="Astronomy14" name="hobbies[]" value="Astronomy">
+      </div>
+      <label class="techi" for="Astronomy14">Apparel</label>
+    </div>
+    <div>
+      <div class="checkbox">
+        <input type="checkbox" id="Astronomy15" name="hobbies[]" value="Astronomy">
+      </div>
+      <label class="techi" for="Astronomy15">Office Supplies</label>
+    </div>
+  </div>
+</div>
+<div id="CollapsiblePanel12" class="CollapsiblePanel">
+  <div class="CollapsiblePanelTab" tabindex="0"><span>Ratings</span></div>
+  <div class="CollapsiblePanelContent">
+    <div class="ctrlHolder colapRtng">
+      <div class="multiField" id="starify">
+        <label for="vote1" class="blockLabel"><input type="radio" name="vote" id="vote1" value="1" /> Poor</label>
+        <label for="vote2" class="blockLabel"><input type="radio" name="vote" id="vote2" value="2" /> Fair</label>
+        <label for="vote3" class="blockLabel">
+          <input type="radio" name="vote" id="vote3" value="3" checked="checked" /> Average
+        </label>
+        <label for="vote4" class="blockLabel"><input type="radio" name="vote" id="vote4" value="4" /> Good</label>
+        <label for="vote5" class="blockLabel"><input type="radio" name="vote" id="vote5" value="5" /> Excellent</label>
+      </div>
+    </div>
+  </div>
+</div>
 <% end %>
 
 

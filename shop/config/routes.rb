@@ -11,7 +11,13 @@ Rails.application.routes.draw do
   match "/products/like_review" => 'products#like_review', :via => :post
   match "/messages/:user_id/new" => "dashboard/messages#new", :as => :new_message
 
-  resources :seller_products, :only => [:show]
+
+  resources :sellers, :only => [ ] do
+    member do
+      get :products
+      get :about
+    end
+  end
 
   # Product
   resources :products do

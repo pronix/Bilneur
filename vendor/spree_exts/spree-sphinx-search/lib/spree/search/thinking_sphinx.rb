@@ -1,5 +1,9 @@
 module Spree::Search
   class ThinkingSphinx < Spree::Search::Base
+    def initialize(params)
+      @_params = params
+      super
+    end
 
     protected
 
@@ -32,15 +36,19 @@ module Spree::Search
         with_opts.merge!(:taxon_ids => taxon_ids.flatten(1))
       end
 
+      @condition = [ @_params[:condition] ].flatten.compact.map{ |v|
+        Variant::CONDITION_MAP[v.to_sym]
+      }.compact unless @_params[:condition].blank?
+      with_opts.merge!(:variants_conditions => @condition ) if @condition
       search_options.merge!(:with => with_opts)
+
       facets = Product.facets(query, search_options)
       products = facets.for
 
       @properties[:products] = products
       @properties[:facets] = parse_facets_hash(facets)
       @properties[:suggest] = nil if @properties[:suggest] == query
-
-      Product.where("id IN (?)", products.map(&:id))
+      Product.where("id IN (?)", products.compact.map(&:id))
     end
 
     def prepare(params)

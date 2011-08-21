@@ -51,3 +51,4 @@ db/xapit
 config/development.sphinx.conf
 db/sphinx
 log
+config/test.sphinx.conf

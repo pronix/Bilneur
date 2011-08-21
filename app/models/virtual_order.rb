@@ -1,5 +1,8 @@
 class VirtualOrder < Order
-  default_scope where(:virtual => true)
+  if Order.table_exists?
+    default_scope where(:virtual => true)
+  end
+
   before_validation :set_default_data, :on => :create
 
   def set_default_data

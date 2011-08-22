@@ -25,6 +25,8 @@
           <span>Shipping</span>
         </li>
         <li class="TabbedPanelsTab" tabindex="0">
-          <span>Contact Seller</span>
+          <span class="TabbedPanelsTabSelected">
+            <%= link_to_unless_current "Contact Seller", {:action => 'customer_service'}, {:class => "TabbedPanelsTab"}  %>
+          </span>
         </li>
       </ul>

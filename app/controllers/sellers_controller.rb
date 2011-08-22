@@ -11,7 +11,15 @@ class SellersController < Spree::BaseController
   end
 
   def about
+  end
 
+  def customer_service
+  end
+
+  def feedback
+  end
+
+  def return_policy
   end
 
   private

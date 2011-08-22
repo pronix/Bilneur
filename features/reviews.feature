@@ -4,12 +4,12 @@ Feature: Manage reviews
     Given I have an admin account of "admin@person.com/password"
     And I am signed up as a seller with "seller@person.com/password"
     Given I have product with name "The Godfather" and owner "seller@person.com"
-    # Given I have "2" reviews for product "The Godfather" with rating "4" and approved
     # Given the guest can not create a review
     Given I sign in as "seller@person.com/password"
     # And create sample paypal paymethod
 
   Scenario: Show product rating
+    Given I have "2" reviews for product "The Godfather" with rating "4" and approved
     When I go to the "The Godfather" product page
     Then I should see "The Godfather"
     And I should see overall rating with "4" stars

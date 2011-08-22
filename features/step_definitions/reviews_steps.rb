@@ -11,7 +11,6 @@ end
 
 Given /^I have "(\d+)" reviews for product "(.+)" with rating "(\d+)" and approved$/ do |reviews_count, product_name, rating|
   product = Product.find_by_name(product_name)
-  Factory(:review, :product => product, :rating => rating, :approved => true)
   1.upto(reviews_count.to_i) { Factory(:review, :product => product, :rating => rating, :approved => true) }
   product.recalculate_rating
 end

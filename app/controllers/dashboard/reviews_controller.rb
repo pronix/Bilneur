@@ -2,8 +2,8 @@ class Dashboard::ReviewsController < Dashboard::ApplicationController
   helper :reviews
   before_filter :load_review, :only => [:approve, :destroy]
   before_filter :filter_params, :only => :index
+  after_filter :recalculate_rating, :only => [:approve, :destroy]
 
-  # respond_to :html, :js
   def index
     #FIXME doubled ajax request :(
     if request.xhr?
@@ -15,7 +15,6 @@ class Dashboard::ReviewsController < Dashboard::ApplicationController
 
   def approve
     if @review.update_attribute(:approved, true)
-       @review.product.recalculate_rating
        flash.notice = t("info_approve_review")
     else
        flash.notice = t("error_approve_review")
@@ -45,7 +44,10 @@ class Dashboard::ReviewsController < Dashboard::ApplicationController
     @reviews = @reviews.paginate(:per_page => (params[:per_page]||15), :page => params[:page])
     # For display some selectboxes
     @select_products = true if params[:state] == "product"
-    # @reviews
+  end
+
+  def recalculate_rating
+    @review.product.recalculate_rating
   end
 
   def load_review

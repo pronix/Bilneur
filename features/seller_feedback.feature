@@ -23,6 +23,7 @@ Feature: Describe buyer feedback to seller
     Then I go to the orders dashboard page
     Then I should not see "Seller Review"
 
+  @wip
   Scenario: Show feedback to buyer with some sellers
     Given I sign in as "email@person.com/password"
     Given I have order with all variants by product "The Godfather"
@@ -32,6 +33,7 @@ Feature: Describe buyer feedback to seller
     And I should see "Seller Review"
     And I should see each review by seller on order
 
+  @wip
   Scenario: Show feedback to buyer with one seller
     Given I sign in as "email@person.com/password"
     Given I have order

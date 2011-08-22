@@ -1,3 +1,4 @@
+@wip
 Feature: Manage reviews
 
   Background:
@@ -59,7 +60,7 @@ Feature: Manage reviews
     When I go to the "The Godfather" product page
     Then I should see lates review for "The Godfather" on last review block
 
-  #FIXME 
+  #FIXME
   # Scenario: Create review as Guest
   #   And I am logged out
   #   Then test

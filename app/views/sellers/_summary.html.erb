@@ -1,0 +1,16 @@
+    <div class="invty">
+      <div>
+        <h5><%= @seller.full_name %></h5>
+        <%= image_tag(@seller.photo.url(:for_review)) %>
+        <b>Reliability Score</b>
+        <i class="yelTk"><img src="/images/icons/yel_tick.png" alt=""></i>
+        <em class="qmrk"><img src="/images/icons/qmark.png" alt=""></em>
+        <em class="hndrd">FIX</em>
+        <em class="qmrk2"><img src="/images/icons/qmark.png" alt=""></em>
+      </div>
+      <ul>
+        <li><a href="#"><img src="/images/icons/ch_twtr.png" alt="">Tweet About This Seller</a></li><!-- FIXME -->
+        <li><a href="#"><img src="/images/icons/ch_fb.png" alt="">Share With Your Friends on Facebook</a></li><!-- FIXME -->
+        <li><a href="#"><img src="/images/icons/ch_dl.png" alt="">Add Seller To Favorites</a></li><!-- FIXME -->
+      </ul>
+    </div>

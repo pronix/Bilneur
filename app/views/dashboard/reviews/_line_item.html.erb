@@ -1,10 +1,10 @@
 <div class="fdBack">
   <i class="rtr">
-    <%= image_tag(user.photo.url(:for_review)) %>
-    <span><%= user.full_name %></span>
+    <%= show_user_photo(user) %>
+    <span><%= user.full_name rescue review.name %></span>
   </i>
   <p>
-      <%= review.review %>
+    <%= review.review %>
   </p>
   <div class="smlRtng">
     <%= show_stars(review.rating, 'icons/yel_str_sml.png', 'icons/grey_str_sml.png', '<em>') %>

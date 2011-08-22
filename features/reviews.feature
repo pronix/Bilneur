@@ -4,27 +4,28 @@ Feature: Manage reviews
     Given I have an admin account of "admin@person.com/password"
     And I am signed up as a seller with "seller@person.com/password"
     Given I have product with name "The Godfather" and owner "seller@person.com"
-    Given I have "2" reviews for product "The Godfather" with rating "4" and approved
-    Given the guest can not create a review
+    # Given I have "2" reviews for product "The Godfather" with rating "4" and approved
+    # Given the guest can not create a review
+    Given I sign in as "seller@person.com/password"
+    # And create sample paypal paymethod
 
   Scenario: Show product rating
     When I go to the "The Godfather" product page
     Then I should see "The Godfather"
     And I should see overall rating with "4" stars
-    # And I should see "Based On 2 Ratings"
     And I should see Baserd on some Rating
     And I should see all approved reviews for "The Godfather" product
 
+@wip @javascript
   Scenario: Show reviews in seller panel
-    Given I sign in as "seller@person.com/password"
-    And create sample paypal paymethod
-    And I have "4" reviews for my product "The Godfather"
+    And I have 4 unapproved and 2 approved reviews for product "The Godfather"
     Then I go to the account page
     And I should be on the account page
-    And I follow "Products"
-    And I should see "The Godfather"
-    Then I follow "Review Management"
-    And I should see all "seller@person.com" reviews
+    And I follow "Feedback"
+    And I follow "My Product reviews"
+    Then selectbox "approved_select" should be selected for "All"
+    Then selectbox "select_product_id" should be selected for "All"
+    And I should see all 6 review for product "The Godfather"
 
   Scenario: Approve some review
     Given I sign in as "seller@person.com/password"

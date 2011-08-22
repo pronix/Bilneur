@@ -1,8 +1,18 @@
 <%= render 'shared/per_page', :per_page => params[:per_page] %>
+<!-- <script type="text/javascript"> -->
+<!--   jQuery(document).ready(function(){ -->
+<!--     $("#my_product_reviews").click(function(){ -->
+<!--       alert('hahaha'); -->
+<!--        <\!-- jQuery.ajax({ dataType: 'script', url: $(this).attr('href'), type: "GET" }); -\-> -->
+<!--     }); -->
+<!--   }); -->
+<!-- </script> -->
+
 <div class="fdBck">
 	<h2>Feedback &amp; Reviews</h2>
     <div class="pPgCmbo">
-    	<div class="cmbo7">
+      <div id="some_selects"></div>
+      <div class="cmbo7">
           <div class="ddOutOfVision">
             <select id="per_page_select" tabindex="1" name="">
                 <option value="1" title="">1</option>
@@ -47,6 +57,9 @@
               <li class="TabbedPanelsTab tab3" tabindex="0">
                 <span><%= link_to "Feedback Left", dashboard_reviews_path(:state => "left", :per_page => params[:per_page]), :remote => true %></span>
               </li>
+              <li class="TabbedPanelsTab tab4" tabindex="0">
+                <span><%= link_to "My Product reviews", dashboard_reviews_path(:state => "product", :per_page => params[:per_page]), :remote => true, :id => 'my_product_reviews'  %></span>
+              </li>
           </ul>
           <div id="reviews_container">
             <%= render "reviews", :reviews => @reviews %>
@@ -54,53 +67,3 @@
         </div>
     </div>
   </div>
-
-
-<!--
-<h1><%= t('review_management_description') %></h1>
-
-<% for reviews in [["Unapproved", @unapproved_reviews], ["Approved", @approved_reviews]] %>
-  <h2><%= t(reviews[0]+"_reviews") %></h2>
-
-  <table cellspacing=6 class="index">
-    <tr>
-      <th><%= Review.human_attribute_name(:created_at) %></th>
-      <th><%= Review.human_attribute_name(:user) %></th>
-      <th><%= Review.human_attribute_name(:rating) %></th>
-      <th><%= Review.human_attribute_name(:title) %> / <%= t('product') %></th>
-      <th><%= Review.human_attribute_name(:review) %></th>
-      <th></th>
-    </tr>
-
-    <% for review in reviews[1] %>
-    <tr id="<%= dom_id review %>">
-      <td>
-        <%= l review.created_at, :format => :long %>
-      </td>
-      <td>
-        <p><%= review.name %> / <%= review.user_id ? link_to(review.user.try(:email), [:admin, review.user]) : t(:guest) %></p>
-        <p><%= Review.human_attribute_name(:ip_address) %>: <%= review.ip_address ? link_to(review.ip_address, "http://whois.domaintools.com/#{review.ip_address}") : '-' %></p>
-      </td>
-      <td width="80px">
-        <%= show_stars review.rating %>
-      </td>
-      <td>
-        <%= review.title %>
-        <%= t('for') %> <%= link_to review.product.name, product_path(review.product) %>
-      </td>
-      <td width="50%">
-        <%= h review.review %>
-      </td>
-      <td>
-        <% unless review.approved %>
-          <%= link_to_with_icon 'tick', 'Approve', {:action => 'approve', :id => review.id} %> <br />
-        <% end %>
-        <%= link_to 'Delete', dashboard_review_path(review), :method => :delete, :remote => true, 
-                                                             :onclick => "$(\"##{dom_id review}\").remove();" %>
-        <br/>
-      </td>
-    </tr>
-  <% end %>
-  </table>
-  <br/>
-<% end %>-->

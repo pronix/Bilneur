@@ -39,18 +39,25 @@ Feature: Manage reviews
     | Approved   | true   |
     | Unapproved | false  |
 
-
-  Scenario: Approve some review
-    Given I sign in as "seller@person.com/password"
-    And create sample paypal paymethod
-    Given I have a unapproved review for "The Godfather" and call it @review
-    Then I go to the "The Godfather" product page
-    And I should not see @review on the product page
-    Then I go to the reviews dashboard page
-    And I should see @review on the reviews dashboard page
-    Then I apprved @review by click "Approve"
-    Then I go to the "The Godfather" product page
-    And I should see @review on the product page
+@javascript
+  Scenario: Approve some reviews
+    And I have 4 unapproved and 2 approved reviews for product "The Godfather"
+    Then I go to the account page
+    And I follow "Feedback"
+    And I follow "My Product reviews"
+    Then I click "Approve" for all unapproved review
+    Then I should not see "Approve" link in the reviews
+    Then I should not have unapproved reviews
+@javascript
+  Scenario: Show review only for 
+    Given I have product with name "The Second Product" and owner "seller@person.com"
+    And I have 4 unapproved and 2 approved reviews for product "The Godfather"
+    And I have 4 unapproved and 2 approved reviews for product "The Second Product"
+    Then I go to the account page
+    And I follow "Feedback"
+    And I follow "My Product reviews"
+    Then I select "The Second Product" from "select_product_id"
+    And I should see only reviews for "The Second Product"
 
   Scenario: Only one time register user can write review for one product
     Given I am signed up as a seller with "seller3@person.com/password"

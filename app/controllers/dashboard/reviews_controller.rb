@@ -20,7 +20,7 @@ class Dashboard::ReviewsController < Dashboard::ApplicationController
     else
        flash.notice = t("error_approve_review")
     end
-    redirect_to dashboard_reviews_path
+    render :nothing => true
   end
 
   def destroy

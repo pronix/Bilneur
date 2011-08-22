@@ -135,16 +135,26 @@ Given /^I have "(\d+)" reviews for my product "(.+)"$/ do |count, product_name|
   end
 end
 
-Given /^I have "(\d+)" unapproved and "(\d+)" approved reviews for product "(.+)"$/ do |unapproved, approved, product_name|
+Given /^I have (\d+) unapproved and (\d+) approved reviews for product "(.+)"$/ do |unapproved, approved, product_name|
   product = Product.find_by_name(product_name)
   1.upto(unapproved.to_i) { Factory(:review, :product => product, :approved => false) }
   1.upto(approved.to_i) { Factory(:review, :product => product, :approved => true) }
-  product.reviews.count.should == 6
+  product.reviews.count.should == unapproved.to_i + approved.to_i
 end
 
-Then /^I should see all (\d+) reviews for my product "(.+)"$/ do |reviews_count, product_name|
-  product = Product.find_by_name(product_name)
-  
+Then /^selectbox "(.+)" should be selected for "(.+)"$/ do |field, value|
+  field_labeled(field).find(:xpath, ".//option[@selected = 'selected'][text() = '#{value}']").should be_present
+end
+
+Then /^I should see all (\d+) review for product "(.+)"$/ do |review_count, product_name|
+  reviews = Product.find_by_name(product_name).reviews
+  reviews.count.should == 6
+  reviews.each do |review|
+    find_by_id("review_number_review_#{review.id}").should have_content(review.review)
+    if review.approved
+      find_by_id("review_number_review_#{review.id}").find_link('Approve')
+    end
+  end
 end
 
 

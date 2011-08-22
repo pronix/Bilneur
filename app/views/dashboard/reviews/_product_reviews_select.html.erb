@@ -14,4 +14,4 @@
   <option value="2" title="">Unapproved</option>
   <option value="3" selected="selected" title="">All</option>
 </select>
-<%= collection_select :select_product, :id, @current_user.products, :id, :name, {}, { :class => 'change_some_option' } %>
+<%= collection_select :select_product, :id, @current_user.products + [Product.new(:name => 'All')], :id, :name, {:selected => ""}, { :class => 'change_some_option' } %>

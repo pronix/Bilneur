@@ -8,7 +8,8 @@
 require 'cucumber/rails'
 require 'email_spec/cucumber'
 require 'cucumber/thinking_sphinx/external_world'
-Cucumber::ThinkingSphinx::ExternalWorld.new
+# When we use some quick test without sphinx
+Cucumber::ThinkingSphinx::ExternalWorld.new if ENV['NO_SPHINX'].nil?
 
 # require 'spree_core/testing_support/factories'
 

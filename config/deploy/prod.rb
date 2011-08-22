@@ -1,4 +1,10 @@
 set :ssh_options, {:forward_agent => true }
+set :default_environment, {
+  'PATH' => "/usr/local/rvm/gems/ree-1.8.7-2011.03/bin:/usr/local/rvm/bin:$PATH",
+  'GEM_HOME'     => '/usr/local/rvm/gems/ree-1.8.7-2011.03',
+  'GEM_PATH'     => '/usr/local/rvm/gems/ree-1.8.7-2011.03',
+  'BUNDLE_PATH'  => '/usr/local/rvm/gems/ree-1.8.7-2011.03/bin'
+}
 
 
 role :web, "50.57.79.164"
@@ -46,7 +52,7 @@ namespace :deploy do
   end
 
   task :chown_apache do
-    run "chown -R nginx:nginx #{current_path}/"
+    run "chown -R www-data:www-data #{current_path}/"
   end
 
   desc "Symlink the images"

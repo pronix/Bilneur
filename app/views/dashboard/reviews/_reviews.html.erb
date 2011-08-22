@@ -14,7 +14,6 @@
           </div>
           <%= link_approved(review) %>
           <%= link_to "Delete", dashboard_review_path(review), :method => :delete, :remote => true, :onclick => "$(\"#review_number_review_#{review.id}\").remove();" %>
-          <a class="itmN" href="#"><b>Item</b></a>
         </div>
       <% end %>
     </div>

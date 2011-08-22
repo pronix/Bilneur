@@ -68,8 +68,6 @@ Feature: Manage reviews
     And I should have 4 reviews
 
   Scenario: Only one time register user can write review for one product
-    Given I am signed up as a seller with "seller3@person.com/password"
-    Given I sign in as "seller3@person.com/password"
     Then I go to the "The Godfather" product page
     And I follow "Rate This Product"
     And I should be on the new review page for product "The Godfather"
@@ -95,8 +93,7 @@ Feature: Manage reviews
   #   Then I follow "Rate This Product"
   #   And I should be on the login page
 
-  Scenario: Create review as register user
-    Given I already sing as "new_seller@person.com/password"
+ Scenario: Create review as register user
     When I go to the "The Godfather" product page
     Then I follow "Rate This Product"
     And I rate this by "3"
@@ -108,10 +105,9 @@ Feature: Manage reviews
     Then I approved my review
     Then I go to the "The Godfather" product page
     And I should see my fuck review
-    And I should see my name "Test Firstname T." with my review
-    And I should see my photo as "new_seller@person.com"
 
  Scenario: Review admin configuration
+   And I am logged out
    Given I sign in as "admin@person.com/password"
    Then I go to the admin main page
    Then I follow "Configuration"
@@ -124,5 +120,6 @@ Feature: Manage reviews
    And I should be on the admin review setting page
 
  Scenario: If Review option include_unapproved_reviews true
+   And I am logged out
    Given I have spree preference "include_unapproved_reviews" with "true"
    Given I am signed and create review

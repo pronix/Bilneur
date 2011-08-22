@@ -14,6 +14,10 @@ class SellersController < Spree::BaseController
 
   end
 
+  def customer_service
+
+  end
+
   private
 
   def load_data

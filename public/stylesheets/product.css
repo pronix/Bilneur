@@ -317,13 +317,74 @@
     .shpng2 { width:231px; margin:3px 0 0 12px;}
             .grnTop {height:31px;}
                 .grnTop h6 {color:#fff; text-align:center; line-height:29px;margin:0; font-size:14px; text-shadow:2px 3px 5px #444;}
-        .grnTbl .grnCntr { background:url('../../images/layout/grn_cntr.png') repeat-y;}
+        .grnTbl .grnCntr { background:url('/images/layout/grn_cntr.png') repeat-y;}
             .grnTbl .grnCntr p { float:left; width:85%;color:#878686; margin:10px 0 0 20px;}
                 .grnTbl .grnCntr p b { color:#0668a0;}
             .grnCntr .grnTtl {width:90%;margin:8px 0 0 16px;}
-        .grnTbl .bluTop {background:url('../../images/layout/blue_top.png') no-repeat;} 
-        .grnTbl .grnBtm { height:27px; background:url('../../images/layout/grn_btm.png') repeat-y;}
+        .grnTbl .bluTop {background:url('/images/layout/blue_top.png') no-repeat;} 
+        .grnTbl .grnBtm { height:27px; background:url('/images/layout/grn_btm.png') repeat-y;}
         .lstMrg { float:left; width:100%; *height:10px;}
 .shpng2,.shpng2 .grnTbl,.grnTop,.shpng2 .grnCntr,.shpng2 .grnBtm,.grnCntr p,.grnCntr p span,.grnDtl b,.grnCntr .sws,.sws i,.sws em,.shpng2 .cntnu { float:left}
 
 .shpng2 .grnTbl,.grnTop,.grnTop h6,.shpng2 .grnCntr,.shpng2 .grnBtm { width:100%;}
+
+/* Customer Service */
+.padB0 { padding-bottom:0;}
+.bdr5pMr { margin-top:0;}
+.apPnl { float:left; min-height:110px; width:293px; border-right:5px solid #e5e2e2!important;}
+.noBdr { border:none!important;}
+.wRp { width:500px; margin:0 auto;}
+.srvFrm {width:470px; border:1px solid #ced4d7; margin-top:20px;}
+.srvFrm form {width:428px; padding:15px 0 0 30px; border:6px solid #eef5f7;}
+.srvFrm,.srvFrm form {float:left;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
+    /* Combo Option 9 */
+    .cmbo9 {float:left;width:290px!important;position:relative; padding-bottom:15px;}
+        .cmbo9 .dd2 {display: inline-block !important;float: left;font-family: Arial,Helvetica,sans-serif;font-size: 11px;height: 40px;margin-top:0; margin-left:0px;text-align: left;width:290px!important;}
+            .cmbo9 .dd2 .ddTitle {background: url("/images/forms/cntct_slr_cmbo_txt.png") no-repeat;cursor: default;height: 40px;overflow: hidden;padding-left: 10px;text-indent: 0; text-shadow:0 1px #fff; font-weight:bold;}
+                .cmbo9 .dd2 .ddTitle span.arrow {float: right;width:29px;height: 28px;position:relative;right:6px;top:6px;background:url("/images/forms/cntct_slr_cmbo_ico.png") no-repeat 0 0!important;cursor: pointer;display: inline-block;}
+                .cmbo9 #websites1_title:hover span.arrow {background-position: 0 0!important;}
+                .cmbo9 .dd2 .ddTitle span.ddTitleText {color:#798e94;font-size:11px;line-height:39px;overflow:hidden;text-indent:1px;}
+                .cmbo9 .dd2 .ddChild {position:absolute; left:5px;top:35px !important;width:280px !important;margin:0;display:none;font-size:11px;overflow-x:hidden!important;overflow-y:auto;z-index:1000; border:1px solid #ced4d7!important; border-top:none!important;}
+                .cmbo9 .dd2 .ddChild a.selected,.cmbo9 .dd2 .ddChild a:hover { background:#f2f7f9;}
+                .cmbo9 .dd2 .ddChild a { color:#798e94;}
+    /* End Combo Option 9 */
+    
+.srvFrm form .txtA { float:left; width:398px;border:6px solid #eef5f7;}
+.srvFrm form textarea { float:left; width:386px; height:133px; padding:5px;color:#798e94; font-weight:bold; font-size:11px;border:1px solid #ced4d7;}
+.srvFrm form .txtA,.srvFrm form textarea {-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
+.cSSbmt { float:right; width:125px; height:40px; border:none; margin:15px 10px; background:url('/images/forms/cntct_slr_cmbo_sbmt.png') no-repeat; cursor:pointer;}
+
+/* Shipping Page */
+.iEHk { *position:absolute!important; *top:-473px!important;}
+.spngTbl { float:left; width:637px; font-size:14px; border-left:1px solid #d8dde0;border-right:1px solid #d8dde0; font-weight:bold; font-family:"Times New Roman", Times, serif;}
+
+.spngHd {padding:5px 0;text-align:center;background:#e5e2e2; font-family:Helvetica;}
+    .spngHd h2 {border:none; margin:0;}
+    
+/* Buyer Product Details */
+.jNt { float:left; width:641px; margin:0 0 0 15px;}
+    .col2 .vwer { float:left; width:260px; border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px; border:1px solid #ccc;}
+.mag0 { margin:10px 0 0 0!important; width:263px!important;}
+    .mag0 p { left:70px!important;}
+
+.rts1 {float:left; width:95%; margin:0 0 0 5%;}
+    .rts1 h2 { margin:0; font-size:24px; color:#89be50; position:relative;}
+    .rts1 h2 b {font-size:14px; color:#6e6f6e; position:absolute; left:80px; top:5px;}
+    .rts1 b { float:left; width:100%; padding-bottom:3px; color:#6e6f6e; font-size:12px}
+        .rts1 b span { color:#f5434a;}
+    .rts1 a { font-size:10px; color:#00adef; text-decoration:underline;}
+.mrg5 { margin-top:5px;}
+    .rts1 big b { margin-top:30px; font-size:16px;}
+.rts1 .cntcts { margin:0 0 0 5px;}
+    .rts1 p { width:101%;} 
+        .rts1 p i, .rts1 .str i { float:left;font-style:normal; width:55%; font-weight:bold; font-size:11px; color:#898989;} 
+            .rts1 p i label, .rts1 .str label { color:#00adef;}
+            
+    .rts1 .str b { background:none; float:right; margin:0 2px 0 0; height:auto; width:auto;}
+.rts1 .prc { float:left; width:100px; font-size:24px; margin:10px 0 0 10px; color:#89be50;}
+        .rts1 .prc span { font-size:12px; color:#a9a9a9;}
+        .rts1 ul { float:right; width:65px; margin:20px 0 0 0;}
+            .rts1 ul li { float:left; margin-right:3px;}
+    .rts1 .skBlu { float:left; width:71px; height:21px; color:#fff; line-height:21px;text-decoration:none; margin-left:15px; margin-top:3px; background:url('/images/forms/sky_bg.png') no-repeat;}
+        .rts1 .bLu { float:left;width:85px;height:21px; color:#fff; text-decoration:none;line-height:21px;margin-top:3px;background:url('/images/forms/blue_bg.png') no-repeat;}
+.colsPC .bdr5p { margin-top:0; background:#959595;}

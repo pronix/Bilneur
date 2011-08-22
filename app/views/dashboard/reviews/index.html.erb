@@ -2,8 +2,9 @@
 <!-- <script type="text/javascript"> -->
 <!--   jQuery(document).ready(function(){ -->
 <!--     $("#my_product_reviews").click(function(){ -->
-<!--       alert('hahaha'); -->
-<!--        <\!-- jQuery.ajax({ dataType: 'script', url: $(this).attr('href'), type: "GET" }); -\-> -->
+<!--        var review_link = $(this).attr('href') -->
+<!--        $(this).attr('href', '#?state=product')  -->
+<!--        jQuery.ajax({ dataType: 'script', url: review_link, type: "GET" }); -->
 <!--     }); -->
 <!--   }); -->
 <!-- </script> -->
@@ -58,7 +59,7 @@
                 <span><%= link_to "Feedback Left", dashboard_reviews_path(:state => "left", :per_page => params[:per_page]), :remote => true %></span>
               </li>
               <li class="TabbedPanelsTab tab4" tabindex="0">
-                <span><%= link_to "My Product reviews", dashboard_reviews_path(:state => "product", :per_page => params[:per_page]), :remote => true, :id => 'my_product_reviews'  %></span>
+                <span><%= link_to "My Product reviews", dashboard_reviews_path(:state => "product", :per_page => params[:per_page]), :remote => true  %></span>
               </li>
           </ul>
           <div id="reviews_container">

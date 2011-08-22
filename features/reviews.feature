@@ -17,7 +17,7 @@ Feature: Manage reviews
     And I should see Baserd on some Rating
     And I should see all approved reviews for "The Godfather" product
 
-@wip @javascript
+@javascript
   Scenario: Show reviews in seller panel
     And I have 4 unapproved and 2 approved reviews for product "The Godfather"
     Then I go to the account page
@@ -27,6 +27,14 @@ Feature: Manage reviews
     Then selectbox "approved_select" should be selected for "All"
     Then selectbox "select_product_id" should be selected for "All"
     And I should see all 6 review for product "The Godfather"
+@wip @javascript  
+  Scenario: Show only approved review in seller panel  
+    And I have 4 unapproved and 2 approved reviews for product "The Godfather"
+    Then I go to the reviews dashboard page
+    And I follow "My Product reviews"
+    Then I select "Approved" from "approved_select"
+    Then sleep "300"
+
 
   Scenario: Approve some review
     Given I sign in as "seller@person.com/password"

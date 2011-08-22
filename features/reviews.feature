@@ -23,16 +23,21 @@ Feature: Manage reviews
     And I should be on the account page
     And I follow "Feedback"
     And I follow "My Product reviews"
-    Then selectbox "approved_select" should be selected for "All"
+    Then selectbox "approved_select_hz" should be selected for "All"
     Then selectbox "select_product_id" should be selected for "All"
     And I should see all 6 review for product "The Godfather"
-@wip @javascript  
-  Scenario: Show only approved review in seller panel  
+@javascript  
+  Scenario Outline: Show only approved/unapproved review in seller panel  
     And I have 4 unapproved and 2 approved reviews for product "The Godfather"
     Then I go to the reviews dashboard page
     And I follow "My Product reviews"
-    Then I select "Approved" from "approved_select"
-    Then sleep "300"
+    Then I select "<select>" from "approved_select_hz"
+    And I should see only approved "<status>" reviews
+
+    Examples:
+    | select     | status |
+    | Approved   | true   |
+    | Unapproved | false  |
 
 
   Scenario: Approve some review

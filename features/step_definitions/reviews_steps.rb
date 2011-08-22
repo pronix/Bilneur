@@ -157,6 +157,16 @@ Then /^I should see all (\d+) review for product "(.+)"$/ do |review_count, prod
   end
 end
 
+Then /^I should see only approved "(.+)" reviews$/ do |status|
+  @user.reviews_as_owner.each do |review|
+    if review.approved == status
+      find_by_id("review_number_review_#{review.id}").should have_content(review.review)
+    else
+      page.should have_no_css("review_number_review_#{review.id}")
+    end
+  end
+end
+
 
 Then /^I should see all "(.+)" reviews$/ do |email|
   Review.by_products_owner(User.find_by_email(email)).each do |review|

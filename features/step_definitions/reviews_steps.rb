@@ -185,6 +185,16 @@ Then /^I should see only reviews for "(.+)"$/ do |product_name|
   end
 end
 
+Then /^I delete (\d+) reviews$/ do |review_count|
+  1.upto(review_count.to_i) do
+    click_link('Delete')
+  end
+end
+
+Then /^I should have (\d+) reviews$/ do |review_count|
+  @user.reviews_as_owner.count.should == review_count.to_i
+end
+
 
 Then /^I should not have unapproved reviews$/ do
   @user.reviews_as_owner.where(:approved => false).should eq([])

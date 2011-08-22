@@ -26,7 +26,7 @@ class Dashboard::ReviewsController < Dashboard::ApplicationController
   def destroy
     @review.destroy
     flash.notice = 'Review successfully removed'
-    redirect_to dashboard_reviews_path
+    render :nothing => true
   end
 
   private

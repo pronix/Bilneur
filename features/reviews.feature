@@ -58,6 +58,14 @@ Feature: Manage reviews
     And I follow "My Product reviews"
     Then I select "The Second Product" from "select_product_id"
     And I should see only reviews for "The Second Product"
+@javascript
+  Scenario: Delete some review
+    And I have 4 unapproved and 2 approved reviews for product "The Godfather"
+    Then I go to the account page
+    And I follow "Feedback"
+    And I follow "My Product reviews"
+    And I delete 2 reviews
+    And I should have 4 reviews
 
   Scenario: Only one time register user can write review for one product
     Given I am signed up as a seller with "seller3@person.com/password"

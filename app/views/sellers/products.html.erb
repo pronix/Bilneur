@@ -5,15 +5,9 @@
 <div class="col1 slrPrdctPg prdctDPg">
   <div class="mTabs">
     <div id="TabbedPanels1" class="TabbedPanels TabbedPanelsTabFocused">
-      <ul class="TabbedPanelsTabGroup">
-        <li class="TabbedPanelsTab TabbedPanelsTabSelected" tabindex="0"><span>Store</span></li>
-        <li class="TabbedPanelsTab" tabindex="0"><span>About Seller</span></li>
-        <li class="TabbedPanelsTab" tabindex="0"><span>Feedback</span></li>
-        <li class="TabbedPanelsTab" tabindex="0"><span>Return Policy </span></li>
-        <li class="TabbedPanelsTab" tabindex="0"><span>Specials</span></li>
-        <li class="TabbedPanelsTab" tabindex="0"><span>Shipping</span></li>
-        <li class="TabbedPanelsTab" tabindex="0"><span>Contact Seller</span></li>
-      </ul>
+      
+      <%= render "menu" %>
+
       <div class="TabbedPanelsContentGroup">
         <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block; ">
 
@@ -116,26 +110,6 @@
 
         </div>
 
-        <!-- START ABOUT SELLER -->
-        <div class="TabbedPanelsContent" style="display: none; ">
-          <%= render "about", :seller => @seller %>
-        </div>
-        <!-- END ABOUT SELLER -->
-
-
-
-        <div class="TabbedPanelsContent" style="display: none; ">
-          3 tab
-        </div>
-        <div class="TabbedPanelsContent" style="display: none; ">
-          4 tab
-        </div>
-        <div class="TabbedPanelsContent" style="display: none; ">
-          5 tab
-        </div>
-        <div class="TabbedPanelsContent" style="display: none; ">
-          6 tab
-        </div>
       </div>
     </div>
   </div>

@@ -1,27 +1,35 @@
-  <ul class="TabbedPanelsTabGroup">
+<div class="inbxMsgTabs">                            
+  <h2>
+    <%= current %>
+  </h2>
+  <ul class="TabbedPanels">
 
-      <li class="TabbedPanelsTab" <%== ' class="TabbedPanelsTabSelected"' if current == "All Messages" %>>
+      <li <%== ' style="display: none;"' if current == "All Messages" %>>
         <span><%= link_to t("all_messages"), dashboard_messages_path %></span>
       </li>
 
-      <li class="TabbedPanelsTab" <%== ' class="TabbedPanelsTabSelected"' if current == "Received" %>>
+      <li <%== ' style="display: none;"' if current == "Received" %>>
         <span><%= link_to t("received"), state_inbox_dashboard_messages_path(:received) %></span>
       </li>
 
-      <li class="TabbedPanelsTab" <%== ' class="TabbedPanelsTabSelected"' if current == "Sent" %>>
+      <li <%== ' style="display: none;"' if current == "Sent" %>>
         <span><%= link_to t("sent"), state_inbox_dashboard_messages_path(:sent) %></span>
       </li>
 
-      <li class="TabbedPanelsTab" <%== ' class="TabbedPanelsTabSelected"' if current == "Unread" %>>
+      <li <%== ' style="display: none;"' if current == "Unread" %>>
         <span><%= link_to t("unread"), state_inbox_dashboard_messages_path(:unread) %></span>
       </li>
 
-      <li class="TabbedPanelsTab" <%== ' class="TabbedPanelsTabSelected"' if current == "Important" %>>
+      <li <%== ' style="display: none;"' if current == "Important" %>>
         <span><%= link_to t("important"), state_inbox_dashboard_messages_path(:important) %></span>
       </li>
 
-      <li class="TabbedPanelsTab" <%== ' class="TabbedPanelsTabSelected"' if current == "Trash" %>>
-        <span><%= link_to t("trash"), state_inbox_dashboard_messages_path(:trash) %></span>
+      <li <%== ' style="display: none;"' if current == "Trash" %>>
+        <span><%= link_to t("trash"), state_inbox_dashboard_messages_path(:trash), :class => "last" %></span>
       </li>
- <li class="tabBag"></li>
-</ul>
+
+      <li class="tabBag"></li>
+  </ul>
+</div>
+
+

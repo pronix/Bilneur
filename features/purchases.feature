@@ -36,10 +36,11 @@ Feature: Purachases
       | Death of a Hero [Paperback] | seller3@person.com |        3 |  20.0 |
      When I sign in as "email@person.com/password"
      And I go to the dashboard purchases page
-     Then show me the page
      Then the page have the following purchases list:
-      | The Godfather\n            \nSeller: Seller1 Nil1\n            $24.00\n            \nOrder data: December 31, 2009 21:00\n            \nOrder number: RT4578\n            \nFavorite Seller Favorite Product                  | Qty purchases:2 | View Order Details\n            View Invoice\n            Add to Inventory\n            \n              Write a review\n            \n            Request a return |
-      | Death of a Hero [Paperback]\n            \nSeller: Seller3 Nil3\n            $60.00\n            \nOrder data: December 31, 2009 21:00\n            \nOrder number: RT4578\n            \nFavorite Seller Favorite Product    | Qty purchases:3 | View Order Details\n            View Invoice\n            Add to Inventory\n            \n              Write a review\n            \n            Request a return |
+      | product                     | seller       | order_date        | order_number | amount |
+      | The Godfather               | Seller1 Nil1 | December 31, 2009 | RT4578       | $24.00 |
+      | Death of a Hero [Paperback] | Seller3 Nil3 | December 31, 2009 | RT4578       | $60.00 |
+
 
   Scenario: Check weight rate
     Given the user "email@person.com" has the order with number "RT4578" and date "01/01/2010 00:00":

@@ -42,10 +42,6 @@ module Spree::Search
       with_opts.merge!(:variants_conditions => @condition ) if @condition
       search_options.merge!(:with => with_opts)
 
-      puts "="*90
-      puts query.inspect
-      puts search_options.inspect
-      puts "="*90
       facets = Product.facets(query, search_options)
       products = facets.for
 

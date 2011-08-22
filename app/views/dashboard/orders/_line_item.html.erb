@@ -13,10 +13,11 @@
   </td>
   <td valign="top" align="center" class="row<%= evod %>">
     <% order.shipments.each do |ship|  %>
-    <span>
+    <div>
       <b>seller:</b> <%= ship.seller.full_name %>, <b>state:</b> <%= t("shipment_states.#{ship.state}") %>
       <%= link_to "Receive", receive_dashboard_order_path(order, ship) if ship.can_receiving? %>
-    </span>
+    </div>
+
     <% end %>
   </td>
   <td valign="top" align="center" class="row<%= evod %>">

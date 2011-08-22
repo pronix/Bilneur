@@ -7,4 +7,12 @@ Address.class_eval do
     update_attribute(:primary, true)
   end
 
+  def full_name=(v)
+    self.firstname, self.lastname = *v.to_s.split(' ',2) unless v.blank?
+  end
+
+  def full_name
+    "#{self.firstname} #{self.lastname}"
+  end
+
 end

@@ -1,54 +1,54 @@
-<div class="inbxTabs">                            
-<div id="TabbedPanels2" class="TabbedPanels">
-<%= render :partial => 'dashboard/shared/inbox_tabs', :locals => {:current => @state} %>
+<div class="inbxTabs">
+  <div id="TabbedPanels2" class="TabbedPanels">
+    <%= render :partial => 'dashboard/shared/inbox_tabs', :locals => {:current => @state} %>
     <div class="TabbedPanelsContentGroup">
 
       <%= form_tag multi_dashboard_messages_path, :id => "multi_form", :remote => true do %>
-            <div class="sptCnt">
-                <div class="top"></div>
-                <div class="cntr">
+      <div class="sptCnt">
+        <div class="top"></div>
+        <div class="cntr">
 
-                    <input type="hidden" name="multi" value="" %>
-                    <ul class='actions inbxNav'>
-                      <li class="nav1">
-                        <%= link_to "", "", :remote => true,  :class => "action_link", :value => "delete" %>
-                      </li>
-                      <li class="nav2">
-                        <%= link_to "", "", :remote => true,  :class => "action_link", :value => "mark_as_unread" %>
-                      </li>
-                      <li class="nav3">
-                        <%= link_to "", "", :remote => true,  :class => "action_link", :value => "mark_as_read" %>
-                      </li>
-                      <li class="nav4">
-                        <%= link_to "", "", :remote => true,  :class => "action_link", :value => "mark_as_important" %>
-                      </li>
-                    </ul>
+          <input type="hidden" name="multi" value="" %>
+          <ul class='actions inbxNav'>
+            <li class="nav1">
+              <%= link_to "", "", :remote => true,  :class => "action_link", :value => "delete" %>
+            </li>
+            <li class="nav2">
+              <%= link_to "", "", :remote => true,  :class => "action_link", :value => "mark_as_unread" %>
+            </li>
+            <li class="nav3">
+              <%= link_to "", "", :remote => true,  :class => "action_link", :value => "mark_as_read" %>
+            </li>
+            <li class="nav4">
+              <%= link_to "", "", :remote => true,  :class => "action_link", :value => "mark_as_important" %>
+            </li>
+          </ul>
 
-              	  <div class="inbx">
-                    	<div class="tp"></div>
-                    	<div class="cent">
-                            <div class="sndrInfo">
-                                <div class="checkbox" id="select_all_check_box">
-                                  <%= check_box_tag "", "",  false, :value => "all" %>
-                                  <label class="lbl">From</label>
-                                </div>
-                                <span>SUBJECT</span>
-                                <span class="lL">RECIEVED</span>
-                            </div>
-                            <div class="mrFx"></div>
-                            <div id="messages_list">
-                            <%= render 'messages', :messages => @messages %>
-                            </div>
-                        </div>
-                    	<div class="bt"></div>
-                  </div>
-
-                    <%= will_paginate @messages %>
-                  </div>
-                <div class="btm"></div>
+          <div class="inbx">
+            <div class="tp"></div>
+            <div class="cent">
+              <div class="sndrInfo">
+                <div class="checkbox" id="select_all_check_box">
+                  <%= check_box_tag "", "",  false, :value => "all" %>
+                  <label class="lbl">From</label>
                 </div>
-<% end %>
+                <span>SUBJECT</span>
+                <span class="lL">RECIEVED</span>
+              </div>
+              <div class="mrFx"></div>
+              <div id="messages_list">
+                <%= render 'messages', :messages => @messages %>
+              </div>
             </div>
+            <div class="bt"></div>
+          </div>
+
+          <%= will_paginate @messages %>
+        </div>
+        <div class="btm"></div>
+      </div>
+      <% end %>
+    </div>
   </div>
 </div>
 </div>
@@ -56,11 +56,11 @@
 <script>
   $(function(){
 
-    $('.action_link').click(function() {
-      var multi = $(this).attr('value');
-      var state = $("#stater").attr('value');
-        $("input[name=multi]").val(multi);
-        $("#multi_form").submit();
-    });
+  $('.action_link').click(function() {
+  var multi = $(this).attr('value');
+  var state = $("#stater").attr('value');
+  $("input[name=multi]").val(multi);
+  $("#multi_form").submit();
+  });
   });
 </script>

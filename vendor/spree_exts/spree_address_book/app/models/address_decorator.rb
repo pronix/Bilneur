@@ -4,7 +4,7 @@ Address.class_eval do
   before_validation :set_default_data
 
   def set_default_data
-    if user
+    if user && self.firstname.blank?
       self.firstname ||= user.firstname
       self.lastname  ||= user.lastname
     end

@@ -17,6 +17,8 @@ Rails.application.routes.draw do
       get :products
       get :about
       get :customer_service
+      get :feedback
+      get :return_policy
     end
   end
 

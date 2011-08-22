@@ -1,17 +1,18 @@
 <script type="text/javascript" charset="utf-8">
   jQuery(document).ready(function(){
     $(".change_some_option").change(function() {
-      var some_change = $(this).val();
-      var product_path = "<%= request.path %>" + "?" + $(this).attr("id") + "=" + some_change;
-      alert(product_path);
+      var params = {
+        approved_select_hz : $("#approved_select_hz").val(),
+        select_product_id : $("#select_product_id").val()
+      };
+      location.hash = "?" + 'state=product' + '&' + jQuery.param(params);
+      $.ajax({ type: "GET", url: "<%= request.path %>" + "?" + 'state=product' + '&' + jQuery.param(params) });
     });
   })
 </script>
 
+<%= select :approved_select, :hz, [ %w[Approved true], %w[Unapproved false], ['All', ''] ], 
+    {:selected => params[:approved_select_hz] || '' }, { :class => 'change_some_option' } %>
 
-<select id="approved_select" tabindex="1" name="" class="change_some_option">
-  <option value="1" title="">Approved</option>
-  <option value="2" title="">Unapproved</option>
-  <option value="3" selected="selected" title="">All</option>
-</select>
-<%= collection_select :select_product, :id, @current_user.products + [Product.new(:name => 'All')], :id, :name, {:selected => ""}, { :class => 'change_some_option' } %>
+<%= collection_select :select_product, :id, @current_user.products + [Product.new(:name => 'All')], 
+    :id, :name, {:selected => params[:select_product_id] || ''}, { :class => 'change_some_option' } %>

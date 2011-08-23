@@ -9,7 +9,7 @@ When /^(?:|I )fill shipping address with correct data$/ do
 
   When %{I select "United States" from "address[country_id]" within "#new_address_checkout"}
 
-  ['firstname', 'lastname', 'address1', 'city', 'zipcode', 'phone'].each do |field|
+  ['full_name', 'address1', 'city', 'zipcode', 'phone'].each do |field|
     When %{I fill in "address[#{field}]" with "#{address.send(field)}"}
   end
 
@@ -28,7 +28,7 @@ When /^(?:|I )fill billing address with correct data$/ do
 
   When %{I select "United States" from "order[bill_address_attributes][country_id]" within "#new_address_checkout"}
 
-  ['firstname', 'lastname', 'address1', 'city', 'zipcode', 'phone'].each do |field|
+  ['full_name', 'address1', 'city', 'zipcode', 'phone'].each do |field|
     When %{I fill in "order_#{str_addr}_attributes_#{field}" with "#{address.send(field)}"}
   end
 

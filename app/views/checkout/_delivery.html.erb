@@ -15,7 +15,7 @@
 
         <% @order.rate_hash_for_seller(seller).each_with_index do |shipping_method, i| %>
 
-        <div class="radio js-radio" id="box-single">
+        <div class="radio js-radio">
           <%= radio_button("order[seller_shipping_method][#{seller.id}]", :shipping_method_id, shipping_method[:id],
               {:checked => (i == 0), :id => "order_shipping_method_id_#{shipping_method[:id]}"}) %>
         </div>

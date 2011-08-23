@@ -1,10 +1,12 @@
 <%= form_for address, :url => make_addresses_path(address_name, @order), :remote => true, :html => { :id => "new_address_checkout" } do |form| %>
  <% unless address.new_record? %>
- <%= hidden_field_tag "id", address.id %>
+   <%= hidden_field_tag "id", address.id %>
  <% end %>
-<div class="option2">
+
+ <div class="option2">
 
   <%= render "shared/error_messages", :target => address  %>
+
   <% if address_name == 'ship' %>
   <h4>Enter a new shipping address</h4>
   <% elsif address_name == 'bill' %>
@@ -34,12 +36,9 @@
                                   :disabled => @states.present?)
           ].join.gsub('"', "'").gsub("\n", "")
       %>
-      <script type="text/javascript" language="javascript" charset="utf-8">
-        // <![CDATA[
-        document.write("<%== state_elements %>");
-        // ]]>
-      </script>
-    </div>
+      <%== state_elements %>
+
+       </div>
   </b>
 
   <% elsif field == "country" %>

@@ -2,7 +2,7 @@ PaymentMethod.class_eval do
   class << self
 
     def paypal(display_on = 'both')
-      PaymentMethod.all.select { |p|
+      all.select { |p|
         p.active &&
         (p.display_on == display_on.to_s || p.display_on.blank?) &&
         (p.environment == Rails.env || p.environment.blank?)
@@ -11,7 +11,7 @@ PaymentMethod.class_eval do
     end
 
     def credit_card(display_on = 'both')
-      PaymentMethod.all.select { |p|
+      all.select { |p|
         p.active &&
         (p.display_on == display_on.to_s || p.display_on.blank?) &&
         (p.environment == Rails.env || p.environment.blank?)

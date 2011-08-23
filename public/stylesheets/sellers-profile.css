@@ -634,4 +634,202 @@ ul li { list-style:none;}
         .shopInfo p b {font-weight:normal;}
 .shopInfo, .shopInfo p, .shopInfo .sI1, .shopInfo .sI2, .shopInfo p i, .shopInfo p b {float:left;font-size:14px;}
 
+/* Authors:zainansari@live.com :Creation Date:20-Aug-2011 Updation Date:N-A*/
+.tSrch { width:375px;height:32px;background:url('/images/bgs/srch_bg.png') left no-repeat;}
+    .tSrch form { width:100%;}
+        .tSrch form .allProd { margin:11px;}
+    .tSrch input[type=text] { width:192px;height:14px;border:none;background:none;margin:9px;}
+    .tSrch .allProd { }
+    .tSrch input[type=submit] { width:32px;height:32px;cursor:pointer;border:none;margin-left:5px;background:url('/images/forms/go_btn.png') no-repeat;}
+.pAbb { position:relative;}
+    .pAbb .dd2 .ddChild {width:120px!important; top:30px!important;}
+    .pAbb .dd2 {width:120px!important; margin-top:5px!important;}
+    .pAbb .dd2 .ddTitle {background:none!important;}
+    .cHme {margin-left:-10px; float:left; width:135px;}
+    .pAbb .dd2 .ddTitle span.arrow { background:url('/images/icons/red_arw.png') 5px 6px no-repeat!important;}
+.hd1B, .tSrch { float:right;}
+.hd1A, .hd2,.loginBar,.loginBar i,.loginBar a, ul.tpMnu, ul.tpMnu li, ul.tpMnu li a, ul.mMenu, ul.mMenu li, ul.mMenu li a,.menu,.menu .lft,.menu .rgt,.tSrch input[type=text],.tSrch form,.allProd,.tSrch input[type=submit] {float:left;}
 
+.prflBus {width:198px!important; margin-top:44px;}
+    .prflBus ul {}
+        .prflBus ul li {background:url('/images/bgs/bus_left_mnu.png') 0 0 repeat-x;height:32px;line-height:32px;border-bottom:1px solid #cacaca;}
+        .prflBus ul li:hover, .prflBus ul li.active {background:url('/images/bgs/bus_left_mnu_h.png') 0 0 repeat-x;}
+        .prflBus ul li a {margin-left:25px;font-weight:bold;color:#5a5a5a;}
+        .prflBus ul li:hover a, .prflBus ul li.active a {color:#fff;}
+    .prflBus p {margin:50px 0 0 30px;}
+    
+.prflBus, .prflBus ul, .prflBus ul li, .prflBus ul li a, .prflBus p {float:left;width:100%;}
+
+.sptCntBus {float:left;width:717px!important;margin-top:5px;}
+    .sptCntBus .top { background:url('/images/bgs/dash_cnt_top.png') 0 0 no-repeat;}
+    .sptCntBus .cntr { padding-bottom:20px;background:url('/images/bgs/dash_cnt_cntr.png') 0 0 repeat-y;}
+    .sptCntBus .btm {background:url('/images/bgs/dash_cnt_btm.png') 0 0 no-repeat;}
+    .sptCntBus .top, .sptCntBus .btm {height:14px;width:100%;}
+    .sptCntBus .cntr h2 { width:709px; margin:0 0 0 8px; padding-bottom:5px; border-bottom:1px solid #ececec; text-align:center; color:#00adef; font-size:23px;}
+.sptCntBus .top, .sptCntBus .cntr, .sptCntBus .btm, .sptCntBus .cntr h2 {float:left;}
+
+.busAbtYou {clear:both;width:100%;}
+    .busAbtYou p {margin:10px 0 0 40px;}
+    .bAY {margin-bottom:10px;clear:both;}
+    .bAY textarea {border: 1px solid #cbdade;color: #798E94;height:133px;padding:5px;width:360px;min-width:360px;max-width:360px;}
+    .bAY .txtA { border: 6px solid #f1f6f8;margin:10px 0 0 65px;width:373px;min-width:373px;max-width:373px;}
+    .bAY textarea, .bAY .txtA {border-radius: 3px 3px 3px 3px;}
+    .bAY em {font-style:normal;width:230px;margin:45px 0 0 15px;}
+.bSaveC {float:right;text-align:right;width:100%;margin:20px 20px 0 0;}
+.bSaveC a {}
+
+.busAbtYou, .busAbtYou p, .bAY, .bAY textarea, .bAY .txtA, .bAY em {float:left;}
+
+/* JQuery Button Effects */
+.bAY big {clear:both;float:right;width:100%;}
+.btn { float:right;position:relative;left:0;bottom:0;width:114px;height:32px;color:#fff;text-align:right;}
+.otherbutton {position: relative;height: 35px;width: 110px;background:url('/images/forms/sv_chng.png') no-repeat;background-position:0 0;cursor: pointer;} 
+.otherbutton span.hover {display: block;height: 35px;width: 114px;background:url('/images/forms/sv_chng.png') 0 -29px no-repeat;background-position: bottom;}
+
+/* Edit Account + Password */
+.eADtl {margin-top:35px;clear:both;}
+    .eADtl b {clear:both;width:100%;margin-top:15px;}
+        .eADtl i {font-size:14px;color:#707070;margin-left:130px;width:90px;}
+        .dtlCP i {width:180px; text-align: right; padding-right: 10px;} /* Passwrod FIX */
+        .eADtl input[type=text], .eADtl input[type=password] {padding-left:20px;background:url('/images/forms/edtl_txt.png') 0 0 no-repeat;width:263px;height:26px;line-height:26px;border:none;color:#707070;}
+.eADtl, .eADtl b, .eADtl b i, .eADtl b input[type=text] {float:left;font-style:normal;} 
+
+.eADtlSav big {clear:both;float:right;width:100%;margin:80px -55px 0 0;}
+.btn { float:right;position:relative;left:0;bottom:0;width:114px;height:32px;color:#fff;text-align:right;}
+.otherbutton {border: none; position: relative;height: 35px;width: 110px;background:url('/images/forms/sv_chng.png') no-repeat;background-position:0 0;cursor: pointer;} 
+.otherbutton span.hover {display: block;height: 35px;width: 114px;background:url('/images/forms/sv_chng.png') 0 -29px no-repeat;background-position: bottom;}
+
+/* Edit Business Info */
+.contInp {width:100%;margin:20px 0 0 55px;}
+    .contInp b {clear:both;width:100%;margin-top:7px;}
+        .contInp i {width:140px;text-align:right;margin-right:10px;padding-top:3px;}
+        .contInp i.dimC { color:#7f7e7e;} 
+        .contInp i, .contInp em { padding-bottom:5px; font-size:12px; font-weight:bold; font-style:normal;color:#000;}
+        .contInp em { clear:both;float:left;color:#00adef;margin:10px 0 0 150px;}
+    .contInp input[type=text] { width:319px; height:13px; padding:5px; border:none; background:url('/images/forms/chk_login_txt.png') no-repeat;}
+    .contInp .txtCty {float:left;width:144px!important;height:13px;padding:5px;border:none;background:url('/images/forms/checkout_city_txt_bg.png') no-repeat!important;}
+    .contInp .stat { float:left;width:40px!important;}
+
+.contInp, .contInp b, .contInp i {float:left;}
+
+.option2 {width:530px; margin:12px 0 0 5px; padding-bottom:30px;}
+    .option2 h4 {font-size:12px;color:#00adef;margin:0 0 20px 52px;}
+    .option2 b { margin-top:8px;}
+        .option2 b i {width:165px; margin-right:7px; font-style:normal; line-height:23px; text-align:right;}
+        .txtGry { color:#7f7e7e;}
+        .inpNam {width:319px;height:13px;padding:5px; border:none;background:url('/images/forms/chk_login_txt.png') no-repeat;}
+        .txtCty {width:144px;height:13px;padding:5px;border:none;background:url('/images/forms/checkout_city_txt_bg.png') no-repeat;}
+        .stat { width:40px!important;}
+
+/* Combo Option 2 */
+.cmbo2 {width:130px!important;position:relative;float:left;}
+    .cmbo2 .dd2 {display: inline-block !important;float:left;font-family: Arial,Helvetica,sans-serif;font-size: 11px;height: 23px;margin-top:0;text-align: left;width: 130px !important;}
+        .cmbo2 .dd2 .ddTitle {background: url("/images/forms/checkout_state_txt_bg.png") no-repeat scroll 0 0 transparent;cursor: default;height: 24px;overflow: hidden;padding-left: 10px;text-indent: 0;}
+            .cmbo2 .dd2 .ddTitle span.arrow {background:url("/images/forms/cmbo_2arw.png") no-repeat 5px 6px!important;cursor: pointer;display: inline-block;float: right;height: 27px;position:relative;right:-5px;top:-5px;width:24px;}
+            .cmbo2 .dd2 .ddTitle span.ddTitleText {color:#626262;font-size:11px;line-height:24px;overflow:hidden;text-indent:1px;}
+            .cmbo2 .dd2 .ddChild {position:absolute;top:23px !important;width:130px !important;margin:0;display:none;font-size:11px;overflow-x:hidden!important;overflow-y:auto;z-index:1000;}
+/* End Combo Option 2 */
+
+/* Combo Option 3 */
+.cmbo3 {width:195px!important;position:relative;float:left;}
+    .cmbo3 .dd2 {display: inline-block !important;float:left;font-family: Arial,Helvetica,sans-serif;font-size: 11px;height: 23px;margin-top:0;text-align: left;width:195px !important;}
+        .cmbo3 .dd2 .ddTitle {background: url("/images/forms/checkout_phn_txt_bg.png") no-repeat scroll 0 0 transparent;cursor: default;height: 24px;overflow: hidden;padding-left: 10px;text-indent: 0;}
+            .cmbo3 .dd2 .ddTitle span.arrow {background:url("/images/forms/cmbo_2arw.png") no-repeat 5px 6px!important;cursor: pointer;display: inline-block;float: right;height: 27px;position:relative;right:-5px;top:-5px;width:24px;}
+            .cmbo3 .dd2 .ddTitle span.ddTitleText {color:#626262;font-size:11px;line-height:24px;overflow:hidden;text-indent:1px;}
+            .cmbo3 .dd2 .ddChild {position:absolute;top:23px !important;width:195px !important;margin:0;display:none;font-size:11px;overflow-x:hidden!important;overflow-y:auto;z-index:1000;}
+/* End Combo Option 3 */
+
+        .txtPhn {width:185px;height:13px;padding:5px;border:none;background:url('/images/forms/checkout_phn_txt_bg.png') no-repeat;}
+        .MdfSbmt { float:right;width:99px;height:23px; cursor:pointer;border:none;background:url('/images/forms/update_new_add.png') no-repeat;}
+        
+        /* Combo Option 4 */
+        .cmbo4 {width:363px!important;position:relative;}
+            .cmbo4 .dd2 {display: inline-block !important;float: left;font-family: Arial,Helvetica,sans-serif;font-size: 11px;height: 23px;margin-top:0;text-align: left;width:363px !important;}
+                .cmbo4 .dd2 .ddTitle {background: url("/images/forms/address_txt_big.png") no-repeat scroll 0 0 transparent;cursor: default;height: 24px;overflow: hidden;padding-left: 10px;text-indent: 0;}
+                    .cmbo4 .dd2 .ddTitle span.arrow {background:url("/images/forms/cmbo_2arw.png") no-repeat 5px 6px!important;cursor: pointer;display: inline-block;float: right;height: 27px;position:relative;right:-5px;top:-5px;width:24px;}
+                    .cmbo4 .dd2 .ddTitle span.ddTitleText {color:#626262;font-size:11px;line-height:24px;overflow:hidden;text-indent:1px;}
+                    .cmbo4 .dd2 .ddChild {position:absolute;top:23px !important;width:363px !important;margin:0;display:none;font-size:11px;overflow-x:hidden!important;overflow-y:auto;z-index:1000;}
+        /* End Combo Option 4 */
+
+.option1,.option1 h4,.option1 p,.option1 p b,.option1 p span,.option1 p .delE,.cmbo1,.option2,.inpNam,.option2 b,.option2 b i,.txtCty,.cmbo2,.cmbo3,.cmbo4,.txtPhn {float:left;}
+.option1 h4,.cmbo1,.option2 b {width:100%;}
+
+/* Edit Payment Info */
+.pmntPnl {float:left;width:98%;margin:5px;}
+    .pmntPnl p {float:left; width:100%;}
+        .pmntPnl p span {float:right;*margin-top:-15px;}
+        .pmntPrcs {float:left;width:475px; padding-bottom:15px;}
+            .pmntPrcs b { float:left; width:100%; margin-top:8px;}
+                .pmntPrcs b i { float:left; width:165px; line-height:23px; margin-right:7px; text-align:right; font-style:normal;}
+                     .pmntPrcs b .pmntTxt { float:left; width:224px; height:13px; padding:5px; border:none;background: url("/images/forms/card_txt.png") no-repeat;}
+
+/* Combo Option 5 */
+.cmbo5 { float:left;width:130px!important;position:relative;}
+    .cmbo5 .dd2 {display: inline-block !important;float: left;font-family: Arial,Helvetica,sans-serif;font-size: 11px;height: 23px;margin-top:0;text-align: left;width:130px !important;}
+        .cmbo5 .dd2 .ddTitle {background: url("/images/forms/checkout_state_txt_bg.png") repeat-x;cursor: default;height: 23px;overflow: hidden;padding-left: 10px;text-indent: 0;}
+            .cmbo5 .dd2 .ddTitle span.arrow {background:url("/images/forms/cmbo_2arw.png") no-repeat 5px 6px!important;cursor: pointer;display: inline-block;float: right;height: 27px;position:relative;right:-5px;top:-5px;width:24px;}
+            .cmbo5 .dd2 .ddTitle span.ddTitleText {color:#626262;font-size:11px;line-height:24px;overflow:hidden;text-indent:1px;}
+            .cmbo5 .dd2 .ddChild {position:absolute;top:23px !important;width:130px !important;margin:0;display:none;font-size:11px;overflow-x:hidden!important;overflow-y:auto;z-index:1000;}
+/* End Combo Option 5 */
+        
+/* Combo Option 6 */
+.cmbo6 { float:left;width:45px!important;position:relative; margin-right:9px;margin-top:0;}
+    .cmbo6 .dd2 {display: inline-block !important;float: left;font-family: Arial,Helvetica,sans-serif;font-size: 11px;height: 23px;margin-top:0;text-align: left;width:45px !important;}
+        .cmbo6 .dd2 .ddTitle {background: url("/images/forms/checkout_state_txt_bg.png") repeat-x;cursor: default;height: 23px;overflow: hidden;padding-left: 8px;text-indent: 0;}
+            .cmbo6 .dd2 .ddTitle span.arrow {background:url("/images/forms/cmbo_2arw.png") no-repeat 5px 6px!important;cursor: pointer;display: inline-block;float: right;height: 27px;position:relative;right:-5px;top:-5px;width:24px;}
+            .cmbo6 .dd2 .ddTitle span.ddTitleText {color:#626262;font-size:11px;line-height:24px;overflow:hidden;text-indent:1px;}
+            .cmbo6 .dd2 .ddChild {position:absolute;top:23px !important;width:45px !important;margin:0;display:none;font-size:11px;overflow-x:hidden!important;overflow-y:auto;z-index:1000;}
+/* End Combo Option 6 */
+        
+/* Combo Option 7 */
+.cmbo7 { float:left;width:69px!important;position:relative;}
+    .cmbo7 .dd2 {display: inline-block !important;float: left;font-family: Arial,Helvetica,sans-serif;font-size: 11px;height: 23px;margin-top:0;text-align: left;width:69px !important;}
+        .cmbo7 .dd2 .ddTitle {background: url("/images/forms/checkout_state_txt_bg.png") repeat-x;cursor: default;height: 23px;overflow: hidden;padding-left: 10px;text-indent: 0;}
+            .cmbo7 .dd2 .ddTitle span.arrow {background:url("/images/forms/cmbo_2arw.png") no-repeat 5px 6px!important;cursor: pointer;display: inline-block;float: right;height: 27px;position:relative;right:-5px;top:-5px;width:24px;}
+            .cmbo7 .dd2 .ddTitle span.ddTitleText {color:#626262;font-size:11px;line-height:24px;overflow:hidden;text-indent:1px;}
+            .cmbo7 .dd2 .ddChild {position:absolute;top:23px !important;width:69px !important;margin:0;display:none;font-size:11px;overflow-x:hidden!important;overflow-y:auto;z-index:1000;}
+/* End Combo Option 7 */
+.pmntPrcs b .scrtyTxt { float:left; width:59px; height:13px; padding:5px; border:none;background: url("/images/forms/code_txt.png") no-repeat;}
+.pmntPnl em {float:right;font-size:10px;color:#adafb0;font-style:normal;width:227px;margin-top:5px;}
+
+.payWP { float:left; width:620px;margin:25px 0 0 16px; padding-bottom:15px;}
+    .payWP p { float:left; width:450px; margin-right:25px; font-weight:bold; color:#6c6b6b;}
+    
+.lockTop { width:247px; height:51px; margin-left:-16px; position:relative; z-index:10; background:url('/images/layout/lock_top.png') no-repeat;}
+.lockC p { float:left; width:88%; margin:-10px 0 0 7%; color:#848080; position:relative; z-index:10;}
+.lock2Top { width:231px; height:40px; margin-top:5px;background:url('/images/layout/lock2_top.png') no-repeat;}
+.lock2C p { float:left; width:88%; padding-bottom:10px; margin:0 0 0 7%; color:#848080; position:relative; z-index:10;}
+.lock2C p a { color:#3372bf;}
+.tPBtn { margin-top:240px!important;}
+
+.pmntPnl .checkbox {float:right;padding-right:0;margin-right:0;width:0;}
+.pmntPnl .mk {float:left;font-weight:normal;font-size:12px;color:#38393a;margin-top:2px;}
+
+/* Check boxes code */
+.checkbox {clear:left;float:left;width:18px;height:18px;margin: 0 0 3px;padding: 0 0 0 26px;background:url('/images/icons/pay_checkbox.png') no-repeat;cursor: default;}
+.checkbox input,.radio input {display: none;}
+.checkbox input.show,.radio input.show {display: inline;}
+.selected {background-position: 0 -50px!important;}
+.block {width: 50%;float: left;}
+.lbl {float:left; width:163px; height:18px; color:#4d4d4d; line-height:18px; font-size:12px; margin:0 0 0 30px; padding-left:5px; font-weight:bold; border-left:1px solid #d3d3d3;text-align:left;font-style:normal;border-right:1px solid #d3d3d3;}
+/* Check boxes code */
+
+/* Combo Option 6 */
+.cmbo1 { float:left;width:315px!important;position:relative; margin:0 10px 0 0;}
+    .cmbo1 .dd2 {display: inline-block !important;float:left;font-family: Arial,Helvetica,sans-serif;font-size: 11px;height: 26px;margin-top:0; margin-left:0;text-align: left;width:283px !important;}
+        .cmbo1 .dd2 .ddTitle {background: url("/images/forms/edtl_txt.png") no-repeat;cursor: default;height: 26px;overflow: hidden;padding-left: 10px;text-indent: 0;color:#848484;text-shadow:0 1px #fff; font-weight:bold;}
+            .cmbo1 .dd2 .ddTitle span.arrow {float: right;width:23px;height: 25px;position:relative;right:7px;top:0px;background:url("/images/forms/edit_combo.png") no-repeat 0 0!important;cursor: pointer;display: inline-block;}
+            .cmbo1 #websites1_title:hover span.arrow {background-position: 0 0!important;}
+            .cmbo1 .dd2 .ddTitle span.ddTitleText {color:#626262;font-size:11px;line-height:24px;overflow:hidden;text-indent:1px;}
+            .cmbo1 .dd2 .ddChild {position:absolute;top:24px !important;width:280px !important;margin:0;display:none;font-size:11px;overflow-x:hidden!important;overflow-y:auto;z-index:1000;}
+/* End Combo Option 6 */
+
+/* Upload Photo */
+.upPhoto {margin:10px 0 0 220px;}
+    .upPhoto i {display:block;position:relative;z-index:10;background:url('/images/img/photo_overlay.png') 0 0 no-repeat;width:260px;height:265px;}
+    .upPhoto img {position:relative;z-index:7;left:0;margin-top:-265px;}
+.upPhoto, .upPhoto i, .upPhoto img {float:left;}
+
+.cabinet {clear:both;float:left;}
+.SI-FILES-STYLIZED label.cabinet {width: 79px;height: 22px;background:url(../scripts/file_input/btn-choose-file.png)  0 0 no-repeat;display: block;overflow: hidden;cursor: pointer;}
+.SI-FILES-STYLIZED label.cabinet input.file{position: relative;height: 100%;width: auto;opacity: 0;-moz-opacity: 0;filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);}

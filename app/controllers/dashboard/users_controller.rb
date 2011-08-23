@@ -15,6 +15,17 @@ class Dashboard::UsersController < Dashboard::ApplicationController
     redirect_to dashboard_account_path
   end
 
+  def upload_photo
+    if request.put?
+      if @current_user.update_attributes(params[:user])
+        redirect_to dashboard_account_path
+        flash.notice = "Photo updated"
+      else
+        render :upload_photo
+      end
+    end
+  end
+
   def change_password
     if request.put?
       if @current_user.update_with_password(params[:user])

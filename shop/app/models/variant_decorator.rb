@@ -7,6 +7,7 @@ Variant.class_eval do
   #
   belongs_to :seller, :class_name => "User"
   belongs_to :owner, :class_name => "User" # seller who added quote, not virtual seller
+
   # scopes
   #
   CONDITION.each { |v| scope :"condition_#{v}", where(:condition => v)}
@@ -34,7 +35,7 @@ Variant.class_eval do
   validates :count_on_hand, :numericality => { :greater_than_or_equal_to => 0 }, :unless => lambda{|t| t.is_master? }
   validates :price, :numericality => { :greater_than => 0 },                     :unless => lambda{|t| t.is_master? }
   validates :seller, :owner, :presence => true,                                          :unless => lambda{|t| t.is_master? }
-  validates :weight, :numericality => { :greater_than => 0 }, :unless => :is_master?
+  validates :weight, :numericality => { :greater_than => 0 }, :unless => lambda{ |t| t.is_master? || t.new_record? }
 
 
   # callbacks

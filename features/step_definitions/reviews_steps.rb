@@ -11,7 +11,6 @@ end
 
 Given /^I have "(\d+)" reviews for product "(.+)" with rating "(\d+)" and approved$/ do |reviews_count, product_name, rating|
   product = Product.find_by_name(product_name)
-  Factory(:review, :product => product, :rating => rating, :approved => true)
   1.upto(reviews_count.to_i) { Factory(:review, :product => product, :rating => rating, :approved => true) }
   product.recalculate_rating
 end
@@ -134,6 +133,73 @@ Given /^I have "(\d+)" reviews for my product "(.+)"$/ do |count, product_name|
       Factory(:review, { :product => product, :approved => false })
   end
 end
+
+Given /^I have (\d+) unapproved and (\d+) approved reviews for product "(.+)"$/ do |unapproved, approved, product_name|
+  product = Product.find_by_name(product_name)
+  1.upto(unapproved.to_i) { Factory(:review, :product => product, :approved => false) }
+  1.upto(approved.to_i) { Factory(:review, :product => product, :approved => true) }
+  product.reviews.count.should == unapproved.to_i + approved.to_i
+end
+
+Then /^selectbox "(.+)" should be selected for "(.+)"$/ do |field, value|
+  field_labeled(field).find(:xpath, ".//option[@selected = 'selected'][text() = '#{value}']").should be_present
+end
+
+Then /^I should see all (\d+) review for product "(.+)"$/ do |review_count, product_name|
+  reviews = Product.find_by_name(product_name).reviews
+  reviews.count.should == 6
+  reviews.each do |review|
+    find_by_id("review_number_review_#{review.id}").should have_content(review.review)
+    # FIXME
+    # if review.approved
+    #   find_by_id("review_number_review_#{review.id}").should have_content('Approve')
+    # end
+  end
+end
+
+Then /^I should see only approved "(.+)" reviews$/ do |status|
+  @user.reviews_as_owner.each do |review|
+    if review.approved == status
+      find_by_id("review_number_review_#{review.id}").should have_content(review.review)
+    else
+      page.should have_no_css("review_number_review_#{review.id}")
+    end
+  end
+end
+
+Then /^I click "(.+)" for all unapproved review$/ do |link_name|
+  @user.reviews_as_owner.where(:approved => false).each do
+    click_link(link_name)
+  end
+end
+
+Then /^I should not see "(.+)" link in the reviews$/ do |link_name|
+  @user.reviews_as_owner.each do |review|
+    find_by_id("review_number_review_#{review.id}").should_not have_content(link_name)
+  end
+end
+
+Then /^I should see only reviews for "(.+)"$/ do |product_name|
+  Product.find_by_name(product_name).reviews.each do |review|
+    find_by_id("review_number_review_#{review.id}").should have_content(review.review)
+  end
+end
+
+Then /^I delete (\d+) reviews$/ do |review_count|
+  1.upto(review_count.to_i) do
+    click_link('Delete')
+  end
+end
+
+Then /^I should have (\d+) reviews$/ do |review_count|
+  @user.reviews_as_owner.count.should == review_count.to_i
+end
+
+
+Then /^I should not have unapproved reviews$/ do
+  @user.reviews_as_owner.where(:approved => false).should eq([])
+end
+
 
 Then /^I should see all "(.+)" reviews$/ do |email|
   Review.by_products_owner(User.find_by_email(email)).each do |review|

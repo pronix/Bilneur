@@ -1,0 +1,18 @@
+<script type="text/javascript" charset="utf-8">
+  jQuery(document).ready(function(){
+    $(".change_some_option").change(function() {
+      var params = {
+        approved_select_hz : $("#approved_select_hz").val(),
+        select_product_id : $("#select_product_id").val()
+      };
+      location.hash = "?" + 'state=product' + '&' + jQuery.param(params);
+      $.ajax({ type: "GET", url: "<%= request.path %>" + "?" + 'state=product' + '&' + jQuery.param(params) });
+    });
+  })
+</script>
+
+<%= select :approved_select, :hz, [ %w[Approved true], %w[Unapproved false], ['All', ''] ], 
+    {:selected => params[:approved_select_hz] || '' }, { :class => 'change_some_option' } %>
+
+<%= collection_select :select_product, :id, @current_user.products + [Product.new(:name => 'All')], 
+    :id, :name, {:selected => params[:select_product_id] || ''}, { :class => 'change_some_option' } %>

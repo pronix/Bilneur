@@ -1,0 +1,15 @@
+<%= form_for :about, :url => dashboard_abouts_path, :html => { :method => :put } do |f| %>
+  <p>
+    <%= f.label :you, 'About You' %>
+    <%= f.text_area :you %>
+  </p>
+  <p>
+    <%= f.label :faq, 'FAQ' %>
+    <%= f.text_area :faq %>
+  </p>
+  <p>
+    <%= f.label :term, 'Terms' %>
+    <%= f.text_area :term %>
+  </p>
+  <%= f.submit 'Save Changes' %>
+<% end %>

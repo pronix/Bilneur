@@ -4,43 +4,70 @@ Feature: Manage reviews
     Given I have an admin account of "admin@person.com/password"
     And I am signed up as a seller with "seller@person.com/password"
     Given I have product with name "The Godfather" and owner "seller@person.com"
-    Given I have "2" reviews for product "The Godfather" with rating "4" and approved
-    Given the guest can not create a review
+    # Given the guest can not create a review
+    Given I sign in as "seller@person.com/password"
+    # And create sample paypal paymethod
 
   Scenario: Show product rating
+    Given I have "2" reviews for product "The Godfather" with rating "4" and approved
     When I go to the "The Godfather" product page
     Then I should see "The Godfather"
     And I should see overall rating with "4" stars
-    # And I should see "Based On 2 Ratings"
     And I should see Baserd on some Rating
     And I should see all approved reviews for "The Godfather" product
 
+@javascript
   Scenario: Show reviews in seller panel
-    Given I sign in as "seller@person.com/password"
-    And create sample paypal paymethod
-    And I have "4" reviews for my product "The Godfather"
+    And I have 4 unapproved and 2 approved reviews for product "The Godfather"
     Then I go to the account page
     And I should be on the account page
-    And I follow "Products"
-    And I should see "The Godfather"
-    Then I follow "Review Management"
-    And I should see all "seller@person.com" reviews
-
-  Scenario: Approve some review
-    Given I sign in as "seller@person.com/password"
-    And create sample paypal paymethod
-    Given I have a unapproved review for "The Godfather" and call it @review
-    Then I go to the "The Godfather" product page
-    And I should not see @review on the product page
+    And I follow "Feedback"
+    And I follow "My Product reviews"
+    Then selectbox "approved_select_hz" should be selected for "All"
+    Then selectbox "select_product_id" should be selected for "All"
+    And I should see all 6 review for product "The Godfather"
+@javascript  
+  Scenario Outline: Show only approved/unapproved review in seller panel  
+    And I have 4 unapproved and 2 approved reviews for product "The Godfather"
     Then I go to the reviews dashboard page
-    And I should see @review on the reviews dashboard page
-    Then I apprved @review by click "Approve"
-    Then I go to the "The Godfather" product page
-    And I should see @review on the product page
+    And I follow "My Product reviews"
+    Then I select "<select>" from "approved_select_hz"
+    And I should see only approved "<status>" reviews
+
+    Examples:
+    | select     | status |
+    | Approved   | true   |
+    | Unapproved | false  |
+
+@javascript
+  Scenario: Approve some reviews
+    And I have 4 unapproved and 2 approved reviews for product "The Godfather"
+    Then I go to the account page
+    And I follow "Feedback"
+    And I follow "My Product reviews"
+    Then I click "Approve" for all unapproved review
+    Then I should not see "Approve" link in the reviews
+    Then I should not have unapproved reviews
+@javascript
+  Scenario: Show review only for 
+    Given I have product with name "The Second Product" and owner "seller@person.com"
+    And I have 4 unapproved and 2 approved reviews for product "The Godfather"
+    And I have 4 unapproved and 2 approved reviews for product "The Second Product"
+    Then I go to the account page
+    And I follow "Feedback"
+    And I follow "My Product reviews"
+    Then I select "The Second Product" from "select_product_id"
+    And I should see only reviews for "The Second Product"
+@javascript
+  Scenario: Delete some review
+    And I have 4 unapproved and 2 approved reviews for product "The Godfather"
+    Then I go to the account page
+    And I follow "Feedback"
+    And I follow "My Product reviews"
+    And I delete 2 reviews
+    And I should have 4 reviews
 
   Scenario: Only one time register user can write review for one product
-    Given I am signed up as a seller with "seller3@person.com/password"
-    Given I sign in as "seller3@person.com/password"
     Then I go to the "The Godfather" product page
     And I follow "Rate This Product"
     And I should be on the new review page for product "The Godfather"
@@ -66,8 +93,7 @@ Feature: Manage reviews
   #   Then I follow "Rate This Product"
   #   And I should be on the login page
 
-  Scenario: Create review as register user
-    Given I already sing as "new_seller@person.com/password"
+ Scenario: Create review as register user
     When I go to the "The Godfather" product page
     Then I follow "Rate This Product"
     And I rate this by "3"
@@ -79,10 +105,9 @@ Feature: Manage reviews
     Then I approved my review
     Then I go to the "The Godfather" product page
     And I should see my fuck review
-    And I should see my name "Test Firstname T." with my review
-    And I should see my photo as "new_seller@person.com"
 
  Scenario: Review admin configuration
+   And I am logged out
    Given I sign in as "admin@person.com/password"
    Then I go to the admin main page
    Then I follow "Configuration"
@@ -95,5 +120,6 @@ Feature: Manage reviews
    And I should be on the admin review setting page
 
  Scenario: If Review option include_unapproved_reviews true
+   And I am logged out
    Given I have spree preference "include_unapproved_reviews" with "true"
    Given I am signed and create review

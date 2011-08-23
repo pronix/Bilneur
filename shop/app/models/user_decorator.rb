@@ -36,9 +36,13 @@ User.class_eval do
   # Associate with SecretQuestion
   has_one :secret_question
 
-  # Return all seller reviews by user
+  # For buyer. Return all my reviews as buyer
   has_many :seller_reviews, :foreign_key => 'buyer_id'
+  # For seller. Return all users reviews with my product
   has_many :buyer_reviews, :foreign_key => 'seller_id', :class_name => "SellerReview"
+
+  # Releationship with About
+  has_one :about
 
   # scopes
   #
@@ -54,6 +58,10 @@ User.class_eval do
   # instance methods
   #
 
+  # Return a array of all reviews by all user products
+  def reviews_as_owner
+    Review.where(:product_id => product_ids)
+  end
 
   # Recalculate rating for seller, from SellerReview
   def recalculate_rating
@@ -65,10 +73,12 @@ User.class_eval do
     end
   end
 
+  # For buyer. If I create some reviews
   def has_seller_review?
     seller_reviews.present?
   end
 
+  # For seller. If seller has reviews from buyers
   def has_buyer_review?
     buyer_reviews.present?
   end

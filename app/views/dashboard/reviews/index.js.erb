@@ -1,1 +1,10 @@
+jQuery(document).ready(function(){
+  if ("<%= @select_products %>" == "true") {
+    $("#some_selects").html("<%= escape_javascript(render :partial => 'product_reviews_select') %>");
+  } else {
+    $("#some_selects").html("");
+  };  
+});
 $("#reviews_container").html("<%= escape_javascript(render "reviews", :reviews => @reviews) %>");
+
+

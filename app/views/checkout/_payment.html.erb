@@ -84,14 +84,11 @@
       <% if (@paypal_payment_method = PaymentMethod.paypal(:front_end)) %>
       <h3>Pay with Paypal</h3>
       <div class="payWP">
-        <p>Paypal is the most convinient way to pay without disclosing your credit card. If you dont have a paypal account it takes you less than a minute to sign up for one after you click the paypal button.</p>
-        <a href="<%= paypal_payment_order_checkout_url @order, :payment_method_id =>  @paypal_payment_method %>" style="text-align: center;">
-         <img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" align="left" style="margin-right:7px;"/>
-       </a>
+        <button class="checkout" name="paypal" value ="<%= @paypal_payment_method.id %>" >
+          <img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" align="left" style="margin-right:7px;"/>
+        </button>
 
-        <%#= link_to "" do %>
-        <%#= image_tag "forms/paypal.png" %>
-        <%# end %>
+        <p>Paypal is the most convinient way to pay without disclosing your credit card. If you dont have a paypal account it takes you less than a minute to sign up for one after you click the paypal button.</p>
       </div>
       <% end %>
     </div>

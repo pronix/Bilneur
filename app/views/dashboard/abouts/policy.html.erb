@@ -1,0 +1,7 @@
+<%= form_for :static_data, :url => dashboard_abouts_path, :html => { :method => :put } do |f| %>
+  <p>
+    <%= f.label :return_policy, 'Policy' %>
+    <%= f.text_area :return_policy %>
+  </p>
+  <%= f.submit 'Save Changes' %>
+<% end %>

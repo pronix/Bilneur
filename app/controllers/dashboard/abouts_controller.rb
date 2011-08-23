@@ -16,6 +16,10 @@ class Dashboard::AboutsController < Dashboard::ApplicationController
     redirect_to dashboard_account_path
   end
 
+  def policy
+    @static_data = @current_user.static_data
+  end
+
   private
 
   def if_new

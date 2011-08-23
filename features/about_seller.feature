@@ -27,3 +27,12 @@ Feature: Describe about seller page
     And I should see "Your abouts are saved"
     Then I go to the dashboard abouts page
     And I should see my about
+
+  Scenario: Edit Return/Refund Policy
+    Then I go to the return policy page
+    Then I fill in "Policy" with "My Rerun/Refund Policy"
+    And I press "Save Changes"
+    Then I should be on the dashboard account fuck page
+    Then I go to the return policy page
+    Then show me the page
+    And I should se my rerun policy

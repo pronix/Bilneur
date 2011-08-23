@@ -57,6 +57,7 @@ Rails.application.routes.draw do
 
     match "/abouts" => "abouts#edit", :via => :get
     match "/abouts" => "abouts#update", :via => :put
+    match "/return_policy" => "abouts#policy", :via => :get
 
     resources :reviews do
       member do

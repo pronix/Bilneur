@@ -75,6 +75,8 @@ module NavigationHelpers
       dashboard_orders_path
     when /the dashboard seles page/
       dashboard_sales_path
+    when /the return policy page/
+      dashboard_return_policy_path
     when /^the home\s?page$/
       '/'
 

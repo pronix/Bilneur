@@ -1,47 +1,30 @@
 <%= render :partial => 'dashboard/shared/profile_tabs', :locals => {:current => "Account Details"} %>
-
-<h1><%= t("my_account") %></h1>
-
-<%= form_for(current_user, :url => dashboard_account_path, :html => { :method => :put, :multipart => true }) do |f| %>
- <div class="yui-gc">
-   <div class="yui-u first">
-
-    <%= f.field_container :email do %>
-    <%= f.label :email, t("email") %><br />
-    <%= f.text_field :email, :class => 'fullwidth title'  %>
-    <%= f.error_message_on :email %>
-    <% end %>
- 
-    <%= f.field_container :firstname do %>
-    <%= f.label :firstname, t("first_name") %><br />
-    <%= f.text_field :firstname, :class => 'fullwidth title'  %>
-    <%= f.error_message_on :firstname %>
-    <% end %>
-
-    <%= f.field_container :lastname do %>
-    <%= f.label :lastname, t("last_name") %><br />
-    <%= f.text_field :lastname, :class => 'fullwidth title'  %>
-    <%= f.error_message_on :lastname %>
-    <% end %>
-
-    <%= f.field_container :phone do %>
-    <%= f.label :phone, t("phone") %><br />
-    <%= f.text_field :phone, :class => 'fullwidth title'  %>
-    <%= f.error_message_on :phone %>
-    <% end %>
-
-
-    <%= f.field_container :photo do %>
-    <%= f.label :photo, t("photo") %><br />
-    <%= image_tag current_user.photo.url %>
-    <%= f.file_field :photo  %>
-    <%= f.error_message_on :photo %>
-    <% end %>
-
-   </div>
- </div>
- <p class="form-buttons">
-   <button type="submit"><span><%= t("update") %></span></button>
-   <%= t("or") %> <%= link_to t("cancel"), dashboard_account_path %>
- </p>
-<% end %>
+<div class="sptCntBus">
+    	<div class="top"></div>
+        
+    	<div class="cntr">
+        	<h2>Edit Account Details</h2>
+            <%= form_for(current_user, :url => dashboard_account_path, :html => { :method => :put, :class=> "eADtl", :multipart => true }) do |f| %>
+              <b><i>First name :</i>
+                <%= f.text_field :firstname %>
+              </b>
+              <b><i>Last name :</i>
+                <%= f.text_field :lastname  %>
+              </b>
+              <b><i>Email :</i>
+                <%= f.text_field :email  %>
+              </b>
+              <b><i>Phone :</i>
+                <%= f.text_field :phone %>
+              </b>
+            <div class="eADtlSav">
+                <big>
+                  <button type="submit" class="btn otherbutton"></button>
+                </big>
+            </div>
+          <% end %>
+        </div>
+        
+    	<div class="btm"></div>
+    </div>
+</div>

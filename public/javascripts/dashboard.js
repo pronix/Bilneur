@@ -153,12 +153,18 @@ jQuery(document).ready(function(){
 
 	try {
 	$("#websites1").msDropDown({mainCSS:'dd2'});
+	$("#websites2").msDropDown({mainCSS:'dd2'});
+	$("#websites3").msDropDown({mainCSS:'dd2'});
+	$("#websites7").msDropDown({mainCSS:'dd2'});
+	$("#websites6").msDropDown({mainCSS:'dd2'});
+	$("#websites5").msDropDown({mainCSS:'dd2'});
 	$("#ver").html($.msDropDown.version);
 	} catch(e) {
 		alert("Error: "+e.message);
 	}
 	try {
 	$("#websites21").msDropDown({mainCSS:'dd2'});
+	$(".websites21 > select").msDropDown({mainCSS:'dd2'});
 	$("#websites22").msDropDown({mainCSS:'dd2'});
 	$("#ver").html($.msDropDown.version);
 	} catch(e) {

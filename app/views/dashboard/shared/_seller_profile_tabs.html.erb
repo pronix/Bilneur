@@ -5,6 +5,9 @@
                   <%= link_to "About you", dashboard_abouts_path %>
                 </li>
             	<li><a href="#">Shipping Details</a></li>
+                <li <%== ' class="active"' if current == "Return Policy" %>>
+                  <%= link_to "Return Policy", dashboard_return_policy_path %>
+                </li>
             	<li><a href="#">Return Policy</a></li>
             	<li><a href="#">Payout Information</a></li>
             </ul>

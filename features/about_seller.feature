@@ -19,10 +19,10 @@ Feature: Describe about seller page
 
   Scenario: Create a valid abouts
     Then I go to the dashboard abouts page
-    And I fill in "About You" with "This is I am"
-    And I fill in "FAQ" with "This is my faq"
-    And I fill in "Terms" with "This is my terms"
-    And I press "Save Changes"
+    And I fill in "static_data_about" with "This is I am"
+    And I fill in "static_data_faq" with "This is my faq"
+    And I fill in "static_data_term" with "This is my terms"
+    And I press "static_data_submit"
     And I should be on the dashboard account fuck page
     And I should see "Your abouts are saved"
     Then I go to the dashboard abouts page
@@ -30,8 +30,8 @@ Feature: Describe about seller page
 
   Scenario: Edit Return/Refund Policy
     Then I go to the return policy page
-    Then I fill in "Policy" with "My Rerun/Refund Policy"
-    And I press "Save Changes"
+    Then I fill in "static_data_return_policy" with "My Rerun/Refund Policy"
+    And I press "static_data_submit"
     Then I should be on the dashboard account fuck page
     Then I go to the return policy page
     And I should se my rerun policy

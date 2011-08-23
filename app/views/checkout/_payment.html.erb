@@ -5,7 +5,7 @@
   <!-- page1 -->
   <h1 class="chkHd">Billing Details</h1>
 
-  <% @payment_method = @order.available_payment_methods.detect{|v| v.name == "Credit Card" } %>
+  <% @payment_method = PaymentMethod.credit_card(:front_end) %>
   <%= hidden_field_tag "order[payments_attributes][][payment_method_id]", @payment_method.id  %>
   <% param_prefix = "payment_source[#{@payment_method.id}]" %>
   <%= hidden_field param_prefix, 'first_name', :value => @order.billing_firstname %>
@@ -81,15 +81,19 @@
       </div>
       <% end %>
 
-
-
+      <% if (@paypal_payment_method = PaymentMethod.paypal(:front_end)) %>
       <h3>Pay with Paypal</h3>
       <div class="payWP">
         <p>Paypal is the most convinient way to pay without disclosing your credit card. If you dont have a paypal account it takes you less than a minute to sign up for one after you click the paypal button.</p>
-        <%= link_to "" do %>
-        <%= image_tag "forms/paypal.png" %>
-        <% end %>
+        <a href="<%= paypal_payment_order_checkout_url @order, :payment_method_id =>  @paypal_payment_method %>" style="text-align: center;">
+         <img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" align="left" style="margin-right:7px;"/>
+       </a>
+
+        <%#= link_to "" do %>
+        <%#= image_tag "forms/paypal.png" %>
+        <%# end %>
       </div>
+      <% end %>
     </div>
 
     <div class="shpng2">

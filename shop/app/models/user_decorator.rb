@@ -42,7 +42,7 @@ User.class_eval do
   has_many :buyer_reviews, :foreign_key => 'seller_id', :class_name => "SellerReview"
 
   # Releationship with About
-  has_one :about
+  has_one :static_data, :dependent => :destroy
 
   # scopes
   #

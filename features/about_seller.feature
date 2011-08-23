@@ -27,4 +27,3 @@ Feature: Describe about seller page
     And I should see "Your abouts are saved"
     Then I go to the dashboard abouts page
     And I should see my about
-    

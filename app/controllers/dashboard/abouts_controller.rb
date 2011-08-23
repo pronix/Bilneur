@@ -3,14 +3,14 @@ class Dashboard::AboutsController < Dashboard::ApplicationController
   before_filter :if_new, :only => :edit
 
   def edit
-    @about = @current_user.about
+    @static_data = @current_user.static_data
   end
 
   def update
-    if @current_user.about.present?
-      @current_user.about.update_attributes(params[:about])
+    if @current_user.static_data.present?
+      @current_user.static_data.update_attributes(params[:static_data])
     else
-      @current_user.create_about(params[:about])
+      @current_user.create_static_data(params[:static_data])
     end
     flash.notice = "Your abouts are saved"
     redirect_to dashboard_account_path
@@ -19,11 +19,11 @@ class Dashboard::AboutsController < Dashboard::ApplicationController
   private
 
   def if_new
-    @about = @current_user.build_about if @current_user.about.nil?
+    @about = @current_user.build_static_data if @current_user.static_data.nil?
   end
 
   def load_and_authorize_resource
-    authorize! :access, :about
+    authorize! :access, :static_data
   end
 
 end

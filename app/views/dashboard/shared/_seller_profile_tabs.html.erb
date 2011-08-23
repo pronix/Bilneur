@@ -1,0 +1,11 @@
+<div class="prflBus">
+            <ul>
+            	<li><a href="#">Business Info</a></li>
+                <li <%== ' class="active"' if current == "About you" %>>
+                  <%= link_to "About you", dashboard_abouts_path %>
+                </li>
+            	<li><a href="#">Shipping Details</a></li>
+            	<li><a href="#">Return Policy</a></li>
+            	<li><a href="#">Payout Information</a></li>
+            </ul>
+</div>

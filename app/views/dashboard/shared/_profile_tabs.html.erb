@@ -1,17 +1,12 @@
-
-<% content_for :sidebar do %>
-
-  <h3><span><%= current_user.email %></span></h3>
-  <br class="clear" />
-
-  <ul class="sidebar product-menu">
-
+<div class="prflBus">
+	
+  <ul>
       <li<%== ' class="active"' if current == "Account Details" %>>
         <%= link_to t("account_details"), dashboard_account_path %>
       </li>
 
       <li<%== ' class="active"' if current == "Change Password" %>>
-        <%= link_to t("change_password"), account_change_password_path %>
+        <%= link_to "Password", account_change_password_path %>
       </li>
 
       <li<%== ' class="active"' if current == "Secret Question" %>>
@@ -28,18 +23,14 @@
         <%= link_to t("addresses"),  dashboard_addresses_path %>
       </li>
 
-        <li<%== ' class="active"' if current == "Payment Methods" %>>
-          <%= link_to t("payment_methods"),  dashboard_payment_methods_path %>
-        </li>
+      <li<%== ' class="active"' if current == "Payment Methods" %>>
+        <%= link_to t("payment_methods"),  dashboard_payment_methods_path %>
+      </li>
 
-        <li<%== ' class="active"' if current == "Terms" %>>
-          <%= link_to t("terms_and_conditions"), edit_dashboard_terms_path %>
-        </li>
-
-
-
+      <!--<li<%== ' class="active"' if current == "Terms" %>>
+        <%= link_to t("terms_and_conditions"), edit_dashboard_terms_path %>
+      </li>-->
   </ul>
-  <br class="clear" />
 
-<% end %>
-
+  <p><a href="#"><img src="/images/forms/edt_sp.png" alt="" /></a></p>
+</div>

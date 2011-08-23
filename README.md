@@ -37,9 +37,13 @@ PayPal: test account
 --------------------
 
 > Business Account
+
 > > login: visent_1314080137_biz@gmail.com
+
 > > password: 314082241
 
 > Personal Account
+
 > > login: visent_1314081983_per@gmail.com
+
 > > password: 314110980

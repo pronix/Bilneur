@@ -44,6 +44,7 @@ class Dashboard::ReviewsController < Dashboard::ApplicationController
     @reviews = @reviews.paginate(:per_page => (params[:per_page]||15), :page => params[:page])
     # For display some selectboxes
     @select_products = true if params[:state] == "product"
+    puts @reviews.inspect
   end
 
   def recalculate_rating

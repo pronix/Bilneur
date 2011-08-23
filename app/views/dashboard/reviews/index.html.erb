@@ -1,14 +1,4 @@
 <%= render 'shared/per_page', :per_page => params[:per_page] %>
-<!-- <script type="text/javascript"> -->
-<!--   jQuery(document).ready(function(){ -->
-<!--     $("#my_product_reviews").click(function(){ -->
-<!--        var review_link = $(this).attr('href') -->
-<!--        $(this).attr('href', '#?state=product')  -->
-<!--        jQuery.ajax({ dataType: 'script', url: review_link, type: "GET" }); -->
-<!--     }); -->
-<!--   }); -->
-<!-- </script> -->
-
 <div class="fdBck">
 	<h2>Feedback &amp; Reviews</h2>
     <div class="pPgCmbo">
@@ -49,12 +39,16 @@
     <div class="sptCnt">
     	<div id="TabbedPanels2" class="TabbedPanels">
             <ul class="TabbedPanelsTabGroup feedback">
-              <li class="TabbedPanelsTab tab1 TabbedPanelsTabSelected" tabindex="0">
-                <span><%= link_to "Feedback as a Buyer", dashboard_reviews_path(:state => "as_buyer", :per_page => params[:per_page]), :remote => true %></span>
-              </li>
-              <li class="TabbedPanelsTab tab2" tabindex="0">
-                <span><%= link_to "Feedback as a Seller", dashboard_reviews_path(:state => "as_seller", :per_page => params[:per_page]), :remote => true %></span>
-              </li>
+              <% if @current_user.has_seller_review? %>
+                <li class="TabbedPanelsTab tab1 TabbedPanelsTabSelected" tabindex="0">
+                  <span><%= link_to "Feedback as a Buyer", dashboard_reviews_path(:state => "as_buyer", :per_page => params[:per_page]), :remote => true %></span>
+                </li>
+              <% end %>
+              <% if @current_user.has_buyer_review? %>
+                <li class="TabbedPanelsTab tab2" tabindex="0">
+                  <span><%= link_to "Feedback as a Seller", dashboard_reviews_path(:state => "as_seller", :per_page => params[:per_page]), :remote => true %></span>
+                </li>
+              <% end %>
               <li class="TabbedPanelsTab tab3" tabindex="0">
                 <span><%= link_to "Feedback Left", dashboard_reviews_path(:state => "left", :per_page => params[:per_page]), :remote => true %></span>
               </li>

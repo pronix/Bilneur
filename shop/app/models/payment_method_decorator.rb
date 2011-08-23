@@ -2,21 +2,15 @@ PaymentMethod.class_eval do
   class << self
 
     def paypal(display_on = 'both')
-      all.select { |p|
-        p.active &&
-        (p.display_on == display_on.to_s || p.display_on.blank?) &&
-        (p.environment == Rails.env || p.environment.blank?)
-      }.detect{ |v| v.name = "PayPal" }
-
+      PaymentMethod.all.find{|v|
+        (v.name == "PayPal") && (Rails.env == v.environment || v.environment.blank? )  &&
+        (v.display_on == display_on.to_s || v.display_on.blank?)  }
     end
 
     def credit_card(display_on = 'both')
-      all.select { |p|
-        p.active &&
-        (p.display_on == display_on.to_s || p.display_on.blank?) &&
-        (p.environment == Rails.env || p.environment.blank?)
-      }.detect{ |v| v.name = "Credit Card" }
-
+      PaymentMethod.all.find{|v|
+        (v.name == "Credit Card") && (Rails.env == v.environment || v.environment.blank? )  &&
+        (v.display_on == display_on.to_s || v.display_on.blank?)  }
     end
 
   end

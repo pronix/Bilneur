@@ -34,5 +34,4 @@ Feature: Describe about seller page
     And I press "Save Changes"
     Then I should be on the dashboard account fuck page
     Then I go to the return policy page
-    Then show me the page
     And I should se my rerun policy

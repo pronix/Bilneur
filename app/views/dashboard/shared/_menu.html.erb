@@ -22,10 +22,14 @@
   </li>
 
   <li class="TabbedPanelsTab" >
-    <span><%= link_to t('user_menu.purchases'), dashboard_purchases_path %></span>
+    <span class="TabbedPanelsTabSelected">
+      <%= link_to_unless_current t('user_menu.purchases'), dashboard_purchases_path, :class => "TabbedPanelsTab"  %>
+    </span>
   </li>
   <li class="TabbedPanelsTab" >
-    <span><%= link_to t('user_menu.selling'), dashboard_sales_path %></span>
+    <span class="TabbedPanelsTabSelected">
+      <%= link_to_unless_current t('user_menu.selling'), dashboard_sales_path, :class => "TabbedPanelsTab"  %>
+    </span>
   </li>
   <li class="TabbedPanelsTab" >
     <span class="TabbedPanelsTabSelected">
@@ -39,10 +43,14 @@
   </li>
 
   <li class="TabbedPanelsTab" >
-    <span><%= link_to t('user_menu.products'), dashboard_products_path %></span>
+    <span class="TabbedPanelsTabSelected">
+      <%= link_to_unless_current t('user_menu.products'), dashboard_products_path, :class => "TabbedPanelsTab"  %>
+    </span>
   </li>
  <li class="TabbedPanelsTab" >
-    <span><%= link_to t('user_menu.stores'), dashboard_seller_inventories_path %></span>
+   <span class="TabbedPanelsTabSelected">
+     <%= link_to_unless_current t('user_menu.stores'), dashboard_seller_inventories_path, :class => "TabbedPanelsTab"  %>
+   </span>
   </li>
 
   <li class="TabbedPanelsTab" >

@@ -1,10 +1,78 @@
 <div class="inbxTabs">                            
 <div id="TabbedPanels2" class="TabbedPanels">
 <%= render :partial => 'dashboard/shared/inbox_tabs', :locals => {:current => @state} %>
-    <div class="TabbedPanelsContentGroup">
-      <div class="message_container">
-        <h3 class="subject">Subject: <%= @message.subject %></h3>
-        <%= render @message %> <br />
+<div class="TabbedPanelsContentGroup">
+
+<div class="inbx">
+<div class="tp"></div>
+<div class="cent">
+	<div class="inbxAct">
+    	<ul>
+        	<li><a href="#">FIXMEDelete</a></li>
+        	<li><a href="#">FIXMEReply</a></li>
+        </ul>
+        <div class="cmbo1">
+            <select id="websites21" tabindex="1" name="">
+                <option value="" selected="selected" title="">FIXMEMove to</option>
+                <option value="" title="">1</option>
+                <option value="" title="">2</option>
+                <option value="" title="">3</option>
+                <option value="" title="">4</option>
+            </select>
+        </div>
+        <div class="prnt">FIXME<a href="#"><img src="/images/forms/inbmsg_prnt.jpg" alt=""></a></div>
+    </div>
+    
+    <div class="msgRead">
+    	<h2><%= @message.subject %></h2>
+        <div class="msgCred">
+          <p><i>From:</i><b><%= @message.sender.full_name %></b></p>
+        	<p><i>Sent:</i><b><%= l @message.created_at, :format => "%B %d, %Y %H:%M" %></b></p>
+                <p><i>To:</i><b><%= @message.recipient.full_name %></b></p>
+        </div>
+        
+        <div class="msgCnt">
+          <%= @message.content %>
+        	
+            <div class="shopInfo">
+            	<p class="sI1">
+                	<i>User ID</i><b><%= @message.sender.full_name %> FIXME</b>
+                </p>
+            	<p class="sI2">
+                  <i>User Name:</i><b><%= @message.sender.full_name %></b>
+                </p>
+            	<p class="sI1">
+                	<i>Item #:</i><b>FIXME</b>
+                </p>
+
+            </div>
+        </div>
+        
+        <div class="inbxAct">
+            <ul>
+                <li><a href="#">FIXMEDelete</a></li>
+                <li><a href="#">FIXMEReply</a></li>
+            </ul>
+        </div>
+        
+    </div>
+    
+</div>
+<div class="bt"></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+      <!--<div class="message_container">
+        <h3 class="subject">Subject: </h3>
+         <br />
 
         <%= render @children_messages  %>
         <br />
@@ -31,7 +99,9 @@
         </p>
         
         <% end %>
-    </div>
+      </div>-->
+
+
   </div>
 </div>
 </div>

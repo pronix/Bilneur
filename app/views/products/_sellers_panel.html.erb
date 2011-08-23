@@ -50,12 +50,21 @@
 
             <div class="shares">
               <ul>
-                <li class="lst1"><a href="#">Seller Information</a></li><!-- FIXME -->
-                <li class="lst2"><a href="#">Retern Policy</a></li><!-- FIXME -->
-                <li class="lst3"><a href="#">Feedback</a></li><!-- FIXME -->
-                <li class="lst4"><a href="#">Tweet About This Seller</a></li><!-- FIXME -->
-                <li class="lst5"><a href="#">Share With Your Friends on Facebook</a></li><!-- FIXME -->
-                <li class="lst6"><a href="#">Add Seller To Favorites</a></li><!-- FIXME -->
+                <li class="lst1">
+                  <%= link_to "Seller Information", about_seller_path(item.seller) %>
+                </li><!-- FIXME -->
+                <li class="lst2">
+                  <%= link_to "Return Policy", return_policy_seller_path(item.seller) %>
+                </li><!-- FIXME -->
+                <li class="lst3">
+                  <%= link_to "Feedback", feedback_seller_path(item.seller) %>
+                </li><!-- FIXME -->
+                <li class="lst4">
+                  <%= link_to "Tweet About This Seller", "http://twitter.com/share?url=#{about_seller_url(item.seller)}" %>
+                </li><!-- FIXME -->
+                <li class="lst6">
+                  <a href="#">Add Seller To Favorites</a>
+                </li><!-- FIXME -->
               </ul>
             </div>
 

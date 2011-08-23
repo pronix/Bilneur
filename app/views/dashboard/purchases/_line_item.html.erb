@@ -24,16 +24,13 @@
       <div class="dtl3">
           <h3><%= number_to_currency item.amount %></h3>
           <big class="btnCncl">
-              <a class="btn otherbutton" href="#">
-              </a>
+              <%= link_to "", new_message_path(item.variant.seller), :class => "btn otherbutton" %>
           </big>
           <big class="btnCnclOdr">
-            <a class="btn otherbutton" href="#">
-            </a>
+            <%= link_to "", feedback_seller_path(item.variant.seller), :class => "btn otherbutton" %>
           </big>
           <big class="btnOdr">
-            <a class="btn otherbutton" href="#">
-            </a>
+              <%= link_to "", "", :class => "btn otherbutton" %>
           </big>
        </div>
 

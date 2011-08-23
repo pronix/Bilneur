@@ -55,9 +55,18 @@ Rails.application.routes.draw do
 
     resource :secrets
 
-    match "/abouts" => "abouts#edit", :via => :get
-    match "/abouts" => "abouts#update", :via => :put
-    match "/return_policy" => "abouts#policy", :via => :get
+    resource :sellers do
+      member do
+        get :about_you
+        put :about_you
+        get :return_policy
+        put :return_policy
+      end
+    end
+
+    # match "/abouts" => "abouts#edit", :via => :get
+    # match "/abouts" => "abouts#update", :via => :put
+    # match "/return_policy" => "abouts#policy", :via => :get
 
     resources :reviews do
       member do

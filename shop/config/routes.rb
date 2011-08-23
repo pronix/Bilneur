@@ -54,6 +54,9 @@ Rails.application.routes.draw do
     root :to => "users#show"
 
     resource :secrets
+    # resource :abouts
+    match "/abouts" => "abouts#edit", :via => :get
+    match "/abouts/update" => "abouts#update", :via => :put
 
     resources :reviews do
       member do

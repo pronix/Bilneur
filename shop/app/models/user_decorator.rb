@@ -41,6 +41,9 @@ User.class_eval do
   # For seller. Return all users reviews with my product
   has_many :buyer_reviews, :foreign_key => 'seller_id', :class_name => "SellerReview"
 
+  # Releationship with About
+  has_one :about
+
   # scopes
   #
 

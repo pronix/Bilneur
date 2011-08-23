@@ -35,7 +35,7 @@ Variant.class_eval do
   validates :count_on_hand, :numericality => { :greater_than_or_equal_to => 0 }, :unless => lambda{|t| t.is_master? }
   validates :price, :numericality => { :greater_than => 0 },                     :unless => lambda{|t| t.is_master? }
   validates :seller, :owner, :presence => true,                                          :unless => lambda{|t| t.is_master? }
-  validates :weight, :numericality => { :greater_than => 0 }, :unless => lambda{ |t| t.is_master? || t.new_record? }
+  validates :weight, :numericality => { :greater_than => 0 }, :unless => :is_master?
 
 
   # callbacks

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   # match "/sellers/:seller_id/store" => "products#all_sellers_product"
 
-  match "/sellers/:id/store/product/:product_id" => "sellers#product"
+  match "/sellers/:id/store/:product_id/:quote_id" => "sellers#quote", :as => :seller_quote
   resources :sellers, :only => [ ] do
     member do
       get :store

@@ -2,10 +2,10 @@
   <div class="top">
       <b>Overall Rating</b>
         <p>
-          <%= show_stars @product.avg_rating %>
+          <%= show_stars product.avg_rating %>
         </p>
-        <b>Based On <%= @product.reviews_count %> Ratings</b>
-        <%= link_to('Rate This Product', new_product_review_path(@product)) if can_create_review?(@product) %>
+        <b>Based On <%= product.reviews_count %> Ratings</b>
+        <%= link_to('Rate This Product', new_product_review_path(product)) if can_create_review?(product) %>
     </div>
     <% for review in @reviews do %>
       <div class="cntr", id="review_id_<%= review.id %>">

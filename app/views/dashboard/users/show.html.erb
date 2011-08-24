@@ -13,7 +13,7 @@
   <div class="btm"></div>
   
   <% if current_user.has_role?("seller") %>
-  <%= link_to image_tag('/images/forms/vsp_btn.png'), products_seller_path(current_user), :class => "vsp" %>
+  <%= link_to image_tag('/images/forms/vsp_btn.png'), store_seller_path(current_user), :class => "vsp" %>
 </a>
 <% end %>
 </div>

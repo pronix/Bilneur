@@ -53,6 +53,7 @@ namespace :deploy do
 
   task :chown_apache do
     run "chown -R www-data:www-data #{current_path}/"
+    run "chown -R www-data:www-data #{shared_path}/log/searchd.production.pid"
   end
 
   desc "Symlink the images"
@@ -82,7 +83,6 @@ namespace :thinking_sphinx do
     puts "Starting thinking sphinx searchd server"
     run "cd #{current_path}; RAILS_ENV=production bundle exec rake thinking_sphinx:configure"
     run "cd #{current_path}; RAILS_ENV=production bundle exec rake ts:start"
-    run "chown -R www-data:www-data #{shared_path}/searchd.production.pid"
   end
 
   desc "Stops the thinking sphinx searchd server"
@@ -97,7 +97,6 @@ namespace :thinking_sphinx do
     thinking_sphinx.stop
     thinking_sphinx.index
     thinking_sphinx.start
-    run "chown -R www-data:www-data #{shared_path}/searchd.production.pid"
   end
 
   desc "Copies the shared/config/sphinx yaml to release/config/"

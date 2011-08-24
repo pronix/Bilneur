@@ -31,12 +31,16 @@ class Dashboard::ReviewsController < Dashboard::ApplicationController
   private
 
   def filter_params
-    @state = params[:state]
-    @reviews = case params[:state]
-               when "left" then current_user.reviews
+    @state = params[:state] ? params[:state] : 'as_buyer'
+    @reviews = case @state
+               # Return all my review when I am seller or buyer
+               when "left" then current_user.my_reviews
+               # Return all reviews from buyers
                when "as_seller" then current_user.buyer_reviews
+               # Return all reviews from my product
                when "product" then current_user.reviews_as_owner
-               else current_user.seller_reviews
+               # Return all reviews from sellers
+               when "as_buyer" then current_user.seller_reviews
     end
     @reviews = params[:approved_select_hz].blank? ? @reviews : @reviews.where(:approved => params[:approved_select_hz])
     @reviews = params[:select_product_id].blank? ? @reviews : @reviews.where(:product_id => params[:select_product_id])
@@ -44,7 +48,6 @@ class Dashboard::ReviewsController < Dashboard::ApplicationController
     @reviews = @reviews.paginate(:per_page => (params[:per_page]||15), :page => params[:page])
     # For display some selectboxes
     @select_products = true if params[:state] == "product"
-    puts @reviews.inspect
   end
 
   def recalculate_rating

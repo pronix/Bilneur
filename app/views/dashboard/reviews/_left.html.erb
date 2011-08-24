@@ -3,8 +3,8 @@
       <% reviews.each do |review| %>
         <div class="fdBack" id="review_number_<%= dom_id review %>">
           <i class="rtr">
-            <%= show_user_photo(review.buyer)  %>
-            <span><%= review.buyer.full_name %></span>
+            <%= show_user_photo(current_user)  %>
+            <span><%= current_user.full_name %></span>
           </i>
           <p>
             <%= review.review %>

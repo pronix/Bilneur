@@ -68,16 +68,17 @@
   </b>
 
   <% elsif field == "full_name"%>
-  <b>
-    <i>Full Name:</i>
-    <%= form.text_field(:full_name, :class => 'inpNam') %>
-  </b>
   <% elsif field == "lastname"%>
-  <% elsif field == "firstname"%>
-  <!-- <b> -->
-    <!-- <i>First Name:</i> -->
-    <%#= form.text_field(field.to_sym, :class => 'inpNam') %>
-  <!-- </b> -->
+   <b>
+    <i>Last Name:</i>
+    <%= form.text_field(field.to_sym, :class => 'inpNam') %>
+  </b>
+
+  <% elsif field == "firstname" %>
+  <b>
+    <i>First Name:</i>
+    <%= form.text_field(field.to_sym, :class => 'inpNam') %>
+  </b>
 
   <% elsif field == "phone"%>
   <b>

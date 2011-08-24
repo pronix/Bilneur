@@ -58,11 +58,14 @@
     <%= address_form.text_field(field.to_sym, :class => 'inpNam') %>
   </b>
   <% elsif field == "lastname"%>
-  <% elsif field == "firstname"%>
-
-  <% elsif field == "full_name"%>
   <b>
-    <i>Full Name:</i>
+    <i>Last Name:</i>
+    <%= address_form.text_field(field.to_sym, :class => 'inpNam') %>
+  </b>
+
+  <% elsif field == "firstname"%>
+  <b>
+    <i>First Name:</i>
     <%= address_form.text_field(field.to_sym, :class => 'inpNam') %>
   </b>
 

@@ -13,8 +13,9 @@ Address.class_eval do
     end
     self.reload
   end
+
   def full_name=(v)
-    self.firstname, self.lastname = *v.to_s.split(' ',2) unless v.blank?
+    self.firstname, self.lastname = *v.to_s.strip.split(' ',2) unless v.blank?
   end
 
   def full_name

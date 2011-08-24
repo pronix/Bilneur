@@ -20,18 +20,22 @@ Feature: Describe buyer feedback to seller
   Scenario: Don't show Seller Review in buyer when it's blank
     Given I sign in as "email@person.com/password"
     Given I have order
-    Then I go to the orders dashboard page
-    Then I should not see "Seller Review"
+    Then I go to the account page
+    And I follow "Feedback"
+    Then I should not see "Feedback as a Seller"
 
-  @wip
+@wip @javascript
   Scenario: Show feedback to buyer with some sellers
     Given I sign in as "email@person.com/password"
     Given I have order with all variants by product "The Godfather"
     Given I have for each seller in order some review
-    Then I go to the orders dashboard page
-    And I should see my order
-    And I should see "Seller Review"
-    And I should see each review by seller on order
+    Then I go to the account page
+    Then sleep "300"
+    And I follow "Feedback"
+    # Then I go to the orders dashboard page
+    # And I should see my order
+    # And I should see "Seller Review"
+    # And I should see each review by seller on order
 
   @wip
   Scenario: Show feedback to buyer with one seller

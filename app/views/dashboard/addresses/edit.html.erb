@@ -1,14 +1,23 @@
 <%= render :partial => 'dashboard/shared/profile_tabs', :locals => {:current => "Addresses"} %>
 
-<h1><%= t("edit_address") %></h1>
+<div class="sptCntBus">
+	<div class="top"></div>
+    
+	<div class="cntr">
+          <h2 class="htFix"><%= t("edit_address") %></h2>
 
-<%= render 'shared/error_messages', :target => @address %>
-<%= form_for(@address, :url => dashboard_address_path(@address), :method => :put) do |f| %>
-<%= render :partial => "form", :locals => { :f => f } %>
- <p class="form-buttons">
-   <%= button t("actions.update") %>
-   <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_addresses_path %>
- </p>
-<% end %>
+          <%= render 'shared/error_messages', :target => @address %>
+          <%= form_for(@address, :url => dashboard_address_path(@address), :method => :put, :html => {:class => "contInp contInpFix"}) do |f| %>
+          <%= render :partial => "form", :locals => { :f => f } %>
+                 <div class="bSaveC">
+                   <big>
+                     <button type="submit" class="btn otherbutton"></button>
+                   </big>
+                   <p><%= t("or") %> <%= link_to t("actions.cancel"), dashboard_addresses_path %></p>
+                 </div>
+          <% end %>
+        </div>
+	<div class="btm"></div>
+</div>
 
 

@@ -27,6 +27,10 @@
         <%= link_to t("payment_methods"),  dashboard_payment_methods_path %>
       </li>
 
+      <li<%== ' class="active"' if current == "Upload Photo" %>>
+        <%= link_to t("upload_photo"),  dashboard_upload_photo_path %>
+      </li>
+
       <!--<li<%== ' class="active"' if current == "Terms" %>>
         <%= link_to t("terms_and_conditions"), edit_dashboard_terms_path %>
       </li>-->

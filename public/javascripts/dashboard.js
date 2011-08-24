@@ -165,6 +165,7 @@ jQuery(document).ready(function(){
 	try {
 	$("#websites21").msDropDown({mainCSS:'dd2'});
 	$(".websites21 > select").msDropDown({mainCSS:'dd2'});
+	$(".websites > select").msDropDown({mainCSS:'dd2'});
 	$("#websites22").msDropDown({mainCSS:'dd2'});
 	$("#ver").html($.msDropDown.version);
 	} catch(e) {

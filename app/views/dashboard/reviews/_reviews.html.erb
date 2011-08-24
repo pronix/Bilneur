@@ -13,7 +13,7 @@
             <%= show_stars(review.rating, 'icons/yel_str_sml.png', 'icons/grey_str_sml.png', '<em>') %>
           </div>
           <%= link_approved(review) %>
-          <!-- <a class="itmN" href="#"><b>Item</b>FIXME</a> -->
+          <%= link_to "Delete", dashboard_review_path(review), :method => :delete, :remote => true, :onclick => "$(\"#review_number_review_#{review.id}\").remove();" %>
         </div>
       <% end %>
     </div>

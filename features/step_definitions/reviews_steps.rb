@@ -11,7 +11,6 @@ end
 
 Given /^I have "(\d+)" reviews for product "(.+)" with rating "(\d+)" and approved$/ do |reviews_count, product_name, rating|
   product = Product.find_by_name(product_name)
-  Factory(:review, :product => product, :rating => rating, :approved => true)
   1.upto(reviews_count.to_i) { Factory(:review, :product => product, :rating => rating, :approved => true) }
   product.recalculate_rating
 end
@@ -151,10 +150,54 @@ Then /^I should see all (\d+) review for product "(.+)"$/ do |review_count, prod
   reviews.count.should == 6
   reviews.each do |review|
     find_by_id("review_number_review_#{review.id}").should have_content(review.review)
-    if review.approved
-      find_by_id("review_number_review_#{review.id}").find_link('Approve')
+    # FIXME
+    # if review.approved
+    #   find_by_id("review_number_review_#{review.id}").should have_content('Approve')
+    # end
+  end
+end
+
+Then /^I should see only approved "(.+)" reviews$/ do |status|
+  @user.reviews_as_owner.each do |review|
+    if review.approved == status
+      find_by_id("review_number_review_#{review.id}").should have_content(review.review)
+    else
+      page.should have_no_css("review_number_review_#{review.id}")
     end
   end
+end
+
+Then /^I click "(.+)" for all unapproved review$/ do |link_name|
+  @user.reviews_as_owner.where(:approved => false).each do
+    click_link(link_name)
+  end
+end
+
+Then /^I should not see "(.+)" link in the reviews$/ do |link_name|
+  @user.reviews_as_owner.each do |review|
+    find_by_id("review_number_review_#{review.id}").should_not have_content(link_name)
+  end
+end
+
+Then /^I should see only reviews for "(.+)"$/ do |product_name|
+  Product.find_by_name(product_name).reviews.each do |review|
+    find_by_id("review_number_review_#{review.id}").should have_content(review.review)
+  end
+end
+
+Then /^I delete (\d+) reviews$/ do |review_count|
+  1.upto(review_count.to_i) do
+    click_link('Delete')
+  end
+end
+
+Then /^I should have (\d+) reviews$/ do |review_count|
+  @user.reviews_as_owner.count.should == review_count.to_i
+end
+
+
+Then /^I should not have unapproved reviews$/ do
+  @user.reviews_as_owner.where(:approved => false).should eq([])
 end
 
 

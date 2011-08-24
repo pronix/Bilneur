@@ -13,9 +13,10 @@ module ProductHelper
     return out.html_safe
   end
 
-  def show_user_photo(user)
+  def show_user_photo(user,size='for_review')
+    return image_tag '/images/missing/photo/missing_medium.png' if user.nil? && size == 'medium'
     return image_tag '/images/missing/photo/missing_medium_for_review.png' if user.nil?
-    image_tag user.photo.url(:for_review)
+    image_tag user.photo.url(size.to_sym)
   end
 
   # Check if user early create review by this product

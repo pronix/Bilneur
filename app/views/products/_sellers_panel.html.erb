@@ -8,94 +8,37 @@
     </ul>
 
     <div class="TabbedPanelsContentGroup">
-      <div class="TabbedPanelsContent">
-        <div class="cmboSrt">
-          <form action="">
-            <select id="sort_by_most_recent" tabindex="1" name="">
-              <option value="" selected="selected" title=""> - Sort by most recent - </option>
-              <option value="" title="">option 1</option>
-              <option value="" title="">option 2</option>
-              <option value="" title="">option 3</option>
-              <option value="" title="">option 4</option>
-            </select>
-          </form>
-        </div>
+      <% Variant::CONDITION.each_with_index  do |cdt, index| %>
+            <div class="TabbedPanelsContent">
+              <div class="cmboSrt">
+                <form action="">
+                  <select class="sort_by_most_recent" tabindex="1" name="">
+                    <option value="" selected="selected" title="">FIXME - Sort by most recent - </option>
+                    <option value="" title="">option 1</option>
+                    <option value="" title="">option 2</option>
+                    <option value="" title="">option 3</option>
+                    <option value="" title="">option 4</option>
+                  </select>
+                </form>
+              </div>
 
-        <% best_deal = product.best_variant %>
-        <% product.variants.condition(params[:condition]).each_with_index do |item, i| %>
-
-        <div id="CollapsiblePanel<%= i + 1%>" class="CollapsiblePanel" data-seller="<%= item.seller.id %>">
-          <div class="CollapsiblePanelTab" tabindex="0"></div>
-          <div class="CollapsiblePanelContent dtlPnl ">
-
-            <div class="lft">
-              <b><%= number_to_currency(item.try(:price)) %></b>
-              <i><img src="/images/icons/yel_tick.png" alt="" /></i>
-              <i><img src="/images/icons/qmark.png" alt="" /></i>
-              <span>Shipping:<em>Free</em></span>
-              <span>Virtual Trading:<em>Yes<img src="/images/icons/qmark.png" alt="" /></em></span>
-              <p>&nbsp;</p>
-              <span>Location:<em>California</em></span>
-              <span>Quantity Available:<em><%= item.count_on_hand %></em></span>
+              <% best_deal = product.best_variant %>
+              <% product.variants.condition(cdt).each_with_index do |item, i| %>
+                <%= render "sellers_list", :item => item, :i => i %>
+              <% end %>
+              <div class="tabCnt2">
+                <a href="#">View All</a>
+                <span>FIXME 21 Auctions Starting at</span>
+                <b>FIXME $2.99</b>
+              </div>
+              <div class="tabCnt3">
+                <a href="#">View All</a>
+                <span>FIXME 20 more buyers needed</span>
+                <b>FIXME 50% Group Discount</b>
+              </div>
+              <div class="btm"></div>
             </div>
-
-            <div class="rgt">
-              <i class="imag">
-                <%= image_tag item.seller.photo.url(:for_review) %>
-              </i>
-              <span><%= item.seller.firstname %></span>
-              <em>Reliability Score</em>
-              <b>100%</b><i class="tg"><img src="/images/icons/qmark.png" alt="" /></i><!-- FIXME -->
-            </div>
-
-            <div class="shares">
-              <ul>
-                <li class="lst1">
-                  <%= link_to "Seller Information", about_seller_path(item.seller) %>
-                </li><!-- FIXME -->
-                <li class="lst2">
-                  <%= link_to "Return Policy", return_policy_seller_path(item.seller) %>
-                </li><!-- FIXME -->
-                <li class="lst3">
-                  <%= link_to "Feedback", feedback_seller_path(item.seller) %>
-                </li><!-- FIXME -->
-                <li class="lst4">
-                  <%= link_to "Tweet About This Seller", "http://twitter.com/share?url=#{about_seller_url(item.seller)}" %>
-                </li><!-- FIXME -->
-                <li class="lst6">
-                  <a href="#">Add Seller To Favorites</a>
-                </li><!-- FIXME -->
-              </ul>
-            </div>
-
-            <div class="cntcts">
-              <p>
-                <%= render :partial => "shared/cart_form", :object => item %>
-              </p>
-              <span>
-                <%= link_to "View Seller's Store", products_seller_path(item.seller), :class => "vwSStr" %>
-                <%= link_to "Contact Seller", new_message_path(item.seller), :class => "cntSlr" %>
-              </span>
-
-            </div>
-
-          </div>
-        </div>
-        <% end %>
-        <div class="tabCnt2">
-          <a href="#">View All</a>
-          <span>FIXME 21 Auctions Starting at</span>
-          <b>FIXME $2.99</b>
-        </div>
-        <div class="tabCnt3">
-          <a href="#">View All</a>
-          <span>FIXME 20 more buyers needed</span>
-          <b>FIXME 50% Group Discount</b>
-        </div>
-        <div class="btm"></div>
-      </div>
-      <div class="TabbedPanelsContent">Content 2</div>
-      <div class="TabbedPanelsContent">Content 3</div>
+      <% end %>
     </div>
   </div>
 </div>

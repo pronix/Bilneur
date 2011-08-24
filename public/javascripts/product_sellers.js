@@ -40,13 +40,16 @@ $(document).ready(function(){
   );
   
   try{
-    $("#sort_by_most_recent").msDropDown({mainCSS:'dd2'});
+    $(".sort_by_most_recent").msDropDown({mainCSS:'dd2'});
     $("#ver").html($.msDropDown.version);
   } catch(e) {
     alert("Error: "+e.message);
   }
 
-  var CollapsiblePanel1 = new Spry.Widget.CollapsiblePanel("CollapsiblePanel1");
+
+  $(".CollapsiblePanel").each(function() {
+    var CollapsiblePanel = new Spry.Widget.CollapsiblePanel($(this).attr('id'));
+  });
 
   var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
   var TabbedPanels2 = new Spry.Widget.TabbedPanels("TabbedPanels2");

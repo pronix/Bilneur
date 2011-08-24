@@ -12,6 +12,7 @@ class SellersController < Spree::BaseController
 
   def quote
     @quote = @seller.quotes.by_product_and_id(Product.find_by_permalink(params[:product_id]), params[:quote_id])
+    # FIXME 
     @reviews = @quote.product.reviews.paginate_reviews(params[:per_page])
     @product_properties = @quote.product.product_properties
   end

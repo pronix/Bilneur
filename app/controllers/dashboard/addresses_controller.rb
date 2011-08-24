@@ -4,6 +4,7 @@ class Dashboard::AddressesController < Dashboard::ApplicationController
   rescue_from ActiveRecord::RecordNotFound, :with => :render_404
 
   def index
+    @address = Address.default
   end
 
   def show

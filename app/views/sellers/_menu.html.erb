@@ -13,7 +13,9 @@
           </span>
         </li>
         <li class="TabbedPanelsTab" tabindex="0">
-          <span>Feedback</span>
+          <span class="TabbedPanelsTabSelected">
+            <%= link_to_unless_current "Feedback", {:action => 'feedback'}, {:class => "TabbedPanelsTab"}  %>
+          </span>
         </li>
         <li class="TabbedPanelsTab" tabindex="0">
           <span>Return Policy </span>

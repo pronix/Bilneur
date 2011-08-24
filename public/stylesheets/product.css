@@ -388,3 +388,37 @@
     .rts1 .skBlu { float:left; width:71px; height:21px; color:#fff; line-height:21px;text-decoration:none; margin-left:15px; margin-top:3px; background:url('/images/forms/sky_bg.png') no-repeat;}
         .rts1 .bLu { float:left;width:85px;height:21px; color:#fff; text-decoration:none;line-height:21px;margin-top:3px;background:url('/images/forms/blue_bg.png') no-repeat;}
 .colsPC .bdr5p { margin-top:0; background:#959595;}
+
+/* Return Policy */
+.rtrnUl {float:left; width:98%; margin-left:2%; font-size:12px; color:#757879;}
+.rtrnUl li {float:left; width:95%; padding:0 0 5px 15px; background:url('../../images/icons/rtrn_li_blt.png') left 3px no-repeat;}
+.slrFdPad {margin-left:20px; *padding-left:20px;}
+    .slrFdPad h2 { float:left; width:98%; margin:25px 0 0 0; color:#00adef; font-size:20px;}
+    .pPgCmbo { float:right; margin:-20px 45px 0 0}
+        .pPgCmbo b { float:right; margin:3px 8px; font-weight:normal; color:#838383;}
+        
+        /* Combo Option 8 */
+        .cmbo8 {float:right;width:58px!important;position:relative;}
+            .cmbo8 .dd2 {display: inline-block !important;float: left;font-family: Arial,Helvetica,sans-serif;font-size: 11px;height: 23px;margin-top:0; margin-left:0px;text-align: left;width:58px !important;}
+                .cmbo8 .dd2 .ddTitle {background: url("../../images/forms/fdbck_top_cmbo.png") no-repeat;cursor: default;height: 24px;overflow: hidden;padding-left: 10px;text-indent: 0; text-shadow:0 1px #fff; font-weight:bold;}
+                    .cmbo8 .dd2 .ddTitle span.arrow {float: right;width:17px;height: 24px;position:relative;right:0px;top:0px;background:url("../../images/forms/fdbck_top_cmbo_ico.png") no-repeat 0 0!important;cursor: pointer;display: inline-block;}
+                    .cmbo8 #websites1_title:hover span.arrow {background-position: 0 0!important;}
+                    .cmbo8 .dd2 .ddTitle span.ddTitleText {color:#626262;font-size:11px;line-height:24px;overflow:hidden;text-indent:1px;}
+                    .cmbo8 .dd2 .ddChild {position:absolute;top:24px !important;width:56px !important;margin:0;display:none;font-size:11px;overflow-x:hidden!important;overflow-y:auto;z-index:1000;}
+        /* End Combo Option 8 */
+
+.fdBack { width:611px; height:86px; margin:0; padding-bottom:10px; background:url('../../images/bgs/slr_fdback_bg.png') right top no-repeat!important;}
+    .rtr { width:82px; height:83px; margin-top:5px; position:relative;}
+    .fdBack .smlRtng { margin-top:2px;} 
+        .rtr span { position:absolute; z-index:1; width:82px; height:18px; background:url('../../images/bgs/rtr_btm_bg.png') no-repeat; left:0; bottom:0; text-align:center; font-size:12px; font-style:normal; color:#4d4d4d; font-weight:bold; line-height:18px;}
+    .fdBack p {width:470px; font-size:12px; color:#787878; margin:18px 0 0 45px; padding-bottom:6px; background:url('../../images/forms/fdback_line.png') center bottom no-repeat;} 
+    .fdBack .itmN { float:right; color:#00adef; margin:2px 25px 0 0;}
+    .smlRtng { float:left; width:150px; margin:5px 0 0 45px;}
+    .fdBack1 { width:166px; height:60px;background:url('../../images/bgs/left_fdback_bg.png') no-repeat;}
+        .fdBack1 a { float:left; width:100%; margin-top:10px; text-align:center; font-size:11px; color:#717171;}
+    .blogFtr {width:100%;padding:15px 0;}
+        .blogPg { margin-left:25px;ciolor:#777;}
+            .blogPg p { height:28px;line-height:28px;}
+                .blogPg p b { font-size:16px;padding:0 5px;}
+        .gry { color:#707070; font-size:16px!important;}
+.fdBck,.fdBck h2,.fdBack,.rtr,.fdBack p,.fdBack1,.blogFtr, .blogPg, .blogPg p {float:left;}

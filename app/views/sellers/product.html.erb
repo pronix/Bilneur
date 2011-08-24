@@ -1,10 +1,106 @@
-<% @body_id = 'product-details' %>
-<% stylesheet "slider/style", "slider/jquery", "slider/SpryTabbedPanels2", "slider/SpryTabbedPanels3", "product" %>
-<% javascript "slider/jquery_002", "slider/jquery_003", "SpryTabbedPanels", "product_detail", "like_review" %>
+<div id="TabbedPanels1" class="TabbedPanels">
+  <%= render "menu" %>
+  <div class="TabbedPanelsContentGroup">
+    <div class="TabbedPanelsContent">
+    	<div class="mTbFx">
+      	<div class="srchBar">
+              <form action="">
+                  <div class="searchTxt">
+                      <input type="text" value="Search Blog" onfocus="if(this.value=='Search Blog') this.value=''" onblur="if(this.value=='') this.value='Search Blog'" />
+                      <input type="submit" value="Update Results" />
+                  </div>
+              </form>
+            </div>
+    	</div>
+      <div id="TabbedPanels3" class="TabbedPanels">
+          <ul class="TabbedPanelsTabGroup">
+            <li class="TabbedPanelsTab" tabindex="0"><span>All Products</span></li>
+            <li class="TabbedPanelsTab" tabindex="0"><span>Auctions</span></li>
+            <li class="TabbedPanelsTab" tabindex="0"><span>Volume Price</span></li>
+            <li class="TabbedPanelsTab" tabindex="0"><span>Group Sales</span></li>
+            <li class="TabbedPanelsTab" tabindex="0"><span>Fixed Price</span></li>
+          </ul>
+          <div class="TabbedPanelsContentGroup">
+            <div class="TabbedPanelsContent" style="position:relative;">
+              <div class="jNt">
+                
+                
+                <div class="cntTop"></div>
+                <div class="cntCntr">
+                  <div class="favCmnt">
+                    <span><%= @product.name %></span>
+                      <div>
+                       <%= link_to "Sell A Product Like this", "", :class=>"seAll" %>
+                
+                       <div class="social" class="fbLike">
+                            <%= fb_like %>
+                            
+                          </div>
+                          <div class="social">
+                            <%= plus_one %>
+                          </div>
+                          <%= link_to "Add to Favorites", "", :class=>"add social" %>
+                      </div>
+                  </div>
+                
+                  <div class="sldrBnr">
+                    <div id="gallery" class="ad-gallery">
+                      <div class="ad-image-wrapper">
+                        <%= image_tag "slide/loader.gif", :style => "display:none;", :class => "ad-loader" %>
+                      </div>
+                
+                      <div class="ad-nav">
+                        <div class="ad-thumbs">
+                          <ul class="ad-thumb-list">
+                          <% @product.images.each do |image| %>
+                            <li>
+                              <%= link_to image_tag(image.attachment.url(:mini), :alt=>""), image.attachment.url(:@product) %>
+                            </li>
+                          <% end %>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="bnrFolw">
+                      <ul>
+                          <li><%= link_to image_tag("icons/bnr_ico_twtr.png"), "" %></li>
+                          <li><%= link_to image_tag("icons/bnr_ico_ggl.png"), "" %></li>
+                          <li><%= link_to image_tag("icons/bnr_ico_fb.png"), "" %></li>
+                          <li><%= link_to image_tag("icons/bnr_ico_eml.png"), "" %></li>
+                          <li><%= link_to image_tag("icons/bnr_ico_lnk.png"), "" %></li>
+                        </ul>
+                    </div>
+                  </div>
+                
+                  <%= render "products/prd_tabs", :product => @product %>
+                  <%= render "products/prd_rating", :product => @product %>
+                </div>
+              
+                <div class="cntBtm"></div>
+              </div>
+    </div>
+      </div>
+</div>
+</div>
+</div>
+</div>
 
-<div class="cntTop"></div>
-<div class="cntCntr">
-  <div class="favCmnt">
+
+<div class="col2 col2SlPrd prdctDPg slrPrdctPg slrPrdctPg">
+  <div class="blogFilters">
+    <%= render "summary" %>
+  </div>
+</div>
+
+
+
+<!--<% @body_id = '@product-details' %>
+<% stylesheet "slider/style", "slider/jquery", "slider/SpryTabbedPanels2", "slider/SpryTabbedPanels3", "@product" %>
+<% javascript "slider/jquery_002", "slider/jquery_003", "SpryTabbedPanels", "@product_detail", "like_review" %>
+
+<div class="cnttop"></div>
+<div class="cntcntr">
+  <div class="favcmnt">
     <span><%= @product.name %></span>
       <div>
        <%= link_to "Sell A Product Like this", "", :class=>"seAll" %>
@@ -31,7 +127,7 @@
           <ul class="ad-thumb-list">
           <% @product.images.each do |image| %>
             <li>
-              <%= link_to image_tag(image.attachment.url(:mini), :alt=>""), image.attachment.url(:product) %>
+              <%= link_to image_tag(image.attachment.url(:mini), :alt=>""), image.attachment.url(:@product) %>
             </li>
           <% end %>
           </ul>
@@ -47,8 +143,7 @@
           <li><%= link_to image_tag("icons/bnr_ico_lnk.png"), "" %></li>
         </ul>
     </div>
-  </div>
+  </div>  <%= render "products/prd_rating" %>
+</div>-->
 
-  <%= render "products/prd_rating" %>
-</div>
 

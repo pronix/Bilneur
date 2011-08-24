@@ -6,18 +6,24 @@
         <b>BUSINESS INFORMATION</b>
         <p>
           <span><a href="#"><%= current_user.full_name %></a></span><!-- FIXME -->
-          <span><%= link_to "About You/ Your Business", dashboard_sellers_path %></span><!-- FIXME -->
+          <span>
+            <%= link_to "About You/ Your Business", dashboard_sellers_path %>
+          </span>
           <span><a href="#">LINK Contact Info</a></span><!-- FIXME -->
-          <span><a href="#">LINK Create FAQ's</a></span><!-- FIXME -->
+          <span>
+            <%= link_to "Create FAQs", dashboard_sellers_path %>
+          </span>
         </p>
       </div>
       <div class="pnl pnl2 pnlFix">
         <b>POLICIES</b>
         <p>
           <span><a href="#">LINK Shipping policy</a></span><!-- FIXME -->
-          <span><a href="#">LINK Return policy</a></span><!-- FIXME -->
           <span>
-            <%= link_to t("terms_and_conditions"), edit_dashboard_terms_path %>
+            <%= link_to "Return policy", return_policy_dashboard_sellers_path %>
+          </span><!-- FIXME -->
+          <span>
+            <%= link_to t("terms_and_conditions"), dashboard_sellers_path %>
           </span>
         </p>
       </div>

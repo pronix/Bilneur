@@ -1,7 +1,7 @@
 class Dashboard::SellersController < Dashboard::ApplicationController
   before_filter :load_and_authorize_resource
   before_filter lambda{ redirect_to about_you_dashboard_sellers_path and return }, :only => :show
-  before_filter :for_staic_data, :only => [:about_you, :return_policy]
+  before_filter :for_staic_data, :only => [:about_you, :return_policy] #FIXME
 
   def show
   end

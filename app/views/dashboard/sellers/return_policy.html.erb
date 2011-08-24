@@ -1,0 +1,27 @@
+<%= render :partial => 'dashboard/shared/seller_profile_tabs', :locals => {:current => "Return Policy"} %>
+
+<div class="sptCntBus">
+	<div class="top"></div>
+	<div class="cntr">
+    	<h2>Return / Refund Policy</h2>
+        
+    <%= form_for :static_data, :url => return_policy_dashboard_sellers_path, :html => { :method => :put } do |f| %>
+        <div class="busAbtYou">
+        	<p>State your Return & Refund policies clearly.</p>
+            <div class="bAY">
+              <div class="txtA">
+                <%= f.text_area :return_policy %>
+              </div>
+                <em>This information will be displayed in your public seller profile and would be visible to all users.</em>
+            </div>
+            <div class="bSaveC">
+              <big>
+                <%= f.submit '', :class => "btn otherbutton" %>
+              </big>
+            </div>
+        </div>
+      <% end %>
+    </div>
+	<div class="btm"></div>
+</div>
+

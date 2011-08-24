@@ -7,11 +7,9 @@ class SellerAbility
     if user.has_role?("seller") || user.has_role?("admin")
       can :access, :quote
       can :access, :seller
-      can :access, :about
     else
       cannot :access, :quote
       cannot :access, :seller
-      cannot :access, :about
     end
 
     # if !user.has_role?('user') and Spree::Reviews::Config[:require_login]

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   match "/account" => "dashboard/users#show"
   match "/account/change_password" => "dashboard/users#change_password", :via => [:get, :put]
+  match "/dashboard/upload_photo" => "dashboard/users#upload_photo", :via => [:get, :put]
   match "/products/deals/:id(/:condition)" => "products#quotes", :as => :product_quotes
   match "/products/deals/:id/:quote_id" => "products#quote", :as => :product_quote
   match "/products/like_review" => 'products#like_review', :via => :post
@@ -55,8 +56,14 @@ Rails.application.routes.draw do
 
     resource :secrets
 
-    match "/abouts" => "abouts#edit", :via => :get
-    match "/abouts" => "abouts#update", :via => :put
+    resource :sellers do
+      member do
+        get :about_you
+        put :about_you
+        get :return_policy
+        put :return_policy
+      end
+    end
 
     resources :reviews do
       member do

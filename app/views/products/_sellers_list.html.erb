@@ -47,7 +47,7 @@
                 <%= render :partial => "shared/cart_form", :object => item %>
               </p>
               <span>
-                <%= link_to "View Seller's Store", products_seller_path(item.seller), :class => "vwSStr" %>
+                <%= link_to "View Seller's Store", store_seller_path(item.seller), :class => "vwSStr" %>
                 <%= link_to "Contact Seller", new_message_path(item.seller), :class => "cntSlr" %>
               </span>
 

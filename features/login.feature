@@ -66,10 +66,7 @@ Feature: Login
   Scenario: Change password in admin page
     Given I am signed up as "email@person.com/password"
     When I sign in as "email@person.com/password"
-    And I follow "My Account"
-    Then I should be on the "email@person.com" account page
-    Then I should see "My Account"
-    Then I follow "Change Password"
+    And I go to the account change password page
     Then I should be on the current user edit password page
     And I fill in "user_current_password" with "password"
     And I fill in "user_password" with "moloko"

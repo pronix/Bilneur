@@ -5,14 +5,13 @@
     <i>
       <%= image_tag current_user.photo.url(:for_review) %>
     </i>
-    <%= link_to edit_dashboard_account_path do %>
+    <%= link_to dashboard_upload_photo_path do %>
     <img src="/images/forms/up_btn.png" alt=""> <!-- FIXME -->
     <% end %>
 
   </div>
-	<div class="btm"></div>
-  <%= link_to t("change_password"), account_change_password_path, :class => 'vsp' %>
-
+  <div class="btm"></div>
+  
   <% if current_user.has_role?("seller") %>
   <%= link_to image_tag('/images/forms/vsp_btn.png'), products_seller_path(current_user), :class => "vsp" %>
 </a>

@@ -78,7 +78,7 @@
     .vwer { margin:37px 0 0 4px;}
       .vwer .top { height:30px; background:url('/images/bgs/vwer_top.png') no-repeat; margin-left: -1px;}
         .vwer .top b { width:95%; line-height:30px; margin-left:14px; color:#4d4d4d;}
-      .vwer .cntr { position:relative; width:277px; height:116px; border-right:1px solid #b3b3b3; border-bottom:2px solid #b3b3b3; border-left:1px solid #b3b3b3;} 
+      .vwer .cntr { position:relative; width:276px; height:116px; border-right:1px solid #b3b3b3; border-bottom:2px solid #b3b3b3; border-left:1px solid #b3b3b3;} 
           .vwer .cntr i { float:left; height:100px; margin:0 15px 0 11px; padding-top:16px;}
           .vwer .cntr span { position:absolute; width:82px; height:18px; text-align:center; left:11px; top:81px; background:url('/images/bgs/rtr_btm_bg.png') no-repeat;}
           .vwer .cntr p { position:absolute; left:80px; top:13px; width:188px; height:89px; background:url('/images/bgs/pop_bg.png') no-repeat;}
@@ -363,7 +363,7 @@
     
 /* Buyer Product Details */
 .jNt { float:left; width:641px; margin:0 0 0 15px;}
-    .col2 .vwer { float:left; width:260px; border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px; border:1px solid #ccc;}
+    .col2 .vwer { float:left; border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px; }
 .mag0 { margin:10px 0 0 0!important; width:263px!important;}
     .mag0 p { left:70px!important;}
 

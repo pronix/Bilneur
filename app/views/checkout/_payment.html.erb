@@ -81,7 +81,7 @@
       </div>
       <% end %>
 
-      <% if (@paypal_payment_method = PaymentMethod.paypal(:front_end)) %>
+      <% if (@paypal_payment_method = (@order.virtual? ? PaymentMethod.vpaypal(:front_end) : PaymentMethod.paypal(:front_end))) %>
       <h3>Pay with Paypal</h3>
       <div class="payWP">
         <button class="checkout" name="paypal" value ="<%= @paypal_payment_method.id %>" >

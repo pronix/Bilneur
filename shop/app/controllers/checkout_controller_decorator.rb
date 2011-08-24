@@ -94,9 +94,10 @@ CheckoutController.class_eval do
     if params[:paypal] && (params[:state] == "payment")
       if params[:order][:bill_address_attributes]
         order_params = {:order => {:bill_address_attributes => params[:order][:bill_address_attributes]}}
-        if @order.update_attributes(order_params)
+        if @order.update_attributes(order_params) &&
+            (@payment_method = (@order.virtual? ? PaymentMethod.vpaypal(:front_end) : PaymentMethod.paypal(:front_end)))
           load_order
-          redirect_to paypal_payment_order_checkout_url(@order, :payment_method_id => PaymentMethod.paypal(:front_end)) and return
+          redirect_to paypal_payment_order_checkout_url(@order, :payment_method_id => @payment_method.id) and return
          end
       end
     end

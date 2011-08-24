@@ -47,3 +47,12 @@ PayPal: test account
 > > login: visent_1314081983_per@gmail.com
 
 > > password: 314110980
+
+Payment Method
+--------------
+
+> Credit card must be named "Credit Card"
+
+> PayPal must be named "PayPay"
+
+> PayPal for virtual must be named "vPayPal" and "no shipping"

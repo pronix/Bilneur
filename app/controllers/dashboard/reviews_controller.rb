@@ -33,7 +33,7 @@ class Dashboard::ReviewsController < Dashboard::ApplicationController
   def filter_params
     @state = params[:state]
     @reviews = case params[:state]
-               when "left" then current_user.reviews
+               when "left" then current_user.my_reviews
                when "as_seller" then current_user.buyer_reviews
                when "product" then current_user.reviews_as_owner
                else current_user.seller_reviews
@@ -44,7 +44,6 @@ class Dashboard::ReviewsController < Dashboard::ApplicationController
     @reviews = @reviews.paginate(:per_page => (params[:per_page]||15), :page => params[:page])
     # For display some selectboxes
     @select_products = true if params[:state] == "product"
-    puts @reviews.inspect
   end
 
   def recalculate_rating

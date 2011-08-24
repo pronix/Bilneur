@@ -246,14 +246,14 @@
 .TabbedPanelsContent {padding: 4px;}
 
 .slrPrdctPg .mTabs .TabbedPanels {/*position:absolute;top:77px;left:98px;*//*margin: 0px;padding: 0px;float: left;clear: none;*/width: 100%;}
-.slrPrdctPg #TabbedPanels1 .TabbedPanelsTabGroup {/*position:absolute;top:255px;left:8px;*/float:left;width:100%;margin-top: 0px;padding: 0px;margin-left:0;padding-bottom:8px;}
+.slrPrdctPg #TabbedPanels0 .TabbedPanelsTabGroup,.slrPrdctPg #TabbedPanels0 .TabbedPanelsTabGroup  {/*position:absolute;top:255px;left:8px;*/float:left;width:100%;margin-top: 0px;padding: 0px;margin-left:0;padding-bottom:8px;}
 .slrPrdctPg .mTabs .TabbedPanelsTab {position: relative;top:0;float: left; width:95px;height:36px;font-size:12px;color:#fff;/*padding: 4px 10px;*/margin:0; border-right:1px solid #666;font-weight:bold;background:url('/images/bgs/mtabg_bg.png') ;list-style: none;-moz-user-select: none;-khtml-user-select: none;cursor: pointer;}
-.slrPrdctPg #TabbedPanels1 .TabbedPanelsTab span { line-height:36px;}
-.slrPrdctPg #TabbedPanels1 .TabbedPanelsTabHover {color:#fff;background:url('/images/bgs/mtab_bg_h.png');}
-.slrPrdctPg #TabbedPanels1 .TabbedPanelsTabSelected {color:#fff;background:url('/images/bgs/mtab_bg_h.png');}
-.slrPrdctPg #TabbedPanels1 .TabbedPanelsTab a {color: black;text-decoration: none;}
-.slrPrdctPg #TabbedPanels1 .TabbedPanelsContentGroup {/*position:absolute;border-left: solid 1px #CCC;border-bottom: solid 1px #CCC;border-top: solid 1px #999;border-right: solid 1px #999;background-color: #EEE;*/}
-.slrPrdctPg #TabbedPanels1 .TabbedPanelsContent {padding:0!important;}
+.slrPrdctPg #TabbedPanels0 .TabbedPanelsTab span { line-height:36px;}
+.slrPrdctPg #TabbedPanels0 .TabbedPanelsTabHover {color:#fff;background:url('/images/bgs/mtab_bg_h.png');}
+.slrPrdctPg #TabbedPanels0 .TabbedPanelsTabSelected {color:#fff;background:url('/images/bgs/mtab_bg_h.png');}
+.slrPrdctPg #TabbedPanels0 .TabbedPanelsTab a {color: black;text-decoration: none;}
+.slrPrdctPg #TabbedPanels0 .TabbedPanelsContentGroup {/*position:absolute;border-left: solid 1px #CCC;border-bottom: solid 1px #CCC;border-top: solid 1px #999;border-right: solid 1px #999;background-color: #EEE;*/}
+.slrPrdctPg #TabbedPanels0 .TabbedPanelsContent {padding:0!important;}
 
 .slrPrdctPg .mTabs .TabbedPanels {/*position:absolute;top:77px;left:98px;*//*margin: 0px;padding: 0px;float: left;clear: none;*/width:100%;}
 .slrPrdctPg #TabbedPanels3 .TabbedPanelsTabGroup {/*position:absolute;top:255px;left:8px;*/float:left;width:100%;margin-top: 0px;padding: 0px;margin-left:0;padding-bottom:0;}
@@ -263,7 +263,7 @@
 .slrPrdctPg #TabbedPanels3 .TabbedPanelsTabSelected {color:#fff;background:url('/images/bgs/int_tab_h.png');}
 .slrPrdctPg #TabbedPanels3 .TabbedPanelsTab a {color: black;text-decoration: none;}
 .slrPrdctPg #TabbedPanels3 .TabbedPanelsContentGroup {/*position:absolute;border-left: solid 1px #CCC;border-bottom: solid 1px #CCC;border-top: solid 1px #999;border-right: solid 1px #999;background-color: #EEE;*/}
-.slrPrdctPg #TabbedPanels1 .TabbedPanelsContent {padding: 4px;}
+.slrPrdctPg #TabbedPanels0 .TabbedPanelsContent {padding: 4px;}
 
 
 
@@ -276,4 +276,17 @@
 .fdBck .TabbedPanelsTab a {color: black;text-decoration: none;}
 .fdBck .TabbedPanelsContentGroup { clear:none; float:left;}
 .slrPrdctPg #TabbedPanels1 .fdBck .TabbedPanelsContent { float:left; width:608px!important; border:1px solid #e4e4e4!important; padding:10px!important; background:#f3f3f3!important;}
+
+
+
+
+.prdctTabs1 .TabbedPanels {width: 100%;}
+.prdctTabs1 .TabbedPanelsTabGroup {float:left;width:100%;margin-top: 0px;padding: 0px;margin-left:15px;padding-bottom:8px;}
+.prdctTabs1 .TabbedPanelsTab {position: relative;top: 1px;float: left;width:116px!important;height:26px!important;font-size:12px;color:#fff;margin: 0px 4px 0px 0px!important;font-weight:bold;background:url('/images/forms/prdct_tab_bg_n.png') no-repeat!important;list-style: none;-moz-user-select: none;-khtml-user-select: none;cursor: pointer; border:none!important;}
+.prdctTabs1 .TabbedPanelsTab span { line-height:26px!important;}
+.prdctTabs1 .TabbedPanelsTabHover {color:#fff!important;background:url('/images/forms/prdct_tab_bg_h.png') no-repeat!important;}
+.prdctTabs1 .TabbedPanelsTabSelected {color:#fff!important;background:url('/images/forms/prdct_tab_bg_h.png') no-repeat!important;}
+.prdctTabs1 .TabbedPanelsTab a {color: black!important;text-decoration: none;}
+.prdctTabs1 .TabbedPanelsContentGroup {}
+.prdctTabs1 .TabbedPanelsContent {padding: 4px;}
 

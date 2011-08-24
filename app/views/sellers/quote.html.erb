@@ -1,30 +1,16 @@
-<div id="TabbedPanels1" class="TabbedPanels">
+<% @body_id = 'product-details' %>
+<% stylesheet "slider/style", "slider/jquery", "slider/SpryTabbedPanels2", "slider/SpryTabbedPanels3", "product" %>
+<% javascript "slider/jquery_002", "slider/jquery_003", "SpryTabbedPanels", "product_detail", "like_review" %>
+<div class="col1 slrPrdctPg prdctDPg">
+  <div class="mTabs">
+<div id="TabbedPanels0" class="TabbedPanels">
   <%= render "menu" %>
   <div class="TabbedPanelsContentGroup">
     <div class="TabbedPanelsContent">
-    	<div class="mTbFx">
-      	<div class="srchBar">
-              <form action="">
-                  <div class="searchTxt">
-                      <input type="text" value="Search Blog" onfocus="if(this.value=='Search Blog') this.value=''" onblur="if(this.value=='') this.value='Search Blog'" />
-                      <input type="submit" value="Update Results" />
-                  </div>
-              </form>
-            </div>
-    	</div>
       <div id="TabbedPanels3" class="TabbedPanels">
-          <ul class="TabbedPanelsTabGroup">
-            <li class="TabbedPanelsTab" tabindex="0"><span>All Products</span></li>
-            <li class="TabbedPanelsTab" tabindex="0"><span>Auctions</span></li>
-            <li class="TabbedPanelsTab" tabindex="0"><span>Volume Price</span></li>
-            <li class="TabbedPanelsTab" tabindex="0"><span>Group Sales</span></li>
-            <li class="TabbedPanelsTab" tabindex="0"><span>Fixed Price</span></li>
-          </ul>
           <div class="TabbedPanelsContentGroup">
             <div class="TabbedPanelsContent" style="position:relative;">
               <div class="jNt">
-                
-                
                 <div class="cntTop"></div>
                 <div class="cntCntr">
                   <div class="favCmnt">
@@ -52,9 +38,9 @@
                       <div class="ad-nav">
                         <div class="ad-thumbs">
                           <ul class="ad-thumb-list">
-                          <% @quote.images.each do |image| %>
+                          <% @quote.product.images.each do |image| %>
                             <li>
-                              <%= link_to image_tag(image.attachment.url(:mini), :alt=>""), image.attachment.url(:@quote) %>
+                              <%= link_to image_tag(image.attachment.url(:mini), :alt=>""), image.attachment.url(:product) %>
                             </li>
                           <% end %>
                           </ul>
@@ -72,16 +58,20 @@
                     </div>
                   </div>
                 
-                  <%= render "products/prd_tabs", :product => @quote.product %>
+                  <div class="prdctTabs1">
+                      <%= render "products/prd_tabs", :product => @quote.product %>
+                  </div>
                   <%= render "products/prd_rating", :product => @quote.product %>
                 </div>
               
                 <div class="cntBtm"></div>
+                </div>
               </div>
-    </div>
+            </div>
+          </div>
+        </div>
       </div>
-</div>
-</div>
+    </div>
 </div>
 </div>
 

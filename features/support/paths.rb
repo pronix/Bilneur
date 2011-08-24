@@ -77,6 +77,8 @@ module NavigationHelpers
       dashboard_sales_path
     when /the about dashboard sellers page/
       about_you_dashboard_sellers_path
+    when /the seller "(.+)" srore products/
+      store_seller_path(User.find_by_email($1))
     when /^the home\s?page$/
       '/'
 

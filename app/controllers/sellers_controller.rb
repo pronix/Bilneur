@@ -10,9 +10,9 @@ class SellersController < Spree::BaseController
     @quotes = @seller.quotes.paginate(:page => params[:page], :per_page => params[:per_page])
   end
 
-  def product
-    @product = @seller.products.find_by_permalink(params[:product_id])
-    @reviews = @product.reviews.paginate_reviews(params[:per_page])
+  def quote
+    @quote = @seller.quotes.by_product_and_id(Product.find_by_permalink(params[:product_id]), params[:quote_id])
+    # @reviews = @quote.product.reviews.paginate_reviews(params[:per_page])
   end
 
   def about

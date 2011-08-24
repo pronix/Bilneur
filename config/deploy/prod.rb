@@ -90,7 +90,6 @@ namespace :thinking_sphinx do
     puts "Stopping thinking sphinx searchd server"
     run "cd #{current_path}; RAILS_ENV=production bundle exec rake thinking_sphinx:configure"
     run "cd #{current_path}; RAILS_ENV=production bundle exec rake ts:stop"
-    run "chown -R www-data:www-data #{shared_path}/searchd.production.pid"
   end
 
   desc "Restarts the thinking sphinx searchd server"

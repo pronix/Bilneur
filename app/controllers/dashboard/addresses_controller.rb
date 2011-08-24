@@ -20,7 +20,15 @@ class Dashboard::AddressesController < Dashboard::ApplicationController
     else
       render :new
     end
+  end
 
+  def make_primary
+    if (@address = current_user.addresses.find(params[:id]))
+      @address.primary!
+      flash.notice = "Address set as primary"
+    end
+
+    redirect_to dashboard_addresses_path
   end
 
   def edit

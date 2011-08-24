@@ -1,43 +1,44 @@
 <%= render :partial => 'dashboard/shared/profile_tabs', :locals => {:current => "Addresses"} %>
 <div class="sptCntBus">
 	<div class="top"></div>
-    
+
 	<div class="cntr">
-          <h2 class="htFix">Add or Update your Address</h2>
+    <h2 class="htFix">Add or Update your Address</h2>
 
 
-        <% current_user.addresses.each do |address| %>
-          <div class="bcY1">
-            <h6><%== "Primary " if address.primary? %> Address:</h6>
-              <p>
-                <b><%= "#{address.firstname} #{address.lastname}" %></b><br />
-                <%= address.address1 %><br />
-                <%= address.address2 %><br />
-                <%= "#{address.city},  #{address.state.name} - #{address.zipcode}" %><br />
-                <%= address.country.name %><br />
-                Phone: <%= address.phone %>
-              </p>
+    <% current_user.addresses.each do |address| %>
+    <div class="bcY1">
+      <h6><%== "Primary " if address.primary? %> Address:</h6>
+      <p>
+        <b><%= "#{address.firstname} #{address.lastname}" %></b><br />
+        <%= address.address1 %><br />
+        <%= address.address2 %><br />
+        <%= "#{address.city},  #{address.state.name} - #{address.zipcode}" %><br />
+        <%= address.country.name %><br />
+        Phone: <%= address.phone %>
+      </p>
 
-              <%= link_to t(:edit), edit_dashboard_address_path(address) %>
-              <%= link_to "Delete", dashboard_address_path(address), :method => :delete, :confirm => t(:are_you_sure) %>
-              <% unless address.primary? %> <a class="makPrm" href="#">Make Primary</a><% end %>
-          </div>
-        <% end %>
+      <%= link_to t(:edit), edit_dashboard_address_path(address) %>
+      <%= link_to "Delete", dashboard_address_path(address), :method => :delete, :confirm => t(:are_you_sure) %>
+      <%= link_to "Make Primary", make_primary_dashboard_address_path(address), :class => "makPrm" unless address.primary? %>
 
-        <!-- NEW ADDRESS FORM -->
-        <%= form_for(:address, :url => dashboard_addresses_path, :html => {:class => "contInp contInpFix"}) do |f| %>
-          <%= render :partial => "form", :locals => { :f => f } %>
-           <div class="bSaveC">
-              <big>
-                <button type="submit" class="btn otherbutton"></button>
-              </big>
-              <p class="form-buttons">
-                <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_addresses_path %>
-              </p>
-           </div>
-        <% end %>
-        <!-- END NEW ADDRESS FORM -->
     </div>
-    
+    <% end %>
+
+    <!-- NEW ADDRESS FORM -->
+    <%= form_for(:address, :url => dashboard_addresses_path, :html => {:class => "contInp contInpFix"}) do |f| %>
+    <%= render :partial => "form", :locals => { :f => f } %>
+    <div class="bSaveC">
+      <big>
+        <button type="submit" class="btn otherbutton"></button>
+      </big>
+      <p class="form-buttons">
+        <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_addresses_path %>
+      </p>
+    </div>
+    <% end %>
+    <!-- END NEW ADDRESS FORM -->
+  </div>
+
 	<div class="btm"></div>
 </div>

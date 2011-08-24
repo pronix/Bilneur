@@ -1,7 +1,25 @@
 <%= render :partial => 'dashboard/shared/profile_tabs', :locals => {:current => "Upload Photo"} %>
-<%= show_user_photo(@current_user, 'medium') %>
-<%= form_for @current_user, :url => dashboard_upload_photo_path, :html => { :multipart => true } do |f| %>
-  <%= f.label :photo, 'Photo' %>
-  <%= f.file_field :photo %>
-  <%= f.submit 'Save' %>
-<% end %>
+
+<div class="sptCntBus">
+          <div class="top"></div>
+          <div class="cntr">
+          	<h2>Edit / Upload Photo or Logo</h2>
+              <%= form_for @current_user, :url => dashboard_upload_photo_path, :html => { :multipart => true } do |f| %>
+                  <div class="upPhoto">
+                    <i>
+                      <%= show_user_photo(@current_user, 'medium') %>
+                    </i>
+                      <div class="cabinet"> 
+                            <%= f.file_field :photo, :class => "txt", :size => "30" %>
+                      </div>
+                  </div>
+                  <div class="eADtlSav">
+                      <big style="margin-right: 40px"><button class="btn otherbutton" href="#"></button></big>
+                  </div>
+              <% end %>
+          </div>
+          <div class="btm"></div>
+</div>
+
+
+

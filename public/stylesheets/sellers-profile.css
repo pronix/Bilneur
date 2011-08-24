@@ -826,10 +826,11 @@ ul li { list-style:none;}
 /* Upload Photo */
 .upPhoto { width:100%;margin:10px 0 0 220px;}
     .upPhoto i {width:260px;height:265px;background:url('../../images/img/photo_overlay.png') 0 0 no-repeat;}
-    .upPhoto i img {}
+    .upPhoto i img { width: 240px; height: 255px; padding: 5px;}
 .upPhoto, .upPhoto i, .upPhoto img {float:left;}
 
 .cabinet {float:left; width:100%;}
+    .cabinet input { width: 260px;}
     .cabinet form {float:left; width:100%; margin-top:10px;}
         .cabinet form .txt { float:left;}
         .cabinet form .sbmt {clear:both; float:left; margin:10px 0 0 150px;}

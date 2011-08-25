@@ -36,14 +36,14 @@
             Available: <%= item.count_on_hand %>
           </div>
           <div class="qtyIn">
-            <%= link_to "Remove", favorite_path(item), :class => "delete", :method => :delete  %><br/>
             <%= form_tag cart_favorite_path(item) do %>
             <%= text_field_tag :quantity, 1, :class => "txt" %>
-            <div class="rTe">
-              <button name="cart" value="normal" class="">
+            <%= link_to "Remove", favorite_path(item), :class => "delete", :method => :delete  %><br/>
+            <div class="rTe fav">
+              <button name="cart" value="normal" class="skBlu button_to_link">
                 <%= t('add_to_cart') %>
               </button>
-              <button name="cart" value="virtual" class="">
+              <button name="cart" value="virtual" class="bLu button_to_link">
                 <%= t('add_to_virtual_store') %>
               </button>
             </div>
@@ -64,6 +64,7 @@
     </div>
 
   </div>
+  <div class="bL"><div class="bR"></div></div>
 
 
 </div>

@@ -1,6 +1,9 @@
 <%= render :partial => 'dashboard/shared/profile_tabs', :locals => {:current => "Payment Methods"} %>
 
-<h1><%= t("new_address") %></h1>
+<div class="sptCntBus">
+    	<div class="top"></div>
+    	<div class="cntr" style="width: 100%;">
+        <h2 class="htFix"><%= t("new_address") %></h2>
 
 <%= render 'shared/error_messages', :target => @payment_method %>
 <%= form_for(:payment_method, :url => dashboard_payment_methods_path) do |f| %>
@@ -27,7 +30,11 @@
 
     <%= f.field_container :description do %>
        <%= f.label :description, t("description")%><br />
-       <%= f.text_area :description, {:cols => 60, :rows => 4, :class => 'fullwidth'} %>
+            <div class="bAY">
+              <div class="txtA">
+       <%= f.text_area :description, {:cols => 60, :rows => 10, :class => 'fullwidth'} %>
+              </div>
+            </div>
        <%= f.error_message_on :description %>
     <% end %>
 
@@ -36,10 +43,18 @@
 </div>
 </fieldset>
 
-<p class="form-buttons">
-   <%= button t("actions.create") %>
-   <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_payment_methods_path %>
- </p>
+<div class="bSaveC">
+  <big>
+    <button type="submit" class="btn otherbutton"></button>
+  </big>
+  <p class="form-buttons">
+    <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_payment_methods_path %>
+  </p>
+</div>
+
 <% end %>
 
 
+</div>
+  <div class="btm"></div>
+</div>

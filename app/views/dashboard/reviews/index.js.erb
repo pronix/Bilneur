@@ -1,1 +1,2 @@
+window.history.replaceState({}, 'reviews', "?state=<%= params[:state] %>");
 $("#reviews_container").html("<%= escape_javascript(render params[:state], :reviews => @reviews) %>");

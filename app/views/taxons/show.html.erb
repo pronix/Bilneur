@@ -1,0 +1,17 @@
+<h1><%= accurate_title %></h1>
+
+<% content_for :sidebar do %>
+  <%= hook :taxon_sidebar_navigation do %>
+    <%= render :partial => "shared/taxonomies" %>
+    <%= render(:partial => "shared/filters") if @taxon.children.empty? %>
+  <% end %>
+<% end %>
+
+<% if @taxon.children.empty? || !params[:keywords].blank? %>
+
+<% else %>
+  <%= hook :taxon_children do %>
+    <%= render :partial => "taxon", :collection => @taxon.children %>
+  <% end %>
+<% end %>
+

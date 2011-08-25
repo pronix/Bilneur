@@ -33,7 +33,7 @@
         <% end %>
       </p>
 
-      <%= link_to image_tag('/images/forms/adit_info.png'), edit_dashboard_account_path, :class => 'iNfo' %>
+      <%= link_to image_tag('/images/forms/adit_info.png'), edit_dashboard_account_path, :class => 'iNfo', :id => 'edit_account' %>
     </div>
     <div class="pnl pnl2">
       <b>PRIMARY SHIPPING ADDRESS</b>
@@ -59,7 +59,7 @@
       <b>PAYMENT INFORMATION</b>
       <p>
         <span><b>Credit or Debit Cards</b></span>
-        <% current_user.seller_payment_methods.each do |item| %>
+        <% current_user.seller_payment_methods.first do |item| %>
         <span><%= item.name %> ending in FIXME</span> <!-- FIXME expiration date -->
         <% end %>
       </p>

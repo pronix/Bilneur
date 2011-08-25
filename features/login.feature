@@ -3,7 +3,6 @@ Feature: Login
   A registered user
   Should be able to login
 
-
   Scenario Outline: Login with invalid and valid credentials
     Given I am signed up as "email@person.com/password"
     And I try to auth with "<email>" and "<password>"
@@ -63,11 +62,12 @@ Feature: Login
     Then I should see "Log In"
     And I should not see "My Account"
 
-  Scenario: Change password in admin page
-    Given I am signed up as "email@person.com/password"
-    When I sign in as "email@person.com/password"
-    And I go to the account change password page
-    Then I should be on the current user edit password page
+  Scenario: User change password
+    Given I am signed up as a seller with "seller@person.com/password"
+    When I sign in as "seller@person.com/password"
+    And I follow "My Account"
+    And I follow "edit_account"
+    Then I follow "Password"
     And I fill in "user_current_password" with "password"
     And I fill in "user_password" with "moloko"
     And I fill in "user_password_confirmation" with "moloko"

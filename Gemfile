@@ -55,17 +55,17 @@ group :test, :cucumber do
   gem 'cucumber',             '~> 1.0.2'
   gem 'cucumber-rails',       '~> 1.0.2'
   gem 'database_cleaner'
-  gem 'capybara',             '~> 1.0.0'
+  gem 'capybara',             '~> 1.0.1'
   gem 'faker'
   gem 'launchy',              '~> 2.0.3'
   gem 'cucumber-websteps'
   gem 'email_spec',           '~> 1.2.1'
-  gem 'selenium-webdriver',   '~> 0.2.2'
+  gem 'selenium-webdriver',   '~> 2.5.0'
   gem 'headless'
   gem 'awesome_print'
   gem 'wirble'
   gem 'looksee'
-  gem "childprocess", "= 0.2.0"
+  gem "childprocess", "~> 0.2.1"
 
   gem 'sqlite3'
   gem 'spork', '~> 0.9.0.rc', :require => false

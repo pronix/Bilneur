@@ -24,9 +24,27 @@ Product.class_eval do
     indexes :meta_keywords
     # indexes variants(:condition), :as => :condition
     indexes taxons.name, :as => :taxon, :facet => true
+    # indexes variants(:price), :as => :variant_price
     has taxons(:id), :as => :taxon_ids
 
     has variants(:condition_int), :as => :variants_conditions
+
+    has "(SELECT min(variants.price) FROM variants
+          WHERE (
+              variants.is_master = 'f'
+              AND variants.product_id = products.id
+              AND variants.deleted_at IS NULL
+              AND variants.count_on_hand > 0
+
+           )
+          )", :as => :variant_price, :sort => true,
+              :type => :float, :source => :ranged_query
+    has "COALESCE(( SELECT sum(variants.count_on_hand)
+                    FROM variants
+                    WHERE (variants.is_master = 'f'
+                      AND variants.product_id = products.id
+                      AND variants.deleted_at is null) ),0) > 0",
+          :as => :variant_on_hand, :type => :boolean, :source => :ranged_query
 
     group_by :"products.deleted_at"
     group_by :available_on

@@ -1,0 +1,25 @@
+<div class="TabbedPanelsContentGroup">
+    <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block; ">
+      <% reviews.each do |review| %>
+        <div class="fdBack" id="review_number_<%= dom_id review %>">
+          <i class="rtr">
+            <%= show_user_photo(current_user)  %>
+            <span><%= current_user.full_name %></span>
+          </i>
+          <p>
+            <%= review.review %>
+          </p>
+          <div class="smlRtng">
+            <%= show_stars(review.rating, 'icons/yel_str_sml.png', 'icons/grey_str_sml.png', '<em>') %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+</div>
+
+<div class="blogFtr">
+    <div class="blogPg">
+            <%= page_entries_info reviews %><!-- FIXME add will_paginate 3.0.pre4 support for modifying text of entries info -->
+    </div>
+    <%= will_paginate(reviews, :previous_label => "#{t('previous')}", :next_label => "#{t('next')}") %>
+</div>

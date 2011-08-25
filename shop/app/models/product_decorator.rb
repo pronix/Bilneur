@@ -5,8 +5,16 @@ Product.class_eval do
   # associations
   #
   belongs_to :owner, :class_name => "User" # seller who added product
+  has_one :best_deals,
+          :class_name => 'Variant',
+          :conditions => [
+                          "variants.is_master = #{connection.quoted_false}
+                           AND variants.deleted_at IS NULL
+                           AND variants.count_on_hand > 0 "],
+          :order => "variants.price ASC"
 
-  has_one :worst_varinat,
+
+  has_one :worst_variant,
           :class_name => 'Variant',
           :conditions => [
                           "variants.is_master = #{connection.quoted_false}
@@ -35,6 +43,43 @@ Product.class_eval do
            WHERE ( (v.is_master = #{connection.quoted_false}) AND (v.product_id = products.id) AND (v.deleted_at is null ) AND (v.count_on_hand > 0) )
           ) ASC")
    }
+
+
+  scope :ascend_by_best_price, lambda{
+    order("( SELECT min(v.price) FROM variants as v
+             WHERE ( v.is_master = #{connection.quoted_false})
+                   AND v.product_id = products.id AND v.deleted_at is null AND v.count_on_hand > 0 )
+           ) ASC")
+
+   }
+
+
+   scope :descend_by_best_price,  lambda{
+     order("( SELECT min(v.price) FROM variants as v
+              WHERE ( v.is_master = #{connection.quoted_false}
+                      AND v.product_id = products.id AND v.deleted_at is null AND v.count_on_hand > 0 )
+          )  DESC")
+
+   }
+
+  scope :sort_by_best_price_asc, lambda{
+     order("( SELECT min(v.price) FROM variants as v
+              WHERE ( v.product_id = products.id
+                      AND v.is_master = #{connection.quoted_false} ) ASC" )
+
+   }
+
+
+   scope :sort_by_best_price_desc,  lambda{
+     order(" ( SELECT min(v.price)
+               FROM variants as v
+               WHERE (v.product_id = products.id)
+                     and (v.is_master = #{connection.quoted_false} )
+              )  DESC")
+
+   }
+
+   scope :descend_by_rating, order("products.avg_rating DESC")
 
 
   # validates

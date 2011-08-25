@@ -76,6 +76,18 @@ Given /^seller "([^\"]*)" has the following virtual shipping methods exist:$/ do
 end
 
 Then /^the page have the following purchases list:$/ do |table|
-  table.diff!(tableish('table:first tr', 'td,th'))
+
+  table.hashes.each_with_index do |r, i|
+    @order = Order.find_by_number(r["order_number"])
+    @product = Product.find_by_name(r["product"])
+    @item = @order.line_items.detect{ |v| v.product == @product }
+    within("#item_#{@item.id}") do
+      Then %Q(I should see "#{r['product']}")
+      Then %Q(I should see "#{r['seller']}")
+      Then %Q(I should see "#{r['order_date']}")
+      Then %Q(I should see "#{r['order_number']}")
+      Then %Q(I should see "#{r['amount']}")
+    end
+  end
 end
 

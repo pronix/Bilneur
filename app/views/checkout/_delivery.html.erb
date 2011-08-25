@@ -5,60 +5,60 @@
 <div class="page chkOut3">
 	<div class="shpng1">
 
-  <h3><%= t("shipping_method") %></h3>
-  <div class="inner">
-    <div id="methods">
-      <p class="field radios">
-        <% @order.sellers.each do |seller| %>
-        <h6><%= t("shipping_method") %> for seller <%= seller.full_name %></h6>
-        <div class="mRadio">
+    <h3><%= t("shipping_method") %></h3>
+    <div class="inner">
+      <div id="methods">
+        <p class="field radios">
+          <% @order.sellers.each do |seller| %>
+          <h6><%= t("shipping_method") %> for seller <%= seller.full_name %></h6>
+          <div class="mRadio">
 
-        <% @order.rate_hash_for_seller(seller).each_with_index do |shipping_method, i| %>
+            <% @order.rate_hash_for_seller(seller).each_with_index do |shipping_method, i| %>
 
-        <div class="radio js-radio" id="box-single">
-          <%= radio_button("order[seller_shipping_method][#{seller.id}]", :shipping_method_id, shipping_method[:id],
-              {:checked => (i == 0), :id => "order_shipping_method_id_#{shipping_method[:id]}"}) %>
-        </div>
-        <span>
-          <i>
-            <%= shipping_method[:name] %> <%= number_to_currency shipping_method[:cost] %>
-          </i>
-        </span>
+            <div class="radio js-radio">
+              <%= radio_button("order[seller_shipping_method][#{seller.id}]", :shipping_method_id, shipping_method[:id],
+                  {:checked => (i == 0), :id => "order_shipping_method_id_#{shipping_method[:id]}"}) %>
+            </div>
+            <span>
+              <i>
+                <%= shipping_method[:name] %> <%= number_to_currency shipping_method[:cost] %>
+              </i>
+            </span>
 
-        <% end %>
-
-
-          <h6>Item Details:</h6>
-
-  <div class="chkOutPrdct">
-    <% @order.line_items.each do |item| %>
-    <% next unless item.variant.seller == seller %>
-    <div class="chkPrdct">
-      <i>
-        <%= mini_image(item.variant.images.blank? ? item.variant.product : item.variant) %></i>
-      <b><%= item.variant.name %></b>
-      <span class="clrLft">Condition: <em><%= item.variant.display_condition %></em></span>
-      <span><em>Seller: <%= item.variant.seller.full_name%></em></span>
-      <label>Price <%= number_to_currency item.price %> <span>Quantity: <%= item.quantity %>.</span></label>
-    </div>
-    <% end %>
-
-  </div>
+            <% end %>
 
 
-        </div>
-        <% end %>
+            <h6>Item Details:</h6>
 
+            <div class="chkOutPrdct">
+              <% @order.line_items.each do |item| %>
+              <% next unless item.variant.seller == seller %>
+              <div class="chkPrdct">
+                <i>
+                  <%= mini_image(item.variant.images.blank? ? item.variant.product : item.variant) %></i>
+                <b><%= item.variant.name %></b>
+                <span class="clrLft">Condition: <em><%= item.variant.display_condition %></em></span>
+                <span><em>Seller: <%= item.variant.seller.full_name%></em></span>
+                <label>Price <%= number_to_currency item.price %> <span>Quantity: <%= item.quantity %>.</span></label>
+              </div>
+              <% end %>
+
+            </div>
+
+
+          </div>
+          <% end %>
+
+        </p>
+      </div>
+
+      <% if Spree::Config[:shipping_instructions] && @order.rate_hash.present? %>
+      <p id="minstrs">
+        <%= form.label :special_instructions, t("shipping_instructions") %><br />
+        <%= form.text_area :special_instructions, :cols => 40, :rows => 7 %>
       </p>
+      <% end %>
     </div>
-
-    <% if Spree::Config[:shipping_instructions] && @order.rate_hash.present? %>
-    <p id="minstrs">
-      <%= form.label :special_instructions, t("shipping_instructions") %><br />
-      <%= form.text_area :special_instructions, :cols => 40, :rows => 7 %>
-    </p>
-    <% end %>
-  </div>
 
   </div>
 
@@ -66,9 +66,9 @@
 
   <div class="shpng2">
     <%= render :partial => "summary", :locals => {:order => @order } %>
-      <button value="Checkout">
-        <%= image_tag "forms/chk_big_btn.png" %>
-      </button>
+    <button value="Checkout" class="checkout">
+      <%= image_tag "forms/chk_big_btn.png" %>
+    </button>
   </div>
 
 

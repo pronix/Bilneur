@@ -36,6 +36,12 @@
         <%= f.error_message_on :count_on_hand %>
       <% end %>
 
+      <%= f.field_container :weight do %>
+        <%= f.label :weight, t("weight")%> <span class="required">*</span><br />
+        <%= f.text_field :weight  %>
+        <%= f.error_message_on :weight %>
+      <% end %>
+
 
       <%= f.field_container :condition do %>
         <%= f.label :condition, t("condition")%>

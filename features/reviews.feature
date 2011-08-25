@@ -1,3 +1,4 @@
+@wip
 Feature: Manage reviews
 
   Background:
@@ -32,7 +33,7 @@ Feature: Manage reviews
     Then selectbox "select_product_id" should be selected for "All"
     And I should see all 6 review for product "The Godfather"
 
-@javascript  
+@javascript
   Scenario Outline: Show only approved/unapproved review on the My Product Review
     And I have 4 unapproved and 2 approved reviews for product "The Godfather"
     Then I go to the reviews dashboard page
@@ -46,7 +47,7 @@ Feature: Manage reviews
     | Unapproved | false  |
 
 @javascript
-  Scenario: Show My Product Review only for one product 
+  Scenario: Show My Product Review only for one product
     Given I have product with name "The Second Product" and owner "seller@person.com"
     And I have 4 unapproved and 2 approved reviews for product "The Godfather"
     And I have 4 unapproved and 2 approved reviews for product "The Second Product"

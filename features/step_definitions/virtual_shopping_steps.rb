@@ -6,7 +6,11 @@ end
 When /^I choose "([^\"]*)" from seller "([^\"]*)" Shipping Methods$/ do |method_name, email|
   user = User.find_by_email(email)
   method =  user.shipping_methods.find_by_name(method_name)
-  When %Q(I choose "order_shipping_method_id_#{method.id}")
+  # When %Q(I choose "order_shipping_method_id_#{method.id}")
+
+  page.execute_script <<-JS
+    $('#order_shipping_method_id_#{method.id}').attr('checked', true);
+  JS
 end
 
 Then /^seller "([^\"]*)" should have new virtual order in sales with shipment state "([^\"]*)"$/ do |email, shipping_state|

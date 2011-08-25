@@ -6,15 +6,15 @@
   <!-- page1 -->
   <div class="page chkOut3">
     <div class="shpng1">
+
+      <% unless @order.virtual? %>
       <div class="shpngAd">
+
         <h3>Shipping Adresss</h3>
         <h5><span>Shipping To :</span>
-          <% if @order.virtual? %>
-          <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:virtual, :address)%>
-          <% else %>
           <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:normal, :address)%>
-          <% end %>
         </h5>
+
         <% ship_address = @order.ship_address %>
         <p><%= ship_address.full_name %><br />
           <%= ship_address.address1%><br />
@@ -24,6 +24,8 @@
           Phone: <%= ship_address.phone %>
         </p>
       </div>
+      <% end %>
+
       <div class="shpngAd shpngAd2">
         <h3>Payment Info</h3>
         <h5><span>Payment Method :</span>

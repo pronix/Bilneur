@@ -1,3 +1,5 @@
+
+@javascript
 Feature: Virtual Shopping
   Virtiaul buyes can add product to V. Store
   and checkout virtual order
@@ -5,7 +7,6 @@ Feature: Virtual Shopping
   Background:
     Given I have an admin account of "admin@person.com/password"
     And I am signed up as "email@person.com/password"
-    And 1 payment methods exist
     And 1 bogus payment methods exist
     And the following sellers exist:
       | firstname | email              | password  | password_confirmation |
@@ -42,6 +43,7 @@ Feature: Virtual Shopping
     And I press "Checkout"
     And I fill billing address with correct data
     And I enter valid credit card details
+    And I press "Place Order"
     Then I should see "Your order has been processed successfully"
     And "seller2@person.com" should receive 1 emails
     And seller "seller2@person.com" should have new virtual order in sales with shipment state "pending"
@@ -57,6 +59,7 @@ Feature: Virtual Shopping
       | product_name                | price | condition | count_on_hand |
       | The Godfather               | 14.00 | new       |             3 |
       | Death of a Hero [Paperback] | 24.50 | new       |             3 |
+
 
   Scenario: Adding quote to V.Cart and checkout order(with shipping method: Free to Bilneur and from two seller)
     When I sign in as "email@person.com/password"
@@ -76,6 +79,7 @@ Feature: Virtual Shopping
     And I press "Checkout"
     And I fill billing address with correct data
     And I enter valid credit card details
+    And I press "Place Order"
     Then I should see "Your order has been processed successfully"
     And "seller2@person.com" should receive 1 emails
     And "seller1@person.com" should receive 1 emails
@@ -117,6 +121,7 @@ Feature: Virtual Shopping
     And I press "Checkout"
     And I fill billing address with correct data
     And I enter valid credit card details
+    And I press "Place Order"
     Then I should see "Your order has been processed successfully"
     And "seller2@person.com" should receive 1 emails
     And "seller1@person.com" should receive 1 emails

@@ -3,41 +3,43 @@
 
     <ul class="TabbedPanelsTabGroup">
       <% Variant::CONDITION.each_with_index  do |cdt, index| %>
-        <li class="TabbedPanelsTab tab<%= index + 1 %>" tabindex="0"><span><%= t("condition_#{cdt}") %></span></li>
+      <li class="TabbedPanelsTab tab<%= index + 1 %>" tabindex="0"><span><%= t("condition_#{cdt}") %></span></li>
       <% end %>
     </ul>
 
     <div class="TabbedPanelsContentGroup">
-      <% Variant::CONDITION.each_with_index  do |cdt, index| %>
-            <div class="TabbedPanelsContent">
-              <div class="cmboSrt">
-                <form action="">
-                  <select class="sort_by_most_recent" tabindex="1" name="">
-                    <option value="" selected="selected" title="">FIXME - Sort by most recent - </option>
-                    <option value="" title="">option 1</option>
-                    <option value="" title="">option 2</option>
-                    <option value="" title="">option 3</option>
-                    <option value="" title="">option 4</option>
-                  </select>
-                </form>
-              </div>
 
-              <% best_deal = product.best_variant %>
-              <% product.variants.condition(cdt).each_with_index do |item, i| %>
-                <%= render "sellers_list", :item => item, :i => i %>
-              <% end %>
-              <div class="tabCnt2">
-                <a href="#">View All</a>
-                <span>FIXME 21 Auctions Starting at</span>
-                <b>FIXME $2.99</b>
-              </div>
-              <div class="tabCnt3">
-                <a href="#">View All</a>
-                <span>FIXME 20 more buyers needed</span>
-                <b>FIXME 50% Group Discount</b>
-              </div>
-              <div class="btm"></div>
-            </div>
+      <% Variant::CONDITION.each_with_index  do |cdt, index| %>
+      <div class="TabbedPanelsContent">
+        <div class="cmboSrt">
+          <form action="">
+            <select class="sort_by_most_recent" tabindex="1" name="">
+              <option value="" selected="selected" title="">FIXME - Sort by most recent - </option>
+              <option value="" title="">option 1</option>
+              <option value="" title="">option 2</option>
+              <option value="" title="">option 3</option>
+              <option value="" title="">option 4</option>
+            </select>
+          </form>
+        </div>
+
+        <% best_deal = product.best_variant %>
+        <% product.variants.condition(cdt).each_with_index do |item, i| %>
+        <%= render "sellers_list", :item => item, :i => i %>
+        <% end %>
+        <div class="tabCnt2">
+          <a href="#">View All</a>
+          <span>FIXME 21 Auctions Starting at</span>
+          <b>FIXME $2.99</b>
+        </div>
+        <div class="tabCnt3">
+          <a href="#">View All</a>
+          <span>FIXME 20 more buyers needed</span>
+          <b>FIXME 50% Group Discount</b>
+        </div>
+        <div class="btm"></div>
+
+      </div>
       <% end %>
     </div>
   </div>

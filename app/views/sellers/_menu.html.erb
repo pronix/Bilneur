@@ -1,5 +1,11 @@
 <% stylesheet "slider/general", "slider/SpryCollapsiblePanel", "slider/SpryTabbedPanels2","slider/SpryTabbedPanels3", "product" %>
 <% javascript "jquery.custom_radio_checkbox", "slider/SpryCollapsiblePanel", "slider/SpryTabbedPanels", "product_index" %>
+
+<% content_for :head do %>
+
+
+<% end %>
+
       <ul class="TabbedPanelsTabGroup">
         <li class="TabbedPanelsTab" >
           <span class="TabbedPanelsTabSelected">
@@ -13,7 +19,9 @@
           </span>
         </li>
         <li class="TabbedPanelsTab" tabindex="0">
-          <span>Feedback</span>
+          <span class="TabbedPanelsTabSelected">
+            <%= link_to_unless_current "Feedback", {:action => 'feedback'}, {:class => "TabbedPanelsTab"}  %>
+          </span>
         </li>
         <li class="TabbedPanelsTab" tabindex="0">
           <span>Return Policy </span>

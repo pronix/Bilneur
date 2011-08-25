@@ -70,6 +70,6 @@ Feature: Login
     And I fill in "user_current_password" with "password"
     And I fill in "user_password" with "moloko"
     And I fill in "user_password_confirmation" with "moloko"
-    And I press "save_new_password"
+    And I press "update"
     Then I should be on the dashboard account fuck page
     And I should see "Password updated"

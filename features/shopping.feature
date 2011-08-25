@@ -3,7 +3,6 @@ Feature: Shopping
   Background:
     Given I have an admin account of "admin@person.com/password"
     And I am signed up as "email@person.com/password"
-    And 1 payment methods exist
     And 1 bogus payment methods exist
     And the following sellers exist:
       | firstname | email              | password  | password_confirmation |
@@ -49,6 +48,7 @@ Feature: Shopping
     When I press "Checkout"
     And I fill billing address with correct data
     And I enter valid credit card details
+    And I press "Place Order"
     Then I should see "Your order has been processed successfully"
     And "seller2@person.com" should receive 1 emails
     And "email@person.com" should receive 1 emails
@@ -80,6 +80,7 @@ Feature: Shopping
     And I press "Checkout"
     And I fill billing address with correct data
     And I enter valid credit card details
+    And I press "Place Order"
     Then I should see "Your order has been processed successfully"
     And "seller2@person.com" should receive 1 emails
     And "seller1@person.com" should receive 1 emails

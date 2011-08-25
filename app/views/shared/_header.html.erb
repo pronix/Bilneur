@@ -34,14 +34,14 @@
 
                     <li><a href="#">Groups</a></li>
                     <li>
-                      <%= link_to "Top Products", top_path(:products) %>
+                      <%= link_to_unless_current "Top Products", top_path(:products) %>
                     </li>
                     <li>
-                        <%= link_to "Top Sellers", top_path(:sellers) %>
+                        <%= link_to_unless_current "Top Sellers", top_path(:sellers) %>
                     </li>
 
                     <li>
-                      <%= link_to "Top Deals", top_path(:deals) %>
+                      <%= link_to_unless_current "Top Deals", top_path(:deals) %>
                     </li>
 
                     <li class="last"><a href="#">Blog</a></li>

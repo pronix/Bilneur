@@ -46,15 +46,6 @@ Feature: Manage reviews
     | Unapproved | false  |
 
 @javascript
-  Scenario: Approve some reviews on the My Product Review
-    And I have 4 unapproved and 2 approved reviews for product "The Godfather"
-    Then I go to the reviews dashboard page
-    And I follow "My Product reviews"
-    Then I click "Approve" for all unapproved review
-    Then I should not see "Approve" link in the reviews
-    Then I should not have unapproved reviews
-
-@javascript
   Scenario: Show My Product Review only for one product 
     Given I have product with name "The Second Product" and owner "seller@person.com"
     And I have 4 unapproved and 2 approved reviews for product "The Godfather"
@@ -64,13 +55,22 @@ Feature: Manage reviews
     Then I select "The Second Product" from "select_product_id"
     And I should see only reviews for "The Second Product"
 
-@javascript
-  Scenario: Delete some review
-    And I have 4 unapproved and 2 approved reviews for product "The Godfather"
-    Then I go to the reviews dashboard page
-    And I follow "My Product reviews"
-    And I delete 2 reviews
-    And I should have 4 reviews
+# @javascript
+#   Scenario: Approve some reviews on the My Product Review
+#     And I have 4 unapproved and 2 approved reviews for product "The Godfather"
+#     Then I go to the reviews dashboard page
+#     And I follow "My Product reviews"
+#     Then I click "Approve" for all unapproved review
+#     Then I should not see "Approve" link in the reviews
+#     Then I should not have unapproved reviews
+
+# @javascript
+#   Scenario: Delete some review
+#     And I have 4 unapproved and 2 approved reviews for product "The Godfather"
+#     Then I go to the reviews dashboard page
+#     And I follow "My Product reviews"
+#     And I delete 2 reviews
+#     And I should have 4 reviews
 
   Scenario: Only one time register user can write review for one product
     Then I go to the "The Godfather" product page

@@ -5,7 +5,7 @@
         approved_select_hz : $("#approved_select_hz").val(),
         select_product_id : $("#select_product_id").val()
       };
-      location.hash = "?" + 'state=product' + '&' + jQuery.param(params);
+      <!-- location.hash = '&' + jQuery.param(params); -->
       $.ajax({ type: "GET", url: "<%= request.path %>" + "?" + 'state=product' + '&' + jQuery.param(params) });
     });
   })

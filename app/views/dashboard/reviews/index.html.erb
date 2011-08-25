@@ -49,7 +49,7 @@
                 <span><%= link_to "Feedback Left", dashboard_reviews_path(:state => "left", :per_page => params[:per_page]), :remote => true %></span>
               </li>
               <li class="TabbedPanelsTab tab4" tabindex="0">
-                <span><%= link_to "My Product reviews", dashboard_reviews_path(:state => "product", :per_page => params[:per_page]), :remote => true  %></span>
+                <span><%= link_to "My Product reviews", dashboard_reviews_path(:state => "product", :per_page => params[:per_page]), :remote => true, :class => 'remote_link_click' %></span>
               </li>
           </ul>
           <div id="reviews_container">

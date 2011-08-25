@@ -1,10 +1,15 @@
 <% content_for :head do %>
   <script type="text/javascript" charset="utf-8">
+    function getURLParameter(name) {
+    return decodeURI(
+        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+    );
+    };
     $(function() {
       //Redirect to products index with new per_page param
       $("#per_page_select").change(function() {
         var per_page = $(this).val();
-        var product_path = "<%= request.path %>" + "?per_page=" + per_page;
+        var product_path = "<%= request.path %>" + "?per_page=" + per_page + "&state=" + getURLParameter('state');
         window.location = product_path;
       });
       

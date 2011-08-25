@@ -12,12 +12,12 @@ class SellerAbility
       cannot :access, :seller
     end
 
-    # if !user.has_role?('user') and Spree::Reviews::Config[:require_login]
-    #   cannot [:new,:create], :review
-    # else
-    #   can [:new,:create], :review
-    # end
-
+    # Only auth user has create review or when admin set setting
+    if user.roles.present? || !Spree::Reviews::Config[:require_login]
+      can [:new, :create], Review
+    else
+      cannot [:new, :create], Review
+    end
 
     can [:edit, :update, :destroy], Property do |resource|
       resource.owner == user

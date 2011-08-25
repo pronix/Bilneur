@@ -11,13 +11,13 @@
         	    <li>
                 <%= link_to t('delete'), dashboard_message_path(@message), :method => :delete %>
               </li>
-        	    <li>
+              <li class="replyer">
                 <%= link_to t('reply'), "", :class => "reply-link"%>
               </li>
             </ul>
             <div class="cmbo1">
               <select id="websites21" tabindex="1" name="">
-                <option value="" selected="selected" title="">FIXMEMove to</option>
+                <option value="" selected="selected" title="">Move to</option>
                 <option value="" title="">1</option>
                 <option value="" title="">2</option>
                 <option value="" title="">3</option>
@@ -54,7 +54,7 @@
               </div>
             </div>
 
-            <div class="inbxAct">
+            <div class="inbxAct replyer">
               <ul>
                 <li>
                   <%= link_to t('delete'), dashboard_message_path(@message), :method => :delete %>
@@ -67,6 +67,30 @@
 
           </div>
 
+          <div class="message_container" style="display:none">
+
+              <h2>Messages</h2>
+              <%= render @children_messages  %>
+              <br />
+              <%= render 'shared/error_messages', :target => @reply_message %>
+
+              <%= form_for((@reply_message||Message.new), :url => reply_dashboard_message_path(@message), :html => {:class => "new_message"}) do |f| %>
+
+            <div class="bAY">
+              <div class="txtA">
+                <%= f.text_area :content, {:cols => 60, :rows => 2, :class => 'fullwidth'} %>
+              </div>
+            </div>
+
+            <div class="inbxAct rightSend">
+              <ul>
+                <li>
+                  <button type="submit" class="reply-link">Send</button>
+                </li>
+              </ul>
+            </div>
+          <% end %>
+          </div>
         </div>
         <div class="bt"></div>
       </div>
@@ -80,36 +104,6 @@
 
 
 
-      <div class="message_container" style="display:none">
-          <h3 class="subject">Subject: </h3>
-          <br />
-
-          <%= render @children_messages  %>
-          <br />
-          <%= render 'shared/error_messages', :target => @reply_message %>
-
-          <%= form_for((@reply_message||Message.new), :url => reply_dashboard_message_path(@message)) do |f| %>
-
-          <fieldset>
-            <div class="yui-gc">
-              <div class="yui-u first">
-
-                <%= f.field_container :content do %>
-                <%= f.label :content, t("content")%><br />
-                <%= f.text_area :content, {:cols => 60, :rows => 2, :class => 'fullwidth'} %>
-                <%= f.error_message_on :content %>
-                <% end %>
-
-              </div>
-            </div>
-          </fieldset>
-
-      <p class="form-buttons">
-        <%= button t("actions.send") %>
-      </p>
-
-      <% end %>
-    </div>
 
 
     </div>
@@ -117,6 +111,11 @@
 </div>
 <script>
   $(function(){
-   $(".reply-link").click(function(){ $(".message_container").show(); return false;});
+    $(".reply-link").click(function(){ 
+      $(".message_container").show();  
+      $(".replyer").hide();
+      return false;
+
+    });
   });
 </script>

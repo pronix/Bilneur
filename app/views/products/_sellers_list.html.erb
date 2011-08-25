@@ -1,0 +1,57 @@
+<div id="CollapsiblePanel<%= i + 1%>" class="CollapsiblePanel CollapsiblePanelOpen" data-seller="<%= item.seller.id %>">
+          <div class="CollapsiblePanelTab" tabindex="0"></div>
+          <div class="CollapsiblePanelContent dtlPnl ">
+
+            <div class="lft">
+              <b><%= number_to_currency(item.try(:price)) %></b>
+              <i><img src="/images/icons/yel_tick.png" alt="" /></i>
+              <i><img src="/images/icons/qmark.png" alt="" /></i>
+              <span>Shipping:<em>FIXME</em></span>
+              <span>Virtual Trading:<em>FIXME<img src="/images/icons/qmark.png" alt="" /></em></span>
+              <p>&nbsp;</p>
+              <span>Location:<em>FIXME</em></span>
+              <span>Quantity Available:<em><%= item.count_on_hand %></em></span>
+            </div>
+
+            <div class="rgt">
+              <i class="imag">
+                <%= image_tag item.seller.photo.url(:for_review) %>
+              </i>
+              <span><%= item.seller.firstname %></span>
+              <em>Reliability Score</em>
+              <b>FIXME</b><i class="tg"><img src="/images/icons/qmark.png" alt="" /></i><!-- FIXME -->
+            </div>
+
+            <div class="shares">
+              <ul>
+                <li class="lst1">
+                  <%= link_to "Seller Information", about_seller_path(item.seller) %>
+                </li><!-- FIXME -->
+                <li class="lst2">
+                  <%= link_to "Return Policy", return_policy_seller_path(item.seller) %>
+                </li><!-- FIXME -->
+                <li class="lst3">
+                  <%= link_to "Feedback", feedback_seller_path(item.seller) %>
+                </li><!-- FIXME -->
+                <li class="lst4">
+                  <%= link_to "Tweet About This Seller", "http://twitter.com/share?url=#{about_seller_url(item.seller)}" %>
+                </li><!-- FIXME -->
+                <li class="lst6">
+                  <a href="#">Add Seller To Favorites</a>
+                </li><!-- FIXME -->
+              </ul>
+            </div>
+
+            <div class="cntcts">
+              <p>
+                <%= render :partial => "shared/cart_form", :object => item %>
+              </p>
+              <span>
+                <%= link_to "View Seller's Store", store_seller_path(item.seller), :class => "vwSStr" %>
+                <%= link_to "Contact Seller", new_message_path(item.seller), :class => "cntSlr" %>
+              </span>
+
+            </div>
+
+          </div>
+        </div>

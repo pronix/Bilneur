@@ -3,8 +3,8 @@
       <% reviews.each do |review| %>
         <div class="fdBack" id="review_number_<%= dom_id review %>">
           <i class="rtr">
-            <%= show_user_photo(review.buyer)  %>
-            <span><%= review.buyer.full_name %></span>
+            <%= show_user_photo(review.user) %>
+            <span><%= user.full_name rescue review.name %></span>
           </i>
           <p>
             <%= review.review %>
@@ -12,6 +12,8 @@
           <div class="smlRtng">
             <%= show_stars(review.rating, 'icons/yel_str_sml.png', 'icons/grey_str_sml.png', '<em>') %>
           </div>
+          <%= link_approved(review) %>
+          <%= link_to "Delete", dashboard_review_path(review), :method => :delete, :remote => true, :onclick => "$(\"#review_number_review_#{review.id}\").remove();" %>
         </div>
       <% end %>
     </div>

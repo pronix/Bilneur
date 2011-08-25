@@ -15,7 +15,9 @@
                 <%= number_to_currency(best_deal.try(:price)) %>
               </b>
                 <em class="oRt">retail <%= number_to_currency(product.try(:price)) %></em>
-                <span class="avB">Available with <%= product.variants.count %> sellers</span>
+                <span class="avB">
+                  <%= link_to "Available with #{product.variants.count.to_s} sellers", product_quotes_path(product, 'new') %> 
+                </span>
                 <ul>
                   <li><%= link_to image_tag("icons/ch_twtr.png"), "http://twitter.com/share?url=#{product_url(product)}" %></li>
                   <li><%= link_to image_tag("icons/ch_fb.png"), "#" %></li>

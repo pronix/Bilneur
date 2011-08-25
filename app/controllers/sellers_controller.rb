@@ -6,8 +6,16 @@ class SellersController < Spree::BaseController
 
   before_filter :load_data
 
-  def products
+  def store
     @quotes = @seller.quotes.paginate(:page => params[:page], :per_page => params[:per_page])
+  end
+
+  def quote
+    @quote = @seller.quotes.by_product_and_id(Product.find_by_permalink(params[:product_id]), params[:quote_id])
+    # FIXME 
+    @reviews = @quote.product.reviews.paginate_reviews(params[:per_page])
+    @seller = @quote.seller
+    @product_properties = @quote.product.product_properties
   end
 
   def about

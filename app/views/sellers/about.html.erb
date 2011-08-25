@@ -1,14 +1,13 @@
 
 <div class="col1 slrPrdctPg prdctDPg">
   <div class="mTabs">
-    <div id="TabbedPanels1" class="TabbedPanels TabbedPanelsTabFocused">
+    <div id="TabbedPanels0" class="TabbedPanels TabbedPanelsTabFocused">
       
       <%= render "menu" %>
 
       <div class="TabbedPanelsContentGroup">
         <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block; ">
 
-<!-- ABOUT SELLER SECTION, REPLACE WITH RELEVENT SERVER DATA -->
 <div class="bCrmp bc">
                                         <a class="abtStrp" href="#"><img src="/images/forms/abt_slr_strp.png" alt=""></a>
 </div>
@@ -16,36 +15,39 @@
                           <div class="social"><%= fb_like %></div>
                           <div class="social"><%= plus_one %></div>
                         </div>
-                                    <div class="abtSlrCnt abtSlrCntPad">
-                                        <h2>About Innovity FIXME</h2>
-                                        <p>Innovity is world renown as the place to go for all your photo, video, pro audio and digital imaging needs. Once you step inside our store, an incredible array of specialized departments awaits you.</p>
-                                        <p>As you enter, you are greeted with a smile and offered our monthly bulletin that features our standard listings, as well as our monthly specials. Colored signs guide you easily throughout the store. However, no matter where you turn, you will observe the B&amp;H philosophy in action.</p>
-                                        <b>Our Goal</b>
-                                        <p>Our overriding goal is to make you-our customer-feel comfortable and satisfied with your experience. Our commitment to sales quality and customer satisfaction is second to none. The guiding philosophy of our store is to enable you to come in and touch, feel, experiment, ask, and discuss your needs, without sales pressure. At B&amp;H, we have strong feelings about our customers, thus our sales and support teams are dedicated to making your experience with us a pleasant and lasting one.</p>
-                                        <b>Our Staff</b>
-                                        <p>Our sales staff is made up of working professional photographers and videographers with years of field experience. They'll ask what it is that you're seeking to accomplish, and they will advise you as to what equipment you will need to get the job done effectively. Even if all you need is advice on how to shoot a particular job, we're more than willing to listen and make suggestions. We don't just sell boxes and yell, "Next!" At B&amp;H, customers are treated as long-term friends and colleagues. Photographers and videographers from all over the world make their way here to see our store. Our clientele represents a large cross section of photographers and imagers-both pro and amateur.</p>
-                                    </div>
-                                    <div class="bdr5p"></div>
-                                    <div class="abtSlrCnt abtSlrCntPad">
 
-                                        <h2>IFrequently Asked Questions (FAQ).</h2>
-                                        <b>Cancelling or modifying an existing order !!</b>
-                                        <p>If you have not paid for your order, there is no need to contact us to cancel it. We receive hundreds of 'test' orders each day which our members are using to quote certain cart contents and save the invoice for later reference.
-We ignore all orders until a matching payment is received. So if you haven't paid, don't worry, we're not processing your order. You are under no obligation to follow through and pay for an order.roughout the store. However, no matter where you turn, you will observe the B&amp;H philosophy in action.</p>
-										<b>Change Your Order after Payment</b>
-                                        <p>Please contact us and put the order on hold while you decide. This will stop the packing process so you still have a chance to make changes.<br>
-To add Items to your order without canceling any previous items, contact us. There is no charge for this service.<br>
-Contact: 1-888-569-1118.<br>
-Cash On Delivery?<br>
-Do you do Cash on Delivery (C.O.D)?<br>
-Changing payment methods!<br>
-I Choose Western Union But I Want To Pay Via Paypal Now<br>
-Contacting Paypal customer service!!<br>
-I Want To Contact PayPal Customer Service But Can't Find A Phone Number For Them? Please Help! </p>
-                                    </div>
+                        <% if @seller.static_data.present? %>
+                              <% if @seller.static_data.about.present? %>
+                              <div class="abtSlrCnt abtSlrCntPad">
+                                <h2>About <%= @seller.full_name %></h2>
+                                <%= @seller.static_data.about %>
+                              </div>
+                              <% end %>
 
-<!-- END ABOUT SELLER SECTION, REPLACE WITH RELEVENT SERVER DATA -->
+                              <div class="bdr5p"></div>
 
+                              <% if @seller.static_data.faq.present? %>
+                              <div class="abtSlrCnt abtSlrCntPad">
+
+                                  <h2>Frequently Asked Questions (FAQ).</h2>
+                                  <%= @seller.static_data.faq %>
+                              </div>
+                              <% end %>
+
+                              <% if @seller.static_data.term.present? %>
+                                <div class="abtSlrCnt abtSlrCntPad">
+                                      <h2>Terms and Conditions</h2>
+                                      <%= @seller.static_data.term %>
+                                </div>
+                              <% end %>
+                        <% else %>
+                          <div class="abtSlrCnt abtSlrCntPad" style="min-height: 200px;">
+                            <br /><br />
+                            <h2>
+                              Seller hasn't filled this section yet.
+                            </h2>
+                          </div>
+                        <% end %>
         </div>
       </div>
     </div>

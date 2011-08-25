@@ -36,6 +36,7 @@ a:hover {opacity: 0.8;}
     .menu .lft,.menu .rgt {width:10px;}
     ul.mMenu li {padding-right:19px;margin-right:10px;font-weight:bold;text-transform:uppercase;background:url('/images/forms/mnu_line.png') right no-repeat;}
       ul.mMenu li a { height:32px;line-height:32px;font-size:10px;color:#fff;}
+      ul.mMenu li { line-height:32px;font-size:10px;color:#c8f4fd;}
       ul.mMenu li a:hover, ul.mMenu li a.active { color:#c8f4fd;}
   .tSrch { width:375px;height:32px;background:url('/images/bgs/srch_bg.png') left no-repeat;}
     .tSrch form { width:100%;}

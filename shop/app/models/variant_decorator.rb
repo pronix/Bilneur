@@ -127,6 +127,11 @@ Variant.class_eval do
   #
   class << self
 
+    # Find review from product
+    def by_product_and_id(product, quote_id)
+      self.where(:product_id => product.id).find(quote_id)
+    end
+
   end
 
 end

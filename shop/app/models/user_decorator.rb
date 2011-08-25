@@ -58,6 +58,10 @@ User.class_eval do
   # instance methods
   #
 
+  def my_reviews
+    SellerReview.where("seller_id = :user OR buyer_id = :user", { :user => id })
+  end
+
   # Return a array of all reviews by all user products
   def reviews_as_owner
     Review.where(:product_id => product_ids)

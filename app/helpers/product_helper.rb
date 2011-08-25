@@ -19,6 +19,17 @@ module ProductHelper
     image_tag user.photo.url(size.to_sym)
   end
 
+  def show_product_image(product,size='small')
+    case product.class.to_s
+      when "Variant"
+        return image_tag '/images/noimage/product.jpg' if product.image.nil?
+        return image_tag product.image.attachment(size.to_sym)
+      else
+        return image_tag '/images/noimage/product.jpg' if product.images.nil?
+        return image_tag product.images.last.attachment(size.to_sym)
+    end
+  end
+
   # Check if user early create review by this product
   def can_create_review?(product)
     return true if @current_user.nil?

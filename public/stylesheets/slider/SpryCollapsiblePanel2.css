@@ -46,6 +46,7 @@
 	background:url(/images/bgs/more.png) no-repeat;
 }
 
+
 /* This is the selector for a CollapsiblePanel's Content area. It's important to note that
  * you should never put any padding on the content area element if you plan to
  * use the CollapsiblePanel's open/close animations. Placing a non-zero padding on the content
@@ -81,6 +82,7 @@
 .CollapsiblePanelOpen .CollapsiblePanelTab {
 	background:url(/images/bgs/less.png) no-repeat;
 }
+
 
 /* This is an example of how to change the appearance of the panel tab as the
  * mouse hovers over it. The class "CollapsiblePanelTabHover" is programatically added

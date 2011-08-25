@@ -39,16 +39,16 @@
     <div class="sptCnt">
     	<div id="TabbedPanels2" class="TabbedPanels">
             <ul class="TabbedPanelsTabGroup feedback">
-              <li class="TabbedPanelsTab tab1 TabbedPanelsTabSelected" tabindex="0">
+              <li class="TabbedPanelsTab tab1 <%== "TabbedPanelsTabSelected" if params[:state] == "as_buyer" || !params[:state].present? %>" tabindex="0">
                 <span><%= link_to "Feedback as a Buyer", dashboard_reviews_path(:state => "as_buyer", :per_page => params[:per_page]), :remote => true %></span>
               </li>
-              <li class="TabbedPanelsTab tab2" tabindex="0">
+              <li class="TabbedPanelsTab tab2 <%== "TabbedPanelsTabSelected" if params[:state] == "as_seller" %>" tabindex="0">
                 <span><%= link_to "Feedback as a Seller", dashboard_reviews_path(:state => "as_seller", :per_page => params[:per_page]), :remote => true %></span>
               </li>
-              <li class="TabbedPanelsTab tab3" tabindex="0">
+              <li class="TabbedPanelsTab tab3 <%== "TabbedPanelsTabSelected" if params[:state] == "left" %>" tabindex="0">
                 <span><%= link_to "Feedback Left", dashboard_reviews_path(:state => "left", :per_page => params[:per_page]), :remote => true %></span>
               </li>
-              <li class="TabbedPanelsTab tab4" tabindex="0">
+              <li class="TabbedPanelsTab tab4 <%== "TabbedPanelsTabSelected" if params[:state] == "product" %>" tabindex="0">
                 <span><%= link_to "My Product reviews", dashboard_reviews_path(:state => "product", :per_page => params[:per_page]), :remote => true, :class => 'remote_link_click' %></span>
               </li>
           </ul>

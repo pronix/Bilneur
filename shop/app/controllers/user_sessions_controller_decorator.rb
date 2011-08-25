@@ -2,7 +2,7 @@ UserSessionsController.class_eval do
 
   private
 
-  # Bask to original
+  # Back to original
   #
   # def redirect_back_or_default(default)
   #   unless (session["user_return_to"]||default).to_s =~ /cart|checkout|order/

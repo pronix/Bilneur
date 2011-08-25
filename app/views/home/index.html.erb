@@ -57,10 +57,12 @@
       <% @latest_products.each do |item| %>
       <li>
         <div class="crsl">
-          <%= t122_image( item ) %>
-          <b class="lHd"><%= truncate item.name, :length => 40 %></b>
-          <i class="lHdI"><%= truncate item.description, :length => 100 %></i>
-          <%= link_to "View This Product", item %>
+          <a href="<%= product_path item %>">
+            <%= t122_image( item ) %>
+            <b class="lHd"><%= truncate item.name, :length => 40 %></b>
+            <i class="lHdI"><%= truncate item.description, :length => 100 %></i>
+            "View This Product"
+          </a>
           <b class="byTh">Buy 20 at <b class="byPrc">40% Off</b></b>
         </div>
       </li>

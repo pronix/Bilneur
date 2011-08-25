@@ -624,6 +624,7 @@ ul li { list-style:none;}
 form.new_message {float: left; }
 .msgCred {width:99%;background:url('/images/bgs/msg_cred.jpg') 0 0 repeat-x;height:82px;margin-left:1px;}
 .subMessage .msgCred {width:99%;background:url('/images/bgs/msg_cred.jpg') 0 bottom repeat-x;height:38px; line-height: 38px; margin-left:1px;}
+.subMessage .msgCred i {padding-right: 20px;}
     .msgCred p {clear:both;width:97%;display:block;margin:0;margin:7px 0 0 15px;text-align:left;}
         .msgCred p i {width:40px;}
         .msgCred p b {}
@@ -672,6 +673,7 @@ form.new_message {float: left; }
 .sptCntBus {float:left;width:717px!important;margin-top:5px;}
     .sptCntBus .top { background:url('/images/bgs/dash_cnt_top.png') 0 0 no-repeat;}
     .sptCntBus .cntr { padding-bottom:20px;background:url('/images/bgs/dash_cnt_cntr.png') 0 0 repeat-y;}
+    .sptCntBus .cntr .toolbar,.sptCntBus .cntr .index.sortable { margin: 20px; }
     .sptCntBus .btm {background:url('/images/bgs/dash_cnt_btm.png') 0 0 no-repeat;}
     .sptCntBus .top, .sptCntBus .btm {height:14px;width:100%;}
     .sptCntBus .cntr h2 { width:709px; margin:0 0 0 8px; padding-bottom:5px; border-bottom:1px solid #ececec; text-align:center; color:#00adef; font-size:23px;}
@@ -857,3 +859,4 @@ form.new_message {float: left; }
 .contInpFix .checkbox {float:right;padding-right:0;margin-right:0;width:0;}
 .contInpFix .mk {float:left;font-weight:normal;font-size:12px;color:#38393a;margin-top:4px;}
 
+.slrPrfl fieldset {border: none;}

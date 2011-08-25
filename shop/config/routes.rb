@@ -50,6 +50,16 @@ Rails.application.routes.draw do
   # For recovery password by secret question
   match '/user/password/reset_by_question' => 'password_by_question#reset_by_question', :via => :post
   match '/user/password/new_password' => 'password_by_question#new_password', :via => :post
+
+  # Favorite variants
+
+  resources :favorites, :controller => "favorite_products", :only => [ :destroy ] do
+    member do
+      get :add
+      post :cart
+    end
+  end
+
   # User dashboard
   #
   namespace :dashboard do

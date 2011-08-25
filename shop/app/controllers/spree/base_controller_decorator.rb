@@ -1,6 +1,7 @@
 Spree::BaseController.class_eval do
   include Spree::CurrentVirtualOrder
   helper_method :current_virtual_order
+  helper_method :favorite_products
 
   before_filter :prepare_params
 
@@ -36,5 +37,8 @@ Spree::BaseController.class_eval do
     head :bad_request
   end
 
+  def favorite_products
+    current_user ? current_user.favorite_variants : Variant.active.where(:id => (session[:favorite_products]||[]))
+  end
 
 end

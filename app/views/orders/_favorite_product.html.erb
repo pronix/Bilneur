@@ -1,0 +1,69 @@
+<div class="lyOut1 marg" id="your_saved_items">
+  <div class="tL"><div class="tR"></div></div>
+  <div class="cC">
+
+    <div class="altRow1">
+      <h2>Your Saved Items</h2>
+      <div class="cartNav">
+        <b>item</b>
+        <span>seller</span>
+        <span>price </span>
+        <span class="ttl">&nbsp; qty</span>
+        <span class="ttl"></span>
+      </div>
+
+      <% favorite_products.each do |item| %>
+
+      <div class="<%= cycle("altRow2","altRow1") %>">
+        <div class="slrPnl">
+          <div class="slr">
+            <i>
+              <%= t122_image(item.images.present? ? item : item.product) %>
+            </i>
+            <div>
+              <b><%= item.product.name %></b>
+              <span>Condition: <em><%= item.display_condition %></em></span>
+            </div>
+          </div>
+
+          <div class="slrImg">
+            <i><%= image_tag item.seller.photo.url(:for_review) %></i>
+            <span><%= item.seller.full_name %></span>
+          </div>
+
+          <div class="prc">
+            <b><%= number_to_currency item.price %></b>
+            Available: <%= item.count_on_hand %>
+          </div>
+          <div class="qtyIn">
+            <%= link_to "Remove", favorite_path(item), :class => "delete", :method => :delete  %><br/>
+            <%= form_tag cart_favorite_path(item) do %>
+            <%= text_field_tag :quantity, 1, :class => "txt" %>
+            <div class="rTe">
+              <button name="cart" value="normal" class="">
+                <%= t('add_to_cart') %>
+              </button>
+              <button name="cart" value="virtual" class="">
+                <%= t('add_to_virtual_store') %>
+              </button>
+            </div>
+            <% end %>
+
+          </div>
+          <div class="prc ttl">
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      <% end %>
+    </div>
+
+  </div>
+
+
+</div>

@@ -19,6 +19,8 @@ UserSessionsController.class_eval do
     current_order.associate_user!(current_user) if current_order
     current_virtual_order.associate_user!(current_user) if current_virtual_order
     session[:guest_token] = nil
+    current_user.merge_favorite(session[:favorite_products]||[])
+    session[:favorite_products] = [ ]
 
   end
 

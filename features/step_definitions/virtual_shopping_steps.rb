@@ -87,3 +87,29 @@ When /^I select first shipping address$/ do
   When %Q(I choose "order[ship_address_id]")
 end
 
+
+
+Then /^page not have Saved Items panel$/ do
+  page.should have_no_content('Your Saved Items')
+end
+Then /^page have Saved Items panel with the following products:$/ do |table|
+  table.raw.each do |r|
+    within("#your_saved_items") do
+      page.should have_content(r[0])
+    end
+  end
+end
+
+Then /^the cart include the product "([^\"]*)" with quantity "([^\"]*)"$/ do |product_name, quantity|
+  within("#normal-cart") do
+    page.should have_content(product_name)
+    find_field("order_line_items_attributes_0_quantity").value.should eq(quantity)
+  end
+end
+
+Then /^the virtual cart include the product "([^\"]*)" with quantity "([^\"]*)"$/ do |product_name, quantity|
+  within("#virtual-cart") do
+    page.should have_content(product_name)
+    find_field("order_line_items_attributes_0_quantity").value.should eq(quantity)
+  end
+end

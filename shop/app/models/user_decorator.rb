@@ -24,6 +24,8 @@ User.class_eval do
   :conditions => { "orders.virtual" => false}
   has_and_belongs_to_many :virtual_sales, :join_table => "orders_users", :class_name => "Order",
   :conditions => { "orders.virtual" => true}
+  has_and_belongs_to_many :favorite_variants, :join_table => "favorite_variants", :class_name => "Variant", :uniq => true
+
 
   has_many :orders,  :conditions => { :virtual => false}
   has_many :virtual_orders, :class_name => "VirtualOrder", :foreign_key => :user_id
@@ -57,6 +59,22 @@ User.class_eval do
 
   # instance methods
   #
+
+  def add_to_favorite(_variant)
+    favorite_variants << _variant unless favorite_variants.find_by_id(_variant.id)
+    favorite_variants
+  end
+
+  def remove_from_favorite(_variant)
+    favorite_variants.delete(_variant)
+  end
+
+  def merge_favorite(_variant_ids = [])
+    Variant.active.where(:id => _variant_ids).each do |item|
+      favorite_variants << item unless favorite_variants.find_by_id(item.id)
+    end
+    favorite_variants
+  end
 
   def my_reviews
     SellerReview.where("seller_id = :user OR buyer_id = :user", { :user => id })
@@ -147,7 +165,8 @@ User.class_eval do
                                            :name => "Ship to Bilneur",
                                            :seller_id => self.id,
                                            :virtual => true,
-                                           :method_kind => ShippingMethod::METHOD_KIND_TO_BILNEUR)
+                                           :method_kind => ShippingMethod::METHOD_KIND_TO_BILNEUR,
+                                           :zone_id => Zone.first.try(:id))
       shipping_method.save(:validate => false)
     end
 
@@ -156,7 +175,9 @@ User.class_eval do
                                            :name => "Store with seller",
                                            :seller_id => self.id,
                                            :virtual => true,
-                                           :method_kind => ShippingMethod::METHOD_KIND_WITH_SELLER)
+                                           :method_kind => ShippingMethod::METHOD_KIND_WITH_SELLER,
+                                           :zone_id => Zone.first.try(:id))
+
       shipping_method.save(:validate => false)
     end
 

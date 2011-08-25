@@ -3,7 +3,6 @@ Feature: Login
   A registered user
   Should be able to login
 
-
   Scenario Outline: Login with invalid and valid credentials
     Given I am signed up as "email@person.com/password"
     And I try to auth with "<email>" and "<password>"

@@ -91,7 +91,6 @@ Rails.application.routes.draw do
       end
 
       resource :selling_options
-      resource :return_policies, :only => [:show, :edit, :update]
 
     end # end dashboard < quotes
 

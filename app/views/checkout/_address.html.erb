@@ -35,7 +35,10 @@
       <div id="ship-addresses">
       <%= render :partial => "ship_address", :collection => current_user.addresses %>
       </div>
-      <button id="next_after_selected_ship_address">Continue</button>
+
+      <button id="next_after_selected_ship_address" value="Continue">
+        Calculating shipping
+      </button>
 
     </div>
 
@@ -73,7 +76,7 @@
   <div class="shpng2">
     <%= render :partial => "summary", :locals => {:order => @order } %>
 
-    <div class="cntnu cntnuFix" style="display:none;" id="next-step-button">
+    <div class="cntnu tPBtn" style="display:none;" id="next-step-button">
       <button id="link-next-step-button" value="Checkout" class="checkout">
         <%= image_tag "forms/chk_big_btn.png" %>
       </button>
@@ -99,7 +102,10 @@
          type: 'POST',
          url: $(content_form).attr("action")+'.js',
          data: $(content_form).serialize(),
-         success: function(data){ $("#select-shipping-methods").html(data)}
+         success: function(data){
+            $("#select-shipping-methods").html(data);
+            $("#select-shipping-methods").find(".mRadio").pulse({ opacity: [0,1], borderColor: ['yellow'], }, { times: 3   });
+           }
 
        })
        return false;

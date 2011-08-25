@@ -1,6 +1,15 @@
 (function($){
   $(document).ready(function(){
 
+      $('#new_address_checkout').live('ajax:loading', function(event, xhr, settings) {
+        $("#update_new_address").hide()
+      });
+
+      $('#new_address_checkout').live('ajax:complete', function(event, xhr) {
+        $("#update_new_address").show()
+      });
+
+
     $("#link-next-step-button").live('click', function(){ $('#checkout_form_delivery').submit(); });
     $(".radio").dgStyle();
     $(".checkbox").dgStyle();

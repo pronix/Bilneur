@@ -24,7 +24,7 @@ after  "deploy:update", "deploy:cleanup"
 
 after "deploy:restart",          "thinking_sphinx:restart"
 after "thinking_sphinx:start",   "deploy:chown_apache"
-after "thinking_sphinx:restart"," deploy:chown_apache"
+after "thinking_sphinx:restart", "deploy:chown_apache"
 
 
 

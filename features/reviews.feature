@@ -33,7 +33,7 @@ Feature: Manage reviews
     Then selectbox "select_product_id" should be selected for "All"
     And I should see all 6 review for product "The Godfather"
 
-@javascript  
+@javascript
   Scenario Outline: Show only approved/unapproved review on the My Product Review
     And I have 4 unapproved and 2 approved reviews for product "The Godfather"
     Then I go to the reviews dashboard page
@@ -56,7 +56,7 @@ Feature: Manage reviews
     Then I should not have unapproved reviews
 
 @javascript
-  Scenario: Show My Product Review only for one product 
+  Scenario: Show My Product Review only for one product
     Given I have product with name "The Second Product" and owner "seller@person.com"
     And I have 4 unapproved and 2 approved reviews for product "The Godfather"
     And I have 4 unapproved and 2 approved reviews for product "The Second Product"
@@ -91,17 +91,6 @@ Feature: Manage reviews
     When I go to the "The Godfather" product page
     Then I should see lates review for "The Godfather" on last review block
 
-<<<<<<< HEAD
-  #FIXME
-  # Scenario: Create review as Guest
-  #   And I am logged out
-  #   Then test
-  #   When I go to the "The Godfather" product page
-  #   Then I follow "Rate This Product"
-  #   And I should be on the login page
-
-=======
->>>>>>> ezo
  Scenario: Create review as register user
     When I go to the "The Godfather" product page
     Then I follow "Rate This Product"

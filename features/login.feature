@@ -10,15 +10,15 @@ Feature: Login
     And I should be on the <page>
 
     Examples:
-      | email            | password    | should_see                | page          |
-      | email@person.com | password    | Logged in successfully    | Products page |
-      | bad@person.com   | password    | Invalid email or password | sign in page  |
-      | email@person.com | badpassword | Invalid email or password | sign in page  |
+      | email            | password    | should_see                | page                        |
+      | email@person.com | password    | Logged in successfully    | dashboard account fuck page |
+      | bad@person.com   | password    | Invalid email or password | sign in page                |
+      | email@person.com | badpassword | Invalid email or password | sign in page                |
 
 
    Scenario: What I see when I log in
      Given I already sing as "email@person.com/password"
-     And I should be on the Products page
+     And I should be on the dashboard account fuck page
      And I should see given in page
      | element    |
      | My Account |
@@ -62,17 +62,14 @@ Feature: Login
     Then I should see "Log In"
     And I should not see "My Account"
 
-  Scenario: Change password in admin page
-    Given I am signed up as "email@person.com/password"
-    When I sign in as "email@person.com/password"
-    And I follow "My Account"
-    Then I should be on the "email@person.com" account page
-    Then I should see "My Account"
-    Then I follow "Change Password"
-    Then I should be on the current user edit password page
-    And I fill in "Current Password" with "password"
-    And I fill in "New Password" with "moloko"
-    And I fill in "Repeat Password" with "moloko"
-    And I press "Update"
+  Scenario: User change password
+    Given I am signed up as a seller with "seller@person.com/password"
+    When I sign in as "seller@person.com/password"
+    And I follow "edit_account"
+    Then I follow "Password"
+    And I fill in "user_current_password" with "password"
+    And I fill in "user_password" with "moloko"
+    And I fill in "user_password_confirmation" with "moloko"
+    And I press "save_new_password"
     Then I should be on the dashboard account fuck page
     And I should see "Password updated"

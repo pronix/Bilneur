@@ -22,7 +22,7 @@ module Spree::Search
     def get_products_conditions_for(base_scope,query = "")
       search_options = {:page => page, :per_page => per_page}
       if order_by_price
-        search_options.merge!(:order => :price,
+        search_options.merge!(:order => :variant_price,
                               :sort_mode => (order_by_price == 'descend' ? :desc : :asc))
       end
       if facets_hash
@@ -48,7 +48,7 @@ module Spree::Search
       @properties[:products] = products
       @properties[:facets] = parse_facets_hash(facets)
       @properties[:suggest] = nil if @properties[:suggest] == query
-      Product.where("id IN (?)", products.compact.map(&:id))
+      Product.where("products.id IN (?)", products.compact.map(&:id))
     end
 
     def prepare(params)

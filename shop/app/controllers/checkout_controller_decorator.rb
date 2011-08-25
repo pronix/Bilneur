@@ -1,5 +1,8 @@
 CheckoutController.class_eval do
+  before_filter :prepare_paypal, :only => [:update]
+
   respond_to :html, :js
+
 
   def address_info
     if (@address = current_user.addresses.find(params[:id]))
@@ -86,5 +89,17 @@ CheckoutController.class_eval do
   def type_order
     @order.virtual? ? :virtual : :normal
   end
-
+  private
+  def prepare_paypal
+    if params[:paypal] && (params[:state] == "payment")
+      if params[:order][:bill_address_attributes]
+        order_params = {:order => {:bill_address_attributes => params[:order][:bill_address_attributes]}}
+        if @order.update_attributes(order_params) &&
+            (@payment_method = (@order.virtual? ? PaymentMethod.vpaypal(:front_end) : PaymentMethod.paypal(:front_end)))
+          load_order
+          redirect_to paypal_payment_order_checkout_url(@order, :payment_method_id => @payment_method.id) and return
+         end
+      end
+    end
+  end
 end

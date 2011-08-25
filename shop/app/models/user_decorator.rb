@@ -184,7 +184,9 @@ User.class_eval do
   def available_shipping_methods?
     shipping_methods.to_address.present?
   end
-
+  def virtual_seller?
+    has_role?("virtual_seller")
+  end
   # class methods
   #
 

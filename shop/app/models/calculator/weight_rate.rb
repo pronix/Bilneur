@@ -1,10 +1,9 @@
 class Calculator::WeightRate < Calculator
   require 'json'
 
-  # FIXME require define intervals { 10 => 20, 30 => 40 }
+  # require define intervals { 10 => 20, 30 => 40 }
   # 10 20 from 0 to 10 cost 20
   # 30 40 from 10 to 30 cost 40
-  # FIXME add ability for to define more or less ranges
   # Save as yaml
   preference :interval, :string
 

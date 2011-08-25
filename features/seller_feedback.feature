@@ -51,6 +51,7 @@
 #     And I should see my rating for "seller1@person.com"
 #     And I should see "seller1@person.com" fullname
 
+
 #   Scenario: Dont show Buyer review if seller dont have review
 #     Given I sign in as "seller1@person.com/password1"
 #     Then I go to the dashboard seles page

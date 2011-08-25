@@ -1,10 +1,12 @@
 <%= form_for address, :url => make_addresses_path(address_name, @order), :remote => true, :html => { :id => "new_address_checkout" } do |form| %>
  <% unless address.new_record? %>
- <%= hidden_field_tag "id", address.id %>
+   <%= hidden_field_tag "id", address.id %>
  <% end %>
-<div class="option2">
+
+ <div class="option2">
 
   <%= render "shared/error_messages", :target => address  %>
+
   <% if address_name == 'ship' %>
   <h4>Enter a new shipping address</h4>
   <% elsif address_name == 'bill' %>
@@ -15,11 +17,28 @@
   <b>
     <i>City:</i>
     <%= form.text_field(field.to_sym, :class => 'txtCty') %>
-    <% elsif field == "state" %>
+
+    <% elsif field == "state" && Spree::Config[:address_requires_state] %>
+
     <i class="stat">State:</i>
-    <div class="cmbo2">
-      <%= form.collection_select :state_id, State.order('name').all, :id, :name, {:include_blank => true}, {:class => 'required', :id => "websites2"} %>
-    </div>
+    <div class="cmbo2" id="state-place">
+      <% @states = (form.object.country||Country.default).states %>
+      <noscript>
+        <%= form.text_field :state_name, :class => 'required txtCty' %>
+      </noscript>
+
+      <%
+         state_elements = [
+             form.collection_select( :state_id, @states, :id, :name,
+                                      {:include_blank => true}, {:class => 'required', :id => "websites2" }) +
+             form.text_field(:state_name,
+                                  :class => @states.blank? ? "required txtCty" : "hidden txtCty",
+                                  :disabled => @states.present?)
+          ].join.gsub('"', "'").gsub("\n", "")
+      %>
+      <%== state_elements %>
+
+       </div>
   </b>
 
   <% elsif field == "country" %>
@@ -27,7 +46,7 @@
   <b>
     <i><%= form.label :country_id, t(field, :scope => [:activerecord, :attributes, :address]) %></i>
     <div class="cmbo3">
-      <%= form.collection_select :country_id, available_countries, :id, :name, {}, {:class => 'required', :id => "websites3"} %>
+      <%= form.collection_select :country_id, available_countries, :id, :name, {}, {:class => 'required', :id => "websites3", :"data-address_type" => "ship" } %>
     </div>
   </b>
 
@@ -48,13 +67,14 @@
     <%= form.text_field(field.to_sym, :class => 'inpNam') %>
   </b>
 
+  <% elsif field == "full_name"%>
   <% elsif field == "lastname"%>
-  <b>
+   <b>
     <i>Last Name:</i>
     <%= form.text_field(field.to_sym, :class => 'inpNam') %>
   </b>
 
-  <% elsif field == "firstname"%>
+  <% elsif field == "firstname" %>
   <b>
     <i>First Name:</i>
     <%= form.text_field(field.to_sym, :class => 'inpNam') %>
@@ -77,7 +97,7 @@
   <%= address_field(form, :alternative_phone, address_name) %>
   <% end %>
   <b>
-    <button class="MdfSbmt" value="Save new address" />
+    <button class="MdfSbmt" value="Save new address" id="update_new_address" />
   </b>
 </div>
 <% end %>

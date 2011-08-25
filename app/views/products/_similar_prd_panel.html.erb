@@ -6,7 +6,7 @@
   <div class="cntr <%== ' lst' if @product.similar_products.count == index+1 %>">
     <%= link_to product_path(product) do %>
 
-    <i><%= mini_image(@best_similar_variant) %></i>
+    <i><%= mini_image(@best_similar_variant.images.present? ? @best_similar_variant : @best_similar_variant.product ) %></i>
     <b><%= truncate product.name, :length => 20 %></b>
     <em>
       <%= truncate product.description, :length => 90 %><br />

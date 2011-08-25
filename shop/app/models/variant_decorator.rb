@@ -7,6 +7,7 @@ Variant.class_eval do
   #
   belongs_to :seller, :class_name => "User"
   belongs_to :owner, :class_name => "User" # seller who added quote, not virtual seller
+
   # scopes
   #
   CONDITION.each { |v| scope :"condition_#{v}", where(:condition => v)}

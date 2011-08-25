@@ -13,7 +13,8 @@ module HtmlSelectorsHelpers
       "#virtual-cart"
     when "block normal cart"
       "#normal-cart"
-
+    when  /history purchases in record (.+)/
+      "div.prchsPnl:eq(#{$1})"
     when "the page"
       "html > body"
 

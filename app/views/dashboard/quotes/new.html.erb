@@ -19,6 +19,12 @@
     <%= f.text_field :count_on_hand, :class => 'title'  %>
   </p>
   <p>
+    <%= f.label :weight, t("weight") %> <span class="required">*</span><br />
+    <%= f.text_field :weight, :class => 'title'  %>
+  </p>
+
+
+  <p>
     <%= label_tag "variant_condition", t("condition") %> <span class="required">*</span><br />
     <%= select_tag("variant[condition]",
             options_for_select(Variant::CONDITION.collect {|ov| [ t("condition_#{ov}"), ov ] })) %>

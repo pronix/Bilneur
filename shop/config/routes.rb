@@ -163,7 +163,11 @@ Rails.application.routes.draw do
     resource :account, :controller => "users", :only => [:show, :edit, :update]
     resources :shipping_methods
     resource :terms
-    resources :addresses
+    resources :addresses do
+      member do
+        get :make_primary
+      end
+    end
     resources :messages, :path => "inbox", :except => [:new, :edit, :update] do
       collection  do
         match "/:state" => "messages#index", :via => :get, :as => :state_inbox,

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     end
 
     collection do
-      match "make/:state/:order_id" => "addresses#make", :as => :make, :via => :post
+      match "make/:state/:order_id" => "addresses#make", :as => :make, :via => [:post, :put]
     end
 
   end

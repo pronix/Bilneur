@@ -22,6 +22,7 @@ Feature: Manage Favorite Sellers
     Then I follow "Add Seller To Favorites"
     Then I should not see "Add Seller To Favorites"
 
+@javascript
   Scenario: Not show add to favorite seller link
     And I sign in as "email@person.com/password"
     Then exec "@user = User.find_by_email('email@person.com')"

@@ -62,4 +62,15 @@ describe User do
     user.avg_rating.to_f.round(1).should == 3.7
   end
 
+  describe "Work with favorite sellers" do
+    user = Factory(:user)
+    seller = Factory(:user)
+    user.add_seller_to_favorite(seller)
+    user.favorite_sellers.count.should == 1
+    user.favorite_sellers.last.should == seller
+    user.seller_favorite?(seller).should == true
+    user.remove_seller_from_favorite(seller)
+    user.favorite_sellers.count.should == 0
+  end
+
 end

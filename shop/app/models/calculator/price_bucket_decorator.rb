@@ -15,6 +15,16 @@ Calculator::PriceBucket.class_eval do
     end
   end
 
+  # Compute shipping for one variant
+  #
+  def compute_for_one_variant(variant)
+    if variant.price >= self.preferred_minimal_amount
+      self.preferred_normal_amount
+    else
+      self.preferred_discount_amount
+    end
+
+  end
 
 
 end

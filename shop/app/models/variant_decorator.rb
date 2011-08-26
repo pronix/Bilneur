@@ -50,6 +50,19 @@ Variant.class_eval do
   #
   delegate_belongs_to :product, :ean
 
+  # Shipping cost for variant
+  # only realy shipping methods
+  #
+  def shipping
+    seller.shipping_methods.realy[0..0].map do |item|
+      {
+        :zone => item.zone.try(:name),
+        :cost => (item.calculator.respond_to?(:compute_for_one_variant) ? item.calculator.compute_for_one_variant(self) : 0)
+      }
+    end
+
+  end
+
   # Set current user as seller and owner quote
   #
   def set_seller(user = User.current)

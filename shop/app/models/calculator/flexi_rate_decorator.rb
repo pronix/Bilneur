@@ -14,4 +14,22 @@ Calculator::FlexiRate.class_eval do
     return(sum)
   end
 
+  # Compute shipping for one variant
+  #
+  def compute_for_one_variant(variant = nil)
+    sum = 0
+    max = self.preferred_max_items
+    items_count = 1
+    items_count.times do |i|
+      if (i % max == 0) && (max > 0)
+        sum += self.preferred_first_item
+      else
+        sum += self.preferred_additional_item
+      end
+    end
+    return(sum)
+
+  end
+
+
 end

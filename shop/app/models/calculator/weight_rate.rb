@@ -39,4 +39,25 @@ class Calculator::WeightRate < Calculator
     cost = arr.map {|x| x['cost']}.max.to_f unless cost
     cost
   end
+
+
+  # Compute shipping for one variant
+  #
+  def compute_for_one_variant(variant)
+    weight = variant.weight
+    # find weight range
+    arr = JSON.parse(preferred_interval)
+    # sort by inerval from smalles to biggest
+    arr = arr.to_enum.sort_by {|x| x['int']}
+    arr.each do |h|
+      if  weight.to_f < h['int'].to_f
+        cost = h['cost'].to_f
+        break
+      end
+    end
+    # if not find range - maximum cost
+    cost = arr.map {|x| x['cost']}.max.to_f unless cost
+    cost
+  end
+
 end

@@ -15,7 +15,7 @@ class Dashboard::AddressesController < Dashboard::ApplicationController
   end
 
   def create
-    if @address = current_user.addresses.create(params[:address])
+    if (@address = current_user.addresses.create(params[:address])).valid?
       redirect_to dashboard_addresses_path, :notice => I18n.t(:successfully_created, :resource => I18n.t(:address))
     else
       render :new

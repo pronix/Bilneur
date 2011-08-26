@@ -1,34 +1,34 @@
 <div class="smPrdcts">
-      <div class="smPd">
-          <i class="imgP"><%= link_to small_image(product), product %></i>
-            <div class="pdDtl">
-              <h4><%= link_to product.name, product %></h4>
-              <% if defined? short_description %>
-                <p><%= product.description.slice(0, 200) + '...' %></p>
-              <% else %>
-                <p><%= product.description %></p>
-              <% end %>
-              <%= render :partial => "shared/rating_product", :object => product %>
-            </div>
-            <div class="rTe">
-              <b class="rT">
-                <%= number_to_currency(best_deal.try(:price)) %>
-              </b>
-                <em class="oRt">retail <%= number_to_currency(product.try(:price)) %></em>
-                <span class="avB">
-                  <%= link_to "Available with #{product.variants.count.to_s} sellers", product_quotes_path(product, 'new') %> 
-                </span>
-                <ul>
-                  <li><%= link_to image_tag("icons/ch_twtr.png"), "http://twitter.com/share?url=#{product_url(product)}" %></li>
-                  <!--<li><%= link_to image_tag("icons/ch_fb.png"), "#" %></li>-->
-                  <li><%= link_to image_tag("icons/ch_dl.png"), "#" %></li>
-                </ul>
-                <p>
-                  <em class="qt">QTY Available</em><i class="avl"><%= best_deal.count_on_hand %></i>
-                </p>
-                <div class="cntcts">
-                  <%= render :partial => 'shared/cart_form', :object => best_deal %>
-                </div>
-            </div>
-        </div>
+  <div class="smPd">
+    <i class="imgP"><%= link_to small_image(product), product %></i>
+    <div class="pdDtl">
+      <h4><%= link_to product.name, product %></h4>
+      <% if defined? short_description %>
+      <p><%= product.description.slice(0, 200) + '...' %></p>
+      <% else %>
+      <p><%= product.description %></p>
+      <% end %>
+      <%= render :partial => "shared/rating_product", :object => product %>
+    </div>
+    <div class="rTe">
+      <b class="rT">
+        <%= number_to_currency(best_deal.try(:price)) %>
+      </b>
+      <em class="oRt">retail <%= number_to_currency(product.try(:price)) %></em>
+      <span class="avB">
+        <%= link_to "Available with #{product.variants.count.to_s} sellers", product_quotes_path(product, 'new') %>
+      </span>
+      <ul>
+        <li><%= link_to image_tag("icons/ch_twtr.png"), "http://twitter.com/share?url=#{product_url(product)}" %></li>
+        <!--<li><%= link_to image_tag("icons/ch_fb.png"), "#" %></li>-->
+        <li><%= link_to image_tag("icons/ch_dl.png"), "#" %></li>
+      </ul>
+      <p>
+        <em class="qt">QTY Available</em><i class="avl"><%= best_deal.count_on_hand %></i>
+      </p>
+      <div class="cntcts">
+        <%= render :partial => 'shared/cart_form', :object => best_deal %>
+      </div>
+    </div>
+  </div>
 </div>

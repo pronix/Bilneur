@@ -1,8 +1,5 @@
 Variant.class_eval do
 
-  CONDITION = %w(new used another)
-  CONDITION_MAP = { :new => 1, :used => 2, :another => 3}
-
   # associations
   #
   belongs_to :seller, :class_name => "User"
@@ -10,7 +7,7 @@ Variant.class_eval do
 
   # scopes
   #
-  CONDITION.each { |v| scope :"condition_#{v}", where(:condition => v)}
+  Variant::CONDITION.each { |v| scope :"condition_#{v}", where(:condition => v)}
   scope :condition, lambda{ |*args|
     where(:condition => (args.first =~ /new|used|another/ ? args.first : "new"))
   }
@@ -29,7 +26,7 @@ Variant.class_eval do
 
   # validates
   #
-  validates :condition, :inclusion => { :in => CONDITION },   :unless => lambda{|t| t.is_master? }
+  validates :condition, :inclusion => { :in => Variant::CONDITION },   :unless => lambda{|t| t.is_master? }
   validates :another_condition, :presence => true, :if => lambda{ |t| t.condition == "another"}
 
   validates :count_on_hand, :numericality => { :greater_than_or_equal_to => 0 }, :unless => lambda{|t| t.is_master? }
@@ -49,6 +46,24 @@ Variant.class_eval do
   # instance methods
   #
   delegate_belongs_to :product, :ean
+
+  # Shipping cost for variant
+  # only realy shipping methods
+  #
+  def shipping
+    seller.shipping_methods.realy[0..0].map do |item|
+      {
+        :zone => item.zone.try(:name),
+        :cost => (item.calculator.respond_to?(:compute_for_one_variant) ? item.calculator.compute_for_one_variant(self) : 0)
+      }
+    end
+  end
+
+  # Sample the first shipping
+  #
+  def primary_shipping
+    shipping.first.try(:[], :cost)
+  end
 
   # Set current user as seller and owner quote
   #

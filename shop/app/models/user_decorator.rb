@@ -60,6 +60,10 @@ User.class_eval do
   # instance methods
   #
 
+  def primary_payment_methods
+    seller_payment_methods.first
+  end
+
   def add_to_favorite(_variant)
     favorite_variants << _variant unless favorite_variants.find_by_id(_variant.id)
     favorite_variants
@@ -221,6 +225,14 @@ User.class_eval do
   def virtual_seller?
     has_role?("virtual_seller")
   end
+
+  # Stub
+  # TODO
+  #
+  def reliability
+    20
+  end
+
   # class methods
   #
 

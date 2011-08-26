@@ -2,6 +2,7 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  upload_logo: "Edit / Upload Photo or Logo"
   save_for_later: Save for later
   shipping_method: Shipping Method
   quantity: Quantity

@@ -1,13 +1,18 @@
 <div class="ptPod">
   <% if product.class == Variant %>
-  <%= link_to raw("More info" + image_tag("/images/icons/chta_pls.png")), product.product, :class => "pTpA" %>
-  <i class="pImg"><%= link_to show_product_image(product,'small'), product.product %></i>
+    <%= link_to raw("More info" + image_tag("/images/icons/chta_pls.png")), seller_quote_path(@seller, product.product, product), :class => "pTpA" %>
+  <i class="pImg"><%= link_to show_product_image(product,'small'), seller_quote_path(@seller, product.product, product) %></i>
   <% else %>
   <%= link_to image_tag("/images/icons/chta_pls.png"), product, :class => "pTpA" %>
   <i class="pImg"><%= link_to small_image(product), product %></i>
   <% end %>
 
-  <b class="prc"><%= number_to_currency(best_deal.try(:price)) %><br><span>Shipping: FIXME</span></b> <!-- FIXME -->
+  <b class="prc"><%= number_to_currency(best_deal.try(:price)) %><br>
+    <span>Shipping: </span>
+    <% best_deal.shipping.each do |item| %>
+    <span><%= item[:zone] %> - <%= item[:cost] %></span>
+    <% end %>
+  </b>
   <ul>
     <li><a href="#"><img src="/images/icons/ch_twtr.png" alt=""></a></li><!-- FIXME -->
     <li><a href="#"><img src="/images/icons/ch_fb.png" alt=""></a></li><!-- FIXME -->

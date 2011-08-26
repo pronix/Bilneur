@@ -47,6 +47,7 @@ namespace :deploy do
 
   task :chown_apache do
     run "chown -R nginx:nginx #{current_path}/"
+    run "chown -R nginx:nginx #{shared_path}/log/searchd.production.pid"
   end
 
   desc "Symlink the images"

@@ -11,7 +11,7 @@
 
   </div>
   <div class="btm"></div>
-  
+
   <% if current_user.has_role?("seller") %>
   <%= link_to image_tag('/images/forms/vsp_btn.png'), store_seller_path(current_user), :class => "vsp" %>
 </a>
@@ -43,7 +43,7 @@
         <span>
           <%= address.address1 %><br>
           <%= address.address2 %><br>
-          <%= address.city %>, <%= address.state.name %><br>
+          <%= address.city %>, <%= address.state.try(:name)|| address.state_name %><br>
           Phone: <%= address.phone %><br>
           Postal code: <%= address.zipcode %><br>
           <%= address.country.iso3 %>
@@ -59,9 +59,8 @@
       <b>PAYMENT INFORMATION</b>
       <p>
         <span><b>Credit or Debit Cards</b></span>
-        <% current_user.seller_payment_methods.first do |item| %>
-        <span><%= item.name %> ending in FIXME</span> <!-- FIXME expiration date -->
-        <% end %>
+        <span><%= current_user.primary_payment_methods.try(:name) %></span> <br />
+        <span><%= current_user.primary_payment_methods.try(:description) %></span>
       </p>
       <span>
         <%= link_to "Add more addresses",  new_dashboard_payment_method_url, :class => 'adAd' %> <!-- FIXME add right url -->
@@ -72,8 +71,5 @@
   <div class="btm"></div>
 
   <%= render 'seller_profile' if current_user.has_role?("seller") %>
-
-
-
 </div>
 

@@ -15,9 +15,20 @@ UserSessionsController.class_eval do
 
 
   def associate_user
-    return unless current_user and (current_order || current_virtual_order)
-    current_order.associate_user!(current_user) if current_order
-    current_virtual_order.associate_user!(current_user) if current_virtual_order
+    return unless current_user # and (current_order || current_virtual_order)
+
+    if current_order
+      current_order.associate_user!(current_user)
+    else
+      session[:order_id] = current_user.orders.metasearch(:state_not_eq => :complete).first.try(:id)
+    end
+
+    if current_virtual_order
+      current_virtual_order.associate_user!(current_user)
+    else
+      session[:virtual_order_id] = current_user.virtual_orders.metasearch(:state_not_eq => :complete).first.try(:id)
+    end
+
     session[:guest_token] = nil
     current_user.merge_favorite(session[:favorite_products]||[])
     session[:favorite_products] = [ ]

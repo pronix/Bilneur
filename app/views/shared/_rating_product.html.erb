@@ -1,14 +1,14 @@
 <% stars = rating_product.get_stars %>
 <b class="revw">
-  <% link_to product_path(rating_product) do %>
-      <em><%= stars.last %></em>
-      <span>reviews</span>
+  <%= link_to product_path(rating_product) do %>
+    <em><%= stars.last %></em>
+    <span>reviews</span>
   <% end %>
 </b>
 
 <b>
-  <% link_to product_path(rating_product) do %>
-    <%= show_stars(rating_product.avg_rating, 'icons/yel_str_big.png', 'icons/grey_str_big.png', '<label>') %>
+  <%= link_to product_path(rating_product) do %>
+   <%= show_stars(rating_product.avg_rating, 'icons/yel_str_big.png', 'icons/grey_str_big.png', '<label>') %>
   <% end %>
 </b>
 

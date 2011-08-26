@@ -1,7 +1,7 @@
 <div class="ptPod">
   <% if product.class == Variant %>
-  <%= link_to raw("More info" + image_tag("/images/icons/chta_pls.png")), product.product, :class => "pTpA" %>
-  <i class="pImg"><%= link_to show_product_image(product,'small'), product.product %></i>
+    <%= link_to raw("More info" + image_tag("/images/icons/chta_pls.png")), seller_quote_path(@seller, product.product, product), :class => "pTpA" %>
+  <i class="pImg"><%= link_to show_product_image(product,'small'), seller_quote_path(@seller, product.product, product) %></i>
   <% else %>
   <%= link_to image_tag("/images/icons/chta_pls.png"), product, :class => "pTpA" %>
   <i class="pImg"><%= link_to small_image(product), product %></i>

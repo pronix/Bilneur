@@ -37,10 +37,10 @@
 .crsl { float:left; width:100%;}
 
 .crsl img {float:left; width:122px; height:100px; margin:2px 32px 0 6px;}
-.crsl a {clear:left; float:left; color:#4d4d4d; font-weight:bold; font-size:12px; margin:4px 0 0 15px;}
+.crsl a {clear:left; float:left; color:#4d4d4d; font-weight:bold; font-size:12px; margin:0;}
 .crsl .lHd { float:left; width:180px; margin-top:10px;}
 .crsl .lHdI { float:left;width:180px; font-size:11px; color:#4d4d4d; font-style:normal; margin-top:5px;}
-.crsl .byTh { float:left; width:200px; margin-left:45px;*margin-left:0;*margin-top:20px; font-size:12px; color:#89be50;}
+.crsl .byTh { float:left; width:123px; text-align: center; line-height:26px; margin-left:10px;*margin-left:0;*margin-top:20px; font-size:12px; color:#89be50;}
 .byPrc {font-size:12px; color:#df5050;}
 
 

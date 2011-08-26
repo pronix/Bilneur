@@ -59,10 +59,9 @@
       <b>PAYMENT INFORMATION</b>
       <p>
         <span><b>Credit or Debit Cards</b></span>
-        <% current_user.seller_payment_methods.first do |item| %>
-        <span><%= item.name %> ending in FIXME</span> <!-- FIXME expiration date -->
-        <% end %>
-      </p>
+          <span><%= current_user.seller_payment_methods.first.name %></span> <br />
+          <span><%= current_user.seller_payment_methods.first.description %></span>  
+        </p>
       <span>
         <%= link_to "Add more addresses",  new_dashboard_payment_method_url, :class => 'adAd' %> <!-- FIXME add right url -->
       </span>

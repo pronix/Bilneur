@@ -41,7 +41,6 @@ module Spree::Search
       }.compact unless @_params[:condition].blank?
       with_opts.merge!(:variants_conditions => @condition ) if @condition
       search_options.merge!(:with => with_opts)
-
       facets = Product.facets(query, search_options)
       products = facets.for
 

@@ -97,3 +97,6 @@ Then /^I should see following address in page$/ do |table|
   end
 end
 
+Then /^address should be primary$/ do
+  @user.addresses.last.primary.should be_true
+end

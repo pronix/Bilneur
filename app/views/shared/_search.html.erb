@@ -1,12 +1,12 @@
-<% @taxons = @taxon && @taxon.parent ? @taxon.parent.children : Taxon.roots  %> 
+<% @taxons = @taxon && @taxon.parent ? @taxon.parent.children : Taxon.roots  %>
 <div class="tSrch">
 <%= form_tag products_url, :method => :get do %>
   <%= text_field_tag :keywords, params[:keywords], :value=>"SEARCH",
      :onfocus=>"if(this.value=='SEARCH') this.value=''",:onblur=>"if(this.value=='') this.value=''" %>
   <div class="pAbb cHme">
-  <%= select_tag :taxon, 
-        options_for_select([[t(:all_departments), '']] + 
-                              @taxons.map {|t| [t.name, t.id]}, 
+    <%= select_tag :taxon,
+        options_for_select([[t(:all_departments), '']] +
+                              Taxon.category.children.map {|t| [t.name, t.id]},
                             @taxon ? @taxon.id : params[:taxon]),
    :id => "search_select_category" %>
   </div>

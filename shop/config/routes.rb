@@ -51,8 +51,14 @@ Rails.application.routes.draw do
   match '/user/password/reset_by_question' => 'password_by_question#reset_by_question', :via => :post
   match '/user/password/new_password' => 'password_by_question#new_password', :via => :post
 
-  # Favorite variants
+  # Favorite sellers
+  resources :favorite_sellers, :controller => "favorite_sellers", :only => [] do
+    member do
+      get :add
+    end
+  end
 
+  # Favorite variants
   resources :favorites, :controller => "favorite_products", :only => [ :destroy ] do
     member do
       get :add

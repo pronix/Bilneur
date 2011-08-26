@@ -208,6 +208,14 @@ User.class_eval do
   def virtual_seller?
     has_role?("virtual_seller")
   end
+
+  # Stub
+  # TODO
+  #
+  def reliability
+    20
+  end
+
   # class methods
   #
 

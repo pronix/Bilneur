@@ -125,7 +125,9 @@
         <b>Reliability Score</b>
         <i class="yelTk"><img src="/images/icons/yel_tick.png" alt=""></i>
         <em class="qmrk"><img src="/images/icons/qmark.png" alt=""></em>
-        <em class="hndrd">FIX</em>
+        <em class="hndrd">
+          <%= number_to_percentage( @seller.reliability, :delimiter => '.', :separator => ',', :precision => 0) %>
+        </em>
         <em class="qmrk2"><img src="/images/icons/qmark.png" alt=""></em>
       </div>
       <ul>

@@ -60,7 +60,12 @@ Variant.class_eval do
         :cost => (item.calculator.respond_to?(:compute_for_one_variant) ? item.calculator.compute_for_one_variant(self) : 0)
       }
     end
+  end
 
+  # Sample the first shipping
+  #
+  def primary_shipping
+    shipping.first.try(:[], :cost)
   end
 
   # Set current user as seller and owner quote

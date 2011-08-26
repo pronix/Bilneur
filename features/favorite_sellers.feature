@@ -16,11 +16,12 @@ Feature: Manage Favorite Sellers
     Then I should not see "Add Seller To Favorites"
     And "seller1@person.com" should be my favorite seller
 
-@javascript    
-  Scenario: Add seller to favorite by non register user
-    Then I go to the seller store "seller1@person.com"
-    Then I follow "Add Seller To Favorites"
-    Then I should not see "Add Seller To Favorites"
+# @javascript    
+#   Scenario: Add seller to favorite by non register user
+#     Then I go to the seller store "seller1@person.com"
+#     Then I follow "Add Seller To Favorites"
+#     Then I should not see "Add Seller To Favorites"
+#     Then exec "cookies[ActionController::Base.session_options[:favorite_sellers]]"
 
 @javascript
   Scenario: Not show add to favorite seller link

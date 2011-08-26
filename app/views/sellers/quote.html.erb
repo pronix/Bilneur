@@ -3,68 +3,67 @@
 <% javascript "slider/jquery_002", "slider/jquery_003", "SpryTabbedPanels", "product_detail", "like_review" %>
 <div class="col1 slrPrdctPg prdctDPg" style="border: none;">
   <div class="mTabs">
-<div id="TabbedPanels0" class="TabbedPanels">
-  <%= render "menu" %>
-  <div class="TabbedPanelsContentGroup">
-    <div class="TabbedPanelsContent">
-      <div id="TabbedPanels3" class="TabbedPanels">
-          <div class="TabbedPanelsContentGroup">
-            <div class="TabbedPanelsContent" style="position:relative;">
-              <div class="jNt">
-                <div class="cntTop"></div>
-                <div class="cntCntr">
-                  <div class="favCmnt">
-                    <span><%= @quote.name %></span>
+    <div id="TabbedPanels0" class="TabbedPanels">
+      <%= render "menu" %>
+      <div class="TabbedPanelsContentGroup">
+        <div class="TabbedPanelsContent">
+          <div id="TabbedPanels3" class="TabbedPanels">
+            <div class="TabbedPanelsContentGroup">
+              <div class="TabbedPanelsContent" style="position:relative;">
+                <div class="jNt">
+                  <div class="cntTop"></div>
+                  <div class="cntCntr">
+                    <div class="favCmnt">
+                      <span><%= @quote.name %></span>
                       <div>
-                       <%= link_to "Sell A Product Like this", "", :class=>"seAll" %>
-                
-                       <div class="social" class="fbLike">
-                            <%= fb_like %>
-                            
-                          </div>
-                          <div class="social">
-                            <%= plus_one %>
-                          </div>
-                          <%= link_to "Add to Favorites", "", :class=>"add social" %>
-                      </div>
-                  </div>
-                
-                  <div class="sldrBnr">
-                    <div id="gallery" class="ad-gallery">
-                      <div class="ad-image-wrapper">
-                        <%= image_tag "slide/loader.gif", :style => "display:none;", :class => "ad-loader" %>
-                      </div>
-                
-                      <div class="ad-nav">
-                        <div class="ad-thumbs">
-                          <ul class="ad-thumb-list">
-                          <% @quote.product.images.each do |image| %>
-                            <li>
-                              <%= link_to image_tag(image.attachment.url(:mini), :alt=>""), image.attachment.url(:product) %>
-                            </li>
-                          <% end %>
-                          </ul>
+                        <%= link_to "Sell A Product Like this", "", :class=>"seAll" %>
+
+                        <div class="social" class="fbLike">
+                          <%= fb_like %>
                         </div>
+                        <div class="social">
+                          <%= plus_one %>
+                        </div>
+                        <%= link_to "Add to Favorites", "", :class=>"add social" %>
                       </div>
                     </div>
-                    <div class="bnrFolw">
-                      <ul>
+
+                    <div class="sldrBnr">
+                      <div id="gallery" class="ad-gallery">
+                        <div class="ad-image-wrapper">
+                          <%= image_tag "slide/loader.gif", :style => "display:none;", :class => "ad-loader" %>
+                        </div>
+
+                        <div class="ad-nav">
+                          <div class="ad-thumbs">
+                            <ul class="ad-thumb-list">
+                              <% @quote.product.images.each do |image| %>
+                              <li>
+                                <%= link_to image_tag(image.attachment.url(:mini), :alt=>""), image.attachment.url(:product) %>
+                              </li>
+                              <% end %>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="bnrFolw">
+                        <ul>
                           <li><%= link_to image_tag("icons/bnr_ico_twtr.png"), "" %></li>
                           <li><%= link_to image_tag("icons/bnr_ico_ggl.png"), "" %></li>
                           <li><%= link_to image_tag("icons/bnr_ico_fb.png"), "" %></li>
                           <li><%= link_to image_tag("icons/bnr_ico_eml.png"), "" %></li>
                           <li><%= link_to image_tag("icons/bnr_ico_lnk.png"), "" %></li>
                         </ul>
+                      </div>
                     </div>
-                  </div>
-                
-                  <div class="prdctTabs1">
+
+                    <div class="prdctTabs1">
                       <%= render "products/prd_tabs", :product => @quote.product %>
+                    </div>
+                    <%= render "products/prd_rating", :product => @quote.product %>
                   </div>
-                  <%= render "products/prd_rating", :product => @quote.product %>
-                </div>
-              
-                <div class="cntBtm"></div>
+
+                  <div class="cntBtm"></div>
                 </div>
               </div>
             </div>
@@ -72,7 +71,7 @@
         </div>
       </div>
     </div>
-</div>
+  </div>
 </div>
 
 
@@ -81,124 +80,127 @@
     <%= render "summary" %>
 
     <div id="CollapsiblePanel1" class="CollapsiblePanel">
-        <div class="CollapsiblePanelTab" tabindex="0"><span>Product Specifications</span></div>
-        <div class="CollapsiblePanelContent">
-        				<div class="rts1">
-                                          <h2>
-                                            <%= number_to_currency @quote.price %>
-                                          </h2>
-                                          <b>Retail Price: 
-                                            <span>FIXME</span>
-                                          </b>
-                                          <b class="mrg5">Shipping: 
-                                            <span>FIXME</span>
-                                          </b>
-                                          <b>Virtual Trading: 
-                                            <% if @quote.virtual? %>
-                                              <span>Yes</span>
-                                            <% else %>
-                                              <span>No</span>
-                                            <% end %>
-                                          </b>
-                                          <a href="#">FIXME Available Via Bilneur</a>
-                                          
-                                          <b class="mrg5">Location: <span>FIXME</span></b>
-                                          <big><b>Quantity Available: <span><%= @quote.count_on_hand %></span></b></big>
-                <div class="cntcts">
-                    <p>
-                        <em>QTY</em>
-                        <b><input class="pQty" type="text" name="" value="01" onfocus="if(this.value=='01') this.value=''" onblur="if(this.value=='') this.value='01'" /></b>
-                        <a class="skBlu" href="#">FIXAdd To Cart</a>
-                        <a class="bLu" href="#">FIXAdd To V. Store</a>
-                    </p>
-                </div>
-            </div>							
+      <div class="CollapsiblePanelTab" tabindex="0"><span>Product Specifications</span></div>
+      <div class="CollapsiblePanelContent">
+        <div class="rts1">
+          <h2>
+            <%= number_to_currency @quote.price %>
+          </h2>
+          <b>Retail Price:
+            <span>FIXME</span>
+          </b>
+          <b class="mrg5">Shipping:
+            <span>FIXME</span>
+          </b>
+          <b>Virtual Trading:
+            <% if @quote.virtual? %>
+            <span>Yes</span>
+            <% else %>
+            <span>No</span>
+            <% end %>
+          </b>
+          <a href="#">FIXME Available Via Bilneur</a>
+
+          <b class="mrg5">Location: <span>FIXME</span></b>
+          <big><b>Quantity Available: <span><%= @quote.count_on_hand %></span></b></big>
+          <div class="cntcts">
+            <p>
+              <em>QTY</em>
+              <b><input class="pQty" type="text" name="" value="01" onfocus="if(this.value=='01') this.value=''" onblur="if(this.value=='') this.value='01'" /></b>
+              <a class="skBlu" href="#">FIXAdd To Cart</a>
+              <a class="bLu" href="#">FIXAdd To V. Store</a>
+            </p>
+          </div>
         </div>
+      </div>
     </div>
     <div id="CollapsiblePanel2" class="CollapsiblePanel">
-        <div class="CollapsiblePanelTab" tabindex="0"><span>Buy More Save More FIX</span></div>
-        <div class="CollapsiblePanelContent colsPC">
-        				<div class="rts1">
-                <h2>FIXME<b class="mrg5">Quantity 1 - 5</b></h2>
-                <div class="cntcts">
-                    <p>
-                        <em>QTY</em>
-                        <b><input class="pQty" type="text" name="" value="01" onfocus="if(this.value=='01') this.value=''" onblur="if(this.value=='') this.value='01'" /></b>
-                        <a class="skBlu" href="#">Add To Cart</a>
-                        <a class="bLu" href="#">Add To V. Store</a>
-                    </p>
-                </div>
-                
-            </div>
-            <div class="bdr5p"></div>
-            <div class="rts1">
-                <h2>FIXME<b class="mrg5">Quantity 6 - 15</b></h2>
-                <div class="cntcts">
-                    <p>
-                        <em>QTY</em>
-                        <b><input class="pQty" type="text" name="" value="01" onfocus="if(this.value=='01') this.value=''" onblur="if(this.value=='') this.value='01'" /></b>
-                        <a class="skBlu" href="#">Add To Cart</a>
-                        <a class="bLu" href="#">Add To V. Store</a>
-                    </p>
-                </div>
-                
-            </div>	
-            <div class="bdr5p"></div>
-            <div class="rts1">
-                <h2>FIXME<b class="mrg5">Quantity 16 - 25</b></h2>
-                <div class="cntcts">
-                    <p>
-                        <em>QTY</em>
-                        <b><input class="pQty" type="text" name="" value="01" onfocus="if(this.value=='01') this.value=''" onblur="if(this.value=='') this.value='01'" /></b>
-                        <a class="skBlu" href="#">Add To Cart</a>
-                        <a class="bLu" href="#">Add To V. Store</a>
-                    </p>
-                </div>
-                
-            </div>							
+      <div class="CollapsiblePanelTab" tabindex="0"><span>Buy More Save More FIX</span></div>
+      <div class="CollapsiblePanelContent colsPC">
+        <div class="rts1">
+          <h2>FIXME<b class="mrg5">Quantity 1 - 5</b></h2>
+          <div class="cntcts">
+            <p>
+              <em>QTY</em>
+              <b><input class="pQty" type="text" name="" value="01" onfocus="if(this.value=='01') this.value=''" onblur="if(this.value=='') this.value='01'" /></b>
+              <a class="skBlu" href="#">Add To Cart</a>
+              <a class="bLu" href="#">Add To V. Store</a>
+            </p>
+          </div>
+
         </div>
+        <div class="bdr5p"></div>
+        <div class="rts1">
+          <h2>FIXME<b class="mrg5">Quantity 6 - 15</b></h2>
+          <div class="cntcts">
+            <p>
+              <em>QTY</em>
+              <b><input class="pQty" type="text" name="" value="01" onfocus="if(this.value=='01') this.value=''" onblur="if(this.value=='') this.value='01'" /></b>
+              <a class="skBlu" href="#">Add To Cart</a>
+              <a class="bLu" href="#">Add To V. Store</a>
+            </p>
+          </div>
+
+        </div>
+        <div class="bdr5p"></div>
+        <div class="rts1">
+          <h2>FIXME<b class="mrg5">Quantity 16 - 25</b></h2>
+          <div class="cntcts">
+            <p>
+              <em>QTY</em>
+              <b><input class="pQty" type="text" name="" value="01" onfocus="if(this.value=='01') this.value=''" onblur="if(this.value=='') this.value='01'" /></b>
+              <a class="skBlu" href="#">Add To Cart</a>
+              <a class="bLu" href="#">Add To V. Store</a>
+            </p>
+          </div>
+
+        </div>
+      </div>
     </div>
-    
+
   </div>
 </div>
 <div class="col2 mag0 prdctDPg slrPrdctPg slrPrdctPg">
-    <div class="vwer smlr mag0">
-      <div class="top"><b>Sellers Other Products</b></div>
-      <% @seller.quotes.last(3).each do |quote| %>
-        <div class="cntr noBdr">
-          <% link_to seller_quote_path(@seller, quote.product, quote) do %>
-            <i class="smallLatestQuotes">
-              <%= image_tag quote.image.attachment.url(:mini) %>
-            </i>
-              <b><%= quote.product.name %></b>
-              <em>
-                <%= quote.description.slice(0, 80) %>
-                <br />
-                <label><%= number_to_currency quote.price %></label>
-                </em>
-          <% end %>
-        </div>
+  <div class="vwer smlr mag0">
+    <div class="top"><b>Sellers Other Products</b></div>
+    <% @seller.quotes.last(3).each do |quote| %>
+    <div class="cntr noBdr">
+      <% link_to seller_quote_path(@seller, quote.product, quote) do %>
+      <i class="smallLatestQuotes">
+        <%= image_tag quote.image.attachment.url(:mini) %>
+      </i>
+      <b><%= quote.product.name %></b>
+      <em>
+        <%= quote.description.slice(0, 80) %>
+        <br />
+        <label><%= number_to_currency quote.price %></label>
+      </em>
       <% end %>
     </div>
+    <% end %>
+
+  </div>
+  <% end %>
 </div>
+
 <div class="col2 mag0 prdctDPg slrPrdctPg slrPrdctPg">
-	 <div class="vwer mag0">
-      <div class="top"><b>FIXMEOther Users In This Store</b></div>
-      <div class="cntr noBdr">
-          <i><img src="/images/img/rater_img1.png" alt="" /></i>
-          <span>Cheryl C</span>
-          <p><a>Cheryl C is Viewing<br /> this produc, right now</a></p>
-      </div>
-      <div class="cntr noBdr">
-          <i><img src="/images/img/rater_img1.png" alt="" /></i>
-          <span>Cheryl C</span>
-          <p><a>Cheryl C is Viewing<br /> this produc, right now</a></p>
-      </div>
-      <div class="cntr noBdr lst">
-          <i><img src="/images/img/rater_img1.png" alt="" /></i>
-          <span>Cheryl C</span>
-          <p><a>Cheryl C is Viewing<br /> this produc, right now</a></p>
-      </div>
-  </div>                
+	<div class="vwer mag0">
+    <div class="top"><b>FIXMEOther Users In This Store</b></div>
+    <div class="cntr noBdr">
+      <i><img src="/images/img/rater_img1.png" alt="" /></i>
+      <span>Cheryl C</span>
+      <p><a>Cheryl C is Viewing<br /> this produc, right now</a></p>
+    </div>
+    <div class="cntr noBdr">
+      <i><img src="/images/img/rater_img1.png" alt="" /></i>
+      <span>Cheryl C</span>
+      <p><a>Cheryl C is Viewing<br /> this produc, right now</a></p>
+    </div>
+    <div class="cntr noBdr lst">
+      <i><img src="/images/img/rater_img1.png" alt="" /></i>
+      <span>Cheryl C</span>
+      <p><a>Cheryl C is Viewing<br /> this produc, right now</a></p>
+    </div>
+  </div>
 </div>
 

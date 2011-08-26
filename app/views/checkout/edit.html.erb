@@ -5,8 +5,6 @@
   <h1><%= t("checkout")%></h1>
   <br clear="left" />
   <%= render "shared/error_messages", :target => @order %>
-  <%#= form_for @order, :url => virtual_update_checkout_path((@order.virtual? ? :virtual : :normal), @order.state), :html => { :id => "checkout_form_#{@order.state}" } do |form| %>
-    <%= render @order.state, :form => form %>
-    <input id="post-final" type="submit" style="display:none"/>
-  <%# end %>
+  <%= render @order.state, :form => form %>
+  <input id="post-final" type="submit" style="display:none"/>
 </div>

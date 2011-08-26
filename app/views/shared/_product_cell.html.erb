@@ -7,7 +7,12 @@
   <i class="pImg"><%= link_to small_image(product), product %></i>
   <% end %>
 
-  <b class="prc"><%= number_to_currency(best_deal.try(:price)) %><br><span>Shipping: FIXME</span></b> <!-- FIXME -->
+  <b class="prc"><%= number_to_currency(best_deal.try(:price)) %><br>
+    <span>Shipping: </span>
+    <% best_deal.shipping.each do |item| %>
+    <span><%= item[:zone] %> - <%= item[:cost] %></span>
+    <% end %>
+  </b>
   <ul>
     <li><a href="#"><img src="/images/icons/ch_twtr.png" alt=""></a></li><!-- FIXME -->
     <li><a href="#"><img src="/images/icons/ch_fb.png" alt=""></a></li><!-- FIXME -->

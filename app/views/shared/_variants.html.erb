@@ -9,7 +9,7 @@
 <div id="products_list" class="<%== ' tabPrdcts' if defined? grid %>">
     <% if variants.any? %>
       <% variants.each do |variant| %>
-    
+
       <% if Spree::Config[:show_zero_stock_products] || variant.has_stock? %>
           <% if defined? grid %>
             <%= render "shared/product_cell", :product => variant, :best_deal => variant %>

@@ -2,15 +2,15 @@
   <%= javascript_include_tag  'checkout', '/states' %>
 <% end %>
 
+<%= f.hidden_field(:firstname, :value => @current_user.firstname) %>
+<%= f.hidden_field(:lastname, :value => @current_user.lastname) %>
 
-  <b><i>Business Name (FIXME):</i>
-  <input type="text" name="" onblur="if(this.value=='') this.value='Innovity Inc'" onfocus="if(this.value=='Innovity Inc') this.value=''" value="Innovity Inc" />
+  <b><i>Buseness name:</i>
+    <%= f.text_field :business_name %>
   </b>
 
   <b><i>Address Line 1:</i>
-    <% [[ "address1", "street_address" ]].each do |item|  %>
-        <%= f.text_field item.first  %>
-    <% end %>
+    <%= f.text_field :address1 %>
   </b>
 
   <b><i class="dimC">Address Line 2:</i>
@@ -45,106 +45,31 @@
                           document.write("<%= raw(state_elements) %>");
                           // ]]>
                           </script>
-
                     <% end %>
                 </div>
             </b>
             
-            <b>
-            	<i>Country:</i>
-                <div class="cmbo3 websites">
-                    <%= f.collection_select :country_id, Country.all, :id, :name, {}, {} %>
-                </div>
-            </b>
-
-            <b><i>Customer Service Ph# (FIXME):</i>
-              <input type="text" name="" />
-            </b>
-        	<b>
-                <i>
-                  <div class="checkbox" id="Astronomy">
-
-                        <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-
-                  </div>
-
-                </i>
-                <span class="mk">Make this my primary address (FIXME).</span>
-            </b>
-        
-
-<!--
-<fieldset id='billing'>
-<div class="yui-gc">
-  <div class="yui-u first">
-    <% [[ "address1", "street_address" ]].each do |item|  %>
-      <%= f.field_container item.first do %>
-        <%= f.label item.first, t("#{item.last}") %><span class="required">*</span><br />
-        <%= f.text_field item.first, :class => 'fullwidth title'  %>
-        <%= f.error_message_on item.first %>
-      <% end %>
-    <% end %>
-    <%= f.field_container :address2 do %>
-      <%= f.label :address2, t("street_address2") %><br />
-      <%= f.text_field :address2, :class => 'fullwidth title'  %>
-      <%= f.error_message_on :address2 %>
-    <% end %>
-    <%= f.field_container :city do %>
-      <%= f.label :city, t("city") %><span class="required">*</span><br />
-      <%= f.text_field :city, :class => 'fullwidth title'  %>
-      <%= f.error_message_on :city %>
-    <% end %>
-
-
-      <% if Spree::Config[:address_requires_state] %>
-        <p class="field">
-          <span id="bstate">
-            <% have_states = (@address.country||Country.default).states.present? %>
-            <%= f.label :state, t(:state) %>
-            <noscript>
-              <%= f.text_field :state_name, :class => 'required' %>
-            </noscript>
-            <% state_elements = [
-               f.collection_select(:state_id, (@address.country||Country.default).states,
-                                  :id, :name,
-                                  {:include_blank => true},
-                                  {:class => have_states ? "required" : "hidden",
-                                  :disabled => !have_states}) +
-               f.text_field(:state_name,
-                                  :class => !have_states ? "required" : "hidden",
-                                  :disabled => have_states)
-                ].join.gsub('"', "'").gsub("\n", "")
-            %>
-            <script type="text/javascript" language="javascript" charset="utf-8">
-            // <![CDATA[
-            document.write("<%= raw(state_elements) %>");
-            // ]]>
-            </script>
-          </span>
-          <span class="req">*</span>
-        </p>
-      <% end %>
-
-
-    <%= f.field_container :zipcode do %>
-      <%= f.label :zipcode, t("zip") %><span class="required">*</span><br />
-      <%= f.text_field :zipcode, :class => 'fullwidth title'  %>
-      <%= f.error_message_on :zipcode %>
-    <% end %>
-    <p class="field" id="bcountry">
-      <%= f.label :country_id, t(:country, :scope => [:activerecord, :attributes, :address]) %>
-      <span class="required">*</span><br />
-      <span id="bcountry">
-        <%= f.collection_select :country_id, Country.all, :id, :name, {}, {} %>
-      </span>
-      <%= f.error_message_on :country_id %>
-      </p>
-    <%= f.field_container :phone do %>
-      <%= f.label :phone, t("phone") %><span class="required">*</span><br />
-      <%= f.text_field :phone, :class => 'fullwidth title'  %>
-      <%= f.error_message_on :phone %>
-    <% end %>
+<b>
+  <i>Country:</i>
+  <div class="cmbo3 websites">
+    <%= f.collection_select :country_id, Country.all, :id, :name, {}, {} %>
   </div>
-</div>
+</b>
 
-</fieldset>-->
+<b><i>ZIP code:</i>
+  <%= f.text_field :zipcode %>
+</b>
+
+<b><i>Customer Service Ph# (FIXME):</i>
+  <%= f.text_field :phone %>
+</b>
+<b>
+  <i>
+    <div class="checkbox">
+      <%= f.check_box :primary %>
+    </div>
+    
+  </i>
+  <span class="mk">Make this my primary address (FIXME).</span>
+</b>
+

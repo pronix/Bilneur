@@ -22,7 +22,7 @@ class FavoriteProductsController < Spree::BaseController
 
   end
 
-  # Add varinat to cart
+  # Add variant to cart
   # {"quantity"=>"1",  "card"=>"normal", "id"=>"687951204"}
   #
   def cart

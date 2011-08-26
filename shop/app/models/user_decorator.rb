@@ -25,7 +25,7 @@ User.class_eval do
   has_and_belongs_to_many :virtual_sales, :join_table => "orders_users", :class_name => "Order",
   :conditions => { "orders.virtual" => true}
   has_and_belongs_to_many :favorite_variants, :join_table => "favorite_variants", :class_name => "Variant", :uniq => true
-
+  has_and_belongs_to_many :favorite_sellers, :join_table => "favorite_sellers", :class_name => "User", :uniq => true, :foreign_key => 'seller_id'
 
   has_many :orders,  :conditions => { :virtual => false}
   has_many :virtual_orders, :class_name => "VirtualOrder", :foreign_key => :user_id
@@ -60,6 +60,10 @@ User.class_eval do
   # instance methods
   #
 
+  def primary_payment_methods
+    seller_payment_methods.first
+  end
+
   def add_to_favorite(_variant)
     favorite_variants << _variant unless favorite_variants.find_by_id(_variant.id)
     favorite_variants
@@ -74,6 +78,19 @@ User.class_eval do
       favorite_variants << item unless favorite_variants.find_by_id(item.id)
     end
     favorite_variants
+  end
+
+  def add_seller_to_favorite(_seller)
+    favorite_sellers << _seller unless favorite_sellers.find_by_id(_seller.id)
+    favorite_sellers
+  end
+
+  def remove_seller_from_favorite(_seller)
+    favorite_sellers.delete(_seller)
+  end
+
+  def seller_favorite?(_seller)
+    true if favorite_sellers.find_by_id(_seller.id)
   end
 
   def my_reviews
@@ -208,6 +225,14 @@ User.class_eval do
   def virtual_seller?
     has_role?("virtual_seller")
   end
+
+  # Stub
+  # TODO
+  #
+  def reliability
+    20
+  end
+
   # class methods
   #
 

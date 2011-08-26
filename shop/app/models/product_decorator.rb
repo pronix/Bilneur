@@ -40,7 +40,8 @@ Product.class_eval do
 
   scope :top_deals, lambda{
     order("( SELECT min(v.price) FROM variants as v
-           WHERE ( (v.is_master = #{connection.quoted_false}) AND (v.product_id = products.id) AND (v.deleted_at is null ) AND (v.count_on_hand > 0) )
+           WHERE ( (v.is_master = #{connection.quoted_false})
+                  AND (v.product_id = products.id) AND (v.deleted_at is null ) AND (v.count_on_hand > 0) )
           ) ASC")
    }
 

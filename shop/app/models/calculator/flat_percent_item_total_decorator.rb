@@ -9,5 +9,12 @@ Calculator::FlatPercentItemTotal.class_eval do
     (value * 100).round.to_f / 100
   end
 
+  # Compute shipping for one variant
+  #
+  def compute_for_one_variant(variant)
+    value = variant.price * self.preferred_flat_percent / 100.0
+    (value * 100).round.to_f / 100
+  end
+
 
 end

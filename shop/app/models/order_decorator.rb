@@ -198,6 +198,21 @@ Order.class_eval do
     return sellers
   end
 
+  # Merge saved order with current and  associate user, and destroy donor order
+  #
+  def associate_user!(user)
+    if (prev_order = ( virtual? ? user.virtual_orders : user.orders ).metasearch(:id_not_eq => self.id,
+                                                                                 :state_not_eq => :complete).first )
+      prev_order.line_items.each {  |v|  add_variant(v.variant, v.quantity) }
+      prev_order.destroy
+    end
+
+    self.user = user
+    self.email = user.email
+    # disable validations since this can cause issues when associating an incomplete address during the address step
+    save(:validate => false)
+  end
+
   class << self
 
   end # end class << self

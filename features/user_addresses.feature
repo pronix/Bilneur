@@ -1,5 +1,3 @@
-# language: en
-
 Feature: User Addresses
 
   Background:
@@ -57,13 +55,13 @@ Feature: User Addresses
     | address                                                      |
     | Bob Spanch, 346849, United States, Idaho, New Yourk, St 4 Br |
 
-  @javascript
+ @javascript
   Scenario: Destroy the address
     Given user "seller@person.com" have the following addresses:
       | 346849, United States, Idaho, New Yourk, St 2 Br |
     When I sign in as "seller@person.com/password"
     And I go to the dashboard addresses page
-    And I follow "Remove" and click OK
+    And I follow "Delete" and click OK
     Then I should see "Address has been successfully destroyed!"
 
 

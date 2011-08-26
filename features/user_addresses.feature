@@ -50,12 +50,12 @@ Feature: User Addresses
     When I sign in as "seller@person.com/password"
     And I go to the dashboard addresses page
     And I follow "Edit"
-    And I fill in "Street Address" with "St 4 Br"
-    And I press "Update"
+    And I fill in "address_address1" with "St 4 Br"
+    And I press "save_address"
     Then I should see "Address has been successfully updated!"
-    And page should have the following addresses:
-    | Address                                                      |
-    | Bob Spanch: 346849, United States, Idaho, New Yourk, St 4 Br |
+    And I should see following address in page
+    | address                                                      |
+    | Bob Spanch, 346849, United States, Idaho, New Yourk, St 4 Br |
 
   @javascript
   Scenario: Destroy the address

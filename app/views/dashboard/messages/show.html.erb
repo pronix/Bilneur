@@ -17,11 +17,10 @@
             </ul>
             <div class="cmbo1">
               <select id="websites21" tabindex="1" name="">
-                <option value="" selected="selected" title="">Move to</option>
-                <option value="" title="">1</option>
-                <option value="" title="">2</option>
-                <option value="" title="">3</option>
-                <option value="" title="">4</option>
+                <option value="nothing" selected="selected" title="">Move to</option>
+                <option value="mark_as_unread" title="">Mark as unread</option>
+                <option value="mark_as_read" title="">Mark as read</option>
+                <option value="mark_as_important" title="">Mark as important</option>
               </select>
             </div>
 
@@ -94,18 +93,6 @@
         </div>
         <div class="bt"></div>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
   </div>
 </div>
@@ -115,7 +102,11 @@
       $(".message_container").show();  
       $(".replyer").hide();
       return false;
-
     });
+    $("#websites21").change(function() {
+      if ($(this).val() != "nothing") {
+        $.ajax({ type: "POST", url: "<%= multi_dashboard_messages_path %>" + "?multi=" + $(this).val() + "&message_ids=" + "<%= @message.id %>" });
+      }
+    }); 
   });
 </script>

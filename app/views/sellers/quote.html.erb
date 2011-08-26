@@ -166,7 +166,7 @@
       <div class="top"><b>Sellers Other Products</b></div>
       <% @seller.quotes.last(3).each do |quote| %>
         <div class="cntr noBdr">
-          <a href="">
+          <% link_to seller_quote_path(@seller, quote.product, quote) do %>
             <i class="smallLatestQuotes">
               <%= image_tag quote.image.attachment.url(:mini) %>
             </i>
@@ -176,7 +176,7 @@
                 <br />
                 <label><%= number_to_currency quote.price %></label>
                 </em>
-          </a>
+          <% end %>
         </div>
       <% end %>
     </div>

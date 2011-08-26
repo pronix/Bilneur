@@ -91,3 +91,9 @@ Then /^the page have the following purchases list:$/ do |table|
   end
 end
 
+Then /^I should see following address in page$/ do |table|
+  table.hashes.each do |hash|
+    hash[:address].split(',').each { |need_find| page.should have_content(need_find) }
+  end
+end
+

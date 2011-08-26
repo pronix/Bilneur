@@ -12,18 +12,19 @@ Feature: User Addresses
 
   Scenario: Adding the address
     When I sign in as "seller@person.com/password"
-    And I go to the new dashboard address page
-    And I fill in "Street Address" with "St 2 Br"
-    And I fill in "City" with "New Yourk"
+    And I go to the dashboard address page
+    And I fill in "address_business_name" with "Hz what is it"
+    And I fill in "address_address1" with "St 2 Br"
+    And I fill in "address_city" with "New Yourk"
     And I fill in "address_state_name" with "Idaho"
-    And I fill in "Zip" with "346849"
-    And I select "United States" from "Country"
-    And I fill in "Phone" with "56-434744-43434"
-    And I press "Create"
+    And I fill in "address_zipcode" with "346849"
+    And I select "United States" from "address_country_id"
+    And I fill in "address_phone" with "56-434744-43434"
+    And I press "save_address"
     Then I should see "Address has been successfully created!"
-    And page should have the following addresses:
-    | Address                                                      |
-    | Bob Spanch: 346849, United States, Idaho, New Yourk, St 2 Br |
+    And I should see following address in page
+    | address                                                                       |
+    | Bob Spanch, 346849, United States, Idaho, New Yourk, St 2 Br, 56-434744-43434 |
 
   Scenario: Editing the address
     Given user "seller@person.com" have the following addresses:

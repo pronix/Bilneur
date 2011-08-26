@@ -81,6 +81,8 @@ module NavigationHelpers
       store_seller_path(User.find_by_email($1))
     when /the reviews dashboard page/
       dashboard_reviews_path
+    when /the dashboard address page/
+      dashboard_addresses_path
     when /^the home\s?page$/
       '/'
 

@@ -22,5 +22,18 @@ class Dashboard::SalesController < Dashboard::ApplicationController
     redirect_to dashboard_sales_path
   end
 
+  def track
+    @order = current_user.sales.find_by_number(params[:id])
+    @shipment = @order.shipment_for_seller(current_user)
+    unless request.get?
+      if @shipment && (@shipment.update_attribute(:tracking, params[:tracking]))
+        flash.notice = "Tracking updated."
+      else
+        flash.notice = "Tracking not updated."
+      end
 
+      redirect_to dashboard_sales_path
+    end
+
+  end
 end

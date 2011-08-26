@@ -125,6 +125,9 @@ Order.class_eval do
     end
   end
 
+  def shipment_for_seller(_seller)
+    shipments.find_by_seller_id(_seller.id)
+  end
 
   def create_shipment!
     shipping_methods.reload
@@ -133,7 +136,7 @@ Order.class_eval do
      if (_shipment = shipments.find_by_shipping_method_id(item.id))
        _shipment.update_attributes(:shipping_method => item, :seller => item.seller)
      else
-       self.shipments << Shipment.create(:order => self, :seller => item.seller, :shipping_method => item,
+       self.shipments << Shipment.create!(:order => self, :seller => item.seller, :shipping_method => item,
                                          :address => self.ship_address)
      end
     end

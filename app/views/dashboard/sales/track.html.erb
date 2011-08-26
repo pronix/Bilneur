@@ -1,0 +1,14 @@
+<%= form_tag track_dashboard_sale_path(@order) do %>
+<div>
+  <label for="tracking">Number</label>
+  <%= text_field_tag :tracking, @shipment.tracking %>
+</div>
+
+<div>
+  <button>Save</button>
+</div>
+
+<% end %>
+
+<hr />
+<%= render :partial => 'order_details', :locals => {:order => @order} %>

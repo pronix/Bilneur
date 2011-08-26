@@ -6,7 +6,7 @@
   <div class="pAbb cHme">
     <%= select_tag :taxon,
         options_for_select([[t(:all_departments), '']] +
-                              Taxon.category.children.map {|t| [t.name, t.id]},
+                              (Taxon.category.try(:children)||[]).map {|t| [t.name, t.id]},
                             @taxon ? @taxon.id : params[:taxon]),
    :id => "search_select_category" %>
   </div>

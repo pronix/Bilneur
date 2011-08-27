@@ -54,7 +54,7 @@ Feature: Inbox
      | from        | subject   | received         |
      | Jimm Paxtor | Question1 | January 01, 2011 |
     When I follow "Question1"
-    And I fill in "Content" with "Thanks for you Question."
+    And I fill in "message_content" with "Thanks for you Question."
     And I press "Send"
     Then I should see "Your reply sent."
 
@@ -71,7 +71,7 @@ Feature: Inbox
     And I press "Mark as read"
     And I follow "Unread"
     Then the page should have the following messages:
-     | From | Subject | Received |
+     | from | subject | received |
 
   Scenario: Marking message as unread
     Given the following messages exist:

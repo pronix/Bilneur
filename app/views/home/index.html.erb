@@ -1,5 +1,5 @@
-<% stylesheet "welcome" %>
-<% javascript "slider/jquery_002", "home", "welcome" %>
+<% stylesheet "scrollable-buttons", "scrollable-horizontal", "welcome" %>
+<% javascript "slider/jquery_002", "scrollable", "home", "welcome" %>
 
 
 <!-- START CAROUSEL BLOCK -->
@@ -102,45 +102,68 @@
 
 <!-- START LEFT COLUMN WITH CATEGORIES -->
 <div class="colLft">
-  <div class="c1A">
-    <h2>Sellers Paradise</h2>
-    <p>We know selling anything online is just not that easy, we have been there and done that and now We are trying to revolutionize the way you sell your stuff, with no upfront costs and more customers. </p>
-    <a class="btn" href="/sellers-paradise">Read More</a>
-  </div>
-
-  <div class="c1B">
-    <h2>Buy Anything, Sell It Instantly</h2>
-    <p>Yes you heard it right. Now you can buy anything that you see here and instantly start reselling them here. You would not have to worry about having a product and going through all the hassles. </p>
-    <a class="btn" href="/buy-anything-sell-it-instantly">Read More</a>
-  </div>
-
-  <div class="c1C">
-    <h2>A Buyers Universe</h2>
-    <p>It is all about you, without you we don't exist and we will do anything to make you feel happy. We promise, you will find the best deals here. You will never be disappointed. </p>
-    <a class="btn" href="/a-buyers-universe">Read More</a>
-  </div>
+            	<div class="cat">
+                  <h2>Browse By <span>Categories</span></h2>
+                  <ul>
+                      <% Taxon.category.try(:children).each do |taxon| %>
+                        <li>
+                          <%= link_to taxon.name, seo_url(taxon) %>
+                        </li>
+                      <% end %>
+                  </ul>
+                </div>
 </div>
 <!-- END LEFT COLUMN WITH CATEGORIES -->
 
 
 <!-- START CENTRAL CONTENT WITH TOPS -->
 <div class="colRgt">
-  <div class="latest"><img src="/images/bgs/ltst_prdct_bg.png" alt="" /></div>
-  <div id="carousel">
-    <ul>
-      <% @latest_products.each do |item| %>
-      <li>
-        <div class="crsl">
-          <a href="<%= product_path item %>">
-            <%= t122_image( item ) %>
-            <b class="lHd"><%= truncate item.name, :length => 40 %></b>
-            <i class="lHdI"><%= truncate item.description, :length => 100 %></i>
-          </a>
-          <b class="byTh">Buy 20 at <b class="byPrc">40% Off</b></b>
+     <div class="sldr1">
+     	<h2><span>Top Products</span></h2>
+         <div class="sldrCnt">
+         	<b class="crslHd">View all Top Products</b>
+              <!--Strat Scrollable-->
+     <!-- "previous page" action -->
+     <a class="prev browse left disabled"> </a>
+     <!-- root element for scrollable -->
+     <div class="scrollable">   
+        <!-- root element for the items -->
+        <div style="left: 0px;" class="items">
+           <!-- 1-5 -->
+           <div>
+             <% @products.each_with_index do |product, index|  %>
+               <% if index >= 4 && index % 4 == 0 %>
+                  </div><div>
+               <% end %>
+               <% link_to product,  :class => "pd1" do %>
+                 <i>
+                    <%= t122_image( product ) %>
+                 </i>
+                 <b>View This Product</b>
+                 <p><%= product.description.slice(0, 40) %></p>
+                 <span><em>$9.99</em> 50% Discount</span>	
+                <% end %>
+             <% end %>
+           </div>
+           <!-- 5-10 -->
+
+           
         </div>
-      </li>
-      <%- end %>
-    </ul>
-  </div>
+     </div>
+     <!-- "next page" action -->
+     <a class="next browse right"></a>
+     <br clear="all">
+     <script>
+     // execute your scripts when the DOM is ready. this is mostly a good habit
+     $jx(function() {
+     
+         // initialize scrollable
+         $jx(".scrollable").scrollable();
+     
+     });
+     </script>
+     <!--End Scrollable-->
+         </div>
+     </div>
 </div>
 <!-- END CENTRAL CONTENT WITH TOPS -->

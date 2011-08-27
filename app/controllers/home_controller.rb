@@ -3,7 +3,9 @@ class HomeController < Spree::BaseController
   helper Spree::BaseHelper
 
   def index
-    @latest_products = Product.latest
+    @products = Product.tops.first(10)
+    @sellers = User.sellers_top.limit(10)
+    @deals = Product.top_deals.first(10)
   end
 
   # @kind:

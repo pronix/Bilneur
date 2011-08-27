@@ -229,6 +229,7 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
             .cat ul li { float:left; width:100%; padding-bottom:2px; line-height:27px; background:url(/images/icons/cat_ico.png) 11px 9px no-repeat;}
                 .cat ul li a { float:left; width:151px; margin-left:23px; color:#575757; border-bottom:1px dotted #a1a0a0;}
                 .cat ul li a.last {border-bottom:none;}
+                .cat ul li:last-child a {border-bottom:none;}
 
 .panel-wrapper form { float:left; margin-top:14px;}
 .taxt { float:left; width:235px; height:30px; padding:5px 10px; border:none; color:#798e94; background:url('/images/forms/bnr_txtbx.png') no-repeat;}
@@ -244,7 +245,7 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
 .crslHd { float:left; width:98%; margin:0 1%; text-indent:10px; margin-top:10px; color:#47b1d9; padding-bottom:5px; border-bottom:1px solid #ccc;}
 .items a {float:left; width:134px; margin-right:12px; text-decoration:none;}
 .items b { float:left; width:100%; padding-bottom:10px;text-transform:uppercase; line-height:18px; font-size:11px; text-align:center;}
-.pd1 { float:left; width:134px; margin-top:8px; background:url('/images/bgs/crsl_img_bg.png') left top no-repeat;}
+.pd1 { float:left; width:134px; margin-top:8px; background:url('/images/bgs/crsl_img_bg.png') left top no-repeat; color: black;}
     .pd1 i { float:left; margin:3px 0 0 7px;}
     .pd1 p { float:left; width:125px; font-size:11px; margin:0 0 0 7px;}
     .pd1 span {float:left; width:125px; color:#a53027; margin:3px 0 0 7px;}

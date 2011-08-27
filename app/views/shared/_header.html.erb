@@ -14,8 +14,9 @@
             &nbsp;
             <%= link_to t('log_in'), new_user_session_path %>
             <% end %>
-
-            <%= link_to_cart(image_tag("icons/cart.png")) %>
+            <div class="cart_bag">
+              <%= render "shared/store_menu" %>
+            </div>
           </div>
             <ul class="tpMnu">
               <li><a href="/how_it_work">How It Work</a></li>

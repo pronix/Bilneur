@@ -1,0 +1,22 @@
+$(".cart_bag").html("<%= escape_javascript(render(:partial => 'shared/store_menu')) %>");
+
+$(function(){
+
+ $('.cart_bag > a:first').css({"color": "red"});
+
+ $('.cart_bag').pulse({
+     opacity: [0,1],
+     borderColor: ['yellow'],
+     }, { times: 3,
+          complete: function() {  $('.cart_bag > a:first').css({"color": "#787878"});  }
+    });
+
+ <% if flash[:error].present? %>
+   $("#flash").html("<div class='flash errors'><%= escape_javascript(flash[:error]) %></div>")
+  <% flash.delete(:error) %>
+ <% else %>
+   $("#flash").html("<div class='flash notice'>Product added to cart</div>")
+ <% end %>
+
+});
+

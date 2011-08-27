@@ -17,35 +17,18 @@
           </div>
 
           <% if @seller.static_data.present? %>
-          <% if @seller.static_data.about.present? %>
+          <% if @seller.static_data.return_police.present? %>
           <div class="abtSlrCnt abtSlrCntPad">
-            <h2>About <%= @seller.full_name %></h2>
+            <h2>Return Police <%= @seller.full_name %></h2>
             <%= @seller.static_data.about %>
           </div>
           <% end %>
 
           <div class="bdr5p"></div>
-
-          <% if @seller.static_data.faq.present? %>
-          <div class="abtSlrCnt abtSlrCntPad">
-
-            <h2>Frequently Asked Questions (FAQ).</h2>
-            <%= @seller.static_data.faq %>
-          </div>
-          <% end %>
-
-          <% if @seller.static_data.term.present? %>
-          <div class="abtSlrCnt abtSlrCntPad">
-            <h2>Terms and Conditions</h2>
-            <%= @seller.static_data.term %>
-          </div>
-          <% end %>
           <% else %>
           <div class="abtSlrCnt abtSlrCntPad" style="min-height: 200px;">
             <br /><br />
-            <h2>
-              Seller hasn't filled this section yet.
-            </h2>
+            <h2>Seller hasn't filled this section yet.</h2>
           </div>
           <% end %>
         </div>

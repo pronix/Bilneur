@@ -10,12 +10,11 @@ Feature: Shopping
     And I follow "View All"
     And I set quatility "3" within block seller "seller2@person.com"
     And I press "Add To Cart" within block seller "seller2@person.com"
-    Then I should be on the cart page
     When I go to the "Death of a Hero [Paperback]" product page
     And I follow "View All"
     And I set quatility "3" within block seller "seller2@person.com"
     And I press "Add To Cart" within block seller "seller2@person.com"
-    Then I should be on the cart page
+    When I go to the cart page
     When I follow "Checkout" within block normal cart
     And I fill shipping address with correct data
     And I press "Save new address"
@@ -43,12 +42,11 @@ Feature: Shopping
     And I follow "View All"
     And I set quatility "3" within block seller "seller2@person.com"
     And I press "Add To Cart" within block seller "seller2@person.com"
-    Then I should be on the cart page
     When I go to the "Death of a Hero [Paperback]" product page
     And I follow "View All"
     And I set quatility "3" within block seller "seller1@person.com"
     And I press "Add To Cart" within block seller "seller1@person.com"
-    Then I should be on the cart page
+    When I go to the cart page
     When I follow "Checkout" within block normal cart
     And I fill shipping address with correct data
     And I press "Save new address"

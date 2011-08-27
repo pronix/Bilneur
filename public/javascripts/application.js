@@ -17,7 +17,6 @@
     });
 
     $("[data-run_search='t']").bind("change", function(){ $(this).parents("form:first").submit(); })
-
     // Remove an item from the cart by setting its quantity to zero and posting the update form
     $('form#normal-updatecart a.delete').show().live('click', function(e){
       $(this).parent().find('input.txt').val(0);

@@ -167,7 +167,7 @@ Order.class_eval do
 
     if virtual?
       shipments.each do |item|
-        item.ship! if item.shipping_method.with_seller?
+        item.ship! if item.shipping_method.with_seller? && item.can_ship?
       end
     end
 

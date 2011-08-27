@@ -60,8 +60,6 @@ OrdersController.class_eval do
       quantity = quantity.to_i
       @order.add_variant(variant, quantity) if quantity > 0 && variant
     end if params[:variants]
-    puts "="*90
-    puts flash.inspect
 
     if flash[:error].present?
       flash[:error] = [flash[:error]].flatten.join

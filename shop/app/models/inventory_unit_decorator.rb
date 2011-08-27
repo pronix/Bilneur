@@ -20,9 +20,10 @@ InventoryUnit.class_eval do
   #
   def move_to_virtual_buyer
     quantity = order.line_items.find_by_variant_id(variant_id).quantity
-    if order.shipment.shipping_method.to_bilneur?
+
+    if shipment.shipping_method.to_bilneur?
       variant.move_to_virtual_seller(order.user, quantity )
-    elsif order.shipment.shipping_method.with_seller?
+    elsif shipment.shipping_method.with_seller?
       SellerStore.create!(:seller   => variant.seller,  :dealer   => order.user,  :variant  => variant,
                          :quote    => variant.move_to_virtual_seller(order.user, quantity ),
                          :order    => order, :quantity => quantity        )
@@ -57,14 +58,17 @@ InventoryUnit.class_eval do
       if back_order > 0 && !Spree::Config[:allow_backorders]
         raise "Cannot request back orders when backordering is disabled"
       end
-
-      shipment = order.shipments.detect {|shipment| !shipment.shipped? && (shipment.seller == variant.seller) }
+      if order.virtual?
+        shipment = order.shipments.detect {|shipment| shipment.seller == variant.seller }
+      else
+        shipment = order.shipments.detect {|shipment| !shipment.shipped? && (shipment.seller == variant.seller)  }
+      end
 
       sold.times {
-        order.inventory_units.create(:variant => variant, :state => "sold", :shipment => shipment)
+        order.inventory_units.create!(:variant => variant, :state => "sold", :shipment => shipment)
       }
       back_order.times {
-        order.inventory_units.create(:variant => variant, :state => "backordered", :shipment => shipment)
+        order.inventory_units.create!(:variant => variant, :state => "backordered", :shipment => shipment)
       }
     end
 

@@ -19,6 +19,6 @@ module HomeHelper
       text = "#{text}: (#{current_order.item_count}) #{order_price(current_order)}"
       css_class = 'full'
     end
-    link_to text, cart_path,
+    link_to text, cart_path, :class => css_class
   end
 end

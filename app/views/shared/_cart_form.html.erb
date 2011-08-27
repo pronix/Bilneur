@@ -4,7 +4,8 @@
   <% if cart_form.has_stock? || Spree::Config[:allow_backorders] %>
    <p class="qtav">
     <em>QTY</em>
-    <b>
+    <b class="qty_chooser">
+      <span class="avla"><%= cart_form.count_on_hand %></span>
      <%= text_field_tag (cart_form.has_variants? ? :quantity : "variants[#{cart_form.master.id}]"),
       1, :class => "pQty", :onfocus => "if(this.value=='1') this.value=''", :onblur => "if(this.value=='') this.value='1'" %>
     &nbsp;

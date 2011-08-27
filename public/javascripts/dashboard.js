@@ -193,6 +193,20 @@ jQuery(document).ready(function(){
 	  		});
 	});
 
+    if ($("#secret select").val() != "5") {
+       $("#own_secret input").attr('disabled', true);
+    } 
+    //Own question
+    $("#secret select").change(function() {
+       if ($("#secret select").val() != "5") {
+          $("#own_secret input").attr('disabled', true);
+       } 
+       else {
+          $("#own_secret input").attr('disabled', false);
+       }
+        
+    });
+
     //Tabs for reviews, changing appearance
     $("ul.feedback li").click(function() {
        $('ul.feedback .TabbedPanelsTabSelected').removeClass('TabbedPanelsTabSelected');

@@ -1,21 +1,37 @@
-<table class="index sortable">
-  <tr>
-    <th><%= t("ean") %></th>
-    <th><%= t("name") %></th>
-    <th><%= t("on_hand") %></th>
-    <th><%= t("price") %></th>
-    <th><%= t("order_number") %></th>
-    <th><%= t("dealer") %></th>
-  </tr>
-  <% @seller_stores.each do |item| %>
-  <tr>
-    <td><%= item.variant.ean %></td>
-    <td><%= item.variant.name %></td>
-    <td><%= item.quote.count_on_hand %></td>
-    <td><%= item.variant.price %></td>
-    <td><%= item.order.number %></td>
-    <td><%= item.dealer.full_name %></td>
-  </tr>
-  <% end %>
-</table>
+<%= render 'shared/per_page', :per_page => params[:per_page] %>
+<% javascript 'ajax_pagination' %>
 
+<div class="fdBck">
+  <table class="tbl1" width="915px" cellpadding="0" cellspacing="0">
+    <tr id="product_table_head">
+      <td width="90px" class="thlHd2"><%= t("ean") %></td>
+      <td width="214px" class="thlHd2"><%= t("name") %></td>
+      <td class="thlHd2"><%= t("on_hand") %></td>
+      <td class="thlHd2"><%= t("price") %></td>
+      <td class="thlHd2"><%= t("order_number") %></td>
+      <td class="thlHd2"><%= t("dealer") %></td>
+    </tr>
+    <% @seller_stores.each do |item| %>
+    <% evod = cycle('1', '2') %>
+    <tr class="quote">
+      <td class="row<%= evod %>"><%= item.variant.ean %></td>
+      <td class="row<%= evod %>"><%= item.variant.name %></td>
+      <td class="row<%= evod %>"><%= item.quote.count_on_hand %></td>
+      <td class="row<%= evod %>"><%= item.variant.price %></td>
+      <td class="row<%= evod %>"><%= item.order.number %></td>
+      <td class="row<%= evod %>"><%= item.dealer.full_name %></td>
+    </tr>
+    <% end %>
+  </table>
+
+
+  <div id="pagination">
+    <div class="paging">
+      <div class="blogPg">
+        <%= page_entries_info @seller_stores %><!-- FIXME add will_paginate 3.0.pre4 support for modifying text of entries info -->
+      </div>
+      <%= will_paginate(@seller_stores,  :previous_label => "#{t('previous')}",  :next_label => "#{t('next')}") %>
+    </div>
+  </div>
+
+</div>

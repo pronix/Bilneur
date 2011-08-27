@@ -13,6 +13,7 @@ q_breakfast_tiffany_1:
   cost_price: 8
   count_on_hand: 10
   seller_id: <%= User.find_by_email('seller1@bilneur.com').id %>
+  weight: 1
 
 q_breakfast_tiffany_2:
   product: breakfast_tiffany
@@ -21,7 +22,7 @@ q_breakfast_tiffany_2:
   cost_price: 6
   count_on_hand: 10
   seller_id: <%= User.find_by_email('seller2@bilneur.com').id %>
-
+  weight: 1
 
 q_breakfast_tiffany_3:
   product: breakfast_tiffany
@@ -30,6 +31,7 @@ q_breakfast_tiffany_3:
   cost_price: 5
   count_on_hand: 3
   seller_id: <%= User.find_by_email('seller3@bilneur.com').id %>
+  weight: 1
 
 q_breakfast_tiffany_4:
   product: breakfast_tiffany
@@ -38,6 +40,7 @@ q_breakfast_tiffany_4:
   cost_price: 8
   count_on_hand: 2
   seller_id: <%= User.find_by_email('seller4@bilneur.com').id %>
+  weight: 1
 
 m_godfather:
   product: godfather
@@ -54,7 +57,7 @@ q_godfather_1:
   cost_price: 18
   count_on_hand: 2
   seller_id: <%= User.find_by_email('seller1@bilneur.com').id %>
-
+  weight: 1
 
 q_godfather_2:
   product: godfather
@@ -63,7 +66,7 @@ q_godfather_2:
   cost_price: 8
   count_on_hand: 12
   seller_id: <%= User.find_by_email('seller2@bilneur.com').id %>
-
+  weight: 1
 
 q_godfather_3:
   product: godfather
@@ -72,6 +75,7 @@ q_godfather_3:
   cost_price: 16
   count_on_hand: 3
   seller_id: <%= User.find_by_email('seller3@bilneur.com').id %>
+  weight: 1
 
 q_godfather_4:
   product: godfather
@@ -80,6 +84,7 @@ q_godfather_4:
   cost_price: 6
   count_on_hand: 1
   seller_id: <%= User.find_by_email('seller4@bilneur.com').id %>
+  weight: 1
 
 m_death_of_a_hero:
   product: death_of_a_hero
@@ -88,6 +93,7 @@ m_death_of_a_hero:
   cost_price: 1
   count_on_hand: 0
   is_master: true
+  weight: 1
 
 q_death_of_a_hero_1:
   product: death_of_a_hero
@@ -96,6 +102,7 @@ q_death_of_a_hero_1:
   cost_price: 20
   count_on_hand: 10
   seller_id: <%= User.find_by_email('seller1@bilneur.com').id %>
+  weight: 1
 
 q_death_of_a_hero_2:
   product: death_of_a_hero
@@ -104,6 +111,7 @@ q_death_of_a_hero_2:
   cost_price: 2
   count_on_hand: 10
   seller_id: <%= User.find_by_email('seller2@bilneur.com').id %>
+  weight: 1
 
 q_death_of_a_hero_3:
   product: death_of_a_hero
@@ -112,6 +120,7 @@ q_death_of_a_hero_3:
   cost_price: 18
   count_on_hand: 10
   seller_id: <%= User.find_by_email('seller3@bilneur.com').id %>
+  weight: 1
 
 q_death_of_a_hero_4:
   product: death_of_a_hero
@@ -120,6 +129,7 @@ q_death_of_a_hero_4:
   cost_price: 10
   count_on_hand: 3
   seller_id: <%= User.find_by_email('seller4@bilneur.com').id %>
+  weight: 1
 
 m_lenovo_thinkpad_t410s:
   product: lenovo_thinkpad_t410s
@@ -137,6 +147,7 @@ q_lenovo_thinkpad_t410s_1:
   cost_price: 2000
   count_on_hand: 10
   seller_id: <%= User.find_by_email('seller1@bilneur.com').id %>
+  weight: 1
 
 q_lenovo_thinkpad_t410s_2:
   product: lenovo_thinkpad_t410s
@@ -146,6 +157,7 @@ q_lenovo_thinkpad_t410s_2:
   cost_price: 2000
   count_on_hand: 10
   seller_id: <%= User.find_by_email('seller2@bilneur.com').id %>
+  weight: 1
 
 q_lenovo_thinkpad_t410s_3:
   product: lenovo_thinkpad_t410s
@@ -155,6 +167,7 @@ q_lenovo_thinkpad_t410s_3:
   cost_price: 1800
   count_on_hand: 10
   seller_id: <%= User.find_by_email('seller3@bilneur.com').id %>
+  weight: 1
 
 q_lenovo_thinkpad_t410s_4:
   product: lenovo_thinkpad_t410s
@@ -164,7 +177,7 @@ q_lenovo_thinkpad_t410s_4:
   cost_price: 1000
   count_on_hand: 3
   seller_id: <%= User.find_by_email('seller4@bilneur.com').id %>
-
+  weight: 1
 
 m_compaq_nc6000:
   product: compaq_nc6000
@@ -182,6 +195,7 @@ q_compaq_nc6000_1:
   cost_price: 2000
   count_on_hand: 10
   seller_id: <%= User.find_by_email('seller1@bilneur.com').id %>
+  weight: 1
 
 q_compaq_nc6000_2:
   product: compaq_nc6000
@@ -191,6 +205,7 @@ q_compaq_nc6000_2:
   cost_price: 2000
   count_on_hand: 10
   seller_id: <%= User.find_by_email('seller2@bilneur.com').id %>
+  weight: 1
 
 q_compaq_nc6000_3:
   product: compaq_nc6000
@@ -200,6 +215,7 @@ q_compaq_nc6000_3:
   cost_price: 1800
   count_on_hand: 10
   seller_id: <%= User.find_by_email('seller3@bilneur.com').id %>
+  weight: 1
 
 q_compaq_nc6000_4:
   product: compaq_nc6000
@@ -209,6 +225,7 @@ q_compaq_nc6000_4:
   cost_price: 1000
   count_on_hand: 3
   seller_id: <%= User.find_by_email('seller4@bilneur.com').id %>
+  weight: 1
 
 m_sony_vgn_cs21s_t:
   product: sony_vgn_cs21s_t
@@ -226,6 +243,7 @@ q_sony_vgn_cs21s_t_1:
   cost_price: 2000
   count_on_hand: 10
   seller_id: <%= User.find_by_email('seller1@bilneur.com').id %>
+  weight: 1
 
 q_sony_vgn_cs21s_t_2:
   product: sony_vgn_cs21s_t
@@ -235,6 +253,7 @@ q_sony_vgn_cs21s_t_2:
   cost_price: 2000
   count_on_hand: 10
   seller_id: <%= User.find_by_email('seller2@bilneur.com').id %>
+  weight: 1
 
 q_sony_vgn_cs21s_t_3:
   product: sony_vgn_cs21s_t
@@ -244,6 +263,7 @@ q_sony_vgn_cs21s_t_3:
   cost_price: 1800
   count_on_hand: 10
   seller_id: <%= User.find_by_email('seller3@bilneur.com').id %>
+  weight: 1
 
 q_sony_vgn_cs21s_t_4:
   product: sony_vgn_cs21s_t
@@ -253,3 +273,4 @@ q_sony_vgn_cs21s_t_4:
   cost_price: 1000
   count_on_hand: 3
   seller_id: <%= User.find_by_email('seller4@bilneur.com').id %>
+  weight: 1

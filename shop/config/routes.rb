@@ -120,8 +120,10 @@ Rails.application.routes.draw do
     resources :virtual_orders, :only => [:index, :show]
     resources :sales,  :only => [:index, :show] do
       member do
+        match "/track" => "sales#track", :as => :track, :via => [:get, :post]
         get :ship
       end
+
     end
 
     resources :virtual_sales,  :only => [:index, :show] do

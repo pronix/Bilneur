@@ -44,7 +44,7 @@ describe Variant do
       }
 
       it "fails if condition blank" do
-        @variant = Factory.build(:variant, :product => @product, :seller => @seller)
+        @variant = Factory.build(:variant, :product => @product, :seller => @seller, :condition => nil)
         @variant.should_not be_valid
         @variant.errors[:condition].count.should eq(1)
         @variant.errors.full_messages.first.should =~ /Condition is not included in the list/i

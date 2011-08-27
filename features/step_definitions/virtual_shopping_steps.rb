@@ -114,6 +114,19 @@ Given /^the user "([^\"]*)" has the order with number "([^\"]*)" and date "([^\"
 
 end
 
+Given /^the user "([^\"]*)" choose the following shipping methods for order "([^\"]*)":$/ do |email, number, table|
+  Spree::Config.set(:track_inventory_levels => false)
+  @user  = User.find_by_email email
+  @order = Order.find_by_number(number)
+  table.hashes.each do |r|
+    @seller = User.find_by_email(r["seller"])
+    @shipping = @seller.shipping_methods.find_by_name(r["shipping"])
+    @order.shipping_methods << @shipping
+  end
+  @order.create_shipment!
+  @order.reload
+end
+
 When /^I select first shipping address$/ do
   When %Q(I choose "order[ship_address_id]")
 end

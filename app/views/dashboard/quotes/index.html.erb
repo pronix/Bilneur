@@ -2,80 +2,77 @@
 <% javascript 'ajax_pagination' %>
 <div class="fdBck">
 	<h2>Inventory</h2>
-    <div class="cmbo6">
-    	<input class="txt" type="text" name="" value="" />
-        <select id="websites21" tabindex="1" name="">
-            <option value="" selected="selected" title="">All Active</option>
-            <option value="" title="">1</option>
-            <option value="" title="">2</option>
-            <option value="" title="">3</option>
-            <option value="" title="">4</option>
-        </select>
+  <div class="cmbo6">
+    <input class="txt" type="text" name="" value="" />
+    <select id="websites21" tabindex="1" name="">
+      <option value="" selected="selected" title="">All Active</option>
+      <option value="" title="">1</option>
+      <option value="" title="">2</option>
+      <option value="" title="">3</option>
+      <option value="" title="">4</option>
+    </select>
+  </div>
+  <div class="pPgCmbo">
+    <div class="cmbo7">
+      <select id="per_page_select" tabindex="1" name="">
+        <option value="1" title="">1</option>
+        <option value="2" title="">2</option>
+        <option value="3" title="">3</option>
+        <option value="4" title="">4</option>
+        <option value="5" selected="selected" title="">5</option>
+      </select>
     </div>
-    <div class="pPgCmbo">
-    	<div class="cmbo7">
-            <select id="per_page_select" tabindex="1" name="">
-                <option value="1" title="">1</option>
-                <option value="2" title="">2</option>
-                <option value="3" title="">3</option>
-                <option value="4" title="">4</option>
-                <option value="5" selected="selected" title="">5</option>
-            </select>
+    <b>Display per page</b>
+    <!--<div class="invBar">
+        <ul>
+          <li class="inv1"><a href="#"></a></li>
+          <li class="inv2"><a href="#"></a></li>
+          <li class="inv3"><a href="#"></a></li>
+          <li class="inv4"><a href="#"></a></li>
+        </ul>
+    </div>-->
+    <%= form_tag search_dashboard_quotes_path, :style => "margin-left: 20px", :method => :get do %>
+    <label for="ean"><%= t("ean") %></label>
+    <%= text_field_tag "ean", "", :class => "title", :id => nil, :style => "font-size: 1em;" %>
+    <button class="invAll" value="Add quote" style="float: none; border: none; background: none; cursor: pointer; height: 30px;">
+      <%= image_tag "forms/inv_all_prod.png", :style => "margin-bottom: -7px;" %>
+    </button>
+    <% end %>
+
+  </div>
+  <div class="bdrBtm"></div>
+  <div class="invEdit">
+    <!--<ul>
+        <li><a href="#"><img src="/images/forms/inv_edit.png" alt="" /></a></li>
+        <li><a href="#"><img src="/images/forms/inv_relist.png" alt="" /></a></li>
+        <li><a href="#"><img src="/images/forms/inv_del_prodcts.png" alt="" /></a></li>
+    </ul>-->
+  </div>
+
+  <table class="tbl1" width="915px" cellpadding="0" cellspacing="0">
+    <tr id="product_table_head">
+      <td width="39px" class="thlHd">
+        <div class="checkbox" id="select_all_check_box">
+          <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
         </div>
-        <b>Display per page</b>
-        <!--<div class="invBar">
-        	<ul>
-            	<li class="inv1"><a href="#"></a></li>
-            	<li class="inv2"><a href="#"></a></li>
-            	<li class="inv3"><a href="#"></a></li>
-            	<li class="inv4"><a href="#"></a></li>
-            </ul>
-        </div>-->
-        <%= form_tag search_dashboard_quotes_path, :style => "margin-left: 20px", :method => :get do %>
-        <label for="ean"><%= t("ean") %></label>
-        <%= text_field_tag "ean", "", :class => "title", :id => nil, :style => "font-size: 1em;" %>
-        <button class="invAll" value="Add quote" style="float: none; border: none; background: none; cursor: pointer; height: 30px;">
-          <%= image_tag "forms/inv_all_prod.png", :style => "margin-bottom: -7px;" %>
-        </button>
-        <% end %>
+      </td>
+      <td width="90px" class="thlHd">EAN/ SKU</td>
+      <td width="214px" class="thlHd">Product Name</td>
+      <td width="54px" class="thlHd">Quantity</td>
+      <td width="89px" class="thlHd">Condition</td>
+      <td width="73px" class="thlHd">Price</td>
+      <td width="78px" class="thlHd">Virtual Selling</td>
+      <td width="86px" class="thlHd">Status</td>
+    </tr>
+    <%= render "rows", :quotes => @quotes %>
+  </table>
 
-    </div>
-    <div class="bdrBtm"></div>
-    <div class="invEdit">
-    	<!--<ul>
-        	<li><a href="#"><img src="/images/forms/inv_edit.png" alt="" /></a></li>
-        	<li><a href="#"><img src="/images/forms/inv_relist.png" alt="" /></a></li>
-        	<li><a href="#"><img src="/images/forms/inv_del_prodcts.png" alt="" /></a></li>
-        </ul>-->
-    </div>
-
-    <table class="tbl1" width="915px" cellpadding="0" cellspacing="0">
-    	<tr id="product_table_head">
-            <td width="39px" class="thlHd">
-                <div class="checkbox" id="select_all_check_box">
-                    <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
-                </div>
-            </td>
-            <td width="90px" class="thlHd">EAN/ SKU</td>
-            <td width="214px" class="thlHd">Product Name</td>
-            <td width="54px" class="thlHd">Quantity</td>
-            <td width="89px" class="thlHd">Condition</td>
-            <td width="73px" class="thlHd">Price</td>
-            <td width="78px" class="thlHd">Virtual Selling</td>
-            <td width="86px" class="thlHd">Status</td>
-        </tr>
-
-        <%= render "rows", :quotes => @quotes %>
-      </table>
-
-      <div id="pagination">
-        <div class="paging">
-        <div class="blogPg">
-            <%= page_entries_info @quotes %><!-- FIXME add will_paginate 3.0.pre4 support for modifying text of entries info -->
-        </div>
-        <%= will_paginate(@quotes,
-                        :previous_label => "#{t('previous')}",
-                        :next_label => "#{t('next')}") %>
-        </div>
+  <div id="pagination">
+    <div class="paging">
+      <div class="blogPg">
+        <%= page_entries_info @quotes %><!-- FIXME add will_paginate 3.0.pre4 support for modifying text of entries info -->
       </div>
+      <%= will_paginate(@quotes,  :previous_label => "#{t('previous')}",  :next_label => "#{t('next')}") %>
+    </div>
+  </div>
 </div>

@@ -1,51 +1,68 @@
+
 <%= content_for :sub_menu do %>
-  <ul id="sub_nav">
-    <li><%= link_to "Realy", dashboard_sales_path %></li>
-    <li><%= link_to "Virtual", dashboard_virtual_sales_path %></li>
-  </ul>
+<ul id="sub_nav">
+  <li><%= link_to "Realy", dashboard_sales_path %></li>
+  <li><%= link_to "Virtual", dashboard_virtual_sales_path %></li>
+</ul>
 <% end %>
 
-
-<table class="index sortable">
-    <thead>
-      <tr>
-        <th><%= t("order_number") %></th>
-        <th><%= t("order_date") %></th>
-        <th><%= t("status") %></th>
-        <th><%= t("buyer") %></th>
-        <th><%= t("payment") %></th>
-        <th><%= t("shipment") %></th>
-        <th><%= t("total") %></th>
-        <% if current_user.has_buyer_review? %>
-          <th><%= t("buyer_review") %></th>
-        <% end %>
-      </tr>
-    </thead>
-    <tbody>
-    <% @orders.each do |order| %>
-      <tr class="<%= cycle('even', 'odd') %>">
-        <td><%= link_to order.number, dashboard_sale_path(order) %></td>
-        <td><%=order.created_at.to_date%></td>
-        <td><%= t(order.state).titleize %></td>
-        <td><%= order.user.try(:full_name) %></td>
-        <td><%= t("payment_states.#{order.payment_state}") if order.payment_state %></td>
-        <td>
-          <% if (@shipment = order.shipments.find_by_seller_id(current_user.id)) %>
-            <%= t("shipment_states.#{@shipment.state}")  %>
-            <%= link_to "Ship", ship_dashboard_sale_path(order) if @shipment.can_ship? %>
-          <% end %>
-        </td>
-        <td><%= number_to_currency(order.total_for_seller(current_user)) %></td>
-        <td>
-          <% for review in order.seller_reviews %>
-            <div id="<%= dom_id review %>">
-              <%= show_stars review.rating %>
-            </div>
-          <% end %>
-         </td>
-      </tr>
+<div class="fdBck">
+<table class="tbl2" width="915px" cellpadding="0" cellspacing="0">
+  <tr>
+    <td class="thlHd2" width="130px"><%= t("order_number") %></td>
+    <td class="thlHd2" width="95px"><%= t("order_date") %></td>
+    <td class="thlHd2"><%= t("status") %></td>
+    <td class="thlHd2"><%= t("buyer") %></td>
+    <td class="thlHd2"><%= t("payment") %></td>
+    <td class="thlHd2"><%= t("shipment") %></td>
+    <td class="thlHd2"><%= t("tracking_no") %></td>
+    <td class="thlHd2"><%= t("total") %></td>
+    <td class="thlHd2" width="130px" ></td>
+    <% if current_user.has_buyer_review? %>
+    <td class="thlHd2"><%= t("buyer_review") %></td>
     <% end %>
-    </tbody>
+
+  </tr>
+  <% @orders.each do |order| %>
+  <% evod = cycle('1', '2') %>
+  <tr>
+    <td class="row <%= evod %>"><%= link_to order.number, dashboard_sale_path(order) %></td>
+    <td class="row <%= evod %>"><%=order.created_at.to_date%></td>
+    <td class="row <%= evod %>"><%= t(order.state).titleize %></td>
+    <td class="row <%= evod %>"><%= order.user.try(:full_name) %></td>
+    <td class="row <%= evod %>"><%= t("payment_states.#{order.payment_state}") if order.payment_state %></td>
+    <td class="row <%= evod %>">
+      <% if (@shipment = order.shipment_for_seller(current_user)) %>
+      <%= t("shipment_states.#{@shipment.state}")  %>
+      <%= link_to "Ship", ship_dashboard_sale_path(order) if @shipment.can_ship? %>
+      <% end %>
+    </td>
+    <td class="row <%= evod %>">
+      <% if (@shipment = order.shipment_for_seller(current_user)) %>
+       <%= @shipment.tracking %>
+      <% end %>
+    </td>
+    <td><%= number_to_currency(order.total_for_seller(current_user)) %></td>
+    <td valign="top" class="row">
+      <div class="odrEdtPnl">
+    	<div class="top"></div>
+    	<div class="cntr">
+        <%= link_to track_dashboard_sale_path(order) do %>
+        <img src="/images/icons/add_sml_ico.png" alt="" /><i>Add Tracking</i>
+        <% end %>
+      </div>
+      </div>
+    </td>
+    <td>
+      <% for review in order.seller_reviews %>
+      <div id="<%= dom_id review %>">
+        <%= show_stars review.rating %>
+      </div>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
 </table>
 
 <%= will_paginate @orders %>
+</div>

@@ -4,11 +4,11 @@ class Dashboard::OrdersController < Dashboard::ApplicationController
   include ProductHelper
 
   def index
-    @orders = current_user.orders.complete.paginate(:page => params[:page], :per_page => params[:per_page])
+    @orders = current_user.all_orders.complete.paginate(:page => params[:page], :per_page => params[:per_page], :order => "created_at DESC")
   end
 
   def show
-    @order = current_user.orders.complete.find_by_number(params[:id])
+    @order = current_user.all_orders.complete.find_by_number(params[:id])
     respond_to do |format|
       format.html
       format.pdf {
@@ -24,7 +24,7 @@ class Dashboard::OrdersController < Dashboard::ApplicationController
   # shipment_id - shipment number
   #
   def receive
-    if (@order = current_user.orders.complete.find_by_number(params[:id])) &&
+    if (@order = current_user.all_orders.complete.find_by_number(params[:id])) &&
         (@shipment = @order.shipments.find_by_number(params[:shipment_id]))
 
       @review = SellerReview.build(@order, current_user, @shipment.seller, params[:review])

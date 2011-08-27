@@ -83,7 +83,7 @@ a:hover {opacity: 0.8;}
 
 /* Check boxes code */
 .checkbox {height:22px;width: 19px;clear:left;float:left;margin: 0 0 3px;padding: 0 0 0 26px;background:url('/images/icons/checkbox__.png') no-repeat;cursor: default;text-align:left;}
-.checkbox input,.radio input {display: none;}
+.checkbox input,.radio input {width: 0; height: 0;}
 .checkbox input.show,.radio input.show {display: inline;}
 .selected {background-position: 0 -50px!important;}
 .block {width: 50%;float: left;}

@@ -8,7 +8,11 @@ When /^user "([^\"]*)" has my message in the Received tab$/ do |email|
   user.inbox.count.should eq(1)
 end
 Then /^the page should have the following messages:$/ do |table|
-  table.diff!(tableish('table:first tr', 'td,th'))
+  table.hashes.each_with_index do |item, i|
+      Then %Q(I should see "#{item['from']}")
+      Then %Q(I should see "#{item['subject']}")
+      Then %Q(I should see "#{item['received']}")
+  end
 end
 
 Then /^the page should have text area for reply$/ do

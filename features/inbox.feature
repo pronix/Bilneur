@@ -1,5 +1,4 @@
 # language: en
-@wip
 Feature: Inbox
   Users can exchange messages
 
@@ -33,13 +32,15 @@ Feature: Inbox
     When I sign in as "seller1@person.com/password1"
     And I go to the dashboard messages page
     Then the page should have the following messages:
-     | From        | Subject   | Received               |       |
-     | Jimm Paxtor | Question1 | January 01, 2011 00:00 | reply |
-    When I follow "reply"
+     | from        | subject   | received         | 
+     | Jimm Paxtor | Question1 | January 01, 2011 | 
+    When I follow "Question1"
     Then I should be on the show dashboard message page for "Question1"
-    And I should see "From: Jimm Paxtor to me"
-    And I should see "Received: January 01, 2011 00:00"
-    And I should see "Message: Question1 message"
+    And show me the page
+    And I should see "Jimm Paxtor"
+    And I should see "Seller1"
+    And I should see "January 01, 2011 00:00"
+    And I should see "Question1 message"
     And the page should have text area for reply
     And I should see "Send"
 
@@ -50,9 +51,9 @@ Feature: Inbox
     When I sign in as "seller1@person.com/password1"
     And I go to the dashboard messages page
     Then the page should have the following messages:
-     | From        | Subject   | Received               |       |
-     | Jimm Paxtor | Question1 | January 01, 2011 00:00 | reply |
-    When I follow "reply"
+     | from        | subject   | received         |
+     | Jimm Paxtor | Question1 | January 01, 2011 |
+    When I follow "Question1"
     And I fill in "Content" with "Thanks for you Question."
     And I press "Send"
     Then I should see "Your reply sent."
@@ -64,8 +65,8 @@ Feature: Inbox
     When I sign in as "seller1@person.com/password1"
     And I go to the dashboard messages page
     Then the page should have the following messages:
-     | From        | Subject   | Received               |       |
-     | Jimm Paxtor | Question1 | January 01, 2011 00:00 | reply |
+     | from        | subject   | received         |
+     | Jimm Paxtor | Question1 | January 01, 2011 |
     When I check "message_ids[]"
     And I press "Mark as read"
     And I follow "Unread"
@@ -79,14 +80,14 @@ Feature: Inbox
     When I sign in as "seller1@person.com/password1"
     And I go to the dashboard messages page
     Then the page should have the following messages:
-     | From        | Subject   | Received               |       |
-     | Jimm Paxtor | Question1 | January 01, 2011 00:00 | reply |
+     | from        | subject   | received         | 
+     | Jimm Paxtor | Question1 | January 01, 2011 | 
     When I check "message_ids[]"
     And I press "Mark as unread"
     And I follow "Unread"
     Then the page should have the following messages:
-     | From        | Subject   | Received               |       |
-     | Jimm Paxtor | Question1 | January 01, 2011 00:00 | reply |
+     | from        | subject   | received         | 
+     | Jimm Paxtor | Question1 | January 01, 2011 | 
 
 
   Scenario: Marking message as important
@@ -96,8 +97,8 @@ Feature: Inbox
     When I sign in as "seller1@person.com/password1"
     And I go to the dashboard messages page
     Then the page should have the following messages:
-     | From        | Subject   | Received               |       |
-     | Jimm Paxtor | Question1 | January 01, 2011 00:00 | reply |
+     | from        | subject   | received         | 
+     | Jimm Paxtor | Question1 | January 01, 2011 | 
     And I follow "Important"
     Then the page should have the following messages:
      | From | Subject | Received |
@@ -106,6 +107,6 @@ Feature: Inbox
     And I press "Mark as important"
     And I follow "Important"
     Then the page should have the following messages:
-     | From        | Subject   | Received               |       |
-     | Jimm Paxtor | Question1 | January 01, 2011 00:00 | reply |
+     | from        | subject   | received         |
+     | Jimm Paxtor | Question1 | January 01, 2011 |
 

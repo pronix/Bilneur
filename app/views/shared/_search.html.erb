@@ -3,12 +3,14 @@
 <%= form_tag products_url, :method => :get do %>
   <%= text_field_tag :keywords, params[:keywords], :value=>"SEARCH",
      :onfocus=>"if(this.value=='SEARCH') this.value=''",:onblur=>"if(this.value=='') this.value=''" %>
-  <div class="pAbb cHme">
+   <div class="pAbb cHme">
+     <% if Taxon.category.present? %>
     <%= select_tag :taxon,
         options_for_select([[t(:all_departments), '']] +
                               (Taxon.category.try(:children)||[]).map {|t| [t.name, t.id]},
                             @taxon ? @taxon.id : params[:taxon]),
-   :id => "search_select_category" %>
+                            :id => "search_select_category" %>
+     <% end %>
   </div>
   <%= submit_tag "", :name => nil %>
 <% end %>

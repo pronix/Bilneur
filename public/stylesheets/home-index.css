@@ -43,4 +43,149 @@
 .crsl .byTh { float:left; width:123px; text-align: center; line-height:26px; margin-left:10px;*margin-left:0;*margin-top:20px; font-size:12px; color:#89be50;}
 .byPrc {font-size:12px; color:#df5050;}
 
+/* Authors:zainansari@live.com :Creation Date:29-July-2011 Updation Date:N-A*/
+
+/* General Boxes */
+.nHme { background:url('/images/bgs/bg_home.png') left top repeat-x;}
+
+/* Backgrounds*/
+.bgLft { float:left; width:100%; height:144px; position:absolute; z-index:-1;background:url('/images/bgs/hdr_left.png') center top no-repeat;}
+
+body { font-family:helvetica,arial,clean,sans-serif;}
+a { text-decoration:none;}
+ul li { list-style:none;-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 0.3s ease 0s!important;-o-transition: color 0.3s ease 0s!important;}
+.TabbedPanelsTab span { float:left; width:95%;text-align:center;line-height:19px;}
+a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 0.3s ease 0s!important;-o-transition: color 0.3s ease 0s!important;}
+
+/* Header */
+#mHdr { padding-top:11px;}
+
+.hd1A {}
+
+.hd1B { width:245px;}
+    .loginBar { width:100%; margin-left:17px;}
+        .loginBar i { padding-right:10px;margin-right:10px;font-style:normal;background:url('/images/forms/sgnup_line.gif') right no-repeat;}
+        .loginBar a { color:#787878;font-weight:bold;}
+        .loginBar .crt { margin-left:10px;}
+    ul.tpMnu {width:100%;margin-top:10px;}
+        ul.tpMnu li {font-size:12px;font-weight:bold;margin-right:7px;padding-right:7px;border-right:1px solid #787878;}
+        ul.tpMnu li a { color:#29b6de;}
+        ul.tpMnu li.last, ul.mMenu li.last { margin:0;padding:0;border:none;background:none;}
+.hd2 { width:100%;margin-top:7px;}
+    .menu { width:100%;}
+        .menu .lft {background:url('/images/layout/bg_mnu_lft.png') no-repeat;}
+        ul.mMenu {width:495px;}
+        .menu .cntr { float:left; width:900px;background:url('/images/layout/bg_mnu_cntr.png') repeat-x;}
+        .menu .rgt {background:url('/images/layout/bg_mnu_rgt.png') no-repeat;}
+        .menu .lft, ul.mMenu,.menu .rgt { height:38px;}
+        .menu .lft,.menu .rgt {width:10px;}
+        ul.mMenu li {font-weight:bold;}
+            ul.mMenu li a { height:20px; padding:0 5px; margin:10px 0 0 10px;line-height:19px;font-size:11px;color:#fff; font-weight:bold;}
+            ul.mMenu li a:hover, ul.mMenu li a.active { color:#e0bd11; background:url('/images/bgs/mnu_hvr.png') repeat-x; border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;}
+    .tSrch { width:405px;height:25px; margin:7px 0 0 0;background:url('/images/bgs/srch_bg_new.png') left no-repeat;}
+        .tSrch form { width:100%;}
+            .tSrch form .allProd { margin:11px;}
+        .tSrch input[type=text] { width:192px;height:14px; padding:5px;border:none;background:none;}
+        .tSrch .allProd {}
+        .tSrch input[type=submit] {width:37px;height:29px;cursor:pointer;border:none;margin:-2px -5px 0 23px;background:url('/images/forms/jst_go.png') no-repeat;}
+    .pAbb { position:relative;}
+        .pAbb .dd2 .ddChild { width:140px!important; top:25px!important;}
+        .pAbb .dd2 { width:140px!important; margin-top:0!important;}
+        .pAbb .dd2 .ddTitle { background:none!important;}
+        .cHme {float:left; width:135px; margin-left:7px}
+        .pAbb .dd2 .ddTitle span.arrow {background:none!important;}
+.hd1B {float:right;}
+.hd1A, .hd2,.loginBar,.loginBar i,.loginBar a, ul.tpMnu, ul.tpMnu li, ul.tpMnu li a, ul.mMenu, ul.mMenu li, ul.mMenu li a,.menu,.menu .lft,.menu .rgt,.tSrch input[type=text],.tSrch form,.allProd,.tSrch input[type=submit], .tSrch {float:left;}
+
+/* Content */
+#mCnt{ margin-top:20px;}
+.cHome{}
+    .cHome .mBnr { width:100%;background:url('/images/bgs/bnr_bg1.png') no-repeat;}
+        .mBnr .bnrCnt { width:255px;margin:66px 0 0 40px;}
+            .mBnr .bnrCnt h1 { width:100%;margin:0;padding-bottom:15px;font-size:18px;color:#4d4d4d;}
+            .mBnr .bnrCnt p { font-size:11px;color:#4d4d4d;line-height:16px;}
+            .mBnr .bnrCnt a { font-size:12px;font-weight:b;color:#29b6de;margin-top:20px;}
+            .btn { float:left; width:170px; height:49px; margin:20px 0 0 0;}
+            .btn:hover {}
+            
+        .mBnr .bnrImg { width:461px;position:relative;}
+            .TabbedPanelsTab span { width:95%;text-align:center;line-height:19px;}
+        
+.cHome .mBnr, .mBnr .bnrCnt, .mBnr .bnrCnt h1, .mBnr .bnrCnt p, .mBnr .bnrCnt a, .mBnr .bnrCnt .btn, .mBnr .bnrImg,.TabbedPanelsTab span {float:left;}
+
+/* Categorias */
+.colLft { float:left; width:198px;}
+    .colLft .cat { float:left; width:100%;}
+        .cat h2 { float:left; width:100%; height:34px; line-height:34px; font-size:14px; color:#575757; text-indent:15px; margin:10px 0 0 0; background:url('/images/bgs/cat_bg.png') repeat-x;border-radius:10px 10px 0 0;-moz-border-radius:10px 10px 0px 0px;-webkit-border-radius:10px 10px 0px 0px;}
+            .cat h2 span { color:#2b9fcb;}
+        .cat ul { float:left; width:100%; padding-top:15px; background:#efefef;border-radius:0px 0px 5px 5px;-moz-border-radius:0px 0px 5px 5px;-webkit-border-radius:0px 0px 5px 5px}
+            .cat ul li { float:left; width:100%; padding-bottom:2px; line-height:27px; background:url(/images/icons/cat_ico.png) 11px 9px no-repeat;}
+                .cat ul li a { float:left; width:151px; margin-left:23px; color:#575757; border-bottom:1px dotted #a1a0a0;}
+                .cat ul li a.last {border-bottom:none;}
+
+.panel-wrapper form { float:left; margin-top:14px;}
+.taxt { float:left; width:235px; height:30px; padding:5px 10px; border:none; color:#798e94; background:url('/images/forms/bnr_txtbx.png') no-repeat;}
+.sabmt {float:left; width:40px; height:40px;border:none; cursor:pointer;background:url('/images/forms/bnr_srchico.png') no-repeat;}
+.panel-wrapper .pAdd { float:left;position:relative!important;}
+
+/* Right content */
+.colRgt { float:left; width:704px; margin-left:18px;}
+    .colRgt .sldr1 { float:left; width:100%;}
+        .sldr1 h2 { float:left; width:100%; margin-bottom:0;}
+            .sldr1 h2 span { float:left;width:198px;height:32px;line-height:34px; font-size:14px; color:#fff; text-indent:15px; margin:10px 0 0 0; background:url('/images/bgs/sldr_hd_bg.png') repeat-x;border-radius:10px 10px 0 0;-moz-border-radius:10px 10px 0px 0px;-webkit-border-radius:10px 10px 0px 0px;}
+    .sldrCnt { float:left; width:100%; border:1px solid #ccc; height:250px;border-radius:0px 0px 5px 5px;-moz-border-radius:0px 0px 5px 5px;-webkit-border-radius:0px 0px 5px 5px}
+.crslHd { float:left; width:98%; margin:0 1%; text-indent:10px; margin-top:10px; color:#47b1d9; padding-bottom:5px; border-bottom:1px solid #ccc;}
+.items a {float:left; width:134px; margin-right:12px; text-decoration:none;}
+.items b { float:left; width:100%; padding-bottom:10px;text-transform:uppercase; line-height:18px; font-size:11px; text-align:center;}
+.pd1 { float:left; width:134px; margin-top:8px; background:url('/images/bgs/crsl_img_bg.png') left top no-repeat;}
+    .pd1 i { float:left; margin:3px 0 0 7px;}
+    .pd1 p { float:left; width:125px; font-size:11px; margin:0 0 0 7px;}
+    .pd1 span {float:left; width:125px; color:#a53027; margin:3px 0 0 7px;}
+    .pd1 em {color:#619e44; font-style:normal;}
+/* Button Effects */        
+.rMore b {float:left;position:relative;z-index:5;height:32px;line-height:25px;padding-left:13px;font-weight:normal;}
+.rMore span {position:relative;}
+
+/* Footer */
+#mFtr{ clear:both;float:left;width:100%;margin-top:20px;background:url('/images/bgs/ftr_bg_new.png') 0 5px repeat-x;min-height:180px;}
+    .f1A { width:100%;height:51px;padding-top:11px;}
+        .f1A p { margin-top:20px;font-size:24px;text-shadow:2px 2px #ccc;color:#848484;text-shadow:#ababab -2px 0 0;}
+        .f1A span {color:#499109;}
+        .f1A b {float:right;color:#fff;margin-right:30px;background:url('/images/icons/btn_q.png') 0 0 no-repeat;width:110px;height:47px;position:relative;z-index:10;top:-18px;padding:45px 0 0 0;}
+        .f1A b i {float:left;width:89%;font-style:normal;text-align:center;}
+    ul.f1B { float:right;width:170px;margin-top:12px;}
+        ul.f1B li { margin-right:5px;}
+        ul.f1B li a { }
+    
+    .f2 { width:100%;padding-bottom:20px;margin:20px 0 0 40px;}
+    .f2 ul { width:100%;padding:10px 0;}
+        .f2 ul li { margin-right:15px;}
+        .f2 ul li a { color:#787878;font-size:11px;font-weight:bold;text-decoration:underline;}
+        .f2 ul li a:hover {text-decoration:none;}
+    .f2 b {color:#444;font-size:12px;}
+
+.f1A, .f1A p, ul.f1B li, ul.f1B li a, .f2, .f2 ul, .f2 ul li, .f2 ul li a, .f2 b {float:left;}
+
+/* Banner#2 styles */
+.txt { float:left;margin-top:10px; color:#729cad;width:360px;}
+.lrn { float:right;width:auto;text-align:right; margin-top:10px; color:#0066cc;text-decoration:none;display:block;}
+
+/* Top Logo Fix */
+.cLogo {display:block;height:66px;width:177px;background:url('/images/logos/logo_new.png') no-repeat;background-position:0 0px;cursor: pointer;}   
+.cLogo span.hover {position: absolute;display: block;height:66px;width:177px;background:url('/images/logos/logo_new.png') 0 -66px no-repeat;background-position: bottom;}
+
+/* Faded Buttons in Banners */
+.marquee01 .otherbutton {display:block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') no-repeat;background-position:0 -53px;cursor: pointer;}  
+.marquee01 .otherbutton span.hover {position: absolute;display: block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') 0 0px no-repeat;background-position: bottom;}
+
+.marquee02 .otherbutton {display:block;height:51px;width:183px;background:url('/images/forms/sell_btn.png') no-repeat;background-position:0 -51px;cursor: pointer;}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {.marquee02 .otherbutton {background-position:0 0;}}
+    
+.marquee02 .otherbutton span.hover {position: absolute;display:block;height:51px;width:183px;background:url('/images/forms/sell_btn.png') 0 0px no-repeat;background-position: bottom;}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {.marquee02 .otherbutton span.hover {background-position:0px -51px;}}
+
+.marquee03 .otherbutton {display:block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') no-repeat;background-position:0 -53px;cursor: pointer;}  
+.marquee03 .otherbutton span.hover {position: absolute;display: block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') 0 0px no-repeat;background-position: bottom;}
 

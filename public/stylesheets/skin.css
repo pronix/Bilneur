@@ -13,46 +13,6 @@ ul li { list-style:none;}
 a:hover {opacity: 0.8;}
 
 
-/* Header */
-#mHdr { padding-top:11px;}
-
-.hd1A {}
-
-.hd1B { width:245px;}
-  .loginBar { width:100%;}
-    .loginBar i { padding-right:10px;margin-right:10px;font-style:normal;background:url('/images/forms/sgnup_line.gif') right no-repeat;}
-    .loginBar a { color:#787878;font-weight:bold;}
-    .loginBar .crt { margin-left:10px;}
-  ul.tpMnu {width:100%;margin-top:10px;}
-    ul.tpMnu li {font-size:12px;font-weight:bold;margin-right:7px;padding-right:7px;border-right:1px solid #787878;}
-    ul.tpMnu li a { color:#29b6de;}
-    ul.tpMnu li.last, ul.mMenu li.last { margin:0;padding:0;border:none;background:none;}
-.hd2 { width:100%;margin-top:20px;}
-  .menu { width:540px;}
-    .menu .lft {background:url('/images/forms/mnu_lft.png') no-repeat;}
-    ul.mMenu {width:520px;background:url('/images/forms/mnu_cntr.png') repeat-x;}
-    .menu .rgt {background:url('/images/forms/mnu_rgt.png') no-repeat;}
-    .menu .lft, ul.mMenu,.menu .rgt { height:32px;}
-    .menu .lft,.menu .rgt {width:10px;}
-    ul.mMenu li {padding-right:19px;margin-right:10px;font-weight:bold;text-transform:uppercase;background:url('/images/forms/mnu_line.png') right no-repeat;}
-      ul.mMenu li a { height:32px;line-height:32px;font-size:10px;color:#fff;}
-      ul.mMenu li { line-height:32px;font-size:10px;color:#c8f4fd;}
-      ul.mMenu li a:hover, ul.mMenu li a.active { color:#c8f4fd;}
-  .tSrch { width:375px;height:32px;background:url('/images/bgs/srch_bg.png') left no-repeat;}
-    .tSrch form { width:100%;}
-      .tSrch form .allProd { margin:11px;}
-    .tSrch input[type=text] { width:192px;height:14px;border:none;background:none;margin:9px;}
-    .tSrch .allProd { }
-    .tSrch input[type=submit] { width:32px;height:32px;cursor:pointer;border:none;margin-left:5px;background:url('/images/forms/go_btn.png') no-repeat;}
-  .pAbb { position:relative;}
-    .pAbb .dd2 .ddChild { width:120px!important; top:30px!important;}
-    .pAbb .dd2 { width:120px!important; margin-top:5px!important;}
-    .pAbb .dd2 .ddTitle { background:none!important;}
-    .cHme { margin-left:-10px; float:left; width:135px;}
-    .pAbb .dd2 .ddTitle span.arrow { background:url('/images/icons/red_arw.png') 5px 6px no-repeat!important;}
-.hd1B, .tSrch { float:right;}
-.hd1A, .hd2,.loginBar,.loginBar i,.loginBar a, ul.tpMnu, ul.tpMnu li, ul.tpMnu li a, ul.mMenu, ul.mMenu li, ul.mMenu li a,.menu,.menu .lft,.menu .rgt,.tSrch input[type=text],.tSrch form,.allProd,.tSrch input[type=submit] {float:left;}
-
 /* Footer */
 #mFtr{ margin-top:20px;}
   .f1A { width:100%;height:51px;padding-top:11px;background:url('/images/bgs/ftr_bg.png') repeat-x;}

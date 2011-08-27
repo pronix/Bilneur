@@ -14,19 +14,22 @@
                               <div class="panel marquee01" style="display: none; ">
                                 <div class="panel-wrapper clearfix"> <span class="picture">&nbsp;</span>
                                   <h1><img src="/images/img/bnr_hd.png" alt="" /></h1>
-                                  	<form>
-                                    	<input class="taxt" type="text" name="" value="Search by Keyword or Item #" onfocus="if(this.value=='Search by Keyword or Item #') this.value=''" onblur="if(this.value=='') this.value='Search by Keyword or Item #'" />
-                                        <input class="sabmt" type="submit" name="" value="" />
-                                        <div class="pAbb">
-                                            <select id="websites1" tabindex="1" name="">
-                                                <option value="" selected="selected" title="">All Categories</option>
-                                                <option value="" title="">1</option>
-                                                <option value="" title="">2</option>
-                                                <option value="" title="">3</option>
-                                                <option value="" title="">4</option>
-                                            </select>
+
+                                      <%= form_tag products_url, :method => :get do %>
+                                        <%= text_field_tag :keywords, params[:keywords], :value=>"SEARCH",
+                                          :onfocus=>"if(this.value=='SEARCH') this.value=''",:onblur=>"if(this.value=='') this.value=''", :class => "taxt" %>
+                                        <%= submit_tag "", :name => nil, :class => "sabmt" %>
+                                         <div class="pAbb websites">
+                                           <% if Taxon.category.present? %>
+                                          <%= select_tag :taxon,
+                                              options_for_select([[t(:all_departments), '']] +
+                                                                    (Taxon.category.try(:children)||[]).map {|t| [t.name, t.id]},
+                                                                  @taxon ? @taxon.id : params[:taxon]),
+                                                                  :id => "search_select_category2" %>
+                                           <% end %>
                                         </div>
-                                    </form>
+                                      <% end %>
+
                                   <a class="btn otherbutton" href="#"></a>
                                   </div>
                               </div>
@@ -41,19 +44,20 @@
                               <div class="panel marquee03" style="display: none; ">
                                 <div class="panel-wrapper clearfix"> <span class="picture">&nbsp;</span>
                                    <h3><img src="/images/img/bnr_hd2.png" alt="" /></h3>
-                                  	<form>
-                                    	<input class="taxt" type="text" name="" value="Search by Keyword or Item #" onfocus="if(this.value=='Search by Keyword or Item #') this.value=''" onblur="if(this.value=='') this.value='Search by Keyword or Item #'" />
-                                        <input class="sabmt" type="submit" name="" value="" />
-                                        <div class="pAbb">
-                                            <select id="websites3" tabindex="1" name="">
-                                                <option value="" selected="selected" title="">All Categories</option>
-                                                <option value="" title="">1</option>
-                                                <option value="" title="">2</option>
-                                                <option value="" title="">3</option>
-                                                <option value="" title="">4</option>
-                                            </select>
+                                      <%= form_tag products_url, :method => :get do %>
+                                        <%= text_field_tag :keywords, params[:keywords], :value=>"SEARCH",
+                                          :onfocus=>"if(this.value=='SEARCH') this.value=''",:onblur=>"if(this.value=='') this.value=''", :class => "taxt" %>
+                                        <%= submit_tag "", :name => nil, :class => "sabmt" %>
+                                         <div class="pAbb websites">
+                                           <% if Taxon.category.present? %>
+                                          <%= select_tag :taxon,
+                                              options_for_select([[t(:all_departments), '']] +
+                                                                    (Taxon.category.try(:children)||[]).map {|t| [t.name, t.id]},
+                                                                  @taxon ? @taxon.id : params[:taxon]),
+                                                                  :id => "search_select_category3" %>
+                                           <% end %>
                                         </div>
-                                    </form>
+                                      <% end %>
                                   <a class="btn otherbutton" href="#"></a>
                                   </div>
                               </div>

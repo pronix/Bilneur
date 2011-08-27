@@ -433,7 +433,6 @@ visibility:hidden
 }
 #marquees #coda-slider-1 {
 	height:350px!important;
-	overflow:hidden
 }
 #marquees .panel-wrapper {
 	float:left;
@@ -2888,11 +2887,9 @@ noscript div {
 }
 .coda-slider-wrapper {
 	clear:both;
-	overflow:hidden
 }
 .coda-slider {
 	float:left;
-	overflow:hidden;
 	position:relative
 }
 .coda-slider .panel {

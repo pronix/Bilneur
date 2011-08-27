@@ -1,36 +1,104 @@
-<% stylesheet "slider/SpryTabbedPanels", "home-index" %>
-<% javascript "jquery.carousel", "slider/SpryTabbedPanels", "home" %>
+<% stylesheet "welcome" %>
+<% javascript "slider/jquery_002", "home", "welcome" %>
 
+
+<!-- START CAROUSEL BLOCK -->
 <div class="mBnr">
-  <div class="bnrCnt">
-    <h1>Buying &amp; Selling Made Easy</h1>
-    <p>Never in your wildest dreams you could have imagined buying and instantly reselling could be so easy. You don't need to have a product or any experience to do any of that. You can buy and sell from hundreds of products. </p>
-    <p>This will change the way you buy and sell, want to know how? </p>
-    <a href="/buying-selling-made-easy">Read More On How To Sell With BilNeur</a>
-    <a class="btn" href="<%= start_selling_link %>" title="Start Selling">
-           <img src="/images/forms/strt_slng_btn.png" alt="" />
-    </a>
-  </div>
+            	<div class="container">
+                  <div id="homepage">
+                    <div id="marquees" class="v2">
+                      <div id="coda-slider-1" style="height: 390px; ">
+                        <div class="coda-slider-wrapper">
+                          <div class="coda-slider preload">
+                            <div class="panel-container" style="width: 4750px; ">
+                              <div class="panel marquee01" style="display: none; ">
+                                <div class="panel-wrapper clearfix"> <span class="picture">&nbsp;</span>
+                                  <h1><img src="/images/img/bnr_hd.png" alt="" /></h1>
+                                  	<form>
+                                    	<input class="taxt" type="text" name="" value="Search by Keyword or Item #" onfocus="if(this.value=='Search by Keyword or Item #') this.value=''" onblur="if(this.value=='') this.value='Search by Keyword or Item #'" />
+                                        <input class="sabmt" type="submit" name="" value="" />
+                                        <div class="pAbb">
+                                            <select id="websites1" tabindex="1" name="">
+                                                <option value="" selected="selected" title="">All Categories</option>
+                                                <option value="" title="">1</option>
+                                                <option value="" title="">2</option>
+                                                <option value="" title="">3</option>
+                                                <option value="" title="">4</option>
+                                            </select>
+                                        </div>
+                                    </form>
+                                  <a class="btn otherbutton" href="#"></a>
+                                  </div>
+                              </div>
+                              <div class="panel marquee02" style="display: none; ">
+                                <div class="panel-wrapper clearfix"> <span class="picture">&nbsp;</span>
+                                  <h1 class="txtH2"><img src="/images/img/bnr_hd1.png" alt="" /></h1>
+                                 <div class="txt">You can now sell your products to a connected network of buyers and resellers. Sell one item at a time or list them in quantities, it is your choice and we will gurantee you that you will find an opportunity that you couldnt have imagined before, and best of all its FREE to List your products.</div>
+                                  <a class="lrn" href="#">Learn More......</a>
+                                  <a class="btn otherbutton" href="#"></a>
+                                  </div>
+                              </div>
+                              <div class="panel marquee03" style="display: none; ">
+                                <div class="panel-wrapper clearfix"> <span class="picture">&nbsp;</span>
+                                   <h3><img src="/images/img/bnr_hd2.png" alt="" /></h3>
+                                  	<form>
+                                    	<input class="taxt" type="text" name="" value="Search by Keyword or Item #" onfocus="if(this.value=='Search by Keyword or Item #') this.value=''" onblur="if(this.value=='') this.value='Search by Keyword or Item #'" />
+                                        <input class="sabmt" type="submit" name="" value="" />
+                                        <div class="pAbb">
+                                            <select id="websites3" tabindex="1" name="">
+                                                <option value="" selected="selected" title="">All Categories</option>
+                                                <option value="" title="">1</option>
+                                                <option value="" title="">2</option>
+                                                <option value="" title="">3</option>
+                                                <option value="" title="">4</option>
+                                            </select>
+                                        </div>
+                                    </form>
+                                  <a class="btn otherbutton" href="#"></a>
+                                  </div>
+                              </div>
+                              <div class="panel marquee05" style="display: none; ">
+                                <div class="panel-wrapper">
+                                  <div class="video-container">
+                                    <object width="536" height="285">
+                                      <param name="movie" value="https://www.youtube.com/v/rW3HT2bejA8?fs=1&amp;hl=en_US&amp;hd=1">
+                                      <param name="allowFullScreen" value="true">
+                                      <param name="allowscriptaccess" value="always">
+                                      <embed src="https://www.youtube.com/v/rW3HT2bejA8?fs=1&amp;hl=en_US&amp;hd=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="536" height="285">
+                                    </object>
+                                  </div>
+                                  <div style="display:none;"> <a id="signup-now" href="https://indinero.com/signup"><img src="./inDinero - Track Your Money with a Real-Time Financial Dashboard. Easy Business Budgeting and Cash Flow Planning._files/signupnow.png" alt="Sign Up Now!"></a> </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- / marquee01 -->
+                          </div>
+                          <!-- / coda-slider -->
+                        </div>
+                        <!-- / coda-slider-wrapper -->
+                      </div>
+                      <!-- / coda-slider-1 -->
+                      <div id="coda-nav-1" class="coda-nav">
+                        <ul style="width: 579px; float: none; ">
+                          <li class="tab1"><a href="#1" class="current"><span>&nbsp;</span></a></li>
+                          <li class="tab2"><a href="#2" class=""><span>&nbsp;</span></a></li>
+                          <li class="tab3"><a href="#3" class=""><span>&nbsp;</span></a></li>
+                          <!--<li class="tab4"><a href="https://indinero.com/#4" class=""><span>&nbsp;</span></a></li>-->
+                          <li class="tab5" id="play-video-1"><a href="#5" class=""><span>&nbsp;</span><!--<small>Watch the inDinero video</small>--></a></li>
+                        </ul>
+                      </div>
+                      <div id="coda-history-1" class="p5 p1 p2 p4 p3"></div>
+                    </div>
+                  </div>
+                </div>
+ </div>
+<!-- END CAROUSEL BLOCK -->
 
-  <div class="bnrImg">
-    <div id="TabbedPanels1" class="TabbedPanels">
-      <ul class="TabbedPanelsTabGroup">
-        <li class="TabbedPanelsTab" tabindex="0"><span>Sell Products</span></li>
-        <li class="TabbedPanelsTab" tabindex="0"><span>Buy Products</span></li>
-        <li class="TabbedPanelsTab" tabindex="0"><span>Buy &amp; Sell Products</span></li>
-        <li class="TabbedPanelsTab" tabindex="0"><span>BilNeur Video</span></li>
-      </ul>
-      <div class="TabbedPanelsContentGroup">
-        <div class="TabbedPanelsContent"><img src="/images/img/seller_tab.png" alt="" /></div>
-        <div class="TabbedPanelsContent"><img src="/images/img/buyer_tab.png" alt="" /></div>
-        <div class="TabbedPanelsContent"><img src="/images/img/trader_tab.png" alt="" /></div>
-        <div class="TabbedPanelsContent"><img src="/images/img/tab_img.jpg" alt="" /></div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="c1">
+
+
+<!-- START LEFT COLUMN WITH CATEGORIES -->
+<div class="colLft">
   <div class="c1A">
     <h2>Sellers Paradise</h2>
     <p>We know selling anything online is just not that easy, we have been there and done that and now We are trying to revolutionize the way you sell your stuff, with no upfront costs and more customers. </p>
@@ -49,8 +117,11 @@
     <a class="btn" href="/a-buyers-universe">Read More</a>
   </div>
 </div>
+<!-- END LEFT COLUMN WITH CATEGORIES -->
 
-<div class="c2">
+
+<!-- START CENTRAL CONTENT WITH TOPS -->
+<div class="colRgt">
   <div class="latest"><img src="/images/bgs/ltst_prdct_bg.png" alt="" /></div>
   <div id="carousel">
     <ul>
@@ -69,3 +140,4 @@
     </ul>
   </div>
 </div>
+<!-- END CENTRAL CONTENT WITH TOPS -->

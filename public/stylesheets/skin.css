@@ -205,7 +205,7 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
 .hd1A, .hd2,.loginBar,.loginBar i,.loginBar a, ul.tpMnu, ul.tpMnu li, ul.tpMnu li a, ul.mMenu, ul.mMenu li, ul.mMenu li a,.menu,.menu .lft,.menu .rgt,.tSrch input[type=text],.tSrch form,.allProd,.tSrch input[type=submit], .tSrch {float:left;}
 
 /* Content */
-#mCnt{ margin-top:20px;}
+#mCnt{ margin-top:20px; overflow: hidden;}
 .cHome{}
     .cHome .mBnr { width:100%;background:url('/images/bgs/bnr_bg1.png') no-repeat;}
         .mBnr .bnrCnt { width:255px;margin:66px 0 0 40px;}
@@ -282,17 +282,18 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
 .cLogo span.hover {position: absolute;display: block;height:66px;width:177px;background:url('/images/logos/logo_new.png') 0 -66px no-repeat;background-position: bottom;}
 
 /* Faded Buttons in Banners */
-.marquee01 .otherbutton {display:block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') no-repeat;background-position:0 -53px;cursor: pointer;}  
-.marquee01 .otherbutton span.hover {position: absolute;display: block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') 0 0px no-repeat;background-position: bottom;}
+.otherbutton { position: relative; padding: 0; }
+.marquee01 .otherbutton {display:block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') no-repeat;background-position:0 -53px;cursor: pointer; border: none;}  
+.marquee01 .otherbutton span.hover {position: absolute;display: block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') 0 0px no-repeat;background-position: bottom; top: 0;}
 
 .marquee02 .otherbutton {display:block;height:51px;width:183px;background:url('/images/forms/sell_btn.png') no-repeat;background-position:0 -51px;cursor: pointer;}
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {.marquee02 .otherbutton {background-position:0 0;}}
     
-.marquee02 .otherbutton span.hover {position: absolute;display:block;height:51px;width:183px;background:url('/images/forms/sell_btn.png') 0 0px no-repeat;background-position: bottom;}
+.marquee02 .otherbutton span.hover {position: absolute;display:block;height:51px;width:183px;background:url('/images/forms/sell_btn.png') 0 0px no-repeat;background-position: bottom; top: 0;}
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {.marquee02 .otherbutton span.hover {background-position:0px -51px;}}
 
-.marquee03 .otherbutton {display:block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') no-repeat;background-position:0 -53px;cursor: pointer;}  
-.marquee03 .otherbutton span.hover {position: absolute;display: block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') 0 0px no-repeat;background-position: bottom;}
+.marquee03 .otherbutton {display:block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') no-repeat;background-position:0 -53px;cursor: pointer; border: none;}  
+.marquee03 .otherbutton span.hover {position: absolute;display: block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') 0 0px no-repeat;background-position: bottom; top: 0;}
 

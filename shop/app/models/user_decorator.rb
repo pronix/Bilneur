@@ -29,6 +29,7 @@ User.class_eval do
 
   has_many :orders,  :conditions => { :virtual => false}
   has_many :virtual_orders, :class_name => "VirtualOrder", :foreign_key => :user_id
+  has_many :all_orders, :class_name => "Order", :foreign_key => :user_id
 
   has_many :seller_payment_methods
 

@@ -1,31 +1,31 @@
 <% quotes.each do |quote| %>
-  <% evod = cycle('1', '2') %>
+<% evod = cycle('1', '2') %>
 <tr class="quote">
-<td class="row<%= evod %>">
-<div class="checkbox">
-<input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy" class="multi_action">
-</div>
-</td>
-<td class="row<%= evod %>"><a href="#"><%= quote.ean %></a></td>
-<td class="row<%= evod %>"><a href="#"><%= quote.name %></a></td>
-<td class="row<%= evod %> cell_quantity"><span><%= quote.count_on_hand %></span></td>
-<td class="row<%= evod %>"><span><%= quote.condition %></span></td>
-<td class="row<%= evod %>">
-  <b>Unit price: <br /></b><%= number_to_currency quote.price %> <br />
-  <%= raw('<b>Volume price: </b><br />') if quote.volume_prices.any? %>
-  <% quote.volume_prices.each do |volume_price| %>
+  <td class="row<%= evod %>">
+    <div class="checkbox">
+      <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy" class="multi_action">
+    </div>
+  </td>
+  <td class="row<%= evod %>"><a href="#"><%= quote.ean %></a></td>
+  <td class="row<%= evod %>"><a href="#"><%= quote.name %></a></td>
+  <td class="row<%= evod %> cell_quantity"><span><%= quote.count_on_hand %></span></td>
+  <td class="row<%= evod %>"><span><%= quote.condition %></span></td>
+  <td class="row<%= evod %>">
+    <b>Unit price: <br /></b><%= number_to_currency quote.price %> <br />
+    <%= raw('<b>Volume price: </b><br />') if quote.volume_prices.any? %>
+    <% quote.volume_prices.each do |volume_price| %>
     <%= volume_price.range %> - <%= number_to_currency volume_price.amount %> <br />
-  <% end %>
-</td>
-<td class="row<%= evod %>"><span><%== 'Not' if !quote.virtual? %> Offered</span></td>
-<td class="row<%= evod %>"><a href="#">FIXME</a></td>
+    <% end %>
+  </td>
+  <td class="row<%= evod %>"><span><%== 'Not' if !quote.virtual? %> Offered</span></td>
+  <td class="row<%= evod %>"><a href="#">FIXME</a></td>
 </tr>
 <% end %>
 <div class="paging replacer" style='display: none;'>
-<div class="blogPg">
+  <div class="blogPg">
     <%= page_entries_info quotes %><!-- FIXME add will_paginate 3.0.pre4 support for modifying text of entries info -->
-</div>
-<%= will_paginate(quotes,
-                :previous_label => "#{t('previous')}",
-                :next_label => "#{t('next')}") %>
+  </div>
+  <%= will_paginate(quotes,
+      :previous_label => "#{t('previous')}",
+  :next_label => "#{t('next')}") %>
 </div>

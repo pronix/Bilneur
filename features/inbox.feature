@@ -2,13 +2,29 @@ Feature: Inbox
   Users can exchange messages
 
   Background:
+  Given I am signed up as "email1@person.com/password"
   Given I have an admin account of "admin@person.com/password"
-    And the following users exist:
-      | firstname | lastname | email            | password | password_confirmation |
-      | Jimm      | Paxtor   | email@person.com | password | password              |
-    And the following sellers exist:
-      | firstname | email              | password  | password_confirmation |
-      | Seller1   | seller1@person.com | password1 | password1             |
+  And the following users exist:
+    | firstname | lastname | email            | password | password_confirmation |
+    | Jimm      | Paxtor   | email@person.com | password | password              |
+  And the following sellers exist:
+    | firstname | email              | password  | password_confirmation |
+    | Seller1   | seller1@person.com | password1 | password1             |
+# @wip @javascript
+#   Scenario Outline: Change move to in the show message
+#     And I sign in as "email1@person.com/password"
+#     And I have 1 simple message when I is recipient
+#     Then I go to the @message message page
+#     Then sleep "10"
+#     And I select "<mark_as>" from "websites21"
+#     And @message should be "<field>" is "<should_be>"
+
+#     Examples:
+#      | mark_as        | field          | should_be |
+#      | Mark as read   | recipient_read | true      |
+#      | Mark as unread | recipient_read | false     |
+#      | Mark as important | recipient_marker | important |
+    
 
   Scenario: Sending Message access only auth user
     When I go to the new message page for seller "seller1@person.com"

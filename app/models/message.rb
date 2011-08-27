@@ -81,6 +81,18 @@ class Message < ActiveRecord::Base
     update_attribute(:recipient_read, true)
   end
 
+  def unread!
+    update_attribute(:recipient_read, false)
+  end
+
+  def important!
+    update_attribute(:recipient_marker, 'important')
+  end
+
+  def unimportant!
+    update_attribute(:recipient_marker, nil)
+  end
+
   def deleted!(user = User.current)
     update_attribute(get_field(user, :deleted_at), Time.now)
   end
@@ -105,6 +117,16 @@ class Message < ActiveRecord::Base
   def get_field(user, field)
     user == sender ? :"sender_#{field}" : :"recipient_#{field}"
   end
+
+  # When user change message with ajax select, need callback status
+  def rollback_state(status)
+    case status
+      when "mark_as_read" then unread!
+      when "mark_as_unread" then read!
+      when "mark_as_important" then unimportant!
+    end
+  end
+
   # class methods
   #
   class << self

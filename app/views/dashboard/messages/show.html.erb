@@ -107,6 +107,6 @@
       if ($(this).val() != "nothing") {
         $.ajax({ type: "POST", url: "<%= multi_dashboard_messages_path %>" + "?multi=" + $(this).val() + "&message_ids=" + "<%= @message.id %>" });
       }
-    }); 
+    });
   });
 </script>

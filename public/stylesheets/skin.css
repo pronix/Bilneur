@@ -222,8 +222,8 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
     .sldrCnt { float:left; width:100%; border:1px solid #ccc; height:250px;border-radius:0px 0px 5px 5px;-moz-border-radius:0px 0px 5px 5px;-webkit-border-radius:0px 0px 5px 5px}
     .sldrCnt.sellersSlider { height: 200px}
 .crslHd { float:left; width:98%; margin:0 1%; text-indent:10px; margin-top:10px; color:#47b1d9; padding-bottom:5px; border-bottom:1px solid #ccc;}
-.items a {float:left; width:134px; margin-right:12px; text-decoration:none;}
-.items b { float:left; width:100%; padding-bottom:10px;text-transform:uppercase; line-height:18px; font-size:11px; text-align:center;}
+.scrollable .items a {float:left; width:134px; margin-right:12px; text-decoration:none;}
+.scrollable .items b { float:left; width:100%; padding-bottom:10px;text-transform:uppercase; line-height:18px; font-size:11px; text-align:center;}
 .pd1 { float:left; width:134px; margin-top:8px; background:url('/images/bgs/crsl_img_bg.png') left top no-repeat; color: black;}
     .pd1 i { float:left; margin:3px 0 0 7px;}
     .pd1 p { float:left; width:125px; font-size:11px; margin:0 0 0 7px;}

@@ -8,7 +8,13 @@ class SellersController < Spree::BaseController
   before_filter :load_data
 
   def store
-    @quotes = @seller.quotes.paginate(:page => params[:page], :per_page => params[:per_page])
+    # Favorite variants go first by sorting with boolean values
+    @quotes = @seller.quotes.sort!{
+      |a, b| if a.is_favorite?(current_user)
+                    -1 
+               else  1
+              end
+      }.paginate(:page => params[:page], :per_page => params[:per_page])
   end
 
   def quote

@@ -32,14 +32,4 @@ Spree::BaseHelper.class_eval do
     return true if params[:as_seller]
     true if params[:user][:registration_as_seller] == '1' rescue return false
   end
-
-
-  def is_favorite?(variant)
-    if current_user.favorite_variants.find_by_id(variant.id)
-      true
-    else
-      false
-    end
-  end
-
 end

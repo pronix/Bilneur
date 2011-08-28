@@ -1,7 +1,7 @@
 <div class="smPrdcts">
   <div class="smPd">
     <i class="imgP">
-      <% if is_favorite?(best_deal) %>
+      <% if best_deal.is_favorite?(current_user) %>
         <%= image_tag "/images/favribbon.png", :class => "favribbon" %>
       <% end %>
       <%= link_to small_image(product), product %>

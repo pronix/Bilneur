@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  $jx(".scrollable").scrollable();
   $("#search_select_category2, #search_select_category3").msDropDown({mainCSS:'dd2'});
   $('.cLogo,.otherbutton,.homebutton,.downloadbutton,.donatebutton, .sellbutton').append('<span class="hover"></span>').each(function () {
     		var $span = $('> span.hover', this).css('opacity', 0);

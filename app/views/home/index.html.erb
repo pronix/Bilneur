@@ -118,18 +118,15 @@
 
 <!-- START CENTRAL CONTENT WITH TOPS -->
 <div class="colRgt">
+
+     <!-- START TOP PRODUCTS -->
      <div class="sldr1">
      	<h2><span>Top Products</span></h2>
          <div class="sldrCnt">
-         	<b class="crslHd">View all Top Products</b>
-              <!--Strat Scrollable-->
-     <!-- "previous page" action -->
+         <%= link_to "View all Top Products", top_path(:products), :class => "crslHd"  %>
      <a class="prev browse left disabled"> </a>
-     <!-- root element for scrollable -->
      <div class="scrollable">   
-        <!-- root element for the items -->
         <div style="left: 0px;" class="items">
-           <!-- 1-5 -->
            <div>
              <% @products.each_with_index do |product, index|  %>
                <% if index >= 4 && index % 4 == 0 %>
@@ -145,25 +142,81 @@
                 <% end %>
              <% end %>
            </div>
-           <!-- 5-10 -->
-
-           
         </div>
      </div>
-     <!-- "next page" action -->
      <a class="next browse right"></a>
      <br clear="all">
-     <script>
-     // execute your scripts when the DOM is ready. this is mostly a good habit
-     $jx(function() {
-     
-         // initialize scrollable
-         $jx(".scrollable").scrollable();
-     
-     });
-     </script>
-     <!--End Scrollable-->
          </div>
      </div>
+     <!-- END TOP PRODUCTS -->
+
+
+
+     <!-- START TOP DEALS -->
+     <div class="sldr1">
+     	<h2><span>Top Deals</span></h2>
+         <div class="sldrCnt">
+         <%= link_to "View all Top Deals", top_path(:deals), :class => "crslHd"  %>
+     <a class="prev browse left disabled"> SAMI</a>
+     <div class="scrollable">   
+        <div style="left: 0px;" class="items">
+           <div>
+             <% @deals.each_with_index do |product, index|  %>
+               <% if index >= 4 && index % 4 == 0 %>
+                  </div><div>
+               <% end %>
+               <% link_to product,  :class => "pd1" do %>
+                 <i>
+                    <%= t122_image( product ) %>
+                 </i>
+                 <b>View This Product</b>
+                 <p><%= product.description.slice(0, 40) %></p>
+                 <span><em>$9.99</em> 50% Discount</span>	
+                <% end %>
+             <% end %>
+           </div>
+        </div>
+     </div>
+     <a class="next browse right"></a>
+     <br clear="all">
+         </div>
+     </div>
+     <!-- END TOP DEALS -->
+
+
+
+     <!-- START TOP SELLERS -->
+     <div class="sldr1">
+     	<h2><span>Top Sellers</span></h2>
+         <div class="sldrCnt">
+         <%= link_to "View all Top Sellers", top_path(:sellers), :class => "crslHd" %>
+     <a class="prev browse left disabled"> SAMI</a>
+     <div class="scrollable">   
+        <div style="left: 0px;" class="items">
+           <div>
+             <% @sellers.each_with_index do |seller, index|  %>
+               <% if index >= 4 && index % 4 == 0 %>
+                  </div><div>
+               <% end %>
+               <% link_to store_seller_path(seller),  :class => "pd1" do %>
+                 <i>
+                    <%=  image_tag(seller.photo.url(:for_review))  %>
+                 </i>
+                 <b><%= seller.full_name %></b>
+                 <p style="text-align: center;">View Store</p>
+                <% end %>
+             <% end %>
+           </div>
+        </div>
+     </div>
+     <a class="next browse right"></a>
+     <br clear="all">
+         </div>
+     </div>
+     <!-- END TOP SELLERS -->
+
+
+
+
 </div>
 <!-- END CENTRAL CONTENT WITH TOPS -->

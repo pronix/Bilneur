@@ -22,8 +22,8 @@ Feature: Seller payment methods
     And I press "Update"
     Then I should see "Payment Method has been successfully updated!"
     And page have the following payment methods:
-     | Name      | Payment Type | Verified                                 |                      |
-     | My paypal | Paypal       | unverified\n        send to verification | edit\n        delete |
+     | Name      | Payment Type | Verified                                       |                            |
+     | My paypal | Paypal       | unverified\n              send to verification | edit\n              delete |
 
   Scenario: Add Payment Method(Credit Card)
     Given I go to the dashboard payment_methods page
@@ -39,8 +39,8 @@ Feature: Seller payment methods
     And I press "Update"
     Then I should see "Payment Method has been successfully updated!"
     And page have the following payment methods:
-     | Name           | Payment Type | Verified                                 |                      |
-     | My credit card | Credit Card  | unverified\n        send to verification | edit\n        delete |
+     | Name           | Payment Type | Verified                                       |                            |
+     | My credit card | Credit Card  | unverified\n              send to verification | edit\n              delete |
     When I follow "My credit card"
     Then I should see "Method type: Credit Card"
     And I should see "Name: My credit card"
@@ -64,8 +64,8 @@ Feature: Seller payment methods
     And I press "Update"
     Then I should see "Payment Method has been successfully updated!"
     And page have the following payment methods:
-     | Name            | Payment Type | Verified                                 |                      |
-     | My Bank Account | Bank Account | unverified\n        send to verification | edit\n        delete |
+     | Name            | Payment Type | Verified                                       |                            |
+     | My Bank Account | Bank Account | unverified\n              send to verification | edit\n              delete |
     When I follow "My Bank Account"
     Then I should see "Method type: Bank Account"
     And I should see "Name: My Bank Account"

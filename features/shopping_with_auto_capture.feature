@@ -1,7 +1,7 @@
-Feature: Shopping(without auto capture)
+Feature: Shopping (with auto capture)
 
   Background:
-    Given a spree param "auto_capture" set is 'false'
+    Given a spree param "auto_capture" set is 'true'
     Given load test data
 
 @javascript
@@ -28,8 +28,7 @@ Feature: Shopping(without auto capture)
     Then I should see "Your order has been processed successfully"
     And "seller2@person.com" should receive 1 emails
     And "email@person.com" should receive 1 emails
-    When buyer "email@person.com" paid orders
-    And seller "seller2@person.com" set shipment status as "ship"
+    When seller "seller2@person.com" set shipment status as "ship"
     Then buyer "email@person.com" should see orders in orders with shipment state "shipped"
     And seller "seller2@person.com" should see the following quotes in dashboard:
       | product_name                | condition | count_on_hand |
@@ -60,8 +59,7 @@ Feature: Shopping(without auto capture)
     And "seller2@person.com" should receive 1 emails
     And "seller1@person.com" should receive 1 emails
     And "email@person.com" should receive 1 emails
-    When buyer "email@person.com" paid orders
-    And seller "seller2@person.com" set shipment status as "ship"
+    When seller "seller2@person.com" set shipment status as "ship"
     And seller "seller1@person.com" set shipment status as "ship"
     Then buyer "email@person.com" should see orders in orders with shipment state "shipped"
     And seller "seller2@person.com" should see the following quotes in dashboard:

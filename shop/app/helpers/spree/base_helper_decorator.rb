@@ -16,7 +16,11 @@ Spree::BaseHelper.class_eval do
                                 end
 
     if order_count_items || virtual_order_count_items
-      css_class = 'full crt'
+      if virtual_order_count_items
+        css_class = 'full crt vstore'
+      else
+        css_class = 'full crt'
+      end
     else
       css_class = 'empty crt'
     end

@@ -15,6 +15,14 @@ Then /^the page should have the following messages:$/ do |table|
   end
 end
 
+Then /^the page should not have the following messages:$/ do |table|
+  table.hashes.each_with_index do |item, i|
+      Then %Q(I should not see "#{item['from']}")
+      Then %Q(I should not see "#{item['subject']}")
+      Then %Q(I should not see "#{item['received']}")
+  end
+end
+
 Then /^the page should have text area for reply$/ do
   page.should have_selector('textarea#message_content')
 end

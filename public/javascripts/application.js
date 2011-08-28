@@ -17,6 +17,18 @@
     });
 
     $("[data-run_search='t']").bind("change", function(){ $(this).parents("form:first").submit(); })
+
+    //Logo effect
+      $('.cLogo,.otherbutton,.homebutton,.downloadbutton,.donatebutton, .sellbutton').append('<span class="hover"></span>').each(function () {
+      		var $span = $('> span.hover', this).css('opacity', 0);
+      		$(this).hover(function () {
+        		$span.stop().fadeTo(500, 1);
+     		}, function () {
+       	$span.stop().fadeTo(500, 0);
+      		});
+    });
+
+
     // Remove an item from the cart by setting its quantity to zero and posting the update form
     $('form#normal-updatecart a.delete').show().live('click', function(e){
       $(this).parent().find('input.txt').val(0);

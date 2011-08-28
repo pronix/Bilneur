@@ -1,56 +1,58 @@
 <!-- START HEADER -->
-    <div id="mHdr">
-      <div class="hd1A">
-        <%= link_to image_tag("logos/logo.png"), root_path %>
+<div id="mHdr">
+  <div class="hd1A">
+    <%= link_to "", root_path, :class => "btn cLogo" %>
+  </div>
+  <div class="hd1B">
+    <div class="loginBar">
+      <% if current_user %>
+      <i><%= link_to t('my_account'), account_path %></i>
+      &nbsp;
+      <%= link_to t('logout'), destroy_user_session_path %>
+      <% else %>
+      <i><%= link_to "Sign Up", new_user_registration_path %></i>
+      &nbsp;
+      <%= link_to t('log_in'), new_user_session_path %>
+      <% end %>
+      <div class="cart_bag">
+        <%= render "shared/store_menu" %>
       </div>
-        <div class="hd1B">
-          <div class="loginBar">
-            <% if current_user %>
-            <i><%= link_to t('my_account'), account_path %></i>
-            &nbsp;
-            <%= link_to t('logout'), destroy_user_session_path %>
-            <% else %>
-            <i><%= link_to "Sign Up", new_user_registration_path %></i>
-            &nbsp;
-            <%= link_to t('log_in'), new_user_session_path %>
-            <% end %>
-            <div class="cart_bag">
-              <%= render "shared/store_menu" %>
-            </div>
-          </div>
-            <ul class="tpMnu">
-              <li><a href="/how_it_work">How It Work</a></li>
-              <li><a href="/what_we_do">What We Do</a></li>
-              <li class="last"><a href="<%= start_selling_link %>">Start Selling</a></li>
-            </ul>
-        </div>
-
-        <div class="hd2">
-          <div class="menu">
-              <div class="lft"></div>
-              <ul class="mMenu cntr">
-                    <li>
-                      <a href="/t/categories">Categories</a>
-                    </li>
-
-                    <li><a href="#">Groups</a></li>
-                    <li>
-                      <%= link_to_unless_current "Top Products", top_path(:products) %>
-                    </li>
-                    <li>
-                        <%= link_to_unless_current "Top Sellers", top_path(:sellers) %>
-                    </li>
-
-                    <li>
-                      <%= link_to_unless_current "Top Deals", top_path(:deals) %>
-                    </li>
-
-                    <li class="last"><a href="#">Blog</a></li>
-                </ul>
-                <div class="rgt"></div>
-            </div>
-         <%= render "shared/search" %>
-        </div>
     </div>
+    <ul class="tpMnu">
+      <li><a href="/how_it_work">How It Work</a></li>
+      <li><a href="/what_we_do">What We Do</a></li>
+      <li class="last"><a href="<%= start_selling_link %>">Start Selling</a></li>
+    </ul>
+  </div>
+
+  <div class="hd2">
+    <div class="menu">
+      <div class="lft"></div>
+      <div class="cntr">
+        <ul class="mMenu">
+          <li>
+            <a href="/t/categories">Categories</a>
+          </li>
+
+          <li><a href="#">Groups</a></li>
+          <li>
+            <%= link_to_unless_current "Top Products", top_path(:products) %>
+          </li>
+          <li>
+            <%= link_to_unless_current "Top Sellers", top_path(:sellers) %>
+          </li>
+
+          <li>
+            <%= link_to_unless_current "Top Deals", top_path(:deals) %>
+          </li>
+
+          <li><a href="#">Blog</a></li>
+        </ul>
+        <%= render "shared/search" %>
+      </div>
+      <div class="rgt"></div>
+    </div>
+  </div>
+</div>
 <!-- END HEADER -->
 

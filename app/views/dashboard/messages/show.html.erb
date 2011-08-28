@@ -1,3 +1,4 @@
+
 <div class="inbxTabs">
   <div id="TabbedPanels2" class="TabbedPanels">
     <%= render :partial => 'dashboard/shared/inbox_tabs', :locals => {:current => @state} %>
@@ -12,15 +13,15 @@
                 <%= link_to t('delete'), dashboard_message_path(@message), :method => :delete %>
               </li>
               <li class="replyer">
-                <%= link_to t('reply'), "", :class => "reply-link"%>
+                <%= link_to t('reply'), "javascript:void(0)", :class => "reply-link", :onclick => "test_func();" %>
               </li>
             </ul>
             <div class="cmbo1">
               <select id="websites21" tabindex="1" name="">
                 <option value="nothing" selected="selected" title="">Move to</option>
-                <option value="mark_as_unread" title="">Mark as unread</option>
-                <option value="mark_as_read" title="">Mark as read</option>
-                <option value="mark_as_important" title="">Mark as important</option>
+                <option value="mark_as_unread" title="">Move to unread</option>
+                <option value="mark_as_important" title="">Move to important</option>
+                <option value="delete" title="">Move to trash</option>
               </select>
             </div>
 
@@ -59,7 +60,7 @@
                   <%= link_to t('delete'), dashboard_message_path(@message), :method => :delete %>
                 </li>
                 <li>
-                  <%= link_to t('reply'), "", :class => "reply-link"%>
+                  <%= link_to t('reply'), "", :class => "reply-link", :onclick => "test_func();"%>
                 </li>
               </ul>
             </div>
@@ -74,20 +75,18 @@
               <%= render 'shared/error_messages', :target => @reply_message %>
 
               <%= form_for((@reply_message||Message.new), :url => reply_dashboard_message_path(@message), :html => {:class => "new_message"}) do |f| %>
-
-            <div class="bAY">
-              <div class="txtA">
-                <%= f.text_area :content, {:cols => 60, :rows => 2, :class => 'fullwidth'} %>
-              </div>
-            </div>
-
-            <div class="inbxAct rightSend">
-              <ul>
-                <li>
-                  <button type="submit" class="reply-link">Send</button>
-                </li>
-              </ul>
-            </div>
+                <div class="bAY">
+                  <div class="txtA">
+                    <%= f.text_area :content, {:cols => 60, :rows => 2, :class => 'fullwidth'} %>
+                  </div>
+                </div>
+                <div class="inbxAct rightSend">
+                  <ul>
+                    <li>
+                      <button type="submit" id="send_message">Send</button>
+                    </li>
+                  </ul>
+                </div>
           <% end %>
           </div>
         </div>
@@ -96,17 +95,5 @@
     </div>
   </div>
 </div>
-<script>
-  $(function(){
-    $(".reply-link").click(function(){ 
-      $(".message_container").show();  
-      $(".replyer").hide();
-      return false;
-    });
-    $("#websites21").change(function() {
-      if ($(this).val() != "nothing") {
-        $.ajax({ type: "POST", url: "<%= multi_dashboard_messages_path %>" + "?multi=" + $(this).val() + "&message_ids=" + "<%= @message.id %>" });
-      }
-    });
-  });
-</script>
+
+<% javascript 'inbox' %>

@@ -58,7 +58,7 @@ Feature: Inbox
     And I should see "Question1 message"
     And the page should have text area for reply
     And I should see "Send"
-
+@javascript
   Scenario: Replying to a message
     Given the following messages exist:
      | created_at | sender                 | recipient                | subject   | content           |
@@ -69,10 +69,11 @@ Feature: Inbox
      | from        | subject   | received         |
      | Jimm Paxtor | Question1 | January 01, 2011 |
     When I follow "Question1"
-    And I fill in "Content" with "Thanks for you Question."
-    And I press "Send"
+    Then I clink by class "reply-link"
+    And I fill in "message_content" with "Thanks for you Question."
+    And I press "send_message"
     Then I should see "Your reply sent."
-
+@wip @javascript
   Scenario: Marking message as read
     Given the following messages exist:
      | created_at | sender                 | recipient                | subject   | content           |
@@ -82,11 +83,16 @@ Feature: Inbox
     Then the page should have the following messages:
      | from        | subject   | received         |
      | Jimm Paxtor | Question1 | January 01, 2011 |
-    When I check "message_ids[]"
-    And I press "Mark as read"
-    And I follow "Unread"
-    Then the page should have the following messages:
-     | From | Subject | Received |
+    # When I check "message_ids[]"
+    Then execute jquery "alert('asdsadsa');"
+    Then sleep "100"
+    # Then show me the page
+    # And I press "Mark as read"
+
+    
+    #And I follow "Unread"
+    #Then the page should have the following messages:
+    # | From | Subject | Received |
 
   Scenario: Marking message as unread
     Given the following messages exist:

@@ -5,3 +5,11 @@ end
 Then /^@message should be "(.+)" is "(.+)"$/ do |field, status|
   @message.send(field).should == eval(status)
 end
+
+Then /^I clink by class "(.+)"$/ do |class_name|
+  find(".#{class_name}").click
+end
+Then /^execute jquery "(.+)"$/ do |script|
+  page.execute_script(script)
+end
+

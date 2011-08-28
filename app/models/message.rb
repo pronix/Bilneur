@@ -153,9 +153,9 @@ class Message < ActiveRecord::Base
       when "mark_as_important"
         user.messages.where(:id => message_ids).each do |item|
           prefix = item.sender == user ? "sender" : "recipient"
+          item.undeleted!
           item.update_attribute("#{prefix}_marker", 'important')
         end
-
       end
     end
 

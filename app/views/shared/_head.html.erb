@@ -22,13 +22,13 @@
   'rails',
   'application',
   'stars/jquery-ui.custom.min',
-  'stars/jquery.raty.min',
   'stars/jquery.ui.stars',
   'stars/stars_own',
   'jquery.pulse.js',
   'jquery.iphone-switch', :cache => 'jquery-core' %>
 
-<%= javascript_include_tag "https://apis.google.com/js/plusone.js" %>
+<!-- FIXME: letter when show will be complete -->
+<%= javascript_include_tag("https://apis.google.com/js/plusone.js") if Rails.env.production? %>
 
 <% unless I18n.locale.to_s[0..1] == 'en' %>
   <%= javascript_include_tag ['localization/messages_', I18n.locale.to_s[0..1], '.js'].join %>

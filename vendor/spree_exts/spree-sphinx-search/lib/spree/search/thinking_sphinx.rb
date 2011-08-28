@@ -43,7 +43,16 @@ module Spree::Search
         Variant::CONDITION_MAP[v.to_sym]
       }.compact unless @_params[:condition].blank?
       with_opts.merge!(:variants_conditions => @condition ) if @condition
+
+      if @_params[:min_quantity].present? || @_params[:max_quantity]
+        with_opts.merge!(:variant_on_hand => (@_params[:min_quantity]||0).to_i..(@_params[:max_quantity]||9999).to_i)
+      end
+
       search_options.merge!(:with => with_opts)
+      Rails.logger.info "="*90
+      Rails.logger.info "[ SEARCH QUERY ]"
+      Rails.logger.info  search_options.inspect
+
       facets = Product.facets(query, search_options)
       products = facets.for
 

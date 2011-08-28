@@ -79,11 +79,11 @@
 
     <div class="minMax">
       <b>Min</b>
-      <input class="txt" type="text" name="" value="" />
+      <%= text_field_tag :min_quantity, 0, :class => "txt", :id => nil, :"data-run_search" => 't' %>
     </div>
     <div class="minMax">
       <b>Max</b>
-      <input class="txt" type="text" name="" value="" />
+      <%= text_field_tag :max_quantity, 100, :class => "txt", :id => nil, :"data-run_search" => 't' %>
     </div>
   </div>
 </div>

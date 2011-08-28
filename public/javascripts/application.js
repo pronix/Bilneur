@@ -13,7 +13,7 @@
     });
 
    $(".cart-form").live('ajax:loading', function(event, xhr, settings) {
-       console.log("Adding to cart");
+
     });
 
     $("[data-run_search='t']").bind("change", function(){ $(this).parents("form:first").submit(); })

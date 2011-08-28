@@ -194,7 +194,7 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
             .btn:hover {}
             
         .mBnr .bnrImg { width:461px;position:relative;}
-            .TabbedPanelsTab span { width:95%;text-align:center;line-height:19px;}
+            .TabbedPanelsTab span { width:100%;text-align:center;line-height:19px;}
         
 .cHome .mBnr, .mBnr .bnrCnt, .mBnr .bnrCnt h1, .mBnr .bnrCnt p, .mBnr .bnrCnt a, .mBnr .bnrCnt .btn, .mBnr .bnrImg,.TabbedPanelsTab span {float:left;}
 

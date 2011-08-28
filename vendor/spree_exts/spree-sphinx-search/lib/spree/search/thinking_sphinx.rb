@@ -36,11 +36,23 @@ module Spree::Search
         with_opts.merge!(:taxon_ids => taxon_ids.flatten(1))
       end
 
+      if  @_params[:price_range].present?
+        with_opts.merge!(:variant_price => (@_params[:min_price]||0).to_f..(@_params[:max_price]||0).to_f)
+      end
       @condition = [ @_params[:condition] ].flatten.compact.map{ |v|
         Variant::CONDITION_MAP[v.to_sym]
       }.compact unless @_params[:condition].blank?
       with_opts.merge!(:variants_conditions => @condition ) if @condition
+
+      if @_params[:min_quantity].present? || @_params[:max_quantity]
+        with_opts.merge!(:variant_on_hand => (@_params[:min_quantity]||0).to_i..(@_params[:max_quantity]||9999).to_i)
+      end
+
       search_options.merge!(:with => with_opts)
+      Rails.logger.info "="*90
+      Rails.logger.info "[ SEARCH QUERY ]"
+      Rails.logger.info  search_options.inspect
+
       facets = Product.facets(query, search_options)
       products = facets.for
 
@@ -64,7 +76,9 @@ module Spree::Search
       @properties[:order_by_price] = params[:order_by_price]
 
       if !params[:order_by_price].blank?
-        @product_group = ProductGroup.new.from_route([params[:order_by_price]+"_by_master_price"])
+        @product_group = ProductGroup.new.from_route([
+                                    "sort_by_best_price_#{ params[:order_by_price].to_s == 'ascend' ? 'asc': 'desc' }"
+                                                     ])
       elsif params[:product_group_name]
         @cached_product_group = ProductGroup.find_by_permalink(params[:product_group_name])
         @product_group = ProductGroup.new

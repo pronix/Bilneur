@@ -1,54 +1,54 @@
 <%= content_for :head do %>
-  <%= javascript_include_tag  'checkout', '/states' %>
+<%= javascript_include_tag  'checkout', '/states' %>
 <% end %>
 
 <%= f.hidden_field(:firstname, :value => @current_user.firstname) %>
 <%= f.hidden_field(:lastname, :value => @current_user.lastname) %>
 
-  <b><i>Buseness name:</i>
-    <%= f.text_field :business_name %>
-  </b>
+<b><i>Buseness name:</i>
+  <%= f.text_field :business_name %>
+</b>
 
-  <b><i>Address Line 1:</i>
-    <%= f.text_field :address1 %>
-  </b>
+<b><i>Address Line 1:</i>
+  <%= f.text_field :address1 %>
+</b>
 
-  <b><i class="dimC">Address Line 2:</i>
-    <%= f.text_field :address2 %>
-  </b>
+<b><i class="dimC">Address Line 2:</i>
+  <%= f.text_field :address2 %>
+</b>
 
 <b><i>City:</i>
   <%= f.text_field :city, :class => 'txtCty'  %>
-            	<i class="stat">State:</i>
-                <div class="cmbo2 websites">
-                    <% if Spree::Config[:address_requires_state] %>
-                          <% have_states = (@address.country||Country.default).states.present? %>
+  <i class="stat">State:</i>
+  <div class="cmbo2 websites">
+    <% if Spree::Config[:address_requires_state] %>
+    <% have_states = (@address.country||Country.default).states.present? %>
 
-                          <noscript>
-                            <%= f.text_field :state_name, :class => 'required' %>
-                          </noscript>
+    <noscript>
+      <%= f.text_field :state_name, :class => 'required' %>
+    </noscript>
 
-                          <% state_elements = [
-                             f.collection_select(:state_id, (@address.country||Country.default).states,
-                                                :id, :name,
-                                                {:include_blank => true},
-                                                {:class => have_states ? "required" : "hidden",
-                                                :disabled => !have_states}) +
-                             f.text_field(:state_name,
-                                                :class => !have_states ? "required" : "hidden",
-                                                :disabled => have_states)
-                              ].join.gsub('"', "'").gsub("\n", "")
-                          %>
+    <% state_elements = [
+       f.collection_select(:state_id, (@address.country||Country.default).states,
+       :id, :name,
+       {:include_blank => true},
+    {:class => have_states ? "required" : "hidden",
+    :disabled => !have_states}) +
+    f.text_field(:state_name,
+    :class => !have_states ? "required" : "hidden",
+    :disabled => have_states)
+    ].join.gsub('"', "'").gsub("\n", "")
+    %>
 
-                          <script type="text/javascript" language="javascript" charset="utf-8">
-                          // <![CDATA[
+    <script type="text/javascript" language="javascript" charset="utf-8">
+      // <![CDATA[
                           document.write("<%= raw(state_elements) %>");
                           // ]]>
-                          </script>
-                    <% end %>
-                </div>
-            </b>
-            
+    </script>
+    <% end %>
+  </div>
+</b>
+
 <b>
   <i>Country:</i>
   <div class="cmbo3 websites">
@@ -60,7 +60,7 @@
   <%= f.text_field :zipcode %>
 </b>
 
-<b><i>Customer Service Ph# (FIXME):</i>
+<b><i>Customer Service Ph#:</i>
   <%= f.text_field :phone %>
 </b>
 <b>
@@ -68,7 +68,6 @@
     <div class="checkbox">
       <%= f.check_box :primary %>
     </div>
-    
   </i>
-  <span class="mk">Make this my primary address (FIXME).</span>
+  <span class="mk">Make this my primary address.</span>
 </b>

@@ -51,7 +51,10 @@ OrdersController.class_eval do
 
     params[:variants].each do |variant_id, quantity|
       variant = Variant.find(variant_id)
-      if (quantity.to_s !~ /\A[+-]?\d+\Z/) || (quantity.to_i > variant.count_on_hand) || (quantity.to_i < 0)
+      count_in_order = @order.line_items.find_by_variant_id(variant.id).try(:quantity).to_i
+      if (quantity.to_s !~ /\A[+-]?\d+\Z/) ||
+          (quantity.to_i > (variant.count_on_hand - count_in_order)) ||
+          (quantity.to_i < 0)
         flash[:error] << [ "\"#{variant.name}\": in stock only #{variant.count_on_hand} " ]
       end
       quantity = quantity.to_i
@@ -64,7 +67,10 @@ OrdersController.class_eval do
       flash.delete(:error)
     end
 
-    respond_with(@order) { |format| format.html { redirect_to cart_path } }
+    respond_with(@order) { |format|
+      format.html { redirect_to cart_path }
+      format.js { render :layout => false }
+    }
   end
 
 

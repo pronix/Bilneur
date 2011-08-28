@@ -1,3 +1,8 @@
-<li><%= link_to t("home") , root_path %></li>
-<li class="cart-indicator"><%= link_to_cart %></li>
+<%= link_to_cart(
+    image_tag("icons/cart.png") + image_tag("icons/vstore.png") +
+    image_tag('icons/green_plus.png', :class => "greenPlus") +
+    image_tag('icons/red_plus.png', :class => "redPlus")
+) %>
+
+
 

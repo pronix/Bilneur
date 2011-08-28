@@ -452,3 +452,14 @@ color: #f9f9f9!important;
 color: #767676!important;
 }
 .rtr span  {overflow: hidden; whitespace: no-wrap;}
+
+.invty div.seller_avatar { 
+  background: url('/images/bgs/product_img_bg.png') no-repeat left top;
+  height: 115px;
+  float: left;
+  width: 115px;
+  margin: 0;
+}
+.invty div.seller_avatar img {
+  margin: 15px;
+}

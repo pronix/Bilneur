@@ -568,7 +568,7 @@ form.new_message {float: left; }
 
 .eADtlSav big {clear:both;float:right;width:100%;margin:80px -55px 0 0;}
 .btn { float:right;position:relative;left:0;bottom:0;width:114px;height:32px;color:#fff;text-align:right;}
-.otherbutton {border: none; position: relative;height: 35px;width: 110px;background:url('/images/forms/sv_chng.png') no-repeat;background-position:0 0;cursor: pointer;} 
+.otherbutton {border: none; position: relative;height: 35px;width: 114px;background:url('/images/forms/sv_chng.png') no-repeat;background-position:0 0;cursor: pointer;} 
 .otherbutton span.hover {display: block;height: 35px;width: 114px;background:url('/images/forms/sv_chng.png') 0 -29px no-repeat;background-position: bottom;}
 
 /* Edit Business Info */

@@ -534,7 +534,7 @@ form.new_message {float: left; }
 .sptCntBus {float:left;width:717px!important;margin-top:5px;}
     .sptCntBus .top { background:url('/images/bgs/dash_cnt_top.png') 0 0 no-repeat;}
     .sptCntBus .cntr { padding-bottom:20px;background:url('/images/bgs/dash_cnt_cntr.png') 0 0 repeat-y;}
-    .sptCntBus .cntr .toolbar,.sptCntBus .cntr .index.sortable { margin: 20px; }
+    .sptCntBus .cntr .toolbar,.sptCntBus .cntr table.index{ margin: 20px; }
     .sptCntBus .btm {background:url('/images/bgs/dash_cnt_btm.png') 0 0 no-repeat;}
     .sptCntBus .top, .sptCntBus .btm {height:14px;width:100%;}
     .sptCntBus .cntr h2 { width:709px; margin:0 0 0 8px; padding-bottom:5px; border-bottom:1px solid #ececec; text-align:center; color:#00adef; font-size:23px;}

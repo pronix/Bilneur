@@ -183,7 +183,7 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
 .hd1A, .hd2,.loginBar,.loginBar i,.loginBar a, ul.tpMnu, ul.tpMnu li, ul.tpMnu li a, ul.mMenu, ul.mMenu li, ul.mMenu li a,.menu,.menu .lft,.menu .rgt,.tSrch input[type=text],.tSrch form,.allProd,.tSrch input[type=submit], .tSrch {float:left;}
 
 /* Content */
-#mCnt{ margin-top:20px; overflow: hidden;}
+#mCnt{ margin-top:20px; }
 .cHome{}
     .cHome .mBnr { width:100%;background:url('/images/bgs/bnr_bg1.png') no-repeat;}
         .mBnr .bnrCnt { width:255px;margin:66px 0 0 40px;}

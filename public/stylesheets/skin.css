@@ -258,7 +258,7 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
 .lrn { float:right;width:auto;text-align:right; margin-top:10px; color:#0066cc;text-decoration:none;display:block;}
 
 /* Top Logo Fix */
-.cLogo {display:block;height:66px;width:177px;background:url('/images/logos/logo_new.png') no-repeat;background-position:0 0px;cursor: pointer;}   
+.cLogo {display:block;height:66px !important;width:177px !important;background:url('/images/logos/logo_new.png') no-repeat;background-position:0 0px;cursor: pointer;}   
 .cLogo span.hover {position: absolute;display: block;height:66px;width:177px;background:url('/images/logos/logo_new.png') 0 -66px no-repeat;background-position: bottom;}
 
 /* Faded Buttons in Banners */

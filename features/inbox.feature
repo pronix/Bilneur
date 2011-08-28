@@ -73,7 +73,8 @@ Feature: Inbox
     And I fill in "message_content" with "Thanks for you Question."
     And I press "send_message"
     Then I should see "Your reply sent."
-@wip @javascript
+
+  @javascript
   Scenario: Marking message as read
     Given the following messages exist:
      | created_at | sender                 | recipient                | subject   | content           |
@@ -90,10 +91,19 @@ Feature: Inbox
     # And I press "Mark as read"
 
     
-    #And I follow "Unread"
-    #Then the page should have the following messages:
-    # | From | Subject | Received |
+#     #And I follow "Unread"
+#     #Then the page should have the following messages:
+#     # | From | Subject | Received |
+# =======
+#    When I check "message_ids[]"
+#     And I follow "Mark as read"
+#     And I go to the dashboard messages page 
+#     And I follow "Unread"
+#     Then the page should not have the following messages:
+#      | from        | subject   | received         |
+#      | Jimm Paxtor | Question1 | January 01, 2011 |
 
+  @javascript
   Scenario: Marking message as unread
     Given the following messages exist:
      | created_at | sender                 | recipient                | subject   | content           | recipient_read |
@@ -104,13 +114,15 @@ Feature: Inbox
      | from        | subject   | received         | 
      | Jimm Paxtor | Question1 | January 01, 2011 | 
     When I check "message_ids[]"
-    And I press "Mark as unread"
+    And I follow "Mark as unread"
+    And I go to the dashboard messages page 
     And I follow "Unread"
     Then the page should have the following messages:
      | from        | subject   | received         | 
      | Jimm Paxtor | Question1 | January 01, 2011 | 
 
 
+  @javascript
   Scenario: Marking message as important
     Given the following messages exist:
      | created_at | sender                 | recipient                | subject   | content           |
@@ -125,7 +137,8 @@ Feature: Inbox
      | From | Subject | Received |
     When I go to the dashboard messages page
     And I check "message_ids[]"
-    And I press "Mark as important"
+    And I follow "Mark as important"
+    And I go to the dashboard messages page 
     And I follow "Important"
     Then the page should have the following messages:
      | from        | subject   | received         |

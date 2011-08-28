@@ -110,7 +110,6 @@ ul li { list-style:none;}
 				.tabBag { float:left; height:18px; width:163px;background:url('/images/bgs/inbx_int_tab_btm.png') no-repeat!important;}
 /* Check boxes code */
 .checkbox {clear:left;float:left;width:18px;height:18px;margin: 0 0 3px;padding: 0 0 0 26px;background:url('/images/icons/inbx_checkbox.png') no-repeat;cursor: pointer;}
-.checkbox input,.radio input {display: none;}
 .checkbox input.show,.radio input.show {display: inline;}
 .selected {background-position: 0 -50px!important;}
 .block {width: 50%;float: left;}
@@ -523,7 +522,6 @@ ul li { list-style:none;}
                 
 /* Check boxes code */
 .checkbox {clear:left;float:left;width:18px;height:18px;margin: 0 0 3px;padding: 0 0 0 26px;background:url('/images/icons/inbx_checkbox.png') no-repeat;cursor: default;}
-.checkbox input,.radio input {display: none;}
 .checkbox input.show,.radio input.show {display: inline;}
 .selected {background-position: 0 -50px!important;}
 .block {width: 50%;float: left;}
@@ -818,7 +816,7 @@ form.new_message {float: left; }
 
 /* Check boxes code */
 .checkbox {clear:left;float:left;width:18px;height:18px;margin: 0 0 3px;padding: 0 0 0 26px;background:url('/images/icons/pay_checkbox.png') no-repeat;cursor: default;}
-.checkbox input,.radio input {display: none;}
+.checkbox input,.radio input {width: 0; height: 0;}
 .checkbox input.show,.radio input.show {display: inline;}
 .selected {background-position: 0 -50px!important;}
 .block {width: 50%;float: left;}

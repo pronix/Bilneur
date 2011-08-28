@@ -1,4 +1,4 @@
-
+<% javascript 'inbox' %>
 <div class="inbxTabs">
   <div id="TabbedPanels2" class="TabbedPanels">
     <%= render :partial => 'dashboard/shared/inbox_tabs', :locals => {:current => @state} %>
@@ -75,18 +75,19 @@
               <%= render 'shared/error_messages', :target => @reply_message %>
 
               <%= form_for((@reply_message||Message.new), :url => reply_dashboard_message_path(@message), :html => {:class => "new_message"}) do |f| %>
-                <div class="bAY">
-                  <div class="txtA">
-                    <%= f.text_area :content, {:cols => 60, :rows => 2, :class => 'fullwidth'} %>
-                  </div>
-                </div>
-                <div class="inbxAct rightSend">
-                  <ul>
-                    <li>
-                      <button type="submit" id="send_message">Send</button>
-                    </li>
-                  </ul>
-                </div>
+            <div class="bAY">
+              <div class="txtA">
+                <%= f.text_area :content, {:cols => 60, :rows => 2, :class => 'fullwidth'} %>
+              </div>
+            </div>
+
+            <div class="inbxAct rightSend">
+              <ul>
+                <li>
+                  <%= button t("actions.send") %>
+                </li>
+              </ul>
+            </div>
           <% end %>
           </div>
         </div>
@@ -96,4 +97,4 @@
   </div>
 </div>
 
-<% javascript 'inbox' %>
+

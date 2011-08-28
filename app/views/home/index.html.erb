@@ -1,72 +1,227 @@
-<% stylesheet "slider/SpryTabbedPanels", "home-index" %>
-<% javascript "jquery.carousel", "slider/SpryTabbedPanels", "home" %>
+<% stylesheet "scrollable-buttons", "scrollable-horizontal", "welcome" %>
+<% javascript "slider/jquery_002", "home", "welcome" %>
 
+
+<!-- START CAROUSEL BLOCK -->
 <div class="mBnr">
-  <div class="bnrCnt">
-    <h1>Buying &amp; Selling Made Easy</h1>
-    <p>Never in your wildest dreams you could have imagined buying and instantly reselling could be so easy. You don't need to have a product or any experience to do any of that. You can buy and sell from hundreds of products. </p>
-    <p>This will change the way you buy and sell, want to know how? </p>
-    <a href="/buying-selling-made-easy">Read More On How To Sell With BilNeur</a>
-    <a class="btn" href="<%= start_selling_link %>" title="Start Selling">
-           <img src="/images/forms/strt_slng_btn.png" alt="" />
-    </a>
-  </div>
+            	<div class="container">
+                  <div id="homepage">
+                    <div id="marquees" class="v2">
+                      <div id="coda-slider-1" style="height: 390px; ">
+                        <div class="coda-slider-wrapper">
+                          <div class="coda-slider preload">
+                            <div class="panel-container" style="width: 4750px; ">
+                              <div class="panel marquee01" style="display: none; ">
+                                <div class="panel-wrapper clearfix"> <span class="picture">&nbsp;</span>
+                                  <h1><img src="/images/img/bnr_hd.png" alt="" /></h1>
 
-  <div class="bnrImg">
-    <div id="TabbedPanels1" class="TabbedPanels">
-      <ul class="TabbedPanelsTabGroup">
-        <li class="TabbedPanelsTab" tabindex="0"><span>Sell Products</span></li>
-        <li class="TabbedPanelsTab" tabindex="0"><span>Buy Products</span></li>
-        <li class="TabbedPanelsTab" tabindex="0"><span>Buy &amp; Sell Products</span></li>
-        <li class="TabbedPanelsTab" tabindex="0"><span>BilNeur Video</span></li>
-      </ul>
-      <div class="TabbedPanelsContentGroup">
-        <div class="TabbedPanelsContent"><img src="/images/img/seller_tab.png" alt="" /></div>
-        <div class="TabbedPanelsContent"><img src="/images/img/buyer_tab.png" alt="" /></div>
-        <div class="TabbedPanelsContent"><img src="/images/img/trader_tab.png" alt="" /></div>
-        <div class="TabbedPanelsContent"><img src="/images/img/tab_img.jpg" alt="" /></div>
-      </div>
-    </div>
-  </div>
+                                      <%= form_tag products_url, :method => :get do %>
+                                        <%= text_field_tag :keywords, params[:keywords], :value=>"SEARCH",
+                                          :onfocus=>"if(this.value=='SEARCH') this.value=''",:onblur=>"if(this.value=='') this.value=''", :class => "taxt" %>
+                                        <%= submit_tag "", :name => nil, :class => "sabmt" %>
+                                         <div class="pAbb websites">
+                                           <% if Taxon.category.present? %>
+                                          <%= select_tag :taxon,
+                                              options_for_select([[t(:all_departments), '']] +
+                                                                    (Taxon.category.try(:children)||[]).map {|t| [t.name, t.id]},
+                                                                  @taxon ? @taxon.id : params[:taxon]),
+                                                                  :id => "search_select_category2" %>
+                                           <% end %>
+                                        </div>
+                                  <button type="submit" class="btn otherbutton"></button>
+                                      <% end %>
+                                  </div>
+                              </div>
+                              <div class="panel marquee02" style="display: none; ">
+                                <div class="panel-wrapper clearfix"> <span class="picture">&nbsp;</span>
+                                  <h1 class="txtH2"><img src="/images/img/bnr_hd1.png" alt="" /></h1>
+                                 <div class="txt">You can now sell your products to a connected network of buyers and resellers. Sell one item at a time or list them in quantities, it is your choice and we will gurantee you that you will find an opportunity that you couldnt have imagined before, and best of all its FREE to List your products.</div>
+                                  <a class="lrn" href="#">Learn More......</a>
+                                  <a class="btn otherbutton" href="#"></a>
+                                  </div>
+                              </div>
+                              <div class="panel marquee03" style="display: none; ">
+                                <div class="panel-wrapper clearfix"> <span class="picture">&nbsp;</span>
+                                   <h3><img src="/images/img/bnr_hd2.png" alt="" /></h3>
+                                      <%= form_tag products_url, :method => :get do %>
+                                        <%= text_field_tag :keywords, params[:keywords], :value=>"SEARCH",
+                                          :onfocus=>"if(this.value=='SEARCH') this.value=''",:onblur=>"if(this.value=='') this.value=''", :class => "taxt" %>
+                                        <%= submit_tag "", :name => nil, :class => "sabmt" %>
+                                         <div class="pAbb websites">
+                                           <% if Taxon.category.present? %>
+                                          <%= select_tag :taxon,
+                                              options_for_select([[t(:all_departments), '']] +
+                                                                    (Taxon.category.try(:children)||[]).map {|t| [t.name, t.id]},
+                                                                  @taxon ? @taxon.id : params[:taxon]),
+                                                                  :id => "search_select_category3" %>
+                                           <% end %>
+                                        </div>
+                                  <button type="submit" class="btn otherbutton"></button>
+                                  <% end %>
+                                  </div>
+                              </div>
+                              <div class="panel marquee05" style="display: none; ">
+                                <div class="panel-wrapper">
+                                  <div class="video-container">
+                                    <object width="536" height="285">
+                                      <param name="movie" value="https://www.youtube.com/v/rW3HT2bejA8?fs=1&amp;hl=en_US&amp;hd=1">
+                                      <param name="allowFullScreen" value="true">
+                                      <param name="allowscriptaccess" value="always">
+                                      <embed src="https://www.youtube.com/v/rW3HT2bejA8?fs=1&amp;hl=en_US&amp;hd=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="536" height="285">
+                                    </object>
+                                  </div>
+                                  <div style="display:none;"> <a id="signup-now" href="https://indinero.com/signup"><img src="./inDinero - Track Your Money with a Real-Time Financial Dashboard. Easy Business Budgeting and Cash Flow Planning._files/signupnow.png" alt="Sign Up Now!"></a> </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- / marquee01 -->
+                          </div>
+                          <!-- / coda-slider -->
+                        </div>
+                        <!-- / coda-slider-wrapper -->
+                      </div>
+                      <!-- / coda-slider-1 -->
+                      <div id="coda-nav-1" class="coda-nav">
+                        <ul style="width: 579px; float: none; ">
+                          <li class="tab1"><a href="#1" class="current"><span>&nbsp;</span></a></li>
+                          <li class="tab2"><a href="#2" class=""><span>&nbsp;</span></a></li>
+                          <li class="tab3"><a href="#3" class=""><span>&nbsp;</span></a></li>
+                          <!--<li class="tab4"><a href="https://indinero.com/#4" class=""><span>&nbsp;</span></a></li>-->
+                          <li class="tab5" id="play-video-1"><a href="#5" class=""><span>&nbsp;</span><!--<small>Watch the inDinero video</small>--></a></li>
+                        </ul>
+                      </div>
+                      <div id="coda-history-1" class="p5 p1 p2 p4 p3"></div>
+                    </div>
+                  </div>
+                </div>
+ </div>
+<!-- END CAROUSEL BLOCK -->
+
+
+
+
+<!-- START LEFT COLUMN WITH CATEGORIES -->
+<div class="colLft">
+            	<div class="cat">
+                  <h2>Browse By <span>Categories</span></h2>
+                  <ul>
+                      <% Taxon.category.try(:children).each do |taxon| %>
+                        <li>
+                          <%= link_to taxon.name, seo_url(taxon) %>
+                        </li>
+                      <% end %>
+                  </ul>
+                </div>
 </div>
+<!-- END LEFT COLUMN WITH CATEGORIES -->
 
-<div class="c1">
-  <div class="c1A">
-    <h2>Sellers Paradise</h2>
-    <p>We know selling anything online is just not that easy, we have been there and done that and now We are trying to revolutionize the way you sell your stuff, with no upfront costs and more customers. </p>
-    <a class="btn" href="/sellers-paradise">Read More</a>
-  </div>
 
-  <div class="c1B">
-    <h2>Buy Anything, Sell It Instantly</h2>
-    <p>Yes you heard it right. Now you can buy anything that you see here and instantly start reselling them here. You would not have to worry about having a product and going through all the hassles. </p>
-    <a class="btn" href="/buy-anything-sell-it-instantly">Read More</a>
-  </div>
+<!-- START CENTRAL CONTENT WITH TOPS -->
+<div class="colRgt">
 
-  <div class="c1C">
-    <h2>A Buyers Universe</h2>
-    <p>It is all about you, without you we don't exist and we will do anything to make you feel happy. We promise, you will find the best deals here. You will never be disappointed. </p>
-    <a class="btn" href="/a-buyers-universe">Read More</a>
-  </div>
-</div>
-
-<div class="c2">
-  <div class="latest"><img src="/images/bgs/ltst_prdct_bg.png" alt="" /></div>
-  <div id="carousel">
-    <ul>
-      <% @latest_products.each do |item| %>
-      <li>
-        <div class="crsl">
-          <%= link_to product_path(item) do %>
-            <%= t122_image( item ) %>
-            <b class="lHd"><%= truncate item.name, :length => 40 %></b>
-            <i class="lHdI"><%= truncate item.description, :length => 100 %></i>
-            "View This Product"
-          <% end %>
-          <b class="byTh">Buy 20 at <b class="byPrc">40% Off</b></b>
+     <!-- START TOP PRODUCTS -->
+     <div class="sldr1">
+     	<h2><span>Top Products</span></h2>
+         <div class="sldrCnt">
+         <%= link_to "View all Top Products", top_path(:products), :class => "crslHd"  %>
+     <a class="prev browse left disabled"> </a>
+     <div class="scrollable">   
+        <div style="left: 0px;" class="items">
+           <div>
+             <% @products.each_with_index do |product, index|  %>
+               <% if index >= 4 && index % 4 == 0 %>
+                  </div><div>
+               <% end %>
+               <% link_to product,  :class => "pd1" do %>
+                 <i>
+                    <%= t122_image( product ) %>
+                 </i>
+                 <b>View This Product</b>
+                 <p><%= product.description.slice(0, 40) %></p>
+                 <span><em>$9.99</em> 50% Discount</span>	
+                <% end %>
+             <% end %>
+           </div>
         </div>
-      </li>
-      <%- end %>
-    </ul>
-  </div>
+     </div>
+     <a class="next browse right"></a>
+     <br clear="all">
+         </div>
+     </div>
+     <!-- END TOP PRODUCTS -->
+
+     <!-- START TOP DEALS -->
+     <div class="sldr1">
+     	<h2><span>Top Deals</span></h2>
+         <div class="sldrCnt">
+         <%= link_to "View all Top Deals", top_path(:deals), :class => "crslHd"  %>
+     <a class="prev browse left disabled"> SAMI</a>
+     <div class="scrollable">   
+        <div style="left: 0px;" class="items">
+           <div>
+             <% @deals.each_with_index do |product, index|  %>
+               <% if index >= 4 && index % 4 == 0 %>
+                  </div><div>
+               <% end %>
+               <% link_to product,  :class => "pd1" do %>
+                 <i>
+                    <%= t122_image( product ) %>
+                 </i>
+                 <b>View This Product</b>
+                 <p><%= product.description.slice(0, 40) %></p>
+                 <span><em>$9.99</em> 50% Discount</span>	
+                <% end %>
+             <% end %>
+           </div>
+        </div>
+     </div>
+     <a class="next browse right"></a>
+     <br clear="all">
+         </div>
+     </div>
+     <!-- END TOP DEALS -->
+
+
+
+     <!-- START TOP SELLERS -->
+     <div class="sldr1">
+     	<h2><span>Top Sellers</span></h2>
+         <div class="sldrCnt sellersSlider">
+         <%= link_to "View all Top Sellers", top_path(:sellers), :class => "crslHd" %>
+     <a class="prev browse left disabled"> SAMI</a>
+     <div class="scrollable">   
+        <div style="left: 0px;" class="items">
+           <div>
+             <% @sellers.each_with_index do |seller, index|  %>
+               <% if index >= 4 && index % 4 == 0 %>
+                  </div><div>
+               <% end %>
+               <% link_to store_seller_path(seller),  :class => "pd1" do %>
+                 <i>
+                    <%=  image_tag(seller.photo.url(:for_review))  %>
+                 </i>
+                 <b><%= seller.full_name %></b>
+                 <p style="text-align: center;">View Store</p>
+                <% end %>
+             <% end %>
+           </div>
+        </div>
+     </div>
+     <a class="next browse right"></a>
+     <br clear="all">
+         </div>
+     </div>
+     <!-- END TOP SELLERS -->
+
+
+
+
 </div>
+<!-- END CENTRAL CONTENT WITH TOPS -->
+<script type="text/javascript" language="javascript" charset="utf-8">
+//<![CDATA[
+  $jx(function() {
+    $jx(".scrollable").scrollable();
+  });
+//]]>
+</script>

@@ -1,19 +1,28 @@
 <%= render :partial => 'dashboard/shared/profile_tabs', :locals => {:current => "Shipping Methods"} %>
 
-<h1><%= t("editing_shipping_method") %></h1>
+<div class="sptCntBus">
 
 <%= render "shared/error_messages", :target => @shipping_method %>
+    	<div class="top"></div>
+    	<div class="cntr" style="width: 100%;">
+<h2 class="htFix"><%= t("editing_shipping_method") %></h2>
 
 
-<%= form_for(@shipping_method, :url => dashboard_shipping_method_path(@shipping_method), :html => { :method => :put }) do |f| %>
+<%= form_for(@shipping_method, :url => dashboard_shipping_method_path(@shipping_method), :html => { :method => :put, :class => "contInp contInpFix" }) do |f| %>
 
 <%= render :partial => "form", :locals => { :f => f } %>
 
-<p class="form-buttons">
-  <%= button t("actions.update") %>
-  <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_shipping_methods_path %>
-</p>
-
+    <div class="bSaveC">
+      <big>
+        <button type="submit" class="btn otherbutton" id="save_shipping_method"></button>
+      </big>
+      <p>
+        <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_shipping_methods_path %>
+      </p>
+    </div>
 
 <% end %>
+</div>
+<div class="btm"></div>
+</div>
 

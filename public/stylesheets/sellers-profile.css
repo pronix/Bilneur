@@ -547,7 +547,7 @@ form.new_message {float: left; }
     .bAY .txtA { border: 6px solid #f1f6f8;margin:10px 0 0 65px;width:373px;min-width:373px;max-width:373px;}
     .bAY textarea, .bAY .txtA {border-radius: 3px 3px 3px 3px;}
     .bAY em {font-style:normal;width:230px;margin:45px 0 0 15px;}
-.bSaveC {float:right;text-align:right;width:100%;margin:20px 80px 0 0;}
+.bSaveC {float:right;text-align:right;width:100%;margin:20px 100px 0 0;}
 .bSaveC a {}
 
 .busAbtYou, .busAbtYou p, .bAY, .bAY textarea, .bAY .txtA, .bAY em {float:left;}

@@ -18,6 +18,26 @@ Product.class_eval do
       sql.gsub("\n", ' ').gsub('  ', '')
     end
 
+    quoted_false = "'f'"
+
+    variant_conub_on_hand = lambda do |v|
+      sql_variant_on_hand = <<-eos
+        COALESCE(
+          ( SELECT max(variants.count_on_hand)
+            FROM variants
+            WHERE (
+              variants.is_master = #{quoted_false}
+              AND variants.product_id = products.id AND variants.deleted_at is null AND condition = '#{v}'
+             )
+            GROUP BY variants.price
+            ORDER BY variants.price ASC
+            LIMIT 1
+         ),0)
+      eos
+      sql_variant_on_hand
+    end
+
+
     indexes :name
     indexes :description
     indexes :meta_description
@@ -30,21 +50,29 @@ Product.class_eval do
     has variants(:condition_int), :as => :variants_conditions
 
     has "(SELECT min(variants.price) FROM variants
-          WHERE (
-              variants.is_master = 'f'
+            WHERE (
+              variants.is_master = #{quoted_false}
               AND variants.product_id = products.id
               AND variants.deleted_at IS NULL
               AND variants.count_on_hand > 0
+            )
+          )", :as => :variant_price, :sort => true,  :type => :float, :source => :range_query
 
-           )
-          )", :as => :variant_price, :sort => true,
-              :type => :float, :source => :ranged_query
-    has "COALESCE(( SELECT sum(variants.count_on_hand)
-                    FROM variants
-                    WHERE (variants.is_master = 'f'
-                      AND variants.product_id = products.id
-                      AND variants.deleted_at is null) ),0) > 0",
-          :as => :variant_on_hand, :type => :boolean, :source => :ranged_query
+    %w(new used another).each do |variant_condition|
+      has variant_conub_on_hand.call(variant_condition), :as => :"variant_#{variant_condition}_on_hand",
+                                                         :sort => true, :type => :integer, :source => :query
+    end
+
+    has "COALESCE(
+          ( SELECT max(variants.count_on_hand)
+            FROM variants
+            WHERE (variants.is_master = #{quoted_false}
+                   AND variants.product_id = products.id
+                   AND variants.deleted_at is null)
+            GROUP BY variants.price
+            ORDER BY variants.price ASC
+            LIMIT 1
+           ),0)", :as => :variant_on_hand, :sort => true, :type => :integer, :source => :query
 
     group_by :"products.deleted_at"
     group_by :available_on

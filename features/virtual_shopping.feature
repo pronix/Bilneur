@@ -1,10 +1,12 @@
 
 @javascript
-Feature: Virtual Shopping
+
+Feature: Virtual Shopping( without auto capture )
   Virtiaul buyes can add product to V. Store
   and checkout virtual order
 
   Background:
+    Given a spree param "auto_capture" set is 'false'
     Given I have an admin account of "admin@person.com/password"
     And I am signed up as "email@person.com/password"
     And 1 bogus payment methods exist
@@ -32,12 +34,11 @@ Feature: Virtual Shopping
     And I follow "View All"
     And I set quatility "3" within block seller "seller2@person.com"
     And I press "Add To V.Store" within block seller "seller2@person.com"
-    Then I should be on the cart page
     When I go to the "Death of a Hero [Paperback]" product page
     And I follow "View All"
     And I set quatility "3" within block seller "seller2@person.com"
     And I press "Add To V.Store" within block seller "seller2@person.com"
-    Then I should be on the cart page
+    When I go to the cart page
     When I follow "Checkout" within block virtual cart
     When I choose "Ship to Bilneur" from seller "seller2@person.com" Shipping Methods
     And I press "Checkout"
@@ -67,12 +68,11 @@ Feature: Virtual Shopping
     And I follow "View All"
     And I set quatility "3" within block seller "seller2@person.com"
     And I press "Add To V.Store" within block seller "seller2@person.com"
-    Then I should be on the cart page
     When I go to the "Death of a Hero [Paperback]" product page
     And I follow "View All"
     And I set quatility "3" within block seller "seller1@person.com"
     And I press "Add To V.Store" within block seller "seller1@person.com"
-    Then I should be on the cart page
+    When I go to the cart page
     When I follow "Checkout" within block virtual cart
     And I choose "Ship to Bilneur" from seller "seller2@person.com" Shipping Methods
     And I choose "Ship to Bilneur" from seller "seller1@person.com" Shipping Methods
@@ -109,12 +109,11 @@ Feature: Virtual Shopping
     And I follow "View All"
     And I set quatility "3" within block seller "seller2@person.com"
     And I press "Add To V.Store" within block seller "seller2@person.com"
-    Then I should be on the cart page
     When I go to the "Death of a Hero [Paperback]" product page
     And I follow "View All"
     And I set quatility "3" within block seller "seller1@person.com"
     And I press "Add To V.Store" within block seller "seller1@person.com"
-    Then I should be on the cart page
+    When I go to the cart page
     When I follow "Checkout" within block virtual cart
     And I choose "Store with seller" from seller "seller2@person.com" Shipping Methods
     And I choose "Store with seller" from seller "seller1@person.com" Shipping Methods

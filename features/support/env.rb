@@ -20,6 +20,7 @@ Spree::Auth::Config.set(:registration_step => true)
 Spree::Auth::Config.set(:signout_after_password_change => false)
 # sometimes tests fail randomly because cache is not refreshed, fixed that
 Spree::Config.set(:foo => "bar")
+Spree::Config.set(:auto_caprure => false)
 # Spree::Reviews::Config.set(:require_login => true)
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In

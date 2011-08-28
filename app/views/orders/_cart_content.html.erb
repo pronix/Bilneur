@@ -25,8 +25,11 @@
           </span>
         </div>
         <div class="btm"></div>
+        <% if current_user && current_user.primary_address %>
         <span class="shp">Shippable Items Will Be<br /> Shipped To:</span>
-        <a class="edtAd" href="#">1425 Maple Crest Rd.<br />Angola, IN 46839 (edit)<br />&nbsp;</a>
+          <%= link_to raw(format_address_for_cart(current_user.primary_address)),
+               edit_dashboard_address_path(current_user.primary_address), :class => "edtAd" %>
+        <% end %>
         <div class="slngrgt tabi">
           <b><span>Grand Total</span>
             <%= grand_order_price(@order,current_virtual_order) %>

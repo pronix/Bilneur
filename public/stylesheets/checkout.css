@@ -37,7 +37,8 @@
         .slrPnl .slrImg { width:121px;}
           .slrImg i { clear:left;}
           .slrImg i img{ width: 65px;}
-          .slrImg span { width:65px; height:14px; text-align:center; line-height:14px; font-size:10px; background:url('/images/bgs/slr_btm_bg.png') no-repeat;}
+          .slrImg span { width:65px; height:14px; text-align:center; line-height:14px; font-size:10px; background:url('/images/bgs/slr_btm_bg.png') no-repeat; overflow: hidden;}
+          .slrImg span a { color: black;}
         .prc { width:121px;}
           .prc b { color:#00adef; font-size:19px; width:100%;}
           .prc i { width:100%; font-style:normal; color:#959595; font-weight:bold;}

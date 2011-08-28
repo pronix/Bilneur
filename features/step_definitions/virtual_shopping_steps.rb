@@ -1,3 +1,10 @@
+Given /a spree param "([^\"]*)" set is '(.+)'$/ do |param, value|
+  Spree::Config.set(param.to_sym => (case value.to_s
+                                     when /true|false/i then value.to_s =~ /true/ ? true : false
+                                     else value.to_s
+                                     end ))
+end
+
 Given "load test data" do
   steps %Q{
     Given I have an admin account of "admin@person.com/password"

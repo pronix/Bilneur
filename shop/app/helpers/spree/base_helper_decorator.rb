@@ -1,7 +1,7 @@
 Spree::BaseHelper.class_eval do
 
   def link_to_cart(text = t('cart'))
-    return "" if current_page?(cart_path) || (current_order.try(:line_items).empty? && current_virtual_order.try(:line_items).empty?)
+    return "" if current_page?(cart_path) || (current_order.try(:line_items).blank? && current_virtual_order.try(:line_items).blank?)
     css_class = nil
     order_count_items = if current_order.nil? or current_order.line_items.empty?
                           nil

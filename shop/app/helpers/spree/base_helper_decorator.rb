@@ -7,13 +7,13 @@ Spree::BaseHelper.class_eval do
     order_count_items = if current_order.nil? or current_order.line_items.empty?
                           nil
                         else
-                          [ current_order.item_count, order_price(current_order) ]
+                          [ current_order.reload.item_count, order_price(current_order) ]
                         end
 
     virtual_order_count_items = if current_virtual_order.nil? or current_virtual_order.line_items.empty?
                                   nil
                                 else
-                                  [ current_virtual_order.item_count, order_price(current_virtual_order) ]
+                                  [ current_virtual_order.reload.item_count, order_price(current_virtual_order) ]
                                 end
 
     if order_count_items || virtual_order_count_items

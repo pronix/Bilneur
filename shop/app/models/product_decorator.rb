@@ -66,7 +66,7 @@ Product.class_eval do
   scope :sort_by_best_price_asc, lambda{
      order("( SELECT min(v.price) FROM variants as v
               WHERE ( v.product_id = products.id
-                      AND v.is_master = #{connection.quoted_false} ) ASC" )
+                      AND v.is_master = #{connection.quoted_false} ) ) ASC" )
 
    }
 

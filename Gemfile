@@ -15,6 +15,8 @@ gem 'sqlite3'
 gem 'exception_notification',   '~> 2.4.1'
 gem 'whenever',               "~> 0.6.8", :require => false
 
+gem "thinking-sphinx", "= 2.0.5"
+gem "thinking-sphinx-raspell", "= 1.1.1"
 
 gem 'spree',                    '= 0.60.1'
 

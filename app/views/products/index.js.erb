@@ -1,4 +1,23 @@
 $('.spinner').remove();
 $("#products_list").html("<%= escape_javascript(render "shared/products", :products => @products) %>");
 $(".smPrdcts .blogPg").html("<%= page_entries_info @products %>");
-$("#taxons-facets").html("<%= escape_javascript(render 'taxons_facets' )%>")
+$("#taxons-facets").html("<%= escape_javascript(render 'taxons_facets' )%>");
+
+$('#taxonsCheckboxes input').attr('checked', false);
+$('#taxonsCheckboxes input').parent().data('checked', false);
+$('#taxonsCheckboxes input').parent().css('background-position', '50% 0px');
+
+<% params[:taxon_ids].each do |id| %>
+  $("input[value='<%= id %>']").parent().css('background-position', '50% -50px');
+  $("input[value='<%= id %>']").parent().data('checked', true);
+  $("input[value='<%= id %>']").attr('checked', true);
+<% end %>
+
+<% if params[:without_taxon] %>
+  var without = $('label:contains("<%= params[:without_taxon].to_s %>")').parent().find('input');
+  without.parent().css('background-position', '50% 0px');
+  without.parent().data('checked', false);
+  without.attr('checked', false);
+<% end %>
+
+

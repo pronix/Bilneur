@@ -27,13 +27,20 @@ class Dashboard::UsersController < Dashboard::ApplicationController
 
   def change_password
     if request.put?
-      if @current_user.update_with_password(params[:user])
+      flash.delete(:error)
+      if params[:user] && current_user.valid_password?(params[:user][:password].to_s)
+        flash[:error] = "New password cannot be same as Current password"
+        render :action => :change_password and return
+      end
+
+        if @current_user.update_with_password(params[:user])
         sign_in(@current_user, :bypass => true)
         flash.notice = 'Password updated.'
         redirect_to dashboard_account_path
       else
         render :action => :change_password
       end
+
     end
   end
 

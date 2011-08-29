@@ -247,8 +247,8 @@
     .pdSrch .sbmt {width:113px; height:30px; margin:6px 0 0 8px; font-weight:bold; color:#fff; border:0px; background:none;}
   .strip { position:absolute; right:-26px; top:54px; z-index:1;}
   .col2Invty {padding-top:40px;}
-    .col2Invty .pLa { margin:0 5px 0 15px; padding-right:7px; border-right:1px solid #595959;}
-  .col2Invty a { font-size:14px; font-weight:bold; color:#208faf;}
+    .col2Invty .pLa, .gridToggler .pLa { margin:0 5px 0 15px; padding-right:7px; border-right:1px solid #595959;}
+  .col2Invty a, .gridToggler a { font-size:14px; font-weight:bold; color:#208faf;}
   .col2P { margin-top:108px!important;}
   .fbPnl { width:100%; height:95px; background:url('/images/bgs/fb_bg.png') repeat-x;}
     .cros { margin:23px 0 0 15px;}
@@ -256,8 +256,8 @@
     .fbPnl p a { float:right;}
   .smPrdcts { width:100%; border-top:5px solid #e5e2e2;}
   .smPrdcts > .pagination, .smPrdcts > .blogPg, .smPrdcts > .slctr.slct { margin: 10px 0 0 0;}
-    .slctr.slct {margin-left: 18px !important;}
-  .smPrdcts .smPd { width:96%; padding:2%;border-bottom:5px solid #e5e2e2;}
+    .slctr.slct {margin-left: 18px !important; float: right;}
+  .smPrdcts .smPd { width:96%; padding:2%;border-bottom:5px solid #e5e2e2; max-height: 165px; background: white;}
     .smPd .imgP { width:117px; height:114px; margin-right:15px; position: relative; background:url('/images/bgs/product_img_bg.png') no-repeat;}
       .favribbon {position: absolute; top: -9px; right: 0;}
       .smPd .imgP img { margin:5px 0 0 8px;}

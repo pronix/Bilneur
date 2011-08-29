@@ -126,27 +126,26 @@
       <%= link_to "View all Top Products", top_path(:products), :class => "crslHd"  %>
       <a class="prev browse left disabled"> </a>
       <div class="scrollable">
-        <div style="left: 0px;" class="items">
-          <div>
-            <% @products.each_with_index do |product, index|  %>
-            <% if index >= 4 && index % 4 == 0 %>
-          </div><div>
-            <% end %>
-            <% link_to product,  :class => "pd1" do %>
-            <i>
-              <%= t122_image( product ) %>
-            </i>
-            <b>View This Product</b>
-            <p><%= product.description.slice(0, 40) %></p>
-            <span><em><%= number_to_currency product.best_price %></em> 50% Discount</span>
-            <% end %>
-            <% end %>
+          <div style="left: 0px;" class="items">
+              <% @products.each_slice(4) do | _products | %>
+                <div>
+                  <% _products.each do |product | %>
+                      <% link_to product,  :class => "pd1" do %>
+                          <i>
+                            <%= t122_image( product ) %>
+                          </i>
+                          <b>View This Product</b>
+                          <p><%= product.description.slice(0, 40) %></p>
+                          <span><em><%= number_to_currency product.best_price %></em> 50% Discount</span>
+                      <% end %>
+                  <% end %>
+                </div>
+              <% end %>
           </div>
         </div>
-      </div>
       <a class="next browse right"></a>
       <br clear="all">
-    </div>
+      </div>
   </div>
   <!-- END TOP PRODUCTS -->
 
@@ -160,21 +159,20 @@
       <a class="prev browse left disabled"> SAMI</a>
       <div class="scrollable">
         <div style="left: 0px;" class="items">
-          <div>
-            <% @deals.each_with_index do |product, index|  %>
-            <% if index >= 4 && index % 4 == 0 %>
-          </div><div>
-            <% end %>
-            <% link_to product,  :class => "pd1" do %>
-            <i>
-              <%= t122_image( product ) %>
-            </i>
-            <b>View This Product</b>
-            <p><%= product.description.slice(0, 40) %></p>
-            <span><em><%= number_to_currency product.best_price %></em> 50% Discount</span>
-            <% end %>
-            <% end %>
-          </div>
+          <% @deals.each_slice(4) do |_deals| %>
+            <div>
+              <% _deals.each do |deal| %>
+                  <% link_to deal,  :class => "pd1" do %>
+                      <i>
+                        <%= t122_image( deal ) %>
+                      </i>
+                      <b>View This Product</b>
+                      <p><%= deal.description.slice(0, 40) %></p>
+                      <span><em><%= number_to_currency deal.best_price %></em> 50% Discount</span>
+                  <% end %>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       </div>
       <a class="next browse right"></a>

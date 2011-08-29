@@ -35,7 +35,7 @@
             <p><a href=""><img src="/images/forms/fb_btn.png" alt="" /></a>See what your freinds are buying, selling or trading.<br /> Read their reviews, get advice, or simply buy &amp; sell with them.</p>
           </div>
           <div class="smPrdcts">
-            <%= render "shared/products", :products => @products, :taxon => @taxon %>
+            <%= render "shared/products", :products => @products, :taxon => @taxon, :grid => params[:grid] %>
             <div class="blogPg">
               <%= page_entries_info @products %><!-- FIXME add will_paginate 3.0.pre4 support for modifying text of entries info -->
             </div>
@@ -67,9 +67,9 @@
 
 <div class="col2 col2SlPrd col2P">
   <div class="blogFilters">
-      <div class="invty col2Invty">
-            <a class="pLa" href="#">List View</a>
-            <a href="#">List View</a>
+    <div class="invty col2Invty">
+            <%= link_to "List View", products_path, :class => "pLa" %>
+            <%= link_to "Grid View", products_path(:grid => true) %>
       </div>
 
       <%= render 'shared/filter' %>

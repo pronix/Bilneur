@@ -1,3 +1,4 @@
+
 <%= form_tag products_path, :remote => true, :method => 'get', :id => "products_search" do %>
 <%= hidden_field_tag "grid", params[:grid] if params[:grid] %>
 <% get_taxonomies.each do |taxonomy| %>

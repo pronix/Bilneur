@@ -278,3 +278,16 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
 .marquee03 .otherbutton {display:block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') no-repeat;background-position:0 -53px;cursor: pointer; border: none;}  
 .marquee03 .otherbutton span.hover {position: absolute;display: block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') 0 0px no-repeat;background-position: bottom; top: 0;}
 
+
+
+.spinner {
+  position: absolute;
+  background: white;
+  opacity: 0.5;
+  left: 0; right: 0; top: 0; bottom: 0;
+}
+  .spinner img {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+  }

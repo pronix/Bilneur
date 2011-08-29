@@ -22,7 +22,11 @@
 
     });
 
-    $("[data-run_search='t']").bind("change", function(){ $(this).parents("form:first").submit(); })
+    $("[data-run_search='t']").bind("change", function(){ 
+      $('.blogFilters').prepend("<div class='spinner'><img src='/images/icons/spinner.gif' /></div>'");
+        $(this).parents("form:first").submit(); 
+    
+    });
 
     //Logo effect
       $('.cLogo,.otherbutton,.homebutton,.downloadbutton,.donatebutton, .sellbutton').append('<span class="hover"></span>').each(function () {

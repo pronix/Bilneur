@@ -4,7 +4,7 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
   before_filter :find_product, :only => [:edit, :update]
 
   def index
-    @products = Product.active.paginate(:per_page => 10, :page => params[:page], :order => "created_at DESC")
+    @products = Product.active.paginate(:per_page => 1, :page => params[:page], :order => "created_at DESC")
   end
 
   def new

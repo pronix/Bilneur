@@ -21,13 +21,13 @@
     </i>
     <div class="pdDtl">
       <h4>
-        
+
       <% if variant %>
         <%= link_to product.name, seller_quote_path(@seller, product, best_deal) %>
       <% else %>
         <%= link_to product.name, product %>
       <% end %>
-      
+
       </h4>
       <p><%= product.description.slice(0, 200) + '...' %></p>
       <%= render :partial => "shared/rating_product", :object => product %>
@@ -52,7 +52,10 @@
           <% end %>
         </li>
         <!--<li><%= link_to image_tag("icons/ch_fb.png"), "#" %></li>-->
-        <li><%= link_to image_tag("icons/ch_dl.png"), "#" %></li>
+
+        <li>
+          <%= link_to image_tag("icons/ch_dl.png"), add_favorite_path(best_deal) %>
+        </li>
       </ul>
 
       <p>

@@ -6,7 +6,7 @@
 <h2 class="htFix"> <u>Product:</u> <b><%= @product.name %></b></h2>
 <%= render "shared/error_messages", :target => @quote %>
 
-<%= form_for(:variant, :url => dashboard_quotes_path, :method => :post,  :html => { :multipart => true, :class => "contInp contInpFix" } ) do |f| %>
+<%= form_for(:variant, :url => dashboard_quotes_path, :method => :post,  :html => { :multipart => true, :class => "contInp contInpFix contInpMarg" } ) do |f| %>
 <%= hidden_field_tag "product_ean", @product.ean %>
     <b>
       <i><%= t("name") %></i>

@@ -578,6 +578,7 @@ form.new_message {float: left; }
 
 /* Edit Business Info */
 .contInp {width:100%;margin:20px 0 0 55px;}
+.contInp.contInpMarg {margin-left: 0;}
     .contInp b {clear:both;width:100%;margin-top:7px;}
         .contInp i {width:140px;text-align:right;margin-right:10px;padding-top:3px;}
         .contInp i.dimC { color:#7f7e7e;} 

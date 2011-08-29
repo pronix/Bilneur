@@ -1,60 +1,64 @@
-<div class="yui-gc">
-  <div class="yui-u first">
     <%- locals = {:f => f} %>
-      <%= f.field_container :name do %>
-        <%= f.label :name, t("name") %> <span class="required">*</span><br />
+
+      <b>
+        <i><%= t("name") %></i>
         <%= f.text_field :name, :class => 'fullwidth title', :value => f.object.name  %>
         <%= f.error_message_on :name %>
-      <% end %>
+      </b>
 
-      <%= f.field_container :description do %>
-        <%= f.label :description, t("description")%><br />
-        <%= f.text_area :description, {:cols => 60, :rows => 4, :class => 'fullwidth'} %>
-        <%= f.error_message_on :description %>
-    <% end %>
-  </div>
-  <div class="yui-u">
+      <b>
+        <i><%= t("description") %></i>
+        <div class="bAY">
+          <div class="txtA">
+            <%= f.text_area :description, {:cols => 60, :rows => 4, :class => 'fullwidth'}  %>
+            <%= f.error_message_on :description %>
+          </div>
+        </div>
+      </b>
 
-      <h2>
+      <h2 class="htFix">
         <u> EAN: <%= @quote.ean %></u>
       </h2>
-      <%= f.field_container :sku do %>
-        <%= f.label :sku, t("sku")%> </span><br />
+
+      <b>
+        <i><%= t("sku") %></i>
         <%= f.text_field :sku   %>
         <%= f.error_message_on :sku %>
-      <% end %>
+      </b>
 
-      <%= f.field_container :price do %>
-        <%= f.label :price, t("price")%> <span class="required">*</span><br />
+      <b>
+        <i><%= t("price") %></i>
         <%= f.text_field :price, :value => number_with_precision(@quote.price, :precision => 2)  %>
         <%= f.error_message_on :price %>
-      <% end %>
+      </b>
 
-      <%= f.field_container :count_on_hand do %>
-        <%= f.label :count_on_hand, t("count_on_hand")%> <span class="required">*</span><br />
+
+      <b>
+        <i><%= t("count_on_hand") %></i>
         <%= f.text_field :count_on_hand  %>
         <%= f.error_message_on :count_on_hand %>
-      <% end %>
+      </b>
 
-      <%= f.field_container :weight do %>
-        <%= f.label :weight, t("weight")%> <span class="required">*</span><br />
+      <b>
+        <i><%= t("weight") %></i>
         <%= f.text_field :weight  %>
         <%= f.error_message_on :weight %>
-      <% end %>
+      </b>
 
+      <b>
+        <i><%= t("condition") %></i>
+        <div class="cmbo2 websites">
+          <%= select_tag("variant[condition]",
+            options_for_select(Variant::CONDITION.collect {|ov| [ t("condition_#{ov}"), ov ] }, @quote.condition)) %>
+        </div>
 
-      <%= f.field_container :condition do %>
-        <%= f.label :condition, t("condition")%>
-        <%= select_tag("variant[condition]",
-          options_for_select(Variant::CONDITION.collect {|ov| [ t("condition_#{ov}"), ov ] }, @quote.condition)) %>
-        <span class="required">*</span>
         <%= f.error_message_on :condition %>
-      <% end %>
-    ( <%= f.label :another_condition, t("other_condition") %>
-    <%= f.text_field :another_condition, :class => 'title'  %> )
-    <%= f.error_message_on :another_condition %>
+        <div style="float: left; margin-left: 150px">
+          ( <%= f.label :another_condition, t("other_condition") %>
+          <%= f.text_field :another_condition, :class => 'title'  %> )
+          <%= f.error_message_on :another_condition %>
+        </div>
+      </b>
 
 
-  </div>
-</div>
 

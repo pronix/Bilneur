@@ -25,11 +25,11 @@ Product.class_eval do
 
   # scopes
   #
-  # scope :on_hand, where("COALESCE(( SELECT sum(variants.count_on_hand)
-  #                   FROM variants
-  #                   WHERE (variants.is_master = #{connection.quoted_false}
-  #                          AND variants.product_id = products.id
-  #                          AND variants.deleted_at is null) ),0) > 0")
+  scope :on_hand, where("COALESCE(( SELECT sum(variants.count_on_hand)
+                     FROM variants
+                     WHERE (variants.is_master = #{connection.quoted_false}
+                            AND variants.product_id = products.id
+                            AND variants.deleted_at is null) ),0) > 0")
 
   scope :latest, lambda{ |*args|
     active.on_hand.includes(:variants).limit(args.first || 20).order("products.created_at DESC")

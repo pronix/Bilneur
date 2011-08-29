@@ -1,7 +1,11 @@
 module ApplicationHelper
 
-  def link_to_twitter_share(link_url)
-    link_to( image_tag("icons/ch_twtr.png"), "http://twitter.com/share?url=#{link_url}")
+  def link_to_twitter_share(link_url, image)
+    if image
+      link_to( image, "http://twitter.com/share?url=#{link_url}")
+    else
+      link_to( image_tag("icons/ch_twtr.png"), "http://twitter.com/share?url=#{link_url}")
+    end
   end
 
   def format_address_for_cart(address)

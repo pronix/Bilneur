@@ -1,3 +1,4 @@
+<% javascript 'inbox' %>
 <div class="inbxTabs">
   <div id="TabbedPanels2" class="TabbedPanels">
     <%= render :partial => 'dashboard/shared/inbox_tabs', :locals => {:current => @state} %>
@@ -12,16 +13,15 @@
                 <%= link_to t('delete'), dashboard_message_path(@message), :method => :delete %>
               </li>
               <li class="replyer">
-                <%= link_to t('reply'), "", :class => "reply-link"%>
+                <%= link_to t('reply'), "javascript:void(0)", :class => "reply-link", :onclick => "test_func();" %>
               </li>
             </ul>
             <div class="cmbo1">
               <select id="websites21" tabindex="1" name="">
-                <option value="" selected="selected" title="">Move to</option>
-                <option value="" title="">1</option>
-                <option value="" title="">2</option>
-                <option value="" title="">3</option>
-                <option value="" title="">4</option>
+                <option value="nothing" selected="selected" title="">Move to</option>
+                <option value="mark_as_unread" title="">Move to unread</option>
+                <option value="mark_as_important" title="">Move to important</option>
+                <option value="delete" title="">Move to trash</option>
               </select>
             </div>
 
@@ -60,7 +60,7 @@
                   <%= link_to t('delete'), dashboard_message_path(@message), :method => :delete %>
                 </li>
                 <li>
-                  <%= link_to t('reply'), "", :class => "reply-link"%>
+                  <%= link_to t('reply'), "", :class => "reply-link", :onclick => "test_func();"%>
                 </li>
               </ul>
             </div>
@@ -75,7 +75,6 @@
               <%= render 'shared/error_messages', :target => @reply_message %>
 
               <%= form_for((@reply_message||Message.new), :url => reply_dashboard_message_path(@message), :html => {:class => "new_message"}) do |f| %>
-
             <div class="bAY">
               <div class="txtA">
                 <%= f.text_area :content, {:cols => 60, :rows => 2, :class => 'fullwidth'} %>
@@ -94,28 +93,8 @@
         </div>
         <div class="bt"></div>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
   </div>
 </div>
-<script>
-  $(function(){
-    $(".reply-link").click(function(){ 
-      $(".message_container").show();  
-      $(".replyer").hide();
-      return false;
 
-    });
-  });
-</script>
+

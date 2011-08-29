@@ -83,6 +83,10 @@ module NavigationHelpers
       dashboard_reviews_path
     when /the dashboard address page/
       dashboard_addresses_path
+    when /the seller store "(.+)"/
+      store_seller_path(User.find_by_email($1))
+    when /the @message message page/
+      dashboard_message_path(@message)
     when /^the home\s?page$/
       '/'
 

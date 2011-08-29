@@ -91,5 +91,22 @@ module ApplicationHelper
       raw("<div style='padding-top:3px'><div class='g-plusone' data-size='small' data-count='true'></div></div>")
   end
 
+  def seller_favorite?(_seller)
+    true if current_user && current_user.seller_favorite?(_seller)
+    # true if session[:favorite_sellers] && session[:favorite_sellers].include?(_seller.id)
+  end
+
+  def add_seller_to_favorite(_seller)
+    if !seller_favorite?(_seller)
+      link_to image_tag('/images/icons/ch_dl.png') + "Add Seller To Favorites", add_favorite_seller_path(_seller), :remote => true, :onclick => "$(this).remove()"
+    end
+  end
+
 end
+
+
+
+
+
+
 

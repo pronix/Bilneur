@@ -191,26 +191,25 @@
     <div class="sldrCnt sellersSlider">
       <%= link_to "View all Top Sellers", top_path(:sellers), :class => "crslHd" %>
       <a class="prev browse left disabled"> SAMI</a>
+
       <div class="scrollable">
         <div style="left: 0px;" class="items">
+
+          <% @sellers.each_slice(4) do |_sellers|  %>
           <div>
-            <% @sellers.each_with_index do |seller, index|  %>
-            <% if index >= 4 && index % 4 == 0 %>
-          </div><div>
-            <% end %>
-            <% link_to store_seller_path(seller),  :class => "pd1" do %>
-            <i>
-              <%=  image_tag(seller.photo.url(:for_review))  %>
-            </i>
-            <b><%= seller.full_name %></b>
-            <p style="text-align: center;">
-              <%= link_to "View Store", store_seller_path(seller) %>
-            </p>
-            <% end %>
+            <% _sellers.each do |seller| %>
+
+              <% link_to store_seller_path(seller),  :class => "pd1" do %>
+                <i><%=  image_tag(seller.photo.url(:for_review))  %></i>
+                <b><%= seller.full_name %></b>
+                <p style="text-align: center;">View Store</p>
+              <% end %>
             <% end %>
           </div>
+          <% end %>
         </div>
       </div>
+
       <a class="next browse right"></a>
       <br clear="all">
     </div>

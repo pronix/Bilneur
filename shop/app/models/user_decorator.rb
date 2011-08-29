@@ -229,7 +229,7 @@ User.class_eval do
   end
 
   def available_virtual_shipping_methods?
-    shipping_methods.to_address.present?
+    shipping_methods.with_seller.present? || shipping_methods.to_bilneur.present?
   end
 
   def virtual_seller?

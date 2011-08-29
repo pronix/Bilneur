@@ -23,7 +23,7 @@
     });
 
     $("[data-run_search='t']").bind("change", function(){ 
-      $('.blogFilters').prepend("<div class='spinner'><img src='/images/icons/spinner.gif' /></div>'");
+      $('.blogFilters').prepend("<div class='spinner'><img src='/images/icons/spinner.gif' /></div>");
         $(this).parents("form:first").submit(); 
     
     });

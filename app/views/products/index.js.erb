@@ -1,3 +1,4 @@
+$('.spinner').remove();
 $("#products_list").html("<%= escape_javascript(render "shared/products", :products => @products) %>");
 $(".smPrdcts .blogPg").html("<%= page_entries_info @products %>");
 $("#taxons-facets").html("<%= escape_javascript(render 'taxons_facets' )%>")

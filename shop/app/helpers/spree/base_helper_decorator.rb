@@ -1,7 +1,7 @@
 Spree::BaseHelper.class_eval do
 
   def link_to_cart(text = t('cart'))
-    return "" if current_page?(cart_path)
+    return "" if current_page?(cart_path) || (current_order.try(:line_items).blank? && current_virtual_order.try(:line_items).blank?)
     css_class = nil
     order_count_items = if current_order.nil? or current_order.line_items.empty?
                           nil
@@ -16,7 +16,11 @@ Spree::BaseHelper.class_eval do
                                 end
 
     if order_count_items || virtual_order_count_items
-      css_class = 'full crt'
+      if virtual_order_count_items
+        css_class = 'full crt vstore'
+      else
+        css_class = 'full crt'
+      end
     else
       css_class = 'empty crt'
     end
@@ -28,5 +32,4 @@ Spree::BaseHelper.class_eval do
     return true if params[:as_seller]
     true if params[:user][:registration_as_seller] == '1' rescue return false
   end
-
 end

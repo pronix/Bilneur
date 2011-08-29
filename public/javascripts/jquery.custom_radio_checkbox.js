@@ -22,7 +22,7 @@ dgStyle: function()
 		elmType = $(elm).attr("type");
 		$(this).data('type',elmType);
 		$(this).data('checked',$(elm).attr("checked"));
-		$(this).dgClear();
+    $(this).dgClear();
 	});
 	$(this).mousedown(function() { $(this).dgEffect(); });
 	$(this).mouseup(function() { $(this).dgHandle(); });

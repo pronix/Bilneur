@@ -1,10 +1,13 @@
 <fieldset id="calculator_fields">
   <legend><%= t('calculator') %></legend>
   <div id="preference-settings">
-    <p>
-      <%= f.label(:calc_type, t("calculator"), :for => "calc-type") %>
+      <b>
+        <i><%= t("calculator") %></i>
+        <div class="cmbo3 websites">
       <%= f.collection_select(:calculator_type, @calculators, :to_s, :description, {}, {:id => "calc-type"}) %>
-    </p>
+        </div>
+      </b>
+
     <% if !@shipping_method.new_record? %>
       <div class="calculator-settings">
         <%= f.fields_for :calculator do |calculator_form| %>

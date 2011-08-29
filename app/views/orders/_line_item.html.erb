@@ -13,8 +13,8 @@
     </div>
 
     <div class="slrImg">
-      <i><%= image_tag variant.seller.photo.url(:for_review) %></i>
-      <span><%= variant.seller.full_name %></span>
+      <i><%= link_to (image_tag variant.seller.photo.url(:for_review)), store_seller_path(variant.seller) %></i>
+      <span><%= link_to variant.seller.full_name, store_seller_path(variant.seller) %></span>
     </div>
 
     <div class="prc">

@@ -1,12 +1,12 @@
 
 @javascript
 
-Feature: Virtual Shopping( without auto capture )
+Feature: Virtual Shopping( with auto capture )
   Virtiaul buyes can add product to V. Store
   and checkout virtual order
 
   Background:
-    Given a spree param "auto_capture" set is 'false'
+    Given a spree param "auto_capture" set is 'true'
     Given I have an admin account of "admin@person.com/password"
     And I am signed up as "email@person.com/password"
     And 1 bogus payment methods exist
@@ -47,9 +47,8 @@ Feature: Virtual Shopping( without auto capture )
     And I press "Place Order"
     Then I should see "Your order has been processed successfully"
     And "seller2@person.com" should receive 1 emails
-    And seller "seller2@person.com" should have new virtual order in sales with shipment state "pending"
-    And buyer "email@person.com" should see orders in orders with shipment state "pending"
-    When buyer "email@person.com" paid orders
+    And seller "seller2@person.com" should have new virtual order in sales with shipment state "ready"
+    And buyer "email@person.com" should see orders in orders with shipment state "ready"
     And seller "seller2@person.com" set shipment status as "ship"
     Then buyer "email@person.com" should see orders in orders with shipment state "shipped"
     And seller "seller2@person.com" should see the following quotes in dashboard:
@@ -83,10 +82,9 @@ Feature: Virtual Shopping( without auto capture )
     Then I should see "Your order has been processed successfully"
     And "seller2@person.com" should receive 1 emails
     And "seller1@person.com" should receive 1 emails
-    And seller "seller2@person.com" should have new virtual order in sales with shipment state "pending"
-    And seller "seller1@person.com" should have new virtual order in sales with shipment state "pending"
-    And buyer "email@person.com" should see orders in orders with shipment state "pending"
-    When buyer "email@person.com" paid orders
+    And seller "seller2@person.com" should have new virtual order in sales with shipment state "ready"
+    And seller "seller1@person.com" should have new virtual order in sales with shipment state "ready"
+    And buyer "email@person.com" should see orders in orders with shipment state "ready"
     And seller "seller1@person.com" set shipment status as "ship"
     And seller "seller2@person.com" set shipment status as "ship"
     Then buyer "email@person.com" should see orders in orders with shipment state "shipped"
@@ -124,11 +122,9 @@ Feature: Virtual Shopping( without auto capture )
     Then I should see "Your order has been processed successfully"
     And "seller2@person.com" should receive 1 emails
     And "seller1@person.com" should receive 1 emails
-    And seller "seller2@person.com" should have new virtual order in sales with shipment state "pending"
-    And seller "seller1@person.com" should have new virtual order in sales with shipment state "pending"
-    And buyer "email@person.com" should see orders in orders with shipment state "pending"
-    When buyer "email@person.com" paid orders
-    Then buyer "email@person.com" should see orders in orders with shipment state "shipped"
+    And seller "seller2@person.com" should have new virtual order in sales with shipment state "shipped"
+    And seller "seller1@person.com" should have new virtual order in sales with shipment state "shipped"
+    And buyer "email@person.com" should see orders in orders with shipment state "shipped"
     And seller "seller2@person.com" should see the following quotes in dashboard:
       | product_name                | condition | count_on_hand |
       | The Godfather               | new       |             2 |

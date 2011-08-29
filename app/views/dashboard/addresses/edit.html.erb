@@ -1,12 +1,12 @@
 <%= render :partial => 'dashboard/shared/profile_tabs', :locals => {:current => "Addresses"} %>
 
 <div class="sptCntBus">
+    <%= render 'shared/error_messages', :target => @address %>
 	<div class="top"></div>
 
 	<div class="cntr">
     <h2 class="htFix"><%= t("edit_address") %></h2>
 
-    <%= render 'shared/error_messages', :target => @address %>
     <%= form_for(@address, :url => dashboard_address_path(@address), :method => :put, :html => {:class => "contInp contInpFix"}) do |f| %>
     <%= render :partial => "form", :locals => { :f => f } %>
     <div class="bSaveC">

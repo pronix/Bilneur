@@ -10,12 +10,15 @@
       1, :class => "pQty", :onfocus => "if(this.value=='1') this.value=''", :onblur => "if(this.value=='') this.value='1'" %>
     &nbsp;
     </b>
-    <button class="skBlu button_to_link" name="to_add" value="cart">
-      <%= t('add_to_cart') %>
-    </button>
-    <button class="bLu button_to_link" name="to_add" value="virtual_store">
-      <%= t('add_to_virtual_store') %>
-    </button>
+    <% if cart_form.respond_to?(:seller) %>
+      <% if cart_form.seller.available_realy_shipping_methods? %>
+      <button class="skBlu button_to_link" name="to_add" value="cart"><%= t('add_to_cart') %></button>
+      <% end %>
+
+      <% if cart_form.seller.available_virtual_shipping_methods? %>
+      <button class="bLu button_to_link" name="to_add" value="virtual_store"><%= t('add_to_virtual_store') %></button>
+      <% end %>
+    <% end %>
    </p>
   <% else %>
     <%= content_tag('strong', t('out_of_stock')) %>

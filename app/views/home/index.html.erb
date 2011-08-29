@@ -4,97 +4,97 @@
 
 <!-- START CAROUSEL BLOCK -->
 <div class="mBnr">
-            	<div class="container">
-                  <div id="homepage">
-                    <div id="marquees" class="v2">
-                      <div id="coda-slider-1" style="height: 390px; ">
-                        <div class="coda-slider-wrapper">
-                          <div class="coda-slider preload">
-                            <div class="panel-container" style="width: 4750px; ">
-                              <div class="panel marquee01" style="display: none; ">
-                                <div class="panel-wrapper clearfix"> <span class="picture">&nbsp;</span>
-                                  <h1><img src="/images/img/bnr_hd.png" alt="" /></h1>
+  <div class="container">
+    <div id="homepage">
+      <div id="marquees" class="v2">
+        <div id="coda-slider-1" style="height: 390px; ">
+          <div class="coda-slider-wrapper">
+            <div class="coda-slider preload">
+              <div class="panel-container" style="width: 4750px; ">
+                <div class="panel marquee01" style="display: none; ">
+                  <div class="panel-wrapper clearfix"> <span class="picture">&nbsp;</span>
+                    <h1><img src="/images/img/bnr_hd.png" alt="" /></h1>
 
-                                      <%= form_tag products_url, :method => :get do %>
-                                        <%= text_field_tag :keywords, params[:keywords], :value=>"SEARCH",
-                                          :onfocus=>"if(this.value=='SEARCH') this.value=''",:onblur=>"if(this.value=='') this.value=''", :class => "taxt" %>
-                                        <%= submit_tag "", :name => nil, :class => "sabmt" %>
-                                         <div class="pAbb websites">
-                                           <% if Taxon.category.present? %>
-                                          <%= select_tag :taxon,
-                                              options_for_select([[t(:all_departments), '']] +
-                                                                    (Taxon.category.try(:children)||[]).map {|t| [t.name, t.id]},
-                                                                  @taxon ? @taxon.id : params[:taxon]),
-                                                                  :id => "search_select_category2" %>
-                                           <% end %>
-                                        </div>
-                                  <button type="submit" class="btn otherbutton"></button>
-                                      <% end %>
-                                  </div>
-                              </div>
-                              <div class="panel marquee02" style="display: none; ">
-                                <div class="panel-wrapper clearfix"> <span class="picture">&nbsp;</span>
-                                  <h1 class="txtH2"><img src="/images/img/bnr_hd1.png" alt="" /></h1>
-                                 <div class="txt">You can now sell your products to a connected network of buyers and resellers. Sell one item at a time or list them in quantities, it is your choice and we will gurantee you that you will find an opportunity that you couldnt have imagined before, and best of all its FREE to List your products.</div>
-                                  <a class="lrn" href="#">Learn More......</a>
-                                  <a class="btn otherbutton" href="#"></a>
-                                  </div>
-                              </div>
-                              <div class="panel marquee03" style="display: none; ">
-                                <div class="panel-wrapper clearfix"> <span class="picture">&nbsp;</span>
-                                   <h3><img src="/images/img/bnr_hd2.png" alt="" /></h3>
-                                      <%= form_tag products_url, :method => :get do %>
-                                        <%= text_field_tag :keywords, params[:keywords], :value=>"SEARCH",
-                                          :onfocus=>"if(this.value=='SEARCH') this.value=''",:onblur=>"if(this.value=='') this.value=''", :class => "taxt" %>
-                                        <%= submit_tag "", :name => nil, :class => "sabmt" %>
-                                         <div class="pAbb websites">
-                                           <% if Taxon.category.present? %>
-                                          <%= select_tag :taxon,
-                                              options_for_select([[t(:all_departments), '']] +
-                                                                    (Taxon.category.try(:children)||[]).map {|t| [t.name, t.id]},
-                                                                  @taxon ? @taxon.id : params[:taxon]),
-                                                                  :id => "search_select_category3" %>
-                                           <% end %>
-                                        </div>
-                                  <button type="submit" class="btn otherbutton"></button>
-                                  <% end %>
-                                  </div>
-                              </div>
-                              <div class="panel marquee05" style="display: none; ">
-                                <div class="panel-wrapper">
-                                  <div class="video-container">
-                                    <object width="536" height="285">
-                                      <param name="movie" value="https://www.youtube.com/v/rW3HT2bejA8?fs=1&amp;hl=en_US&amp;hd=1">
-                                      <param name="allowFullScreen" value="true">
-                                      <param name="allowscriptaccess" value="always">
-                                      <embed src="https://www.youtube.com/v/rW3HT2bejA8?fs=1&amp;hl=en_US&amp;hd=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="536" height="285">
-                                    </object>
-                                  </div>
-                                  <div style="display:none;"> <a id="signup-now" href="https://indinero.com/signup"><img src="./inDinero - Track Your Money with a Real-Time Financial Dashboard. Easy Business Budgeting and Cash Flow Planning._files/signupnow.png" alt="Sign Up Now!"></a> </div>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- / marquee01 -->
-                          </div>
-                          <!-- / coda-slider -->
-                        </div>
-                        <!-- / coda-slider-wrapper -->
-                      </div>
-                      <!-- / coda-slider-1 -->
-                      <div id="coda-nav-1" class="coda-nav">
-                        <ul style="width: 579px; float: none; ">
-                          <li class="tab1"><a href="#1" class="current"><span>&nbsp;</span></a></li>
-                          <li class="tab2"><a href="#2" class=""><span>&nbsp;</span></a></li>
-                          <li class="tab3"><a href="#3" class=""><span>&nbsp;</span></a></li>
-                          <!--<li class="tab4"><a href="https://indinero.com/#4" class=""><span>&nbsp;</span></a></li>-->
-                          <li class="tab5" id="play-video-1"><a href="#5" class=""><span>&nbsp;</span><!--<small>Watch the inDinero video</small>--></a></li>
-                        </ul>
-                      </div>
-                      <div id="coda-history-1" class="p5 p1 p2 p4 p3"></div>
+                    <%= form_tag products_url, :method => :get do %>
+                    <%= text_field_tag :keywords, params[:keywords], :value=>"SEARCH",
+                    :onfocus=>"if(this.value=='SEARCH') this.value=''",:onblur=>"if(this.value=='') this.value=''", :class => "taxt" %>
+                    <%= submit_tag "", :name => nil, :class => "sabmt" %>
+                    <div class="pAbb websites">
+                      <% if Taxon.category.present? %>
+                      <%= select_tag :taxon,
+                          options_for_select([[t(:all_departments), '']] +
+                          (Taxon.category.try(:children)||[]).map {|t| [t.name, t.id]},
+                          @taxon ? @taxon.id : params[:taxon]),
+                          :id => "search_select_category2" %>
+                      <% end %>
                     </div>
+                    <button type="submit" class="btn otherbutton"></button>
+                    <% end %>
                   </div>
                 </div>
- </div>
+                <div class="panel marquee02" style="display: none; ">
+                  <div class="panel-wrapper clearfix"> <span class="picture">&nbsp;</span>
+                    <h1 class="txtH2"><img src="/images/img/bnr_hd1.png" alt="" /></h1>
+                    <div class="txt">You can now sell your products to a connected network of buyers and resellers. Sell one item at a time or list them in quantities, it is your choice and we will gurantee you that you will find an opportunity that you couldnt have imagined before, and best of all its FREE to List your products.</div>
+                    <a class="lrn" href="#">Learn More......</a>
+                    <a class="btn otherbutton" href="#"></a>
+                  </div>
+                </div>
+                <div class="panel marquee03" style="display: none; ">
+                  <div class="panel-wrapper clearfix"> <span class="picture">&nbsp;</span>
+                    <h3><img src="/images/img/bnr_hd2.png" alt="" /></h3>
+                    <%= form_tag products_url, :method => :get do %>
+                    <%= text_field_tag :keywords, params[:keywords], :value=>"SEARCH",
+                    :onfocus=>"if(this.value=='SEARCH') this.value=''",:onblur=>"if(this.value=='') this.value=''", :class => "taxt" %>
+                    <%= submit_tag "", :name => nil, :class => "sabmt" %>
+                    <div class="pAbb websites">
+                      <% if Taxon.category.present? %>
+                      <%= select_tag :taxon,
+                          options_for_select([[t(:all_departments), '']] +
+                          (Taxon.category.try(:children)||[]).map {|t| [t.name, t.id]},
+                          @taxon ? @taxon.id : params[:taxon]),
+                          :id => "search_select_category3" %>
+                      <% end %>
+                    </div>
+                    <button type="submit" class="btn otherbutton"></button>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="panel marquee05" style="display: none; ">
+                  <div class="panel-wrapper">
+                    <div class="video-container">
+                      <object width="536" height="285">
+                        <param name="movie" value="https://www.youtube.com/v/rW3HT2bejA8?fs=1&amp;hl=en_US&amp;hd=1">
+                        <param name="allowFullScreen" value="true">
+                        <param name="allowscriptaccess" value="always">
+                        <embed src="https://www.youtube.com/v/rW3HT2bejA8?fs=1&amp;hl=en_US&amp;hd=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="536" height="285">
+                      </object>
+                    </div>
+                    <div style="display:none;"> <a id="signup-now" href="https://indinero.com/signup"><img src="./inDinero - Track Your Money with a Real-Time Financial Dashboard. Easy Business Budgeting and Cash Flow Planning._files/signupnow.png" alt="Sign Up Now!"></a> </div>
+                  </div>
+                </div>
+              </div>
+              <!-- / marquee01 -->
+            </div>
+            <!-- / coda-slider -->
+          </div>
+          <!-- / coda-slider-wrapper -->
+        </div>
+        <!-- / coda-slider-1 -->
+        <div id="coda-nav-1" class="coda-nav">
+          <ul style="width: 579px; float: none; ">
+            <li class="tab1"><a href="#1" class="current"><span>&nbsp;</span></a></li>
+            <li class="tab2"><a href="#2" class=""><span>&nbsp;</span></a></li>
+            <li class="tab3"><a href="#3" class=""><span>&nbsp;</span></a></li>
+            <!--<li class="tab4"><a href="https://indinero.com/#4" class=""><span>&nbsp;</span></a></li>-->
+            <li class="tab5" id="play-video-1"><a href="#5" class=""><span>&nbsp;</span><!--<small>Watch the inDinero video</small>--></a></li>
+          </ul>
+        </div>
+        <div id="coda-history-1" class="p5 p1 p2 p4 p3"></div>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- END CAROUSEL BLOCK -->
 
 
@@ -102,16 +102,16 @@
 
 <!-- START LEFT COLUMN WITH CATEGORIES -->
 <div class="colLft">
-            	<div class="cat">
-                  <h2>Browse By <span>Categories</span></h2>
-                  <ul>
-                      <% Taxon.category.try(:children).each do |taxon| %>
-                        <li>
-                          <%= link_to taxon.name, seo_url(taxon) %>
-                        </li>
-                      <% end %>
-                  </ul>
-                </div>
+  <div class="cat">
+    <h2>Browse By <span>Categories</span></h2>
+    <ul>
+      <% Taxon.category.try(:children).each do |taxon| %>
+      <li>
+        <%= link_to taxon.name, seo_url(taxon) %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
 <!-- END LEFT COLUMN WITH CATEGORIES -->
 
@@ -119,111 +119,112 @@
 <!-- START CENTRAL CONTENT WITH TOPS -->
 <div class="colRgt">
 
-     <!-- START TOP PRODUCTS -->
-     <div class="sldr1">
-     	<h2><span>Top Products</span></h2>
-         <div class="sldrCnt">
-         <%= link_to "View all Top Products", top_path(:products), :class => "crslHd"  %>
-     <a class="prev browse left disabled"> </a>
-     <div class="scrollable">   
+  <!-- START TOP PRODUCTS -->
+  <div class="sldr1">
+    <h2><span>Top Products</span></h2>
+    <div class="sldrCnt">
+      <%= link_to "View all Top Products", top_path(:products), :class => "crslHd"  %>
+      <a class="prev browse left disabled"> </a>
+      <div class="scrollable">
         <div style="left: 0px;" class="items">
-           <div>
-             <% @products.each_with_index do |product, index|  %>
-               <% if index >= 4 && index % 4 == 0 %>
-                  </div><div>
-               <% end %>
-               <% link_to product,  :class => "pd1" do %>
-                 <i>
-                    <%= t122_image( product ) %>
-                 </i>
-                 <b>View This Product</b>
-                 <p><%= product.description.slice(0, 40) %></p>
-                 <span><em>$9.99</em> 50% Discount</span>	
-                <% end %>
-             <% end %>
-           </div>
+          <div>
+            <% @products.each_with_index do |product, index|  %>
+            <% if index >= 4 && index % 4 == 0 %>
+          </div><div>
+            <% end %>
+            <% link_to product,  :class => "pd1" do %>
+            <i>
+              <%= t122_image( product ) %>
+            </i>
+            <b>View This Product</b>
+            <p><%= product.description.slice(0, 40) %></p>
+            <span><em><%= number_to_currency product.best_price %></em> 50% Discount</span>
+            <% end %>
+            <% end %>
+          </div>
         </div>
-     </div>
-     <a class="next browse right"></a>
-     <br clear="all">
-         </div>
-     </div>
-     <!-- END TOP PRODUCTS -->
+      </div>
+      <a class="next browse right"></a>
+      <br clear="all">
+    </div>
+  </div>
+  <!-- END TOP PRODUCTS -->
 
 
 
-     <!-- START TOP DEALS -->
-     <div class="sldr1">
-     	<h2><span>Top Deals</span></h2>
-         <div class="sldrCnt">
-         <%= link_to "View all Top Deals", top_path(:deals), :class => "crslHd"  %>
-     <a class="prev browse left disabled"> SAMI</a>
-     <div class="scrollable">   
+  <!-- START TOP DEALS -->
+  <div class="sldr1">
+    <h2><span>Top Deals</span></h2>
+    <div class="sldrCnt">
+      <%= link_to "View all Top Deals", top_path(:deals), :class => "crslHd"  %>
+      <a class="prev browse left disabled"> SAMI</a>
+      <div class="scrollable">
         <div style="left: 0px;" class="items">
-           <div>
-             <% @deals.each_with_index do |product, index|  %>
-               <% if index >= 4 && index % 4 == 0 %>
-                  </div><div>
-               <% end %>
-               <% link_to product,  :class => "pd1" do %>
-                 <i>
-                    <%= t122_image( product ) %>
-                 </i>
-                 <b>View This Product</b>
-                 <p><%= product.description.slice(0, 40) %></p>
-                 <span><em>$9.99</em> 50% Discount</span>	
-                <% end %>
-             <% end %>
-           </div>
+          <div>
+            <% @deals.each_with_index do |product, index|  %>
+            <% if index >= 4 && index % 4 == 0 %>
+          </div><div>
+            <% end %>
+            <% link_to product,  :class => "pd1" do %>
+            <i>
+              <%= t122_image( product ) %>
+            </i>
+            <b>View This Product</b>
+            <p><%= product.description.slice(0, 40) %></p>
+            <span><em><%= number_to_currency product.best_price %></em> 50% Discount</span>
+            <% end %>
+            <% end %>
+          </div>
         </div>
-     </div>
-     <a class="next browse right"></a>
-     <br clear="all">
-         </div>
-     </div>
-     <!-- END TOP DEALS -->
+      </div>
+      <a class="next browse right"></a>
+      <br clear="all">
+    </div>
+  </div>
+  <!-- END TOP DEALS -->
 
 
 
-     <!-- START TOP SELLERS -->
-     <div class="sldr1">
-     	<h2><span>Top Sellers</span></h2>
-         <div class="sldrCnt sellersSlider">
-         <%= link_to "View all Top Sellers", top_path(:sellers), :class => "crslHd" %>
-     <a class="prev browse left disabled"> SAMI</a>
-     <div class="scrollable">   
+  <!-- START TOP SELLERS -->
+  <div class="sldr1">
+    <h2><span>Top Sellers</span></h2>
+    <div class="sldrCnt sellersSlider">
+      <%= link_to "View all Top Sellers", top_path(:sellers), :class => "crslHd" %>
+      <a class="prev browse left disabled"> SAMI</a>
+      <div class="scrollable">
         <div style="left: 0px;" class="items">
-           <div>
-             <% @sellers.each_with_index do |seller, index|  %>
-               <% if index >= 4 && index % 4 == 0 %>
-                  </div><div>
-               <% end %>
-               <% link_to store_seller_path(seller),  :class => "pd1" do %>
-                 <i>
-                    <%=  image_tag(seller.photo.url(:for_review))  %>
-                 </i>
-                 <b><%= seller.full_name %></b>
-                 <p style="text-align: center;">View Store</p>
-                <% end %>
-             <% end %>
-           </div>
+          <div>
+            <% @sellers.each_with_index do |seller, index|  %>
+            <% if index >= 4 && index % 4 == 0 %>
+          </div><div>
+            <% end %>
+            <% link_to store_seller_path(seller),  :class => "pd1" do %>
+            <i>
+              <%=  image_tag(seller.photo.url(:for_review))  %>
+            </i>
+            <b><%= seller.full_name %></b>
+            <p style="text-align: center;">
+              <%= link_to "View Store", store_seller_path(seller) %>
+            </p>
+            <% end %>
+            <% end %>
+          </div>
         </div>
-     </div>
-     <a class="next browse right"></a>
-     <br clear="all">
-         </div>
-     </div>
-     <!-- END TOP SELLERS -->
-
-
+      </div>
+      <a class="next browse right"></a>
+      <br clear="all">
+    </div>
+  </div>
+  <!-- END TOP SELLERS -->
 
 
 </div>
+
 <!-- END CENTRAL CONTENT WITH TOPS -->
 <script type="text/javascript" language="javascript" charset="utf-8">
-//<![CDATA[
-  $jx(function() {
-    $jx(".scrollable").scrollable();
+  //<![CDATA[
+  $(function() {
+    $(".scrollable").scrollable();
   });
 //]]>
 </script>

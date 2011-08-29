@@ -7,16 +7,15 @@ Feature: Manage Favorite Sellers
       | Seller1   | seller1@person.com | password1 | password1             |
       | Seller2   | seller2@person.com | password2 | password2             |
 
-@javascript
   Scenario: Add seller to favorite
     And I sign in as "email@person.com/password"
-    Then exec "@user = User.find_by_email('email@person.com')"  
+    Then exec "@user = User.find_by_email('email@person.com')"
     Then I go to the seller store "seller1@person.com"
     Then I follow "Add Seller To Favorites"
     Then I should not see "Add Seller To Favorites"
     And "seller1@person.com" should be my favorite seller
 
-# @javascript    
+# @javascript
 #   Scenario: Add seller to favorite by non register user
 #     Then I go to the seller store "seller1@person.com"
 #     Then I follow "Add Seller To Favorites"

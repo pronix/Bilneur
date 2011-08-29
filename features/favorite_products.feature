@@ -5,14 +5,12 @@ Feature: Manage Favorite Products
   Background:
     Given load test data
 
-  @javascript
   Scenario: Adding & remove product to favorite panel
     When I go to the "The Godfather" product page
     And I follow "View All"
     And I set quatility "3" within block seller "seller2@person.com"
     And I press "Add To Cart" within block seller "seller2@person.com"
-    Then I should be on the cart page
-    And page not have Saved Items panel
+    When I go to the cart page
     When I follow "Save for later"
     Then I should be on the cart page
     And I should see "Product saved."
@@ -26,16 +24,14 @@ Feature: Manage Favorite Products
     And I follow "View All"
     And I set quatility "3" within block seller "seller2@person.com"
     And I press "Add To Cart" within block seller "seller2@person.com"
-    Then I should be on the cart page
-    And page not have Saved Items panel
+    When I go to the cart page
     When I follow "Save for later"
     Then I should be on the cart page
     And I should see "Product saved."
     And page have Saved Items panel with the following products:
      | The Godfather |
     When I press "Add To Cart" within "#your_saved_items"
-    Then I should be on the cart page
-    And the cart include the product "The Godfather" with quantity "4"
+    Then the cart include the product "The Godfather" with quantity "1"
 
   Scenario: Adding product to virtual cart from favorite panel
     When I go to the "The Godfather" product page
@@ -58,8 +54,7 @@ Feature: Manage Favorite Products
     And I follow "View All"
     And I set quatility "3" within block seller "seller2@person.com"
     And I press "Add To Cart" within block seller "seller2@person.com"
-    Then I should be on the cart page
-    And page not have Saved Items panel
+    And I go to the cart page
     When I follow "Save for later"
     Then I should be on the cart page
     And I should see "Product saved."

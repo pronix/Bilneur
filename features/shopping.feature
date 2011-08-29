@@ -72,5 +72,3 @@ Feature: Shopping(without auto capture)
       | product_name                | condition | count_on_hand |
       | The Godfather               | new       |             6 |
       | Death of a Hero [Paperback] | new       |             4 |
-    Then sleep "3"
-

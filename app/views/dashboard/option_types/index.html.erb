@@ -1,4 +1,10 @@
-<%= render :partial => 'dashboard/shared/product_sub_menu' %>
+<%= render :partial => 'dashboard/shared/product_sub_menu', :locals => { :current => "Option Types" } %>
+
+<div class="sptCntBus">
+	<div class="top"></div>
+
+	<div class="cntr">
+    <h2 class="htFix"><%= t("option_types") %></h2>
 
 <div class='toolbar'>
   <ul class='actions'>
@@ -9,7 +15,6 @@
   <br class='clear' />
 </div>
 
-<h1><%= t("option_types") %></h1>
 
 <div id="new_option_type"></div>
 
@@ -32,3 +37,7 @@
     </tr>
   <% end %>
 </table>
+  </div>
+
+	<div class="btm"></div>
+</div>

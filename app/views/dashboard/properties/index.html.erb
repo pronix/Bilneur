@@ -1,4 +1,10 @@
-<%= render :partial => 'dashboard/shared/product_sub_menu' %>
+<%= render :partial => 'dashboard/shared/product_sub_menu', :locals => {:current => "Properties" } %>
+
+<div class="sptCntBus">
+	<div class="top"></div>
+
+	<div class="cntr">
+          <h2 class="htFix"><%= t("properties") %></h2>
 
 <div class='toolbar'>
   <ul class='actions'>
@@ -10,8 +16,6 @@
   </ul>
   <br class='clear' />
 </div>
-
-<h1><%= t("properties") %></h1>
 
 <div id="new_property"></div>
 
@@ -44,3 +48,7 @@
   </tbody>
 </table>
 
+  </div>
+
+	<div class="btm"></div>
+</div>

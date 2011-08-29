@@ -1,6 +1,10 @@
-<%= render :partial => 'dashboard/shared/product_sub_menu' %>
+<%= render :partial => 'dashboard/shared/product_sub_menu', :locals => { :current => "Products" } %>
 
-<h1><%= "#{t("actions.listing")} #{t("products")}" %></h1>
+<div class="sptCntBus">
+	<div class="top"></div>
+
+	<div class="cntr">
+    <h2 class="htFix"><%= "#{t("actions.listing")} #{t("products")}" %></h2>
 
 <div id="new_product"></div>
 
@@ -32,4 +36,9 @@
   </tr>
 <% end %>
 </table>
-<%= will_paginate(@products, :previous_label => "&#171; #{t('previous')}", :next_label => "#{t('next')} &#187;") %>
+<%= will_paginate(@products, :previous_label => "#{t('previous')}", :next_label => "#{t('next')}") %>
+
+  </div>
+
+	<div class="btm"></div>
+</div>

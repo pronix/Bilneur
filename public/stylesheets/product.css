@@ -256,7 +256,7 @@
     .fbPnl p a { float:right;}
   .smPrdcts { width:100%; border-top:5px solid #e5e2e2;}
   .smPrdcts > .pagination, .smPrdcts > .blogPg, .smPrdcts > .slctr.slct { margin: 10px 0 0 0;}
-    .slctr.slct {margin-left: 18px !important;}
+    .slctr.slct {margin-left: 18px !important; float: right;}
   .smPrdcts .smPd { width:96%; padding:2%;border-bottom:5px solid #e5e2e2; max-height: 165px; background: white;}
     .smPd .imgP { width:117px; height:114px; margin-right:15px; position: relative; background:url('/images/bgs/product_img_bg.png') no-repeat;}
       .favribbon {position: absolute; top: -9px; right: 0;}

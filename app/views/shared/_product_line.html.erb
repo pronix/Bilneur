@@ -1,6 +1,6 @@
 <div class="smPrdcts">
   <div class="smPd">
-  <% if product.class == Variant %>
+  <% if product.is_a?(Variant) %>
     <% variant = true
        product = product.product %>
   <% end %>
@@ -38,17 +38,17 @@
       </b>
       <em class="oRt">retail <%= number_to_currency(product.try(:price)) %></em>
       <span class="avB">
-      <% if !variant %>
+        <% if !variant %>
         <%= link_to "Available with #{product.variants.count.to_s} sellers", product_quotes_path(product, 'new') %>
-      <% end %>
+        <% end %>
       </span>
 
       <ul>
         <li>
           <% if variant %>
-             <%= link_to image_tag("icons/ch_twtr.png"), "http://twitter.com/share?url=#{seller_quote_url(@seller, product, best_deal)}" %>
+          <%= link_to_twitter_share(seller_quote_url(@seller, product, best_deal)) %>
           <% else %>
-             <%= link_to image_tag("icons/ch_twtr.png"), "http://twitter.com/share?url=#{product_url(product)}" %>
+          <%= link_to_twitter_share(product_url(product)) %>
           <% end %>
         </li>
         <!--<li><%= link_to image_tag("icons/ch_fb.png"), "#" %></li>-->

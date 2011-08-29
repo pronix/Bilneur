@@ -1,5 +1,11 @@
 (function($){
   $(document).ready(function(){
+    $("[data-remove_taxon]").live('click', function(){
+      var search_form = $("form#products_search");
+      $.ajax({ url: "/products.js", data: $(search_form).serialize()+"&without_taxon="+$(this).attr("data-remove_taxon") })
+      return false;
+    });
+
     $("button[name='to_add'][value='virtual_store']").live('click', function(){
       var form = $(this).parents("form:first");
       $(form).find("input.js-field").remove();

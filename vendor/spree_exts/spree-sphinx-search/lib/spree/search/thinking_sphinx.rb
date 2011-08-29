@@ -29,11 +29,17 @@ module Spree::Search
         search_options.merge!(:conditions => facets_hash)
       end
       with_opts = {:is_active => 1}
+      without_opts = { }
+
       if taxon || taxons
         taxon_ids = [ ]
         taxon_ids << taxon.self_and_descendants.map(&:id) if taxon
         taxon_ids << taxons.map{ |v| v.self_and_descendants.map(&:id) } if taxons
         with_opts.merge!(:taxon_ids => taxon_ids.flatten(1))
+      end
+
+      if @_params[:without_taxon].present? && (@without_taxon = Taxon.find_by_name(@_params[:without_taxon]))
+        without_opts.merge!({ :taxon_ids => @without_taxon.self_and_descendants.map(&:id) })
       end
 
       if  @_params[:price_range].present?
@@ -48,7 +54,7 @@ module Spree::Search
         with_opts.merge!(:variant_on_hand => (@_params[:min_quantity]||0).to_i..(@_params[:max_quantity]||9999).to_i)
       end
 
-      search_options.merge!(:with => with_opts)
+      search_options.merge!(:with => with_opts, :without => without_opts)
       Rails.logger.info "="*90
       Rails.logger.info "[ SEARCH QUERY ]"
       Rails.logger.info  search_options.inspect

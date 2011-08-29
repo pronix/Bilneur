@@ -532,6 +532,7 @@ form.new_message {float: left; }
 .prflBus, .prflBus ul, .prflBus ul li, .prflBus ul li a, .prflBus p {float:left;width:100%;}
 
 .sptCntBus {float:left;width:717px!important;margin-top:5px;}
+.sptCntBus.noneSidebarForm {float:none; margin: 0 auto; }
     .sptCntBus .top { background:url('/images/bgs/dash_cnt_top.png') 0 0 no-repeat;}
     .sptCntBus .cntr { padding-bottom:20px;background:url('/images/bgs/dash_cnt_cntr.png') 0 0 repeat-y;}
     .sptCntBus .cntr .toolbar,.sptCntBus .cntr table.index{ margin: 20px; width: 80%;}
@@ -539,6 +540,10 @@ form.new_message {float: left; }
     .sptCntBus .top, .sptCntBus .btm {height:14px;width:100%;}
     .sptCntBus .cntr h2 { width:709px; margin:0 0 0 8px; padding-bottom:5px; border-bottom:1px solid #ececec; text-align:center; color:#00adef; font-size:23px;}
 .sptCntBus .top, .sptCntBus .cntr, .sptCntBus .btm, .sptCntBus .cntr h2 {float:left;}
+
+.sptCntBus .cntr p {
+  margin: 10px; font-size: 1.1em;
+}
 
 .busAbtYou {clear:both;width:100%;}
     .busAbtYou p {margin:10px 0 0 40px;}
@@ -578,7 +583,7 @@ form.new_message {float: left; }
         .contInp i.dimC { color:#7f7e7e;} 
         .contInp i, .contInp em { padding-bottom:5px; font-size:12px; font-weight:bold; font-style:normal;color:#000;}
         .contInp em { clear:both;float:left;color:#00adef;margin:10px 0 0 150px;}
-    .contInp input[type=text] { width:319px; height:13px; padding:5px; border:none; background:url('/images/forms/chk_login_txt.png') no-repeat;}
+    .contInp input[type=text] { width:319px; height:13px; padding:5px; border:none; background:url('/images/forms/chk_login_txt.png') no-repeat; font-size: 1em;}
     .contInp .txtCty {float:left;width:144px!important;height:13px;padding:5px;border:none;background:url('/images/forms/checkout_city_txt_bg.png') no-repeat!important;}
     .contInp .stat { float:left;width:40px!important;}
 
@@ -595,7 +600,7 @@ form.new_message {float: left; }
 
 /* Combo Option 2 */
 .cmbo2 {width:130px!important;position:relative;float:left;}
-    .cmbo2 .dd2 {display: inline-block !important;float:left;font-family: Arial,Helvetica,sans-serif;font-size: 11px;height: 23px;margin-top:0;text-align: left;width: 130px !important;}
+    .cmbo2 .dd2 {margin-left: 0; display: inline-block !important;float:left;font-family: Arial,Helvetica,sans-serif;font-size: 11px;height: 23px;margin-top:0;text-align: left;width: 130px !important;}
         .cmbo2 .dd2 .ddTitle {background: url("/images/forms/checkout_state_txt_bg.png") no-repeat scroll 0 0 transparent;cursor: default;height: 24px;overflow: hidden;padding-left: 10px;text-indent: 0;}
             .cmbo2 .dd2 .ddTitle span.arrow {background:url("/images/forms/cmbo_2arw.png") no-repeat 5px 6px!important;cursor: pointer;display: inline-block;float: right;height: 27px;position:relative;right:-5px;top:-5px;width:24px;}
             .cmbo2 .dd2 .ddTitle span.ddTitleText {color:#626262;font-size:11px;line-height:24px;overflow:hidden;text-indent:1px;}

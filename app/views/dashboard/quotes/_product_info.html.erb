@@ -1,8 +1,9 @@
 <hr/>
 <div>
+  <h2 class="htFix">Images</h2>
   <%= render "products/image" %>
   <hr/>
-  <h2><%= t('description') %></h2>
+  <h2 class="htFix"><%= t('description') %></h2>
   <%= product_description(@product) rescue t("product_has_no_description") %>
   <%= render 'properties' %>
 </div>

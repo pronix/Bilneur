@@ -1,50 +1,62 @@
-<h1><%= t("new_quote") %></h1>
-<h2> <u>Product:</u> <b><%= @product.name %></b></h2>
+<div class="sptCntBus noneSidebarForm">
+    <%= render 'shared/error_messages', :target => @address %>
+    <div class="top"></div>
+    <div class="cntr">
+    <h2><%= t("new_quote") %></h2>
+<h2 class="htFix"> <u>Product:</u> <b><%= @product.name %></b></h2>
 <%= render "shared/error_messages", :target => @quote %>
 
-<%= form_for(:variant, :url => dashboard_quotes_path, :method => :post,  :html => { :multipart => true } ) do |f| %>
+<%= form_for(:variant, :url => dashboard_quotes_path, :method => :post,  :html => { :multipart => true, :class => "contInp contInpFix" } ) do |f| %>
 <%= hidden_field_tag "product_ean", @product.ean %>
-<fieldset>
-  <p>
-    <%= f.label :name, t("name") %> <span class="required">*</span><br />
-    <%= f.text_field :name, :class => 'title fullwidth', :value => @product.name  %>
-  </p>
+    <b>
+      <i><%= t("name") %></i>
+      <%= f.text_field :name, :class => 'title fullwidth', :value => @product.name  %>
+    </b>
+    <b>
+      <i><%= t("price") %></i>
+      <%= f.text_field :price, :class => 'title'  %>
+    </b>
+    <b>
+      <i><%= t("on_hand") %></i>
+      <%= f.text_field :count_on_hand, :class => 'title'  %>
+    </b>
+    <b>
+      <i><%= t("weight") %></i>
+      <%= f.text_field :weight, :class => 'title'  %>
+    </b>
+    <b>
+      <i><%= t("condition")%></i>
+      <div class="cmbo2 websites">
+        <%= select_tag("variant[condition]",
+                     options_for_select(Variant::CONDITION.collect {|ov| [ t("condition_#{ov}"), ov ] })) %>
+      </div>
+      <div style="margin-left: 150px; float: left;">( <%= f.label :another_condition, t("other_condition") %>
+      <%= f.text_field :another_condition, :class => 'title'  %> )</div>
+    </b>
 
-  <p>
-    <%= f.label :price, t("price") %> <span class="required">*</span><br />
-    <%= f.text_field :price, :class => 'title'  %>
-  </p>
-  <p>
-    <%= f.label :count_on_hand, t("on_hand") %> <span class="required">*</span><br />
-    <%= f.text_field :count_on_hand, :class => 'title'  %>
-  </p>
-  <p>
-    <%= f.label :weight, t("weight") %> <span class="required">*</span><br />
-    <%= f.text_field :weight, :class => 'title'  %>
-  </p>
+    <b>
+      <i><%= t("description") %></i>
+      <div class="bAY">
+        <div class="txtA">
+          <%= f.text_area :description, {:cols => 60, :rows => 4, :class => 'fullwidth'}  %>
+        </div>
+      </div>
+    </b>
 
-
-  <p>
-    <%= label_tag "variant_condition", t("condition") %> <span class="required">*</span><br />
-    <%= select_tag("variant[condition]",
-            options_for_select(Variant::CONDITION.collect {|ov| [ t("condition_#{ov}"), ov ] })) %>
-    ( <%= f.label :another_condition, t("other_condition") %>
-    <%= f.text_field :another_condition, :class => 'title'  %> )
-
-  </p>
-
-  <p>
-    <%= f.label :description, t("description") %><br />
-    <%= f.text_area :description, {:cols => 60, :rows => 4, :class => 'fullwidth'}  %>
-  </p>
-
-</fieldset>
-
- <p class="form-buttons">
-   <button><span><%= t("actions.create") %></span></button>
-   <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_quotes_path %>
- </p>
+    <div class="bSaveC">
+      <big>
+        <button type="submit" class="btn otherbutton" id="save_shipping_method"></button>
+      </big>
+      <p>
+        <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_quotes_path %>
+      </p>
+    </div>
 
 <% end %>
-<%= render "product_info" %>
+  
+  <%= render "product_info" %>
+
+  </div>
+  <div class="btm"></div>
+</div>
 

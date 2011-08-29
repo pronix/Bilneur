@@ -7,7 +7,7 @@
     </div>
   </td>
   <td class="row<%= evod %>">
-    <a href="#"><%= quote.ean %></a>
+    <%= link_to quote.ean, edit_dashboard_quote_path(quote)  %>
   </td>
   <td class="row<%= evod %>">
     <% unless quote.deleted? %>

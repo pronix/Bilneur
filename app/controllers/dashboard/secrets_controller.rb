@@ -11,12 +11,14 @@ class Dashboard::SecretsController < Dashboard::ApplicationController
   end
 
   def create
+
     unless params[:own_question].blank?
       variant = SecretQuestionVariant.create(:variant => params[:own_question], :private => true)
       @current_user.create_secret_question(:answer => params[:secret_question][:answer], :secret_question_variant => variant)
     else
       @current_user.create_secret_question(params[:secret_question])
     end
+
     flash.notice = 'Secret Question save'
     redirect_to dashboard_account_path
   end
@@ -24,7 +26,8 @@ class Dashboard::SecretsController < Dashboard::ApplicationController
   def update
     unless params[:own_question].blank?
       variant = @current_user.secret_question.create_secret_question_variant(:variant => params[:own_question], :private => true)
-      @current_user.secret_question.update_attributes(:answer => params[:secret_question][:answer], :secret_question_variant => variant)
+      @current_user.secret_question.update_attributes(:answer => params[:secret_question][:answer],
+                                                      :secret_question_variant => variant)
     else
       @current_user.secret_question.update_attributes(params[:secret_question])
     end
@@ -41,11 +44,13 @@ class Dashboard::SecretsController < Dashboard::ApplicationController
   def validate_question
     # FIXME It's bad all validation should be in the model
     # When user don't fill anything
-    some_error('Please check a question') if params[:own_question].blank? && params[:secret_question][:secret_question_variant_id].blank?
+    some_error('Please check a question') if params[:own_question].blank? &&
+                                             params[:secret_question][:secret_question_variant_id].blank?
     # When user don't fill answer
     some_error('Please write you answer') if params[:secret_question][:answer].blank?
     # When user check own qustion but don't write his
-    some_error('Please check a question') if params[:own_question].blank? && params[:secret_question][:secret_question_variant_id].to_i == 5
+    some_error('Please check a question') if params[:own_question].blank? &&
+                                             params[:secret_question][:secret_question_variant_id].to_i == 5
   end
 
   def some_error(error='some thing wrong')

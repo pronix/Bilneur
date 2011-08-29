@@ -221,8 +221,17 @@ User.class_eval do
   end
 
   def available_shipping_methods?
+    shipping_methods.present?
+  end
+
+  def available_realy_shipping_methods?
     shipping_methods.to_address.present?
   end
+
+  def available_virtual_shipping_methods?
+    shipping_methods.with_seller.present? || shipping_methods.to_bilneur.present?
+  end
+
   def virtual_seller?
     has_role?("virtual_seller")
   end

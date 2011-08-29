@@ -174,6 +174,7 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
         .tSrch .allProd {}
         .tSrch input[type=submit] {width:37px;height:29px;cursor:pointer;border:none;margin:-2px -5px 0 23px;background:url('/images/forms/jst_go.png') no-repeat;}
     .pAbb { position:relative;}
+    li.current_top { padding: 0 5px 0 15px; }
         .pAbb .dd2 .ddChild { width:140px!important; top:25px!important;}
         .pAbb .dd2 { width:140px!important; margin-top:0!important;}
         .pAbb .dd2 .ddTitle { background:none!important;}
@@ -183,7 +184,7 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
 .hd1A, .hd2,.loginBar,.loginBar i,.loginBar a, ul.tpMnu, ul.tpMnu li, ul.tpMnu li a, ul.mMenu, ul.mMenu li, ul.mMenu li a,.menu,.menu .lft,.menu .rgt,.tSrch input[type=text],.tSrch form,.allProd,.tSrch input[type=submit], .tSrch {float:left;}
 
 /* Content */
-#mCnt{ margin-top:20px; overflow: hidden;}
+#mCnt{ margin-top:20px; }
 .cHome{}
     .cHome .mBnr { width:100%;background:url('/images/bgs/bnr_bg1.png') no-repeat;}
         .mBnr .bnrCnt { width:255px;margin:66px 0 0 40px;}

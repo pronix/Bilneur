@@ -534,7 +534,7 @@ form.new_message {float: left; }
 .sptCntBus {float:left;width:717px!important;margin-top:5px;}
     .sptCntBus .top { background:url('/images/bgs/dash_cnt_top.png') 0 0 no-repeat;}
     .sptCntBus .cntr { padding-bottom:20px;background:url('/images/bgs/dash_cnt_cntr.png') 0 0 repeat-y;}
-    .sptCntBus .cntr .toolbar,.sptCntBus .cntr .index.sortable { margin: 20px; }
+    .sptCntBus .cntr .toolbar,.sptCntBus .cntr table.index{ margin: 20px; }
     .sptCntBus .btm {background:url('/images/bgs/dash_cnt_btm.png') 0 0 no-repeat;}
     .sptCntBus .top, .sptCntBus .btm {height:14px;width:100%;}
     .sptCntBus .cntr h2 { width:709px; margin:0 0 0 8px; padding-bottom:5px; border-bottom:1px solid #ececec; text-align:center; color:#00adef; font-size:23px;}
@@ -547,7 +547,7 @@ form.new_message {float: left; }
     .bAY .txtA { border: 6px solid #f1f6f8;margin:10px 0 0 65px;width:373px;min-width:373px;max-width:373px;}
     .bAY textarea, .bAY .txtA {border-radius: 3px 3px 3px 3px;}
     .bAY em {font-style:normal;width:230px;margin:45px 0 0 15px;}
-.bSaveC {float:right;text-align:right;width:100%;margin:20px 80px 0 0;}
+.bSaveC {float:right;text-align:right;width:100%;margin:20px 100px 0 0;}
 .bSaveC a {}
 
 .busAbtYou, .busAbtYou p, .bAY, .bAY textarea, .bAY .txtA, .bAY em {float:left;}
@@ -568,7 +568,7 @@ form.new_message {float: left; }
 
 .eADtlSav big {clear:both;float:right;width:100%;margin:80px -55px 0 0;}
 .btn { float:right;position:relative;left:0;bottom:0;width:114px;height:32px;color:#fff;text-align:right;}
-.otherbutton {border: none; position: relative;height: 35px;width: 110px;background:url('/images/forms/sv_chng.png') no-repeat;background-position:0 0;cursor: pointer;} 
+.otherbutton {border: none; position: relative;height: 35px;width: 114px;background:url('/images/forms/sv_chng.png') no-repeat;background-position:0 0;cursor: pointer;} 
 .otherbutton span.hover {display: block;height: 35px;width: 114px;background:url('/images/forms/sv_chng.png') 0 -29px no-repeat;background-position: bottom;}
 
 /* Edit Business Info */

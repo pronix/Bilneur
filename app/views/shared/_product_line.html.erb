@@ -1,6 +1,11 @@
 <div class="smPrdcts">
   <div class="smPd">
-    <i class="imgP"><%= link_to small_image(product), product %></i>
+    <i class="imgP">
+      <% if best_deal.is_favorite?(current_user) %>
+        <%= image_tag "/images/favribbon.png", :class => "favribbon" %>
+      <% end %>
+      <%= link_to small_image(product), product %>
+    </i>
     <div class="pdDtl">
       <h4><%= link_to product.name, product %></h4>
       <% if defined? short_description %>

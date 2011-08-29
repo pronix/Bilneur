@@ -7,11 +7,9 @@
     <div class="loginBar">
       <% if current_user %>
       <i><%= link_to t('my_account'), account_path %></i>
-      &nbsp;
       <%= link_to t('logout'), destroy_user_session_path %>
       <% else %>
       <i><%= link_to "Sign Up", new_user_registration_path %></i>
-      &nbsp;
       <%= link_to t('log_in'), new_user_session_path %>
       <% end %>
       <div class="cart_bag">
@@ -35,7 +33,7 @@
           </li>
 
           <li><a href="#">Groups</a></li>
-          <li>
+          <li class=" <%== 'current_top' if request.path == top_path(:products) %>">
             <%= link_to_unless_current "Top Products", top_path(:products) %>
           </li>
           <li>

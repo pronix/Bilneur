@@ -32,5 +32,4 @@ Spree::BaseHelper.class_eval do
     return true if params[:as_seller]
     true if params[:user][:registration_as_seller] == '1' rescue return false
   end
-
 end

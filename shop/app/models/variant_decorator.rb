@@ -50,6 +50,16 @@ Variant.class_eval do
   # Shipping cost for variant
   # only realy shipping methods
   #
+  #
+
+  def is_favorite?(current_user)
+    if current_user && current_user.favorite_variants.find_by_id(self.id)
+      true
+    else
+      false
+    end
+  end
+
   def shipping
     seller.shipping_methods.realy[0..0].map do |item|
       {

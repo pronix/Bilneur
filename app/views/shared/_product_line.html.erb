@@ -8,11 +8,7 @@
     </i>
     <div class="pdDtl">
       <h4><%= link_to product.name, product %></h4>
-      <% if defined? short_description %>
       <p><%= product.description.slice(0, 200) + '...' %></p>
-      <% else %>
-      <p><%= product.description %></p>
-      <% end %>
       <%= render :partial => "shared/rating_product", :object => product %>
     </div>
     <div class="rTe">

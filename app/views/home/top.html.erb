@@ -2,7 +2,7 @@
 <% javascript "jquery.custom_radio_checkbox", "slider/SpryCollapsiblePanel", "slider/SpryTabbedPanels", "product_index" %>
 
 <% if @products || @deals %>
-  <%= render :partial => 'shared/products', :locals => {:products => (@products || @deals), :short_description => true} %>
+  <%= render :partial => 'shared/products', :locals => {:products => (@products || @deals) } %>
 <% elsif @sellers %>
   <%= render :partial => 'sellers', :locals => {:sellers => @sellers} %>
 <% end %>

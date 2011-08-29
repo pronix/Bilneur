@@ -2,7 +2,10 @@
   $(document).ready(function(){
     $("[data-remove_taxon]").live('click', function(){
       var search_form = $("form#products_search");
-      $.ajax({ url: "/products.js", data: $(search_form).serialize()+"&without_taxon="+$(this).attr("data-remove_taxon") })
+      $.ajax({
+               url: "/products.js",
+              data: $(search_form).serialize()+"&"+$.param({"without_taxon": $(this).attr("data-remove_taxon")})
+            })
       return false;
     });
 

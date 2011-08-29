@@ -69,78 +69,64 @@ Feature: Inbox
      | from        | subject   | received         |
      | Jimm Paxtor | Question1 | January 01, 2011 |
     When I follow "Question1"
-    Then I clink by class "reply-link"
+    Then I execute script "active reply"
     And I fill in "message_content" with "Thanks for you Question."
-    And I press "send_message"
+    And I press "Send"
     Then I should see "Your reply sent."
 
-  @javascript
-  Scenario: Marking message as read
-    Given the following messages exist:
-     | created_at | sender                 | recipient                | subject   | content           |
-     | 01/01/2011 | email:email@person.com | email:seller1@person.com | Question1 | Question1 message |
-    When I sign in as "seller1@person.com/password1"
-    And I go to the dashboard messages page
-    Then the page should have the following messages:
-     | from        | subject   | received         |
-     | Jimm Paxtor | Question1 | January 01, 2011 |
-    # When I check "message_ids[]"
-    Then execute jquery "alert('asdsadsa');"
-    Then sleep "100"
-    # Then show me the page
-    # And I press "Mark as read"
-
-    
-#     #And I follow "Unread"
-#     #Then the page should have the following messages:
-#     # | From | Subject | Received |
-# =======
-#    When I check "message_ids[]"
-#     And I follow "Mark as read"
-#     And I go to the dashboard messages page 
-#     And I follow "Unread"
-#     Then the page should not have the following messages:
-#      | from        | subject   | received         |
-#      | Jimm Paxtor | Question1 | January 01, 2011 |
-
-  @javascript
-  Scenario: Marking message as unread
+@javascript
+  Scenario Outline: Marking message as read/unread
     Given the following messages exist:
      | created_at | sender                 | recipient                | subject   | content           | recipient_read |
-     | 01/01/2011 | email:email@person.com | email:seller1@person.com | Question1 | Question1 message | true           |
+     | 01/01/2011 | email:email@person.com | email:seller1@person.com | Question1 | Question1 message | <read_status>  |
     When I sign in as "seller1@person.com/password1"
     And I go to the dashboard messages page
     Then the page should have the following messages:
-     | from        | subject   | received         | 
-     | Jimm Paxtor | Question1 | January 01, 2011 | 
+     | from        | subject   | received         |
+     | Jimm Paxtor | Question1 | January 01, 2011 |
     When I check "message_ids[]"
-    And I follow "Mark as unread"
-    And I go to the dashboard messages page 
-    And I follow "Unread"
-    Then the page should have the following messages:
-     | from        | subject   | received         | 
-     | Jimm Paxtor | Question1 | January 01, 2011 | 
+    Then I execute script "<page_script_execute>"
+    And I wait for the AJAX call to finish
+    And message by subject "Question1" should be "recipient_read" is <message_status>
 
+    Examples:
+      | read_status | page_script_execute  | message_status |
+      | false       | inbox send_as_read   | true           |
+      | true        | inbox send_as_unread | false          |
 
-  @javascript
-  Scenario: Marking message as important
+@javascript
+  Scenario Outline: Marking message as delete/impornat
     Given the following messages exist:
      | created_at | sender                 | recipient                | subject   | content           |
      | 01/01/2011 | email:email@person.com | email:seller1@person.com | Question1 | Question1 message |
     When I sign in as "seller1@person.com/password1"
     And I go to the dashboard messages page
     Then the page should have the following messages:
-     | from        | subject   | received         | 
-     | Jimm Paxtor | Question1 | January 01, 2011 | 
-    And I follow "Important"
-    Then the page should have the following messages:
-     | From | Subject | Received |
-    When I go to the dashboard messages page
-    And I check "message_ids[]"
-    And I follow "Mark as important"
-    And I go to the dashboard messages page 
-    And I follow "Important"
+     | from        | subject   | received         |
+     | Jimm Paxtor | Question1 | January 01, 2011 |
+    When I check "message_ids[]"
+    Then I execute script "<page_script_execute>"
+    And I wait for the AJAX call to finish
+    And message by subject "Question1" should be "<field>" a present
+    
+    Examples:
+      | page_script_execute     | field                |
+      | inbox send_delete       | recipient_deleted_at |
+      | inbox send_as_important | recipient_marker     |
+
+@javascript    
+  Scenario: Mark all message as read
+    Given the following messages exist:
+     | created_at | sender                 | recipient                | subject   | content           |
+     | 01/01/2011 | email:email@person.com | email:seller1@person.com | Question1 | Question1 message |
+     | 01/01/2011 | email:email@person.com | email:seller1@person.com | Question2 | Question2 message |
+    When I sign in as "seller1@person.com/password1"
+    And I go to the dashboard messages page
     Then the page should have the following messages:
      | from        | subject   | received         |
      | Jimm Paxtor | Question1 | January 01, 2011 |
-
+     | Jimm Paxtor | Question2 | January 01, 2011 |
+    Then I execute script "inbox select_all_messages"
+    Then I execute script "inbox send_as_read"
+    And I wait for the AJAX call to finish
+    And All my message should be read

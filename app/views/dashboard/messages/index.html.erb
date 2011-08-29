@@ -1,3 +1,4 @@
+<% javascript 'inbox' %>
 <div class="inbxTabs">
   <div id="TabbedPanels2" class="TabbedPanels">
     <%= render :partial => 'dashboard/shared/inbox_tabs', :locals => {:current => @state} %>
@@ -17,7 +18,7 @@
               <%= link_to "", "", :remote => true,  :class => "action_link", :value => "mark_as_unread", :title => "Mark as unread"  %>
             </li>
             <li class="nav3">
-              <%= link_to "", "", :remote => true,  :class => "action_link", :value => "mark_as_read", :title => "Mark as read"  %>
+              <%= link_to "", "", :remote => true,  :class => "action_link", :value => "mark_as_read", :title => "Mark as read" %>
             </li>
             <li class="nav4">
               <%= link_to "", "", :remote => true,  :class => "action_link", :value => "mark_as_important", :title => "Mark as important" %>
@@ -29,7 +30,7 @@
             <div class="cent">
               <div class="sndrInfo">
                 <div class="checkbox" id="select_all_check_box">
-                  <%= check_box_tag "", "",  false, :value => "all" %>
+                  <%= check_box_tag "select_all", "",  false, :value => "all" %>
                   <label class="lbl">From</label>
                 </div>
                 <span>SUBJECT</span>
@@ -52,15 +53,3 @@
   </div>
 </div>
 </div>
-
-<script>
-  $(function(){
-
-  $('.action_link').click(function() {
-  var multi = $(this).attr('value');
-  var state = $("#stater").attr('value');
-  $("input[name=multi]").val(multi);
-  $("#multi_form").submit();
-  });
-  });
-</script>

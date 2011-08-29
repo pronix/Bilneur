@@ -1,7 +1,26 @@
-function test_func(){
+$(function(){
+    $('.reply-link').click(function(){
         $(".message_container").show();  
         $(".replyer").hide();
-};
+    });
+
+    $('.action_link').click(function() { 
+        var multi = $(this).attr('value');
+        var state = $("stater").attr('value');
+        $("input[name=multi]").val(multi);
+        $("#multi_form").submit();
+    });
+});
+
+// $('.action_link').click(function() {
+//     alert('dasdsada');
+//     var multi = $(this).attr('value');
+//     var state = $("stater").attr('value');
+//     $("input[name=multi]").val(multi);
+//     $("multi_form").submit();
+// });
+
+
 
 // $(document).ready(function(){
 //     $("#reply_1").click(function(){ 

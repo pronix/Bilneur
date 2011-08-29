@@ -163,15 +163,16 @@
 <div class="col2 mag0 prdctDPg slrPrdctPg slrPrdctPg">
   <div class="vwer smlr mag0">
     <div class="top"><b>Sellers Other Products</b></div>
+
     <% @seller.quotes.last(3).each do |quote| %>
     <div class="cntr noBdr">
-      <% link_to seller_quote_path(@seller, quote.product, quote) do %>
+      <%= link_to seller_quote_path(@seller, quote.product, quote) do %>
       <i class="smallLatestQuotes">
         <%= image_tag quote.image.attachment.url(:mini) %>
       </i>
       <b><%= quote.product.name %></b>
       <em>
-        <%= quote.description.slice(0, 80) %>
+        <%= quote.description.to_s.slice(0, 80) %>
         <br />
         <label><%= number_to_currency quote.price %></label>
       </em>
@@ -180,7 +181,6 @@
     <% end %>
 
   </div>
-  <% end %>
 </div>
 
 <div class="col2 mag0 prdctDPg slrPrdctPg slrPrdctPg">

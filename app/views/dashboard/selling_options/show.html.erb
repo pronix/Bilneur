@@ -1,9 +1,15 @@
 <%= render :partial => 'dashboard/shared/quote_tabs', :locals => {:current => "Selling Options"} %>
-<%= form_for  dashboard_quote_selling_options_path(@quote), :html => {:method => :put} do %>
+
+<div class="sptCntBus">
+    <div class="top"></div>
+    <div class="cntr">
+
+    <h2 class="htFix">Selling Options</h2>
+
+<%= form_for  dashboard_quote_selling_options_path(@quote), :html => {:method => :put } do %>
 
 <%= fields_for @quote do |f| %>
 <fieldset>
-  <legend>Selling Options</legend>
   <div>
     <%= f.field_container :price do %>
     <%= f.label :price, t("fixed_price")%> <span class="required">*</span>
@@ -14,6 +20,7 @@
   </div>
   <div>
     <h3><%= t("volume_prices") %></h3>
+    <%= link_to_add_fields icon('add') + ' ' + t("add_volume_price"), "tbody#volume_prices", f, :volume_prices %>
     <table class="index">
       <thead>
         <tr>
@@ -31,7 +38,6 @@
       </tbody>
     </table>
 
-    <%= link_to_add_fields icon('add') + ' ' + t("add_volume_price"), "tbody#volume_prices", f, :volume_prices %>
     <br/><br/>
 
 
@@ -42,8 +48,14 @@
 <% end %>
 
 
-<p class="form-buttons">
-  <button type="submit"><span><%= t("update") %></span></button>
-</p>
+      <div class="bSaveC">
+        <big>
+          <button type="submit" class="btn otherbutton" id="save_shipping_method"></button>
+        </big>
+      </div>
+
 
 <% end %>
+  </div>
+  <div class="btm"></div>
+</div>

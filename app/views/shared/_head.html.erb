@@ -28,7 +28,7 @@
   'jquery.iphone-switch', :cache => 'jquery-core' %>
 
 <!-- FIXME: letter when show will be complete -->
-<%= javascript_include_tag("https://apis.google.com/js/plusone.js") if Rails.env.production? %
+<%= javascript_include_tag("https://apis.google.com/js/plusone.js") if Rails.env.production? %>
 <%= javascript_include_tag 'jquery.tools.min.js' %>
 
 <% unless I18n.locale.to_s[0..1] == 'en' %>

@@ -5,6 +5,7 @@ Feature: Manage Favorite Products
   Background:
     Given load test data
 
+  @javascript
   Scenario: Adding & remove product to favorite panel
     When I go to the "The Godfather" product page
     And I follow "View All"

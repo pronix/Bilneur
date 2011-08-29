@@ -8,12 +8,19 @@ class FavoriteProductsController < Spree::BaseController
   def add
 
     if (@variant = Variant.active.find_by_id(params[:id]))
+      @order = params[:virtual].present? ? current_virtual_order(true) : current_order(true)
+
+      if (@item = @order.line_items.detect{ |v| v.variant_id == @variant.id})
+        @order.line_items.delete(@item)
+      end
+
       if current_user
         current_user.add_to_favorite(@variant)
       else
         (session[:favorite_products] ||= [ ]) << @variant.id
       end
     end
+
     respond_to do |format|
       format.html { redirect_to :back, :notice => "Product saved." }
       format.js  { render :partial => "order/favorite_product", :layout => false  }

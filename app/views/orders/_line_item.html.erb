@@ -8,7 +8,11 @@
       <div>
         <b><%= variant.product.name %></b>
         <span>Condition: <em><%= variant.display_condition %></em></span>
-        <%= link_to t("save_for_later"), add_favorite_path(variant) %>
+        <% if item_form.object.order.virtual? %>
+          <%= link_to t("save_for_later"), add_favorite_path(variant, :virtual => true) %>
+        <% else %>
+          <%= link_to t("save_for_later"), add_favorite_path(variant) %>
+        <% end %>
       </div>
     </div>
 

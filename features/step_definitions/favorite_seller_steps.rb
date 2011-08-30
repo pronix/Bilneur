@@ -22,3 +22,15 @@ end
 Given /^I close my browser$/ do
   delete_cookie Rails.application.config.session_options[:key]
 end
+
+Then /^I have following sellers as favorite:$/ do |table|
+  table.hashes.each { |hash| @user.favorite_sellers << User.find_by_email(hash[:email]) }
+  @user.favorite_sellers.count.should == 3
+end
+
+Then /^I should all (\d+) favorite sellers$/ do |count_seller|
+  favorite_sellers = @user.favorite_sellers
+  favorite_sellers.count.should == count_seller.to_i
+  favorite_sellers.each { |seller| page.should have_content(seller.full_name) }
+end
+

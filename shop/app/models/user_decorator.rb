@@ -25,8 +25,7 @@ User.class_eval do
   has_and_belongs_to_many :virtual_sales, :join_table => "orders_users", :class_name => "Order",
                           :conditions => { "orders.virtual" => true}
   has_and_belongs_to_many :favorite_variants, :join_table => "favorite_variants", :class_name => "Variant", :uniq => true
-  has_and_belongs_to_many :favorite_sellers, :join_table => "favorite_sellers", :class_name => "User",
-                          :uniq => true, :foreign_key => 'seller_id'
+  has_and_belongs_to_many :favorite_sellers, :join_table => "favorite_sellers", :class_name => "User", :uniq => true, :association_foreign_key => 'seller_id'
 
   has_many :orders,  :conditions => { :virtual => false}
   has_many :virtual_orders, :class_name => "VirtualOrder", :foreign_key => :user_id
@@ -83,7 +82,7 @@ User.class_eval do
   end
 
   def merge_favorite_sellers(_seller_ids=[])
-    User.where(:id => _seller_ids).each { |user| favorite_sellers << user unless favorite_sellers.find_by_id(user.id)}
+    User.where(:id => _seller_ids).each { |seller| favorite_sellers << seller unless favorite_sellers.find_by_id(seller.id)}
     favorite_sellers
   end
 

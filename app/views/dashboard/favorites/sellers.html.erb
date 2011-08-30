@@ -1,1 +1,6 @@
-adsadsd
+<% for seller in @sellers %>
+  <p id="<%= dom_id seller %>">
+    <%= seller.full_name %>
+    <%= link_to "Delete", dashboard_favorites_path(:seller => seller), :remote => true, :method => :delete, :onclick => "$(\"#user_#{seller.id}\").remove()" %>
+  </p>
+<% end %>

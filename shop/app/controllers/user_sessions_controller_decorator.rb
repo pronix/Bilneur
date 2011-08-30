@@ -31,7 +31,9 @@ UserSessionsController.class_eval do
 
     session[:guest_token] = nil
     current_user.merge_favorite(session[:favorite_products]||[])
-    session[:favorite_products] = [ ]
+    current_user.merge_favorite_sellers(session[:favorite_sellers]||[])
+    session[:favorite_products] = []
+    session[:favorite_sellers] = []
 
   end
 

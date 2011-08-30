@@ -72,7 +72,7 @@ Rails.application.routes.draw do
 
     root :to => "users#show"
 
-    resource :favorites, :only => [] do
+    resource :favorites, :only => [:destroy] do
       member do
         get :sellers
       end

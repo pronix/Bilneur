@@ -14,3 +14,11 @@ end
 Then /^I should have (\d+) favorite sellers$/ do |fav_count|
   @user.favorite_sellers.count.should == 2
 end
+
+Then /^show me the cookies!$/ do
+  show_me_the_cookies
+end
+
+Given /^I close my browser$/ do
+  delete_cookie Rails.application.config.session_options[:key]
+end

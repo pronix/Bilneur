@@ -15,11 +15,11 @@
               <img src="images/icons/slr_ico_fml_grn.png" alt="" />
             <% end %>
           </i>
-          <span><em><%= @order.line_items.count %></em>In Cart</span>
+          <span><em><%= @order.item_count  %></em>In Cart</span>
 
           <span>
             <em class="grnTag">
-              <%= current_virtual_order.nil? ? 0 : current_virtual_order.line_items.count %>
+              <%= current_virtual_order.nil? ? 0 : current_virtual_order.item_count  %>
             </em>
             In Virtual Cart
           </span>

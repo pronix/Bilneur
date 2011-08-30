@@ -1,19 +1,19 @@
-<%
-   facets = @searcher.facets || []
-   price_ranges = YAML::load(Spree::Config[:product_price_ranges])
-   for facet in facets
-   options = facet.options
-   options = options.sort{|x,y| y.count <=> x.count} unless facet.name == :price_range
-   unless options.empty? %>
+<% if params[:taxon] || params[:taxon_ids] %>
 
-<li><%= t "#{facet.name}_facet" %>:</li>
+<% facet = @searcher.facets.detect{|v| v.name == :taxon}
+   options = facet.try(:options) %>
+
+<% unless options.blank? %>
+
+<li><%= t "#{:taxon}_facet" %>:</li>
 
 <% options.each do |option| %>
-<li>
+<li >
   <%= link_to_facet(facet.name, option.name, option.count) %>
-  <%= image_tag "icons/ico_cros.png" %>
+
+  <%= link_to image_tag("icons/ico_cros.png"), "#", :"data-remove_taxon" => option.name, :class => "remove-facet" %>
 </li>
 <% end %>
+<% end  %>
 
-<% end %>
 <% end  %>

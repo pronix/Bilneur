@@ -1,18 +1,18 @@
 <% content_for :head do %>
 
-  <meta property="og:type"        content="website" />
-  <meta property="og:title"       content="<%= product.name %>"/>
-  <meta property="og:url"         content="<%= product_url(product) %>" />
-  <meta property="og:image"       content="<%= product_link_image(product, :small) %>"/>
-  <meta property="og:site_name"   content="Bilneur"/>
-  <meta property="og:description" content="<%= product.description %>"/>
+<meta property="og:type"        content="website" />
+<meta property="og:title"       content="<%= product.name %>"/>
+<meta property="og:url"         content="<%= product_url(product) %>" />
+<meta property="og:image"       content="<%= product_link_image(product, :small) %>"/>
+<meta property="og:site_name"   content="Bilneur"/>
+<meta property="og:description" content="<%= product.description %>"/>
 
-  <% unless Spree::Config.instance.preferences["facebook_app_id"].blank? %>
-  <meta property="fb:app_id" content="<%= Spree::Config.instance.preferences['facebook_app_id'] %>" />
-  <% end %>
-  <% unless Spree::Config.instance.preferences["facebook_admins"].blank? %>
-  <meta property="fb:admins" content="<%= Spree::Config.instance.preferences['facebook_admins'] %>" />
-  <% end %>
+<% unless Spree::Config.instance.preferences["facebook_app_id"].blank? %>
+<meta property="fb:app_id" content="<%= Spree::Config.instance.preferences['facebook_app_id'] %>" />
+<% end %>
+<% unless Spree::Config.instance.preferences["facebook_admins"].blank? %>
+<meta property="fb:admins" content="<%= Spree::Config.instance.preferences['facebook_admins'] %>" />
+<% end %>
 
 <% end %>
 
@@ -20,18 +20,18 @@
 <div class="cntCntr">
   <div class="favCmnt">
     <span><%= product.name %></span>
-      <div>
-       <%= link_to "Sell A Product Like this", "", :class=>"seAll" %>
+    <div>
+      <%= link_to "Sell A Product Like this", "", :class=>"seAll" %>
 
-       <div class="social" class="fbLike">
-            <%= fb_like %>
-            
-          </div>
-          <div class="social">
-            <%= plus_one %>
-          </div>
-          <%= link_to "Add to Favorites", "", :class=>"add social" %>
+      <div class="social" class="fbLike">
+        <%= fb_like %>
+
       </div>
+      <div class="social">
+        <%= plus_one %>
+      </div>
+      <%= link_to "Add to Favorites", "", :class=>"add social" %>
+    </div>
   </div>
 
   <div class="sldrBnr">
@@ -43,23 +43,24 @@
       <div class="ad-nav">
         <div class="ad-thumbs">
           <ul class="ad-thumb-list">
-          <% product.images.each do |image| %>
+
+            <% product.images.each do |image| %>
             <li>
               <%= link_to image_tag(image.attachment.url(:mini), :alt=>""), image.attachment.url(:product) %>
             </li>
-          <% end %>
+            <% end %>
+
           </ul>
         </div>
       </div>
     </div>
     <div class="bnrFolw">
       <ul>
-          <li><%= link_to image_tag("icons/bnr_ico_twtr.png"), "" %></li>
-          <li><%= link_to image_tag("icons/bnr_ico_ggl.png"), "" %></li>
-          <li><%= link_to image_tag("icons/bnr_ico_fb.png"), "" %></li>
-          <li><%= link_to image_tag("icons/bnr_ico_eml.png"), "" %></li>
-          <li><%= link_to image_tag("icons/bnr_ico_lnk.png"), "" %></li>
-        </ul>
+        <li><%= link_to_twitter_share(product_url, image_tag("icons/bnr_ico_twtr.png")) %></li>
+        <li><%= link_to image_tag("icons/bnr_ico_ggl.png"), "" %></li>
+        <li><%= link_to image_tag("icons/bnr_ico_eml.png"), "mailto:#{Spree::Config[:support_email]}" %></li>
+        <li><%= link_to image_tag("icons/bnr_ico_lnk.png"), "" %></li>
+      </ul>
     </div>
   </div>
 

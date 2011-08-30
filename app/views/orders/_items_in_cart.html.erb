@@ -12,6 +12,6 @@
   </div>
   <div class="slngrgt">
     <b><span>TOTAL </span><%= order_price(order) %></b>
-    <p><%= order.line_items.count %> Items From <%= order.sellers!.count %> Sellers</p><!-- FIXME -->
+    <p><%= order.item_count %> Items From <%= t "sellers", :count => order.sellers!.count %></p><!-- FIXME -->
   </div>
 </div>

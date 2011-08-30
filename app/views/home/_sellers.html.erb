@@ -1,12 +1,49 @@
+<% stylesheet "product", 'top_sellers' %>
+  <div class="smPrdcts">
+
 <% for seller in sellers %>
- <div class="smPrdcts">
-   <div class="smPd">
-     <i class="imgP"><%= image_tag seller.photo.url(:for_review) %></i>
-     <div class="pdDtl">
-       <h4><%= seller.firstname %></h4>
-       <p><%= show_stars seller.avg_rating %></p>
-       <p>Reviews count: <%= seller.reviews_count %></p>
-     </div>
-   </div>
- </div>
-<% end %>
+      <div class="smPd">
+              <div class="smPdtop">
+                  <i class="imgP"><%= image_tag seller.photo.url(:for_review) %></i>
+                  <div class="pdDtl">
+                      <h4><%= seller.firstname %></h4>
+
+                      <% if seller.static_data.present? %>
+                          <% if seller.static_data.about.present? %>
+                            <p><%= seller.static_data.about %></p>
+                          <% end %>
+                      <% else %>
+                            <p>Seller hasn't filled about section yet</p>
+                      <% end %>
+  
+                      <b class="revw">
+                          <em><%= seller.reviews_count %></em>
+                          <span>reviews</span>
+                      </b>
+                      <%= show_stars seller.avg_rating %>
+                  </div>
+                  <div class="rTe">
+                      <ul>
+                        <li>
+                          <%= link_to_twitter_share(store_seller_url(seller), image_tag('/images/icons/ch_twtr.png')) %>
+                        </li>
+                          <li><a href="#"><img src="/images/icons/ch_dl.png" alt=""></a></li>
+                      </ul>
+                  </div>
+              </div>
+              
+              <div class="bottom">
+                  <em>Location:</em><i>California</i>
+                  <div class="btnGreen">
+                    <%= link_to raw("<big>View Seller's Store</big>"), store_seller_path(seller) %>
+                  </div>
+                  <div class="btnGrey">
+                    <%= link_to raw("<b>Contact Seller</b>"), new_message_path(seller) %>
+                  </div>
+              </div>
+            </div>
+      <% end %>
+</div>
+
+
+

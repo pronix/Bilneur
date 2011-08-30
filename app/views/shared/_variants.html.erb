@@ -11,7 +11,7 @@
       <% variants.each do |variant| %>
 
       <% if Spree::Config[:show_zero_stock_products] || variant.has_stock? %>
-          <% if defined? grid %>
+          <% if grid %>
             <%= render "shared/product_cell", :product => variant, :best_deal => variant %>
           <% else %>
             <%= render "shared/product_line", :product => variant, :best_deal => variant %>

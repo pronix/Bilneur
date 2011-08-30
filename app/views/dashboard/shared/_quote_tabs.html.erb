@@ -1,10 +1,7 @@
-<h1><%== t("editing_quote") + " &ldquo;#{@quote.name}&rdquo;" %></h1>
 
-<% content_for :sidebar do %>
+<h3><%= @quote.name %><span class='sku'><%= @quote.sku %></span></h3>
 
-  <h3><%= @quote.name %><span class='sku'><%= @quote.sku %></span></h3>
-  <br class="clear" />
-
+<div class="prflBus">
   <ul class="sidebar product-menu">
 
       <li<%== ' class="active"' if current == "Quote Details" %>>
@@ -25,7 +22,4 @@
       </li>
 
   </ul>
-  <br class="clear" />
-
-<% end %>
-
+</div>

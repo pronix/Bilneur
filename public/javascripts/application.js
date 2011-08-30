@@ -1,5 +1,14 @@
 (function($){
   $(document).ready(function(){
+    $("[data-remove_taxon]").live('click', function(){
+      var search_form = $("form#products_search");
+      $.ajax({
+               url: "/products.js",
+              data: $(search_form).serialize()+"&"+$.param({"without_taxon": $(this).attr("data-remove_taxon")})
+            })
+      return false;
+    });
+
     $("button[name='to_add'][value='virtual_store']").live('click', function(){
       var form = $(this).parents("form:first");
       $(form).find("input.js-field").remove();
@@ -16,7 +25,11 @@
 
     });
 
-    $("[data-run_search='t']").bind("change", function(){ $(this).parents("form:first").submit(); })
+    $("[data-run_search='t']").bind("change", function(){ 
+      $('.blogFilters').prepend("<div class='spinner'><img src='/images/icons/spinner.gif' /></div>");
+        $(this).parents("form:first").submit(); 
+    
+    });
 
     //Logo effect
       $('.cLogo,.otherbutton,.homebutton,.downloadbutton,.donatebutton, .sellbutton').append('<span class="hover"></span>').each(function () {

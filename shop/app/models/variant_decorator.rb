@@ -4,6 +4,8 @@ Variant.class_eval do
   #
   belongs_to :seller, :class_name => "User"
   belongs_to :owner, :class_name => "User" # seller who added quote, not virtual seller
+  has_and_belongs_to_many :favorite_users, :join_table => "favorite_variants", :class_name => "User", :uniq => true
+
 
   # scopes
   #
@@ -47,19 +49,15 @@ Variant.class_eval do
   #
   delegate_belongs_to :product, :ean
 
+
+  def is_favorite?(_user = nil)
+    _user.present? && favorite_users.find_by_id(_user.id).present?
+  end
+
   # Shipping cost for variant
   # only realy shipping methods
   #
   #
-
-  def is_favorite?(current_user)
-    if current_user && current_user.favorite_variants.find_by_id(self.id)
-      true
-    else
-      false
-    end
-  end
-
   def shipping
     seller.shipping_methods.realy[0..0].map do |item|
       {

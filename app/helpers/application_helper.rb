@@ -1,5 +1,13 @@
 module ApplicationHelper
 
+  def link_to_twitter_share(link_url, image)
+    if image
+      link_to( image, "http://twitter.com/share?url=#{link_url}")
+    else
+      link_to( image_tag("icons/ch_twtr.png"), "http://twitter.com/share?url=#{link_url}")
+    end
+  end
+
   def format_address_for_cart(address)
     "#{address.address1}<br />#{address.country.try(:name) },#{address.zipcode}(edit)<br />&nbsp;"
   end
@@ -80,11 +88,11 @@ module ApplicationHelper
   # SOCIAL BUTTONS
 
   def fb_like
-      content_tag :iframe, nil, :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape(request.url)}&layout=standard&show_faces=true&width=100&action=like&font=arial&colorscheme=light&height=21&layout=button_count&locale=en_US", :scrolling => 'no', :frameborder => '0', :allowtransparency => true, :id => :facebook_like, :style => "width: 100px; height: 21px; overflow: hidden;"
+    content_tag :iframe, nil, :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape(request.url)}&layout=standard&show_faces=true&width=100&action=like&font=arial&colorscheme=light&height=21&layout=button_count&locale=en_US", :scrolling => 'no', :frameborder => '0', :allowtransparency => true, :id => :facebook_like, :style => "width: 100px; height: 21px; overflow: hidden;"
   end
 
   def plus_one
-      raw("<div style='padding-top:3px'><div class='g-plusone' data-size='small' data-count='true'></div></div>")
+    raw("<div style='padding-top:3px'><div class='g-plusone' data-size='small' data-count='true'></div></div>")
   end
 
   def seller_favorite?(_seller)

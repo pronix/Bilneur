@@ -1,9 +1,23 @@
 <%= render :partial => 'dashboard/shared/quote_tabs', :locals => {:current => "Quote Details"} %>
-<%= render "shared/error_messages", :target => @quote %>
-<%= form_for(@quote, :url => dashboard_quote_path(@quote), :html => { :method => :put, :multipart => true }) do |f| %>
-<%= render :partial => 'form', :locals => {:f => f} %>
-<p class="form-buttons">
-  <button type="submit"><span><%= t("update") %></span></button>
-  <%= t("or") %> <%= link_to t("cancel"), dashboard_quotes_path %>
-</p>
-<% end %>
+<div class="sptCntBus">
+    <%= render "shared/error_messages", :target => @quote %>
+    <div class="top"></div>
+    <div class="cntr">
+    <h2 class="htFix"><%== t("editing_quote") + " &ldquo;#{@quote.name}&rdquo;" %></h2>
+
+
+      <%= form_for(@quote, :url => dashboard_quote_path(@quote), :html => { :method => :put, :multipart => true, :class => "contInp contInpFix contInpMarg" }) do |f| %>
+      <%= render :partial => 'form', :locals => {:f => f} %>
+      
+      <div class="bSaveC">
+        <big>
+          <button type="submit" class="btn otherbutton" id="save_shipping_method"></button>
+        </big>
+        <p>
+          <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_quotes_path %>
+        </p>
+      </div>
+      <% end %>
+  </div>
+  <div class="btm"></div>
+</div>

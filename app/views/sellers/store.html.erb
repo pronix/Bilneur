@@ -63,7 +63,7 @@
                   </form>
                 </div>
 
-                <%= render "shared/variants", :variants => @quotes, :taxon => @taxon, :grid => true %>
+                <%= render "shared/variants", :variants => @quotes, :taxon => @taxon, :grid => params[:grid] %>
 
                 <div class="blogPg">
                   <%= page_entries_info @quotes%><!-- FIXME add will_paginate 3.0.pre4 support for modifying text of entries info -->
@@ -119,6 +119,10 @@
 <div class="col2 col2SlPrd prdctDPg slrPrdctPg slrPrdctPg">
   <div class="blogFilters">
     <%= render "summary" %>
+    <div class="gridToggler">
+         <%= link_to "List View", store_seller_path(@seller), :class => "pLa" %>
+         <%= link_to "Grid View", store_seller_path(@seller, :grid => true) %>
+    </div>
     <%= render "shared/filter" %>
   </div>
 </div>

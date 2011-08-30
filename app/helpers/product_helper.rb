@@ -19,14 +19,11 @@ module ProductHelper
     image_tag user.photo.url(size.to_sym)
   end
 
-  def show_product_image(product,size='small')
-    case product.class.to_s
-      when "Variant"
-        return image_tag '/images/noimage/product.jpg' if product.image.nil?
-        return image_tag product.image.attachment(size.to_sym)
-      else
-        return image_tag '/images/noimage/product.jpg' if product.images.nil?
-        return image_tag product.images.last.attachment(size.to_sym)
+  def show_product_image(product, size = 'small')
+    if product.is_a?(Variant)
+      image_tag( product.image.blank? ? "noimage/#{size}.jpg" :  product.image.attachment.url(size.to_sym) )
+    else
+      image_tag( product.images.blank? ? "noimage/#{size}.jpg" : product.images.last.attachment(size.to_sym) )
     end
   end
 

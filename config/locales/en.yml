@@ -8,6 +8,9 @@ en:
   shipping_method: Shipping Method
   quantity: Quantity
   seller: Seller
+  sellers:
+    one: '1 Seller'
+    other: '%{count} Sellers'
   condition: Condition
   item_details: Item Details
   all_messages: All Messages

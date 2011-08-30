@@ -1,23 +1,25 @@
 <div class="ptPod">
-  <% if product.class == Variant %>
-    <%= link_to raw("More info" + image_tag("/images/icons/chta_pls.png")), seller_quote_path(@seller, product.product, product), :class => "pTpA" %>
+  <% if product.is_a?(Variant) %>
+    <%= link_to seller_quote_path(@seller, product.product, product), :class => "pTpA" do %>
+      More info <%= image_tag("/images/icons/chta_pls.png") %>
+    <% end %>
+
     <i class="pImg">
-      
+
       <% if best_deal.is_favorite?(current_user) %>
         <%= image_tag "/images/favribbon.png", :class => "favribbon" %>
       <% end %>
       <%= link_to show_product_image(product,'small'), seller_quote_path(@seller, product.product, product) %>
-    
+
     </i>
   <% else %>
   <%= link_to image_tag("/images/icons/chta_pls.png"), product, :class => "pTpA" %>
   <i class="pImg">
-      <% if best_deal.is_favorite?(current_user) %>
-        <%= image_tag "/images/favribbon.png", :class => "favribbon" %>
-      <% end %>
+    <%= image_tag "/images/favribbon.png", :class => "favribbon" if best_deal.is_favorite?(current_user) %>
     <%= link_to small_image(product), product %>
   </i>
   <% end %>
+
 
   <b class="prc"><%= number_to_currency(best_deal.try(:price)) %><br>
     <span>Shipping: </span>
@@ -26,9 +28,13 @@
     <% end %>
   </b>
   <ul>
-    <li><a href="#"><img src="/images/icons/ch_twtr.png" alt=""></a></li><!-- FIXME -->
+    <li>
+      <%= link_to_twitter_share(seller_quote_url(best_deal.seller, best_deal.product, best_deal), nil) %>
+    </li>
     <li><a href="#"><img src="/images/icons/ch_fb.png" alt=""></a></li><!-- FIXME -->
-    <li><a href="#"><img src="/images/icons/ch_dl.png" alt=""></a></li><!-- FIXME -->
+    <li>
+      <%= link_to image_tag("icons/ch_dl.png"), add_favorite_path(best_deal) %>
+    </li>
   </ul>
 
   <div class="cntcts">

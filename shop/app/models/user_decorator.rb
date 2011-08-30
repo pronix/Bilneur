@@ -18,14 +18,15 @@ User.class_eval do
   has_many :products, :foreign_key => :owner_id
   has_many :seller_stores, :foreign_key => :seller_id
   has_many :quotes,   :class_name => "Variant", :foreign_key => :seller_id,
-  :conditions => [ "variants.is_master = #{connection.quoted_false}" ]
+                      :conditions => [ "variants.is_master = #{connection.quoted_false}" ]
   has_many :shipping_methods, :foreign_key => :seller_id
-  has_and_belongs_to_many :sales,         :join_table => "orders_users", :class_name => "Order",
-  :conditions => { "orders.virtual" => false}
+  has_and_belongs_to_many :sales, :join_table => "orders_users", :class_name => "Order",
+                          :conditions => { "orders.virtual" => false}
   has_and_belongs_to_many :virtual_sales, :join_table => "orders_users", :class_name => "Order",
-  :conditions => { "orders.virtual" => true}
+                          :conditions => { "orders.virtual" => true}
   has_and_belongs_to_many :favorite_variants, :join_table => "favorite_variants", :class_name => "Variant", :uniq => true
-  has_and_belongs_to_many :favorite_sellers, :join_table => "favorite_sellers", :class_name => "User", :uniq => true, :foreign_key => 'seller_id'
+  has_and_belongs_to_many :favorite_sellers, :join_table => "favorite_sellers", :class_name => "User",
+                          :uniq => true, :foreign_key => 'seller_id'
 
   has_many :orders,  :conditions => { :virtual => false}
   has_many :virtual_orders, :class_name => "VirtualOrder", :foreign_key => :user_id
@@ -221,8 +222,17 @@ User.class_eval do
   end
 
   def available_shipping_methods?
+    shipping_methods.present?
+  end
+
+  def available_realy_shipping_methods?
     shipping_methods.to_address.present?
   end
+
+  def available_virtual_shipping_methods?
+    shipping_methods.with_seller.present? || shipping_methods.to_bilneur.present?
+  end
+
   def virtual_seller?
     has_role?("virtual_seller")
   end

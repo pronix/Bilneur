@@ -9,11 +9,11 @@
 <div class="bL"><div class="bR"></div></div>
 <div class="slng">
   <div class="slngLft slngLftFx">
-        <a href="#"><b>Add More Items To V. Store</b></a>
+      <%= link_to raw("<b>Add More Items To V. Store</b>"), products_path %>
     </div>
     <div class="slngrgt">
       <b><span>TOTAL</span> <%= order_price(current_virtual_order) %></b>
-      <p><%= current_virtual_order.line_items.count %> Items From <%= current_virtual_order.sellers.count %> Sellers</p> <!-- FIXME -->
+      <p><%= current_virtual_order.item_count %> Items From <%= t "sellers", :count => current_virtual_order.sellers!.count %></p> <!-- FIXME -->
     </div>
 </div>
 <span class="p2bdr"></span>

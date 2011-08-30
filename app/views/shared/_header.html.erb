@@ -32,10 +32,10 @@
             <a href="/t/categories">Categories</a>
           </li>
 
-          <li><a href="#">Groups</a></li>
           <li class=" <%== 'current_top' if request.path == top_path(:products) %>">
             <%= link_to_unless_current "Top Products", top_path(:products) %>
           </li>
+
           <li>
             <%= link_to_unless_current "Top Sellers", top_path(:sellers) %>
           </li>
@@ -45,6 +45,8 @@
           </li>
 
           <li><a href="#">Blog</a></li>
+
+          <li><a href="/about_us">About Us</a></li>
         </ul>
         <%= render "shared/search" %>
       </div>

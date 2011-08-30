@@ -169,7 +169,7 @@ Order.class_eval do
       shipments.each do |item|
         if item.shipping_method.with_seller?
           item.ship! if item.can_ship?
-          item.inventory_units.map(&:ship!) if item.shipped?
+          item.inventory_units.map{ |v| v.ship! if v.sold? } if item.shipped?
         end
       end
     end

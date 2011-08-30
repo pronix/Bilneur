@@ -160,17 +160,17 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
     .menu { width:100%;}
         .menu .lft {background:url('/images/layout/bg_mnu_lft.png') no-repeat;}
         ul.mMenu {width:495px;}
-        .menu .cntr { float:left; width:900px;background:url('/images/layout/bg_mnu_cntr.png') repeat-x;}
-        .menu .rgt {background:url('/images/layout/bg_mnu_rgt.png') no-repeat;}
+        .menu .cntr { float:left; width:900px;background:url('/images/layout/bg_mnu_cntr.png') repeat-x; position: relative; z-index: 11;}
+        .menu .rgt {background:url('/images/layout/bg_mnu_rgt.png') no-repeat; position: relative; z-index: 10; }
         .menu .lft, ul.mMenu,.menu .rgt { height:38px;}
         .menu .lft,.menu .rgt {width:10px;}
         ul.mMenu li {font-weight:bold; margin:10px 0 0 0; line-height:19px;font-size:11px;color:#fff; }
-            ul.mMenu li a { height:20px; padding:0 5px; margin:0 0 0 10px;line-height:19px;font-size:11px;color:#fff; font-weight:bold;}
+            ul.mMenu li a { height:20px; padding:0 5px; margin:0 0 0 10px;line-height:19px;font-size:12px;color:#fff; font-weight:bold;}
             ul.mMenu li a:hover, ul.mMenu li a.active { color:#e0bd11; background:url('/images/bgs/mnu_hvr.png') repeat-x; border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;}
-    .tSrch { width:405px;height:25px; margin:7px 0 0 0;background:url('/images/bgs/srch_bg_new.png') left no-repeat;}
+    .tSrch { width:390px;height:25px; margin:7px 0 0 0;background:url('/images/bgs/srch_bg_new.png') left no-repeat; float: right !important;}
         .tSrch form { width:100%;}
             .tSrch form .allProd { margin:11px;}
-        .tSrch input[type=text] { width:192px;height:14px; padding:5px;border:none;background:none;}
+        .tSrch input[type=text] { width:192px;height:14px; padding:5px;border:none;background:none; font-style: italic; color: #888}
         .tSrch .allProd {}
         .tSrch input[type=submit] {width:37px;height:29px;cursor:pointer;border:none;margin:-2px -5px 0 23px;background:url('/images/forms/jst_go.png') no-repeat;}
     .pAbb { position:relative;}
@@ -178,7 +178,7 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
         .pAbb .dd2 .ddChild { width:140px!important; top:25px!important;}
         .pAbb .dd2 { width:140px!important; margin-top:0!important;}
         .pAbb .dd2 .ddTitle { background:none!important;}
-        .cHme {float:left; width:135px; margin-left:7px}
+        .cHme {float:left; width:126px; margin-left:7px}
         .pAbb .dd2 .ddTitle span.arrow {background:none!important;}
 .hd1B {float:right;}
 .hd1A, .hd2,.loginBar,.loginBar i,.loginBar a, ul.tpMnu, ul.tpMnu li, ul.tpMnu li a, ul.mMenu, ul.mMenu li, ul.mMenu li a,.menu,.menu .lft,.menu .rgt,.tSrch input[type=text],.tSrch form,.allProd,.tSrch input[type=submit], .tSrch {float:left;}
@@ -278,3 +278,16 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
 .marquee03 .otherbutton {display:block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') no-repeat;background-position:0 -53px;cursor: pointer; border: none;}  
 .marquee03 .otherbutton span.hover {position: absolute;display: block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') 0 0px no-repeat;background-position: bottom; top: 0;}
 
+
+
+.spinner {
+  position: absolute;
+  background: white;
+  opacity: 0.5;
+  left: 0; right: 0; top: 0; bottom: 0;
+}
+  .spinner img {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+  }

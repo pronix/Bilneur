@@ -1,9 +1,10 @@
+
 <%= form_tag products_path, :remote => true, :method => 'get', :id => "products_search" do %>
 <%= hidden_field_tag "grid", params[:grid] if params[:grid] %>
 <% get_taxonomies.each do |taxonomy| %>
 <div id="CollapsiblePanel<%= taxonomy.id %>" class="CollapsiblePanel">
   <div class="CollapsiblePanelTab" tabindex="0"><span><%= taxonomy.name.singularize %></span></div>
-  <div class="CollapsiblePanelContent">
+  <div class="CollapsiblePanelContent" id="taxonsCheckboxes">
     <% taxonomy.root.children.each do |taxon| %>
     <div>
       <div class="checkbox">

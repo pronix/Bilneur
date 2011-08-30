@@ -46,9 +46,9 @@
       <ul>
         <li>
           <% if variant %>
-          <%= link_to_twitter_share(seller_quote_url(@seller, product, best_deal)) %>
+            <%= link_to_twitter_share(seller_quote_url(@seller, product, best_deal), nil) %>
           <% else %>
-          <%= link_to_twitter_share(product_url(product)) %>
+            <%= link_to_twitter_share(product_url(product), nil) %>
           <% end %>
         </li>
         <!--<li><%= link_to image_tag("icons/ch_fb.png"), "#" %></li>-->

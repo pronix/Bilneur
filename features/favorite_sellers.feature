@@ -17,13 +17,14 @@ Feature: Manage Favorite Sellers
     Then I go to the seller store "seller1@person.com"
     Then I should not see "Add Seller To Favorites"
 
-@announce
+@wip @announce
   Scenario: Add seller to favorite by non register user
     Then I go to the seller store "seller1@person.com"
     Then I follow "Add Seller To Favorites"
     Then I should not see "Add Seller To Favorites"
     Then I go to the seller store "seller1@person.com"
     Then I should not see "Add Seller To Favorites"
+    And I sign in as "email@person.com/password"
     Then I close my browser
 
 

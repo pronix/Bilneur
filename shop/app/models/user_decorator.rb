@@ -82,6 +82,11 @@ User.class_eval do
     favorite_variants
   end
 
+  def merge_favorite_sellers(_seller_ids=[])
+    User.where(:id => _seller_ids).each { |user| favorite_sellers << user unless favorite_sellers.find_by_id(user.id)}
+    favorite_sellers
+  end
+
   def add_seller_to_favorite(_seller)
     favorite_sellers << _seller unless favorite_sellers.find_by_id(_seller.id)
     favorite_sellers

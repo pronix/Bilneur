@@ -72,8 +72,13 @@ Rails.application.routes.draw do
 
     root :to => "users#show"
 
-    resource :secrets
+    resource :favorites, :only => [] do
+      member do
+        get :sellers
+      end
+    end
 
+    resource :secrets
     resource :sellers do
       member do
         get :about_you

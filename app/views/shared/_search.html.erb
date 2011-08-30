@@ -1,8 +1,8 @@
 <% @taxons = @taxon && @taxon.parent ? @taxon.parent.children : Taxon.roots  %>
 <div class="tSrch">
 <%= form_tag products_url, :method => :get do %>
-  <%= text_field_tag :keywords, params[:keywords], :value=>"SEARCH",
-     :onfocus=>"if(this.value=='SEARCH') this.value=''",:onblur=>"if(this.value=='') this.value=''" %>
+  <%= text_field_tag :keywords, params[:keywords], :value=>"Search",
+     :onfocus=>"if(this.value=='Search') this.value=''",:onblur=>"if(this.value=='') this.value=''" %>
    <div class="pAbb cHme">
      <% if Taxon.category.present? %>
     <%= select_tag :taxon,

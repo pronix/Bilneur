@@ -44,8 +44,8 @@
   <div class="prchsMnu">
     <div class="top"></div>
     <ul>
-      <li><%= link_to raw("<span>View Order Details</span>"), dashboard_order_path(order) %></li>
-      <li><%= link_to raw("<span>View Invoice</span>"), dashboard_order_path(order, :pdf) %></li>
+      <li><%= link_to raw("<span>View Order Details</span>"), dashboard_order_path(order), :target => "_blank" %></li>
+      <li><%= link_to raw("<span>View Invoice</span>"), dashboard_order_path(order, :pdf), :target => "_blank" %></li>
       <li><%= link_to raw("<span>Add to Inventory</span>"), "" %></li>
       <li>
         <%= link_to raw("<span>Write a review</span>"), new_product_review_path(item.variant.product) if can_create_review?(item.variant.product) %>

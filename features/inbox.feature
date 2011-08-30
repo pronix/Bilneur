@@ -10,21 +10,6 @@ Feature: Inbox
   And the following sellers exist:
     | firstname | email              | password  | password_confirmation |
     | Seller1   | seller1@person.com | password1 | password1             |
-# @wip @javascript
-#   Scenario Outline: Change move to in the show message
-#     And I sign in as "email1@person.com/password"
-#     And I have 1 simple message when I is recipient
-#     Then I go to the @message message page
-#     Then sleep "10"
-#     And I select "<mark_as>" from "websites21"
-#     And @message should be "<field>" is "<should_be>"
-
-#     Examples:
-#      | mark_as        | field          | should_be |
-#      | Mark as read   | recipient_read | true      |
-#      | Mark as unread | recipient_read | false     |
-#      | Mark as important | recipient_marker | important |
-    
 
   Scenario: Sending Message access only auth user
     When I go to the new message page for seller "seller1@person.com"
@@ -130,3 +115,21 @@ Feature: Inbox
     Then I execute script "inbox send_as_read"
     And I wait for the AJAX call to finish
     And All my message should be read
+
+@wip @javascript
+  Scenario Outline: Move massage to
+    Given the following messages exist:
+     | created_at | sender                 | recipient                | subject   | content           |
+     | 01/01/2011 | email:email@person.com | email:seller1@person.com | Question1 | Question1 message |
+    When I sign in as "seller1@person.com/password1"
+    When I go to the dashboard message page "Question1"
+    # script execute for last user message
+    Then I execute script "<page_script_execute>"
+    And I wait for the AJAX call to finish
+    And message "Question1" field "<field>" should be "<value>"
+
+    Examples:
+      | page_script_execute     | field                | value     |
+      | inbox move_to unread    | recipient_read       | false     |
+      | inbox move_to important | recipient_marker     | important |
+      | inbox move_to delete    | recipient_deleted_at | present   |

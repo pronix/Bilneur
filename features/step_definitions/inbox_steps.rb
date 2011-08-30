@@ -25,6 +25,15 @@ end
 
 Then /^I execute script "(.+)"$/ do |script_name|
   case script_name
+    when "inbox move_to unread"
+      message = @user.messages.roots.last
+      page.execute_script %Q{ $.ajax({ type: "POST", url: "/dashboard/inbox/multi" + "?multi=" + 'mark_as_unread' + "&message_ids=" + "#{message.id}" }); }
+    when "inbox move_to important"
+      message = @user.messages.roots.last
+      page.execute_script %Q{ $.ajax({ type: "POST", url: "/dashboard/inbox/multi" + "?multi=" + 'mark_as_important' + "&message_ids=" + "#{message.id}" }); }
+    when "inbox move_to delete"
+      message = @user.messages.roots.last
+      page.execute_script %Q{ $.ajax({ type: "POST", url: "/dashboard/inbox/multi" + "?multi=" + 'delete' + "&message_ids=" + "#{message.id}" }); }
     when "inbox select_all_messages"
       page.execute_script %Q{ $('div.checkbox').css('background-position', '50% -50px');
                               $('div.checkbox').data('checked', true);
@@ -64,4 +73,16 @@ end
 
 Then /^All my message should be read$/ do
   @user.messages.roots.each { |message| message.recipient_read.should be_true }
+end
+
+Then /^message "(.+)" field "(.+)" should be "(.+)"$/ do |subject, field, value|
+  message = Message.find_by_subject(subject)
+  if field == 'recipient_deleted_at'
+    message.send(field).present?.should be_true if value == 'present'
+    message.send(field).present?.should_not be_true if value == '!present'
+  elsif value =~ /true|false/
+    message.send(field).should == eval(value)
+  else
+    message.send(field).should == value
+  end
 end

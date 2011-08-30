@@ -26,7 +26,7 @@ User.class_eval do
                           :conditions => { "orders.virtual" => true}
   has_and_belongs_to_many :favorite_variants, :join_table => "favorite_variants", :class_name => "Variant", :uniq => true
   has_and_belongs_to_many :favorite_sellers, :join_table => "favorite_sellers", :class_name => "User",
-                          :uniq => true, :foreign_key => 'seller_id'
+                          :uniq => true, :association_foreign_key => 'seller_id'
 
   has_many :orders,  :conditions => { :virtual => false}
   has_many :virtual_orders, :class_name => "VirtualOrder", :foreign_key => :user_id

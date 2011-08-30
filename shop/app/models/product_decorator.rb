@@ -1,6 +1,22 @@
 Product.class_eval do
 
 
+  state_machine :creation_state, :initial => :basic, :namespace => 'creation' do
+    event :next do
+
+      transition :from => :basic,      :to => :taxons
+      transition :from => :taxons,     :to => :options
+      transition :from => :options,    :to => :properties
+      transition :from => :properties, :to => :images
+      transition :from => :images,     :to => :complete
+    end
+
+    [ :basic, :taxons, :options, :properties, :images, :complete ].each do |v|
+      event "to_#{v}".to_sym do
+        transition all => v.to_sym
+      end
+    end
+  end
 
   # associations
   #

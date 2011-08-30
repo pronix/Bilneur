@@ -1,0 +1,77 @@
+<%= render "shared/error_messages", :target => @product %>
+<%= render "steps" %>
+<%= form_for(:product,  :url => wizard_dashboard_products_path, :remote => true, :html => { :multipart => true }) do |f| %>
+<%= hidden_field_tag :id, @product.id unless @product.new_record? %>
+
+<fieldset>
+
+  <div class="yui-gc">
+
+    <div class="yui-u first" >
+
+      <div id="selected-options">
+      <table class="index">
+        <tr>
+          <th><%= t("name") %></th>
+          <th><%= t("presentation") %></th>
+          <th>&nbsp;</th>
+        </tr>
+
+        <% @product.option_types.each do |option_type| %>
+        <tr>
+          <td><%= option_type.name %></td>
+          <td><%= option_type.presentation %></td>
+          <td class="actions">
+            <%= link_to_with_icon 'delete',  t("remove"), remove_dashboard_product_option_type_url(@product, option_type) %>
+          </td>
+        </tr>
+        <% end %>
+
+        <% if @product.option_types.empty? %>
+        <tr><td colspan="3"><%= t(:none) %></td></tr>
+        <% end %>
+      </table>
+      </div>
+      </div>
+      <div>
+      <div id="option-types">
+
+
+        <h4>Options available</h4>
+        <table class="index">
+          <tr>
+            <th><%= t("name") %></th>
+            <th><%= t("presentation") %></th>
+            <th></th>
+          </tr>
+          <% (set_available_option_types ||[]).each do |ot| %>
+          <tr>
+            <td><%=ot.name %></td>
+            <td><%=ot.presentation %></td>
+            <td class="actions">
+              <%= link_to icon('add') + ' ' + t("select"),
+                  select_dashboard_product_option_type_path(@product.permalink, ot),
+                  :remote => true, :class => 'iconlink' %>
+            </td>
+          </tr>
+          <% end %>
+          <% if set_available_option_types.blank? %>
+          <tr>
+            <td colspan="3"><%= t('none_available') %></td>
+          </tr>
+          <% end %>
+        </table>
+
+
+      </div>
+    </div>
+
+  </div>
+
+  <p class="form-buttons">
+    <button><span><%= t("actions.next") %></span></button>
+    <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_products_path %>
+  </p>
+
+</fieldset>
+<% end %>

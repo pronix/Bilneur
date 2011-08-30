@@ -27,7 +27,7 @@ end
       <!-- Start dashboard -->
       <div class="slrPrfl">
         <h1>My Dashboard</h1>
-        <div id="TabbedPanels1" class="TabbedPanels">      
+        <div id="TabbedPanels1" class="TabbedPanels">
           <%= render "dashboard/shared/menu" %>
           <div class="TabbedPanelsContentGroup">
             <div class="TabbedPanelsContent">
@@ -36,7 +36,7 @@ end
                   <%= yield :sub_menu %>
                   <br class="clear" />
                 </div>
-      
+
                 <div id="wrapper" class="container">
                   <div id="content" class="<%= 'with-sidebar ' if content_for?(:sidebar) %> clear tile_bg">
                     <% if flash.notice %>
@@ -45,7 +45,7 @@ end
                     <% if flash[:error] %>
                     <div class="flash errors"><%= flash[:error] %></div>
                     <% end %>
-      
+
                     <%= yield %>
                         <% if content_for?(:sidebar) %>
                     <br class='clear' />
@@ -53,7 +53,7 @@ end
                         <%= yield :sidebar %>
                     </div>
                   <% end %>
-      
+
                   </div>
                 </div>
                 <!-- End Content -->

@@ -84,11 +84,11 @@ module ApplicationHelper
   # SOCIAL BUTTONS
 
   def fb_like
-      content_tag :iframe, nil, :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape(request.url)}&layout=standard&show_faces=true&width=100&action=like&font=arial&colorscheme=light&height=21&layout=button_count&locale=en_US", :scrolling => 'no', :frameborder => '0', :allowtransparency => true, :id => :facebook_like, :style => "width: 100px; height: 21px; overflow: hidden;"
+    content_tag :iframe, nil, :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape(request.url)}&layout=standard&show_faces=true&width=100&action=like&font=arial&colorscheme=light&height=21&layout=button_count&locale=en_US", :scrolling => 'no', :frameborder => '0', :allowtransparency => true, :id => :facebook_like, :style => "width: 100px; height: 21px; overflow: hidden;"
   end
 
   def plus_one
-      raw("<div style='padding-top:3px'><div class='g-plusone' data-size='small' data-count='true'></div></div>")
+    raw("<div style='padding-top:3px'><div class='g-plusone' data-size='small' data-count='true'></div></div>")
   end
 
   def seller_favorite?(_seller)

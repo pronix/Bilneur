@@ -36,11 +36,11 @@
             <%= link_to_unless_current "Top Products", top_path(:products) %>
           </li>
 
-          <li>
+          <li class=" <%== 'current_top' if request.path == top_path(:sellers) %>">
             <%= link_to_unless_current "Top Sellers", top_path(:sellers) %>
           </li>
 
-          <li>
+          <li class=" <%== 'current_top' if request.path == top_path(:deals) %>">
             <%= link_to_unless_current "Top Deals", top_path(:deals) %>
           </li>
 

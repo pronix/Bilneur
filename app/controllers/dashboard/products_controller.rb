@@ -7,7 +7,7 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
   helper_method :set_available_option_types
 
   def index
-    @products = Product.active.paginate(paginate_options.merge({  :order => "created_at DESC"}))
+    collection
   end
 
   #
@@ -62,6 +62,13 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
 
 
   private
+
+  def collection
+    params[:search] ||= {}
+    # params[:search][:meta_sort] ||= "name.asc"
+    @search = Product.active.metasearch(params[:search])
+    @products = @search.paginate(paginate_options.merge({:order => "created_at DESC"}))
+  end
 
   def prepare_taxon
     if (@taxon_ids = params[:product].try(:[], :taxon_ids))

@@ -17,6 +17,19 @@
       <%= hook :admin_products_index_header_actions %>
     </th>
   </tr>
+
+<%= form_for @search, :url => dashboard_products_path, :html => {:method => :get} do |f| %>
+  <p>
+    <%= f.label :name_contains, t("name") %><br />
+    <%= f.text_field :name_contains, :size => 15 %>
+  </p>
+  <p>
+    <%= f.label :variants_including_master_sku_contains, t("sku") %><br />
+    <%= f.text_field :variants_including_master_sku_contains, :size => 15 %>
+  </p>
+  <%= f.submit %>
+<% end %>
+
 <% @products.each do |product| %>
   <tr <%= 'style="color:red;"' if product.deleted? %> id="<%= dom_id product %>">
       <td><%= product.sku %></td>

@@ -65,9 +65,8 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
 
   def collection
     params[:search] ||= {}
-    # params[:search][:meta_sort] ||= "name.asc"
     @search = Product.active.metasearch(params[:search])
-    @products = @search.paginate(paginate_options.merge({:order => "created_at DESC"}))
+    @products = @search.relation.group_by_products_id.includes({:variants => [:images, :option_values]}).paginate(paginate_options.merge({:order => "created_at DESC"}))
   end
 
   def prepare_taxon

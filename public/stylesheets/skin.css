@@ -37,7 +37,7 @@ a:hover {opacity: 0.8;}
     .srchBar, .searchTxt, .srchBar select {float:left;}
 .blogCnt, .blogCnt .bCImg, .blogActions, .blogActions ul li, .blogActions ul li a, .blogRM, .blogRM h3, .blogRM b, .blogFtr, .blogPg, .blogPg p {float:left;}
 .blogActions ul, .blogActions em, .blogActions b {float:right;}
-
+#memento { float: left; }
 /* Pagination */
 .paging { float:left; width:100%; margin-top:10px;}
 .pagination{float:right; padding:2px;}

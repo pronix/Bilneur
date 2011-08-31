@@ -279,6 +279,11 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
 .marquee03 .otherbutton span.hover {display: block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') 0 0px no-repeat;background-position: bottom; top: 0;}
 
 
+/* By default firefox sets little padding to <button> tag. Following rule removes this padding */
+button::-moz-focus-inner, input[type="button"]::-moz-focus-inner, input[type="submit"]::-moz-focus-inner, input[type="reset"]::-moz-focus-inner {
+    padding: 0 !important;
+    border: 0 none !important;
+}
 
 .spinner {
   position: absolute;

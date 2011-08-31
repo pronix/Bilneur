@@ -2,7 +2,7 @@
   <legend><%= t('calculator') %></legend>
   <div id="preference-settings">
       <b>
-        <i><%= t("calculator") %></i>
+        <i><%= t("calculator") %>:</i>
         <div class="cmbo3 websites">
       <%= f.collection_select(:calculator_type, @calculators, :to_s, :description, {}, {:id => "calc-type"}) %>
         </div>

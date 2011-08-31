@@ -650,22 +650,21 @@ form.new_message {float: left; }
             .cmbo5 .dd2 .ddChild {position:absolute;top:23px !important;width:130px !important;margin:0;display:none;font-size:11px;overflow-x:hidden!important;overflow-y:auto;z-index:1000;}
 /* End Combo Option 5 */
         
-/* Combo Option 6 */
-.cmbo6 { float:left;width:45px!important;position:relative; margin-right:9px;margin-top:0;}
-    .cmbo6 .dd2 {display: inline-block !important;float: left;font-family: Arial,Helvetica,sans-serif;font-size: 11px;height: 23px;margin-top:0;text-align: left;width:45px !important;}
-        .cmbo6 .dd2 .ddTitle {background: url("/images/forms/checkout_state_txt_bg.png") repeat-x;cursor: default;height: 23px;overflow: hidden;padding-left: 8px;text-indent: 0;}
-            .cmbo6 .dd2 .ddTitle span.arrow {background:url("/images/forms/cmbo_2arw.png") no-repeat 5px 6px!important;cursor: pointer;display: inline-block;float: right;height: 27px;position:relative;right:-5px;top:-5px;width:24px;}
-            .cmbo6 .dd2 .ddTitle span.ddTitleText {color:#626262;font-size:11px;line-height:24px;overflow:hidden;text-indent:1px;}
-            .cmbo6 .dd2 .ddChild {position:absolute;top:23px !important;width:45px !important;margin:0;display:none;font-size:11px;overflow-x:hidden!important;overflow-y:auto;z-index:1000;}
+/* Combo Option 16 */
+    .cmbo16 .dd2 {display: inline-block !important;float: left;font-family: Arial,Helvetica,sans-serif;font-size: 11px;height: 23px;margin-top:0;text-align: left;width:45px !important;}
+        .cmbo16 .dd2 .ddTitle {background: url("/images/forms/checkout_state_txt_bg.png") repeat-x;cursor: default;height: 23px;overflow: hidden;padding-left: 8px;text-indent: 0;}
+            .cmbo16 .dd2 .ddTitle span.arrow {background:url("/images/forms/cmbo_2arw.png") no-repeat 5px 6px!important;cursor: pointer;display: inline-block;float: right;height: 27px;position:relative;right:-5px;top:-5px;width:24px;}
+            .cmbo16 .dd2 .ddTitle span.ddTitleText {color:#626262;font-size:11px;line-height:24px;overflow:hidden;text-indent:1px;}
+            .cmbo16 .dd2 .ddChild {position:absolute;top:23px !important;width:45px !important;margin:0;display:none;font-size:11px;overflow-x:hidden!important;overflow-y:auto;z-index:1000;}
 /* End Combo Option 6 */
         
-/* Combo Option 7 */
-.cmbo7 { float:left;width:69px!important;position:relative;}
-    .cmbo7 .dd2 {display: inline-block !important;float: left;font-family: Arial,Helvetica,sans-serif;font-size: 11px;height: 23px;margin-top:0;text-align: left;width:69px !important;}
-        .cmbo7 .dd2 .ddTitle {background: url("/images/forms/checkout_state_txt_bg.png") repeat-x;cursor: default;height: 23px;overflow: hidden;padding-left: 10px;text-indent: 0;}
-            .cmbo7 .dd2 .ddTitle span.arrow {background:url("/images/forms/cmbo_2arw.png") no-repeat 5px 6px!important;cursor: pointer;display: inline-block;float: right;height: 27px;position:relative;right:-5px;top:-5px;width:24px;}
-            .cmbo7 .dd2 .ddTitle span.ddTitleText {color:#626262;font-size:11px;line-height:24px;overflow:hidden;text-indent:1px;}
-            .cmbo7 .dd2 .ddChild {position:absolute;top:23px !important;width:69px !important;margin:0;display:none;font-size:11px;overflow-x:hidden!important;overflow-y:auto;z-index:1000;}
+/* Combo Option 17 */
+.cmbo17 { float:left;width:69px!important;position:relative;}
+    .cmbo17 .dd2 {display: inline-block !important;float: left;font-family: Arial,Helvetica,sans-serif;font-size: 11px;height: 23px;margin-top:0;text-align: left;width:69px !important;}
+        .cmbo17 .dd2 .ddTitle {background: url("/images/forms/checkout_state_txt_bg.png") repeat-x;cursor: default;height: 23px;overflow: hidden;padding-left: 10px;text-indent: 0;}
+            .cmbo17 .dd2 .ddTitle span.arrow {background:url("/images/forms/cmbo_2arw.png") no-repeat 5px 6px!important;cursor: pointer;display: inline-block;float: right;height: 27px;position:relative;right:-5px;top:-5px;width:24px;}
+            .cmbo17 .dd2 .ddTitle span.ddTitleText {color:#626262;font-size:11px;line-height:24px;overflow:hidden;text-indent:1px;}
+            .cmbo17 .dd2 .ddChild {position:absolute;top:23px !important;width:69px !important;margin:0;display:none;font-size:11px;overflow-x:hidden!important;overflow-y:auto;z-index:1000;}
 /* End Combo Option 7 */
 .pmntPrcs b .scrtyTxt { float:left; width:59px; height:13px; padding:5px; border:none;background: url("/images/forms/code_txt.png") no-repeat;}
 .pmntPnl em {float:right;font-size:10px;color:#adafb0;font-style:normal;width:227px;margin-top:5px;}
@@ -693,7 +692,7 @@ form.new_message {float: left; }
 /* Check boxes code */
 
 /* Combo Option 6 */
-.cmbo1 { float:left;width:315px!important;position:relative; margin:0 10px 0 10px;}
+.cmbo1 { float:left;width:315px!important;position:relative; margin:0 10px 0 0;}
     .cmbo1 .dd2 {display: inline-block !important;float:left;font-family: Arial,Helvetica,sans-serif;font-size: 11px;height: 26px;margin-top:0; margin-left:0;text-align: left;width:283px !important;}
         .cmbo1 .dd2 .ddTitle {background: url("/images/forms/edtl_txt.png") no-repeat;cursor: default;height: 26px;overflow: hidden;padding-left: 10px;text-indent: 0;color:#848484;text-shadow:0 1px #fff; font-weight:bold;}
             .cmbo1 .dd2 .ddTitle span.arrow {float: right;width:23px;height: 25px;position:relative;right:7px;top:0px;background:url("/images/forms/edit_combo.png") no-repeat 0 0!important;cursor: pointer;display: inline-block;}

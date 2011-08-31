@@ -9,9 +9,7 @@
     <div class="dtl1">
 
       <h2>
-        <%= link_to product_path(item.variant.product) do %>
-        <%= item.variant.name %>
-        <% end %>
+        <%= link_to item.variant.name, product_path(item.variant.product)  %>
       </h2>
 
       <span><b>Seller:</b><%= item.variant.seller.full_name %></span>
@@ -24,8 +22,8 @@
         <label>Qty Purchased </label>
         <%= item.quantity %>
       </span>
-      <a href="#">FIXME Favorite Seller</a>
-      <a href="#">FIXME Favorite Product</a>
+      <%= link_to t("favorite_seller"), add_favorite_seller_path(item.variant.seller) %>
+      <%= link_to t("favorite_product"), add_favorite_path(item.variant) %>
     </div>
     <div class="dtl3">
       <h3><%= number_to_currency item.amount %></h3>
@@ -44,9 +42,9 @@
   <div class="prchsMnu">
     <div class="top"></div>
     <ul>
-      <li><%= link_to raw("<span>View Order Details</span>"), dashboard_order_path(order) %></li>
-      <li><%= link_to raw("<span>View Invoice</span>"), dashboard_order_path(order, :pdf) %></li>
-      <li><%= link_to raw("<span>Add to Inventory</span>"), "" %></li>
+      <li><%= link_to raw("<span>View Order Details</span>"), dashboard_order_path(order), :target => "_blank" %></li>
+      <li><%= link_to raw("<span>View Invoice</span>"), dashboard_order_path(order, :pdf), :target => "_blank" %></li>
+      <li><%= link_to raw("<span>Add to Inventory</span>"), new_dashboard_quote_path(item.variant.ean) %></li>
       <li>
         <%= link_to raw("<span>Write a review</span>"), new_product_review_path(item.variant.product) if can_create_review?(item.variant.product) %>
       </li>

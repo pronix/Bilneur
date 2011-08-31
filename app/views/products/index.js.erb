@@ -10,7 +10,7 @@ $('#taxonsCheckboxes input').parent().css('background-position', '50% 0px');
 
 
 // Second - enable choosed taxons
-<% params[:taxon_ids].each do |id| %>
+<% (params[:taxon_ids]||[]).each do |id| %>
   $("input[value='<%= id %>']").parent().css('background-position', '50% -50px');
   $("input[value='<%= id %>']").parent().data('checked', true);
   $("input[value='<%= id %>']").attr('checked', true);

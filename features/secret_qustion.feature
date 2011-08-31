@@ -80,12 +80,13 @@ Feature: Describe how work secret question
     Given I have a own question "My Own Question" with answer "My answer"
     Then I go to the edit secret question page
     And "secret_question_secret_question_variant_id" should be selected for "My Own Question"
-@javascript
+
+  @javascript
   Scenario: Update own question
     Given I have a own question "My Own Question" with answer "My answer"
-    Then I go to the edit secret question page
-    Then I select "Write your question" from "secret_question_secret_question_variant_id"
-    And I fill in "own_question" with "My secret question new"
+    When I go to the edit secret question page
+    And I select "Write your question" from "secret_question_secret_question_variant_id"
+    And I fill in "secret_question_own_question" with "My secret question new"
     And I fill in "secret_question_answer" with "Answer for secret question"
     And I press "save_button"
     Then I should be on the dashboard account fuck page

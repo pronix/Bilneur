@@ -8,7 +8,6 @@
             })
       return false;
     });
-
     $("button[name='to_add'][value='virtual_store']").live('click', function(){
       var form = $(this).parents("form:first");
       $(form).find("input.js-field").remove();

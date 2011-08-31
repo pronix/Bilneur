@@ -1,22 +1,11 @@
 <% stylesheet "checktree" %>
-<% javascript "jquery.checktree_yctin.min.js", "jquery.updateWithJSON.min.js" %>
+<% javascript "jquery.checktree_yctin.js", "jquery.updateWithJSON.min.js" %>
 <% content_for :head do %>
     <script type="text/javascript">
                 var $checktree;
                 $(function(){
                     $checktree = $("ul.tree").checkTree();
                 });
-    			function load(id) {
-    				$.getJSON("data/" + id + ".txt",{},function(json){
-    					$checktree.clear();
-    					$.updateWithJSON(json);
-    					$checktree.update();
-    				});
-    			}
-    			function clearAll(){
-    				$checktree.clear();
-    				$checktree.update();
-    			}
     </script>
 <% end %>
 

@@ -141,10 +141,14 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
 .hd1A {}
 
 .hd1B { width:245px;}
-    .loginBar { width:100%; margin-left:17px;}
+    .loginBar { float: right !important; margin-right: 20px;}
+    .loginBar > * {float: right; }
         .loginBar i { padding-right:10px;margin-right:10px;font-style:normal;background:url('/images/forms/sgnup_line.gif') right no-repeat;}
         .loginBar a { color:#787878;font-weight:bold;}
-        .loginBar .crt { margin-left:10px; display: block; width: 74px; height: 32px; position: relative;}
+        .loginBar > a, .loginBar > i { margin-top: 10px;}
+        .loginBar .cart_bag { margin-top: 5px;}
+        .loginBar a > img { margin-left: 10px }
+        .loginBar .crt { margin-left:10px; display: block; height: 32px; position: relative;}
         .loginBar .crt img:first-child{ margin-right:10px;}
         .loginBar .crt .redPlus, .loginBar .crt .greenPlus { position: absolute; top: 0; visibility: hidden;}
         .loginBar .crt .redPlus  { left: 10px;}

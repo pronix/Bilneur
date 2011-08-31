@@ -5,6 +5,10 @@
   </div>
   <div class="hd1B">
     <div class="loginBar">
+      <div class="cart_bag">
+        <%= render "shared/store_menu" %>
+      </div>
+
       <% if current_user %>
       <i><%= link_to t('my_account'), account_path %></i>
       <%= link_to t('logout'), destroy_user_session_path %>
@@ -12,9 +16,6 @@
       <i><%= link_to "Sign Up", new_user_registration_path %></i>
       <%= link_to t('log_in'), new_user_session_path %>
       <% end %>
-      <div class="cart_bag">
-        <%= render "shared/store_menu" %>
-      </div>
     </div>
     <ul class="tpMnu">
       <li><a href="/how_it_work">How It Work</a></li>

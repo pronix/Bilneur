@@ -23,6 +23,7 @@ en:
   start_buying_and_selling: "Start Buying & Selling"
   learn_more: Learn More
   actions:
+    next: Next
     send: Send
     receive: Receive
   mark_as_important: Mark as important

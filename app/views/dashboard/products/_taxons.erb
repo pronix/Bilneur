@@ -1,0 +1,82 @@
+<%= render "shared/error_messages", :target => @product %>
+<%= render "steps" %>
+<%= form_for(:product,  :url => wizard_dashboard_products_path, :remote => true, :html => { :multipart => true }) do |f| %>
+<%= hidden_field_tag :id, @product.id unless @product.new_record? %>
+
+<fieldset>
+
+  <div class="yui-gc">
+
+    <div class="yui-u first" id="taxons-container">
+      <select class="select-taxons" id="taxon_0" multiple="multiple" name="root_taxon" size="15" name="product[taxon_ids][]">
+        <% (Taxon.category.try(:children)||[]).each do |item|  %>
+        <option data-leaf="<%= item.leaf? %>" value="<%= item.id %>"><%= item.name %><%= ' >' unless item.leaf? %></option>
+        <% end %>
+      </select>
+    </div>
+
+  </div>
+
+  <p class="form-buttons">
+    <button><span><%= t("actions.next") %></span></button>
+    <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_products_path %>
+  </p>
+
+</fieldset>
+<% end %>
+
+
+<script id="taxonTemplate" type="text/x-jquery-tmpl">
+    <select id="${select_id}" class="select-taxons"  multiple="multiple" size="15" name="product[taxon_ids][]">
+    {{each children}}
+      <option data-leaf="${leaf}" value="${taxon.id}">${taxon.name}{{if leaf == false}} > {{/if}}</option>
+    {{/each}}
+    <select>
+</script>
+
+<script>
+  $(function(){
+
+    $(".select-taxons").live("change", function(){
+     var selected_option = $( $(this)).find("option[selected]");
+
+     if ($(selected_option).attr("data-leaf") == 'true') {
+
+        $(".select-taxons:gt("+ $(".select-taxons").index($(this))+")").remove();
+     } else {
+
+       $(".select-taxons").attr("disabled", true);
+
+       if (typeof(child_taxons) == 'undefined'){ child_taxons = { } };
+       var taxon_id = $(this).val();
+
+       if (!child_taxons[taxon_id]){
+         $.getJSON(
+              "<%= child_dashboard_product_taxon_path(@product, :taxon_id, :json) %>".replace("taxon_id", taxon_id),
+               function(data){
+                   child_taxons[taxon_id] = data;
+                   render_taxons(child_taxons[taxon_id]);
+               });
+       } else {
+        render_taxons(child_taxons[taxon_id])
+      };
+
+     };
+
+    });
+
+    function render_taxons(data){
+      var select_id = "taxons_"+data["level"];
+      if ($("#"+select_id).length != 0){
+       $(".select-taxons:gt("+ $(".select-taxons").index($("#"+select_id))+")").remove();
+       $("#"+select_id).remove();
+      };
+
+
+      var select = $( "#taxonTemplate" ).tmpl( [{ children: data["children"], select_id: select_id  }] );
+      $(".select-taxons").attr("disabled", false);
+      $("#taxons-container").append( select );
+     };
+
+  });
+</script>

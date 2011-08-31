@@ -74,4 +74,9 @@ OrdersController.class_eval do
   end
 
 
+
+  def accurate_title
+    @order && @order.completed? ? "#{Order.model_name.human} #{@order.number}" : I18n.t(:shopping_cart)
+  end
+
 end

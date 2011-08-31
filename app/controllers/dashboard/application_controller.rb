@@ -16,5 +16,10 @@ class Dashboard::ApplicationController < Spree::BaseController
       controller_name != "payment_methods"
 
   end
-
+  def paginate_options
+    {
+      :per_page => (params[:per_page]||Spree::Config[:dashboard_per_page]||5),
+      :page => params[:page]
+    }
+  end
 end

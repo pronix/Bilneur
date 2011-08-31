@@ -55,17 +55,7 @@ Feature: Manage products
     When I go to the dashboard quotes page
     And I fill in "ean" with "978-0919614789"
     And I press "Add quote"
-    And I fill in "Price" with "45.98"
-    And I fill in "On Hand" with "4"
+    When I fill in "variant_price" with "45.98"
+    And I fill in "variant_count_on_hand" with "4"
+    And I fill in "variant_weight" with "0.4"
     And I press "Create"
-@wip
-  Scenario: Show public seller quotes
-    Given the following products exist:
-      | name                        | available_on        |            ean | sku     |
-      | The Godfather               | 2011-01-06 18:21:13 |  9780099528128 | TE-6000 |
-    And the product "The Godfather" has the owner "seller@person.com"
-    And I have 2 quoutes for product "The Godfather"
-    When I go to the seller "seller@person.com" srore products
-    Then I should be on the seller "seller@person.com" srore products
-    Then show me the page
-    And I should see all my quotes

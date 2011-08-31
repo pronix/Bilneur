@@ -14,29 +14,32 @@ Feature: Describe how work secret question
     And I select "<variant>" from "secret_question_secret_question_variant_id"
     And I fill in "secret_question_answer" with "<answer>"
     And press "save_button"
-    And I should be on the <page_name>
+    Then I should be on the <page_name>
     And I should see "<should_see>"
 
     Examples:
-      | variant                     | answer      | page_name                           | should_see              |
-      | What is your favorite town? | Kaliningrad | dashboard account fuck page         |                         |
-      |                             | Kaliningrad | edit secret question dashboard page | Please check a question |
-      | What is your favorite town? |             | edit secret question dashboard page | Please write you answer |
+      | variant                     | answer      | page_name                   | should_see                             |
+      | What is your favorite town? | Kaliningrad | dashboard account fuck page | Secret Question save                   |
+      |                             | Kaliningrad | dashboard secrets page      | Secret question variant can't be blank |
+      | What is your favorite town? |             | dashboard secrets page      | Answer can't be blank                  |
+
 @javascript
   Scenario Outline: Check with empty field with own question
     Given I am on the new secret question dashboard page
     Then I select "Write your question" from "secret_question_secret_question_variant_id"
-    And I fill in "own_question" with "<question>"
+    And I fill in "secret_question_own_question" with "<question>"
     And I fill in "secret_question_answer" with "<answer>"
     And press "save_button"
     Then I should be on the <page_name>
     And I should see "<should_see>"
 
     Examples:
-      | question          | answer         | page_name                           | should_see              |
-      | Its good quastion | this is answer | dashboard account fuck page         |                         |
-      |                   | this is answer | edit secret question dashboard page | Please check a question |
-      | Its good quastion |                | edit secret question dashboard page | Please write you answer |
+      | question          | answer         | page_name                   | should_see                  |
+      | Its good quastion | this is answer | dashboard account fuck page | Secret Question save        |
+      |                   | this is answer | dashboard secrets page      | Own question can't be blank |
+      | Its good quastion |                | dashboard secrets page      | Answer can't be blank       |
+
+
 
   Scenario: Create a secret question with public variant
     And I follow "My Account"
@@ -50,7 +53,7 @@ Feature: Describe how work secret question
     And I must be sure that "email@person.com" has question "What is your favorite town?"
     And I must be sure that "email@person.com" has answer "Kaliningrad"
 
-@javascript
+  @javascript
   Scenario: Update a secret question with piblic variant
     Given I already have secret question "What is your favorite town?" with answer "Kaliningrad"
     Then I go to the edit secret question page
@@ -64,11 +67,12 @@ Feature: Describe how work secret question
     And I should see "Secret Question updated"
     And I must be sure that "email@person.com" has question "What is my mothers maiden name?"
     And I must be sure that "email@person.com" has answer "This is secret"
-@javascript
+
+  @javascript
   Scenario: Create secret question by create own question
     Given I am on the new secret question page
     Then I select "Write your question" from "secret_question_secret_question_variant_id"
-    And I fill in "own_question" with "My secret question"
+    And I fill in "secret_question_own_question" with "My secret question"
     And I fill in "secret_question_answer" with "Answer for secret question"
     And I press "save_button"
     Then I should be on the dashboard account fuck page
@@ -85,8 +89,9 @@ Feature: Describe how work secret question
   Scenario: Update own question
     Given I have a own question "My Own Question" with answer "My answer"
     When I go to the edit secret question page
-    And I select "Write your question" from "secret_question_secret_question_variant_id"
-    And I fill in "secret_question_own_question" with "My secret question new"
+    When I select "What is your favorite town?" from "secret_question_secret_question_variant_id"
+    When I select "Write your question" from "secret_question_secret_question_variant_id"
+    When I fill in "secret_question_own_question" with "My secret question new"
     And I fill in "secret_question_answer" with "Answer for secret question"
     And I press "save_button"
     Then I should be on the dashboard account fuck page
@@ -117,7 +122,7 @@ Feature: Describe how work secret question
     Then I go to the sign in page
     Then I follow "Forgot Password?"
     And I fill in "email" with my email
-    And I fill in "Own Question" with "My Own Question"
+    And I fill in "own_question" with "My Own Question"
     And I fill in "Answer" with "My answer"
     Then I press "Reset password"
     Then I should be on the reset password by question page

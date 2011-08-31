@@ -44,7 +44,6 @@ Feature: Manage Favorite Sellers
   Scenario: Not show favorite link on my page
     And I sign in as "seller1@person.com/password1"
     Then I go to the seller store "seller1@person.com"
-    Then show me the page
     Then I should not see "Add Seller To Favorites"
 
   Scenario: Delete seller from favorite

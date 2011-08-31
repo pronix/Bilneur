@@ -34,11 +34,17 @@
     <%= form_tag search_dashboard_quotes_path, :style => "margin-left: 20px", :method => :get do %>
     <label for="ean"><%= t("ean") %></label>
     <%= text_field_tag "ean", "", :class => "title", :id => nil, :style => "font-size: 1em;" %>
-    <button class="invAll" value="Add quote" style="float: none; border: none; background: none; cursor: pointer; height: 30px;">
+    <button class="invAll" value="Add quote" id="button-add-quote">
       <%= image_tag "forms/inv_all_prod.png", :style => "margin-bottom: -7px;" %>
     </button>
     <% end %>
 
+    <div>
+      <span><%= link_to "All Inventory", dashboard_quotes_path %></span>
+      <span><%= link_to "Merchant", state_dashboard_quotes_path(:merchant) %></span>
+      <span><%= link_to "Bilneur", state_dashboard_quotes_path(:bilneur) %></span>
+      <span><%= link_to "Other Sellers", state_dashboard_quotes_path(:other) %></span>
+    </div>
   </div>
   <div class="bdrBtm"></div>
   <div class="invEdit">

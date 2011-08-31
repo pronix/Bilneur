@@ -7,12 +7,16 @@ Variant.class_eval do
   has_and_belongs_to_many :favorite_users, :join_table => "favorite_variants", :class_name => "User", :uniq => true
 
 
+
   # scopes
   #
   Variant::CONDITION.each { |v| scope :"condition_#{v}", where(:condition => v)}
+  Variant::WAREHOUSE.each { |v| scope :"warehouse_#{v}", where(:warehouse => v)}
+
   scope :condition, lambda{ |*args|
     where(:condition => (args.first =~ /new|used|another/ ? args.first : "new"))
   }
+
 
   scope :on_hand, where("variants.count_on_hand > 0")
   scope :without_master, where(:is_master => false)
@@ -127,7 +131,7 @@ Variant.class_eval do
   end
   alias :has_stock? :in_stock?
 
-  def move_to_virtual_seller(new_seller, quantity)
+  def move_to_virtual_seller(new_seller, quantity, _warehouse = Variant::WAREHOUSE_MERCHANT)
     new_variant = clone
     new_variant.seller = new_seller
     new_variant.count_on_hand = quantity
@@ -136,6 +140,7 @@ Variant.class_eval do
     new_variant.images = self.images.map {|i| image_clone.call i }
     new_variant.deleted_at = nil
     new_variant.weight = (self.weight||1)
+    new_variant.warehouse = _warehouse
     new_variant.save!
     new_variant
   end

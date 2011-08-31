@@ -4,8 +4,19 @@ class Dashboard::QuotesController < Dashboard::ApplicationController
   respond_to :html, :js
 
   def index
-    @quotes = current_user.quotes.paginate(paginate_options)
+    @quotes =
+      case params[:state].to_s
+      when "merchant"
+        current_user.quotes.warehouse_merchant.paginate(paginate_options)
+      when "bilneur"
+        current_user.quotes.warehouse_bilneur.paginate(paginate_options)
+      when "other"
+        current_user.quotes.warehouse_seller.paginate(paginate_options)
+      else
+        current_user.quotes.paginate(paginate_options)
+      end
   end
+
 
   def new
     if @product

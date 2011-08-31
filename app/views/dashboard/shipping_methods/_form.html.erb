@@ -2,13 +2,13 @@
 
 
 <b>
-  <i><%= t("name") %></i>
+  <i><%= t("name") %>:</i>
   <%= f.text_field :name  %>
   <%= error_message_on :shipping_method, :name %>
 </b>
 <% unless @shipping_method.virtual? %>
     <b>
-      <i><%= t("zone") %></i>
+      <i><%= t("zone") %>:</i>
       <div class="cmbo3 websites">
           <%= f.collection_select(:zone_id, @available_zones, :id, :name, {}, {"style" => "width:200px"})  %>
       </div>

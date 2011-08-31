@@ -6,6 +6,7 @@
     <h2 class="htFix"><%= t("shipping_methods") %></h2>
 
     <div class='toolbar'>
+<%= render :partial => 'dashboard/shared/shipping_methods_sub_menu' %>
       <ul class='actions'>
         <li>
           <%= button_link_to t("new_shipping_method"), new_dashboard_shipping_method_url,  :icon => 'add',

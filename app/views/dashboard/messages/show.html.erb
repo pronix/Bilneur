@@ -13,11 +13,11 @@
                 <%= link_to t('delete'), dashboard_message_path(@message), :method => :delete %>
               </li>
               <li class="replyer">
-                <%= link_to t('reply'), "javascript:void(0)", :class => "reply-link", :onclick => "test_func();" %>
+                <%= link_to t('reply'), "javascript:void(0)", :class => "reply-link" %>
               </li>
             </ul>
             <div class="cmbo1">
-              <select id="websites21" tabindex="1" name="">
+              <select id="websites21" tabindex="1" name="<%= @message.id %>">
                 <option value="nothing" selected="selected" title="">Move to</option>
                 <option value="mark_as_unread" title="">Move to unread</option>
                 <option value="mark_as_important" title="">Move to important</option>
@@ -60,7 +60,7 @@
                   <%= link_to t('delete'), dashboard_message_path(@message), :method => :delete %>
                 </li>
                 <li>
-                  <%= link_to t('reply'), "", :class => "reply-link", :onclick => "test_func();"%>
+                  <%= link_to t('reply'), "javascript:void(0)", :class => "reply-link" %>
                 </li>
               </ul>
             </div>
@@ -84,7 +84,7 @@
             <div class="inbxAct rightSend">
               <ul>
                 <li>
-                  <%= button t("actions.send") %>
+                  <button type="submit">Send</button>
                 </li>
               </ul>
             </div>

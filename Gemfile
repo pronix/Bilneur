@@ -47,6 +47,7 @@ group :development do
 end
 
 group :test, :cucumber do
+  gem "show_me_the_cookies", '~> 0.2.2', :git => "git://github.com/nruth/show_me_the_cookies.git"
   gem "silent-postgres", "~> 0.0.8"
   gem 'rspec-rails',          '= 2.6.1'
   gem 'factory_girl_rails',   '= 1.0.1'

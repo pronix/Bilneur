@@ -24,7 +24,7 @@
         </div>
 
         <% best_deal = product.best_variant %>
-        <% product.variants.condition(cdt).each_with_index do |item, i| %>
+        <% product.variants.on_hand.condition(cdt).each_with_index do |item, i| %>
         <%= render "sellers_list", :item => item, :i => i %>
         <% end %>
         <div class="tabCnt2">

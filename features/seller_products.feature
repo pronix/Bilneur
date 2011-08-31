@@ -67,5 +67,4 @@ Feature: Manage products
     And I have 2 quoutes for product "The Godfather"
     When I go to the seller "seller@person.com" srore products
     Then I should be on the seller "seller@person.com" srore products
-    Then show me the page
     And I should see all my quotes

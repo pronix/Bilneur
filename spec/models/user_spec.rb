@@ -71,6 +71,23 @@ describe User do
     user.seller_favorite?(seller).should == true
     user.remove_seller_from_favorite(seller)
     user.favorite_sellers.count.should == 0
+    some_seller_ids = []
+    1.upto(10) { some_seller_ids << Factory(:user).id }
+    some_seller_ids.size.should == 10
+    user.merge_favorite_sellers(some_seller_ids)
+    user.favorite_sellers.count.should == 10
+    # Add some repeating seller
+    user.merge_favorite_sellers(some_seller_ids.first)
+    user.favorite_sellers.count.should == 10
+  end
+
+  describe "Try to add self to favorite sellers" do
+    user = Factory(:user)
+    user.favorite_sellers.count.should == 0
+    user.add_seller_to_favorite(user)
+    user.favorite_sellers.count.should == 0
+    user.merge_favorite_sellers(user.id)
+    user.favorite_sellers.count.should == 0
   end
 
 end

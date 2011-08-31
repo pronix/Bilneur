@@ -2,6 +2,8 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  favorite_seller: Favorite Seller
+  favorite_product: Favorite Product
   tracking_no: Tracking No
   upload_logo: "Edit / Upload Photo or Logo"
   save_for_later: Save for later

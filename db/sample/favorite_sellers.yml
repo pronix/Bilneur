@@ -1,0 +1,5 @@
+<% 102.upto(105) do |i| %>
+favorite_seller_<%= i %>:
+  user_id: 101
+  seller_id: <%= i %>
+<% end %>

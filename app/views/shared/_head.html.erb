@@ -28,9 +28,10 @@
   'jquery.pulse.js',
   'jquery.iphone-switch', :cache => 'jquery-core' %>
 
-<!-- FIXME: letter when show will be complete -->
 <%= javascript_include_tag("https://apis.google.com/js/plusone.js") %>
 <%= javascript_include_tag 'jquery.tools.min.js' %>
+
+<%= javascript_include_tag('for_cucumber.js') if Rails.env.test? %>
 
 <% unless I18n.locale.to_s[0..1] == 'en' %>
   <%= javascript_include_tag ['localization/messages_', I18n.locale.to_s[0..1], '.js'].join %>

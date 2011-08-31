@@ -1,4 +1,4 @@
-jQuery(document).ready(function(){  
+jQuery(document).ready(function(){
 //	function number_with_delimiter(number, delimiter, separator) {
 //	  try {
 //	    var delimiter = delimiter || ",";
@@ -7,7 +7,7 @@ jQuery(document).ready(function(){
 //	    var parts = number.toString().split('.');
 //	    parts[0] = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1" + delimiter);
 //	    formatted_number = parts.join(separator);
-//	
+//
 //			if(formatted_number.length>=6 && formatted_number.length<=9){
 //				var arr = formatted_number.split(",");
 //				return arr[0] + " k";
@@ -21,7 +21,7 @@ jQuery(document).ready(function(){
 //	    return number
 //	  }
 //	}
-	
+
 //  function handle_orders_by_day(r){
 //		var new_points = eval(r);
 //
@@ -29,7 +29,7 @@ jQuery(document).ready(function(){
 //			orders_by_day_settings.axes.xaxis.min = new_points[0][0][0].replace(/-/g, "/");
 //			orders_by_day_settings.axes.xaxis.max = new_points[0][new_points[0].length -1][0].replace(/-/g, "/");
 //		}
-//	
+//
 //		orders_by_day_settings.axes.yaxis.label = jQuery("#orders_by_day_value :selected").val();
 //
 //		jQuery("#order_by_day_title").text(orders + " " + jQuery("#orders_by_day_value :selected").val() + " " + by_day + " (" + jQuery("#orders_by_day_reports :selected").text() + ")");
@@ -38,10 +38,10 @@ jQuery(document).ready(function(){
 //		$.jqplot('orders_by_day', new_points, orders_by_day_settings);
 //
 //	}
-//	
+//
 //	function handle_orders_total(r){
 //		var values = eval(r);
-//		
+//
 //		jQuery('#orders_total').text(number_with_delimiter(values[0].orders_total));
 //		jQuery('#orders_line_total').text(number_with_delimiter(values[0].orders_line_total));
 //		jQuery('#orders_adjustment_total').text(number_with_delimiter(values[0].orders_adjustment_total));
@@ -52,21 +52,21 @@ jQuery(document).ready(function(){
 //		title: {
 //			textColor: '#476D9B',
 //			fontSize: '12pt',
-//		}, 
+//		},
 //		grid: {background:'#fff', gridLineColor:'#fff',borderColor: '#476D9B'},
 //	  axes:{
 //			yaxis:{
 //				label:'Order (Count)',
-//				labelRenderer: $.jqplot.CanvasAxisLabelRenderer,						
-//				autoscale:true, 
+//				labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+//				autoscale:true,
 //				tickOptions:{
 //					formatString:'%d',
 //					fontSize: '10pt',
 //					textColor: '#476D9B'
 //				},
 //				min: 0
-//			},	
-//			xaxis:{	 
+//			},
+//			xaxis:{
 //				renderer:$.jqplot.DateAxisRenderer,
 //				rendererOptions:{tickRenderer:$.jqplot.CanvasAxisTickRenderer},
 //				tickOptions:{
@@ -75,7 +75,7 @@ jQuery(document).ready(function(){
 //					fontSize: '10pt',
 //					textColor: '#476D9B'
 //				},
-//				min: orders_by_day_points[0][0][0].replace(/-/g, "/"), 
+//				min: orders_by_day_points[0][0][0].replace(/-/g, "/"),
 //				max: orders_by_day_points[0][orders_by_day_points[0].length -1][0].replace(/-/g, "/")//,
 //				//tickInterval: '1 day'
 //			}
@@ -92,14 +92,14 @@ jQuery(document).ready(function(){
 //	jQuery("div#orders_by_day_options select").change(function(){
 //		var report = jQuery("#orders_by_day_reports :selected").val();
 //		var value = jQuery("#orders_by_day_value :selected").val();
-//	
+//
 //		jQuery.ajax({
 //	       type: 'GET',
 //	       url: 'admin/overview/get_report_data',
 //	       data: ({report: 'orders_by_day', name: report, value: value, authenticity_token: AUTH_TOKEN}),
 //	       success: handle_orders_by_day
 //		});
-//		
+//
 //		jQuery.ajax({
 //	       type: 'GET',
 //	       url: 'admin/overview/get_report_data',
@@ -112,7 +112,7 @@ jQuery(document).ready(function(){
 //	best_selling_variants = $.jqplot('best_selling_products', [best_selling_variants_points], {
 //		grid: {background:'#fff',borderWidth: 0, borderColor: '#fff', shadow: false},
 //		seriesDefaults:{
-//		  renderer:$.jqplot.PieRenderer, 
+//		  renderer:$.jqplot.PieRenderer,
 //		  rendererOptions:{padding:6,sliceMargin:0}
 //		},
 //		seriesColors: pie_colors
@@ -122,7 +122,7 @@ jQuery(document).ready(function(){
 //	top_grossing_variants = $.jqplot('top_grossing_products', [top_grossing_variants_points], {
 //		grid: {background:'#fff',borderWidth: 0, borderColor: '#fff', shadow: false},
 //		seriesDefaults:{
-//		  renderer:$.jqplot.PieRenderer, 
+//		  renderer:$.jqplot.PieRenderer,
 //		  rendererOptions:{padding:6,sliceMargin:0}
 //		},
 //
@@ -132,14 +132,14 @@ jQuery(document).ready(function(){
 //	tbest_selling_taxons = $.jqplot('best_selling_taxons', [best_selling_taxons_points], {
 //		grid: {background:'#fff',borderWidth: 0, borderColor: '#fff', shadow: false},
 //		seriesDefaults:{
-//		  renderer:$.jqplot.PieRenderer, 
+//		  renderer:$.jqplot.PieRenderer,
 //		  rendererOptions:{padding:6,sliceMargin:0}
 //		},
 //
 //		seriesColors: pie_colors
 //	});
 
-  
+
         $("#seller_profile_toggle").toggle(
             function() {
               $("#seller_profile").slideDown()
@@ -148,7 +148,7 @@ jQuery(document).ready(function(){
               $("#seller_profile").slideUp()
             }
         )
-        $(".radio").dgStyle();	
+        $(".radio").dgStyle();
         $(".checkbox").dgStyle();
 
 	try {
@@ -187,16 +187,18 @@ jQuery(document).ready(function(){
 
     if ($("#secret select").val() != "5") {
        $("#own_secret input").attr('disabled', true);
-    } 
+    }
+
     //Own question
     $("#secret select").change(function() {
-       if ($("#secret select").val() != "5") {
-          $("#own_secret input").attr('disabled', true);
-       } 
-       else {
-          $("#own_secret input").attr('disabled', false);
+       if ($("#secret select").val() != "-1") {
+         $("#own-question").hide();
+         $("#secret_question_own_question").val("");
        }
-        
+       else {
+         $("#own-question").show();
+       }
+
     });
 
     //Tabs for reviews, changing appearance

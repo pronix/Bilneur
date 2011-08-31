@@ -96,8 +96,9 @@ module ApplicationHelper
   end
 
   def seller_favorite?(_seller)
-    true if current_user && current_user.seller_favorite?(_seller)
-    # true if session[:favorite_sellers] && session[:favorite_sellers].include?(_seller.id)
+    return true if @current_user && @current_user.seller_favorite?(_seller)
+    return true if @current_user == _seller
+    true if session[:favorite_sellers] && session[:favorite_sellers].include?(_seller.id)
   end
 
   def add_seller_to_favorite(_seller)

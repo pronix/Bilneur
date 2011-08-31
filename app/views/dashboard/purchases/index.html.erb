@@ -24,18 +24,11 @@
     <b>Display per page</b>
   </div>
 
-
-
   <% @orders.each do |order|%>
   <% order.line_items.each do |item| %>
   <%= render "line_item", :item => item, :order => order %>
   <% end %>
   <% end %>
-
-
-
-
-
 
   <div class="paging">
     <div class="blogPg">

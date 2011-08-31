@@ -87,6 +87,10 @@ module NavigationHelpers
       store_seller_path(User.find_by_email($1))
     when /the @message message page/
       dashboard_message_path(@message)
+    when /the dashboard message page "(.+)"/
+      dashboard_message_path(Message.find_by_subject($1))
+    when /the favorite sellers dashboard page/
+      sellers_dashboard_favorites_path
     when /^the home\s?page$/
       '/'
 

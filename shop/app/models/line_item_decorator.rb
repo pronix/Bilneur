@@ -9,6 +9,7 @@ LineItem.class_eval do
 
   validate :quantity_product, :if => lambda{ |t| t.variant.present? }
   after_save :load_sellers # refresh all sellers on order
+  after_destroy :load_sellers
 
   def quantity_product
     if quantity.to_i < 0
@@ -29,7 +30,7 @@ LineItem.class_eval do
   end
 
   def load_sellers
-    order.sellers = order.line_items.map {|v| v.variant.seller }.uniq
+    order.sellers!
   end
 
 end

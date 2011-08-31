@@ -1,3 +1,4 @@
+<%= hidden_field_tag "order[bill_address_id]", address_form.object.id unless address_form.object.new_record? %>
 <div class="option2">
   <h4>Enter a new billing address</h4>
   <% ADDRESS_FIELDS.each do |field| %>

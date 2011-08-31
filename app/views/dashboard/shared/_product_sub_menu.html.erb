@@ -1,6 +1,6 @@
 <div class="prflBus">
   <ul id="sub_nav">
-    <li>
+    <li <%== 'class="active"' if defined? current && current == "Products" %>>
       <%= link_to "Products", dashboard_products_path%>
     </li>
     <li>

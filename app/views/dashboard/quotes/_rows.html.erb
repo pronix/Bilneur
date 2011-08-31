@@ -1,11 +1,11 @@
 <% quotes.each do |quote| %>
 <% evod = cycle('1', '2') %>
 <tr class="quote">
-  <td class="row<%= evod %>">
+  <!--<td class="row<%= evod %>">
     <div class="checkbox">
       <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy" class="multi_action">
     </div>
-  </td>
+  </td>-->
   <td class="row<%= evod %>">
     <%= link_to quote.ean, edit_dashboard_quote_path(quote)  %>
   </td>

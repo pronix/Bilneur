@@ -1,10 +1,20 @@
+<div class="fdBck" style="padding-bottom: 5px;">
+	<h2><%= "#{t("actions.listing")} #{t("products")}" %></h2>
+  <div class="cmbo6">
+    <input class="txt" type="text" name="" value="" />
+    <select id="websites21" tabindex="1" name="">
+      <option value="" selected="selected" title="">Name</option>
+      <option value="" title="">SKU</option>
+    </select>
+  </div>
+</div>
 <%= render :partial => 'dashboard/shared/product_sub_menu', :locals => { :current => "Products" } %>
 
 <div class="sptCntBus">
 	<div class="top"></div>
 
 	<div class="cntr">
-    <h2 class="htFix"><%= "#{t("actions.listing")} #{t("products")}" %></h2>
+    <h2 class="htFix"></h2>
 
 <div id="new_product"></div>
 

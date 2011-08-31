@@ -8,7 +8,9 @@ $(function(){
         var multi = $(this).attr('value');
         var state = $("stater").attr('value');
         $("input[name=multi]").val(multi);
+        // $("#multi_form").callRemote();
         $("#multi_form").submit();
+        // $.ajax({ type: "GET", url: ""});
     });
     
     $("#websites21").change(function() {

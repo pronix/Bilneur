@@ -59,17 +59,17 @@ Feature: Inbox
     And I press "Send"
     Then I should see "Your reply sent."
 
-@javascript
+@wip @javascript
   Scenario Outline: Marking message as read/unread
     Given the following messages exist:
-     | created_at | sender                 | recipient                | subject   | content           | recipient_read |
-     | 01/01/2011 | email:email@person.com | email:seller1@person.com | Question1 | Question1 message | <read_status>  |
+     | created_at | sender                 | recipient                | subject   | content           | 
+     | 01/01/2011 | email:email@person.com | email:seller1@person.com | Question1 | Question1 message | 
     When I sign in as "seller1@person.com/password1"
     And I go to the dashboard messages page
     Then the page should have the following messages:
      | from        | subject   | received         |
      | Jimm Paxtor | Question1 | January 01, 2011 |
-    When I check "message_ids[]"
+    Then I execute script "inbox select_all_messages"
     Then I execute script "<page_script_execute>"
     And I wait for the AJAX call to finish
     And message by subject "Question1" should be "recipient_read" is <message_status>
@@ -89,7 +89,7 @@ Feature: Inbox
     Then the page should have the following messages:
      | from        | subject   | received         |
      | Jimm Paxtor | Question1 | January 01, 2011 |
-    When I check "message_ids[]"
+    Then I execute script "inbox select_all_messages"
     Then I execute script "<page_script_execute>"
     And I wait for the AJAX call to finish
     And message by subject "Question1" should be "<field>" a present
@@ -116,7 +116,7 @@ Feature: Inbox
     And I wait for the AJAX call to finish
     And All my message should be read
 
-@wip @javascript
+@javascript
   Scenario Outline: Move massage to
     Given the following messages exist:
      | created_at | sender                 | recipient                | subject   | content           |

@@ -11,7 +11,7 @@ module SpreeSite
 
         preference :facebook_app_id, :string
         preference :facebook_admins, :string, :default => "1509902962"
-
+        preference :dashboard_per_page, :integer, :default => 5
       end if ::Product.table_exists?
 
       ActionMailer::Base.class_eval do

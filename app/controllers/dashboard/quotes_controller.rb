@@ -4,7 +4,7 @@ class Dashboard::QuotesController < Dashboard::ApplicationController
   respond_to :html, :js
 
   def index
-    @quotes = current_user.quotes.paginate(:page => params[:page], :per_page => params[:per_page] || 5)
+    @quotes = current_user.quotes.paginate(paginate_options)
   end
 
   def new

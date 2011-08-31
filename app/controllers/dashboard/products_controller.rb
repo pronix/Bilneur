@@ -7,7 +7,7 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
   helper_method :set_available_option_types
 
   def index
-    @products = Product.active.paginate(:per_page => 1, :page => params[:page], :order => "created_at DESC")
+    @products = Product.active.paginate(paginate_options.merge({  :order => "created_at DESC"}))
   end
 
   #
@@ -39,7 +39,7 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
   end
 
   def edit
-    redirect_to wizard_dashboard_products_path(@product.creation_state, @product.id) and return unless @product.creation_complete?
+    # redirect_to wizard_dashboard_products_path(@product.creation_state, @product.id) and return unless @product.creation_complete?
   end
 
   def update

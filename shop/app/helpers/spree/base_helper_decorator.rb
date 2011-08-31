@@ -16,7 +16,10 @@ Spree::BaseHelper.class_eval do
                                 end
 
     if order_count_items || virtual_order_count_items
+      text << raw("<img src='/images/icons/cart.png' />") if order_count_items
+
       if virtual_order_count_items
+        text << raw("<img src='/images/icons/vstore.png' />")
         css_class = 'full crt vstore'
       else
         css_class = 'full crt'

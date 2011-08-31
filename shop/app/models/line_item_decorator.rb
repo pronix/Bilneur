@@ -30,7 +30,7 @@ LineItem.class_eval do
   end
 
   def load_sellers
-    order.sellers = order.line_items.reload.map {|v| v.variant.seller }.uniq
+    order.reload_sellers!
   end
 
 end

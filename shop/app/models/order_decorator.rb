@@ -131,13 +131,15 @@ Order.class_eval do
 
   def create_shipment!
     shipping_methods.reload
-
+    shipments.clear
     shipping_methods.each do |item|
      if (_shipment = shipments.find_by_shipping_method_id(item.id))
        _shipment.update_attributes(:shipping_method => item, :seller => item.seller)
      else
-       self.shipments << Shipment.create!(:order => self, :seller => item.seller, :shipping_method => item,
-                                         :address => self.ship_address)
+       self.shipments << Shipment.create!(:order => self,
+                                          :seller => item.seller,
+                                          :shipping_method => item,
+                                          :address => self.ship_address)
      end
     end
 
@@ -176,9 +178,16 @@ Order.class_eval do
 
   end
 
+  def reload_sellers!
+    sellers = line_items.reload.map {|v| v.variant.seller }.uniq
+    save(:validate => false)
+  end
 
   def seller_shipping_method=(attrs)
     self.shipping_methods.clear
+    self.shipments.clear
+    adjustments.map{ |v| v.destroy if v.source_type == "Shipment" }
+
     attrs.each do |ship_seller_id, shipment_attrs|
       user_seller = sellers.find(ship_seller_id)
       self.shipping_methods << user_seller.shipping_methods.find(shipment_attrs[:shipping_method_id])

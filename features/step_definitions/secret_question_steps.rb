@@ -13,11 +13,11 @@ Given /^I already have secret question "(.+)" with answer "(.+)"$/ do |secret, a
 end
 
 Then /^I should see my question on the "(.+)"$/ do |field|
-  find_field(field).value.should == @user.secret_question.secret_question_variant_id.to_s
+  find_field(field).value.should eq(@user.secret_question.secret_question_variant_id.to_s)
 end
 
 Then /^I should see my answer on the "(.+)"$/ do |field|
-  find_field(field).value.should == @user.secret_question.answer
+  find_field(field).value.should eq(@user.secret_question.answer)
 end
 
 Given /^"(.+)" should be invisible$/ do |element|
@@ -36,7 +36,7 @@ Given /^I have a own question "(.+)" with answer "(.+)"$/ do |question, answer|
 end
 
 Then /^"(.+)" should be selected for "(.+)"$/ do |field, question|
-  find_field(field).value.should == SecretQuestionVariant.find_by_variant(question).id.to_s
+  find_field(field).value.should eq(question == "My Own Question" ? '-1' : SecretQuestionVariant.find_by_variant(question).id.to_s)
 end
 
 Given /^some test question$/ do

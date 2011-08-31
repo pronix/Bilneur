@@ -81,4 +81,13 @@ describe User do
     user.favorite_sellers.count.should == 10
   end
 
+  describe "Try to add self to favorite sellers" do
+    user = Factory(:user)
+    user.favorite_sellers.count.should == 0
+    user.add_seller_to_favorite(user)
+    user.favorite_sellers.count.should == 0
+    user.merge_favorite_sellers(user.id)
+    user.favorite_sellers.count.should == 0
+  end
+
 end

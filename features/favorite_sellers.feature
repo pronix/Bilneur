@@ -30,7 +30,7 @@ Feature: Manage Favorite Sellers
     And "seller1@person.com" should be my favorite seller
     # Flag @announce and this code need for close browser when test with @javascript 
     Then I close my browser
-@wip
+
   Scenario: Show my favorite sellers on the dashboard page
     And I sign in as "email@person.com/password"
     And I have following sellers as favorite:
@@ -40,7 +40,13 @@ Feature: Manage Favorite Sellers
       | seller4@person.com |
     Then I go to the favorite sellers dashboard page
     And I should all 3 favorite sellers
-    
+
+  Scenario: Not show favorite link on my page
+    And I sign in as "seller1@person.com/password1"
+    Then I go to the seller store "seller1@person.com"
+    Then show me the page
+    Then I should not see "Add Seller To Favorites"
+
   Scenario: Delete seller from favorite
     And I sign in as "email@person.com/password"
     And I have following sellers as favorite:
@@ -49,7 +55,7 @@ Feature: Manage Favorite Sellers
     Then I go to the favorite sellers dashboard page
     And I follow "Delete"
     And I should not see "Delete"
-    And I should not see "user:full_name" on the page
+    And I should not see favorite seller "seller2@person.com" "full_name" on the page
     And I should not have "seller2@person.com" as my favorite seller
 
   Scenario: Not show add to favorite seller link

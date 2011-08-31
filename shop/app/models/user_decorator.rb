@@ -83,12 +83,12 @@ User.class_eval do
   end
 
   def merge_favorite_sellers(_seller_ids=[])
-    User.where(:id => _seller_ids).each { |seller| favorite_sellers << seller unless favorite_sellers.find_by_id(seller.id)}
+    User.where(:id => _seller_ids).each { |seller| favorite_sellers << seller unless favorite_sellers.find_by_id(seller.id) || self == seller }
     favorite_sellers
   end
 
   def add_seller_to_favorite(_seller)
-    favorite_sellers << _seller unless favorite_sellers.find_by_id(_seller.id)
+    favorite_sellers << _seller unless favorite_sellers.find_by_id(_seller.id) || self == _seller
     favorite_sellers
   end
 

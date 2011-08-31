@@ -5,7 +5,7 @@ class Dashboard::FavoritesController < Dashboard::ApplicationController
   end
 
   def destroy
-    @current_user.favorite_sellers.find(params[:seller]).delete
+    @current_user.remove_seller_from_favorite(User.find(params[:seller]))
     render :nothing => true
   end
 

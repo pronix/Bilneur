@@ -265,18 +265,18 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
 /* Faded Buttons in Banners */
 .otherbutton { position: relative; padding: 0; }
 .marquee01 .otherbutton {display:block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') no-repeat;background-position:0 -53px;cursor: pointer; border: none;}  
-.marquee01 .otherbutton span.hover {position: absolute;display: block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') 0 0px no-repeat;background-position: bottom; top: 0;}
+.marquee01 .otherbutton span.hover {display: block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') 0 0px no-repeat;background-position: bottom; top: 0;}
 
 .marquee02 .otherbutton {display:block;height:51px;width:183px;background:url('/images/forms/sell_btn.png') no-repeat;background-position:0 -51px;cursor: pointer;}
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {.marquee02 .otherbutton {background-position:0 0;}}
     
-.marquee02 .otherbutton span.hover {position: absolute;display:block;height:51px;width:183px;background:url('/images/forms/sell_btn.png') 0 0px no-repeat;background-position: bottom; top: 0;}
+.marquee02 .otherbutton span.hover {display:block;height:51px;width:183px;background:url('/images/forms/sell_btn.png') 0 0px no-repeat;background-position: bottom; top: 0;}
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {.marquee02 .otherbutton span.hover {background-position:0px -51px;}}
 
 .marquee03 .otherbutton {display:block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') no-repeat;background-position:0 -53px;cursor: pointer; border: none;}  
-.marquee03 .otherbutton span.hover {position: absolute;display: block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') 0 0px no-repeat;background-position: bottom; top: 0;}
+.marquee03 .otherbutton span.hover {display: block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') 0 0px no-repeat;background-position: bottom; top: 0;}
 
 
 

@@ -17,6 +17,8 @@ User.class_eval do
   #
   has_many :products, :foreign_key => :owner_id
   has_many :seller_stores, :foreign_key => :seller_id
+  has_many :dealer_stores, :foreign_key => :dealer_id, :class_name  => "SellerStore"
+  has_many :dealer_quotes, :through => :dealer_stores, :source => :variant
   has_many :quotes,   :class_name => "Variant", :foreign_key => :seller_id,
                       :conditions => [ "variants.is_master = #{connection.quoted_false}" ]
   has_many :shipping_methods, :foreign_key => :seller_id

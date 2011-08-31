@@ -34,9 +34,9 @@ a:hover {opacity: 0.8;}
         .searchTxt input[type=text] { float:left; width:139px; height:14px; padding:5px 0 5px 20px; background:url('/images/forms/txt_bag.png') left no-repeat; border:none;}
         .searchTxt input[type=submit] { float:left; width:85px; height:24px; background:url('/images/forms/sbmt_bag.png') left no-repeat; border:none; color:#fff; font-size:9px; cursor:pointer;}
 
-    .srchBar, .searchTxt, .srchBar select {float:left;}             
+    .srchBar, .searchTxt, .srchBar select {float:left;}
 .blogCnt, .blogCnt .bCImg, .blogActions, .blogActions ul li, .blogActions ul li a, .blogRM, .blogRM h3, .blogRM b, .blogFtr, .blogPg, .blogPg p {float:left;}
-.blogActions ul, .blogActions em, .blogActions b {float:right;}     
+.blogActions ul, .blogActions em, .blogActions b {float:right;}
 
 /* Pagination */
 .paging { float:left; width:100%; margin-top:10px;}
@@ -193,10 +193,10 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
             .mBnr .bnrCnt a { font-size:12px;font-weight:b;color:#29b6de;margin-top:20px;}
             .btn { float:left; width:170px; height:49px; margin:20px 0 0 0;}
             .btn:hover {}
-            
+
         .mBnr .bnrImg { width:461px;position:relative;}
             .TabbedPanelsTab span { width:100%;text-align:center;line-height:19px;}
-        
+
 .cHome .mBnr, .mBnr .bnrCnt, .mBnr .bnrCnt h1, .mBnr .bnrCnt p, .mBnr .bnrCnt a, .mBnr .bnrCnt .btn, .mBnr .bnrImg,.TabbedPanelsTab span {float:left;}
 
 /* Categorias */
@@ -230,7 +230,7 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
     .pd1 p { float:left; width:125px; font-size:11px; margin:0 0 0 7px;}
     .pd1 span {float:left; width:125px; color:#a53027; margin:3px 0 0 7px;}
     .pd1 em {color:#619e44; font-style:normal;}
-/* Button Effects */        
+/* Button Effects */
 .rMore b {float:left;position:relative;z-index:5;height:32px;line-height:25px;padding-left:13px;font-weight:normal;}
 .rMore span {position:relative;}
 
@@ -244,7 +244,7 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
     ul.f1B { float:right;width:170px;margin-top:12px;}
         ul.f1B li { margin-right:5px;}
         ul.f1B li a { }
-    
+
     .f2 { width:100%;padding-bottom:20px;margin:20px 0 0 40px;}
     .f2 ul { width:100%;padding:10px 0;}
         .f2 ul li { margin-right:15px;}
@@ -259,23 +259,23 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
 .lrn { float:right;width:auto;text-align:right; margin-top:10px; color:#0066cc;text-decoration:none;display:block;}
 
 /* Top Logo Fix */
-.cLogo {display:block;height:66px !important;width:177px !important;background:url('/images/logos/logo_new.png') no-repeat;background-position:0 0px;cursor: pointer;}   
+.cLogo {display:block;height:66px !important;width:177px !important;background:url('/images/logos/logo_new.png') no-repeat;background-position:0 0px;cursor: pointer;}
 .cLogo span.hover {position: absolute;display: block;height:66px;width:177px;background:url('/images/logos/logo_new.png') 0 -66px no-repeat;background-position: bottom;}
 
 /* Faded Buttons in Banners */
 .otherbutton { position: relative; padding: 0; }
-.marquee01 .otherbutton {display:block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') no-repeat;background-position:0 -53px;cursor: pointer; border: none;}  
+.marquee01 .otherbutton {display:block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') no-repeat;background-position:0 -53px;cursor: pointer; border: none;}
 .marquee01 .otherbutton span.hover {position: absolute;display: block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') 0 0px no-repeat;background-position: bottom; top: 0;}
 
 .marquee02 .otherbutton {display:block;height:51px;width:183px;background:url('/images/forms/sell_btn.png') no-repeat;background-position:0 -51px;cursor: pointer;}
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {.marquee02 .otherbutton {background-position:0 0;}}
-    
+
 .marquee02 .otherbutton span.hover {position: absolute;display:block;height:51px;width:183px;background:url('/images/forms/sell_btn.png') 0 0px no-repeat;background-position: bottom; top: 0;}
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {.marquee02 .otherbutton span.hover {background-position:0px -51px;}}
 
-.marquee03 .otherbutton {display:block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') no-repeat;background-position:0 -53px;cursor: pointer; border: none;}  
+.marquee03 .otherbutton {display:block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') no-repeat;background-position:0 -53px;cursor: pointer; border: none;}
 .marquee03 .otherbutton span.hover {position: absolute;display: block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') 0 0px no-repeat;background-position: bottom; top: 0;}
 
 
@@ -291,3 +291,11 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
     top: 45%;
     left: 45%;
   }
+
+#button-add-quote{
+                   float:none;
+                   border:none;
+                   background:none;
+                   cursor:pointer;
+                   height: 30px;
+}

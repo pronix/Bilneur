@@ -95,8 +95,9 @@ Rails.application.routes.draw do
       resources :feedback_reviews
     end
 
-    resources :quotes, :path_names => { :new => "(/:product_ean)/new"} do
-
+    resources :quotes, :path_names => { :new => "(/:product_ean)/new" } do
+      match "(/:state)" => "quotes#index", :as => :state, :via => :get, :on => :collection,
+                                                            :constraints => { :state => /merchant|bilneur|other/ }
       collection do
         match "/search" => "quotes#search", :as => :search, :via => [:get, :post]
       end

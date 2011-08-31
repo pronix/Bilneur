@@ -178,11 +178,6 @@ Order.class_eval do
 
   end
 
-  def reload_sellers!
-    sellers = line_items.reload.map {|v| v.variant.seller }.uniq
-    save(:validate => false)
-  end
-
   def seller_shipping_method=(attrs)
     self.shipping_methods.clear
     self.shipments.clear
@@ -233,8 +228,8 @@ Order.class_eval do
   end
 
   def sellers!
-    sellers = line_items.map {|v| v.variant.seller }.uniq
-    save
+    self.seller_ids = line_items.reload.map {|v| v.variant.seller_id }.uniq
+    save(:validate => false)
     return sellers
   end
 

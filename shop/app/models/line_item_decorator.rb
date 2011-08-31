@@ -30,7 +30,7 @@ LineItem.class_eval do
   end
 
   def load_sellers
-    order.reload_sellers!
+    order.sellers!
   end
 
 end

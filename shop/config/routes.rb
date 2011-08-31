@@ -144,6 +144,11 @@ Rails.application.routes.draw do
 
     resources :products do
 
+      collection do
+        match "/wizard(/:state)(/:id)" => "products#wizard", :as => :wizard, :via => [ :post, :get, :put]
+
+      end
+
       resources :images do
         collection do
           post :update_positions
@@ -153,18 +158,22 @@ Rails.application.routes.draw do
       resources :product_properties
 
       resources :option_types do
+
         member do
           get :select
           get :remove
         end
+
         collection do
           get :available
           get :selected
         end
+
       end # end dashboard < products < option_types
 
       resources :taxons do
         member do
+          get :child
           get :select
           delete :remove
         end

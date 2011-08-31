@@ -55,10 +55,11 @@ class Dashboard::OptionTypesController < Dashboard::ApplicationController
   end
 
   def remove
-    @product.option_types.delete(@option_type)
+    @product.option_types.delete(OptionType.find(params[:id]))
     @product.save
     flash.notice = I18n.t("notice_messages.option_type_removed")
-    redirect_to selected_admin_product_option_types_url(@product)
+
+    redirect_to wizard_dashboard_products_path(@product.creation_state, @product.id)
   end
 
   def update_positions

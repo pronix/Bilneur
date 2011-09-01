@@ -1,21 +1,25 @@
-<table class="index">
+<table class="tbl2" width="915px" cellpadding="0" cellspacing="0">
   <tr>
     <th><%= t("name") %></th>
     <th><%= t("presentation") %></th>
     <th>&nbsp;</th>
   </tr>
   <% @option_types.each do |option_type| %>
-    <tr>
-      <td><%= option_type.name %></td>
-      <td><%= option_type.presentation %></td>
-      <td class="actions">
+  <tr>
+    <td><%= option_type.name %></td>
+    <td><%= option_type.presentation %></td>
+    <td class="actions">
       <%= link_to_with_icon 'delete',  t("remove"), remove_dashboard_product_option_type_url(@product, option_type) %>
-      </td>
-    </tr>
+    </td>
+  </tr>
   <% end %>
   <% if @option_types.empty? %>
-   <tr><td colspan="3"><%= t(:none) %></td></tr>
+  <tr><td colspan="3"><%= t(:none) %></td></tr>
   <% end %>
 </table>
 
 <div id="option-types"></div>
+<span id="new_opt_link">
+  <%= link_to icon('add') + ' ' + t("add_option_type"),
+       available_dashboard_product_option_types_url(@product), :remote => :true, :class => 'iconlink' %>
+</span>

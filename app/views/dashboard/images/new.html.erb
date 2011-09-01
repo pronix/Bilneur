@@ -1,3 +1,11 @@
+<div class="sptCntBus">
+	<div class="top"></div>
+
+	<div class="cntr">
+    <h2 class="htFix"></h2>
+
+    <div id="new_product"></div>
+
 <h4><%= t("new_image") %></h4>
 <%= form_for(:image, :url => dashboard_product_images_path(@product), :html => { :multipart => true }) do |form| %>
   <table class="basic-table">
@@ -9,6 +17,11 @@
   </p>
 <% end %>
 
+
+  </div>
+
+	<div class="btm"></div>
+</div>
 
 <script type="text/javascript">
   jQuery('#cancel_link').click(function (event) {

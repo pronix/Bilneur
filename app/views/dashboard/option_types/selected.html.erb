@@ -1,6 +1,20 @@
 <%= render :partial => 'dashboard/shared/product_sub_menu' %>
 <%= render :partial => 'dashboard/shared/product_tabs', :locals => {:current => "Option Types"} %>
 
-<div id="selected-options">
-  <%= render 'selected' %>
+<div class="sptCntBus">
+	<div class="top"></div>
+
+	<div class="cntr">
+    <h2 class="htFix"></h2>
+
+    <div id="new_product"></div>
+
+
+    <div id="selected-options">
+      <%= render 'selected' %>
+    </div>
+
+  </div>
+
+	<div class="btm"></div>
 </div>

@@ -9,7 +9,7 @@ class Dashboard::OptionTypesController < Dashboard::ApplicationController
   def new
     @option_type = OptionType.new
     respond_to do |format|
-      format.js  { render :layout => false }
+      format.js  { render :partial => "new",:layout => false }
     end
   end
 

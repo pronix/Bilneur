@@ -27,8 +27,8 @@
           </div>
 
           <div class="slrImg">
-            <i><%= image_tag item.seller.photo.url(:for_review) %></i>
-            <span><%= item.seller.full_name %></span>
+            <i><%= link_to (image_tag item.seller.photo.url(:for_review)), store_seller_path(item.seller) %></i>
+            <span><%= link_to item.seller.full_name, store_seller_path(item.seller) %></span>
           </div>
 
           <div class="prc">

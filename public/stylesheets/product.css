@@ -121,6 +121,7 @@
         .tg {}
         .tg img { float:left; margin:8px 0 0 8px;}
   .cntcts { float:right; margin:10px 0 0 15px;}
+  .ptPod .cntcts { float:left; width: 95%; margin:10px 0 0 15px;}
     .cntcts p { float:left; width:100%; margin-top:10px;}
       .cntcts p em { float:left; margin-top:10px; font-style:normal; font-size:7px; color:#444;}
       .cntcts p b { float:left; width:27px; margin-top:5px; margin-left:5px; height:21px; text-align:center; line-height:16px; font-size:10px; background:url('/images/forms/qnty.png') no-repeat;}

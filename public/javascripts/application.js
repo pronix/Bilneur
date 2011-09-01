@@ -41,6 +41,12 @@
     });
 
 
+    //Modal window for sharing links
+    $(".modalLink").click(function (e) {
+	$.modal("<div>"+$(this).attr('href')+"</div>");
+	return false;
+    });
+
     // Remove an item from the cart by setting its quantity to zero and posting the update form
     $('form#normal-updatecart a.delete').show().live('click', function(e){
       $(this).parent().find('input.txt').val(0);

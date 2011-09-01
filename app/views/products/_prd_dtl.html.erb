@@ -57,9 +57,8 @@
     <div class="bnrFolw">
       <ul>
         <li><%= link_to_twitter_share(product_url, image_tag("icons/bnr_ico_twtr.png")) %></li>
-        <li><%= link_to image_tag("icons/bnr_ico_ggl.png"), "" %></li>
         <li><%= link_to image_tag("icons/bnr_ico_eml.png"), "mailto:#{Spree::Config[:support_email]}" %></li>
-        <li><%= link_to image_tag("icons/bnr_ico_lnk.png"), "" %></li>
+        <li><%= link_to image_tag("icons/bnr_ico_lnk.png"), product_url, :class => "modalLink" %></li>
       </ul>
     </div>
   </div>

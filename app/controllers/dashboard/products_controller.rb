@@ -65,7 +65,11 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
 
   def collection
     params[:search] ||= {}
-    @search = Product.active.metasearch(params[:search])
+    @search = case params[:select_by]
+                when 'by_name' then Product.active.metasearch(:name_contains => params[:search_string])
+                when 'by_sku' then Product.active.metasearch(:variants_including_master_sku_contains => params[:search_string])
+                else @search = Product.active.metasearch(params[:search])
+              end
     @products = @search.relation.group_by_products_id.includes({:variants => [:images, :option_values]}).paginate(paginate_options.merge({:order => "created_at DESC"}))
   end
 

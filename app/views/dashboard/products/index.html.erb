@@ -1,11 +1,13 @@
 <div class="fdBck" style="padding-bottom: 5px;">
 	<h2><%= "#{t("actions.listing")} #{t("products")}" %></h2>
   <div class="cmbo6">
-    <input class="txt" type="text" name="" value="" />
-    <select id="websites21" tabindex="1" name="">
-      <option value="" selected="selected" title="">Name</option>
-      <option value="" title="">SKU</option>
-    </select>
+    <%= form_for @search, :url => dashboard_products_path, :html => {:method => :get} do |f| %>
+      <input class="txt" type="text" name="search_string" value="<%= params[:search_string] %>" />
+      <select id="websites21" tabindex="1" name="select_by">
+        <option value="by_name" <%== select_by_param('select_by', 'by_name') %> title="">Name</option>
+        <option value="by_sku" <%== select_by_param('select_by', 'by_sku') %> title="">SKU</option>
+      </select>
+    <% end %>
   </div>
 </div>
 <%= render :partial => 'dashboard/shared/product_sub_menu', :locals => { :current => "Products" } %>
@@ -27,18 +29,6 @@
       <%= hook :admin_products_index_header_actions %>
     </th>
   </tr>
-
-<%= form_for @search, :url => dashboard_products_path, :html => {:method => :get} do |f| %>
-  <p>
-    <%= f.label :name_contains, t("name") %><br />
-    <%= f.text_field :name_contains, :size => 15 %>
-  </p>
-  <p>
-    <%= f.label :variants_including_master_sku_contains, t("sku") %><br />
-    <%= f.text_field :variants_including_master_sku_contains, :size => 15 %>
-  </p>
-  <%= f.submit %>
-<% end %>
 
 <% @products.each do |product| %>
   <tr <%= 'style="color:red;"' if product.deleted? %> id="<%= dom_id product %>">

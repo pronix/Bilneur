@@ -33,10 +33,10 @@
     <h6>Shipping To: </h6>
     <div class="radioPnl">
       <div id="ship-addresses">
-      <%= render :partial => "ship_address", :collection => current_user.addresses %>
+        <%= render :partial => "ship_address", :collection => current_user.addresses %>
       </div>
 
-      <button id="next_after_selected_ship_address" value="Continue">
+      <button id="next_after_selected_ship_address" value="Continue" <%= "style='display:none;'" if current_user.addresses.blank?%>>
         Calculating shipping
       </button>
 

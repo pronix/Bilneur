@@ -2,11 +2,13 @@
   $(document).ready(function(){
 
       $('#new_address_checkout').live('ajax:loading', function(event, xhr, settings) {
+        $(".chkOut3").prepend("<div class='spinner'><img src='/images/spinner.gif' />");
         $("#update_new_address").hide()
       });
 
       $('#new_address_checkout').live('ajax:complete', function(event, xhr) {
         $("#update_new_address").show()
+        $('.spinner').remove();
       });
 
 

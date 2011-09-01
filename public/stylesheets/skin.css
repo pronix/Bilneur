@@ -11,7 +11,7 @@ ul li { list-style:none;}
 .TabbedPanelsTab span { float:left; width:100%;text-align:center;line-height:19px;}
 
 a:hover {opacity: 0.8;}
-
+select:hover { cursor: pointer; }
 /* Check boxes code */
 .checkbox {height:22px;width: 19px;clear:left;float:left;margin: 0 0 3px;padding: 0 0 0 26px;background:url('/images/icons/checkbox__.png') no-repeat;cursor: default;text-align:left;}
 .checkbox input,.radio input {width: 0; height: 0;}

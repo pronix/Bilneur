@@ -7,7 +7,7 @@
             <span><%= review.seller.full_name %></span>
           </i>
           <p>
-            <%= review.review %>
+            <%= review.review.slice(0, 150) %>
           </p>
           <div class="smlRtng">
             <%= show_stars(review.rating, 'icons/yel_str_sml.png', 'icons/grey_str_sml.png', '<em>') %>

@@ -10,4 +10,10 @@ Variant.class_eval do
     self.price
   end
 
+  def available_volume_prices(_quantity = count_on_hand)
+    volume_prices.select { |v|
+      (1.._quantity.to_i).include?(v.range_first)
+    }
+  end
+
 end

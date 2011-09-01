@@ -1,13 +1,12 @@
 <%= form_for :order, :url => populate_orders_url, :remote => true, :html => {:class => "cart-form"} do |f| %>
-
-
+<% deafult_quantity = quantity rescue 1 %>
   <% if cart_form.has_stock? || Spree::Config[:allow_backorders] %>
    <p class="qtav">
     <em>QTY</em>
     <b class="qty_chooser">
       <span class="avla"><%= cart_form.count_on_hand %></span>
      <%= text_field_tag (cart_form.has_variants? ? :quantity : "variants[#{cart_form.master.id}]"),
-      1, :class => "pQty", :onfocus => "if(this.value=='1') this.value=''", :onblur => "if(this.value=='') this.value='1'" %>
+      deafult_quantity, :class => "pQty", :onfocus => "if(this.value=='#{deafult_quantity}') this.value=''", :onblur => "if(this.value=='') this.value='#{deafult_quantity}'" %>
     &nbsp;
     </b>
     <% if cart_form.respond_to?(:seller) %>

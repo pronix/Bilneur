@@ -1,6 +1,7 @@
 <% @body_id = 'product-details' %>
 <% stylesheet "slider/style", "slider/jquery", "slider/SpryTabbedPanels2", "slider/SpryTabbedPanels3", "product" %>
 <% javascript "slider/jquery_002", "slider/jquery_003", "SpryTabbedPanels", "product_detail", "like_review" %>
+
 <div class="col1 slrPrdctPg prdctDPg" style="border: none;">
   <div class="mTabs">
     <div id="TabbedPanels0" class="TabbedPanels">
@@ -90,7 +91,9 @@
             <span>FIXME</span>
           </b>
           <b class="mrg5">Shipping:
-            <span>FIXME</span>
+            <span>
+              <%= number_to_currency @quote.primary_shipping unless @quote.primary_shipping.blank? %>
+            </span>
           </b>
           <b>Virtual Trading:
             <% if @quote.virtual? %>
@@ -99,67 +102,47 @@
             <span>No</span>
             <% end %>
           </b>
-          <a href="#">FIXME Available Via Bilneur</a>
 
-          <b class="mrg5">Location: <span>FIXME</span></b>
+          <b class="mrg5">Location: <span><%= @quote.seller.primary_address.try(:city) %></span></b>
           <big><b>Quantity Available: <span><%= @quote.count_on_hand %></span></b></big>
           <div class="cntcts">
             <p>
-              <em>QTY</em>
-              <b><input class="pQty" type="text" name="" value="01" onfocus="if(this.value=='01') this.value=''" onblur="if(this.value=='') this.value='01'" /></b>
-              <a class="skBlu" href="#">FIXAdd To Cart</a>
-              <a class="bLu" href="#">FIXAdd To V. Store</a>
+              <%= render :partial => "shared/cart_form", :object => @quote %>
             </p>
           </div>
         </div>
       </div>
     </div>
+
     <div id="CollapsiblePanel2" class="CollapsiblePanel">
-      <div class="CollapsiblePanelTab" tabindex="0"><span>Buy More Save More FIX</span></div>
+
+      <div class="CollapsiblePanelTab" tabindex="0"><span>Buy More Save More</span></div>
       <div class="CollapsiblePanelContent colsPC">
+
+        <% @quote.available_volume_prices.each do |item|  %>
+
         <div class="rts1">
-          <h2>FIXME<b class="mrg5">Quantity 1 - 5</b></h2>
+
+          <h2>
+            <%= number_to_currency @quote.volume_price(item.range_first) %>
+            <b class="mrg5">Quantity <%= item.range_first %> - <%= item.range_last %>  </b>
+          </h2>
+
           <div class="cntcts">
-            <p>
-              <em>QTY</em>
-              <b><input class="pQty" type="text" name="" value="01" onfocus="if(this.value=='01') this.value=''" onblur="if(this.value=='') this.value='01'" /></b>
-              <a class="skBlu" href="#">Add To Cart</a>
-              <a class="bLu" href="#">Add To V. Store</a>
-            </p>
+            <%= render :partial => "shared/cart_form", :object => @quote, :locals => {:quantity => item.range_first } %>
           </div>
 
         </div>
         <div class="bdr5p"></div>
-        <div class="rts1">
-          <h2>FIXME<b class="mrg5">Quantity 6 - 15</b></h2>
-          <div class="cntcts">
-            <p>
-              <em>QTY</em>
-              <b><input class="pQty" type="text" name="" value="01" onfocus="if(this.value=='01') this.value=''" onblur="if(this.value=='') this.value='01'" /></b>
-              <a class="skBlu" href="#">Add To Cart</a>
-              <a class="bLu" href="#">Add To V. Store</a>
-            </p>
-          </div>
 
-        </div>
-        <div class="bdr5p"></div>
-        <div class="rts1">
-          <h2>FIXME<b class="mrg5">Quantity 16 - 25</b></h2>
-          <div class="cntcts">
-            <p>
-              <em>QTY</em>
-              <b><input class="pQty" type="text" name="" value="01" onfocus="if(this.value=='01') this.value=''" onblur="if(this.value=='') this.value='01'" /></b>
-              <a class="skBlu" href="#">Add To Cart</a>
-              <a class="bLu" href="#">Add To V. Store</a>
-            </p>
-          </div>
+        <% end %>
 
-        </div>
       </div>
     </div>
 
   </div>
 </div>
+
 <div class="col2 mag0 prdctDPg slrPrdctPg slrPrdctPg">
   <div class="vwer smlr mag0">
     <div class="top"><b>Sellers Other Products</b></div>

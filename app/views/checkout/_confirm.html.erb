@@ -19,7 +19,7 @@
         <p><%= ship_address.full_name %><br />
           <%= ship_address.address1%><br />
           <%= ship_address.address2%><br />
-          <%= ship_address.city+", "+ship_address.state.abbr+" - "+ship_address.zipcode  %><br />
+          <%= ship_address.city+", "+ship_address.state.try(:abbr) +" - "+ ship_address.zipcode  %><br />
           <%= ship_address.country %><br />
           Phone: <%= ship_address.phone %>
         </p>

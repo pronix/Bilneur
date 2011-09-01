@@ -2,10 +2,15 @@
   <fieldset>
     <legend><%= t("new_option_type") %></legend>
     <%= render :partial => "form", :locals => { :f => f } %>
-     <p class="form-buttons">
-       <%= button t("actions.create") %>
-       <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_option_types_path %>
-     </p>
+
+    <div class="bSaveC">
+      <big>
+        <button type="submit" class="btn otherbutton"></button>
+      </big>
+      <p>
+        <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_option_types_path %>
+      </p>
+    </div>
 
   </fieldset>
 <% end %>

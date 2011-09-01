@@ -1,13 +1,25 @@
 <%= render :partial => 'dashboard/shared/product_sub_menu' %>
 
-<h1><%= t("editing_property") %></h1>
+<div class="sptCntBus">
+  <%= render 'shared/error_messages', :target => @property %>
+  <div class="top"></div>
+  <div class="cntr">
+    <h2 class="htFix"><%= t("editing_property")%></h2>
 
-<%= render 'shared/error_messages', :target => @property %>
 
-<%= form_for(:property, :url => dashboard_property_path(@property), :html => { :method => :put }) do |f| %>
-  <%= render :partial => "form", :locals => { :f => f } %>
-<p class="form-buttons">
-  <button> <span><%= t("update") %></span></button>
-  <%= t("or") %> <%= link_to t("cancel"), dashboard_properties_path %>
-</p>
-<% end %>
+    <%= form_for(:property, :url => dashboard_property_path(@property), :html => { :method => :put }) do |f| %>
+    <%= render :partial => "form", :locals => { :f => f } %>
+
+    <div class="bSaveC">
+      <big>
+        <button type="submit" class="btn otherbutton" id="save_property"></button>
+      </big>
+      <p>
+        <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_properties_path %>
+      </p>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="btm"></div>
+</div>

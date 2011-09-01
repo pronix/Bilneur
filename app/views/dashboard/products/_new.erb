@@ -40,10 +40,18 @@
         <% end %>
       </div>
     </div>
-    <p class="form-buttons">
-      <button><span><%= t("actions.create") %></span></button>
+
+    <div class="bSaveC">
+      <big>
+        <button type="submit" class="btn otherbutton"></button>
+      </big>
+      <p>
       <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_products_path %>
-    </p>
+      </p>
+    </div>
+
+
+
 
   </fieldset>
   <% end %>

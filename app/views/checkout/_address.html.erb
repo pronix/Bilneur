@@ -96,6 +96,7 @@
 
 
     $("#next_after_selected_ship_address").click(function(){
+      $(".chkOut3").prepend("<div class='spinner'><img src='/images/spinner.gif' />");
        var content_form = $(this).parents("form:first");
 
        $.ajax({

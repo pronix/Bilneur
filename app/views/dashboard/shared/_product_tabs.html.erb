@@ -1,33 +1,25 @@
-<h1><%== t("editing_product") + " &ldquo;#{@product.name}&rdquo;" %></h1>
+<div >
 
-<% content_for :sidebar do %>
+  <span<%== ' class="active"' if current == "Product Details" %>>
+    <%= link_to t("product_details"), edit_dashboard_product_url(@product) %>
+  </span>
+  |
+  <span<%== ' class="active"' if current == "Images" %>>
+    <%= link_to t("images"), dashboard_product_images_path(@product) %>
+  </span>
+  |
+  <span<%== ' class="active"' if current == "Option Types" %>>
+    <%= link_to t("option_types"), selected_dashboard_product_option_types_url(@product) %>
+  </span>
+  |
+  <span<%== ' class="active"' if current == "Product Properties" %>>
+    <%= link_to t("product_properties"), dashboard_product_product_properties_path(@product) %>
+  </span>
+  |
+  <span<%== ' class="active"' if current == "Taxons" %>>
+    <%= link_to t("taxons"), selected_dashboard_product_taxons_url(@product) %>
+  </span>
 
-  <h3><%= @product.name %><span class='sku'><%= @product.sku %></span></h3>
-  <br class="clear" />
+</div>
 
-  <ul class="sidebar product-menu">
-
-      <li<%== ' class="active"' if current == "Product Details" %>>
-        <%= link_to t("product_details"), edit_dashboard_product_url(@product) %>
-      </li>
-
-      <li<%== ' class="active"' if current == "Images" %>>
-        <%= link_to t("images"), dashboard_product_images_path(@product) %>
-      </li>
-
-      <li<%== ' class="active"' if current == "Option Types" %>>
-        <%= link_to t("option_types"), selected_dashboard_product_option_types_url(@product) %>
-      </li>
-
-      <li<%== ' class="active"' if current == "Product Properties" %>>
-        <%= link_to t("product_properties"), dashboard_product_product_properties_path(@product) %>
-      </li>
-
-      <li<%== ' class="active"' if current == "Taxons" %>>
-        <%= link_to t("taxons"), selected_dashboard_product_taxons_url(@product) %>
-      </li>
-  </ul>
-  <br class="clear" />
-
-<% end %>
 

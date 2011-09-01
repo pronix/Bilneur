@@ -18,6 +18,8 @@
 # end
 
 
-every 1.day, :at => '2:30 am' do
+# every 1.day, :at => '2:30 am' do
+
+every 15.minutes do
   rake "ts:index"
 end

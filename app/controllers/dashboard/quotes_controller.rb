@@ -7,14 +7,14 @@ class Dashboard::QuotesController < Dashboard::ApplicationController
     @quotes =
       case params[:state].to_s
       when "merchant"
-        current_user.quotes.warehouse_merchant.paginate(paginate_options)
+        current_user.quotes.warehouse_merchant
       when "bilneur"
-        current_user.quotes.warehouse_bilneur.paginate(paginate_options)
+        current_user.quotes.warehouse_bilneur
       when "other"
-        current_user.quotes.warehouse_seller.paginate(paginate_options)
+        current_user.quotes.warehouse_seller
       else
-        current_user.quotes.paginate(paginate_options)
-      end
+        current_user.quotes
+      end.paginate(paginate_options.merge({ :order => "created_at DESC"}))
   end
 
 

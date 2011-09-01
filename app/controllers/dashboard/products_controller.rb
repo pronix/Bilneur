@@ -7,7 +7,7 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
   helper_method :set_available_option_types
 
   def index
-    @products = Product.active.paginate(paginate_options.merge({  :order => "created_at DESC"}))
+    collection
   end
 
   #
@@ -30,7 +30,7 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
 
   def create
     @product = current_user.products.new(params[:product])
-    if @product.save!
+    if @product.save
       flash.notice = "Product is created."
       render :edit
     else
@@ -62,6 +62,16 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
 
 
   private
+
+  def collection
+    params[:search] ||= {}
+    @search = case params[:select_by]
+                when 'by_name' then Product.active.metasearch(:name_contains => params[:search_string])
+                when 'by_sku' then Product.active.metasearch(:variants_including_master_sku_contains => params[:search_string])
+                else @search = Product.active.metasearch(params[:search])
+              end
+    @products = @search.paginate(paginate_options.merge({:order => "created_at DESC"}))
+  end
 
   def prepare_taxon
     if (@taxon_ids = params[:product].try(:[], :taxon_ids))

@@ -9,6 +9,10 @@ class Dashboard::ApplicationController < Spree::BaseController
 
   private
 
+  def render_js_for_destroy
+    render :partial => "/admin/shared/destroy"
+  end
+
   def verify_seller
     redirect_to new_dashboard_payment_method_path, :notice => ((flash.notice||"") << "Should enter Payment Method") and
       return if current_user.has_role?("seller") &&

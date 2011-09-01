@@ -2,46 +2,60 @@
 
 <%= render :partial => 'dashboard/shared/product_tabs', :locals => {:current => "Images"} %>
 
-<table class="index sortable">
-  <tr>
-    <th><%= t("thumbnail") %></th>
-    <th><%= t("alt_text") %></th>
-    <th><%= t("action") %></th>
-  </tr>
+<div class="sptCntBus">
+	<div class="top"></div>
 
-  <% @product.images.each do |image| %>
-    <tr id="<%= dom_id(image) %>">
-      <td>
-        <span class="handle"></span>
-        <%= link_to(image_tag(image.attachment.url(:mini)), image.attachment.url(:product)) %>
-      </td>
-      <td><%= image.alt %></td>
-      <td class="actions">
-        <%= link_to_with_icon('edit', t("edit"), edit_dashboard_product_image_url(@product, image), :class => 'edit') %>
-        &nbsp;
-        <%= link_to_delete image, {:url => dashboard_product_image_url(@product, image) }%>
-      </td>
-    </tr>
-  <% end %>
+	<div class="cntr">
+    <h2 class="htFix"></h2>
 
-</table>
+    <div id="new_product"></div>
+
+    <p>
+      <%= link_to icon('add') + ' ' + t("new_image"), new_dashboard_product_image_url(@product), :id => "new_image_link" %>
+    </p>
+
+    <table class="index sortable">
+      <tr>
+        <th><%= t("thumbnail") %></th>
+        <th><%= t("alt_text") %></th>
+        <th><%= t("action") %></th>
+      </tr>
+
+      <% @product.images.each do |image| %>
+      <tr id="<%= dom_id(image) %>">
+        <td>
+          <span class="handle"></span>
+          <%= link_to(image_tag(image.attachment.url(:mini)), image.attachment.url(:product)) %>
+        </td>
+        <td><%= image.alt %></td>
+        <td class="actions">
+          <%= link_to_with_icon('edit', t("edit"), edit_dashboard_product_image_url(@product, image), :class => 'edit') %>
+          &nbsp;
+          <%= link_to_delete image, {:url => dashboard_product_image_url(@product, image) }%>
+        </td>
+      </tr>
+      <% end %>
+
+    </table>
+
+  </div>
+
+	<div class="btm"></div>
+</div>
 
 <div id="images"></div>
 <br/>
-<p>
-    <%= link_to icon('add') + ' ' + t("new_image"), new_dashboard_product_image_url(@product), :id => "new_image_link" %>
-</p>
 
 <% content_for :head do %>
-  <script type="text/javascript">
-    jQuery(document).ready(function(){
+<script type="text/javascript">
+  jQuery(document).ready(function(){
 
-      jQuery('#new_image_link').click(function (event) {
-        event.preventDefault();
-        jQuery(this).hide();
-        jQuery.ajax({type: 'GET', url: this.href, data: ({authenticity_token: AUTH_TOKEN}), success: function(r){ jQuery('#images').html(r);} });
-      });
+  jQuery('#new_image_link').click(function (event) {
+  event.preventDefault();
+  jQuery(this).hide();
+  jQuery.ajax({type: 'GET', url: this.href, data: ({authenticity_token: AUTH_TOKEN}), success: function(r){ jQuery('#images').html(r);} });
+  });
 
-    });
-  </script>
+  });
+</script>
 <% end %>

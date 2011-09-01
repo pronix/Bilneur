@@ -1,43 +1,64 @@
 <%= render :partial => 'dashboard/shared/product_sub_menu' %>
 
 <%= render :partial => 'dashboard/shared/product_tabs', :locals => {:current => "Taxons"} %>
-<div id="selected-taxons">
-  <%= render :partial => "taxon_table", :locals => {:taxons => @taxons} %>
+
+<div class="sptCntBus">
+	<div class="top"></div>
+
+	<div class="cntr">
+    <h2 class="htFix"></h2>
+
+    <div id="new_product"></div>
+
+
+    <div id="selected-taxons">
+      <%= render :partial => "taxon_table", :locals => {:taxons => @taxons} %>
+    </div>
+
+
+
+    <%= form_tag('#') do %>
+   <div class="cmbo6" style="margin-top:0px !important;">
+      <label><%= t('search') %>:</label>
+      <input id="searchtext" size="25", class="txt" style="float:none !important;">
+    </div>
+    <% end %>
+
+    <br/>
+    <div id="search_hits"></div>
+
+
+  </div>
+
+	<div class="btm"></div>
 </div>
 
 
-<%= form_tag('#') do %>
-  <label><%= t('search') %>:</label>
-  <input id="searchtext" size="25">
-<% end %>
-
 <%= javascript_tag do %>
-  function search_for_taxons(){
-    jQuery.ajax({
-     data: {q: jQuery("#searchtext").val() },
-     dataType: 'script',
-     success: function(request){
-       jQuery('#search_hits').html(request);
-     },
-     type: 'post',
-     url: '<%= available_dashboard_product_taxons_url(@product) %>'
-    });
-  }
+function search_for_taxons(){
+jQuery.ajax({
+data: {q: jQuery("#searchtext").val() },
+dataType: 'script',
+success: function(request){
+jQuery('#search_hits').html(request);
+},
+type: 'post',
+url: '<%= available_dashboard_product_taxons_url(@product) %>'
+});
+}
 
-  jQuery("#searchtext").keypress(function (e) {
-    if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
-      search_for_taxons();
+jQuery("#searchtext").keypress(function (e) {
+if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+search_for_taxons();
 
-      return false;
-    } else {
-       return true;
-    }
-  });
+return false;
+} else {
+return true;
+}
+});
 
-  jQuery("#searchtext").delayedObserver(function() {
-    search_for_taxons();
-  }, 0.75);
+jQuery("#searchtext").delayedObserver(function() {
+search_for_taxons();
+}, 0.75);
 <% end %>
-<br/>
-<div id="search_hits"></div>
 

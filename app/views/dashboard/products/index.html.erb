@@ -1,13 +1,16 @@
 <div class="fdBck" style="padding-bottom: 5px;">
 	<h2><%= "#{t("actions.listing")} #{t("products")}" %></h2>
   <div class="cmbo6">
-    <input class="txt" type="text" name="" value="" />
-    <select id="websites21" tabindex="1" name="">
-      <option value="" selected="selected" title="">Name</option>
-      <option value="" title="">SKU</option>
+    <%= form_for @search, :url => dashboard_products_path, :html => {:method => :get} do |f| %>
+    <input class="txt" type="text" name="search_string" value="<%= params[:search_string] %>" />
+    <select id="websites21" tabindex="1" name="select_by">
+      <option value="by_name" <%== select_by_param('select_by', 'by_name') %> title="">Name</option>
+      <option value="by_sku" <%== select_by_param('select_by', 'by_sku') %> title="">SKU</option>
     </select>
+    <% end %>
   </div>
 </div>
+
 <%= render :partial => 'dashboard/shared/product_sub_menu', :locals => { :current => "Products" } %>
 
 <div class="sptCntBus">
@@ -16,39 +19,38 @@
 	<div class="cntr">
     <h2 class="htFix"></h2>
 
-<div id="new_product"></div>
+    <div id="new_product"></div>
 
-<table class="index" id='listing_products'>
-  <tr>
-      <th><%= t("sku") %></th>
-      <th><%= t("ean") %></th>
-      <th><%= t("name") %></th>
-      <!-- <th><%#= t("price") %></th> -->
-    <th>
-      <%= hook :admin_products_index_header_actions %>
-    </th>
-  </tr>
-<% @products.each do |product| %>
-  <tr <%= 'style="color:red;"' if product.deleted? %> id="<%= dom_id product %>">
-      <td><%= product.sku %></td>
-      <td><%= product.ean %></td>
-      <td><%= product.name %></td>
-      <!-- <td><%#= product.price %></td> -->
-    <td class="actions">
-      <% if can? :edit, product %>
-      <%= link_to t("edit"), edit_dashboard_product_path(product) unless product.deleted? %>
+    <table class="index" id='listing_products'>
+      <tr>
+        <th><%= t("sku") %></th>
+        <th><%= sort_link @search,:ean, t("ean"), {}, {} %></th>
+        <th><%= sort_link @search,:name, t("name"), {}, {} %></th>
+        <th>
+          <%= hook :admin_products_index_header_actions %>
+        </th>
+      </tr>
+
+      <% @products.each do |product| %>
+      <tr <%= 'style="color:red;"' if product.deleted? %> id="<%= dom_id product %>">
+        <td><%= product.sku %></td>
+        <td><%= product.ean %></td>
+        <td><%= product.name %></td>
+        <!-- <td><%#= product.price %></td> -->
+        <td class="actions">
+          <% if can? :edit, product %>
+          <%= link_to t("edit"), edit_dashboard_product_path(product) unless product.deleted? %>
+          <% end %>
+          <% if can? :destroy, product %>
+          &nbsp;
+          <%= link_to t("delete"),  dashboard_product_path(product), :method => :delete unless product.deleted? %>
+          <% end %>
+        </td>
+      </tr>
       <% end %>
-      <% if can? :destroy, product %>
-        &nbsp;
-       <%= link_to t("delete"),  dashboard_product_path(product) unless product.deleted? %>
-       <% end %>
-    </td>
-  </tr>
-<% end %>
-</table>
-<%= will_paginate(@products, :previous_label => "#{t('previous')}", :next_label => "#{t('next')}") %>
+    </table>
+    <%= will_paginate(@products, :previous_label => "#{t('previous')}", :next_label => "#{t('next')}") %>
 
   </div>
-
 	<div class="btm"></div>
 </div>

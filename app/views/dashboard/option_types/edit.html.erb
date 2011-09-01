@@ -1,4 +1,15 @@
 <%= render :partial => 'dashboard/shared/product_sub_menu' %>
+
+<div class="sptCntBus">
+	<div class="top"></div>
+
+	<div class="cntr">
+    <h2 class="htFix"></h2>
+
+    <div id="new_product"></div>
+
+
+
 <h1><%= t("editing_option_type") %></h1>
 <%= render 'shared/error_messages', :target => @option_type %>
 <%= form_for(@option_type, :url => dashboard_option_type_path(@option_type), :html => { :method => :put }) do |f| %>
@@ -33,3 +44,5 @@
    </p>
 </fieldset>
 <% end %>
+</div>
+</div>

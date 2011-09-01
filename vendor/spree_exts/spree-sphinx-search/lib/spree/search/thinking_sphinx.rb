@@ -34,7 +34,7 @@ module Spree::Search
       if taxon || taxons
         taxon_ids = [ ]
         taxon_ids << taxon.self_and_descendants.map(&:id) if taxon
-        taxon_ids << taxons.map{ |v| v.self_and_descendants.map(&:id) } if taxons
+        taxon_ids << taxons.map(&:id) if taxons
         with_opts.merge!(:taxon_ids => taxon_ids.flatten(1))
       end
 

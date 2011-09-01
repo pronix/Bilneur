@@ -1,11 +1,10 @@
 <% stylesheet "product" %>
 
 <% if variants.empty? %>
-  <%= t(:no_products_found) %>
+  <div style="float: left"><%= t(:no_products_found) %></div></div>
 <% elsif params.key?(:keywords) && params[:keywords].strip != '' %>
   <h3><%= t(:search_results, :keywords => h(params[:keywords])) %></h3>
 <% end %>
-
 <div id="products_list" class="<%== ' tabPrdcts' if defined? grid %>">
     <% if variants.any? %>
       <% variants.each do |variant| %>

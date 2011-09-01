@@ -1,11 +1,13 @@
 <div class="fdBck" style="padding-bottom: 5px;">
 	<h2><%= "#{t("actions.listing")} #{t("products")}" %></h2>
   <div class="cmbo6">
-    <input class="txt" type="text" name="" value="" />
-    <select id="websites21" tabindex="1" name="">
-      <option value="" selected="selected" title="">Name</option>
-      <option value="" title="">SKU</option>
+    <%= form_for @search, :url => dashboard_products_path, :html => {:method => :get} do |f| %>
+    <input class="txt" type="text" name="search_string" value="<%= params[:search_string] %>" />
+    <select id="websites21" tabindex="1" name="select_by">
+      <option value="by_name" <%== select_by_param('select_by', 'by_name') %> title="">Name</option>
+      <option value="by_sku" <%== select_by_param('select_by', 'by_sku') %> title="">SKU</option>
     </select>
+    <% end %>
   </div>
 </div>
 
@@ -19,17 +21,16 @@
 
     <div id="new_product"></div>
 
-
     <table class="index" id='listing_products'>
       <tr>
         <th><%= t("sku") %></th>
-        <th><%= t("ean") %></th>
-        <th><%= t("name") %></th>
-        <!-- <th><%#= t("price") %></th> -->
+        <th><%= sort_link @search,:ean, t("ean"), {}, {} %></th>
+        <th><%= sort_link @search,:name, t("name"), {}, {} %></th>
         <th>
           <%= hook :admin_products_index_header_actions %>
         </th>
       </tr>
+
       <% @products.each do |product| %>
       <tr <%= 'style="color:red;"' if product.deleted? %> id="<%= dom_id product %>">
         <td><%= product.sku %></td>
@@ -51,6 +52,5 @@
     <%= will_paginate(@products, :previous_label => "#{t('previous')}", :next_label => "#{t('next')}") %>
 
   </div>
-
 	<div class="btm"></div>
 </div>

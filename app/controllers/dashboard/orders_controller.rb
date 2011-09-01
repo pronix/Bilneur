@@ -4,7 +4,7 @@ class Dashboard::OrdersController < Dashboard::ApplicationController
   include ProductHelper
 
   def index
-    @orders = current_user.all_orders.complete.paginate(:page => params[:page], :per_page => params[:per_page] || 5, :order => "created_at DESC")
+    @orders = current_user.all_orders.complete.paginate( paginate_options.merge({ :order => "created_at" }) )
   end
 
   def show

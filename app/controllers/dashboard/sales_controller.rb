@@ -2,7 +2,7 @@ class Dashboard::SalesController < Dashboard::ApplicationController
   respond_to :json, :js, :html
 
   def index
-    @orders = current_user.sales.complete.paginate(:per_page => (params[:per_page]||25), :page => params[:page], :order => "orders.created_at DESC")
+    @orders = current_user.sales.complete.paginate( paginate_options.merge({ :order => "created_at" }) )
     respond_with(@orders)
   end
 

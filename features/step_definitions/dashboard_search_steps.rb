@@ -26,4 +26,14 @@ When /^"(.+)" should be selected "(.+)"$/ do |field, value|
   find_field(field).value.should == value
 end
 
+And /^I have quotes for each product$/ do
+  Product.all.each { |product| Factory(:variant, :seller => @user, :owner => @user, :product => product) }
+end
 
+Given /^quote "(.+)" have warehouse is "(.+)"$/ do |name, warehouse|
+  Variant.where(:product_id => Product.find_by_name(name).id, :is_master => false).last.update_attribute(:warehouse, warehouse)
+end
+
+Given /^I should see only these "(.+)" from all variants$/ do |quote|
+  page.should have_content(quote)
+end

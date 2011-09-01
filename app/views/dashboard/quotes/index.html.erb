@@ -3,14 +3,14 @@
 <div class="fdBck">
 	<h2>Inventory</h2>
   <div class="cmbo6">
-    <input class="txt" type="text" name="" value="" />
-    <select id="websites21" tabindex="1" name="">
-      <option value="" selected="selected" title="">All Active</option>
-      <option value="" title="">1</option>
-      <option value="" title="">2</option>
-      <option value="" title="">3</option>
-      <option value="" title="">4</option>
-    </select>
+    <%= form_for @search, :url => dashboard_quotes_path, :html => { :method => :get } do %>
+      <input class="txt" type="text" name="search_string" value="<%= params[:search_string] %>" />
+      <select id="websites21" tabindex="1" name="select_by">
+        <option value="all_active" <%== select_by_param('select_by', 'all_active') %> title="">All Active</option>
+        <option value="merchant" <%== select_by_param('select_by', 'merchant') %> title="">Merchant</option>
+        <option value="bilneur" <%== select_by_param('select_by', 'bilneur') %> title="">Bilneur</option>
+      </select>
+    <% end %>
   </div>
   <div class="pPgCmbo">
     <div class="cmbo7">
@@ -55,9 +55,9 @@
           <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
         </div>
       </td>-->
-      <td width="90px" class="thlHd">EAN/ SKU</td>
-      <td width="214px" class="thlHd">Product Name</td>
-      <td width="54px" class="thlHd">Quantity</td>
+      <td width="90px" class="thlHd"><%= sort_link @search, "product_ean", "EAN/ SKU" %></td>
+      <td width="214px" class="thlHd"><%= sort_link @search, "product_name", t("product_name") %></td>
+      <td width="54px" class="thlHd"><%= sort_link @search, "count_on_hand", t("quantity") %></td>
       <td width="89px" class="thlHd">Condition</td>
       <td width="73px" class="thlHd">Price</td>
       <td width="78px" class="thlHd">Virtual Selling</td>

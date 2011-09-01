@@ -1,133 +1,45 @@
 <% stylesheet "checktree" %>
 <% javascript "jquery.checktree_yctin.js", "jquery.updateWithJSON.min.js" %>
+
 <% content_for :head do %>
     <script type="text/javascript">
                 var $checktree;
                 $(function(){
-                    $checktree = $("ul.tree").checkTree();
+                   $checktree = $("ul.tree").checkTree({
+                                 collapseAll: true
+                                  }
+                               });
                 });
     </script>
 <% end %>
 
 <%= form_tag products_path, :remote => true, :method => 'get', :id => "products_search" do %>
 <%= hidden_field_tag "grid", params[:grid] if params[:grid] %>
-<% get_taxonomies.each do |taxonomy| %>
-<div id="CollapsiblePanel<%= taxonomy.id %>" class="CollapsiblePanel">
-  <div class="CollapsiblePanelTab" tabindex="0"><span><%= taxonomy.name.singularize %></span></div>
+
+
+<div id="CollapsiblePanel" class="CollapsiblePanel">
+  <div class="CollapsiblePanelTab" tabindex="0"><span>Categories</span></div>
   <div class="CollapsiblePanelContent" id="taxonsCheckboxes">
-
-<!--<ul class="tree">
-            <li>
-                <input type="checkbox">
-                <label>
-                    Computer
-                </label>
-                <ul>
-                    <li class="chkbox">
-                        <input type='checkbox' name='ids[]' id='p_1'value='1'>
-                        <label>
-                            Hardware
-                        </label>
-			<ul>
-			  <li>
-		              <input type='checkbox' name='ids[]' id='p_10'value='10'>
-		              <label>
-		                  CPU
-		              </label>
-		          </li>
-			      		<li>
-		              <input type='checkbox' name='ids[]' id='p_11'value='11'>
-		              <label>
-		                  RAM
-		              </label>
-		          </li>
-			      		<li>
-		              <input type='checkbox' name='ids[]' id='p_12'value='12'>
-		              <label>
-		                  HDD
-		              </label>
-		          </li>
-			</ul>
-                    </li>
-                    <li>
-                        <input type='checkbox' name='ids[]' id='p_2'value='2'>
-                        <label>
-                            Software
-                        </label>
-                        <ul>
-                            <li>
-                                <input type='checkbox' name='ids[]' id='p_20'value='20'>
-                                <label>
-                                    OS
-                                </label>
-                                <ul>
-                                    <li>
-                                        <input type='checkbox' name='ids[]' id='p_200'value='200'>
-                                        <label>
-                                            Windows
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <input type='checkbox' name='ids[]' id='p_201'value='201'>
-                                        <label>
-                                            Linux
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <input type='checkbox' name='ids[]' id='p_202'value='202'>
-                                        <label>
-                                            Unix
-                                        </label>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <input type='checkbox' name='ids[]' id='p_21'value='21'>
-                                <label>
-                                    Application
-                                </label>
-			        <ul>									
-                                    <li>
-                                        <input type='checkbox' name='ids[]' id='p_210'value='210'>
-                                        <label>
-                                            MS Word
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <input type='checkbox' name='ids[]' id='p_211'value='211'>
-                                        <label>
-                                            MS Excel
-                                        </label>
-                                    </li>
-				</ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-          </ul>-->
-
-
     <ul class="tree">
-        <% taxonomy.root.children.each do |taxon| %>
-          <li>
-            <input data-run_search='t' type="checkbox" id="<%= taxonomy.name.singularize %>" name="taxon_ids[]" value="<%= taxon.id %>" >
-            <label class="techi" for="<%= taxonomy.name.singularize %>"><%= taxon.name %></label>
-            <ul>
-              <% taxon.children.each do | child | %>
-                <li>
-                  <input data-run_search='t' type="checkbox" id="<%= taxonomy.name.singularize %>" name="taxon_ids[]" value="<%= child.id %>" >
-                  <label class="techi" for="<%= taxonomy.name.singularize %>"><%= child.name %></label>
-                </li>
-              <% end %>
-            </ul>
-          </li>
-        <% end %>
-    </ul>
+      <% (Taxon.category.try(:children)||[]).each do |taxon| %>
+      <li>
+        <input data-run_search='t' type="checkbox" name="taxon_ids[]" value="<%= taxon.id %>" >
+        <label class="techi"><%= taxon.name %></label>
 
+        <ul>
+          <% taxon.children.each do | child | %>
+          <li>
+            <input data-run_search='t' type="checkbox" name="taxon_ids[]" value="<%= child.id %>" >
+            <label class="techi" ><%= child.name %></label>
+          </li>
+          <% end %>
+        </ul>
+      </li>
+      <% end %>
+    </ul>
   </div>
 </div>
-<% end %>
+
 
 <div id="CollapsiblePanel4" class="CollapsiblePanel CollapsiblePanelClosed">
   <div class="CollapsiblePanelTab" tabindex="0"><span>Condition</span></div>

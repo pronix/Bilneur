@@ -582,7 +582,7 @@ form.new_message {float: left; }
     .contInp b {clear:both;width:100%;margin-top:7px;}
         .contInp i {width:140px;text-align:right;margin-right:10px;padding-top:3px;}
         .contInp i.dimC { color:#7f7e7e;} 
-        .contInp i, .contInp em { padding-bottom:5px; font-size:12px; font-weight:bold; font-style:normal;color:#000;}
+        .contInp i, .contInp em { padding-bottom:5px; font-size:12px; font-weight:bold; font-style:normal;color:#000; line-height: 22px;}
         .contInp em { clear:both;float:left;color:#00adef;margin:10px 0 0 150px;}
     .contInp input[type=text] { width:319px; height:13px; padding:5px; border:none; background:url('/images/forms/chk_login_txt.png') no-repeat; font-size: 1em;}
     .contInp .txtCty {float:left;width:144px!important;height:13px;padding:5px;border:none;background:url('/images/forms/checkout_city_txt_bg.png') no-repeat!important;}

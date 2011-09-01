@@ -4,9 +4,11 @@
 <% for seller in sellers %>
       <div class="smPd">
               <div class="smPdtop">
-                  <i class="imgP"><%= image_tag seller.photo.url(:for_review) %></i>
+                <i class="imgP">
+                  <%= link_to image_tag(seller.photo.url(:for_review)), store_seller_path(seller) %>
+                </i>
                   <div class="pdDtl">
-                      <h4><%= seller.firstname %></h4>
+                      <h4><%= link_to seller.firstname, store_seller_path(seller) %></h4>
 
                       <% if seller.static_data.present? %>
                           <% if seller.static_data.about.present? %>

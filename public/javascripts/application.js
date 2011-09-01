@@ -40,6 +40,11 @@
       		});
     });
 
+    //cros
+    $('.cros').click(function() {
+        $(this).parent().remove();
+        return false;
+    });
 
     //Modal window for sharing links
     $(".modalLink").click(function (e) {

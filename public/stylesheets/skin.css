@@ -149,7 +149,6 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
         .loginBar .cart_bag { margin-top: 5px;}
         .loginBar a > img { margin-left: 10px }
         .loginBar .crt { margin-left:10px; display: block; height: 32px; position: relative;}
-        .loginBar .crt img:first-child{ margin-right:10px;}
         .loginBar .crt .redPlus, .loginBar .crt .greenPlus { position: absolute; top: 0; visibility: hidden;}
         .loginBar .crt .redPlus  { left: 10px;}
         .loginBar .crt .greenPlus {right: 0;}

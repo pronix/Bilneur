@@ -70,7 +70,7 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
                 when 'by_sku' then Product.active.metasearch(:variants_including_master_sku_contains => params[:search_string])
                 else @search = Product.active.metasearch(params[:search])
               end
-    @products = @search.relation.group_by_products_id.includes({:variants => [:images, :option_values]}).paginate(paginate_options.merge({:order => "created_at DESC"}))
+    @products = @search.paginate(paginate_options.merge({:order => "created_at DESC"}))
   end
 
   def prepare_taxon

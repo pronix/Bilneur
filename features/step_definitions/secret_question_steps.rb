@@ -36,7 +36,7 @@ Given /^I have a own question "(.+)" with answer "(.+)"$/ do |question, answer|
 end
 
 Then /^"(.+)" should be selected for "(.+)"$/ do |field, question|
-  find_field(field).value.should eq(question == "My Own Question" ? '-1' : SecretQuestionVariant.find_by_variant(question).id.to_s)
+  find_field(field).value.should eq(SecretQuestionVariant.find_by_variant(question).id.to_s)
 end
 
 Given /^some test question$/ do

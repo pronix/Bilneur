@@ -38,6 +38,7 @@
     'sellers-profile',  :cache => 'dashboard-all' %>
 
 
+<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 
 
 
@@ -80,7 +81,6 @@
 
 <%= javascript_include_tag('for_cucumber.js') if Rails.env.test? %>
 
-<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 
 <%= javascript_include_tag 'jquery.alerts/jquery.alerts.js' %>
 <%= javascript_include_tag 'jquery.autocomplete.min.js' %>

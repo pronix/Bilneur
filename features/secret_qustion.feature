@@ -23,10 +23,9 @@ Feature: Describe how work secret question
       |                             | Kaliningrad | dashboard secrets page      | Secret question variant can't be blank |
       | What is your favorite town? |             | dashboard secrets page      | Answer can't be blank                  |
 
-@javascript
   Scenario Outline: Check with empty field with own question
     Given I am on the new secret question dashboard page
-    Then I select "Write your question" from "secret_question_secret_question_variant_id"
+    When I select "Write your question" from "secret_question_secret_question_variant_id"
     And I fill in "secret_question_own_question" with "<question>"
     And I fill in "secret_question_answer" with "<answer>"
     And press "save_button"
@@ -68,7 +67,6 @@ Feature: Describe how work secret question
     And I must be sure that "email@person.com" has question "What is my mothers maiden name?"
     And I must be sure that "email@person.com" has answer "This is secret"
 
-  @javascript
   Scenario: Create secret question by create own question
     Given I am on the new secret question page
     Then I select "Write your question" from "secret_question_secret_question_variant_id"
@@ -85,7 +83,6 @@ Feature: Describe how work secret question
     Then I go to the edit secret question page
     And "secret_question_secret_question_variant_id" should be selected for "My Own Question"
 
-  @javascript
   Scenario: Update own question
     Given I have a own question "My Own Question" with answer "My answer"
     When I go to the edit secret question page

@@ -33,18 +33,18 @@ Feature: Manage products
     And the product "Death of a Hero [Paperback]" has the owner "admin@person.com"
     When I go to the dashboard products page
     Then I should see the following product lists:
-      | SKU     |            EAN | Name                        |                                |
-      | TE-6000 |  9780099528128 | The Godfather               | Edit\n         \n       Delete |
-      | TE-7000 | 978-0919614789 | Death of a Hero [Paperback] |                                |
+      | SKU     |            EAN | Name                        |                                     |
+      | TE-6000 |  9780099528128 | The Godfather               | Edit\n           \n          Delete |
+      | TE-7000 | 978-0919614789 | Death of a Hero [Paperback] |                                     |
     When I follow "Edit"
     And I fill in "SKU" with "TFWK"
     And I fill in "Name" with "The Godfather_1"
     And I press "Update"
     Then I should see "Product updated."
     And  I should see the following product lists:
-      | SKU     |            EAN | Name                        |                                |
-      | TFWK    |  9780099528128 | The Godfather_1             | Edit\n         \n       Delete |
-      | TE-7000 | 978-0919614789 | Death of a Hero [Paperback] |                                |
+      | SKU     |            EAN | Name                        |                                     |
+      | TFWK    |  9780099528128 | The Godfather_1             | Edit\n           \n          Delete |
+      | TE-7000 | 978-0919614789 | Death of a Hero [Paperback] |                                     |
 
 
   Scenario: Add Quote

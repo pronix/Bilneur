@@ -1,86 +1,88 @@
 <% content_for :head do %>
 <script type="text/javascript">
-$(document).ready(function() {
+  $(document).ready(function() {
 	$("#websites2").msDropDown({mainCSS:'dd2'});
 	$("#websites1").msDropDown({mainCSS:'dd2'});
 	$("#websites3").msDropDown({mainCSS:'dd2'});
 	$("#websites20").msDropDown({mainCSS:'dd2'});
-})
+  })
 </script>
 <% end %>
+
 <div class="col1 slrPrdctPg prdctDPg">
   <div class="mTabs">
     <div id="TabbedPanels0" class="TabbedPanels TabbedPanelsTabFocused">
-      
+
       <%= render "menu" %>
 
       <div class="TabbedPanelsContentGroup">
         <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block; ">
 
-<!--CUSTOMER SERVICE SELLER SECTION, REPLACE WITH RELEVENT SERVER DATA -->
-               	<div class="bCrmp bc">
-                    <a class="abtStrp" href="#"><img src="/images/forms/cstmr_srv_strp.png" alt="" /></a>
-                </div>
-                <div class="likes">
-                     <div class="social"><%= fb_like %></div>
-                     <div class="social"><%= plus_one %></div>
-                </div>
-                
-                <div class="abtSlrCnt abtSlrCntPad padB0">
-                	<p>&nbsp;</p>
-                	<p>You can contact Innovity Customer service directly with any questions you might have regarding your orders, delivery, cancellation, returns or changes.</p>
-                </div>
-                <div class="bdr5p bdr5pMr"></div>
-                <div class="abtSlrCntPad padB0 apPnl">
-                	<h2>Contact Info:</h2>
-                    <p><b>Phone:</b>&nbsp;1-888-888-888</p>
-                    <p><b>Hours:</b>&nbsp;9am - 6pm EST</p>
-                </div>
-                <div class="abtSlrCntPad padB0 apPnl noBdr">
-                	<h2>Mailling Address:</h2>
-                    <!--<p><b>Email:</b>&nbsp;rohit@abc.com</p>
-                    <p><b>Official:</b>&nbsp;bilneur@info.com</p>-->
-                </div>
-                <div class="bdr5p bdr5pMr"></div>
-                <div class="abtSlrCnt abtSlrCntPad">
-                    <h2>Ask seller a Question:</h2>
-                    <div class="wRp">
-                        <div class="srvFrm">
-                            <form action="">
-                                <div class="cmbo9">
-                                    <select id="websites1" tabindex="1" name="">
-                                        <option value="" selected="selected" title="">Select an item your question is about...</option>
-                                        <option value="" title="">1</option>
-                                        <option value="" title="">2</option>
-                                        <option value="" title="">3</option>
-                                        <option value="" title="">4</option>
-                                    </select>
-                                </div>
-                                <div class="cmbo9">
-                                    <select id="websites2" tabindex="1" name="">
-                                        <option value="" selected="selected" title="">Choose Subject...</option>
-                                        <option value="" title="">1</option>
-                                        <option value="" title="">2</option>
-                                        <option value="" title="">3</option>
-                                        <option value="" title="">4</option>
-                                    </select>
-                                </div>
-                                <div class="txtA"><textarea onfocus="if(this.value=='Your Message...') this.value=''" onblur="if(this.value=='') this.value='Your Message...'">Your Message...</textarea></div>
-                                <input class="cSSbmt" type="submit" name="" value="" />
-                            </form>
-                        </div>
-                        <p>&nbsp;</p>
-                    </div>
-                </div>
-                
+          <!--CUSTOMER SERVICE SELLER SECTION, REPLACE WITH RELEVENT SERVER DATA -->
+          <div class="bCrmp bc">
+            <a class="abtStrp" href="#"><img src="/images/forms/cstmr_srv_strp.png" alt="" /></a>
+          </div>
+          <div class="likes">
+            <div class="social"><%= fb_like %></div>
+            <div class="social"><%= plus_one %></div>
+          </div>
+
+          <div class="abtSlrCnt abtSlrCntPad padB0">
+            <p>&nbsp;</p>
+            <p>You can contact Innovity Customer service directly with any questions you might have regarding your orders, delivery, cancellation, returns or changes.</p>
+          </div>
+          <div class="bdr5p bdr5pMr"></div>
+          <div class="abtSlrCntPad padB0 apPnl">
+            <h2>Contact Info:</h2>
+
+            <p><b>Phone:</b>&nbsp;<%= seller.phone %></p>
+            <p><b>Hours:</b>&nbsp;9am - 6pm EST</p>
+          </div>
+          <div class="abtSlrCntPad padB0 apPnl noBdr">
+            <h2>Mailling Address:</h2>
+            <!--<p><b>Email:</b>&nbsp;rohit@abc.com</p>
+                <p><b>Official:</b>&nbsp;bilneur@info.com</p>-->
+          </div>
+          <div class="bdr5p bdr5pMr"></div>
+          <div class="abtSlrCnt abtSlrCntPad">
+            <h2>Ask seller a Question:</h2>
+            <div class="wRp">
+              <div class="srvFrm">
+                <form action="">
+                  <div class="cmbo9">
+                    <select id="websites1" tabindex="1" name="">
+                      <option value="" selected="selected" title="">Select an item your question is about...</option>
+                      <option value="" title="">1</option>
+                      <option value="" title="">2</option>
+                      <option value="" title="">3</option>
+                      <option value="" title="">4</option>
+                    </select>
+                  </div>
+                  <div class="cmbo9">
+                    <select id="websites2" tabindex="1" name="">
+                      <option value="" selected="selected" title="">Choose Subject...</option>
+                      <option value="" title="">1</option>
+                      <option value="" title="">2</option>
+                      <option value="" title="">3</option>
+                      <option value="" title="">4</option>
+                    </select>
+                  </div>
+                  <div class="txtA"><textarea onfocus="if(this.value=='Your Message...') this.value=''" onblur="if(this.value=='') this.value='Your Message...'">Your Message...</textarea></div>
+                  <input class="cSSbmt" type="submit" name="" value="" />
+                </form>
               </div>
-
-
-<!--END CUSTOMER SERVICESELLER SECTION, REPLACE WITH RELEVENT SERVER DATA -->
+              <p>&nbsp;</p>
+            </div>
+          </div>
 
         </div>
+
+
+        <!--END CUSTOMER SERVICESELLER SECTION, REPLACE WITH RELEVENT SERVER DATA -->
+
       </div>
     </div>
+  </div>
 </div>
 
 <div class="col2 col2SlPrd prdctDPg slrPrdctPg slrPrdctPg">
@@ -89,27 +91,27 @@ $(document).ready(function() {
     <div id="CollapsiblePanel1" class="CollapsiblePanel CollapsiblePanelFocused">
       <div class="CollapsiblePanelTab" tabindex="0"><span>Category</span></div>
       <div class="CollapsiblePanelContent" style="display: block; ">
-      				<div class="shpng2">
-              <div class="grnTbl">
-                  <div class="grnTop bluTop othrFix"><h6>Questions about a Charge?</h6></div>
-                  <div class="grnCntr">
-                      <p>For questions about a charge that appeared on your credit car you will have to contact Bilneur Customer Service.</p>
-                      <p>You can call us at <b>650-283-8515</b> and we will be happy to assist you.</p>
-                      
-                  </div>
-                  <div class="grnBtm"></div>
-              </div>
-              <p class="lstMrg">&nbsp;</p>
-              <div class="grnTbl">
-                  <div class="grnTop bluTop othrFix"><h6>How To.......?</h6></div>
-                  <div class="grnCntr">
-                      <p>Questions about how to place an order? Want to learn how Virtual Store and selling works?</p>
-                      <p>Post a question to the community?  How Buyer protection works?</p>
-                      
-                  </div>
-                  <div class="grnBtm"></div>
-              </div>
-          </div>							
+      	<div class="shpng2">
+          <div class="grnTbl">
+            <div class="grnTop bluTop othrFix"><h6>Questions about a Charge?</h6></div>
+            <div class="grnCntr">
+              <p>For questions about a charge that appeared on your credit car you will have to contact Bilneur Customer Service.</p>
+              <p>You can call us at <b>650-283-8515</b> and we will be happy to assist you.</p>
+
+            </div>
+            <div class="grnBtm"></div>
+          </div>
+          <p class="lstMrg">&nbsp;</p>
+          <div class="grnTbl">
+            <div class="grnTop bluTop othrFix"><h6>How To.......?</h6></div>
+            <div class="grnCntr">
+              <p>Questions about how to place an order? Want to learn how Virtual Store and selling works?</p>
+              <p>Post a question to the community?  How Buyer protection works?</p>
+
+            </div>
+            <div class="grnBtm"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

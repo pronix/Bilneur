@@ -48,6 +48,7 @@ Product.class_eval do
     has taxons(:id), :as => :taxon_ids
 
     has variants(:condition_int), :as => :variants_conditions
+    has variants(:seller_id),     :as => :seller_id
 
     has "(SELECT min(variants.price) FROM variants
             WHERE (

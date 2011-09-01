@@ -38,29 +38,8 @@
 
 
               <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="position: relative; display: block; ">
-                <div class="bCrmp">
-                  <ul>  <!-- FIXME -->
-                    <li>Fixmers:</li>
-                    <li><a href="#">All Products</a><img src="/images/icons/ico_cros.png" alt=""></li>
-                    <li><a href="#">Electronics</a><img src="/images/icons/ico_cros.png" alt=""></li>
-                    <li><a href="#">Smart Phones</a><img src="/images/icons/ico_cros.png" alt=""></li>
-                    <li><a href="#">Apple iPhone</a><img src="/images/icons/ico_cros.png" alt=""></li>
-                  </ul>
-                </div>
-
-
+                <div class="bCrmp"> </div>
                 <div class="cmboSrt">
-                  <form action="">
-                    <div class="ddOutOfVision">
-                      <select id="websites1" tabindex="1" name="">
-                        <option value="" selected="selected" title="">Sort by </option>
-                        <option value="" title="">option 1</option>
-                        <option value="" title="">option 2</option>
-                        <option value="" title="">option 3</option>
-                        <option value="" title="">option 4</option>
-                      </select>
-                    </div>
-                  </form>
                 </div>
 
                 <%= render "shared/variants", :variants => @quotes, :taxon => @taxon, :grid => params[:grid] %>
@@ -123,6 +102,7 @@
          <%= link_to "List View", store_seller_path(@seller), :class => "pLa" %>
          <%= link_to "Grid View", store_seller_path(@seller, :grid => true) %>
     </div>
-    <%= render "shared/filter" %>
+
+    <%= render :partial => "shared/filter", :locals => { :filter_seller => @seller } %>
   </div>
 </div>

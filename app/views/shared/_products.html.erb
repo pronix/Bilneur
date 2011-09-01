@@ -12,8 +12,8 @@
 <div id="products_list" class="<%== ' tabPrdcts' if defined? grid %>">
     <% if products.any? %>
       <% products.each do |product| %>
-      <% next unless product.best_variant %>
-      <% best_deal = product.best_variant %>
+      <% next unless product.best_variant({:seller_id => params[:seller_id]}) %>
+      <% best_deal = product.best_variant({:seller_id => params[:seller_id]}) %>
       <% next unless best_deal.seller.available_shipping_methods?  %>
       <% if Spree::Config[:show_zero_stock_products] || product.has_stock? %>
           <% if params[:grid] %>

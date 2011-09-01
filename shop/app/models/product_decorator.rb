@@ -113,11 +113,12 @@ Product.class_eval do
 
   # instance methods
   #
-  def best_variant(condition = nil)
-    if condition
-      variants.condition(condition).best_variant.first
+  def best_variant(*args)
+    options = args.extract_options!
+    if options[:condition]
+      variants.condition(options[:condition]).best_variant({ :seller_id => options[:seller_id]}).first
     else
-      variants.best_variant.first
+      variants.best_variant({ :seller_id => options[:seller_id]}).first
     end
 
   end

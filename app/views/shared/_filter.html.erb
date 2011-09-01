@@ -12,7 +12,8 @@
 
 <%= form_tag products_path, :remote => true, :method => 'get', :id => "products_search" do %>
 <%= hidden_field_tag "grid", params[:grid] if params[:grid] %>
-
+<% @seller_id = filter_seller.id rescue nil %>
+<%= hidden_field_tag "seller_id", @seller_id if @seller_id %>
 
 <div id="CollapsiblePanel" class="CollapsiblePanel">
   <div class="CollapsiblePanelTab" tabindex="0"><span>Categories</span></div>

@@ -42,9 +42,12 @@ module Spree::Search
         without_opts.merge!({ :taxon_ids => @without_taxon.self_and_descendants.map(&:id) })
       end
 
-      if  @_params[:price_range].present?
+      if @_params[:price_range].present?
         with_opts.merge!(:variant_price => (@_params[:min_price]||0).to_f..(@_params[:max_price]||0).to_f)
       end
+
+      with_opts.merge!({ :seller_id =>  @_params[:seller_id] }) if @_params[:seller_id].present?
+
       @condition = [ @_params[:condition] ].flatten.compact.map{ |v|
         Variant::CONDITION_MAP[v.to_sym]
       }.compact unless @_params[:condition].blank?

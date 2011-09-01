@@ -25,7 +25,15 @@ Variant.class_eval do
        args.first ? condition(*args).by_price.limit(1) : by_price.limit(1)
     }
 
-  scope :best_variant, active.on_hand.order("variants.price ASC, variants.count_on_hand DESC").limit(1)
+  scope :best_variant, lambda{ |*args|
+    options = args.first || { }
+    if options[:seller_id]
+      active.on_hand.where(:seller_id => options[:seller_id]).order("variants.price ASC, variants.count_on_hand DESC").limit(1)
+    else
+      active.on_hand.order("variants.price ASC, variants.count_on_hand DESC").limit(1)
+    end
+
+  }
 
   scope :virtual, where(:virtual => true)
   scope :realy,   where(:virtual => false)

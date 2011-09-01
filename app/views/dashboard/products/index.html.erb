@@ -40,7 +40,7 @@
       <% end %>
       <% if can? :destroy, product %>
         &nbsp;
-       <%= link_to t("delete"),  dashboard_product_path(product) unless product.deleted? %>
+       <%= link_to t("delete"),  dashboard_product_path(product), :method => :delete unless product.deleted? %>
        <% end %>
     </td>
   </tr>

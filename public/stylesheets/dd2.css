@@ -62,6 +62,7 @@
 .panel-wrapper .dd2 .ddTitle {background:url('/images/forms/bnr_txtbx.png') no-repeat!important;padding-left:10px;text-indent:0;cursor:default;overflow:hidden;height:40px;}
 .panel-wrapper .dd2 .ddTitle span.arrow {background:url('/images/forms/ico_bnr_txt.png') no-repeat 0 0!important; float:right; display:inline-block;width:40px; height:40px; cursor:pointer; top:0; right:0; position:relative;}
 #websites1_title:hover span.arrow {background-position: 0 0!important;}
+.chkOut3 .option1 #websites1_title:hover span.arrow {background-position: 5px 6px!important;}
 .panel-wrapper .dd2 .ddTitle span.ddTitleText {text-indent:10px; overflow:hidden; line-height:40px;font-size:13px;color:#798e94; _position:relative; _top:4px}
 .panel-wrapper .dd2 .ddTitle span.ddTitleText img{text-align:left; padding:0 2px 0 0;}
 .panel-wrapper .dd2 .ddTitle img.selected {padding:0 2px 0 0;vertical-align:top;}

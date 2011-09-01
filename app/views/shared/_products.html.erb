@@ -4,7 +4,7 @@
   paginated_products ||= products
 %>
 <% if products.empty? %>
-  <%= t(:no_products_found) %>
+  <div style="float: left;"><%= t(:no_products_found) %></div>
 <% elsif params.key?(:keywords) && params[:keywords].strip != '' %>
   <h3><%= t(:search_results, :keywords => h(params[:keywords])) %></h3>
 <% end %>

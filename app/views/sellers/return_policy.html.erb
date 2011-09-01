@@ -9,7 +9,7 @@
         <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display: block; ">
 
           <div class="bCrmp bc">
-            <a class="abtStrp" href="#"><img src="/images/forms/abt_slr_strp.png" alt=""></a>
+            <a class="abtStrp" href="#"><img src="/images/forms/rtrn_plcy_strp.png" alt=""></a>
           </div>
           <div class="likes">
             <div class="social"><%= fb_like %></div>
@@ -20,7 +20,7 @@
           <% if @seller.static_data.return_policy.present? %>
           <div class="abtSlrCnt abtSlrCntPad">
             <h2>Return Police <%= @seller.full_name %></h2>
-            <%= @seller.static_data.about %>
+            <%= @seller.static_data.return_policy %>
           </div>
           <% end %>
 

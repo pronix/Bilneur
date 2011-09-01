@@ -1,20 +1,22 @@
 class Dashboard::QuotesController < Dashboard::ApplicationController
   before_filter :load_and_authorize_resource
   before_filter :load_product, :only => [:create, :new, :destroy]
+  # after_filter :meta_search, :only => :index
   respond_to :html, :js
 
   def index
     @quotes =
       case params[:state].to_s
       when "merchant"
-        current_user.quotes.warehouse_merchant.paginate(paginate_options)
+        current_user.quotes.warehouse_merchant
       when "bilneur"
-        current_user.quotes.warehouse_bilneur.paginate(paginate_options)
+        current_user.quotes.warehouse_bilneur
       when "other"
-        current_user.quotes.warehouse_seller.paginate(paginate_options)
+        current_user.quotes.warehouse_seller
       else
-        current_user.quotes.paginate(paginate_options)
+        current_user.quotes
       end
+    meta_search
   end
 
 
@@ -80,6 +82,13 @@ class Dashboard::QuotesController < Dashboard::ApplicationController
   end
 
   private
+
+  def meta_search
+    params[:select_by] = "" if params[:select_by] == "all_active"
+    params[:search] ||= {}
+    @search = @quotes.metasearch(params[:search].merge({ :product_name_or_product_ean_contains => params[:search_string], :warehouse_eq => params[:select_by] }))
+    @quotes = @search.paginate(paginate_options)
+  end
 
   def load_and_authorize_resource
     authorize! :access, :quote

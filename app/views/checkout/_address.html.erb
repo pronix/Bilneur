@@ -18,7 +18,7 @@
       </p>
 
       <div class="cmbo1">
-         <%= select_tag "", options_for_select(current_user.addresses.collect{ |u| [u.to_s, u.id] }), :id => "websites1" %>
+        <%= select_tag "", options_for_select(current_user.addresses.collect{ |u| ["#{u.lastname} #{u.address2} #{u.address1} #{u.city} #{u.state.name} #{u.country.name}", u.id] }), :id => "websites1" %>
       </div>
     </div>
 
@@ -96,6 +96,7 @@
 
 
     $("#next_after_selected_ship_address").click(function(){
+      $(".chkOut3").prepend("<div class='spinner'><img src='/images/spinner.gif' />");
        var content_form = $(this).parents("form:first");
 
        $.ajax({

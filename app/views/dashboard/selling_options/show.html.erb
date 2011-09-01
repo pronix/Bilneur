@@ -6,10 +6,9 @@
 
     <h2 class="htFix">Selling Options</h2>
 
-<%= form_for  dashboard_quote_selling_options_path(@quote), :html => {:method => :put } do %>
+    <%= form_for  dashboard_quote_selling_options_path(@quote), :html => {:method => :put, :class => "contInp contInpFix" } do %>
 
 <%= fields_for @quote do |f| %>
-<fieldset>
   <div>
     <%= f.field_container :price do %>
     <%= f.label :price, t("fixed_price")%> <span class="required">*</span>
@@ -44,7 +43,6 @@
 
 
   </div>
-</fieldset>
 <% end %>
 
 

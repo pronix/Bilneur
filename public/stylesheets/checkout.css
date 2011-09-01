@@ -121,7 +121,7 @@
 
 /* Checkout 3 */
 
-.chkOut3 { width:925px!important; padding-top:4px!important; padding:4px; background:#ddd9cb;-moz-border-radius:5px;border-radius:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;}
+.chkOut3 { width:925px!important; padding-top:4px!important; padding:4px; background:#ddd9cb;-moz-border-radius:5px;border-radius:5px;-webkit-border-radius:5px;-khtml-border-radius:5px; position: relative;}
 	.chkHd { float:left; width:925px; margin:14px 0 0 0; background:#218acc; padding:7px 0 9px 8px; font-size:14px; color:#fff;text-shadow:2px 3px 5px #333;}
 	.shpng1 { width:668px; background:#fff;}
 		.shpng1 h3 { width:663px; padding:4px 0 5px 5px; color:#fff; background:#818487; margin:0; font-size:14px; text-shadow:2px 3px 5px #333;}

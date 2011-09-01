@@ -1,5 +1,4 @@
-<%= form_for(:option_type, :url => dashboard_option_types_url) do |f| %>
-  <fieldset>
+<%= form_for(:option_type, :url => dashboard_option_types_url, :html => {:class => "contInp contInpFix" }) do |f| %>
     <legend><%= t("new_option_type") %></legend>
     <%= render :partial => "form", :locals => { :f => f } %>
 
@@ -11,6 +10,4 @@
         <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_option_types_path %>
       </p>
     </div>
-
-  </fieldset>
 <% end %>

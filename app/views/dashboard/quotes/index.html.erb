@@ -23,28 +23,21 @@
       </select>
     </div>
     <b>Display per page</b>
-    <!--<div class="invBar">
+    <div class="invBar">
         <ul>
-          <li class="inv1"><a href="#"></a></li>
-          <li class="inv2"><a href="#"></a></li>
-          <li class="inv3"><a href="#"></a></li>
-          <li class="inv4"><a href="#"></a></li>
+          <li class="inv1"><%= link_to "", dashboard_quotes_path %></li>
+          <li class="inv2"><%= link_to "", state_dashboard_quotes_path(:merchant) %></li>
+          <li class="inv3"><%= link_to "", state_dashboard_quotes_path(:bilneur) %></li>
+          <li class="inv4"><%= link_to "", state_dashboard_quotes_path(:other) %></li>
         </ul>
-    </div>-->
-    <%= form_tag search_dashboard_quotes_path, :style => "margin-left: 20px", :method => :get do %>
+    </div>
+    <%= form_tag search_dashboard_quotes_path, :style => "margin: -6px 0 0 20px; float: left;", :method => :get do %>
     <label for="ean"><%= t("ean") %></label>
-    <%= text_field_tag "ean", "", :class => "title", :id => nil, :style => "font-size: 1em;" %>
+    <%= text_field_tag "ean", "", :id => nil, :style => "font-size: 1em; padding: 2px;" %>
     <button class="invAll" value="Add quote" id="button-add-quote">
       <%= image_tag "forms/inv_all_prod.png", :style => "margin-bottom: -7px;" %>
     </button>
     <% end %>
-
-    <div>
-      <span><%= link_to "All Inventory", dashboard_quotes_path %></span>
-      <span><%= link_to "Merchant", state_dashboard_quotes_path(:merchant) %></span>
-      <span><%= link_to "Bilneur", state_dashboard_quotes_path(:bilneur) %></span>
-      <span><%= link_to "Other Sellers", state_dashboard_quotes_path(:other) %></span>
-    </div>
   </div>
   <div class="bdrBtm"></div>
   <div class="invEdit">
@@ -57,11 +50,11 @@
 
   <table class="tbl1" width="915px" cellpadding="0" cellspacing="0">
     <tr id="product_table_head">
-      <td width="39px" class="thlHd">
+      <!--<td width="39px" class="thlHd">
         <div class="checkbox" id="select_all_check_box">
           <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy">
         </div>
-      </td>
+      </td>-->
       <td width="90px" class="thlHd">EAN/ SKU</td>
       <td width="214px" class="thlHd">Product Name</td>
       <td width="54px" class="thlHd">Quantity</td>

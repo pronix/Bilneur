@@ -11,7 +11,7 @@ ul li { list-style:none;}
 .TabbedPanelsTab span { float:left; width:100%;text-align:center;line-height:19px;}
 
 a:hover {opacity: 0.8;}
-
+select:hover { cursor: pointer; }
 /* Check boxes code */
 .checkbox {height:22px;width: 19px;clear:left;float:left;margin: 0 0 3px;padding: 0 0 0 26px;background:url('/images/icons/checkbox__.png') no-repeat;cursor: default;text-align:left;}
 .checkbox input,.radio input {width: 0; height: 0;}
@@ -37,7 +37,7 @@ a:hover {opacity: 0.8;}
     .srchBar, .searchTxt, .srchBar select {float:left;}
 .blogCnt, .blogCnt .bCImg, .blogActions, .blogActions ul li, .blogActions ul li a, .blogRM, .blogRM h3, .blogRM b, .blogFtr, .blogPg, .blogPg p {float:left;}
 .blogActions ul, .blogActions em, .blogActions b {float:right;}
-
+#memento { float: left; }
 /* Pagination */
 .paging { float:left; width:100%; margin-top:10px;}
 .pagination{float:right; padding:2px;}
@@ -141,10 +141,14 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
 .hd1A {}
 
 .hd1B { width:245px;}
-    .loginBar { width:100%; margin-left:17px;}
+    .loginBar { float: right !important; margin-right: 20px;}
+    .loginBar > * {float: right; }
         .loginBar i { padding-right:10px;margin-right:10px;font-style:normal;background:url('/images/forms/sgnup_line.gif') right no-repeat;}
         .loginBar a { color:#787878;font-weight:bold;}
-        .loginBar .crt { margin-left:10px; display: block; width: 74px; height: 32px; position: relative;}
+        .loginBar > a, .loginBar > i { margin-top: 10px;}
+        .loginBar .cart_bag { margin-top: 5px;}
+        .loginBar a > img { margin-left: 10px }
+        .loginBar .crt { margin-left:10px; display: block; height: 32px; position: relative;}
         .loginBar .crt img:first-child{ margin-right:10px;}
         .loginBar .crt .redPlus, .loginBar .crt .greenPlus { position: absolute; top: 0; visibility: hidden;}
         .loginBar .crt .redPlus  { left: 10px;}
@@ -264,21 +268,28 @@ a:link {-moz-transition: color 0.3s ease 0s!important;-webkit-transition: color 
 
 /* Faded Buttons in Banners */
 .otherbutton { position: relative; padding: 0; }
-.marquee01 .otherbutton {display:block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') no-repeat;background-position:0 -53px;cursor: pointer; border: none;}
-.marquee01 .otherbutton span.hover {position: absolute;display: block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') 0 0px no-repeat;background-position: bottom; top: 0;}
+.marquee01 .otherbutton {display:block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') no-repeat;background-position:0 -53px;cursor: pointer; border: none;}  
+.marquee01 .otherbutton span.hover {display: block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') 0 0px no-repeat;background-position: bottom; top: 0;}
+
 
 .marquee02 .otherbutton {display:block;height:51px;width:183px;background:url('/images/forms/sell_btn.png') no-repeat;background-position:0 -51px;cursor: pointer;}
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {.marquee02 .otherbutton {background-position:0 0;}}
-
-.marquee02 .otherbutton span.hover {position: absolute;display:block;height:51px;width:183px;background:url('/images/forms/sell_btn.png') 0 0px no-repeat;background-position: bottom; top: 0;}
+    
+.marquee02 .otherbutton span.hover {display:block;height:51px;width:183px;background:url('/images/forms/sell_btn.png') 0 0px no-repeat;background-position: bottom; top: 0;}
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {.marquee02 .otherbutton span.hover {background-position:0px -51px;}}
 
-.marquee03 .otherbutton {display:block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') no-repeat;background-position:0 -53px;cursor: pointer; border: none;}
-.marquee03 .otherbutton span.hover {position: absolute;display: block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') 0 0px no-repeat;background-position: bottom; top: 0;}
+.marquee03 .otherbutton {display:block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') no-repeat;background-position:0 -53px;cursor: pointer; border: none;}  
+.marquee03 .otherbutton span.hover {display: block;height:53px;width:176px;background:url('/images/forms/find_btn_h.png') 0 0px no-repeat;background-position: bottom; top: 0;}
 
 
+
+/* By default firefox sets little padding to <button> tag. Following rule removes this padding */
+button::-moz-focus-inner, input[type="button"]::-moz-focus-inner, input[type="submit"]::-moz-focus-inner, input[type="reset"]::-moz-focus-inner {
+    padding: 0 !important;
+    border: 0 none !important;
+}
 
 .spinner {
   position: absolute;

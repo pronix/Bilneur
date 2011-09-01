@@ -1,11 +1,11 @@
 <% quotes.each do |quote| %>
 <% evod = cycle('1', '2') %>
 <tr class="quote">
-  <td class="row<%= evod %>">
+  <!--<td class="row<%= evod %>">
     <div class="checkbox">
       <input type="checkbox" id="Astronomy" name="hobbies[]" value="Astronomy" class="multi_action">
     </div>
-  </td>
+  </td>-->
   <td class="row<%= evod %>">
     <%= link_to quote.ean, edit_dashboard_quote_path(quote)  %>
   </td>
@@ -28,7 +28,13 @@
     <% end %>
   </td>
   <td class="row<%= evod %>"><span><%== 'Not' unless quote.virtual? %> Offered</span></td>
-  <td class="row<%= evod %>">Active</td>
+  <td class="row<%= evod %>">
+    Active <br /><!-- FIXME -->
+    <%= link_to "Edit", edit_dashboard_quote_path(quote)  %> 
+     <% if can? :destroy, quote %>
+    | <%= link_to "Delete", dashboard_quote_path(quote), :method => "delete" %>
+      <% end %>
+  </td>
 </tr>
 <% end %>
 <div class="paging replacer" style='display: none;'>

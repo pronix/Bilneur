@@ -23,7 +23,7 @@ Feature: Search something on the dashboard
       | EAN  | search[meta_sort]=ean.desc  | I click "EAN" link |
       | Name | search[meta_sort]=name.asc  | exec "nil"         |
       | Name | search[meta_sort]=name.desc | I click "Name" link |
-@wip @javascript
+@javascript
    Scenario Outline: Search by name/sku
      And I fill in "search_string" with "<search>"
      And I select "<select>" from "select_by"

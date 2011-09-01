@@ -101,10 +101,11 @@ module ApplicationHelper
     true if session[:favorite_sellers] && session[:favorite_sellers].include?(_seller.id)
   end
 
-  def add_seller_to_favorite(_seller,image=true)
+  def add_seller_to_favorite(_seller,image=true,text=true)
     if !seller_favorite?(_seller)
       image_link = image ? image_tag('/images/icons/ch_dl.png') : ''
-      link_to  image_link + "Add Seller To Favorites", add_favorite_seller_path(_seller), :remote => true, :onclick => "$(this).remove()"
+      link_text = text ? 'Add Seller To Favorites' : ''
+      link_to  image_link + link_text, add_favorite_seller_path(_seller), :remote => true, :onclick => "$(this).remove()"
     end
   end
 

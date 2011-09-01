@@ -205,7 +205,7 @@ jQuery(document).ready(function(){
     $("ul.feedback li").click(function() {
        $('ul.feedback .TabbedPanelsTabSelected').removeClass('TabbedPanelsTabSelected');
        $(this).addClass('TabbedPanelsTabSelected');
-       $('#reviews_container').html("Loading..");
+       $('#reviews_container').html("<div class='spinner'><img src='/images/spinner.gif' /></div>");
     });
 
 

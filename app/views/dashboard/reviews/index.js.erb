@@ -1,2 +1,3 @@
 window.history.replaceState({}, 'reviews', "?state=<%= params[:state] %>");
+$(".spinner").remove();
 $("#reviews_container").html("<%= escape_javascript(render params[:state], :reviews => @reviews) %>");

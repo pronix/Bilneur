@@ -36,7 +36,6 @@ Feature: Inbox
      | Jimm Paxtor | Question1 | January 01, 2011 | 
     When I follow "Question1"
     Then I should be on the show dashboard message page for "Question1"
-    And show me the page
     And I should see "Jimm Paxtor"
     And I should see "Seller1"
     And I should see "January 01, 2011 00:00"

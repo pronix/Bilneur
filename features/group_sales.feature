@@ -23,14 +23,29 @@ Feature: Group Sales
     And I press "Create"
 
   Scenario: Editing
-
-  Scenario: Deleting
-
-  Scenario: Completing
     Given I have the following group sales:
      | product | count | price | retail_price | start sales | end sales  | purchases |
      | pr1     |    10 | 97.22 |          100 | 01/01/2011  | 01/02/2011 |        10 |
      | pr2     |    10 |    98 |          100 | 01/01/2011  | 01/02/2011 |         9 |
+     | pr3     |    10 | 99.09 |          100 | 01/01/2011  | 01/02/2011 |         0 |
+    When I sign in
+    And I go to the dashboard group sales
+    Then page has the following items:
+     | Product | Count | Price | Retail_Price | Start Sales | End Sales  | Purchases |             |
+     | pr1     |    10 | 97.22 |          100 | 01/01/2011  | 01/02/2011 |        10 |             |
+     | pr2     |    10 |    98 |          100 | 01/01/2011  | 01/02/2011 |         9 |             |
+     | pr3     |    10 | 99.09 |          100 | 01/01/2011  | 01/02/2011 |         0 | Edit Delete |
+    When I follow "Edit"
+    And I fill in "Descrption" with "Added bonus: the author's autograph"
+    And I press "Save"
+    Then I should see "Updated."
+
+
+
+
+  Scenario: Deleting
+
+  Scenario: Completing
 
 
   Scenario: Canceling

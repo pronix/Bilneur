@@ -1,5 +1,3 @@
-# language: en
-
 Feature: Manage Favorite Products
 
   Background:

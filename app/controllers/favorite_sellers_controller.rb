@@ -10,7 +10,7 @@ class FavoriteSellersController < Spree::BaseController
 
     respond_to do |format|
       format.html { redirect_to :back, :notice => "Seller saved." }
-      format.js  { render :nothing => true   }
+      format.js  { render :partial => "shared/flash_notice", :locals => { :message => "Seller has been added to favorites." } }
     end
 
   end

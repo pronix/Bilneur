@@ -6,7 +6,9 @@ class Dashboard::FavoritesController < Dashboard::ApplicationController
 
   def destroy
     @current_user.remove_seller_from_favorite(User.find(params[:seller]))
-    render :nothing => true
+    respond_to do |format|
+      format.js  { render :partial => "shared/flash_notice", :locals => { :message => "Seller has been deleted from favorites." } }
+    end
   end
 
 end

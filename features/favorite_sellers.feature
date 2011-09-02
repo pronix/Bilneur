@@ -9,6 +9,7 @@ Feature: Manage Favorite Sellers
       | Seller3   | seller3@person.com | password2 | password2             |
       | Seller4   | seller4@person.com | password2 | password2             |
 
+@javascript
   Scenario: Add seller to favorite as register user
     And I sign in as "email@person.com/password"
     Then exec "@user = User.find_by_email('email@person.com')"
@@ -16,6 +17,7 @@ Feature: Manage Favorite Sellers
     Then I follow "Add Seller To Favorites"
     Then I should not see "Add Seller To Favorites"
     And "seller1@person.com" should be my favorite seller
+    And I should see "Seller has been added to favorites."
     Then I go to the seller store "seller1@person.com"
     Then I should not see "Add Seller To Favorites"
 
@@ -45,7 +47,7 @@ Feature: Manage Favorite Sellers
     And I sign in as "seller1@person.com/password1"
     Then I go to the seller store "seller1@person.com"
     Then I should not see "Add Seller To Favorites"
-
+@javascript
   Scenario: Delete seller from favorite
     And I sign in as "email@person.com/password"
     And I have following sellers as favorite:

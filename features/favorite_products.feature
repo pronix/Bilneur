@@ -31,7 +31,7 @@ Feature: Manage Favorite Products
     And page have Saved Items panel with the following products:
      | The Godfather |
     When I press "Add To Cart" within "#your_saved_items"
-    Then the cart include the product "The Godfather" with quantity "1"
+    Then the cart include the product "The Godfather:seller2@person.com" with quantity "1"
 
   Scenario: Adding product to virtual cart from favorite panel
     When I go to the "The Godfather" product page
@@ -47,7 +47,7 @@ Feature: Manage Favorite Products
      | The Godfather |
     When I press "Add To V.Store" within "#your_saved_items"
     Then I should be on the cart page
-    And the virtual cart include the product "The Godfather" with quantity "1"
+    And the virtual cart include the product "The Godfather:seller2@person.com" with quantity "1"
 
   Scenario: Saving favorite products after sign in buyer
     When I go to the "The Godfather" product page

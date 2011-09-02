@@ -151,7 +151,7 @@
     <div class="cntr noBdr">
       <%= link_to seller_quote_path(@seller, quote.product, quote) do %>
       <i class="smallLatestQuotes">
-        <%= image_tag quote.image.attachment.url(:mini) %>
+        <%= image_tag quote.image.attachment.url(:mini) if quote.image.present?  %>
       </i>
       <b><%= quote.product.name %></b>
       <em>

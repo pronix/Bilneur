@@ -248,6 +248,27 @@ Order.class_eval do
     save(:validate => false)
   end
 
+  # Checked product quantity and update quantity in line_items
+  #
+  def check_product_quantity
+    @results = [ ]
+    line_items.each do |item|
+      unless item.quantity <= item.variant.count_on_hand
+        if item.variant.count_on_hand == 0
+          @results << I18n.t("product_is_not_available", :name => item.variant.name)
+          line_items.destroy(item)
+        else
+          @results << I18n.t("goods_in_stock", :name => item.variant.name, :quantity => item.variant.count_on_hand)
+          item.quantity = item.variant.count_on_hand
+          item.save
+        end
+      end
+
+    end
+    reload
+    return @results
+  end
+
   class << self
 
   end # end class << self

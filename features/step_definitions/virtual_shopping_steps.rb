@@ -1,3 +1,12 @@
+Given /^seller "([^\"]*)" have the product "([^\"]*)" with stock only (\d+)$/ do |seller_email, product_name, count_on_hand|
+  @seller = User.find_by_email seller_email
+  @product = Product.find_by_name product_name
+  @variant = @product.variants.where(:seller_id => @seller.id).first
+  @variant.count_on_hand = count_on_hand
+  @variant.save!
+end
+
+
 Given /a spree param "([^\"]*)" set is '(.+)'$/ do |param, value|
   Spree::Config.set(param.to_sym => (case value.to_s
                                      when /true|false/i then value.to_s =~ /true/ ? true : false
@@ -152,9 +161,15 @@ Then /^page have Saved Items panel with the following products:$/ do |table|
 end
 
 Then /^the cart include the product "([^\"]*)" with quantity "([^\"]*)"$/ do |product_name, quantity|
+  product_name, @seller_email = product_name.split(":")
+  @product = Product.find_by_name(product_name)
+  if @seller_email
+    @seller = User.find_by_email(@seller_email)
+    @variant = @product.variants.where(:seller_id => @seller.id).first
+  end
   within("#normal-cart") do
     page.should have_content(product_name)
-    find_field("order_line_items_attributes_0_quantity").value.should eq(quantity)
+    find_field("order_line_items_attributes_#{@variant.try(:id)}_quantity").value.should eq(quantity)
   end
 end
 

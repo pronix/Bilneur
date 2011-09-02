@@ -73,8 +73,17 @@ CheckoutController.class_eval do
 
   def load_order
     @order = (params.has_key?(:order_type) && params[:order_type] == 'virtual') ? current_virtual_order.try(:order) : current_order
+
     redirect_to cart_path and return unless @order and @order.checkout_allowed?
     redirect_to cart_path and return if @order.completed?
+
+    # Checked products quatity
+    #
+    unless (@count_on_hand_errors = @order.check_product_quantity).blank?
+      flash[:error] = @count_on_hand_errors.join('')
+      redirect_to cart_path and return
+    end
+
 
     if @order.virtual?
       @order.state = "delivery" if params[:state] && params[:state] == 'address'

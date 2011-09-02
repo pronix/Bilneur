@@ -72,3 +72,26 @@ Feature: Shopping(without auto capture)
       | product_name                | condition | count_on_hand |
       | The Godfather               | new       |             6 |
       | Death of a Hero [Paperback] | new       |             4 |
+
+
+  Scenario: Checked quantity
+    When I sign in as "email@person.com/password"
+    And I go to the "The Godfather" product page
+    And I follow "View All"
+    And I set quatility "4" within block seller "seller2@person.com"
+    And I press "Add To Cart" within block seller "seller2@person.com"
+    When I go to the cart page
+    When I follow "Logout"
+    Given seller "seller2@person.com" have the product "The Godfather" with stock only 2
+    When I go to the home page
+    When I go to the "Death of a Hero [Paperback]" product page
+    And I follow "View All"
+    And I set quatility "3" within block seller "seller1@person.com"
+    And I press "Add To Cart" within block seller "seller1@person.com"
+    When I sign in as "email@person.com/password"
+    And I go to the cart page
+    Then the cart include the product "The Godfather:seller2@person.com" with quantity "4"
+    And the cart include the product "Death of a Hero [Paperback]:seller1@person.com" with quantity "3"
+    When I follow "Checkout"
+    Then I should see "The Godfather in stock, only 2"
+    And the cart include the product "The Godfather:seller2@person.com" with quantity "2"

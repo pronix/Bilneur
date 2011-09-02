@@ -16,7 +16,7 @@ Feature: Cart
     And I go to the home page
     When I sign in as "email@person.com/password"
     And I go to the cart page
-    Then the cart include the product "The Godfather" with quantity "3"
+    Then the cart include the product "The Godfather:seller2@person.com" with quantity "3"
 
   Scenario: Cart should be merged with prev cart
     When I sign in as "email@person.com/password"
@@ -34,5 +34,5 @@ Feature: Cart
     Then I should be on the cart page
     When I sign in as "email@person.com/password"
     And I go to the cart page
-    Then the cart include the product "The Godfather" with quantity "3"
-    And the cart include the product "Death of a Hero [Paperback]" with quantity "3"
+    Then the cart include the product "The Godfather:seller2@person.com" with quantity "3"
+    And the cart include the product "Death of a Hero [Paperback]:seller1@person.com" with quantity "3"

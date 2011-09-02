@@ -26,7 +26,10 @@
       <i>YOU SAVE 20%</i>
     </div>
     <div class="qtyIn">
-      <%= item_form.text_field :quantity, :size => 3, :onfocus=>"if(this.value=='1') this.value=''", :onblur=>"if(this.value=='') this.value='1'", :class => 'txt' %>
+      <%= item_form.text_field :quantity, :size => 3,
+                               :onfocus=>"if(this.value=='1') this.value=''",
+                               :onblur=>"if(this.value=='') this.value='1'",
+                               :class => 'txt', :id => "order_line_items_attributes_#{item_form.object.variant.try(:id)}_quantity" %>
 
       <%= hook :cart_item_delete, locals do %>
       <%= link_to "Remove", '#', :class => 'delete' %>

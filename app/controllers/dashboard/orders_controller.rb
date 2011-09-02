@@ -4,7 +4,9 @@ class Dashboard::OrdersController < Dashboard::ApplicationController
   include ProductHelper
 
   def index
-    @orders = current_user.all_orders.complete.paginate( paginate_options.merge({ :order => "created_at DESC" }) )
+    params[:search] ||= {}
+    @search = current_user.all_orders.complete.metasearch(params[:search])
+    @orders = @search.paginate(paginate_options.merge({ :order => "created_at DESC" }))
   end
 
   def show

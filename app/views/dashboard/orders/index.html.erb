@@ -2,13 +2,17 @@
 <div class="fdBck">
   <h2>Orders</h2>
   <div class="cmbo6">
-    <input class="txt" type="text" name="" value="" />
-    <select id="websites21" tabindex="1" name="">
-      <option value="" selected="selected" title="">New Orders</option>
-      <option value="" title="">Pending Orders</option>
-      <option value="" title="">Comlpleted Orders</option>
-      <option value="" title="">Canceled Orders</option>
-    </select>
+    <%= form_for @search, :url => dashboard_orders_path, :html => {:method => :get} do |f| %>
+      <%= f.text_field :number_contains, :class => "txt" %>
+      <!-- <input class="txt" type="text" name="" value="" /> -->
+    <% end %>
+    
+    <!-- <select id="websites21" tabindex="1" name=""> -->
+    <!--   <option value="" selected="selected" title="">New Orders</option> -->
+    <!--   <option value="" title="">Pending Orders</option> -->
+    <!--   <option value="" title="">Comlpleted Orders</option> -->
+    <!--   <option value="" title="">Canceled Orders</option> -->
+    <!-- </select> -->
   </div>
   <div class="pPgCmbo">
     <div class="cmbo7">
@@ -24,8 +28,8 @@
   </div>
   <table class="tbl2" width="915px" cellpadding="0" cellspacing="0">
     <tr>
-      <td width="95px" class="thlHd2">Order Date</td>
-      <td width="130px" class="thlHd2">Order Number | Quantity</td>
+      <td width="95px" class="thlHd2"><%= sort_link @search, "created_at", "Order Date" %></td>
+      <td width="130px" class="thlHd2"><%= sort_link @search, "number", "Order Number/Quantity" %></td>
       <td width="71px" class="thlHd2">Price</td>
       <td width="250px" class="thlHd2">Shipping</td>
       <td width="80px" class="thlHd2">Status</td>

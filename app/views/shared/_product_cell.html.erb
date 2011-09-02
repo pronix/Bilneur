@@ -43,7 +43,8 @@
     </p>
     <div class="str">
       <i>QTY Available <label><%= best_deal.count_on_hand %></label></i>
-      <div id="number<%= product.id %>" class="nmbrRate"></div>
+      <%= show_stars(best_deal.product.avg_rating, 'icons/yel_str_sml.png', 'icons/grey_str_sml.png', '<em>') %>
+        <!--<div id="number<%= product.id %>" class="nmbrRate"></div>-->
     </div>
   </div>
   <script type="text/javascript">

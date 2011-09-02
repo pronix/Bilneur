@@ -180,7 +180,7 @@
 .fdBck .TabbedPanelsTab span a {color: white;text-decoration: none;}
 .fdBck .TabbedPanelsContentGroup { clear:none; float:left;}
 .fdBck .TabbedPanelsContent { width:715px; border: none !important; }
-#reviews_container { float: left; width: 715px; border: 1px solid #e4e4e4; padding: 0; background: #f3f3f3; min-height: 300px;}
+#reviews_container { position: relative; float: left; width: 715px; border: 1px solid #e4e4e4; padding: 0; background: #f3f3f3; min-height: 300px;}
 #reviews_container .blogFtr { border-top: 1px solid #e4e4e4;}
 
 /* Inventory Page */

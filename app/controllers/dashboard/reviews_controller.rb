@@ -45,7 +45,7 @@ class Dashboard::ReviewsController < Dashboard::ApplicationController
     @reviews = params[:approved_select_hz].blank? ? @reviews : @reviews.where(:approved => params[:approved_select_hz])
     @reviews = params[:select_product_id].blank? ? @reviews : @reviews.where(:product_id => params[:select_product_id])
 
-    @reviews = @reviews.paginate(:per_page => (params[:per_page]||15), :page => params[:page])
+    @reviews = @reviews.paginate(paginate_options)
     # For display some selectboxes
     @select_products = true if params[:state] == "product"
   end

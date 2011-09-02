@@ -1,7 +1,10 @@
+<% senders = [] %>
+<% 1.upto(105) { |sender| senders << sender if sender != 101 } %>
+
 <% 1.upto(100) do |i| %>
 message_<%= i %>:
-  sender_id: 102
+  sender_id: <%= senders.shuffle.shift %>
   recipient_id: 101
-  subject: test message <%= rand(99999) %>
+  subject: <%= Faker::Lorem.words(rand(5)) %>
   content: <%= Faker::Lorem.paragraph %>
 <% end %>

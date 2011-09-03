@@ -27,16 +27,20 @@
         <% product.variants.on_hand.condition(cdt).each_with_index do |item, i| %>
         <%= render "sellers_list", :item => item, :i => i %>
         <% end %>
+
         <div class="tabCnt2">
           <a href="#">View All</a>
           <span>FIXME 21 Auctions Starting at</span>
           <b>FIXME $2.99</b>
         </div>
+
+        <% if (@best_group_sale =  product.best_group_sale(:condition => cdt )) %>
         <div class="tabCnt3">
           <a href="#">View All</a>
-          <span>FIXME 20 more buyers needed</span>
-          <b>FIXME 50% Group Discount</b>
+          <span><%= @best_group_sale.count %> more buyers needed</span>
+          <b><%= @best_group_sale.discount_in_percentage %> Group Discount</b>
         </div>
+        <% end %>
         <div class="btm"></div>
 
       </div>

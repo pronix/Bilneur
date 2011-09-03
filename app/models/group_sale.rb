@@ -9,7 +9,14 @@ class GroupSale < ActiveRecord::Base
 
   # scopes
   #
-
+  scope :best, lambda{ |*args|
+    options = args.extract_options!
+    if options[:condition]
+      includes(:variant).where(:variants => { :condition => options[:condition] }).order("group_sales.price DESC").limit(1)
+    else
+      order("group_sales.price DESC").limit(1)
+    end
+  }
 
   # validates
   #

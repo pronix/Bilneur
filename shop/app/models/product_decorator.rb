@@ -38,6 +38,8 @@ Product.class_eval do
                            AND variants.count_on_hand > 0 "],
           :order => "variants.price DESC"
 
+  has_many :group_sales
+
 
   # scopes
   #
@@ -115,6 +117,11 @@ Product.class_eval do
 
   # instance methods
   #
+
+  def best_group_sale(*args)
+    group_sales.best(*args).try(:first)
+  end
+
   def best_variant(*args)
     options = args.extract_options!
     if options[:condition]

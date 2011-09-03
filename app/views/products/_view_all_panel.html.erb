@@ -23,12 +23,15 @@
             <span>21 Auctions Starting at</span>
             <b>$2.99</b>
           </div>
+          <% if (@best_group_sale =  product.best_group_sale(:condition => cdt )) %>
           <div class="tabCnt3">
             <%= link_to "View All", product_quotes_path(product, cdt, :price => :discount) %>
-              <span>20 more buyers needed</span>
-              <b>50% Group Discount</b>
+            <span><%= @best_group_sale.count %> more buyers needed</span>
+            <b><%= @best_group_sale.discount_in_percentage %>% Group Discount</b>
           </div>
+          <% end %>
           <div class="btm"></div>
+
         </div>
      <% end %>
     </div>

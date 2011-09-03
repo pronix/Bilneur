@@ -113,8 +113,16 @@ Rails.application.routes.draw do
       end
 
       resource :selling_options
+      resources :group_sales, :only => [ :new, :create ]
 
     end # end dashboard < quotes
+
+    resources :group_sales, :only => [:index, :edit, :update, :destroy] do
+      member do
+        get :complete
+        get :cancel
+      end
+    end
 
     resources :orders, :only => [:index, :show] do
 

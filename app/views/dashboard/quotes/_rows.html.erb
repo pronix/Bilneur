@@ -31,9 +31,10 @@
   <td class="row<%= evod %>">
     <%= quote.active? ? t("active") : t("inactive") %> <br />
     <%= link_to "Edit", edit_dashboard_quote_path(quote)  %>
-     <% if can? :destroy, quote %>
+    <% if can? :destroy, quote %>
     | <%= link_to "Delete", dashboard_quote_path(quote), :method => "delete" %>
-      <% end %>
+    <% end %>
+    | <%= link_to "Create group sales" , new_dashboard_quote_group_sale_path(quote) %>
   </td>
 </tr>
 <% end %>

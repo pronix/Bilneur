@@ -87,6 +87,7 @@ en:
     inventory: Inventory
     products: Products
     feedback: Feedback
+    group_sales: Group Sales
   views:
     will_paginate:
       page_entries_info:

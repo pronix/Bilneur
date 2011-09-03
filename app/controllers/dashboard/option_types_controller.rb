@@ -1,5 +1,5 @@
 class Dashboard::OptionTypesController < Dashboard::ApplicationController
-
+  before_filter lambda{ authorize! :access, :seller }
   before_filter :load_product, :only => [:selected, :available, :remove]
 
   def index

@@ -1,4 +1,5 @@
 class  Dashboard::PropertiesController < Dashboard::ApplicationController
+  before_filter lambda{ authorize! :access, :seller }
 
   def index
     @properties = Property.all

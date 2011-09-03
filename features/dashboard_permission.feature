@@ -3,7 +3,21 @@ Feature: Describe dashboard permissions
   Background:
     Given I have an admin account of "admin@example.com/password"
 
-  Scenario Outline: User main availbale link
+  Scenario Outline: Register User dashboard/products
+    Given I am signed up <role> "email@person.com/password"
+    And I sign in as "email@person.com/password"
+    And I go to the dashboard products page
+    Then I follow "<link>"
+    And I should be on the <page>
+    
+    Examples:
+      | link         | page                        | role             |
+      | Properties   | dashboard page              | as               |
+      | Option Types | dashboard page              | as               |
+      | Properties   | dashboard properties page   | as a seller with |
+      | Option Types | dashboard option_types page | as a seller with |
+    
+  Scenario Outline: Register User main availbale link
     Given I am signed up as "email@person.com/password"
     And I sign in as "email@person.com/password"
     Then I go to the dashboard account fuck page

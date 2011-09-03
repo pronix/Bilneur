@@ -16,12 +16,12 @@ Feature: Describe volume price
     And I should be on the dashboard selling options page for @quote
     Then I click "Add Volume Price" link
     And I follow new volume price with given values:
-      | display    | range | amount | position |
-      | 5 and more | (5+)  |      5 |        3 |
+      | display    | range | amount | 
+      | 5 and more | (5+)  |      5 | 
     And I should see "new volume price created"
     And I should see given on the page:
-      | display    | range | amount | position |
-      | 5 and more | (5+)  |      5 |        3 |
+      | display    | range | amount |
+      | 5 and more | (5+)  |      5 |
 
   Scenario: Edit volume price
     Given I have volume price for @quote

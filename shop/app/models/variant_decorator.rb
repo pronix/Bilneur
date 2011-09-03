@@ -13,6 +13,9 @@ Variant.class_eval do
   Variant::CONDITION.each { |v| scope :"condition_#{v}", where(:condition => v)}
   Variant::WAREHOUSE.each { |v| scope :"warehouse_#{v}", where(:warehouse => v)}
 
+  scope :active, where("variants.deleted_at is null AND variants.active => #{connection.quoted_true}")
+  scope :inactive, where("variants.deleted_at is null AND variants.active => #{connection.quoted_false}")
+
   scope :condition, lambda{ |*args|
     where(:condition => (args.first =~ /new|used|another/ ? args.first : "new"))
   }

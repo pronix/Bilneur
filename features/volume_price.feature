@@ -10,7 +10,6 @@ Feature: Describe volume price
     And I have quotes for each product
 @javascript
   Scenario: Create a volume price for quote
-    Then silent exec "@quote = @user.quotes.last"
     Then I go to the dashboard quotes page
     And I follow "Edit"
     Then I follow "Selling" in the class "prflBus"

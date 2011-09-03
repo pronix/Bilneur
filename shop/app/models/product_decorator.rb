@@ -26,7 +26,7 @@ Product.class_eval do
           :conditions => [
                           "variants.is_master = #{connection.quoted_false}
                            AND variants.deleted_at IS NULL
-                           AND variants.count_on_hand > 0 "],
+                           AND variants.count_on_hand > 0 AND variants.active = #{connection.quoted_true} "],
           :order => "variants.price ASC"
 
 
@@ -45,6 +45,7 @@ Product.class_eval do
                      FROM variants
                      WHERE (variants.is_master = #{connection.quoted_false}
                             AND variants.product_id = products.id
+                            AND variants.active = #{connection.quoted_true}
                             AND variants.deleted_at is null) ),0) > 0")
 
 
@@ -58,6 +59,7 @@ Product.class_eval do
   scope :top_deals, lambda{
     order("( SELECT min(v.price) FROM variants as v
            WHERE ( (v.is_master = #{connection.quoted_false})
+                  AND (v.active = #{connection.quoted_true})
                   AND (v.product_id = products.id) AND (v.deleted_at is null ) AND (v.count_on_hand > 0) )
           ) ASC")
    }

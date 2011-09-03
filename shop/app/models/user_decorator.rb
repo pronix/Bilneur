@@ -50,6 +50,9 @@ User.class_eval do
   # Releationship with About
   has_one :static_data, :dependent => :destroy
 
+  has_many :group_sales, :foreign_key => "seller_id"
+
+
   # scopes
   #
 

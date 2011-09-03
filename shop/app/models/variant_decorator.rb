@@ -5,7 +5,7 @@ Variant.class_eval do
   belongs_to :seller, :class_name => "User"
   belongs_to :owner, :class_name => "User" # seller who added quote, not virtual seller
   has_and_belongs_to_many :favorite_users, :join_table => "favorite_variants", :class_name => "User", :uniq => true
-
+  has_many :group_sales
 
 
   # scopes
@@ -142,6 +142,8 @@ Variant.class_eval do
   end
   alias :has_stock? :in_stock?
 
+  # Moved variant to nes virtual seller
+  #
   def move_to_virtual_seller(new_seller, quantity, _warehouse = Variant::WAREHOUSE_MERCHANT)
     new_variant = clone
     new_variant.seller = new_seller
@@ -163,6 +165,7 @@ Variant.class_eval do
   def display_condition
     condition.to_s == "another" ? another_condition : condition
   end
+
   # class methods
   #
   class << self
@@ -172,6 +175,6 @@ Variant.class_eval do
       self.where(:product_id => Product.find_by_permalink(product_id).id).find(quote_id)
     end
 
-  end
+  end # end class << self
 
 end

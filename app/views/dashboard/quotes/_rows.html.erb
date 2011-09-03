@@ -34,7 +34,9 @@
     <% if can? :destroy, quote %>
     | <%= link_to "Delete", dashboard_quote_path(quote), :method => "delete" %>
     <% end %>
+    <% if can? :create_group_sale, quote %>
     | <%= link_to "Create group sales" , new_dashboard_quote_group_sale_path(quote) %>
+    <% end %>
   </td>
 </tr>
 <% end %>

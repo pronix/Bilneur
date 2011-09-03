@@ -12,6 +12,11 @@ class SellerAbility
       cannot :access, :seller
     end
 
+    can :create_group_sale, Variant do |variant|
+      variant.seller == user
+    end
+
+
     # Only auth user has create review or when admin set setting
     if user.roles.present? || !Spree::Reviews::Config[:require_login]
       can [:new, :create], Review

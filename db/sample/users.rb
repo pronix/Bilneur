@@ -71,3 +71,6 @@ end
 Role.find_by_name('seller').users.each do |saller|
   saller.recalculate_rating
 end
+
+# Create default password for cool seller
+User.find(101).update_attributes(:password => 'moloko', :password_confirmation => 'moloko')

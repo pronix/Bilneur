@@ -1,0 +1,26 @@
+<div class="sptCntBus noneSidebarForm">
+  <%= render 'shared/error_messages', :target => @group_sale %>
+  <div class="top"></div>
+
+  <div class="cntr">
+    <h2><%= t("edit_group_sale") %></h2>
+    <h2 class="htFix">
+      <u>Product:</u> <b><%= @variant.name %></b><br />
+    </h2>
+
+    <%= form_for(:group_sale, :url => dashboard_group_sale_path(@group_sale),
+    :html => { :method => :put, :class => "contInp contInpFix contInpMarg" } ) do |f| %>
+    <%= render :partial => "form", :locals => {:f => f} %>
+    <div class="bSaveC">
+      <big><button type="submit" class="btn otherbutton" value="Update"></button></big>
+      <p><%= t("or") %> <%= link_to t("actions.cancel"),  dashboard_group_sales_path %></p>
+    </div>
+
+
+    <% end %>
+
+  </div>
+  <div class="btm"></div>
+</div>
+
+

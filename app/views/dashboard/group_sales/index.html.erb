@@ -35,7 +35,10 @@
     <tr>
       <td><%= item.product.ean %></td>
       <td><%= item.variant.name %></td>
-      <td><%= number_to_currency item.price %></td>
+      <td>
+        <%= number_to_currency item.price %> /
+        <%= item.count %>
+      </td>
       <td>
         <%= number_to_currency item.discount_in_amount %> /
         <%= number_to_percentage item.discount_in_percentage, :precision => 0  %>
@@ -49,10 +52,11 @@
         <b>0</b>
       </td>
       <td>
-        <%= link_to "Edit", "" %><br />
-        <%= link_to "Delete", "" %><br />
-        <%= link_to "Cancel", "" %><br />
-        <%= link_to "Complete", "" %><br />
+        <%= link_to "Show", dashboard_group_sale_path(item) %><br />
+        <%= link_to "Edit", edit_dashboard_group_sale_path(item) %><br />
+        <%= link_to "Delete", dashboard_group_sale_path(item), :method => :delete %><br />
+        <%= link_to "Cancel", cancel_dashboard_group_sale_path(item)  %><br />
+        <%= link_to "Complete", complete_dashboard_group_sale_path(item) %><br />
       </td>
     </tr>
     <% end %>

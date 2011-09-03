@@ -13,6 +13,10 @@ Spree::BaseController.class_eval do
     rescue_redirect_back_error(exception)
   end
 
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    render_404(exception)
+  end
+
   # rescue_from ActionView::Template::Error do |exception|
   #   rescue_template_error(exception)
   # end

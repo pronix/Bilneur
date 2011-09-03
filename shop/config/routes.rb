@@ -117,7 +117,8 @@ Rails.application.routes.draw do
 
     end # end dashboard < quotes
 
-    resources :group_sales, :only => [:index, :edit, :update, :destroy] do
+    resources :group_sales, :only => [:index, :show, :edit, :update, :destroy] do
+
       member do
         get :complete
         get :cancel

@@ -1,0 +1,56 @@
+<b>
+  <i><%= t("name") %></i>
+  <%= f.text_field :name, :class => 'title fullwidth', :value => @variant.name  %>
+</b>
+
+<% if @group_sale.new_record? %>
+<b>
+  <p id="spree_picker">
+    <%= f.label :start_selling, t("start_selling") %><br />
+    <%= f.spree_date_picker :start_selling %>
+  </p>
+
+  <p id="spree_picker">
+    <%= f.label :stop_selling, t("stop_selling") %><br />
+    <%= f.spree_date_picker :stop_selling %>
+  </p>
+
+</b>
+<% else %>
+<b><i>Start selling: </i><%= l @group_sale.start_selling, :format => "%m/%d/%Y" %> </b>
+<b><i>Stop selling:</i> <%= l @group_sale.stop_selling, :format => "%m/%d/%Y" %> </b>
+<% end %>
+
+<b>
+  <i><%= t("price") %></i>
+  <%= f.text_field :price, :class => 'title'  %>
+</b>
+
+<b>
+  <i><%= t("retail_price") %></i>
+  <%= f.text_field :retail_price, :class => 'txt', :value => @variant.price.to_i  %>
+</b>
+
+<b>
+  <i><%= t("count") %></i>
+  <%= f.text_field :count, :class => 'title'  %>
+</b>
+
+<b>
+  <i><%= t("description") %></i>
+  <div class="bAY">
+    <div class="txtA">
+      <%= f.text_area :description, {:cols => 60, :rows => 4, :class => 'fullwidth'}  %>
+    </div>
+  </div>
+</b>
+
+<b>
+  <i><%= t("features") %></i>
+  <div class="bAY">
+    <div class="txtA">
+      <%= f.text_area :features, {:cols => 60, :rows => 4, :class => 'fullwidth'}  %>
+    </div>
+  </div>
+</b>
+

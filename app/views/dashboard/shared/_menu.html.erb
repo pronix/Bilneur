@@ -58,11 +58,11 @@
       <%= link_to_unless_current( t('user_menu.feedback'), dashboard_reviews_path, :class => "TabbedPanelsTab") %>
     </span>
   </li>
-
+  <% if can? :read, GroupSale %>
   <li class="TabbedPanelsTab" >
     <span class="TabbedPanelsTabSelected">
       <%= link_to_unless_current( t('user_menu.group_sales'), dashboard_group_sales_path, :class => "TabbedPanelsTab") %>
     </span>
   </li>
-
+  <% end %>
 </ul>

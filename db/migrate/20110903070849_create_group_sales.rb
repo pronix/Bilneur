@@ -13,6 +13,7 @@ class CreateGroupSales < ActiveRecord::Migration
       t.text     :description
       t.text     :features
 
+      t.string   :state
       t.boolean  :active,       :default => true
 
       t.timestamps
@@ -36,7 +37,6 @@ class CreateGroupSales < ActiveRecord::Migration
     remove_index :group_sales, :active
     remove_index :group_sales, :start_selling
     remove_index :group_sales, :stop_selling
-
 
     drop_table :group_sales
 

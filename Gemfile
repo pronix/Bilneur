@@ -11,6 +11,7 @@ gem 'ancestry',                 '~> 1.2.3'
 gem "gherkin",                  "= 2.4.6"
 gem 'pg',                       '~> 0.11.0'
 gem 'sqlite3'
+gem "date_validator",           "~> 0.6.2"
 
 gem 'exception_notification',   '~> 2.4.1'
 gem 'whenever',               "~> 0.6.8", :require => false

@@ -18,8 +18,8 @@ class Dashboard::ApplicationController < Spree::BaseController
       return if current_user.has_role?("seller") &&
       current_user.seller_payment_methods.count == 0 &&
       controller_name != "payment_methods"
-
   end
+
   def paginate_options
     {
       :per_page => (params[:per_page]||Spree::Config[:dashboard_per_page]||5),

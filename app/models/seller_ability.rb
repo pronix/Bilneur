@@ -13,7 +13,15 @@ class SellerAbility
     end
 
     can :create_group_sale, Variant do |variant|
-      variant.seller == user
+      variant.seller == user && variant.count_on_hand > 0
+    end
+
+    can :read, GroupSale do |resource|
+      user.has_role?("seller") && (resource.present? ? (resource.seller_id == user.id) : true)
+    end
+
+    can [:edit, :update, :destroy, :cancel, :complete], GroupSale do |resource|
+      user.has_role?("seller") && (resource.seller_id == user.id)
     end
 
 

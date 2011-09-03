@@ -91,6 +91,8 @@ module NavigationHelpers
       dashboard_message_path(Message.find_by_subject($1))
     when /the favorite sellers dashboard page/
       sellers_dashboard_favorites_path
+    when /the dashboard selling options page for @quote/
+      dashboard_quote_selling_options_path(@quote)
     when /^the home\s?page$/
       '/'
 

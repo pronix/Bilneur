@@ -12,7 +12,6 @@ class Dashboard::SellingOptionsController < Dashboard::ApplicationController
     else
       render :show
     end
-
   end
 
   private

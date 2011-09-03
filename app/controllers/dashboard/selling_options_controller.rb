@@ -1,5 +1,4 @@
 class Dashboard::SellingOptionsController < Dashboard::ApplicationController
-
   before_filter :load_data
 
   def show
@@ -19,4 +18,5 @@ class Dashboard::SellingOptionsController < Dashboard::ApplicationController
   def load_data
     @quote = current_user.quotes.find(params[:quote_id])
   end
+
 end

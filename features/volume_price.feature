@@ -49,5 +49,5 @@ Feature: Describe volume price
     Then I click "add to cart" on the "Buy More and save money"
     And I should be on the cart page
     And I should see "product 1" with qty "5" and price "1400"
-    Then I click "Ceckout"
+    Then I click "Checkout"
     When I buy a 5 "product 1" qty of "product 1" should be 5

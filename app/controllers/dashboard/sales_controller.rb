@@ -1,4 +1,5 @@
 class Dashboard::SalesController < Dashboard::ApplicationController
+  before_filter lambda{ authorize! :access, :seller }
   respond_to :json, :js, :html
 
   def index
@@ -34,6 +35,6 @@ class Dashboard::SalesController < Dashboard::ApplicationController
 
       redirect_to dashboard_sales_path
     end
-
   end
+
 end

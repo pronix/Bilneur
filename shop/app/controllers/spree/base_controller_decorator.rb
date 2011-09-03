@@ -17,6 +17,27 @@ Spree::BaseController.class_eval do
   #   rescue_template_error(exception)
   # end
 
+ def unauthorized
+    respond_to do |format|
+      format.html do
+        if current_user
+          flash[:error] = I18n.t(:only_for_sellers)
+          redirect_back_or_default(dashboard_root_path)
+        else
+          flash[:error] = I18n.t(:authorization_failure)
+          store_location
+          redirect_to login_path and return
+        end
+      end
+      format.xml do
+        request_http_basic_authentication 'Web Password'
+      end
+      format.json do
+        render :text => "Not Authorized \n", :status => 401
+      end
+    end
+  end
+
   private
 
   def prepare_params

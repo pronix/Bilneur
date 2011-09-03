@@ -2,6 +2,7 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  only_for_sellers: Only for sellers
   active: Active
   inactive: Inactive
   goods_in_stock: '%{name} in stock, only %{quantity}'

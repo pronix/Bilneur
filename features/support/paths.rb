@@ -89,10 +89,14 @@ module NavigationHelpers
       dashboard_message_path(@message)
     when /the dashboard message page "(.+)"/
       dashboard_message_path(Message.find_by_subject($1))
+    when /the dashboard inbox page/
+      dashboard_messages_path
     when /the favorite sellers dashboard page/
       sellers_dashboard_favorites_path
     when /the dashboard selling options page for @quote/
       dashboard_quote_selling_options_path(@quote)
+    when /the dashboard page/
+      dashboard_root_path
     when /^the home\s?page$/
       '/'
 

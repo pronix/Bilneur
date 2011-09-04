@@ -4,18 +4,6 @@ Feature: Describe about seller page
     Given I am signed up as a seller with "seller@person.com/password"
     And I sign in as "seller@person.com/password"
 
-  Scenario: Show about seller page
-    Then I go to the dashboard sellers page
-    And I should be on the about dashboard sellers page
-    And I should not see "Authorization Failure"
-
-  Scenario: User with role user don't have access to about page
-    Given I am logged out
-    Given I am signed up as "email@person.com/password"
-    Then I sign in as "email@person.com/password"
-    Then I go to the dashboard sellers page
-    And I should see "Authorization Failure"
-
   Scenario: Create a valid abouts
     Then I go to the about dashboard sellers page
     And I fill in "static_data_about" with "This is I am"

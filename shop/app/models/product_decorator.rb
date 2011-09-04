@@ -119,7 +119,7 @@ Product.class_eval do
   #
 
   def best_group_sale(*args)
-    group_sales.best(*args).try(:first)
+    group_sales.active.best(*args).try(:first)
   end
 
   def best_variant(*args)

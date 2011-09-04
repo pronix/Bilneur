@@ -10,6 +10,9 @@ class GroupSale < ActiveRecord::Base
   # scopes
   #
 
+  scope :active, lambda{ where(":today between group_sales.start_selling and group_sales.stop_selling", :today => Time.now)}
+
+
   # max discount
   scope :best, lambda{ |*args|
     options = args.extract_options!
@@ -45,6 +48,25 @@ class GroupSale < ActiveRecord::Base
 
   # instance methods
   #
+
+  def time_left
+    distance = stop_selling.to_time - Time.now
+
+    [
+     distance.div(60*60).div(24),        # days
+     (distance.div(60*60) % 24).to_i ,   # hours
+     (distance % (60 * 60)).div(60),     # minutes
+     ((distance % (60 * 60)) % 60).to_i, # seconds
+    ]
+  end
+
+  def time_left_only_day
+    time_left.first
+  end
+
+  def time_left_without_day
+    time_left[1..-1]
+  end
 
   # Set product
   #

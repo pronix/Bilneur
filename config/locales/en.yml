@@ -3,6 +3,9 @@
 
 en:
   only_for_sellers: Only for sellers
+  days:
+    one: "1 day"
+    other: '%{count} days'
   view_all: View All
   active: Active
   inactive: Inactive

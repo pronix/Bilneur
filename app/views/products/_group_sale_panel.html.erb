@@ -41,7 +41,7 @@
         </div>
 
         <% if (@best_group_sale =  product.best_group_sale(:condition => cdt )) %>
-          <%= render :partial => "group_sale_list", :collection => product.group_sales.condition(cdt), :as => :item %>
+          <%= render :partial => "group_sale_list", :collection => product.group_sales.active.condition(cdt), :as => :item %>
         <% end %>
 
         <div class="btm"></div>

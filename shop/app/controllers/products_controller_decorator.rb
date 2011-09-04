@@ -16,6 +16,15 @@ ProductsController.class_eval do
     respond_with(@product)
   end
 
+  # Show a group sale for quote
+  #  Parameters: {"product_id"=>"death-of-a-hero", "condition"=>"new"}
+  #
+  def group_sale
+    load_data_for_product
+    respond_with(@product)
+
+  end
+
   #  Parameters: {"product_id"=>"death-of-a-hero", "id"=>"8732"}
   #
   def quote

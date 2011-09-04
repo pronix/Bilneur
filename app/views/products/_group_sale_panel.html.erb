@@ -3,7 +3,11 @@
 
     <ul class="TabbedPanelsTabGroup">
       <% Variant::CONDITION.each_with_index  do |cdt, index| %>
-      <li class="TabbedPanelsTab tab<%= index + 1 %>" tabindex="0"><span><%= t("condition_#{cdt}") %></span></li>
+      <li class="TabbedPanelsTab tab<%= index + 1 %>  " tabindex="0">
+        <span>
+          <%= t("condition_#{cdt}") %>
+        </span>
+      </li>
       <% end %>
     </ul>
 
@@ -23,10 +27,12 @@
           </form>
         </div>
 
-        <% best_deal = product.best_variant %>
-        <% product.variants.on_hand.condition(cdt).each_with_index do |item, i| %>
-        <%= render "sellers_list", :item => item, :i => i %>
-        <% end %>
+        <div class="tabCnt1">
+            <%= link_to t("view_all"), product_quotes_path(product, cdt) %>
+            <b><%= number_to_currency(product.variants.best_price(cdt).first.try(:price)) %></b>
+            <span>Available with <%= product.variants.condition(cdt).count %> Sellers</span>
+        </div>
+
 
         <div class="tabCnt2">
           <%= link_to t("view_all"), "" %>
@@ -35,12 +41,9 @@
         </div>
 
         <% if (@best_group_sale =  product.best_group_sale(:condition => cdt )) %>
-        <div class="tabCnt3">
-          <%= link_to t("view_all"), product_group_sale_path(product, cdt) %>
-          <span><%= @best_group_sale.count %> more buyers needed</span>
-          <b><%= @best_group_sale.discount_in_percentage %>% Group Discount</b>
-        </div>
+          <%= render :partial => "group_sale_list", :collection => product.group_sales.condition(cdt), :as => :item %>
         <% end %>
+
         <div class="btm"></div>
 
       </div>

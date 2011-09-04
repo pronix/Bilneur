@@ -3,6 +3,7 @@
 
 en:
   only_for_sellers: Only for sellers
+  view_all: View All
   active: Active
   inactive: Inactive
   goods_in_stock: '%{name} in stock, only %{quantity}'

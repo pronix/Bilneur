@@ -9,6 +9,8 @@ class GroupSale < ActiveRecord::Base
 
   # scopes
   #
+
+  # max discount
   scope :best, lambda{ |*args|
     options = args.extract_options!
     if options[:condition]
@@ -17,6 +19,10 @@ class GroupSale < ActiveRecord::Base
       order("group_sales.price DESC").limit(1)
     end
   }
+
+  # select on condition variant
+  #
+  scope :condition, lambda{ |*args| includes(:variant).where(:variants => { :condition => [ (args.first ||'new') ].flatten })  }
 
   # validates
   #

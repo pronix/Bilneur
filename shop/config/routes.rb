@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   match "/account/change_password" => "dashboard/users#change_password", :via => [:get, :put]
   match "/dashboard/upload_photo" => "dashboard/users#upload_photo", :via => [:get, :put]
   match "/products/deals/:id(/:condition)" => "products#quotes", :as => :product_quotes
+  match "/products/group_sale/:id(/:condition)" => "products#group_sale", :as => :product_group_sale
   match "/products/deals/:id/:quote_id" => "products#quote", :as => :product_quote
   match "/products/like_review" => 'products#like_review', :via => :post
   match "/messages/:user_id/new" => "dashboard/messages#new", :as => :new_message

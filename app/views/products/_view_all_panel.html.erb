@@ -13,19 +13,21 @@
     <div class="TabbedPanelsContentGroup">
       <% Variant::CONDITION.each do |cdt| %>
       <div class="TabbedPanelsContent">
-          <div class="tabCnt1">
-            <%= link_to "View All", product_quotes_path(product, cdt) %>
+
+        <div class="tabCnt1">
+            <%= link_to t("view_all"), product_quotes_path(product, cdt) %>
             <b><%= number_to_currency(product.variants.best_price(cdt).first.try(:price)) %></b>
             <span>Available with <%= product.variants.condition(cdt).count %> Sellers</span>
-          </div>
-          <div class="tabCnt2">
-            <%= link_to "View All", product_quotes_path(product, cdt, :price => :auction) %>
+        </div>
+
+        <div class="tabCnt2">
+            <%= link_to t("view_all"), product_quotes_path(product, cdt, :price => :auction) %>
             <span>21 Auctions Starting at</span>
             <b>$2.99</b>
           </div>
           <% if (@best_group_sale =  product.best_group_sale(:condition => cdt )) %>
           <div class="tabCnt3">
-            <%= link_to "View All", product_quotes_path(product, cdt, :price => :discount) %>
+            <%= link_to t("view_all"), product_group_sale_path(product, cdt) %>
             <span><%= @best_group_sale.count %> more buyers needed</span>
             <b><%= @best_group_sale.discount_in_percentage %>% Group Discount</b>
           </div>

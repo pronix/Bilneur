@@ -120,21 +120,16 @@
       <div class="CollapsiblePanelContent colsPC">
 
         <% @quote.available_volume_prices.each do |item|  %>
-
-        <div class="rts1">
-
-          <h2>
-            <%= number_to_currency @quote.volume_price(item.range_first) %>
-            <b class="mrg5">Quantity <%= item.range_first %> - <%= item.range_last %>  </b>
-          </h2>
-
-          <div class="cntcts">
-            <%= render :partial => "shared/cart_form", :object => @quote, :locals => {:quantity => item.range_first } %>
+          <div class="rts1">
+            <h2>
+              <%= number_to_currency @quote.volume_price(item.range_first) %>
+              <b class="mrg5">Quantity <%= item.display %>  </b>
+            </h2>
+            <div class="cntcts">
+              <%= render :partial => "shared/cart_form", :object => @quote, :locals => {:quantity => item.range_first } %>
+            </div>
           </div>
-
-        </div>
-        <div class="bdr5p"></div>
-
+          <div class="bdr5p"></div>
         <% end %>
 
       </div>

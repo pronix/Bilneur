@@ -42,3 +42,7 @@ end
 Then /^@quote should not have "(.+)"$/ do |method|
   @quote.send(method.to_sym).present?.should == false
 end
+
+Then /^I press by sub div id "(.+)", "(.+)"$/ do |field, button_name|
+  find_by_id(field).find(:xpath, '//button').click
+end

@@ -168,8 +168,8 @@ Variant.class_eval do
   class << self
 
     # Find review from product
-    def by_product_and_id(product, quote_id)
-      self.where(:product_id => product.id).find(quote_id)
+    def by_product_and_id(product_id, quote_id)
+      self.where(:product_id => Product.find_by_permalink(product_id).id).find(quote_id)
     end
 
   end

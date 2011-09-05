@@ -23,3 +23,17 @@ end
 Then /^I should see given tables:$/ do |table|
   table.hashes.each { |hash| find_by_id(hash[:field]).value.should == hash[:value] }
 end
+
+Given /^I have volume price for @quote$/ do
+  @volume_price = Factory(:volume_price, :variant => @quote)
+end
+
+Given /^I have volume price for @quote with given value:$/ do |table|
+  table.hashes.each { |hash| Factory(:volume_price, :variant => @quote, :start_range => hash[:start_range], :end_range => hash[:end_range])}
+end
+
+Then /^I change some given values:$/ do |table|
+  table.hashes.each do |hash|
+    hash.each {|field, value| find(:xpath, "//*[contains(@id,\"_#{field}\")]").set(value) }
+  end
+end

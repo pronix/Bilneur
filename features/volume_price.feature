@@ -17,10 +17,6 @@ Feature: Describe volume price
       | start_range | end_range | amount |
       |           2 |         4 |      8 |
     And I press "save_shipping_method"
-    # I don't know but somitimes break
-    # Then I should see "2"
-    # Then I should see "4"
-    # Then I should see "8"
     And I should see given tables:
       | field                                          | value |
       | variant_volume_prices_attributes_0_start_range |     2 |
@@ -31,12 +27,23 @@ Feature: Describe volume price
       | (2..4) |           2 |         4 |   8.0  | 2 to 4  |
 
 
-  # Scenario: Edit volume price
-  #   Given I have volume price for @quote
-  #   Then I go to the dashboard selling options page for @quote
-  #   And I change "range" with "2...3"
-  #   And I click "save" link
-  #   And I should see "vole price updated"
+  Scenario: Edit volume price
+    Then silent exec "@quote = Product.last.variants.last"
+    Given I have volume price for @quote with given value:
+      | start_range | end_range |
+      |           2 |         8 |
+    Then I go to the dashboard selling options page for @quote
+    And I should see given tables:
+      | field                                          | value |
+      | variant_volume_prices_attributes_0_start_range |     2 |
+      | variant_volume_prices_attributes_0_end_range   |     8 |
+    Then I change some given values:
+      | start_range | end_range |
+      |           4 |           |
+    And I press "save_shipping_method"
+    And I should have volume price with given values:
+      | range | start_range | end_range | display    |
+      | (4+)  |           4 |           | 4 and more |
     
   # Scenario: Delete volume price
   #   Given I have volume price for @quote

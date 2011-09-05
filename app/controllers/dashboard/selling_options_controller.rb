@@ -2,7 +2,9 @@ class Dashboard::SellingOptionsController < Dashboard::ApplicationController
   before_filter :load_data
 
   def show
+  end
 
+  def delete
   end
 
   def update

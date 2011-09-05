@@ -7,7 +7,7 @@ Feature: Describe volume price
       | name                        | available_on        |            ean | sku     | created_at |
       | The Godfather               | 2011-01-06 18:21:13 |  9780099528128 | TE-6000 | 01/01/2011 |
     And I have quotes for each product
-@wip @javascript
+@javascript
   Scenario: Create a volume price for quote
     Then I go to the dashboard quotes page
     And I follow "Edit"
@@ -16,17 +16,20 @@ Feature: Describe volume price
     And I follow new volume price with given values:
       | start_range | end_range | amount |
       |           2 |         4 |      8 |
+    And I press "save_shipping_method"
+    # I don't know but somitimes break
+    # Then I should see "2"
+    # Then I should see "4"
+    # Then I should see "8"
+    And I should see given tables:
+      | field                                          | value |
+      | variant_volume_prices_attributes_0_start_range |     2 |
+      | variant_volume_prices_attributes_0_end_range   |     4 |
+      | variant_volume_prices_attributes_0_amount      |  8.00 |
+    And I should have volume price with given values:
+      | range  | start_range | end_range | amount | display |
+      | (2..4) |           2 |         4 |   8.0  | 2 to 4  |
 
-    # And I should see "Start range"
-    # And I should see "End range"
-    # And I should see "Amount"
-    # And I follow new volume price with given values:
-    #   | display    | range | amount | 
-    #   | 5 and more | (5+)  |      5 | 
-    # And I should see "new volume price created"
-    # And I should see given on the page:
-    #   | display    | range | amount |
-    #   | 5 and more | (5+)  |      5 |
 
   # Scenario: Edit volume price
   #   Given I have volume price for @quote

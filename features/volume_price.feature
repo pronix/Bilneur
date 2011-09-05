@@ -44,6 +44,16 @@ Feature: Describe volume price
     And I should have volume price with given values:
       | range | start_range | end_range | display    |
       | (4+)  |           4 |           | 4 and more |
+@javascript
+  Scenario: Delete volume price
+    Then silent exec "@quote = Product.last.variants.last"
+    Given I have volume price for @quote with given value:
+      | start_range | end_range |
+      |           2 |         8 |
+    Then I go to the dashboard selling options page for @quote
+    Then I click "Remove" link
+    Then I press "save_shipping_method"
+    Then @quote should not have "volume_prices"
     
   # Scenario: Delete volume price
   #   Given I have volume price for @quote

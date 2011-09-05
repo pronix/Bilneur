@@ -4,9 +4,6 @@ class Dashboard::SellingOptionsController < Dashboard::ApplicationController
   def show
   end
 
-  def delete
-  end
-
   def update
     if @quote.update_attributes(params[:variant])
       redirect_to dashboard_quote_selling_options_path(@quote), :notice => "Options updated."

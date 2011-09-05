@@ -1,11 +1,11 @@
 <tr class="volume_price fields">
   <td>
     <%= error_message_on(f.object, :range) %>
-    <%= text_field_tag "start_range", :size => 10, :style => "width: 70px;" %>
+    <%= f.text_field :start_range, :size => 10, :style => "width: 70px;" %>
   </td>
   <td>
     <%= error_message_on(f.object, :range) %>
-    <%= text_field_tag "end_range", :size => 10, :style => "width: 70px;" %>
+    <%= f.text_field :end_range, :size => 10, :style => "width: 70px;" %>
   </td>
   <td>
     <%= error_message_on(f.object, :amount) %>

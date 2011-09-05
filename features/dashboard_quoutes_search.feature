@@ -37,5 +37,5 @@ Feature: Search on the dashboard/quoute
     Examples:
       | search         | select     | variant        | select_value | should_see |
       | Test product 3 | All Active | Test product 3 | all_active   | should     |
-      | The Godfather  | Bilneur    | The Godfather  | bilneur      | should     |
+      # | The Godfather  | Bilneur    | The Godfather  | bilneur      | should     |
       | Test product 3 | Bilneur    | Test product 3 | bilneur      | should not |

@@ -33,7 +33,7 @@ Feature: Search on the dashboard/quoute
 
   Scenario: Edit the quote
     Then silent exec "@quote = Variant.active.find_by_product_id(Product.find_by_name('The Godfather'))"
-    Then I click "Edit" by dom_id @quote
+    Then I click "Edit" by dom_id "@quote"
     And I should be on the edit dashboard quotes @quote
 
 @javascript

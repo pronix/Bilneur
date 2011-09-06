@@ -13,6 +13,11 @@ Feature: Describe search on the dashboard/orders
   Scenario: Show orders
     Then I should see 5 orders on the page
 
+  Scenario: Print invoice
+    Then silent exec "@order = Order.last"
+    Then I click "Print Invoice" by dom_id "@order"
+    Then I should get a download with content-type "application/pdf; charset=utf-8"
+    
   Scenario Outline: Test Sort fields
     Then I click "<link>" link
     Then <click_second>

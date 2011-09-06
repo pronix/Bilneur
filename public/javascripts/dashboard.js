@@ -209,7 +209,7 @@ jQuery(document).ready(function(){
     });
 
     //Product states spinner
-    $(".product_state").click(function() {
+    $(".product_state").live('click', function() {
        $(this).closest("#wrapper").append("<div class='spinner'><img src='/images/icons/spinner.gif' /></div>");
     });
 

@@ -205,12 +205,15 @@ jQuery(document).ready(function(){
     $("ul.feedback li").click(function() {
        $('ul.feedback .TabbedPanelsTabSelected').removeClass('TabbedPanelsTabSelected');
        $(this).addClass('TabbedPanelsTabSelected');
-       $('#reviews_container').html("<div class='spinner'><img src='/images/spinner.gif' /></div>");
+       $('#reviews_container').html("<div class='spinner'><img src='/images/icons/spinner.gif' /></div>");
     });
 
     //Product states spinner
     $(".product_state").live('click', function() {
        $(this).closest("#wrapper").append("<div class='spinner'><img src='/images/icons/spinner.gif' /></div>");
+    });
+    $(".ajaxPagination a").live('click', function() {
+       $('.tbl1').append("<div class='spinner'><img src='/images/icons/spinner.gif' /></div>"); 
     });
 
     // Checkbox multiselector, with awesome behaviour for select all checkbox

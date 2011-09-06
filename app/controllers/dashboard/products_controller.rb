@@ -30,8 +30,7 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
       end
     end
 
-    @state = params[:state].present? ? params[:state] : @product.creation_state
-    respond_with(@product, :location => wizard_dashboard_products_path(@state))
+    respond_with(@product, :location => wizard_dashboard_products_path(@product.creation_state))
   end
 
   def new

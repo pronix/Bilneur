@@ -5,7 +5,10 @@
     <div class="lft">
       <b><%= number_to_currency(item.price) %></b>
 
+      <%= form_tag group_sale_populate_path(item), :method => :post  do %>
       <button>BUY!</button>
+      <% end %>
+
       <p>&nbsp;</p>
       <span>Retail Price:<em><%= number_to_currency(item.retail_price) %></em></span>
       <span>Discount:<em><%= number_to_percentage(item.discount_in_percentage, :precision => 0) %></em></span>

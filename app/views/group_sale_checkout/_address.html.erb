@@ -1,0 +1,115 @@
+<% javascript "jquery.custom_radio_checkbox" %>
+<%= render '/shared/group_sale_status', :step => "shipping" %>
+<% [ 'shipping'].each do |address_type|
+   address_name = "#{address_type[0...4]}_address" %>
+
+<div class="page chkOut3">
+	<div class="shpng1">
+    <h3>Shipping Details</h3>
+    <div class="option1">
+
+      <h4>Option 1:</h4>
+      <p id='option-1-address'>
+        <% if current_user.primary_address %>
+          <%= render :partial =>"address_info", :object => current_user.primary_address  %>
+        <% else %>
+          You have no addresses
+        <% end %>
+      </p>
+
+      <div class="cmbo1">
+        <%= select_tag "", options_for_select(current_user.addresses.collect{ |u| ["#{u.lastname} #{u.address2} #{u.address1} #{u.city} #{u.state.name} #{u.country.name}", u.id] }), :id => "websites1" %>
+      </div>
+    </div>
+
+    <div id="new-address">
+     <%= render :partial => 'addresses', :locals => { :address_name => address_name, :address => (@new_address||Address.default)  } %>
+    </div>
+
+
+
+    <h3></h3>
+    <%= form_for @order, :url => virtual_update_checkout_path((@order.virtual? ? :virtual : :normal), @order.state), :html => { :id => "checkout_form_#{@order.state}" } do |form| %>
+    <h6>Shipping To: </h6>
+    <div class="radioPnl">
+      <div id="ship-addresses">
+        <%= render :partial => "ship_address", :collection => current_user.addresses %>
+      </div>
+
+      <button id="next_after_selected_ship_address" value="Continue" <%= "style='display:none;'" if current_user.addresses.blank?%>>
+        Calculating shipping
+      </button>
+
+    </div>
+
+    <% end %>
+
+
+    <div id="select-shipping-methods">
+    <div class="radioPnl">
+
+      <div class="mRadio">
+      </div>
+
+      <div class="mRadio">
+      </div>
+    </div>
+
+    <h6>Item Details:<%= link_to "Edit Items", cart_path %></h6>
+
+    <div class="chkOutPrdct">
+      <% @order.line_items.each do |item| %>
+      <div class="chkPrdct">
+        <i>
+          <%= mini_image(item.variant.images.blank? ? item.variant.product : item.variant) %></i>
+        <b><%= item.variant.name %></b>
+        <span class="clrLft">Condition: <em><%= item.variant.display_condition %></em></span>
+        <span><em>Seller: <%= item.variant.seller.full_name%></em></span>
+        <label>Price <%= number_to_currency item.price %> <span>Quantity: <%= item.quantity %>.</span></label>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  </div>
+
+
+  <div class="shpng2">
+    <%= render :partial => "summary", :locals => {:order => @order } %>
+
+    <div class="cntnu tPBtn" style="display:none;" id="next-step-button">
+      <button id="link-next-step-button" value="Checkout" class="checkout">
+        <%= image_tag "forms/chk_big_btn.png" %>
+      </button>
+    </div>
+
+  </div>
+
+</div>
+<% end %>
+
+<script>
+
+  $(function(){
+    $("#websites1").change(function(){
+      $("#option-1-address").load("<%= info_address_path(:id) %>".replace('id', $(this).val()));
+    });
+
+
+    $("#next_after_selected_ship_address").click(function(){
+      $(".chkOut3").prepend("<div class='spinner'><img src='/images/spinner.gif' />");
+       var content_form = $(this).parents("form:first");
+
+       $.ajax({
+         type: 'POST',
+         url: $(content_form).attr("action")+'.js',
+         data: $(content_form).serialize(),
+         success: function(data){
+            $("#select-shipping-methods").html(data);
+
+           }
+
+       })
+       return false;
+    });
+  });
+</script>

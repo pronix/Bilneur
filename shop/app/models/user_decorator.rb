@@ -23,16 +23,20 @@ User.class_eval do
                       :conditions => [ "variants.is_master = #{connection.quoted_false}" ]
   has_many :shipping_methods, :foreign_key => :seller_id
   has_and_belongs_to_many :sales, :join_table => "orders_users", :class_name => "Order",
-                          :conditions => { "orders.virtual" => false}
+                          :conditions => { "orders.virtual" => false, "orders.operation_type" => Order::OPERATION_TYPE_SIMPLE }
   has_and_belongs_to_many :virtual_sales, :join_table => "orders_users", :class_name => "Order",
-                          :conditions => { "orders.virtual" => true}
+                          :conditions => { "orders.virtual" => true, "orders.operation_type" => Order::OPERATION_TYPE_SIMPLE }
   has_and_belongs_to_many :favorite_variants, :join_table => "favorite_variants", :class_name => "Variant", :uniq => true
   has_and_belongs_to_many :favorite_sellers, :join_table => "favorite_sellers", :class_name => "User",
                           :uniq => true, :association_foreign_key => 'seller_id'
 
-  has_many :orders,  :conditions => { :virtual => false}
-  has_many :virtual_orders, :class_name => "VirtualOrder", :foreign_key => :user_id
-  has_many :all_orders, :class_name => "Order", :foreign_key => :user_id
+  has_many :orders,  :conditions => { :virtual => false, :operation_type => Order::OPERATION_TYPE_SIMPLE }
+  has_many :group_orders, :class_name => "Order",  :conditions => {  :operation_type => Order::OPERATION_TYPE_GROUP }
+
+  has_many :virtual_orders, :class_name => "VirtualOrder", :foreign_key => :user_id,
+           :conditions => {  :operation_type => Order::OPERATION_TYPE_SIMPLE }
+  has_many :all_orders, :class_name => "Order", :foreign_key => :user_id,
+           :conditions => {  :operation_type => Order::OPERATION_TYPE_SIMPLE }
 
   has_many :seller_payment_methods
 

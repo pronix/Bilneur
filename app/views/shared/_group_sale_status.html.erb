@@ -1,0 +1,42 @@
+<!-- Used in checkout/ and orders/, so in shared it's placed -->
+<div id="wizard">
+  <ul id="status">
+    <li class="fst s1 <%= (step == "login")?"active" : "" %> <%= (step == "shipping")?"sGreen" : ""%>">
+      <a>
+        <span>1</span>
+        <i>Login</i>
+        <small>Login or Sign up</small>
+      </a>
+    </li>
+
+
+    <li class="s3 <%= (step == "shipping")?"active" : "" %> <%= (step == "billing")?"sGreen" : ""%>">
+      <a>
+        <span>2</span>
+        <i>shipping </i>
+        <small>Ship or Store order</small>
+      </a>
+    </li>
+
+
+    <li class="s4 <%= (step == "billing")?"active" : "" %> <%= (step == "done")?"sGreen" : ""%>">
+      <a>
+        <span>3</span>
+        <i>Billing</i>
+        <small>Select payment options</small>
+      </a>
+    </li>
+
+
+    <li class="s5 last <%= (step == "done")?"active" : "" %>">
+      <a>
+        <span>4</span>
+        <i>you're done</i>
+        <small>View order/ Virtual Store</small>
+      </a>
+      <em></em>
+    </li>
+
+
+  </ul>
+</div>

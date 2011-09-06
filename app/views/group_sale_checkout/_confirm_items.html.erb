@@ -1,0 +1,44 @@
+<% @order.sellers.each do |seller| %>
+
+<div class="msn">
+  <h3 class="hdFix"><%= t("item_details") %>:</h3>
+  <h6 class="hdFx">
+    <%= link_to "Edit Items", cart_path %>
+  </h6>
+  <div class="chkOutPrdct chkOutPrdct5">
+
+    <% @order.line_items.select{|v| v.variant.seller == seller }.each do |item| %>
+    <div class="chkPrdct">
+      <i>
+        <%= mini_image(item.variant.images.blank? ? item.variant.product : item.variant) %></i>
+      <b><%= item.variant.name %></b>
+      <span class="clrLft"><%= t "condition" %>: <em><%= item.variant.display_condition %></em></span>
+      <span><em><%= t("seller") %> : <%= item.variant.seller.full_name%></em></span>
+      <label><%= t("price") %> <%= number_to_currency item.price %> <span><%= t("quantity")%>: <%= item.quantity %>.</span></label>
+    </div>
+    <% end %>
+
+
+  </div>
+</div>
+
+
+<div class="shpngAd shpngAd2 shpngFix">
+  <h3><%= t("shipping_method") %>:</h3>
+  <h5 class="mrgL">
+    <% if @order.virtual? %>
+    <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:virtual, :payment)%>
+    <% else %>
+    <%= link_to image_tag("/images/forms/chk5_chng.png"), virtual_checkout_state_path(:normal, :payment)%>
+    <% end %>
+  </h5>
+  <% @order.shipments.select{|v| v.seller == seller }.each do |shipment| %>
+  <div class="mRadio rdy">
+    <div class="radio">
+      <input type="radio" name="marital_status" value="single">
+    </div>
+    <span><%= shipment.shipping_method.name %></span>
+  </div>
+  <% end %>
+</div>
+<% end %>

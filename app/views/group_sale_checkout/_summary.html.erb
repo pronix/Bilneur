@@ -1,0 +1,41 @@
+<div class="grnTbl">
+
+  <div class="grnTop <%== ' bluTop' if !@order.virtual? %>">
+    <h6>Items for <%= 'Virtual' if @order.virtual?  %> Store</h6>
+  </div>
+
+  <div class="grnCntr">
+    <p class="grnTtl">
+      <span class="itm1">Item</span>
+      <span class="itm2">Qty</span>
+      <span class="itm3">Total</span>
+    </p>
+
+    <% order.line_items.each do |line_item| %>
+    <p class="grnDtl">
+      <b class="itm1"><%= line_item.variant.name.slice(0, 12) + '.' %></b>
+      <b class="itm2"><%= line_item.quantity %></b>
+      <b class="itm3"><%= format_price(line_item.amount) %></b>
+    </p>
+    <% end %>
+
+    <% if order.adjustments.any? %><i class="p2bdr bdrFix"></i><% end %>
+
+    <% order.adjustments.each do |adjustment| %>
+    <p class="sws">
+      <i><%= adjustment.label %>:</i>
+      <em><%= number_to_currency adjustment.amount %></em>
+    </p>
+    <% end %>
+
+    <i class="p2bdr bdrFix2"></i>
+    <p>&nbsp;</p>
+    <p class="sws">
+      <i>Total for Store:</i>
+      <em><%= number_to_currency order.total %></em>
+    </p>
+    <p class="lstMrg">&nbsp;</p>
+  </div>
+  <div class="grnBtm"></div>
+</div>
+

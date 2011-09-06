@@ -1,0 +1,16 @@
+<% if address_info.primary? %>
+<i><%=image_tag "forms/primery_add_btn.png" %></i>
+<b><%= current_user.full_name %></b>
+<% end %>
+<span>
+  <%= address_info.address1 %><br />
+  <%= address_info.address2 %><br />
+  <%= address_info.city %>, <%= address_info.state.try(:name) %><br />
+  Phone: <%= address_info.phone %><br />
+</span>
+
+<% unless address_info.primary? %>
+<%= link_to t(:edit), edit_dashboard_address_path(address_info), :class => "delE" %>
+<%= link_to t(:delete), dashboard_address_path(address_info), :method => :delete, :confirm => t(:are_you_sure), :class => "delE" %>
+<% end %>
+

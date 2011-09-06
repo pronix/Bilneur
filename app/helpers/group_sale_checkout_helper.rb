@@ -1,0 +1,2 @@
+module GroupSaleCheckoutHelper
+end

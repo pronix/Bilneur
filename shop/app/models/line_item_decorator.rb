@@ -7,7 +7,9 @@ LineItem.class_eval do
     :message => I18n.t("validation.must_be_int")
   }
 
-  validate :quantity_product, :if => lambda{ |t| t.variant.present? }
+  validate :quantity_product,                :if => lambda{ |t| t.variant.present? && !t.order.group_sale? }
+  validate :quantity_product_for_group_sale, :if => lambda{ |t| t.variant.present? && t.order.group_sale?  }
+
   after_save :load_sellers # refresh all sellers on order
   after_destroy :load_sellers
 
@@ -21,6 +23,13 @@ LineItem.class_eval do
     if quantity > variant.count_on_hand
       errors[": \"#{variant.name}\""] ||= []
       errors[": \"#{variant.name}\""] << "quantity must be less than or equal to #{variant.count_on_hand}"
+    end
+  end
+
+  def quantity_product_for_group_sale
+    if quantity > order.group_sale.try(:avaliable_quantity).to_i
+      errors[": \"#{variant.name}\""] ||= []
+      errors[": \"#{variant.name}\""] << "quantity must be less than or equal to #{order.group_sale.avaliable_quantity}"
     end
   end
 

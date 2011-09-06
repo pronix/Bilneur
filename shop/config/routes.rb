@@ -52,6 +52,15 @@ Rails.application.routes.draw do
   match '/user/password/reset_by_question' => 'password_by_question#reset_by_question', :via => :post
   match '/user/password/new_password' => 'password_by_question#new_password', :via => :post
 
+
+  # Group sale checkout
+  scope "/group" do
+    match '/checkout/update/:state' => 'group_sale_checkout#update', :as => :group_sale_update_checkout
+    match '/checkout/:state' => 'group_sale_checkout#edit', :as => :group_sale_checkout_state
+    match '/checkout' => 'group_sale_checkout#edit', :state => 'address', :as => :group_sale_checkout
+    match '/populate/:id' => 'group_sale_checkout#populate', :as => :group_sale_populate, :via => [:post]
+  end
+
   # Favorite sellers
   resources :favorite_sellers, :controller => "favorite_sellers", :only => [] do
     member do

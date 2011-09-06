@@ -60,7 +60,7 @@ end
 Order.class_eval do
   attr_accessible :seller_shipping_method
 
-  belongs_to :parent, :class_name => "Order"
+  belongs_to :group_sale
 
   has_and_belongs_to_many :sellers, :join_table => "orders_users", :class_name => "User"
   has_and_belongs_to_many :shipping_methods, :join_table => "orders_shipping_methods", :class_name => "ShippingMethod"
@@ -69,6 +69,20 @@ Order.class_eval do
   before_validation :fill_billing_address
 
   has_many :seller_reviews
+
+
+  # Scope
+  #
+  [ Order::OPERATION_TYPE_SIMPLE, Order::OPERATION_TYPE_GROUP,  Order::OPERATION_TYPE_AUCTION  ].
+    each { |v| scope :"operation_type_#{v}", where(:operation_type => v)}
+
+  def operation_type?(op)
+    operation_type.to_s == op
+  end
+
+  def group_sale?
+    operation_type?(Order::OPERATION_TYPE_GROUP)
+  end
 
   def set_email
     self.email ||= user.email if user.present?
@@ -82,6 +96,8 @@ Order.class_eval do
     end
   end
 
+  # True if orders with more seller
+  #
   def multi_sellers?
     sellers.count > 1
   end
@@ -151,7 +167,7 @@ Order.class_eval do
     finalize!
   end
 
-    # Finalizes an in progress order after checkout is complete.
+  # Finalizes an in progress order after checkout is complete.
   # Called after transition to complete state when payments will have been processed
   def finalize!
     update_attribute(:completed_at, Time.now)
@@ -269,8 +285,38 @@ Order.class_eval do
     return @results
   end
 
-  class << self
+  # Group Sales
+  #
 
+  def add_group_sale(_group_sale, _quantity)
+    update_attribute(:group_sale_id, _group_sale.id)
+    line_items.destroy_all
+
+    item = LineItem.new(:quantity => _quantity)
+    item.order = self
+    item.variant = _group_sale.variant
+    item.price   = _group_sale.price
+
+    line_items << item
+    save
+
+  end
+
+  #  end Group Sales
+
+
+  class << self
+    # Group Sales
+    #
+
+    def build_group_order(_user)
+      order = create
+      order.operation_type = Order::OPERATION_TYPE_GROUP
+      order.associate_user!(_user)
+      order
+    end
+
+    # end Group Sales
   end # end class << self
 
 end

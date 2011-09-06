@@ -89,6 +89,12 @@ class GroupSale < ActiveRecord::Base
     variant.save
   end
 
+  # Avaliable quantity
+  #
+  def avaliable_quantity
+    count
+  end
+
   # Return the reserved item if you cancel or delete
   #
   def unlock_quantity

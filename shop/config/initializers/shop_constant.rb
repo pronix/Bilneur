@@ -17,3 +17,9 @@ ShippingMethod::METHOD_KIND_TO_ADDRESS  = "to_address"  unless ShippingMethod.co
 ShippingMethod::METHOD_KIND_TO_BILNEUR  = "to_bilneur"  unless ShippingMethod.const_defined?("METHOD_KIND_TO_BILNEUR")
 ShippingMethod::METHOD_KIND_WITH_SELLER = "with_seller" unless ShippingMethod.const_defined?("METHOD_KIND_WITH_SELLER")
 
+
+# Order constants
+#
+Order::OPERATION_TYPE_SIMPLE  = "simple" unless Order.const_defined?("OPERATION_TYPE_SIMPLE")
+Order::OPERATION_TYPE_GROUP   = "group"  unless Order.const_defined?("OPERATION_TYPE_GROUP")
+Order::OPERATION_TYPE_AUCTION = "action" unless Order.const_defined?("OPERATION_TYPE_AUCTION")

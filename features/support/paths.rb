@@ -100,6 +100,8 @@ module NavigationHelpers
       seller_quote_path(:id => @quote.seller.id, :product_id => @quote.product.permalink, :quote_id => @quote.id)
     when /the dashboard page/
       dashboard_root_path
+    when /the dashboard quotes (.+) page/
+      state_dashboard_quotes_path($1)
     when /^the home\s?page$/
       '/'
 

@@ -19,6 +19,10 @@ Feature: Search on the dashboard/quoute
       | name             | available_on        |          ean | sku     | created_at |
       | non active produ | 2011-01-06 18:21:13 | 978009952811 | TE-6666 | 01/01/2011 |
     Then I should not see "non active produ"
+  Scenario: Show other seller quotes
+    Then I click by href "/dashboard/quotes/other" link
+    Then I should be on the dashboard quotes other page
+    Then I should see only "Test product 3" by all product
 
 @javascript
   Scenario Outline: Search by name/ean

@@ -17,8 +17,7 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
     set_available_option_types if @product.creation_options?
 
     
-    if @product.update_attributes(params[:product])
-      Rails.logger.debug("PASSED TO NEXT STATE")
+    if (params[:product].present? || params[:id].present?) && @product.update_attributes(params[:product]) 
       @product.next_creation!
       @taxons = Hash.new {|h, k| h[k] = []}
     end

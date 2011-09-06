@@ -18,13 +18,16 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
 
     @quote = @product.variants.new
     
-    if (params[:product].present? || params[:id].present?) && @product.update_attributes(params[:product]) && !@product.creation_complete?
+    if (params[:product].present? || params[:id].present?) && @product.update_attributes(params[:product]) && !@product.creation_complete? 
+
       if @quote && !@product.creation_basic?
         @quote.update_attributes(params[:quote]) 
-        Rails.logger.debug "DUUUUUUDE ITS A QUOTE #{@quote.inspect}"
       end
-      @product.next_creation!
-      @taxons = Hash.new {|h, k| h[k] = []}
+
+      if !@product.creation_quote? || @quote.update_attributes(params[:quote])
+        @product.next_creation!
+        @taxons = Hash.new {|h, k| h[k] = []}
+      end
     end
 
     @state = params[:state].present? ? params[:state] : @product.creation_state

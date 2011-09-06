@@ -1,4 +1,4 @@
-<%= render "shared/error_messages", :target => @product %>
+<%= render "shared/error_messages", :target => @quote %>
 <%= render "steps" %>
 <%= form_for(:quote,  :url => wizard_dashboard_products_path, :remote => true, :html => { :multipart => true, :class => "contInp contInpFix" }) do |f| %>
 <%= hidden_field_tag :id, @product.id unless @product.new_record? %>

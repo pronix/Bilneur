@@ -3,7 +3,7 @@
 <%= form_for(:quote,  :url => wizard_dashboard_products_path, :remote => true, :html => { :multipart => true, :class => "contInp contInpFix" }) do |f| %>
 <%= hidden_field_tag :id, @product.id unless @product.new_record? %>
 <fieldset>
-
+  <%= params[:condition] %>
     <b>
       <i><%= t("price") %></i>
       <%= f.text_field :price, :class => 'title'  %>

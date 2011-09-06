@@ -20,11 +20,11 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
     
     if (params[:product].present? || params[:id].present?) && @product.update_attributes(params[:product]) && !@product.creation_complete? 
 
-      if @quote && !@product.creation_basic?
+      if @quote && @product.creation_quote?
         @quote.update_attributes(params[:quote]) 
       end
 
-      if !@product.creation_quote? || @quote.update_attributes(params[:quote])
+      if !@product.creation_quote? || params[:quote][:condition].present? && @quote.update_attributes(params[:quote]) 
         @product.next_creation!
         @taxons = Hash.new {|h, k| h[k] = []}
       end

@@ -1,0 +1,39 @@
+<%= render "shared/error_messages", :target => @product %>
+<%= render "steps" %>
+<%= form_for(:quote,  :url => wizard_dashboard_products_path, :remote => true, :html => { :multipart => true, :class => "contInp contInpFix" }) do |f| %>
+<%= hidden_field_tag :id, @product.id unless @product.new_record? %>
+<fieldset>
+
+    <b>
+      <i><%= t("price") %></i>
+      <%= f.text_field :price, :class => 'title'  %>
+    </b>
+
+    <b>
+      <i><%= t("on_hand") %></i>
+      <%= f.text_field :count_on_hand, :class => 'title'  %>
+    </b>
+
+    <b>
+      <i><%= t("weight") %></i>
+      <%= f.text_field :weight, :class => 'title'  %>
+    </b>
+
+    <b>
+      <i><%= t("condition")%></i>
+      <div class="cmbo2 websites">
+        <%= select_tag("quote[condition]",
+                     options_for_select(Variant::CONDITION.collect {|ov| [ t("condition_#{ov}"), ov ] })) %>
+      </div>
+      <div style="margin-left: 150px; float: left;">( <%= f.label :another_condition, t("other_condition") %>
+      <%= f.text_field :another_condition, :class => 'title'  %> )</div>
+  </b>
+
+   <p class="form-buttons">
+    <button class="product_state"><span><%= t("actions.next") %></span></button>
+    <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_products_path %>
+  </p>
+
+</fieldset>
+<% end %>
+

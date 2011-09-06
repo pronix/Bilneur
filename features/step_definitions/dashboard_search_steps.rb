@@ -22,7 +22,7 @@ When /^"(.+)" should has value "(.+)"$/ do |field, value|
   field_labeled(field).value.should == value
 end
 
-When /^"(.+)" should be selected "(.+)"$/ do |field, value|
+When /^"(.+)" should be selected "(.*)"$/ do |field, value|
   find_field(field).value.should == value
 end
 

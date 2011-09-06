@@ -2,13 +2,14 @@
 <div class="fdBck">
 	<h2>Purchase History</h2>
   <div class="cmbo6">
-    <input class="txt" type="text" name="" value="">
-    <select id="websites21" tabindex="1" name="">
-      <option value="" selected="selected" title="">All Purchases</option>
-      <option value="" title="">Last 30 days</option>
-      <option value="" title="">Last 60 days</option>
-      <option value="" title="">Important</option>
-    </select>
+    <%= form_for @search, :url => dashboard_purchases_path, :html => {:method => :get} do |f| %>
+      <%= f.text_field :number_contains, :class => "txt" %>
+      <select id="websites21" tabindex="1" name="select_by" onchange="$('#order_search').submit(); return false;">
+        <option value="" <%== select_by_param('select_by', '') %>>All Purchases</option>
+        <option value="created_at_greater_than_or_equal_to--30" <%== select_by_param('select_by', 'created_at_greater_than_or_equal_to--30') %> >Last 30 days</option>
+        <option value="created_at_greater_than_or_equal_to--60" <%== select_by_param('select_by', 'created_at_greater_than_or_equal_to--60') %> >Last 60 days</option>
+      </select>
+    <% end %>
   </div>
   <div class="pPgCmbo">
     <div class="cmbo7">
@@ -37,43 +38,3 @@
     <%= will_paginate(@orders, :previous_label => "#{t('previous')}", :next_label => "#{t('next')}") %>
   </div>
 </div>
-
-
-
-
-<!--
-    <table class="index sortable">
-      <tbody>
-        <% @orders.each do |order|%>
-        <% order.line_items.each do |item| %>
-        <tr>
-          <td><%= t122_image(item.variant) %></td>
-          <td>
-            <ul>
-              <li><%= item.variant.name %></li>
-              <li><span>Seller:</span> <%= item.variant.seller.full_name %></li>
-              <li><%= number_to_currency item.amount %></li>
-              <li><span>Order data:</span> <%= l order.completed_at, :format => "%B %d, %Y %H:%M" %></li>
-              <li><span>Order number:</span> <%= order.number %></li>
-<li><%= link_to "Favorite Seller", "" %> <%= link_to "Favorite Product", "" %></li>
-</ul>
-</td>
-<td>
-  <span>Qty purchases:</span><em><%= item.quantity %></em>
-</td>
-<td>
-  <ul>
-    <li><%= link_to "View Order Details", dashboard_order_path(order) %></li>
-    <li><%= link_to "View Invoice", dashboard_order_path(order, :pdf) %></li>
-    <li><%= link_to "Add to Inventory", "" %></li>
-    <li>
-      <%= link_to "Write a review", new_product_review_path(item.variant.product) if can_create_review?(item.variant.product) %>
-    </li>
-    <li><%= link_to "Request a return", "" %></li>
-  </ul>
-</td>
-</tr>
-<% end %>
-<% end %>
-</tbody>
-</table>-->

@@ -7,7 +7,7 @@ class Dashboard::QuotesController < Dashboard::ApplicationController
     states = {"merchant" => :warehouse_merchant,
               "bilneur" => :warehouse_bilneur,
               "other" => :warehouse_seller }
-    quotes = current_user.quotes.where(:deleted_at => nil)
+    quotes = current_user.quotes.active
     @quotes = states.key?(params[:state].to_s) ? quotes.send(states[params[:state]]) : quotes
     meta_search
   end

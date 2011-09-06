@@ -1,6 +1,6 @@
 <% quotes.each do |quote| %>
 <% evod = cycle('1', '2') %>
-<tr class="quote">
+<tr class="quote", id="<%= dom_id quote %>">
   <td class="row<%= evod %>">
     <%= link_to quote.ean, edit_dashboard_quote_path(quote)  %>
   </td>

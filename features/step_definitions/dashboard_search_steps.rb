@@ -59,6 +59,21 @@ Then /^I should see only "(.+)" by all product$/ do |product_name|
   end
 end
 
+Then /^I click "(.+)" in class row by quote "(.+)"$/ do |link, product_name|
+  variant = Variant.find_by_product_id(Product.find_by_name(product_name))
+  find(".row#{variant.id}").find_link(link)
+end
+
+Then /^I click "(.+)" by dom_id variant for "(.+)" product$/ do |link, product_name|
+  variant = Variant.find_by_product_id(Product.find_by_name(product_name))
+  find_by_id("variant_#{variant.id}").find_link(link).click
+end
+
+Then /^I should have qutes by marked as "(.+)"$/ do |field|
+  Variant.send(field.to_sym).present?.should == true
+end
+
+
 
 
 # Then /^I should see only "(.+)" by all product$/ do |quote|

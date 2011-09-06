@@ -18,6 +18,8 @@ gem 'whenever',               "~> 0.6.8", :require => false
 gem "thinking-sphinx", "= 2.0.5"
 gem "thinking-sphinx-raspell", "= 1.1.1"
 
+gem "looksee",                  "1.0.2"
+
 gem 'spree',                    '= 0.60.1'
 
 # Deploy with Capistrano

@@ -2,7 +2,6 @@
 <%= render "steps" %>
 <%= form_for(:product,  :url => wizard_dashboard_products_path, :remote => true, :html => { :multipart => true }) do |f| %>
 <%= hidden_field_tag :id, @product.id unless @product.new_record? %>
-
 <fieldset>
 
   <div class="yui-gc">

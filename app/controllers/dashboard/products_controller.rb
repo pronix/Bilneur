@@ -16,7 +16,9 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
     @product = params[:id].present? ? current_user.products.find(params[:id]) : current_user.products.new
     set_available_option_types if @product.creation_options?
 
-    if params[:product].present? && @product.update_attributes(params[:product])
+    
+    if @product.update_attributes(params[:product])
+      Rails.logger.debug("PASSED TO NEXT STATE")
       @product.next_creation!
       @taxons = Hash.new {|h, k| h[k] = []}
     end

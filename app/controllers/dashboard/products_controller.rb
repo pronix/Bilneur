@@ -20,7 +20,7 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
     
     if (params[:product].present? || params[:id].present?) && @product.update_attributes(params[:product]) && !@product.creation_complete? 
 
-      if @quote && @product.creation_quote?
+      if @product.creation_quote?
         @quote.update_attributes(params[:quote]) 
       end
 
@@ -31,11 +31,6 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
     end
 
     @state = params[:state].present? ? params[:state] : @product.creation_state
-
-    if @quote
-      Rails.logger.debug "DUUUUUUDE ITS A QUOTE #{@quote.inspect}"
-    end
-
     respond_with(@product, :location => wizard_dashboard_products_path(@state))
   end
 

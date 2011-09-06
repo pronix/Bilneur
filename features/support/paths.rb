@@ -23,8 +23,8 @@ module NavigationHelpers
       account_path
     when /the dashboard quotes page/
       dashboard_quotes_path
-    when /the dashboard products page/
-      dashboard_products_path
+    when /the product wizard page/
+      wizard_dashboard_products_path
     when /the admin static page/
       admin_pages_path
     when /the new admin static page/

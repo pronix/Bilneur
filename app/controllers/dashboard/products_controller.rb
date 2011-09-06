@@ -14,15 +14,17 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
   #
   def wizard
     @product = params[:id].present? ? current_user.products.find(params[:id]) : current_user.products.new
+    @quote = @product.variants.new
     set_available_option_types if @product.creation_options?
 
     
-    if (params[:product].present? || params[:id].present?) && @product.update_attributes(params[:product]) 
+    if (params[:product].present? || params[:id].present?) && @product.update_attributes(params[:product]) && !@product.creation_complete?
       @product.next_creation!
       @taxons = Hash.new {|h, k| h[k] = []}
     end
 
-    respond_with(@product, :location => wizard_dashboard_products_path(@product.creation_state))
+    @state = params[:state].present? ? params[:state] : @product.creation_state
+    respond_with(@product, :location => wizard_dashboard_products_path(@state))
   end
 
   def new

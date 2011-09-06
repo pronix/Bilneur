@@ -5,7 +5,7 @@ Product.class_eval do
     event :next do
 
       transition :from => :basic,      :to => :taxons
-      transition :from => :taxons,     :to => :options
+      transition :from => :taxons,     :to => :complete
       transition :from => :options,    :to => :properties
       transition :from => :properties, :to => :images
       transition :from => :images,     :to => :complete

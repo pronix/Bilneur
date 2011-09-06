@@ -102,6 +102,8 @@ module NavigationHelpers
       dashboard_root_path
     when /the dashboard quotes (.+) page/
       state_dashboard_quotes_path($1)
+    when /the edit dashboard quotes @quote/
+      edit_dashboard_quote_path(@quote)
     when /^the home\s?page$/
       '/'
 

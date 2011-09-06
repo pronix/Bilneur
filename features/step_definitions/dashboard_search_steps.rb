@@ -73,6 +73,9 @@ Then /^I should have qutes by marked as "(.+)"$/ do |field|
   Variant.send(field.to_sym).present?.should == true
 end
 
+Then /^I click "(.+)" by dom_id @quote$/ do |link|
+  find_by_id(dom_id @quote).find_link(link).click
+end
 
 
 

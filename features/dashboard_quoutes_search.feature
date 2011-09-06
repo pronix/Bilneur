@@ -31,6 +31,11 @@ Feature: Search on the dashboard/quoute
     And I should not see "The Godfather"
     And I should have qutes by marked as "deleted"
 
+  Scenario: Edit the quote
+    Then silent exec "@quote = Variant.active.find_by_product_id(Product.find_by_name('The Godfather'))"
+    Then I click "Edit" by dom_id @quote
+    And I should be on the edit dashboard quotes @quote
+
 @javascript
   Scenario Outline: Search by name/ean
     And I fill in "search_string" with "<search_string>"

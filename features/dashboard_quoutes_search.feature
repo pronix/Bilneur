@@ -14,6 +14,12 @@ Feature: Search on the dashboard/quoute
     And quote "Test product 3" have warehouse is "seller"
     And I go to the dashboard quotes page
 
+  Scenario: Show only active products
+    Given the following products exist:
+      | name             | available_on        |          ean | sku     | created_at |
+      | non active produ | 2011-01-06 18:21:13 | 978009952811 | TE-6666 | 01/01/2011 |
+    Then I should not see "non active produ"
+
 @javascript
   Scenario Outline: Search by name/ean
     And I fill in "search_string" with "<search_string>"

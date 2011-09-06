@@ -729,3 +729,5 @@ form.new_message {float: left; }
 
 
 #spree_picker input { width: 120px !important;}
+
+#wrapper { position: relative; }

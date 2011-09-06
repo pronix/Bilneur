@@ -208,6 +208,10 @@ jQuery(document).ready(function(){
        $('#reviews_container').html("<div class='spinner'><img src='/images/spinner.gif' /></div>");
     });
 
+    //Product states spinner
+    $(".product_state").click(function() {
+       $(this).closest("#wrapper").append("<div class='spinner'><img src='/images/icons/spinner.gif' /></div>");
+    });
 
     // Checkbox multiselector, with awesome behaviour for select all checkbox
     $("div.checkbox:not([id=select_all_check_box])").live('click', function() {

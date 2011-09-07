@@ -5,10 +5,11 @@
   <div class="cmbo6">
     <%= form_for @search, :url => dashboard_quotes_path, :html => { :method => :get } do %>
       <input class="txt" type="text" name="search_string" value="<%= params[:search_string] %>" />
-      <select id="websites21" tabindex="1" name="select_by">
+      <select id="websites21" tabindex="1" name="select_by" onchange="$('#variant_search').submit(); return false;">
         <option value="all_active" <%== select_by_param('select_by', 'all_active') %> title="">All Active</option>
         <option value="merchant" <%== select_by_param('select_by', 'merchant') %> title="">Merchant</option>
         <option value="bilneur" <%== select_by_param('select_by', 'bilneur') %> title="">Bilneur</option>
+        <option value="seller" <%== select_by_param('select_by', 'seller') %> title="">Other</option>
       </select>
     <% end %>
   </div>

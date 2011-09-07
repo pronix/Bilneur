@@ -18,7 +18,7 @@ When /^I should see only "(.+)" from all products$/ do |product_name|
   end
 end
 
-When /^"(.+)" should has value "(.+)"$/ do |field, value|
+When /^"(.+)" should has value "(.*)"$/ do |field, value|
   field_labeled(field).value.should == value
 end
 

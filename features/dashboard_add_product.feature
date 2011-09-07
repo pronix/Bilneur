@@ -47,3 +47,22 @@ Feature: Adding products with quotes
     And I wait for the AJAX call to finish
     Then product "Table" should have quote 
     And variant should exist with weight: 34, price: 98, count_on_hand: 5, name: "The Godfather"
+
+  @javascript
+  Scenario: Show validation errors for product
+    When I press "Add quote"
+    And I press "Next"
+    Then I should see "There were problems with the following fields"
+  
+  @javascript
+  Scenario: Show validation errors for product
+    When I press "Add quote"
+    And I fill in "Name" with "Table"
+    And I fill in "EAN or ISBN" with "123456"
+    And I fill in "Description" with "Awesome table"
+    And I press "Next"
+    And I wait for the AJAX call to finish
+    And I press "Next"
+    And I wait for the AJAX call to finish
+    And I press "Next"
+    Then I should see "There were problems with the following fields"

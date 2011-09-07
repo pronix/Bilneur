@@ -54,6 +54,9 @@ group :test, :cucumber do
   gem 'factory_girl',         '= 1.3.3'
   gem 'rcov'
   gem 'shoulda'
+  
+  gem "pickle", "~> 0.4.8"
+
 
   gem 'cucumber',             '~> 1.0.2'
   gem 'cucumber-rails',       '~> 1.0.2'

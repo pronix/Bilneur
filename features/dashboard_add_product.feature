@@ -46,7 +46,7 @@ Feature: Adding products with quotes
     And I press "Next"
     And I wait for the AJAX call to finish
     Then product "Table" should have quote 
-    And variant should exist with weight: 34, price: 98, count_on_hand: 5, name: "The Godfather"
+    And variant should exist with count_on_hand: 5, condition: "new"
 
   @javascript
   Scenario: Show validation errors for product

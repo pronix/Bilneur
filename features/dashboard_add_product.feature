@@ -1,4 +1,3 @@
-@wip
 Feature: Adding products with quotes
   In order to sale products
   As a seller
@@ -67,7 +66,7 @@ Feature: Adding products with quotes
     And I press "Next"
     Then I should see "There were problems with the following fields"
 
-  @javascript
+  @wip @javascript
   Scenario: Add options to product
     When I press "Add quote"
     And I fill in "Name" with "Table"

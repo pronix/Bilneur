@@ -70,7 +70,8 @@ class Dashboard::QuotesController < Dashboard::ApplicationController
     if (@product = Product.find_by_ean(params[:ean]))
       redirect_to new_dashboard_quote_path(params[:ean])
     else
-      redirect_to new_dashboard_product_path
+      #redirect_to new_dashboard_product_path
+      redirect_to wizard_dashboard_products_path
     end
   end
 

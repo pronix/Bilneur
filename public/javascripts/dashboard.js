@@ -208,6 +208,10 @@ jQuery(document).ready(function(){
        $('#reviews_container').html("<div class='spinner'><img src='/images/icons/spinner.gif' /></div>");
     });
 
+    //Product states spinner
+    $(".product_state").live('click', function() {
+       $(this).closest("#wrapper").append("<div class='spinner'><img src='/images/icons/spinner.gif' /></div>");
+    });
     $(".ajaxPagination a").live('click', function() {
        $('.tbl1').append("<div class='spinner'><img src='/images/icons/spinner.gif' /></div>"); 
     });

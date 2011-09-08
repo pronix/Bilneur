@@ -19,7 +19,15 @@
 	<div class="cntr">
     <h2 class="htFix"></h2>
 
-    <div id="new_product"></div>
+    <div class='toolbar'>
+      <ul class='actions'>
+        <li id="new_ot_link">
+          <%= button_link_to t("new_product"), wizard_dashboard_products_path,
+              { :icon => 'add', :id => 'new_product_link'} %>
+        </li>
+      </ul>
+      <br class='clear' />
+    </div>
 
     <table class="index" id='listing_products'>
       <tr>

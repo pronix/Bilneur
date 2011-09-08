@@ -310,3 +310,28 @@ button::-moz-focus-inner, input[type="button"]::-moz-focus-inner, input[type="su
                    height: 30px;
 }
 
+
+
+/* FOOTER TO THE BOTTOM */
+
+body, html {
+  height: 100%;
+}
+
+.clearfooter {
+  height: 180px;
+  clear: both;
+}
+
+body > .mWrp {
+  position: relative;
+  min-height: 100%;
+}
+
+#mFtr {
+  margin-top: -180px;
+  float: none !important;
+  height: 180px;
+  position: relative;
+}
+

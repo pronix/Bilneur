@@ -9,6 +9,10 @@ Given /^the product "([^\"]*)" has the owner "([^\"]*)"$/ do |product_name, emai
   Product.find_by_name(product_name).update_attribute(:owner, User.find_by_email(email))
 end
 
+Then /^product "([^\"]*)" should have quote$/ do |product_name|
+  Product.find_by_name(product_name).variants.count.should == 1
+end
+
 Then /^I should see the following product lists:$/ do |table|
   table.diff!(tableish('table tr', 'td,th'))
 end

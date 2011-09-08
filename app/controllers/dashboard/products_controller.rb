@@ -16,9 +16,18 @@ class Dashboard::ProductsController < Dashboard::ApplicationController
     @product = params[:id].present? ? current_user.products.find(params[:id]) : current_user.products.new
     set_available_option_types if @product.creation_options?
 
-    if params[:product].present? && @product.update_attributes(params[:product])
-      @product.next_creation!
-      @taxons = Hash.new {|h, k| h[k] = []}
+    @quote = @product.variants.new
+    
+    if (params[:product].present? || params[:id].present?) && @product.update_attributes(params[:product]) && !@product.creation_complete? 
+
+      if @product.creation_quote?
+        @quote.update_attributes(params[:quote]) 
+      end
+
+      if !@product.creation_quote? || params[:quote][:condition].present? && @quote.update_attributes(params[:quote]) 
+        @product.next_creation!
+        @taxons = Hash.new {|h, k| h[k] = []}
+      end
     end
 
     respond_with(@product, :location => wizard_dashboard_products_path(@product.creation_state))

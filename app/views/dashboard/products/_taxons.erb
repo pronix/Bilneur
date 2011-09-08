@@ -8,7 +8,7 @@
   <div class="yui-gc">
 
     <div class="yui-u first" id="taxons-container">
-      <select class="select-taxons" id="taxon_0" multiple="multiple" name="root_taxon" size="15" name="product[taxon_ids][]">
+      <select class="select-taxons" id="taxon_0" multiple="multiple" size="15" name="product[taxon_ids][]">
         <% (Taxon.category.try(:children)||[]).each do |item|  %>
         <option data-leaf="<%= item.leaf? %>" value="<%= item.id %>"><%= item.name %><%= ' >' unless item.leaf? %></option>
         <% end %>
@@ -18,8 +18,8 @@
   </div>
 
   <p class="form-buttons">
-    <button><span><%= t("actions.next") %></span></button>
-    <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_products_path %>
+    <button class="product_state"><span><%= t("actions.next") %></span></button>
+    <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_quotes_path %>
   </p>
 
 </fieldset>

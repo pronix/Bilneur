@@ -2,7 +2,6 @@
 <%= render "steps" %>
 <%= form_for(:product,  :url => wizard_dashboard_products_path, :remote => true, :html => { :multipart => true }) do |f| %>
 <%= hidden_field_tag :id, @product.id unless @product.new_record? %>
-
 <fieldset>
 
   <div class="yui-gc">
@@ -69,8 +68,8 @@
   </div>
 
   <p class="form-buttons">
-    <button><span><%= t("actions.next") %></span></button>
-    <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_products_path %>
+    <button class="product_state"><span><%= t("actions.next") %></span></button>
+    <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_quotes_path %>
   </p>
 
 </fieldset>

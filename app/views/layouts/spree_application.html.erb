@@ -16,7 +16,7 @@ end
  %>
 <body class="<%= @body_class %> nHme" id="<%= @body_id %>">
 <div class="bgLft"></div>
-<div class="mWrp">
+<div class="mWrp clearfix">
   <%= render "shared/header" %>
 
   <!-- START CONTENT -->
@@ -43,8 +43,9 @@ end
     </div>
   </div>
   <!-- END CONTENT -->
+  
+    <div class="clearfooter"></div>
 </div>
-
-<%= render :partial => 'shared/footer'%>
+  <%= render :partial => 'shared/footer'%>
 </body>
 </html>

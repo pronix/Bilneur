@@ -21,7 +21,7 @@
     </div>
     <div class="yui-u">
       <%= f.field_container :ean do %>
-      <%= f.label :eam, t("ean_or_isbn") %> <span class="required">*</span><br />
+      <%= f.label :ean, t("ean_or_isbn") %> <span class="required">*</span><br />
       <%= f.text_field :ean, :size => 16 %>
       <%= f.error_message_on :ean %>
       <% end %>
@@ -40,8 +40,8 @@
     </div>
   </div>
   <p class="form-buttons">
-    <button><span><%= t("actions.next") %></span></button>
-    <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_products_path %>
+    <button class="product_state"><span><%= t("actions.next") %></span></button>
+    <%= t("or") %> <%= link_to t("actions.cancel"), dashboard_quotes_path %>
   </p>
 
 </fieldset>

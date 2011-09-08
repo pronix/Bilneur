@@ -95,8 +95,15 @@ module NavigationHelpers
       sellers_dashboard_favorites_path
     when /the dashboard selling options page for @quote/
       dashboard_quote_selling_options_path(@quote)
+    when /the sellers store quote by @quote/
+      # FIXME: Change this not nice link
+      seller_quote_path(:id => @quote.seller.id, :product_id => @quote.product.permalink, :quote_id => @quote.id)
     when /the dashboard page/
       dashboard_root_path
+    when /the dashboard quotes (.+) page/
+      state_dashboard_quotes_path($1)
+    when /the edit dashboard quotes @quote/
+      edit_dashboard_quote_path(@quote)
     when /^the home\s?page$/
       '/'
 

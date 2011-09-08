@@ -11,15 +11,15 @@ class SellersController < Spree::BaseController
     # Favorite variants go first by sorting with boolean values
     @quotes = @seller.quotes.sort!{
       |a, b| if a.is_favorite?(current_user)
-                    -1 
+                    -1
                else  1
               end
       }.paginate(:page => params[:page], :per_page => params[:per_page])
   end
 
   def quote
-    @quote = @seller.quotes.by_product_and_id(Product.find_by_permalink(params[:product_id]), params[:quote_id])
-    # FIXME 
+    @quote = @seller.quotes.by_product_and_id(params[:product_id], params[:quote_id])
+    # FIXME
     @reviews = @quote.product.reviews.paginate_reviews(params[:per_page])
     @seller = @quote.seller
     @product_properties = @quote.product.product_properties

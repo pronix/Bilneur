@@ -18,6 +18,7 @@ gem 'whenever',               "~> 0.6.8", :require => false
 gem "thinking-sphinx", "= 2.0.5"
 gem "thinking-sphinx-raspell", "= 1.1.1"
 
+
 gem 'spree',                    '= 0.60.1'
 
 # Deploy with Capistrano
@@ -67,7 +68,7 @@ group :test, :cucumber do
   gem 'headless'
   gem 'awesome_print'
   gem 'wirble'
-  gem 'looksee'
+  gem 'looksee',              '= 1.0.2'
   gem "childprocess", "~> 0.2.1"
 
   gem 'sqlite3'

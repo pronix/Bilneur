@@ -23,7 +23,7 @@
 
     <div class="prc">
       <b><%= product_price(line_item) %></b>
-      <i>YOU SAVE 20%</i>
+      <i><%= you_save(line_item) %></i>
     </div>
     <div class="qtyIn">
       <%= item_form.text_field :quantity, :size => 3,

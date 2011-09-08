@@ -95,3 +95,7 @@ World(ShowMeTheCookies)
 Before('@announce') do
   @announce = true
 end
+
+def dom_id(var)
+  "#{var.class.to_s.downcase}_#{var.id}"
+end

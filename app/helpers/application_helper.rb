@@ -84,6 +84,13 @@ module ApplicationHelper
    options.delete(:format_as_currency) ? number_to_currency(amount) : amount
   end
 
+  def you_save(line_item)
+    price = line_item.variant.price
+    new_price = line_item.variant.volume_price(line_item.quantity)
+    save = ((price - new_price) / ( price * 0.01)).to_i
+    return "YOU SAVE #{save}%" if save > 0
+  end
+
 
   # SOCIAL BUTTONS
 

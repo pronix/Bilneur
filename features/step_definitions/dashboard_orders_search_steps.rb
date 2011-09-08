@@ -21,3 +21,7 @@ end
 Then /^I should see only @order on the page$/ do
   Order.all.each { |order| order == @order ? page.should(have_content(order.number)) : page.should_not(have_content(order.number)) }
 end
+
+Then /^I should get a download with content-type "(.+)"$/ do |content_type|
+  page.response_headers['Content-Type'].should == content_type
+end

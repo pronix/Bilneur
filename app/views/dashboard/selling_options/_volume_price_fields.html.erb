@@ -1,19 +1,15 @@
 <tr class="volume_price fields">
   <td>
-    <%= error_message_on(f.object, :display) %>
-    <%= f.text_field :display, :size => 10, :style => "width: 70px;" %>
+    <%= error_message_on(f.object, :range) %>
+    <%= f.text_field :start_range, :size => 10, :style => "width: 70px;" %>
   </td>
   <td>
     <%= error_message_on(f.object, :range) %>
-    <%= f.text_field :range, :size => 10, :style => "width: 70px;" %>
+    <%= f.text_field :end_range, :size => 10, :style => "width: 70px;" %>
   </td>
   <td>
     <%= error_message_on(f.object, :amount) %>
     <%= f.text_field :amount, :size => 10, :style => "width: 70px;" %>
-  </td>
-  <td>
-    <%= error_message_on(f.object, :position) %>
-    <%= f.text_field :position, :size => 3, :style => "width: 70px;" %>
   </td>
   <td valign="actions">
     <%= link_to_remove_fields t("remove"), f %>

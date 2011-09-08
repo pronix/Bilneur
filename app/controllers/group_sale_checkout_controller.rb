@@ -1,16 +1,39 @@
 class GroupSaleCheckoutController < Spree::BaseController
 
-  before_filter :authenticate_user!
-  before_filter :load_order
+  after_filter :normalize_addresses, :only => :update
+  before_filter :set_addresses, :only => :update
+
+  before_filter :check_registration, :except => [:registration, :update_registration]
+
+  before_filter :load_order, :except => [ :registration, :update_registration, :populate ]
+
+
+
   respond_to :html, :js
 
 
+  def registration
+    @user = User.new
+  end
+
+  def update_registration
+    redirect_to group_sale_checkout_path
+  end
+
+
+
+
   def populate
-    @order.update_attribute(:state, 'cart')
+    @order = current_user.group_orders.incomplete.last || Order.build_group_order(current_user)
+    @order.state = 'cart'
+    @order.ship_address = nil
+    @order.bill_address = nil
+
+    @order.save!
 
     @group_sale = GroupSale.find(params[:id])
     redirect_to :back, :notice => "Not found group sale" and return unless @order.present?
-    @quantity = (params[:quantity]||1).to_i
+    @quantity = ( params[:quantity]||1 ).to_i
 
     if @order.add_group_sale(@group_sale, @quantity)
       redirect_to group_sale_checkout_path and return
@@ -28,8 +51,14 @@ class GroupSaleCheckoutController < Spree::BaseController
 
   # Updates the order and advances to the next state (when possible.)
   def update
+    puts "'"*90
+    puts object_params.inspect
+    puts "'"*90
+    @order.update_attributes(object_params)
+    puts @order.errors
     if @order.update_attributes(object_params)
-      if @order.next
+      puts '~'*90
+      if @order.next!
         state_callback(:after)
       else
         flash[:error] = I18n.t(:payment_processing_failed)
@@ -42,9 +71,10 @@ class GroupSaleCheckoutController < Spree::BaseController
         flash[:commerce_tracking] = "nothing special"
         respond_with(@order, :location => completion_route)
       else
-        respond_with(@order, :location => checkout_state_path(@order.state))
+        respond_with(@order, :location => group_sale_checkout_state_path(@order.state))
       end
     else
+      puts '+'*90
       respond_with(@order) { |format| format.html { render :edit } }
     end
   end
@@ -73,10 +103,16 @@ class GroupSaleCheckoutController < Spree::BaseController
     @order = current_user.group_orders.incomplete.last || Order.build_group_order(current_user)
     @order.state = params[:state] if params[:state]
     state_callback(:before)
+    puts "="*90
+    puts @order.inspect
+    puts "="*90
   end
 
   def state_callback(before_or_after = :before)
     method_name = :"#{before_or_after}_#{@order.state}"
+    puts "-"*90
+    puts method_name
+    puts "-"*90
     send(method_name) if respond_to?(method_name, true)
   end
 
@@ -103,6 +139,44 @@ class GroupSaleCheckoutController < Spree::BaseController
     render :edit
   end
 
+  # Introduces a registration step whenever the +registration_step+ preference is true.
+  def check_registration
+    return if current_user
+    store_location
+    redirect_to group_sale_checkout_registration_path
+  end
+
+
+  protected
+
+  def set_addresses
+    return unless params[:order] && (params[:state] == "address" || params[:state] == "payment")
+
+    if params[:order][:ship_address_id].to_i > 0
+      params[:order].delete(:ship_address_attributes)
+    else
+      params[:order].delete(:ship_address_id)
+    end
+
+    if params[:order][:bill_address_id].to_i > 0
+      params[:order].delete(:bill_address_attributes)
+    else
+      params[:order].delete(:bill_address_id)
+    end
+  end
+
+  def normalize_addresses
+    return unless params[:state] == "address" && @order.bill_address_id && @order.ship_address_id
+    @order.bill_address.reload
+    @order.ship_address.reload
+    if @order.bill_address_id != @order.ship_address_id && @order.bill_address.same_as?(@order.ship_address)
+      @order.bill_address.destroy
+      @order.update_attribute(:bill_address_id, @order.ship_address.id)
+    else
+      @order.bill_address.update_attribute(:user_id, current_user.try(:id))
+    end
+    @order.ship_address.update_attribute(:user_id, current_user.try(:id))
+  end
 
 
 end

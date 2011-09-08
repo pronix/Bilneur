@@ -55,10 +55,16 @@ Rails.application.routes.draw do
 
   # Group sale checkout
   scope "/group" do
+    match '/populate/:id' => 'group_sale_checkout#populate', :as => :group_sale_populate, :via => [ :post, :get ]
+    match '/checkout/registration' => 'group_sale_checkout#registration',        :via => :get,
+                                                                                 :as => :group_sale_checkout_registration
+    match '/checkout/registration' => 'group_sale_checkout#update_registration', :via => :put,
+                                                                                 :as => :update_group_sale_checkout_registration
+
     match '/checkout/update/:state' => 'group_sale_checkout#update', :as => :group_sale_update_checkout
     match '/checkout/:state' => 'group_sale_checkout#edit', :as => :group_sale_checkout_state
     match '/checkout' => 'group_sale_checkout#edit', :state => 'address', :as => :group_sale_checkout
-    match '/populate/:id' => 'group_sale_checkout#populate', :as => :group_sale_populate, :via => [:post]
+
   end
 
   # Favorite sellers

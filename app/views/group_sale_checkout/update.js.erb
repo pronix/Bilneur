@@ -1,6 +1,7 @@
 <% if @order.delivery? %>
 
-<%= form_for @order, :url => virtual_update_checkout_path((@order.virtual? ? :virtual : :normal), @order.state), :html => { :id => "checkout_form_#{@order.state}" } do |form| %>
+<%= form_for @order, :url => group_sale_update_checkout_path(@order.state),
+                    :html => { :id => "checkout_form_#{@order.state}" } do |form| %>
 
 
 <h3>Shipping Method:</h3>

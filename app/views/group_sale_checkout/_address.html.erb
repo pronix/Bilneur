@@ -18,7 +18,7 @@
       </p>
 
       <div class="cmbo1">
-        <%= select_tag "", options_for_select(current_user.addresses.collect{ |u| ["#{u.lastname} #{u.address2} #{u.address1} #{u.city} #{u.state.name} #{u.country.name}", u.id] }), :id => "websites1" %>
+        <%= select_tag "", options_for_select(current_user.addresses.collect{ |u| ["#{u.lastname} #{u.address2} #{u.address1} #{u.city} #{u.state.try(:name)} #{u.country.try(:name)}", u.id] }), :id => "websites1" %>
       </div>
     </div>
 
@@ -29,7 +29,8 @@
 
 
     <h3></h3>
-    <%= form_for @order, :url => virtual_update_checkout_path((@order.virtual? ? :virtual : :normal), @order.state), :html => { :id => "checkout_form_#{@order.state}" } do |form| %>
+    <%= form_for @order, :url => group_sale_update_checkout_path( @order.state),
+                         :html => { :id => "checkout_form_#{@order.state}" } do |form| %>
     <h6>Shipping To: </h6>
     <div class="radioPnl">
       <div id="ship-addresses">

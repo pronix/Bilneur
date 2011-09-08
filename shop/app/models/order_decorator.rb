@@ -296,9 +296,8 @@ Order.class_eval do
     item.order = self
     item.variant = _group_sale.variant
     item.price   = _group_sale.price
-
     line_items << item
-    save
+    save!
 
   end
 

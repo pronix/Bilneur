@@ -1,5 +1,5 @@
 <%= render "shared/error_messages", :target => @user %>
-<%= render '/shared/order_status', :step => "login" %>
+<%= render '/shared/group_sale_status', :step => "login" %>
 <div class="page chkOut2">
 	<div class="lginTop"></div>
 	<div class="lginCntr">
@@ -29,7 +29,7 @@
     	<div class="pyPlCntr">
         	<p>By continuing to checkout with paypal, you agree to Bilneur’s Terms &amp; conditions of purchase. <br><a href="#">Click here to view the terms &amp; conditions.</a></p>
             <a class="pyPlBtn" href="#"><img src="/images/forms/paypal.png" alt=""></a>
-            
+
         </div>
     	<div class="pyPlBtm"></div>
         <%= link_to t("continue_shopping"), products_path, :class => "bckChk" %>

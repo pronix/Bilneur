@@ -13,7 +13,7 @@
         <b><%= "#{address.firstname} #{address.lastname}" %></b><br />
         <%= address.address1 %><br />
         <%= address.address2 %><br />
-        <%= "#{address.city},  #{address.state.name} - #{address.zipcode}" %><br />
+        <%= "#{address.city},  #{address.state.try(:name)} - #{address.zipcode}" %><br />
         <%= address.country.name %><br />
         Phone: <%= address.phone %>
       </p>

@@ -7,14 +7,14 @@
   <%= @product.name %>
 </p>
 
-<p> 
+<p>
   <b> Description </b> <br />
   <%= @product.description %>
 </p>
 
 <p>
   <b> Taxons </b> <br />
-  <%= @product.taxons %> 
+  <%= @product.taxons.map &:name %>
 </p>
 
 <p>

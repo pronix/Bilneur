@@ -13,17 +13,6 @@ Feature: Manage products
       | Movie      |
       | Categories |
 
-  Scenario: Adding new a product
-    When I go to the dashboard quotes page
-    And I fill in "ean" with "WEYD:FKKK"
-    And I press "Add quote"
-    Then I should be on the new dashboard product page
-    When I fill in "Name" with "Breakfast At Tiffany's - Paramount Centennial Collection (Mastered in High Definition) (1961)"
-    And I fill in "product_ean" with "5055055903603"
-    And I fill in "Description" with "No film better utilizes Audrey Hepburn's"
-    And I press "Create"
-    Then I should see "Product is created."
-
   Scenario: Editing the product
     Given the following products exist:
       | name                        | available_on        |            ean | sku     | created_at |

@@ -6,8 +6,8 @@ Product.class_eval do
 
       transition :from => :basic,      :to => :taxons
       transition :from => :taxons,     :to => :quote
-      transition :from => :quote,      :to => :complete
-      transition :from => :options,    :to => :properties
+      transition :from => :quote,      :to => :options
+      transition :from => :options,    :to => :complete
       transition :from => :properties, :to => :images
       transition :from => :images,     :to => :complete
     end

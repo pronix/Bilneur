@@ -66,3 +66,24 @@ Feature: Adding products with quotes
     And I wait for the AJAX call to finish
     And I press "Next"
     Then I should see "There were problems with the following fields"
+
+  @javascript
+  Scenario: Add options to product
+    When I press "Add quote"
+    And I fill in "Name" with "Table"
+    And I fill in "EAN or ISBN" with "123456"
+    And I fill in "Description" with "Awesome table"
+    And I press "Next"
+    And I wait for the AJAX call to finish
+    And I press "Next"
+    And I wait for the AJAX call to finish
+    And I fill in "quote_weight" with "34"
+    And I fill in "quote_price" with "98"
+    And I fill in "quote_count_on_hand" with "5"
+    And I press "Next"
+    And I wait for the AJAX call to finish
+    And I follow "Select"
+    And I press "Next"
+    And I wait for the AJAX call to finish
+    Then product should exist with name: "Table", ean: "123456"
+    And product "Table" should have option type "color"
